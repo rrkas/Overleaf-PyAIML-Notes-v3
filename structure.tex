@@ -1,6 +1,8 @@
 \RequirePackage[hyphens]{url} 
 % This package allows proper handling of URLs in the document, ensuring they are properly hyphenated if they span multiple lines.
 
+\usepackage{amssymb} % for symbols like checkmark
+
 \usepackage[top=2cm,bottom=2cm,left=2.2cm,right=2.2cm,headsep=10pt,a4paper]{geometry} 
 % Configures the page layout with specified margins and paper size (A4), including top, bottom, left, and right margins, and the header separation.
 
@@ -51,6 +53,7 @@
 
 \usepackage{enumitem} 
 % Enhances the customization of lists (enumerated and itemized), providing control over label format, spacing, and more.
+\setlist{nolistsep} % Reduce spacing between bullet points and numbered lists
 
 \usepackage[none]{hyphenat} 
 % Disables hyphenation in the document, preventing words from being broken at the end of lines.
@@ -87,7 +90,6 @@
 
 
 
-
 \usepackage[style=numeric,sortcites=true,autopunct=true,autolang=hyphen,hyperref=true,abbreviate=false,backref=false,backend=biber]{biblatex}
 % The `biblatex` package is used for creating and formatting bibliographies. The options here configure how the bibliography is displayed:
 % - `style=numeric`: Uses a numeric citation style (e.g., [1], [2], etc.).
@@ -98,6 +100,7 @@
 % - `abbreviate=false`: Avoids abbreviation of publisher names.
 % - `backref=false`: Disables back references, where the bibliography shows which pages a citation appears on.
 % - `backend=biber`: Specifies the backend for processing the bibliography, using `biber` as the citation manager.
+
 
 \addbibresource{bibliography.bib} 
 % Specifies the `.bib` file (bibliography file) containing the references to be used in the document. Here, it's named `bibliography.bib`.
@@ -129,6 +132,10 @@
   \printlist{publisher}%
   \newunit\newblock
   \printfield{year}%
+  \newunit\newblock
+  \iffieldundef{url}{}{%
+    \\ \href{\thefield{url}}{\nolinkurl{\thefield{url}}}%
+  }%
   \usebibmacro{finentry}%
 } 
 % Customizes the appearance of book entries in the bibliography. The macro defines how each entry is formatted:
@@ -338,6 +345,8 @@
   \removelastskip % Remove any extra space above
   \vskip 2ex\goodbreak % Add 5ex vertical space and encourage a page break if needed
   \refstepcounter{section}% Increase the section counter and make it referencable
+  \phantomsection % Create hyperlink target
+  \edef\@currentlabelname{#2} % Set the section title for \nameref
   \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm % Create a centered box for section heading
       \noindent % Prevent paragraph indent
       \leavevmode
@@ -359,6 +368,8 @@
   \removelastskip % Remove any extra space above
   \vskip 2ex\goodbreak % Add 5ex vertical space and allow good breakpoints
 %  \refstepcounter{section}% (Commented out) No section number since it's unnumbered
+  \phantomsection % Create hyperlink target
+  \edef\@currentlabelname{#2} % Set the section title for \nameref
   \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm % Center the title using a flexible box
       \noindent
       \leavevmode
@@ -407,6 +418,8 @@
   \removelastskip % Remove any unnecessary vertical space before the subsection
   \vskip 3ex\goodbreak % Add 3ex vertical space and allow a good break if necessary
   \refstepcounter{subsection}% Increment the subsection counter and make it referencable
+  \phantomsection % Create hyperlink target
+  \edef\@currentlabelname{#2} % Set the section title for \nameref
   \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm % Create a box with extra width for aesthetics
       \noindent
       \leavevmode
@@ -427,6 +440,8 @@
   \ifhmode\par\fi
   \removelastskip
   \vskip 3ex\goodbreak % Add space before the subsection title
+  \phantomsection % Create hyperlink target
+  \edef\@currentlabelname{#2} % Set the section title for \nameref
   \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm
       \noindent
       \leavevmode
@@ -466,6 +481,8 @@
   \removelastskip
   \vskip 2ex\goodbreak % Add smaller space for subsubsections
   \refstepcounter{subsubsection} % Increment the subsubsection counter
+  \phantomsection % Create hyperlink target
+  \edef\@currentlabelname{#2} % Set the section title for \nameref
   \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm
       \noindent
       \leavevmode
@@ -486,6 +503,8 @@
   \ifhmode\par\fi
   \removelastskip
   \vskip 2ex\goodbreak
+  \phantomsection % Create hyperlink target
+  \edef\@currentlabelname{#2} % Set the section title for \nameref
   \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm
       \noindent
       \leavevmode
@@ -500,12 +519,67 @@
     #1}% Add to TOC without numbering
 }
 
-
-
-
-
 \makeatother % End of low-level commands, restoring normal @ behavior
 
+
+
+
+
+
+% Import the titletoc package for customizing the table of contents (TOC)
+\usepackage{titletoc} % Required for manipulating the table of contents
+
+% Remove the default margin for the table of contents entries
+\contentsmargin{0cm}
+
+% --------------------
+% Chapter text styling
+% --------------------
+\titlecontents{chapter}[0.75cm] % Indent chapter titles by 1.25 cm
+{\addvspace{10pt}\fontsize{17pt}{17pt}\selectfont\bfseries} % Add vertical space and set chapter titles to large, bold font
+{\contentslabel[\thecontentslabel]{0.75cm}\color{black}} % Display chapter numbers in large size with custom color
+{} % No additional text before the chapter title
+{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{\_}\;\thecontentspage} % Display page numbers with a dotted line separator
+
+% --------------------
+% Section text styling
+% --------------------
+\titlecontents{section}[0.75cm] % Indent section titles by 1.5 cm
+{\addvspace{3pt}\fontsize{14pt}{14pt}\selectfont} % Add vertical space before sections
+{\contentslabel[\thecontentslabel]{1cm}\color{black}} % Display section numbers with appropriate alignment
+{} % No additional text before the section title
+{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{- -}\;\thecontentspage} % Display page numbers with a dotted line separator
+[] % No additional customization
+
+% ------------------------
+% Subsection text styling
+% ------------------------
+\titlecontents{subsection}[0.75cm] % Indent subsection titles by 1.75 cm
+{\addvspace{3pt}\fontsize{12pt}{12pt}\selectfont} % Add minimal vertical space before subsections
+{\contentslabel[\thecontentslabel]{1.25cm}\color{black}} % Display subsection numbers with alignment
+{} % No additional text before the subsection title
+{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
+[] % No additional customization
+
+% ----------------------------
+% Subsubsection text styling
+% ----------------------------
+\titlecontents{subsubsection}[0.75cm] % Indent subsubsection titles by 2 cm
+{\addvspace{3pt}} % Add minimal vertical space
+{\contentslabel[\thecontentslabel]{1cm}\color{black}} % Display subsubsection numbers with alignment
+{} % No additional text before the subsubsection title
+{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
+[] % No additional customization
+
+% --------------------
+% Paragraph text styling
+% --------------------
+\titlecontents{paragraph}[0.75cm] % Indent paragraph titles by 2.25 cm
+{\addvspace{1pt}} % Add minimal vertical space
+{\contentslabel[\thecontentslabel]{1cm}\color{black}} % Display paragraph numbers with alignment
+{} % No additional text before the paragraph title
+{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
+[] % No additional customization
 
 
 
@@ -547,18 +621,11 @@
 
 
 % Define a custom command to create a single clickable reference with both number and name
-\newcommand*{\fullref}[1]{\hyperref[{#1}]{(\ref*{#1}) \nameref*{#1}}} 
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{(\protect\ref*{#1}) \protect\nameref*{#1}}} 
 % Example: \fullref{sec:example} → (1.1) Section Name
 % \ref* provides the section number without a hyperlink
 % \nameref* provides the section title without a hyperlink
 % \hyperref combines them into one clickable link
-
-% Define a command to add an index entry and label at the same time
-\newcommand{\indexlabel}[1]{\index{#1}\label{#1}} 
-% Example: \indexlabel{Gaussian Distribution} → 
-% Adds "Gaussian Distribution" to the index and sets a label for referencing
-% \index adds the term to the index
-% \label creates a reference point for hyperlinks using \ref or \hyperref
 
 
 
@@ -622,5 +689,32 @@
 \renewcommand{\lstlistingname}{Code Snippet}
 \renewcommand{\lstlistlistingname}{List of \lstlistingname s}
 
+
+
+
+
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+
+
+
+
+
+
+
+\newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\dprod}{\displaystyle\prod}
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\dParenBrac}[1]{\left(#1\right)}
+\newcommand{\dSquareBrac}[1]{\left[#1\right]}
+\newcommand{\dCurlyBrac}[1]{\left\{#1\right\}}
+\newcommand{\dfloor}[1]{\left \lfloor #1 \right \rfloor}
+\newcommand{\dceil}[1]{\left \lceil #1 \right \rceil}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\dnorm}[1]{\left\| #1 \right\|}
+
+% ⫫ U+2AEB DOUBLE UP TACK
+\newcommand{\doubleuptack}{\perp\!\!\!\!\perp}
 
 

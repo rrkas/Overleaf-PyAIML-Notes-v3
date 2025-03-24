@@ -1,0 +1,238 @@
+\chapter{Data}
+
+\section{Measurement Levels \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Measurement-Levels}
+
+\subsection{Nominal, Ordinal, Interval and Ratio \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Measurement-Levels/Nominal, Ordinal, Interval and Ratio}
+
+\label{Data/Measurement-Levels/Nominal, Ordinal, Interval and Ratio/Categorical Data}
+\label{Data/Measurement-Levels/Nominal, Ordinal, Interval and Ratio/Numerical Data}
+\label{Data/Measurement-Levels/Nominal, Ordinal, Interval and Ratio/Nominal}
+\label{Data/Measurement-Levels/Nominal, Ordinal, Interval and Ratio/Ordinal}
+\label{Data/Measurement-Levels/Nominal, Ordinal, Interval and Ratio/Interval}
+\label{Data/Measurement-Levels/Nominal, Ordinal, Interval and Ratio/Ratio}
+
+\begin{table}[H]
+    \hfill
+    \begin{minipage}[H]{0.25\linewidth}
+        \textbf{Levels}: \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \begin{enumerate}
+            \item Nominal
+            \item Ordinal
+            \item Interval
+            \item Ratio
+        \end{enumerate}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[H]{0.65\linewidth}
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|p{5cm}|c|c|c|c|}
+                \hline
+                & \multicolumn{2}{c|}{\textbf{Categorical Data}} & \multicolumn{2}{c|}{\textbf{Numerical Data}} \\ 
+                
+                \hline
+                & \textbf{Nominal} & \textbf{Ordinal} & \textbf{Interval} & \textbf{Ratio} \\ \hline
+                
+                Distinction between groups / individuals & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+                
+                Imposes logical Order & \xmark & \checkmark & \checkmark & \checkmark \\ \hline
+                
+                Provides a magnitude of the differences in some unit & \xmark & \xmark & \checkmark & \checkmark \\ \hline
+                
+                A clear reference point or "0" & \xmark & \xmark & \xmark & \checkmark \\ \hline
+            \end{tabular}
+            \caption{Data: Measurement Levels: Nominal, Ordinal, Interval and Ratio \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+        \end{table}
+    \end{minipage}
+    \hfill
+\end{table}
+
+\vspace{0.3cm}
+
+\textbf{Note}:
+\begin{enumerate}
+    \item Each consecutive measurement level contains as much "information" - in a fairly loose sense of the word - as the previous one and more. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\subsection{Continuous vs Discrete numerical data \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Measurement-Levels/Continuous vs Discrete numerical data}
+
+\label{Data/Measurement-Levels/Continuous vs Discrete numerical data/Continuous numerical data}
+\label{Data/Measurement-Levels/Continuous vs Discrete numerical data/Discrete numerical data}
+
+\begin{enumerate}
+    \item Continuous variables can assume any value.\\
+    This means that the continuous variable can attain any value between two different values, no matter how close the two values are.\\
+    \textbf{Example}: temperature, weight, and age
+
+    \item Discrete variables cannot assume any value between 2 values\\
+    \textbf{Example}: number of text messages, accidents, microorganisms, students, etc.
+\end{enumerate}
+
+
+\subsection{Outliers \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Measurement-Levels/Outliers}
+
+\begin{enumerate}
+    \item An outlier is a data point that significantly deviates from other observations in a dataset. \cite{common/online/chatgpt}
+
+    \item Caused by Natural variability in the data or measurement errors. \cite{common/online/chatgpt}
+
+    \item Typically identified using statistical methods like the IQR (Interquartile Range), Z-score, or visualization techniques (e.g., box plots). \cite{common/online/chatgpt}
+
+    \item Outliers are not necessarily incorrect; they may represent rare but valid observations. \cite{common/online/chatgpt}
+    
+\end{enumerate}
+
+
+\vspace{0.3cm}
+
+\textbf{Examples}:
+\begin{enumerate}
+    \item In a dataset of human heights, a person measuring 250 cm might be an outlier but not necessarily unrealistic if it’s a rare case of gigantism. \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+\vspace{0.3cm}
+\textbf{Handling/ Dealing with Outliers}:
+\begin{enumerate}
+    \item Ignore these abnormalities and go ahead with the data. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Delete/ remove the suspected records/ entries. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Substitute them, using statistical methods, with a more plausible alternative. (aka \textbf{imputation}) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\label{Data/Outliers/imputation}
+\end{enumerate}
+
+
+
+
+\subsection{Unrealistic Values \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Measurement-Levels/Unrealistic Values}
+
+\begin{enumerate}
+    \item An unrealistic value is a data point that is not plausible within the context of the dataset, often due to data entry errors or faulty sensors. \cite{common/online/chatgpt}
+
+    \item Caused by Human error, sensor malfunction, or corruption during data transmission. \cite{common/online/chatgpt}
+
+    \item Typically identified using domain knowledge or logical constraints. \cite{common/online/chatgpt}
+
+    \item Unlike outliers, unrealistic values are generally not useful and need correction or removal. \cite{common/online/chatgpt}
+
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\textbf{Examples}:
+\begin{enumerate}
+    \item A recorded body temperature of 200°C for a human is unrealistic, as it’s physically impossible for a person to survive at that temperature. \cite{common/online/chatgpt}
+
+    \item Negative age of a person \cite{common/online/chatgpt}
+
+    \item Missing values \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Incorrect datatype of value \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\vspace{0.3cm}
+\textbf{Handling/ Dealing with Unrealistic values}:
+\begin{enumerate}
+    \item Delete/ remove the suspected records/ entries. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+\end{enumerate}
+
+
+
+
+
+\section{Describing Data \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data}
+
+Some \textbf{descriptive statistics}\label{Data/Describing Data/descriptive statistics} (or just \textbf{descriptives}\label{Data/Describing Data/descriptives}) that we introduce are often used for data of a certain measurement level. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsection{(Absolute) Frequency/ (Absolute) Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/(Absolute) Frequency or (Absolute) Frequency table}
+
+\textbf{Measurement levels}: Nominal and ordinal data
+
+\vspace{0.3cm}
+
+\begin{enumerate}
+    \item It refers to the count of occurrences of a particular value or category in a dataset. \cite{common/online/chatgpt}
+
+    \item Simple count, no further processing. \cite{common/online/chatgpt}
+
+    \item \textbf{Use Case}: Helpful in creating bar charts or histograms. \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+
+\subsection{Cumulative Frequency/ Cumulative Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Cumulative Frequency or Cumulative Frequency table}
+
+\textbf{Measurement levels}: Nominal and ordinal data
+
+\vspace{0.3cm}
+\begin{enumerate}
+    \item It is the running total of frequencies up to a certain value or class. \cite{common/online/chatgpt}
+
+    \item Each cumulative frequency includes its own frequency plus all previous frequencies. \cite{common/online/chatgpt}
+
+    \item \textbf{Use Case}: Useful in percentile calculations and ogive graphs. \cite{common/online/chatgpt}
+
+    \item The cumulative frequency makes more sense for ordinal data than for nominal data, since ordinal data can be ordered in size, which is not possible for nominal data. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\begin{table}[H]
+    \begin{minipage}[H]{0.3\linewidth}
+    $
+        \begin{aligned}
+            CF_i 
+                &= CF_{i-1} + F_{i} \\
+                &= \sum_{k=1}^{i} F_{k}
+        \end{aligned}
+    $
+    \end{minipage}
+    \begin{minipage}[H]{0.65\linewidth}
+        \begin{table}[H]
+            \begin{tabular}{l l}
+                $CF_i$ & Cumulative Frequency at the current value \\ 
+                $CF_{i-1}$ & Cumulative Frequency at the previous value \\ 
+                $F_i$ & Frequency at the current value \\ 
+            \end{tabular}
+            \caption*{Notations}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+
+\subsection{Relative Frequency/ Relative Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Relative Frequency or Relative Frequency table}
+
+\textbf{Measurement levels}: Nominal and ordinal data
+
+\vspace{0.3cm}
+\begin{enumerate}
+    \item It shows the proportion of each category relative to the total number of observations. \cite{common/online/chatgpt}
+
+    \item Expressed as a fraction, decimal, or percentage. \cite{common/online/chatgpt}
+
+    \item \textbf{Use Case}: Ideal for creating pie charts and understanding distribution proportions. \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+\begin{table}[H]
+    \begin{minipage}{0.3\linewidth}
+        \[
+            \begin{aligned}
+                RF_i 
+                    &= \dfrac{F_{i}}{\dsum_{k=1}^{N} F_{k}}
+            \end{aligned}
+        \]
+    \end{minipage}
+    \begin{minipage}{0.65\linewidth}
+        \begin{table}[H]
+            \begin{tabular}{l l}
+                $RF_i$ & Relative Frequency \\
+                $F_i$ & Frequency of the value \\ 
+                $N$ & Total number of observations \\ 
+            \end{tabular}
+            \caption*{Notations}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+
