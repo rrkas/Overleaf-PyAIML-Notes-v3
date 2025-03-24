@@ -49,9 +49,6 @@
 \usepackage{graphicx} 
 % Required for including graphics (images) in your document, allowing for resizing, rotation, and positioning.
 
-\usepackage{listings} 
-% Provides tools for formatting and including source code in the document, with customizable options for syntax highlighting.
-
 \usepackage{enumitem} 
 % Enhances the customization of lists (enumerated and itemized), providing control over label format, spacing, and more.
 
@@ -76,17 +73,13 @@
 \usepackage{scrextend} 
 % Provides additional functionality for document layout and formatting, such as custom margins and page styles.
 
+% Import the pifont package to use special symbols like checkmarks and crosses
+\usepackage{pifont}% http://ctan.org/pkg/pifont
 
-\usepackage[ruled,vlined,linesnumbered,resetcount,algochapter]{algorithm2e} 
-% This package provides a way to write algorithms in LaTeX. The options here configure the appearance of algorithms:
-% - `ruled`: Adds horizontal lines at the top and bottom of the algorithm.
-% - `vlined`: Adds vertical lines to separate the code blocks.
-% - `linesnumbered`: Numbers each line in the algorithm.
-% - `resetcount`: Resets the line numbering within each new algorithm.
-% - `algochapter`: Allows for algorithm numbering to be tied to chapter numbers.
+% Define a custom command \xmark to represent a cross mark using the 'ding' symbol (code 55)
+\newcommand{\xmark}{\ding{55}}
 
-\SetKwComment{Comment}{/* }{ */} 
-% This sets the style for comments within the algorithm. The comment text will be enclosed between `/*` and `*/`, and it will be formatted accordingly.
+\usepackage{lipsum} % Inserts dummy text
 
 
 
@@ -190,7 +183,7 @@
 \usepackage{changepage} 
 % Allows for dynamic changes to page margins. For example, it can be used to change the width of the text block for specific parts of the document, useful for formatting long quotes or wide tables.
 
-\usepackage{lastpage} 
+% \usepackage{lastpage} 
 % Provides a reference to the last page in the document. It can be used in headers or footers, for example, to display "Page X of Y" by referencing the last page.
 
 
@@ -207,6 +200,427 @@
 % It is recommended when using `biblatex` with `babel` or `polyglossia` to ensure proper formatting of quotes.
 
 
+
+
+
+
+
+
+
+
+% Import the fancyhdr package for customizing headers and footers
+\usepackage{fancyhdr} % Required for header and footer configuration
+
+
+% Define a custom command \authorbook to display the author and book title in a styled format
+\newcommand{\authorbook}{{\color{blue}\textbf{AIML Notes v3}} \textit{by} \textbf{Rohnak Agarwal}}
+
+% Customize the chapter and section headers with specific fonts and styles
+\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.\ #1}{}} % Chapter text font settings
+\renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}} % Section text font settings
+
+% Set the page style to fancy for applying custom headers and footers
+\fancypagestyle{mainmatter}{    
+    % Clear all header and footer fields
+    \fancyhf{}
+    
+    % Set the width of the header line to match the text width
+    \setlength{\headwidth}{\textwidth} % Width of the header line
+    
+    % Configure left, center, and right header content
+    \fancyhead[L]{{\color{blue}\textbf{AIML Notes v3}}} % Left side: Book title in blue
+    \fancyhead[C]{\textbf{Chapter \thechapter}} % Center: Current chapter number
+    \fancyhead[R]{By \textbf{Rohnak Agarwal}} % Right side: Author name
+    
+    % Configure center footer to show current page and total pages
+    \fancyfoot[C]{Page \sffamily\normalsize\thepage\ of \protect\pageref*{MMLastPage}} % Footer with current and last page number
+    
+    % Customize the header and footer rule thickness
+    \renewcommand{\headrulewidth}{0.5pt} % Width of the rule under the header
+    \addtolength{\headheight}{2.5pt} % Increase the spacing around the header slightly
+    \renewcommand{\footrulewidth}{0.5pt} % Removes the rule in the footer
+}
+
+
+\fancypagestyle{extra}{
+    \fancyhf{} 
+    \setlength{\headwidth}{\textwidth} % Width of the header line
+    
+    \fancyfoot[C]{\sffamily\normalsize\thepage}
+    
+    \renewcommand{\headrulewidth}{0pt} % Width of the rule under the header
+    % \addtolength{\headheight}{2.5pt} % Increase the spacing around the header slightly
+    \renewcommand{\footrulewidth}{0.5pt} % Removes the rule in the footer
+}
+
+
+
+\fancypagestyle{plain}{
+    \fancyhead{}
+    \renewcommand{\headrulewidth}{0pt}
+} % Style for when a plain pagestyle is specified
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\makeatletter % Allows the use of @ in command names, needed for low-level TeX commands
+
+% Define how the chapter head is created
+\def\@makechapterhead#1{%
+  \vspace*{-20\p@}% Reduce space above chapter title (negative value moves it up)
+  {\parindent \z@ \centering % No paragraph indent, center align the chapter title
+    \normalfont % Use the normal font style
+    \ifnum \c@secnumdepth >\m@ne % Check if section numbering depth is greater than -1
+      \if@mainmatter % Ensure this is in the main part of the document (not frontmatter)
+        %\huge\bfseries % (Commented out) Previously set large, bold text for chapter number
+        \scshape % Use small caps for chapter number
+        \@chapapp\space \thechapter % Display "Chapter X" where X is the chapter number
+        \par\nobreak % Prevent a page break immediately after the chapter number
+        %\vskip 20\p@ % (Commented out) Was adding 20pt space after the chapter number
+      \fi
+    \fi
+    \interlinepenalty\@M % Prevent line breaks within the title (maximum penalty)
+    \Huge \bfseries #1\par\nobreak % Display the chapter title in huge, bold text
+    \vskip 40\p@ % Add 40pt space below the chapter title
+  }}
+
+% Define how unnumbered chapter heads are created
+\def\@schapter#1{\if@twocolumn % Check if the document is in two-column mode
+                   \@topnewpage[\@makeschapterhead{#1}]% Start a new page for the chapter title in two-column mode
+                 \else
+                   \@makeschapterhead{#1}% Otherwise, create the chapter title normally
+                   \@afterheading % Adjust spacing after the chapter heading
+                 \fi}
+
+% Define how the chapter title is displayed for unnumbered chapters
+\def\@makeschapterhead#1{%
+  \vspace*{20\p@}% Add 20pt space above the chapter title
+  {\parindent \z@ \centering % No indent, center align the title
+    \normalfont % Use the normal font style
+    \scshape % Use small caps for the chapter title
+    \interlinepenalty\@M % Prevent line breaks within the title
+    \Huge \bfseries #1\par\nobreak % Display the title in huge, bold text
+    \vskip 40\p@ % Add 40pt space below the chapter title
+  }}
+
+%%%%%%%%%%%%%%%%%              section            %%%%%%%%%%%%%%%%%%%%%%%
+
+% Define the \section command, checking for a star (*) to differentiate numbered and unnumbered sections
+\def\section{\@ifstar\unnumberedsection\numberedsection}
+
+% Handle numbered sections: Check for optional arguments using \@ifnextchar
+\def\numberedsection{\@ifnextchar[%] 
+  \numberedsectionwithtwoarguments\numberedsectionwithoneargument}
+
+% Handle unnumbered sections: Similar to numbered sections but without numbering
+\def\unnumberedsection{\@ifnextchar[%] 
+  \unnumberedsectionwithtwoarguments\unnumberedsectionwithoneargument}
+
+% Define one-argument version of numbered section by passing the same argument twice
+\def\numberedsectionwithoneargument#1{\numberedsectionwithtwoarguments[#1]{#1}}
+
+% Define one-argument version of unnumbered section by passing the same argument twice
+\def\unnumberedsectionwithoneargument#1{\unnumberedsectionwithtwoarguments[#1]{#1}}
+
+% Numbered section with two arguments: First argument is for TOC, second is the section title
+\def\numberedsectionwithtwoarguments[#1]#2{%
+  \ifhmode\par\fi % Ensure we are in vertical mode by breaking the current line if necessary
+  \removelastskip % Remove any extra space above
+  \vskip 2ex\goodbreak % Add 5ex vertical space and encourage a page break if needed
+  \refstepcounter{section}% Increase the section counter and make it referencable
+  \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm % Create a centered box for section heading
+      \noindent % Prevent paragraph indent
+      \leavevmode
+      \fontsize{17pt}{17pt}\selectfont
+      \bfseries\raggedright % Use large, bold, left-aligned text
+      \thesection.\ #2\par % Display section number followed by title
+      \vskip -1.5ex % Reduce space below the title
+      \noindent\hrulefill % Draw a horizontal line across the page
+      }}\nobreak
+  \vskip 1ex\nobreak % Add 2ex space below the line and prevent a page break
+  \addcontentsline{toc}{section}{%
+    \protect\numberline{\thesection}% Add section number to the Table of Contents (TOC)
+    #1}% Add section title to the TOC
+}
+
+% Unnumbered section with two arguments: Similar to numbered sections but without section number
+\def\unnumberedsectionwithtwoarguments[#1]#2{%
+  \ifhmode\par\fi % Ensure in vertical mode
+  \removelastskip % Remove any extra space above
+  \vskip 2ex\goodbreak % Add 5ex vertical space and allow good breakpoints
+%  \refstepcounter{section}% (Commented out) No section number since it's unnumbered
+  \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm % Center the title using a flexible box
+      \noindent
+      \leavevmode
+      \fontsize{17pt}{17pt}\selectfont
+      \bfseries\raggedright % Large, bold, left-aligned title
+%      \thesection\ % (Commented out) Section number is not displayed
+      #2\par % Display the section title
+      \vskip -1.5ex % Reduce space below the title
+      \noindent\hrulefill % Draw a horizontal line
+      }}\nobreak
+  \vskip 1ex\nobreak % Add 2ex space and prevent a page break
+  \addcontentsline{toc}{section}{%
+%    \protect\numberline{\thesection}% (Commented out) No number in the TOC
+    #1}% Add section title to the TOC without a number
+}
+
+
+%%%%%%%%%%%%%%%%%              sub-section            %%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Define \subsection command to handle starred and unstarred subsections
+\def\subsection{\@ifstar\unnumberedsubsection\numberedsubsection}
+% If the \subsection command has a star (*) → Call \unnumberedsubsection
+% If no star (*) → Call \numberedsubsection
+
+% Handle numbered subsections, checking for optional arguments using \@ifnextchar
+\def\numberedsubsection{\@ifnextchar[%] 
+  \numberedsubsectionwithtwoarguments\numberedsubsectionwithoneargument}
+% If optional argument ([...]) is present → Call \numberedsubsectionwithtwoarguments
+% If no optional argument → Call \numberedsubsectionwithoneargument
+
+% Handle unnumbered subsections similarly
+\def\unnumberedsubsection{\@ifnextchar[%] 
+  \unnumberedsubsectionwithtwoarguments\unnumberedsubsectionwithoneargument}
+
+% Define single-argument version of numbered subsection
+\def\numberedsubsectionwithoneargument#1{\numberedsubsectionwithtwoarguments[#1]{#1}}
+% The same title is used for both display and Table of Contents (TOC)
+
+% Define single-argument version of unnumbered subsection
+\def\unnumberedsubsectionwithoneargument#1{\unnumberedsubsectionwithtwoarguments[#1]{#1}}
+
+% Customize the appearance of numbered subsections
+\def\numberedsubsectionwithtwoarguments[#1]#2{%
+  \ifhmode\par\fi % Ensure the content starts in vertical mode (not in a paragraph)
+  \removelastskip % Remove any unnecessary vertical space before the subsection
+  \vskip 3ex\goodbreak % Add 3ex vertical space and allow a good break if necessary
+  \refstepcounter{subsection}% Increment the subsection counter and make it referencable
+  \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm % Create a box with extra width for aesthetics
+      \noindent
+      \leavevmode
+      \fontsize{15pt}{15pt}\selectfont
+      \bfseries\raggedright % Use large, bold, left-aligned font
+      \thesubsection.\ #2\par % Display subsection number followed by the title
+      \vskip -1ex % Reduce space below the title
+      \noindent%\hrulefill % Draw a horizontal line below the subsection title
+      }}\nobreak
+  \vskip 1.5ex\nobreak % Add space below the title and prevent a page break
+  \addcontentsline{toc}{subsection}{%
+    \protect\numberline{\thesubsection}% Add the numbered subsection to the TOC
+    #1}% The first argument (#1) is added to the TOC
+}
+
+% Customize the appearance of unnumbered subsections
+\def\unnumberedsubsectionwithtwoarguments[#1]#2{%
+  \ifhmode\par\fi
+  \removelastskip
+  \vskip 3ex\goodbreak % Add space before the subsection title
+  \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm
+      \noindent
+      \leavevmode
+      \fontsize{15pt}{15pt}\selectfont
+      \bfseries\raggedright % Use large, bold, left-aligned font
+      #2\par % Display only the subsection title (no number)
+      \vskip -1ex
+      \noindent%\hrulefill % Draw a horizontal line below the title
+      }}\nobreak
+  \vskip 1.5ex\nobreak
+  \addcontentsline{toc}{subsection}{%
+    #1}% Add the subsection title to the TOC without numbering
+}
+
+%%%%%%%%%%%%%%%%%              sub-sub-section            %%%%%%%%%%%%%%%%%%%%%%%
+
+% Define \subsubsection command, handling starred and unstarred types
+\def\subsubsection{\@ifstar\unnumberedsubsubsection\numberedsubsubsection}
+
+% Handle numbered subsubsections
+\def\numberedsubsubsection{\@ifnextchar[%] 
+  \numberedsubsubsectionwithtwoarguments\numberedsubsubsectionwithoneargument}
+
+% Handle unnumbered subsubsections
+\def\unnumberedsubsubsection{\@ifnextchar[%] 
+  \unnumberedsubsubsectionwithtwoarguments\unnumberedsubsubsectionwithoneargument}
+
+% Define single-argument version for numbered subsubsections
+\def\numberedsubsubsectionwithoneargument#1{\numberedsubsubsectionwithtwoarguments[#1]{#1}}
+
+% Define single-argument version for unnumbered subsubsections
+\def\unnumberedsubsubsectionwithoneargument#1{\unnumberedsubsubsectionwithtwoarguments[#1]{#1}}
+
+% Customize the appearance of numbered subsubsections
+\def\numberedsubsubsectionwithtwoarguments[#1]#2{%
+  \ifhmode\par\fi
+  \removelastskip
+  \vskip 2ex\goodbreak % Add smaller space for subsubsections
+  \refstepcounter{subsubsection} % Increment the subsubsection counter
+  \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm
+      \noindent
+      \leavevmode
+      \fontsize{13pt}{15pt}\selectfont
+      \bfseries\raggedright % Use normal size, bold, left-aligned text
+      \thesubsubsection.\ #2\par
+      \vskip -0.5ex
+      \noindent%\hrulefill % Draw a thinner line below
+      }}\nobreak
+  \vskip 1ex\nobreak % Add small space below the title
+  \addcontentsline{toc}{subsubsection}{%
+    \protect\numberline{\thesubsubsection}%
+    #1}% Add the subsubsection to the TOC
+}
+
+% Customize the appearance of unnumbered subsubsections
+\def\unnumberedsubsubsectionwithtwoarguments[#1]#2{%
+  \ifhmode\par\fi
+  \removelastskip
+  \vskip 2ex\goodbreak
+  \hbox to \hsize{\hss\vbox{\advance\hsize by 1cm
+      \noindent
+      \leavevmode
+      \fontsize{13pt}{15pt}\selectfont
+      \bfseries\raggedright
+      #2\par
+      \vskip -0.5ex
+      \noindent%\hrulefill
+      }}\nobreak
+  \vskip 1ex\nobreak
+  \addcontentsline{toc}{subsubsection}{%
+    #1}% Add to TOC without numbering
+}
+
+
+
+
+
+\makeatother % End of low-level commands, restoring normal @ behavior
+
+
+
+
+
+
+
+
+
+
+
+
+% Ensure URLs in hyperlinks are broken correctly at hyphens if needed
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref} 
+% Load the hyperref package with additional URL support
+
+% Load the breakurl package for handling URL breaking in PDFs
+\usepackage{breakurl} 
+% Useful when compiling with DVI to PDF converters (e.g., dvipdfm)
+
+
+% Configure hyperref settings using \hypersetup
+\hypersetup{
+    urlcolor=blue, % Set the color of URL links to blue
+    linkcolor=blue, % Set the color of internal document links (e.g., sections) to blue
+    citecolor=blue, % Set the color of citation links to blue
+    % Backreferences to help navigate to citations and references
+    backref=true, % Add back references from bibliography to citations
+    pagebackref=true, % Include page numbers where citations appear
+    % Additional options for improved indexing and appearance
+    hyperindex=true, % Enable hyperlinking of index entries
+    colorlinks=true, % Enable colored links instead of boxed links
+    breaklinks=true, % Allow links to break across lines (useful for long URLs)
+    bookmarks=true, % Enable PDF bookmarks for easy navigation
+    bookmarksopen=true, % Automatically expand bookmarks in the PDF viewer    
+    % Metadata for the PDF document
+    pdftitle={AIML Notes v3}, % Set the title of the PDF
+    pdfauthor={Rohnak Agarwal} % Set the author name in the PDF metadata
+}
+
+
+% Define a custom command to create a single clickable reference with both number and name
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{(\ref*{#1}) \nameref*{#1}}} 
+% Example: \fullref{sec:example} → (1.1) Section Name
+% \ref* provides the section number without a hyperlink
+% \nameref* provides the section title without a hyperlink
+% \hyperref combines them into one clickable link
+
+% Define a command to add an index entry and label at the same time
+\newcommand{\indexlabel}[1]{\index{#1}\label{#1}} 
+% Example: \indexlabel{Gaussian Distribution} → 
+% Adds "Gaussian Distribution" to the index and sets a label for referencing
+% \index adds the term to the index
+% \label creates a reference point for hyperlinks using \ref or \hyperref
+
+
+
+
+
+
+
+
+
+
+\usepackage[ruled,vlined,linesnumbered,resetcount,algochapter]{algorithm2e} 
+% This package provides a way to write algorithms in LaTeX. The options here configure the appearance of algorithms:
+% - `ruled`: Adds horizontal lines at the top and bottom of the algorithm.
+% - `vlined`: Adds vertical lines to separate the code blocks.
+% - `linesnumbered`: Numbers each line in the algorithm.
+% - `resetcount`: Resets the line numbering within each new algorithm.
+% - `algochapter`: Allows for algorithm numbering to be tied to chapter numbers.
+
+\SetKwComment{Comment}{/* }{ */} 
+% This sets the style for comments within the algorithm. The comment text will be enclosed between `/*` and `*/`, and it will be formatted accordingly.
+
+
+\usepackage{listings} 
+% Provides tools for formatting and including source code in the document, with customizable options for syntax highlighting.
+
+
+% Define custom colors for syntax highlighting
+\definecolor{vscode-bg}{rgb}{0.97,0.97,0.97} % Background color (White-ish)
+\definecolor{vscode-gray}{rgb}{0.5,0.5,0.5} % Line number color (Gray)
+\definecolor{vscode-keyword}{rgb}{0.0,0.0,0.6} % Keywords (Blue)
+\definecolor{vscode-string}{rgb}{0.627,0.126,0.941} % Strings (Purple)
+\definecolor{vscode-comment}{rgb}{0.0,0.5,0.0} % Comments (Green)
+\definecolor{vscode-number}{rgb}{0.098,0.098,0.439} % Numbers (Dark Blue)
+
+% Define a custom style for Python-like code listings using the listings package
+\lstdefinestyle{pystyle}{
+    backgroundcolor=\color{vscode-bg},   % Set background color
+    commentstyle=\color{vscode-comment}, % Style for comments
+    keywordstyle=\color{vscode-keyword}, % Style for keywords
+    numberstyle=\tiny\color{vscode-gray}, % Style for line numbers
+    stringstyle=\color{vscode-string},   % Style for strings
+    basicstyle=\ttfamily,                % Use a monospaced font
+    breakatwhitespace=false,             % Allow breaking lines anywhere, not just at whitespace
+    breaklines=true,                     % Enable automatic line breaking
+    captionpos=b,                        % Position captions below listings
+    keepspaces=true,                     % Preserve spaces in code
+    numbers=left,                        % Display line numbers on the left side
+    numbersep=5pt,                       % Distance between line numbers and code
+    showspaces=false,                    % Don't show spaces as visible characters
+    showstringspaces=false,              % Don't show spaces inside strings as visible characters
+    showtabs=false,                      % Don't show tab characters
+    tabsize=4,                           % Set tab size to 4 spaces
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, % Add a red arrow at line breaks
+    columns=fullflexible,                % Adjust column widths to fit the content
+}
+
+% Apply the custom style to all listings
+\lstset{style=pystyle}
+
+% Customize the name for code listings in captions and references
+\renewcommand{\lstlistingname}{Code Snippet}
+\renewcommand{\lstlistlistingname}{List of \lstlistingname s}
 
 
 
