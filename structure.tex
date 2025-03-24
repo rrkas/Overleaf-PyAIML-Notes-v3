@@ -1,0 +1,212 @@
+\RequirePackage[hyphens]{url} 
+% This package allows proper handling of URLs in the document, ensuring they are properly hyphenated if they span multiple lines.
+
+\usepackage[top=2cm,bottom=2cm,left=2.2cm,right=2.2cm,headsep=10pt,a4paper]{geometry} 
+% Configures the page layout with specified margins and paper size (A4), including top, bottom, left, and right margins, and the header separation.
+
+\usepackage[dvipsnames,table]{xcolor} 
+% Provides color support in the document, allowing named colors and coloring of tables and other elements.
+
+\usepackage{mathptmx} 
+% Changes the default text font to Adobe Times Roman and the math font to the Symbol, Chancery, and Computer Modern fonts for mathematical symbols.
+
+\usepackage{mathrsfs} 
+% Loads the mathrsfs package to provide a script-like math font (commonly used for calligraphic letters in mathematics).
+
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n} 
+% Redefines the \mathcal font to make it less curvy and more suited for mathematical characters.
+
+\usepackage[utf8]{inputenc} 
+% Specifies the input encoding of the document as UTF-8, enabling support for special characters and accented letters.
+
+\usepackage[T1]{fontenc} 
+% Ensures the use of an 8-bit font encoding that provides access to 256 glyphs, improving the document's character handling, especially for European languages.
+
+\usepackage{amsmath} 
+% Provides advanced mathematical features, including various environments and tools for handling mathematical equations and symbols.
+
+\everymath{\displaystyle}   
+% Ensures that inline math expressions are displayed in "display style," which is usually used for equations to make them larger and more readable.
+
+\everydisplay{\displaystyle} 
+% Ensures that display math (e.g., equations shown on their own line) uses the "display style" for larger symbols and better readability.
+
+\setcounter{MaxMatrixCols}{20} 
+% Increases the maximum number of columns allowed in a matrix to 20 (the default is 10), useful for large matrices in math environments.
+
+\usepackage{mathtools} 
+% Extends the functionality of the amsmath package, adding additional tools and enhancements for working with mathematical expressions.
+
+\usepackage{float} 
+% Allows better control over the placement of figures and tables, particularly with the "H" option that forces figures to appear exactly where they are in the code.
+
+\usepackage{longtable} 
+% Provides support for tables that span multiple pages, useful for large tables that need to be split across different pages.
+
+\usepackage{multicol,multirow} 
+% The multicol package allows creating multi-column text layouts, and multirow enables the merging of rows in tables.
+
+\usepackage{graphicx} 
+% Required for including graphics (images) in your document, allowing for resizing, rotation, and positioning.
+
+\usepackage{listings} 
+% Provides tools for formatting and including source code in the document, with customizable options for syntax highlighting.
+
+\usepackage{enumitem} 
+% Enhances the customization of lists (enumerated and itemized), providing control over label format, spacing, and more.
+
+\usepackage[none]{hyphenat} 
+% Disables hyphenation in the document, preventing words from being broken at the end of lines.
+
+\usepackage{bbm} 
+% Provides blackboard bold math symbols (e.g., \mathbb{N} for natural numbers) used in mathematics.
+
+\usepackage{bm} 
+% Provides support for bolding mathematical symbols and expressions (e.g., \bm{a} for bold vector a).
+
+\usepackage{nameref} 
+% Allows for referencing sections, equations, figures, and tables by their names instead of numbers.
+
+\usepackage{datetime} 
+% Provides tools for working with dates and times in LaTeX, such as displaying the current date in different formats.
+
+\usepackage{cancel} 
+% Adds the ability to "cancel" or strike out parts of mathematical expressions (e.g., crossing out terms).
+
+\usepackage{scrextend} 
+% Provides additional functionality for document layout and formatting, such as custom margins and page styles.
+
+
+\usepackage[ruled,vlined,linesnumbered,resetcount,algochapter]{algorithm2e} 
+% This package provides a way to write algorithms in LaTeX. The options here configure the appearance of algorithms:
+% - `ruled`: Adds horizontal lines at the top and bottom of the algorithm.
+% - `vlined`: Adds vertical lines to separate the code blocks.
+% - `linesnumbered`: Numbers each line in the algorithm.
+% - `resetcount`: Resets the line numbering within each new algorithm.
+% - `algochapter`: Allows for algorithm numbering to be tied to chapter numbers.
+
+\SetKwComment{Comment}{/* }{ */} 
+% This sets the style for comments within the algorithm. The comment text will be enclosed between `/*` and `*/`, and it will be formatted accordingly.
+
+
+
+
+
+
+
+
+\usepackage[style=numeric,sortcites=true,autopunct=true,autolang=hyphen,hyperref=true,abbreviate=false,backref=false,backend=biber]{biblatex}
+% The `biblatex` package is used for creating and formatting bibliographies. The options here configure how the bibliography is displayed:
+% - `style=numeric`: Uses a numeric citation style (e.g., [1], [2], etc.).
+% - `sortcites=true`: Sorts the citations in the order they are referenced.
+% - `autopunct=true`: Automatically adds punctuation marks after citations where necessary.
+% - `autolang=hyphen`: Ensures correct hyphenation rules based on the language setting.
+% - `hyperref=true`: Enables hyperlinks in the bibliography and citation links.
+% - `abbreviate=false`: Avoids abbreviation of publisher names.
+% - `backref=false`: Disables back references, where the bibliography shows which pages a citation appears on.
+% - `backend=biber`: Specifies the backend for processing the bibliography, using `biber` as the citation manager.
+
+\addbibresource{bibliography.bib} 
+% Specifies the `.bib` file (bibliography file) containing the references to be used in the document. Here, it's named `bibliography.bib`.
+
+\DeclareSortingTemplate{title}{
+  \sort{
+    \field{title}
+  }
+  \sort{
+    \field{year}
+  }
+  \sort{
+    \field{author}
+  }
+}
+
+% This custom sorting scheme defines how references should be sorted in the bibliography. It sorts first by title, then by year, and finally by author.
+
+\ExecuteBibliographyOptions{sorting=title} 
+% Applies the sorting scheme defined earlier, sorting the bibliography entries based on the `title` field.
+
+\DeclareBibliographyDriver{book}{% 
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \printfield{title}%
+  \newunit\newblock
+  \printnames{author}%
+  \newunit\newblock
+  \printlist{publisher}%
+  \newunit\newblock
+  \printfield{year}%
+  \usebibmacro{finentry}%
+} 
+% Customizes the appearance of book entries in the bibliography. The macro defines how each entry is formatted:
+% - `\printfield{title}` prints the title of the book.
+% - `\printnames{author}` prints the author(s).
+% - `\printlist{publisher}` prints the publisher information.
+% - `\printfield{year}` prints the year of publication.
+% Each part is separated by a `newunit` (a space or punctuation), and the entry begins and ends with additional macros for formatting.
+
+
+
+
+
+
+
+
+
+
+
+\usepackage{array} 
+% Provides additional tools for defining and customizing tables. It allows for more control over column formatting, alignment, and other table features.
+
+\usepackage{pdflscape} 
+% This package allows you to rotate entire pages to landscape orientation. It is useful when you have wide tables or figures that don't fit in portrait mode.
+
+\usepackage{ragged2e} 
+% Provides more flexible options for text alignment, such as ragged-right (`\RaggedRight`) and ragged-left (`\RaggedLeft`), allowing you to control the alignment of text more precisely.
+
+\usepackage{imakeidx} 
+% Simplifies the creation of an index in your document. The `\makeindex` command is used to generate an index, with options for customization.
+
+\makeindex 
+% This command enables the creation of an index, which can then be populated with terms throughout the document using `\index{}`.
+
+\usepackage{adjustbox} 
+% Provides a versatile way to adjust and position content (like images or tables), including scaling, rotating, or framing, without affecting the content's layout.
+
+\usepackage{tikz} 
+% A powerful package for creating high-quality graphics, including diagrams, plots, and illustrations. The `\usetikzlibrary{arrows.meta, positioning}` enables the use of specific TikZ libraries for arrows and positioning of nodes.
+
+\usetikzlibrary{arrows.meta, positioning} 
+% Loads specific TikZ libraries:
+% - `arrows.meta`: Provides advanced arrow styles for creating flowcharts and diagrams.
+% - `positioning`: Helps with positioning nodes relative to each other, allowing for more flexible layout in diagrams.
+
+\usepackage{caption} 
+% Customizes captions for figures, tables, and other floating objects. The `\captionsetup` command allows you to adjust settings like label font style, label name, and separator (e.g., colon after the "Fig." label).
+
+\captionsetup[figure]{labelfont=bf, name=Fig., labelsep=colon} 
+% Customizes the caption format for figures. It sets the label font to bold (`labelfont=bf`), changes the name to "Fig." instead of "Figure" (`name=Fig.`), and sets the separator between the label and caption to a colon (`labelsep=colon`).
+
+\usepackage{changepage} 
+% Allows for dynamic changes to page margins. For example, it can be used to change the width of the text block for specific parts of the document, useful for formatting long quotes or wide tables.
+
+\usepackage{lastpage} 
+% Provides a reference to the last page in the document. It can be used in headers or footers, for example, to display "Page X of Y" by referencing the last page.
+
+
+
+
+
+\usepackage[english]{babel} % Load the babel package with the English language option
+% - `babel`: Handles language-specific conventions, hyphenation, and typography.
+% - `[english]`: Specifies that the document is in English. This enables proper English hyphenation and text formatting.
+% This will also ensure that any language-specific elements (like "Table of Contents", "Figure", etc.) are correctly set for English.
+
+\usepackage{csquotes} % Load the csquotes package for correct quotation handling
+% The `csquotes` package helps manage quotations according to language conventions, especially when using multiple languages.
+% It is recommended when using `biblatex` with `babel` or `polyglossia` to ensure proper formatting of quotes.
+
+
+
+
+
