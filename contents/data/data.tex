@@ -146,93 +146,10 @@
 
 Some \textbf{descriptive statistics}\label{Data/Describing Data/descriptive statistics} (or just \textbf{descriptives}\label{Data/Describing Data/descriptives}) that we introduce are often used for data of a certain measurement level. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-\subsection{(Absolute) Frequency/ (Absolute) Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/(Absolute) Frequency or (Absolute) Frequency table}
-
-\textbf{Measurement levels}: Nominal and ordinal data
-
-\vspace{0.3cm}
-
-\begin{enumerate}
-    \item It refers to the count of occurrences of a particular value or category in a dataset. \cite{common/online/chatgpt}
-
-    \item Simple count, no further processing. \cite{common/online/chatgpt}
-
-    \item \textbf{Use Case}: Helpful in creating bar charts or histograms. \cite{common/online/chatgpt}
-\end{enumerate}
+\input{contents/data/descriptives/frequency_table}
+\input{contents/data/descriptives/central_tendencies}
 
 
 
-\subsection{Cumulative Frequency/ Cumulative Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Cumulative Frequency or Cumulative Frequency table}
-
-\textbf{Measurement levels}: Nominal and ordinal data
-
-\vspace{0.3cm}
-\begin{enumerate}
-    \item It is the running total of frequencies up to a certain value or class. \cite{common/online/chatgpt}
-
-    \item Each cumulative frequency includes its own frequency plus all previous frequencies. \cite{common/online/chatgpt}
-
-    \item \textbf{Use Case}: Useful in percentile calculations and ogive graphs. \cite{common/online/chatgpt}
-
-    \item The cumulative frequency makes more sense for ordinal data than for nominal data, since ordinal data can be ordered in size, which is not possible for nominal data. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-\begin{table}[H]
-    \begin{minipage}[H]{0.3\linewidth}
-    $
-        \begin{aligned}
-            CF_i 
-                &= CF_{i-1} + F_{i} \\
-                &= \sum_{k=1}^{i} F_{k}
-        \end{aligned}
-    $
-    \end{minipage}
-    \begin{minipage}[H]{0.65\linewidth}
-        \begin{table}[H]
-            \begin{tabular}{l l}
-                $CF_i$ & Cumulative Frequency at the current value \\ 
-                $CF_{i-1}$ & Cumulative Frequency at the previous value \\ 
-                $F_i$ & Frequency at the current value \\ 
-            \end{tabular}
-            \caption*{Notations}
-        \end{table}
-    \end{minipage}
-\end{table}
-
-
-\subsection{Relative Frequency/ Relative Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Relative Frequency or Relative Frequency table}
-
-\textbf{Measurement levels}: Nominal and ordinal data
-
-\vspace{0.3cm}
-\begin{enumerate}
-    \item It shows the proportion of each category relative to the total number of observations. \cite{common/online/chatgpt}
-
-    \item Expressed as a fraction, decimal, or percentage. \cite{common/online/chatgpt}
-
-    \item \textbf{Use Case}: Ideal for creating pie charts and understanding distribution proportions. \cite{common/online/chatgpt}
-\end{enumerate}
-
-
-\begin{table}[H]
-    \begin{minipage}{0.3\linewidth}
-        \[
-            \begin{aligned}
-                RF_i 
-                    &= \dfrac{F_{i}}{\dsum_{k=1}^{N} F_{k}}
-            \end{aligned}
-        \]
-    \end{minipage}
-    \begin{minipage}{0.65\linewidth}
-        \begin{table}[H]
-            \begin{tabular}{l l}
-                $RF_i$ & Relative Frequency \\
-                $F_i$ & Frequency of the value \\ 
-                $N$ & Total number of observations \\ 
-            \end{tabular}
-            \caption*{Notations}
-        \end{table}
-    \end{minipage}
-\end{table}
 
 

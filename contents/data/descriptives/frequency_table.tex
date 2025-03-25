@@ -1,0 +1,140 @@
+\subsection{Frequency/ Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Frequency or Frequency table}
+
+\textbf{Measurement levels}: Nominal and ordinal data
+
+\vspace{0.3cm}
+
+\begin{enumerate}
+    \item Frequencies are often uninformative for interval or ratio variables. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\\
+        if there are lots and lots of different possible values, all of them will have a count of just one. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\\
+        This is often tackled by discretizing (or "\textbf{binning}”\label{Data/Describing Data/Frequency or Frequency table/binning}) the variable (which, note, effectively "throws away” some of the information in the data). \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+\end{enumerate}
+
+
+\subsubsection{(Absolute) Frequency/ (Absolute) Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Frequency or Frequency table/Absolute}
+
+\begin{enumerate}
+    \item It refers to the count of occurrences of a particular value or category in a dataset. \cite{common/online/chatgpt}
+
+    \item Simple count, no further processing. \cite{common/online/chatgpt}
+
+    \item \textbf{Use Case}: Helpful in creating bar charts or histograms. \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+
+\subsubsection{Cumulative Frequency/ Cumulative Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Frequency or Frequency table/Cumulative}
+
+\begin{enumerate}
+    \item It is the running total of frequencies up to a certain value or class. \cite{common/online/chatgpt}
+
+    \item Each cumulative frequency includes its own frequency plus all previous frequencies. \cite{common/online/chatgpt}
+
+    \item \textbf{Use Case}: Useful in percentile calculations and ogive graphs. \cite{common/online/chatgpt}
+
+    \item The cumulative frequency makes more sense for ordinal data than for nominal data, since ordinal data can be ordered in size, which is not possible for nominal data. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\begin{table}[H]
+    \begin{minipage}[H]{0.3\linewidth}
+    $
+        \begin{aligned}
+            CF_i 
+                &= CF_{i-1} + F_{i} \\
+                &= \sum_{k=1}^{i} F_{k}
+        \end{aligned}
+    $
+    \end{minipage}
+    \begin{minipage}[H]{0.65\linewidth}
+        \begin{table}[H]
+            \begin{tabular}{l l}
+                $CF_i$ & Cumulative Frequency at the current value \\ 
+                $CF_{i-1}$ & Cumulative Frequency at the previous value \\ 
+                $F_i$ & Frequency at the current value \\ 
+            \end{tabular}
+            \caption*{Notations}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+
+\subsubsection{Relative Frequency/ Relative Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Frequency or Frequency table/Relative}
+
+\begin{enumerate}
+    \item It shows the proportion of each category relative to the total number of observations. \cite{common/online/chatgpt}
+
+    \item Expressed as a fraction, decimal, or percentage. \cite{common/online/chatgpt}
+
+    \item \textbf{Use Case}: Ideal for creating pie charts and understanding distribution proportions. \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+\begin{table}[H]
+    \begin{minipage}{0.3\linewidth}
+        \[
+            \begin{aligned}
+                RF_i 
+                    &= \dfrac{F_{i}}{\dsum_{k=1}^{N} F_{k}}
+            \end{aligned}
+        \]
+    \end{minipage}
+    \begin{minipage}{0.65\linewidth}
+        \begin{table}[H]
+            \begin{tabular}{l l}
+                $RF_i$ & Relative Frequency \\
+                $F_i$ & Frequency of the value \\ 
+                $N$ & Total number of observations \\ 
+            \end{tabular}
+            \caption*{Notations}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+
+
+
+\subsubsection{Cumulative Relative Frequency/ Cumulative Relative Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Frequency or Frequency table/Cumulative Relative}
+
+\begin{enumerate}
+    \item Cumulative relative frequency is the accumulation of the relative frequencies of data points up to a certain value. \cite{common/online/chatgpt}
+
+    \item It indicates the proportion of data points that are less than or equal to a particular value. \cite{common/online/chatgpt}
+
+    \item \textbf{Use Cases}:
+    \begin{enumerate}
+        \item Identifying percentiles and median.
+
+        \item Visualizing with a cumulative relative frequency graph (Ogive).
+
+        \item Understanding data distribution by determining the proportion of values below a specific threshold.
+    \end{enumerate}
+\end{enumerate}
+
+
+
+\begin{table}[H]
+    \begin{minipage}{0.3\linewidth}
+        \[
+            \begin{aligned}
+                CRF_i 
+                    &= \dfrac{\dsum_{k=1}^{i} F_{k}}{\dsum_{k=1}^{N} F_{k}}
+            \end{aligned}
+        \]
+    \end{minipage}
+    \begin{minipage}{0.65\linewidth}
+        \begin{table}[H]
+            \begin{tabular}{l l}
+                $CRF_i$ & Cumulative Relative Frequency \\
+                $F_i$ & Frequency of the value \\ 
+                $N$ & Total number of observations \\ 
+            \end{tabular}
+            \caption*{Notations}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+
+
+

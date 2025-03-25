@@ -1,0 +1,150 @@
+\subsection{Central Tendency \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Central Tendency}
+
+\begin{enumerate}
+     \item When we work with numerical data, we often want to know something about the "central value" or "middle value" of the variable, also referred to as the \textbf{location}\label{Data/Describing Data/Central Tendency/location} of the data. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\subsubsection{(Arithmetic) mean/ average \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/(Arithmetic) mean or average}
+
+\begin{table}[H]
+    \begin{minipage}{0.3\linewidth}
+        $
+            \bar{x} = \dfrac{1}{n} \dsum_{i=1}^{n} x_i
+        $
+    \end{minipage}
+    \begin{minipage}{0.65\linewidth}
+        \begin{table}[H]
+            \begin{tabular}{l l}
+                $\bar{x}$ & mean \\
+                $x_i$ & item \\
+                $n$ & number of items \\
+            \end{tabular}
+            \caption*{Notations}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+
+
+\subsubsection{Mode \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Mode}
+
+\begin{enumerate}
+    \item The mode is merely the most frequently occurring value. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item There might be multiple modes. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+\end{enumerate}
+
+
+
+\subsubsection{Median \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Median}
+
+\begin{enumerate}
+    \item The median is a value that divides the ordered data from small to large (or large to small) into two equal parts: 50\% of the data is below the median and 50\% is above. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The median is not necessarily a value that is present in the data. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\vspace{0.3cm}
+\textbf{Steps}:
+\begin{enumerate}
+    \item sort the data
+
+    \item choose the middle-most value when $n$ is \textbf{odd}\\
+        average of the two middle values when $n$ is \textbf{even}
+\end{enumerate}
+
+
+
+\subsubsection{Quantiles \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Quantiles}
+
+\begin{enumerate}
+    \item A quantile $x_q$ is a value that splits the ordered data of a variable $x$ into two parts: \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item $q \cdot 100\%$ of the data is below the value $x_q$
+
+        \item $(1 - q) \cdot 100\%$ of the data is above the value $x_q$
+    \end{enumerate}
+    
+    \item The parameter $q$ can take any value in the interval $[0, 1]$. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Quantiles can be calculated in different ways, depending on the way we "interpolate" between two values. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+    We could map the ordered values \textit{equally spaced} on the interval $(0, 1)$, where the \textit{i}th ordered value of the data is positioned at the level $q_i = {i}/{(n + 1)}$ in the interval $(0, 1)$, with $n$ being the number of data points. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+    R uses $q_i = (i - 1)/(n - 1)$ for quantiles. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+    \textbf{Example}: \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item Data points: $\dCurlyBrac{2, 5, 6, 4}$ ($n=4$)
+        \item Sorted Data points: $\dCurlyBrac{2, 4, 5, 6}$ ($n=4$)
+        \item Quantiles:\\[0.2cm]
+        \begin{tabular}{|l|c|c|c|}
+            \hline
+            $i$ & $x_i$ & $q_i = i/(n+1) = i/5$ & $q_i = (i-1)/(n-1) = (i-1)/3$ \\ [0.1cm]
+            \hline
+            $1$ & $2$ & $1/5 = 0.2$ & $0$ \\
+            $2$ & $4$ & $2/5 = 0.4$ & $1/3$ \\
+            $3$ & $5$ & $3/5 = 0.6$ & $2/3$ \\
+            $4$ & $6$ & $4/5 = 0.8$ & $1$ \\
+            \hline
+        \end{tabular}\\
+
+        \item If $x_i = 3 \Rightarrow q_i = 0.3$
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\subsubsection{Quartiles \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Quartiles}
+
+\begin{enumerate}
+    \item When $q = 0.25$, $q = 0.50$, and $q = 0.75$ the quantiles are referred to as the first, second, and third quartiles, respectively. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \label{Data/Describing Data/Central Tendency/Quartiles/first quartile}
+    \label{Data/Describing Data/Central Tendency/Quartiles/second quartile}
+    \label{Data/Describing Data/Central Tendency/Quartiles/third quartile}
+
+    \item Splits: \\
+    \begin{tabular}{r l l l} % Right-align first column, left-align second column
+        1. & $q = 0$ & to & $q = 0.25$ \\
+        2. & $q = 0.25$ & to & $q = 0.5$ \\
+        3. & $q = 0.5$ & to & $q = 0.75$ \\
+        4. & $q = 0.75$ & to & $q = 1$ \\
+    \end{tabular}
+\end{enumerate}
+
+
+
+\subsubsection{Deciles \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Deciles}
+
+\begin{enumerate}
+    \item We call quantiles deciles when $q$ is restricted to the set $\dCurlyBrac{0.1, 0.2,\cdots, 0.9}$
+
+    \item Splits: \\
+    \begin{tabular}{r l l l} % Right-align first column, left-align second column
+        1. & $q = 0$ & to & $q = 0.1$ \\
+        2. & $q = 0.1$ & to & $q = 0.2$ \\
+        && \vdots & \\
+        9. & $q = 0.8$ & to & $q = 0.9$ \\
+        10. & $q = 0.9$ & to & $q = 1$ \\
+    \end{tabular}
+\end{enumerate}
+
+
+
+\subsubsection{Percentiles \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Percentiles}
+
+\begin{enumerate}
+    \item We call quantiles percentiles when $q$ is restricted to the set $\dCurlyBrac{0.01, 0.02,\cdots, 0.99}$
+
+    \item Splits: \\
+    \begin{tabular}{r l l l} % Right-align first column, left-align second column
+        1. & $q = 0$ & to & $q = 0.01$ \\
+        2. & $q = 0.01$ & to & $q = 0.02$ \\
+        & & \vdots & \\
+        99. & $q = 0.98$ & to & $q = 0.99$ \\
+        100. & $q = 0.99$ & to & $q = 1$ \\
+    \end{tabular}
+\end{enumerate}
+
+

@@ -566,7 +566,7 @@
 % ----------------------------
 \titlecontents{subsubsection}[0.75cm] % Indent subsubsection titles by 2 cm
 {\addvspace{3pt}} % Add minimal vertical space
-{\contentslabel[\thecontentslabel]{1cm}\color{black}} % Display subsubsection numbers with alignment
+{\contentslabel[\thecontentslabel]{1.5cm}\color{black}} % Display subsubsection numbers with alignment
 {} % No additional text before the subsubsection title
 {\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
 [] % No additional customization
@@ -576,7 +576,7 @@
 % --------------------
 \titlecontents{paragraph}[0.75cm] % Indent paragraph titles by 2.25 cm
 {\addvspace{1pt}} % Add minimal vertical space
-{\contentslabel[\thecontentslabel]{1cm}\color{black}} % Display paragraph numbers with alignment
+{\contentslabel[\thecontentslabel]{2cm}\color{black}} % Display paragraph numbers with alignment
 {} % No additional text before the paragraph title
 {\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
 [] % No additional customization
@@ -594,6 +594,7 @@
 % Ensure URLs in hyperlinks are broken correctly at hyphens if needed
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref} 
 % Load the hyperref package with additional URL support
+
 
 % Load the breakurl package for handling URL breaking in PDFs
 \usepackage{breakurl} 
