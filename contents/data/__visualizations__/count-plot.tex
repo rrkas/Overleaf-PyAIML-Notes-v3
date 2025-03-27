@@ -1,0 +1,42 @@
+\section{Count Plot \cite{data/online/seaborn.countplot}} \label{Visualizing Data/Count Plot}
+
+
+\begin{table}[H]
+\begin{minipage}[t]{0.35\linewidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth, height=10cm, keepaspectratio]{images/data/__visualizations__/sns-countplot-face-data.png}
+    \caption{Count plot (py-sns) output (face\_data.csv)}
+\end{figure}
+\end{minipage}
+\hspace{0.2cm}
+\vrule width 1pt
+\hspace{0.5cm}
+\begin{minipage}[t]{0.57\linewidth}
+\begin{lstlisting}[
+    language=Python,
+    caption=Pairwise Plot: py-sns: face\_data.csv
+]
+vals = df.copy()
+vals = vals[vals["age"] != " "]
+
+sns.countplot(
+    x='age', 
+    data=vals, 
+    order=sorted(vals['age'].unique()), 
+    edgecolor='black',
+)
+
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+\end{lstlisting}
+\end{minipage}
+\end{table}
+
+\vspace{0.3cm}
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+

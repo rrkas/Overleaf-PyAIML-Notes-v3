@@ -1,0 +1,562 @@
+\subsection{Central Tendency \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Central Tendency}
+
+\begin{enumerate}
+     \item When we work with numerical data, we often want to know something about the "central value" or "middle value" of the variable, also referred to as the \textbf{location}\label{Data/Describing Data/Central Tendency/location} of the data. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\begin{lstlisting}[
+    language=Python
+]
+import random
+import numpy as np
+import pandas as pd
+
+# random seeding
+random.seed(0)
+np.random.seed(0)
+
+# generate sample data
+# `data` is transformed to only 1 decimal number to avoid all unique values
+low = -100
+high = 100
+data = low + (high - low) * np.random.random(size=1000)
+data = np.round(data, 1)
+\end{lstlisting}
+
+\subsubsection{(Arithmetic) mean/ average (TODO / $\mu$ ) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/(Arithmetic) mean or average}
+
+\begin{table}[H]
+    \begin{minipage}{0.3\linewidth}
+        $
+            \bar{x} = \dfrac{1}{n} \dsum_{i=1}^{n} x_i
+        $
+    \end{minipage}
+    \begin{minipage}{0.65\linewidth}
+        \begin{table}[H]
+            \begin{tabular}{l l}
+                $\bar{x}$ & mean \\
+                $x_i$ & item \\
+                $n$ & number of items \\
+            \end{tabular}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Arithmetic mean - using numPy
+]
+print(data.sum() / len(data))
+# OR, shortcut
+print(data.mean())
+\end{lstlisting}
+
+
+
+\subsubsection{Mode \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Mode}
+
+\begin{enumerate}
+    \item The mode is merely the most frequently occurring value. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item There might be multiple modes. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+\end{enumerate}
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Mode - using numPy
+]
+values, counts = np.unique(data, return_counts=True)
+mode_idx = np.argmax(counts)
+print(values[mode_idx], counts[mode_idx])
+\end{lstlisting}
+
+
+
+\subsubsection{Median \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Median}
+
+\begin{enumerate}
+    \item The median is a value that divides the ordered data from small to large (or large to small) into two equal parts: 50\% of the data is below the median and 50\% is above.  \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The median is not necessarily a value that is present in the data. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\vspace{0.3cm}
+\textbf{Steps}: \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\begin{enumerate}
+    \item sort the data
+
+    \item choose the middle-most value when $n$ is \textbf{odd}\\
+        average of the two middle values when $n$ is \textbf{even}
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Median - using numPy
+]
+print(np.median(data))
+\end{lstlisting}
+
+
+
+\subsubsection{Quantiles ( $q_i$ ) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Quantiles}
+
+\begin{enumerate}
+    \item A quantile $x_q$ is a value that splits the ordered data of a variable $x$ into two parts: \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item $q \cdot 100\%$ of the data is below the value $x_q$
+
+        \item $(1 - q) \cdot 100\%$ of the data is above the value $x_q$
+    \end{enumerate}
+    
+    \item The parameter $q$ can take any value in the interval $[0, 1]$. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Quantiles can be calculated in different ways, depending on the way we "interpolate" between two values. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+    We could map the ordered values \textit{equally spaced} on the interval $(0, 1)$, where the \textit{i}th ordered value of the data is positioned at the level $q_i = {i}/{(n + 1)}$ in the interval $(0, 1)$, with $n$ being the number of data points. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+    R uses $q_i = (i - 1)/(n - 1)$ for quantiles. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+    \textbf{Example}: \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item Data points: $\dCurlyBrac{2, 5, 6, 4}$ ( $n=4$ )
+        \item Sorted Data points: $\dCurlyBrac{2, 4, 5, 6}$ ( $n=4$ )
+        \item Quantiles:\\[0.2cm]
+        \begin{tabular}{|l|c|c|c|}
+            \hline
+            $i$ & $x_i$ & $q_i = i/(n+1) = i/5$ & $q_i = (i-1)/(n-1) = (i-1)/3$ \\ [0.1cm]
+            \hline
+            $1$ & $2$ & $1/5 = 0.2$ & $0$ \\
+            $2$ & $4$ & $2/5 = 0.4$ & $1/3$ \\
+            $3$ & $5$ & $3/5 = 0.6$ & $2/3$ \\
+            $4$ & $6$ & $4/5 = 0.8$ & $1$ \\
+            \hline
+        \end{tabular}\\
+
+        \item If $x_i = 3 \Rightarrow q_i = 0.3$
+    \end{enumerate}
+\end{enumerate}
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Quantile - using numPy
+]
+q = np.round(random.random(), 2)
+print(q, np.quantile(data, q))
+\end{lstlisting}
+
+
+
+\subsubsection{Quartiles ( $q_i$ ) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Quartiles}
+
+\begin{enumerate}
+    \item When $q = 0.25$, $q = 0.50$, and $q = 0.75$ the quantiles are referred to as the first, second, and third quartiles, respectively. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \label{Data/Describing Data/Central Tendency/Quartiles/first quartile}
+    \label{Data/Describing Data/Central Tendency/Quartiles/second quartile}
+    \label{Data/Describing Data/Central Tendency/Quartiles/third quartile}
+
+    \item Splits: \\
+    \begin{tabular}{r l l l} % Right-align first column, left-align second column
+        1. & $q = 0$ & to & $q = 0.25$ \\
+        2. & $q = 0.25$ & to & $q = 0.5$ \\
+        3. & $q = 0.5$ & to & $q = 0.75$ \\
+        4. & $q = 0.75$ & to & $q = 1$ \\
+    \end{tabular}
+\end{enumerate}
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Quartile - using numPy
+]
+_splits = 5
+np.percentile(data, np.linspace(0, 1, _splits))
+\end{lstlisting}
+
+
+\subsubsection{Deciles ( $q_i$ ) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Deciles}
+
+\begin{enumerate}
+    \item We call quantiles deciles when $q$ is restricted to the set $\dCurlyBrac{0.1, 0.2,\cdots, 0.9}$ \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Splits: \\
+    \begin{tabular}{r l l l} % Right-align first column, left-align second column
+        1. & $q = 0$ & to & $q = 0.1$ \\
+        2. & $q = 0.1$ & to & $q = 0.2$ \\
+        && \vdots & \\
+        9. & $q = 0.8$ & to & $q = 0.9$ \\
+        10. & $q = 0.9$ & to & $q = 1$ \\
+    \end{tabular}
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Decile - using numPy
+]
+_splits = 11
+print(np.percentile(data, np.linspace(0, 1, _splits)))
+\end{lstlisting}
+
+
+\subsubsection{Percentiles ( $q_i$ ) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Percentiles}
+
+\begin{enumerate}
+    \item We call quantiles percentiles when $q$ is restricted to the set $\dCurlyBrac{0.01, 0.02,\cdots, 0.99}$ \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Splits: \\
+    \begin{tabular}{r l l l} % Right-align first column, left-align second column
+        1. & $q = 0$ & to & $q = 0.01$ \\
+        2. & $q = 0.01$ & to & $q = 0.02$ \\
+        & & \vdots & \\
+        99. & $q = 0.98$ & to & $q = 0.99$ \\
+        100. & $q = 0.99$ & to & $q = 1$ \\
+    \end{tabular}
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Percentile - using numPy
+]
+_splits = 101
+print(np.percentile(data, np.linspace(0, 1, _splits)))
+\end{lstlisting}
+
+
+\subsubsection{Range \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Range}
+
+\begin{enumerate}
+    \item Range is the difference between the maximum and minimum. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item It quantifies the maximum distance between any two data points. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The range is sensitive to outliers. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Range - using numPy
+]
+print(np.max(data) - np.min(data))
+\end{lstlisting}
+
+
+\subsubsection{Interquartile Range (IQR) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Interquartile Range (IQR)}
+
+\begin{enumerate}
+    \item The interquartile range (IQR) calculates the difference between the third quartile and the first quartile. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item It quantifies a range for which 50\% of the data falls within. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The interquartile range is visualized in the boxplot. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=IQR - using numPy
+]
+print(np.percentile(data, 0.75), np.percentile(data, 0.25))
+print(np.percentile(data, 0.75) - np.percentile(data, 0.25))
+\end{lstlisting}
+
+
+\subsubsection{Mean Absolute Deviation (MAD) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Mean Absolute Deviation (MAD)}
+
+$
+    MAD
+    = \dfrac{1}{n} \dsum_{i=1}^{n} \dabs{x_i - \bar{x}}
+$ \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\vspace{0.2cm}
+
+SEE: \fullref{Basic Functions/Absolute Value function or Modulus Function}
+
+\vspace{0.2cm}
+
+\begin{enumerate}
+    \item average distance that data values are away from the mean. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Mean Absolute Deviation (MAD) - using numPy
+]
+x_bar = data.mean()
+print(np.abs(data - x_bar).mean())
+\end{lstlisting}
+
+
+
+\subsubsection{Mean Squared Deviation (MSD) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Mean Squared Deviation (MSD)}
+
+$
+    MSD
+    = \dfrac{1}{n} \dsum_{i=1}^{n} (x_i - \bar{x})^2
+$ \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\begin{enumerate}
+    \item It does the same as MAD, but now it uses squared distances with respect to the mean.  \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\\
+    SEE: \fullref{Data/Describing Data/Central Tendency/Mean Absolute Deviation (MAD)}
+    
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Mean Squared Deviation (MSD)- using numPy
+]
+x_bar = data.mean()
+print(np.pow(data - x_bar, 2).mean())
+\end{lstlisting}
+
+
+\subsubsection{Variance ( $s^2$ / $\sigma^2$ ) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Variance}
+
+\textbf{Formulas}:
+\begin{enumerate}
+    \item Sample:
+    \label{Data/Describing Data/Central Tendency/Variance/sample} \\
+        $
+            \begin{aligned}
+                s^2 
+                &= \dfrac{1}{n-1} \dsum_{i=1}^{n} (x_i - \bar{x})^2
+                &= MSD \cdot \dfrac{n}{n-1}
+            \end{aligned}
+        $
+
+    \item Population:
+\end{enumerate}
+
+\vspace{0.2cm}
+\textbf{Note}:
+\begin{enumerate}
+    \item The variance is almost identical to the mean squared deviation. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item For small sample sizes the MSD and variance are not the same, but for large sample sizes they are obviously very similar. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item The variance is often preferred over the MSD. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Variance - using numPy
+]
+x_bar = data.mean()
+
+# sample
+print(np.pow(data - x_bar, 2).sum() / (len(data) - 1))
+
+# population
+print(np.pow(data - x_bar, 2).mean())
+\end{lstlisting}
+
+
+\subsubsection{Standard Deviation ( $s$ / $\sigma$ ) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Standard Deviation}
+
+\textbf{Formulas}:
+\begin{enumerate}
+    \item Sample:
+    \label{Data/Describing Data/Central Tendency/Standard Deviation/Sample} \\
+        $
+            \begin{aligned}
+                s
+                &=\sqrt{s^2} 
+                &= \sqrt{\dfrac{1}{n-1} \dsum_{i=1}^{n} (x_i - \bar{x})^2}
+                &= \sqrt{MSD \cdot \dfrac{n}{n-1}}
+            \end{aligned}
+        $
+
+    \item Population:
+\end{enumerate}
+
+
+\vspace{0.2cm}
+\textbf{Note}:
+\begin{enumerate}
+    \item The standard deviation is on the same scale as the original variable, instead of a squared scale for the variance. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Standard Deviation - using numPy
+]
+x_bar = data.mean()
+
+# sample
+s2 = np.pow(data - x_bar, 2).sum() / (len(data) - 1)
+print(np.sqrt(s2))
+
+# population
+sig2 = np.pow(data - x_bar, 2).mean() 
+print(np.sqrt(sig2))
+\end{lstlisting}
+
+
+\subsubsection{Skewness ( $g_1$ ) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Skewness}
+
+\begin{enumerate}
+    \item Computed using so-called standardized values $z_i$. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+    Standardized values have no unit and the mean and variance of the standardized values are equal to 0 and 1, respectively. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Skewness is used to measure the asymmetry in data. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Data is considered skewed or asymmetric when the variation on one side of the middle of the data is larger than the variation on the other side. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item In practice, researchers sometimes compare the mean with the median to get an impression of the skewness, since the median and mean are identical under symmetric data, but this measure is more difficult to interpret than $g_1$. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item Data with skewness values of $\dabs{g_1} \leq 0.3$ are considered close to symmetry, \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $g_1$ remains \textbf{unchanged} when all values $\dCurlyBrac{x_1, x_2, \cdots, x_n}$ are shifted by a fixed number or when they are multiplied with a fixed number. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+    This means that shifting the data and/or multiplying the data with a fixed number does not change the “shape” of the data. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\vspace{0.3cm}
+\textbf{Formulas}:
+\begin{enumerate}
+    \item Sample:
+    \label{Data/Describing Data/Central Tendency/Skewness/Sample}
+    \label{Data/Describing Data/Central Tendency/Skewness/z-value}
+    \hspace{1cm}  
+    $z_i = \dfrac{x_i - \bar{x}}{s}$ 
+    \hspace{1cm}  
+    $g_1 = \dfrac{1}{n} \dsum_{i=1}^{n} z_i^3$
+
+    \item Population:
+\end{enumerate}
+
+
+\begin{longtable}{|l|p{14cm}|}
+    \hline
+    \textbf{Condition} & \textbf{Conclusions}\\ \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Condition} & \textbf{Conclusions}\\ \hline
+    \endhead
+    
+    \hline
+    $g_1 > 0$ & \tableenumerate{
+        \item data is called skewed to the right
+        \item The values on the right side of the mean are further away from each other than the values on the left side of the mean. 
+        \item  In other words, the “tail” on the right is longer than the “tail” on the left.
+    } \\[0.2cm] \hline
+
+    $g_1 < 0$ & data is called skewed to the left and the tail on the left is longer than the tail on the right.\\ \hline
+
+    $g_1 = 0$ & the data is considered symmetric around its mean.  \\ \hline
+\end{longtable}
+
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Skewness - using numPy
+]
+x_bar = data.mean()
+
+# sample
+s2 = np.pow(data - x_bar, 2).sum() / (len(data) - 1)
+s = np.sqrt(s2)
+z = (data - data.mean()) / s
+g1 = np.pow(z, 3).mean()
+print(g1)
+
+# population
+sig2 = np.pow(data - x_bar, 2).mean() 
+sig = np.sqrt(sig2)
+z = (data - data.mean()) / sig
+g1 = np.pow(z, 3).mean()
+print(g1)
+\end{lstlisting}
+
+
+\subsubsection{Kurtosis ( $g_2$ ) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Kurtosis}
+
+\begin{enumerate}
+    \item Computed using so-called standardized values $z_i$. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\\
+    Standardized values have no unit and the mean and variance of the standardized values are equal to $0$ and $1$, respectively. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Kurtosis is used to measure the “peakedness” of data. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item It is difficult to demonstrate that data is different from mesokurtic data when $g_2$ is close to zero, since it requires large sample sizes. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Values of $g_2$ in the asymmetric interval of $[-0.5, 1.5]$ indicate near-mesokurtic data. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $g_2$ remains \textbf{unchanged} when all values $\dCurlyBrac{x_1, x_2, \cdots, x_n}$ are shifted by a fixed number or when they are multiplied with a fixed number. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+    This means that shifting the data and/or multiplying the data with a fixed number does not change the “shape” of the data. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\vspace{0.3cm}
+\textbf{Formulas}:
+\begin{enumerate}
+    \item Sample:
+    \label{Data/Describing Data/Central Tendency/Kurtosis/Sample}
+    \label{Data/Describing Data/Central Tendency/Kurtosis/z-value}
+    \hspace{1cm}  
+    $z_i = \dfrac{x_i - \bar{x}}{s}$ 
+    \hspace{1cm}
+    $g_2 = \dfrac{1}{n} \dsum_{i=1}^{n} z_i^4 - 3$
+    
+
+    \item Population:
+\end{enumerate}
+
+
+\begin{longtable}{|l|l|p{10cm}|}
+    \hline
+    \textbf{Condition} & \textbf{Condition Name} & \textbf{Conclusions}\\ \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Condition} & \textbf{Condition Name} & \textbf{Conclusions}\\ \hline
+    \endhead
+    
+    \hline
+
+    $g_2 > 0$ & leptokurtic \label{Data/Describing Data/Central Tendency/Kurtosis/leptokurtic} & data has long heavy tails and is severely peaked in the middle \\ \hline
+
+    $g_2 < 0$ & platykurtic \label{Data/Describing Data/Central Tendency/Kurtosis/platykurtic} & tails of the data are shorter with a flat peak in the middle \\ \hline
+
+    $g_2 = 0$ & mesokurtic \label{Data/Describing Data/Central Tendency/Kurtosis/mesokurtic} &  \\ \hline
+\end{longtable}
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Kurtosis - using numPy
+]
+x_bar = data.mean()
+
+# sample
+s2 = np.pow(data - x_bar, 2).sum() / (len(data) - 1)
+s = np.sqrt(s2)
+z = (data - data.mean()) / s
+g2 = np.pow(z, 4).mean() - 3
+print(g2)
+
+# population
+sig2 = np.pow(data - x_bar, 2).mean() 
+sig = np.sqrt(sig2)
+z = (data - data.mean()) / sig
+g2 = np.pow(z, 4).mean() - 3
+print(g2)
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

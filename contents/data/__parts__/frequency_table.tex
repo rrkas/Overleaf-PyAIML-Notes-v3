@@ -1,0 +1,212 @@
+\subsection{Frequency/ Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Frequency or Frequency table}
+
+\textbf{Measurement levels}: Nominal and ordinal data \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\vspace{0.3cm}
+
+\begin{enumerate}
+    \item Frequencies are often uninformative for interval or ratio variables. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\\
+    if there are lots and lots of different possible values, all of them will have a count of just one. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\\
+    This is often tackled by discretizing (or "\textbf{binning}”\label{Data/Describing Data/Frequency or Frequency table/binning}) the variable (which, note, effectively "throws away” some of the information in the data). \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python
+]
+import random
+import numpy as np
+import pandas as pd
+from collections import Counter
+
+# random seeding
+random.seed(0)
+np.random.seed(0)
+
+# using int instead of float to have 10 unique values only
+data = np.random.randint(0, 10, size=100) # generate sample data
+\end{lstlisting}
+
+
+\subsubsection{(Absolute) Frequency/ (Absolute) Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Frequency or Frequency table/Absolute}
+
+\begin{enumerate}
+    \item It refers to the count of occurrences of a particular value or category in a dataset. \hfill \cite{common/online/chatgpt}
+
+    \item Simple count, no further processing. \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{Use Case}: Helpful in creating bar charts or histograms. \hfill \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Absolute Frequency - from Scratch
+]
+def get_abs_freq_scratch(data):
+    counter = Counter()
+    for e in data:
+        counter[e] += 1
+    
+    return counter
+\end{lstlisting}
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Absolute Frequency - using numPy
+]
+def get_abs_freq_np(data):
+    data = np.array(data) # convert data to numpy array
+    counter = np.unique_counts(data)
+    return dict(zip(counter.values, counter.counts))
+\end{lstlisting}
+
+\subsubsection{Cumulative Frequency/ Cumulative Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Frequency or Frequency table/Cumulative}
+
+\begin{enumerate}
+    \item It is the running total of frequencies up to a certain value or class. \hfill \cite{common/online/chatgpt}
+
+    \item Each cumulative frequency includes its own frequency plus all previous frequencies. \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{Use Case}: Useful in percentile calculations and ogive graphs. \hfill \cite{common/online/chatgpt}
+
+    \item The cumulative frequency makes more sense for ordinal data than for nominal data, since ordinal data can be ordered in size, which is not possible for nominal data. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\begin{table}[H]
+    \begin{minipage}[H]{0.3\linewidth}
+    $
+        \begin{aligned}
+            CF_i 
+                &= CF_{i-1} + F_{i} \\
+                &= \sum_{k=1}^{i} F_{k}
+        \end{aligned}
+    $
+    \end{minipage}
+    \begin{minipage}[H]{0.65\linewidth}
+        \begin{table}[H]
+            \begin{tabular}{l l}
+                $CF_i$ & Cumulative Frequency at the current value \\ 
+                $CF_{i-1}$ & Cumulative Frequency at the previous value \\ 
+                $F_i$ & Frequency at the current value \\ 
+            \end{tabular}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Cumulative Frequency - using numPy
+]
+def get_cum_freq(data):
+    counts = get_abs_freq_np(data)
+    cum_counts = {}
+    _tot = 0
+    for k, v in counts.items():
+        _tot += v
+        cum_counts[k] = _tot
+    
+    return cum_counts
+\end{lstlisting}
+
+
+\subsubsection{Relative Frequency/ Relative Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Frequency or Frequency table/Relative}
+
+\begin{enumerate}
+    \item It shows the proportion of each category relative to the total number of observations. \hfill \cite{common/online/chatgpt}
+
+    \item Expressed as a fraction, decimal, or percentage. \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{Use Case}: Ideal for creating pie charts and understanding distribution proportions. \hfill \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+\begin{table}[H]
+    \begin{minipage}{0.3\linewidth}
+        \[
+            \begin{aligned}
+                RF_i 
+                    &= \dfrac{F_{i}}{\dsum_{k=1}^{N} F_{k}}
+            \end{aligned}
+        \]
+    \end{minipage}
+    \begin{minipage}{0.65\linewidth}
+        \begin{table}[H]
+            \begin{tabular}{l l}
+                $RF_i$ & Relative Frequency \\
+                $F_i$ & Frequency of the value \\ 
+                $N$ & Total number of observations \\ 
+            \end{tabular}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Relative Frequency - using numPy
+]
+def get_rel_freq(data):
+    abs_freq = get_abs_freq_np(data)
+    rel_freq = {}
+    for k, v in abs_freq.items():
+        rel_freq[k] = v / len(data)
+    
+    return rel_freq
+\end{lstlisting}
+
+
+\subsubsection{Cumulative Relative Frequency/ Cumulative Relative Frequency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Frequency or Frequency table/Cumulative Relative}
+
+\begin{enumerate}
+    \item Cumulative relative frequency is the accumulation of the relative frequencies of data points up to a certain value. \hfill \cite{common/online/chatgpt}
+
+    \item It indicates the proportion of data points that are less than or equal to a particular value. \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{Use Cases}: \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item Identifying percentiles and median. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Visualizing with a cumulative relative frequency graph (Ogive). \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Understanding data distribution by determining the proportion of values below a specific threshold. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+\begin{table}[H]
+    \begin{minipage}{0.3\linewidth}
+        \[
+            \begin{aligned}
+                CRF_i 
+                    &= \dfrac{\dsum_{k=1}^{i} F_{k}}{\dsum_{k=1}^{N} F_{k}}
+            \end{aligned}
+        \]
+    \end{minipage}
+    \begin{minipage}{0.65\linewidth}
+        \begin{table}[H]
+            \begin{tabular}{l l}
+                $CRF_i$ & Cumulative Relative Frequency \\
+                $F_i$ & Frequency of the value \\ 
+                $N$ & Total number of observations \\ 
+            \end{tabular}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Cumulative Relative Frequency - using numPy
+]
+def get_cum_rel_freq(data):
+    cum_freq = get_cum_freq(data)
+    cum_rel_freq = {}
+    for k, v in cum_freq.items():
+        cum_rel_freq[k] = v / len(data)
+    
+    return cum_rel_freq
+\end{lstlisting}
+

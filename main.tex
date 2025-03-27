@@ -1,9 +1,12 @@
 \documentclass[11pt,fleqn,twoside]{book} % Default font size and left-justified equations
+\newcommand{\bookname}{PyAIML Notes V3}
+\newcommand{\authorname}{Rohnak Agarwal}
+
 \input{structure}
 
 
-\title{AIML Notes v3}
-\author{Rohnak Agarwal}
+\title{\bookname}
+\author{\authorname}
 \date{This PDF Generated at \\ \textit{\today} at \textbf{\currenttime\ IST}}
 
 \begin{document}
@@ -41,7 +44,9 @@
 
 
 
+\input{contents/basic_math/basic_functions}
 \input{contents/data/data}
+\input{contents/data/data-visualizations}
 
 
 
@@ -64,10 +69,11 @@
 \pagenumbering{roman}
 \pagestyle{extra}
 \nocite{*}
-\begin{justify}
-    \defbibheading{bibempty}{\chapter*{References}}
-    \printbibliography[heading=bibempty]
-\end{justify}
+
+\defbibheading{bibempty}{\chapter*{References}}
+
+\twocolumn
+\printbibliography[heading=bibempty] % No extra heading inside columns
 
 
 

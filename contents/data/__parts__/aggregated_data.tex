@@ -1,0 +1,88 @@
+\subsection{Aggregated Data \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Aggregated Data}
+
+\begin{enumerate}
+    \item Data is often collected in intervals or groups with a frequency $f_j$ for each group $j$. ( $1 \leq j \leq m$ ) \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $m$: number of groups \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Measures of central tendency and spread can then still be computed (approximately) based on such grouped data. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item For each group $j$ we need to determine or set the value $x_j$ as a value that belongs to the group, before we can compute these measures. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python
+]
+import random
+import numpy as np
+
+random.seed(0)
+np.random.seed(0)
+
+# generate aggregated data
+low = -100
+high = 100
+bin_size = 5
+count = 1000
+
+data = low + (high - low) * np.random.random(size=count)
+bin_edges = np.arange(low, high + bin_size, bin_size)
+hist, edges = np.histogram(data, bins=bin_edges)
+
+data_aggr = {(edges[i], edges[i+1]):hist[i] for i in range(len(hist))}
+data_x = {k: np.mean(k) for k in data_aggr}
+\end{lstlisting}
+
+\subsubsection{Mean \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Aggregated Data/Mean}
+
+$
+    \bar{x}
+    = \dfrac{
+        \dsum_{k=1}^{m} x_kf_k
+    }{
+        \dsum_{k=1}^{m} f_k
+    }
+$
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Aggregated Data - Mean - using numPy
+]
+xs = np.array(list(data_x.values()))
+fs = np.array(list(data_aggr.values()))
+print((xs * fs).sum()/ fs.sum())
+\end{lstlisting}
+
+
+
+\subsubsection{Variance \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Describing Data/Aggregated Data/Variance}
+
+$
+    s^2
+    = \dfrac{
+        \dsum_{k=1}^{m} (x_k - \bar{x})^2 f_k
+    }{
+        -1 + \dsum_{k=1}^{m} f_k
+    }
+$
+
+\begin{lstlisting}[
+    language=Python, 
+    caption=Aggregated Data - Variance - using numPy
+]
+xs = np.array(list(data_x.values()))
+fs = np.array(list(data_aggr.values()))
+
+x_bar = xs.mean()
+
+# sample
+print((np.pow(xs - x_bar, 2) * fs).sum() / (fs.sum() - 1))
+
+# population
+print((np.pow(xs - x_bar, 2) * fs).sum() / fs.sum())
+\end{lstlisting}
+
+

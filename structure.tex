@@ -45,6 +45,9 @@
 \usepackage{longtable} 
 % Provides support for tables that span multiple pages, useful for large tables that need to be split across different pages.
 
+\usepackage{tabularx}
+
+
 \usepackage{multicol,multirow} 
 % The multicol package allows creating multi-column text layouts, and multirow enables the merging of rows in tables.
 
@@ -105,49 +108,58 @@
 \addbibresource{bibliography.bib} 
 % Specifies the `.bib` file (bibliography file) containing the references to be used in the document. Here, it's named `bibliography.bib`.
 
-\DeclareSortingTemplate{title}{
-  \sort{
-    \field{title}
-  }
-  \sort{
-    \field{year}
-  }
-  \sort{
-    \field{author}
-  }
+\DeclareSortingTemplate{sort-tmpl}{
+    \sort{
+        \field{type}
+    }
+    \sort{
+        \field{title}
+    }
+    \sort{
+        \field{year}
+    }
 }
 
 % This custom sorting scheme defines how references should be sorted in the bibliography. It sorts first by title, then by year, and finally by author.
 
-\ExecuteBibliographyOptions{sorting=title} 
+\ExecuteBibliographyOptions{sorting=sort-tmpl} 
 % Applies the sorting scheme defined earlier, sorting the bibliography entries based on the `title` field.
+
+% remove full stop at end of bib entry
+\renewcommand{\finentrypunct}{}
+
 
 \DeclareBibliographyDriver{book}{% 
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
-  \printfield{title}%
-  \newunit\newblock
-  \printnames{author}%
-  \newunit\newblock
-  \printlist{publisher}%
-  \newunit\newblock
-  \printfield{year}%
-  \newunit\newblock
+  \iffieldundef{type}{}{%
+    \textsc{\printfield{type}}:
+  }
+  \normalfont
+  \thefield{title}%
+  \\\textsc{series}: \printfield{series}%
+  \\\textsc{author(s)}: \printnames{author}%
+  \\\textsc{publisher \& year}: \printlist{publisher},%
+  \ \printfield{year}%
   \iffieldundef{url}{}{%
-    \\ \href{\thefield{url}}{\nolinkurl{\thefield{url}}}%
+    \\ \textsc{url}: \url{\thefield{url}}
   }%
   \usebibmacro{finentry}%
 } 
-% Customizes the appearance of book entries in the bibliography. The macro defines how each entry is formatted:
-% - `\printfield{title}` prints the title of the book.
-% - `\printnames{author}` prints the author(s).
-% - `\printlist{publisher}` prints the publisher information.
-% - `\printfield{year}` prints the year of publication.
-% Each part is separated by a `newunit` (a space or punctuation), and the entry begins and ends with additional macros for formatting.
 
 
-
-
+\DeclareBibliographyDriver{online}{% 
+    \usebibmacro{bibindex}%
+    \usebibmacro{begentry}%
+    \iffieldundef{type}{}{%
+        \textsc{\printfield{type}}:
+      }
+    \normalfont\thefield{title}%
+    \iffieldundef{url}{}{%
+        \\ \textsc{url}: \url{\thefield{url}}
+    }%
+    \usebibmacro{finentry}%
+    } 
 
 
 
@@ -220,7 +232,7 @@
 
 
 % Define a custom command \authorbook to display the author and book title in a styled format
-\newcommand{\authorbook}{{\color{blue}\textbf{AIML Notes v3}} \textit{by} \textbf{Rohnak Agarwal}}
+\newcommand{\authorbook}{{\color{blue}\textbf{\bookname}} \textit{by} \textbf{\authorname}}
 
 % Customize the chapter and section headers with specific fonts and styles
 \renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.\ #1}{}} % Chapter text font settings
@@ -235,9 +247,9 @@
     \setlength{\headwidth}{\textwidth} % Width of the header line
     
     % Configure left, center, and right header content
-    \fancyhead[L]{{\color{blue}\textbf{AIML Notes v3}}} % Left side: Book title in blue
+    \fancyhead[L]{{\color{blue}\textbf{\bookname}}} % Left side: Book title in blue
     \fancyhead[C]{\textbf{Chapter \thechapter}} % Center: Current chapter number
-    \fancyhead[R]{By \textbf{Rohnak Agarwal}} % Right side: Author name
+    \fancyhead[R]{By \textbf{\authorname}} % Right side: Author name
     
     % Configure center footer to show current page and total pages
     \fancyfoot[C]{Page \sffamily\normalsize\thepage\ of \protect\pageref*{MMLastPage}} % Footer with current and last page number
@@ -268,6 +280,46 @@
 } % Style for when a plain pagestyle is specified
 
 
+
+
+
+
+% Ensure URLs in hyperlinks are broken correctly at hyphens if needed
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref} 
+% Load the hyperref package with additional URL support
+
+
+% Load the breakurl package for handling URL breaking in PDFs
+\usepackage{breakurl} 
+% Useful when compiling with DVI to PDF converters (e.g., dvipdfm)
+
+
+% Configure hyperref settings using \hypersetup
+\hypersetup{
+    urlcolor=blue, % Set the color of URL links to blue
+    linkcolor=blue, % Set the color of internal document links (e.g., sections) to blue
+    citecolor=blue, % Set the color of citation links to blue
+    % Backreferences to help navigate to citations and references
+    backref=true, % Add back references from bibliography to citations
+    pagebackref=true, % Include page numbers where citations appear
+    % Additional options for improved indexing and appearance
+    hyperindex=true, % Enable hyperlinking of index entries
+    colorlinks=true, % Enable colored links instead of boxed links
+    breaklinks=true, % Allow links to break across lines (useful for long URLs)
+    bookmarks=true, % Enable PDF bookmarks for easy navigation
+    bookmarksopen=true, % Automatically expand bookmarks in the PDF viewer    
+    % Metadata for the PDF document
+    pdftitle={\bookname}, % Set the title of the PDF
+    pdfauthor={\authorname} % Set the author name in the PDF metadata
+}
+
+
+% Define a custom command to create a single clickable reference with both number and name
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{(\protect\ref*{#1}) \protect\nameref*{#1}}} 
+% Example: \fullref{sec:example} → (1.1) Section Name
+% \ref* provides the section number without a hyperlink
+% \nameref* provides the section title without a hyperlink
+% \hyperref combines them into one clickable link
 
 
 
@@ -352,7 +404,7 @@
       \leavevmode
       \fontsize{17pt}{17pt}\selectfont
       \bfseries\raggedright % Use large, bold, left-aligned text
-      \thesection.\ #2\par % Display section number followed by title
+      \thesection.\ \texorpdfstring{#2}{}\par % Display section number followed by title
       \vskip -1.5ex % Reduce space below the title
       \noindent\hrulefill % Draw a horizontal line across the page
       }}\nobreak
@@ -376,14 +428,14 @@
       \fontsize{17pt}{17pt}\selectfont
       \bfseries\raggedright % Large, bold, left-aligned title
 %      \thesection\ % (Commented out) Section number is not displayed
-      #2\par % Display the section title
+      \texorpdfstring{#2}{}\par % Display the section title
       \vskip -1.5ex % Reduce space below the title
       \noindent\hrulefill % Draw a horizontal line
       }}\nobreak
   \vskip 1ex\nobreak % Add 2ex space and prevent a page break
-  \addcontentsline{toc}{section}{%
+  % \addcontentsline{toc}{section}{%
 %    \protect\numberline{\thesection}% (Commented out) No number in the TOC
-    #1}% Add section title to the TOC without a number
+    % #1}% Add section title to the TOC without a number
 }
 
 
@@ -425,7 +477,7 @@
       \leavevmode
       \fontsize{15pt}{15pt}\selectfont
       \bfseries\raggedright % Use large, bold, left-aligned font
-      \thesubsection.\ #2\par % Display subsection number followed by the title
+      \thesubsection.\ \texorpdfstring{#2}{}\par % Display subsection number followed by the title
       \vskip -1ex % Reduce space below the title
       \noindent%\hrulefill % Draw a horizontal line below the subsection title
       }}\nobreak
@@ -447,13 +499,13 @@
       \leavevmode
       \fontsize{15pt}{15pt}\selectfont
       \bfseries\raggedright % Use large, bold, left-aligned font
-      #2\par % Display only the subsection title (no number)
+      \texorpdfstring{#2}{}\par % Display only the subsection title (no number)
       \vskip -1ex
       \noindent%\hrulefill % Draw a horizontal line below the title
       }}\nobreak
   \vskip 1.5ex\nobreak
-  \addcontentsline{toc}{subsection}{%
-    #1}% Add the subsection title to the TOC without numbering
+  % \addcontentsline{toc}{subsection}{%
+  %   #1}% Add the subsection title to the TOC without numbering
 }
 
 %%%%%%%%%%%%%%%%%              sub-sub-section            %%%%%%%%%%%%%%%%%%%%%%%
@@ -515,8 +567,8 @@
       \noindent%\hrulefill
       }}\nobreak
   \vskip 1ex\nobreak
-  \addcontentsline{toc}{subsubsection}{%
-    #1}% Add to TOC without numbering
+  % \addcontentsline{toc}{subsubsection}{%
+  %   #1}% Add to TOC without numbering
 }
 
 \makeatother % End of low-level commands, restoring normal @ behavior
@@ -537,7 +589,7 @@
 % --------------------
 \titlecontents{chapter}[0.75cm] % Indent chapter titles by 1.25 cm
 {\addvspace{10pt}\fontsize{17pt}{17pt}\selectfont\bfseries} % Add vertical space and set chapter titles to large, bold font
-{\contentslabel[\thecontentslabel]{0.75cm}\color{black}} % Display chapter numbers in large size with custom color
+{\contentslabel[\thecontentslabel]{1cm}\color{black}} % Display chapter numbers in large size with custom color
 {} % No additional text before the chapter title
 {\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{\_}\;\thecontentspage} % Display page numbers with a dotted line separator
 
@@ -546,7 +598,7 @@
 % --------------------
 \titlecontents{section}[0.75cm] % Indent section titles by 1.5 cm
 {\addvspace{3pt}\fontsize{14pt}{14pt}\selectfont} % Add vertical space before sections
-{\contentslabel[\thecontentslabel]{1cm}\color{black}} % Display section numbers with appropriate alignment
+{\contentslabel[\thecontentslabel]{1.25cm}\color{black}} % Display section numbers with appropriate alignment
 {} % No additional text before the section title
 {\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{- -}\;\thecontentspage} % Display page numbers with a dotted line separator
 [] % No additional customization
@@ -556,7 +608,7 @@
 % ------------------------
 \titlecontents{subsection}[0.75cm] % Indent subsection titles by 1.75 cm
 {\addvspace{3pt}\fontsize{12pt}{12pt}\selectfont} % Add minimal vertical space before subsections
-{\contentslabel[\thecontentslabel]{1.25cm}\color{black}} % Display subsection numbers with alignment
+{\contentslabel[\thecontentslabel]{1.5cm}\color{black}} % Display subsection numbers with alignment
 {} % No additional text before the subsection title
 {\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
 [] % No additional customization
@@ -566,7 +618,7 @@
 % ----------------------------
 \titlecontents{subsubsection}[0.75cm] % Indent subsubsection titles by 2 cm
 {\addvspace{3pt}} % Add minimal vertical space
-{\contentslabel[\thecontentslabel]{1.5cm}\color{black}} % Display subsubsection numbers with alignment
+{\contentslabel[\thecontentslabel]{1.75cm}\color{black}} % Display subsubsection numbers with alignment
 {} % No additional text before the subsubsection title
 {\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
 [] % No additional customization
@@ -590,43 +642,6 @@
 
 
 
-
-% Ensure URLs in hyperlinks are broken correctly at hyphens if needed
-\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref} 
-% Load the hyperref package with additional URL support
-
-
-% Load the breakurl package for handling URL breaking in PDFs
-\usepackage{breakurl} 
-% Useful when compiling with DVI to PDF converters (e.g., dvipdfm)
-
-
-% Configure hyperref settings using \hypersetup
-\hypersetup{
-    urlcolor=blue, % Set the color of URL links to blue
-    linkcolor=blue, % Set the color of internal document links (e.g., sections) to blue
-    citecolor=blue, % Set the color of citation links to blue
-    % Backreferences to help navigate to citations and references
-    backref=true, % Add back references from bibliography to citations
-    pagebackref=true, % Include page numbers where citations appear
-    % Additional options for improved indexing and appearance
-    hyperindex=true, % Enable hyperlinking of index entries
-    colorlinks=true, % Enable colored links instead of boxed links
-    breaklinks=true, % Allow links to break across lines (useful for long URLs)
-    bookmarks=true, % Enable PDF bookmarks for easy navigation
-    bookmarksopen=true, % Automatically expand bookmarks in the PDF viewer    
-    % Metadata for the PDF document
-    pdftitle={AIML Notes v3}, % Set the title of the PDF
-    pdfauthor={Rohnak Agarwal} % Set the author name in the PDF metadata
-}
-
-
-% Define a custom command to create a single clickable reference with both number and name
-\newcommand*{\fullref}[1]{\hyperref[{#1}]{(\protect\ref*{#1}) \protect\nameref*{#1}}} 
-% Example: \fullref{sec:example} → (1.1) Section Name
-% \ref* provides the section number without a hyperlink
-% \nameref* provides the section title without a hyperlink
-% \hyperref combines them into one clickable link
 
 
 
@@ -687,9 +702,8 @@
 \lstset{style=pystyle}
 
 % Customize the name for code listings in captions and references
-\renewcommand{\lstlistingname}{Code Snippet}
+\renewcommand{\lstlistingname}{Python Snippet}
 \renewcommand{\lstlistlistingname}{List of \lstlistingname s}
-
 
 
 
@@ -719,3 +733,30 @@
 \newcommand{\doubleuptack}{\perp\!\!\!\!\perp}
 
 
+
+
+\newenvironment{customArrayStretch}[1]{
+    \begingroup
+    \renewcommand{\arraystretch}{#1}
+}{
+    \renewcommand{\arraystretch}{1}
+    \endgroup
+}
+
+
+\newcommand{\tableitemize}[1]{%
+%\tightlist%
+\vspace{-5pt}
+\begin{itemize}[nosep,topsep=0pt,leftmargin=*]%
+#1%
+\end{itemize}%
+\vspace{-\baselineskip}\mbox{}}
+
+
+\newcommand{\tableenumerate}[1]{%
+%\tightlist%
+\vspace{-4pt}
+\begin{enumerate}[nosep,topsep=0pt,leftmargin=*]%
+#1%
+\end{enumerate}%
+\vspace{-\baselineskip}\mbox{}}

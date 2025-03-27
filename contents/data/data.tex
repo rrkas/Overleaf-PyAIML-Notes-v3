@@ -1,4 +1,4 @@
-\chapter{Data}
+\chapter{Data}\label{Data}
 
 \section{Measurement Levels \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Measurement-Levels}
 
@@ -13,8 +13,8 @@
 
 \begin{table}[H]
     \hfill
-    \begin{minipage}[H]{0.25\linewidth}
-        \textbf{Levels}: \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{minipage}[H]{0.20\linewidth}
+        \textbf{Levels}: \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
         \begin{enumerate}
             \item Nominal
             \item Ordinal
@@ -22,8 +22,7 @@
             \item Ratio
         \end{enumerate}
     \end{minipage}
-    \hfill
-    \begin{minipage}[H]{0.65\linewidth}
+    \begin{minipage}[H]{0.75\linewidth}
         \begin{table}[H]
             \centering
             \begin{tabular}{|p{5cm}|c|c|c|c|}
@@ -51,7 +50,7 @@
 
 \textbf{Note}:
 \begin{enumerate}
-    \item Each consecutive measurement level contains as much "information" - in a fairly loose sense of the word - as the previous one and more. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \item Each consecutive measurement level contains as much "information" - in a fairly loose sense of the word - as the previous one and more. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
@@ -61,25 +60,25 @@
 \label{Data/Measurement-Levels/Continuous vs Discrete numerical data/Discrete numerical data}
 
 \begin{enumerate}
-    \item Continuous variables can assume any value.\\
-    This means that the continuous variable can attain any value between two different values, no matter how close the two values are.\\
-    \textbf{Example}: temperature, weight, and age
+    \item Continuous variables can assume any value. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+    This means that the continuous variable can attain any value between two different values, no matter how close the two values are. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\\
+    \textbf{Example}: temperature, weight, and age \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Discrete variables cannot assume any value between 2 values\\
-    \textbf{Example}: number of text messages, accidents, microorganisms, students, etc.
+    \item Discrete variables cannot assume any value between 2 values. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\\
+    \textbf{Example}: number of text messages, accidents, microorganisms, students, etc. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
 \subsection{Outliers \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Measurement-Levels/Outliers}
 
 \begin{enumerate}
-    \item An outlier is a data point that significantly deviates from other observations in a dataset. \cite{common/online/chatgpt}
+    \item An outlier is a data point that significantly deviates from other observations in a dataset. \hfill \cite{common/online/chatgpt}
 
-    \item Caused by Natural variability in the data or measurement errors. \cite{common/online/chatgpt}
+    \item Caused by Natural variability in the data or measurement errors. \hfill \cite{common/online/chatgpt}
 
-    \item Typically identified using statistical methods like the IQR (Interquartile Range), Z-score, or visualization techniques (e.g., box plots). \cite{common/online/chatgpt}
+    \item Typically identified using statistical methods like the IQR (Interquartile Range), Z-score, or visualization techniques (e.g., box plots). \hfill \cite{common/online/chatgpt}
 
-    \item Outliers are not necessarily incorrect; they may represent rare but valid observations. \cite{common/online/chatgpt}
+    \item Outliers are not necessarily incorrect; they may represent rare but valid observations. \hfill \cite{common/online/chatgpt}
     
 \end{enumerate}
 
@@ -88,18 +87,18 @@
 
 \textbf{Examples}:
 \begin{enumerate}
-    \item In a dataset of human heights, a person measuring 250 cm might be an outlier but not necessarily unrealistic if it’s a rare case of gigantism. \cite{common/online/chatgpt}
+    \item In a dataset of human heights, a person measuring 250 cm might be an outlier but not necessarily unrealistic if it’s a rare case of gigantism. \hfill \cite{common/online/chatgpt}
 \end{enumerate}
 
 
 \vspace{0.3cm}
 \textbf{Handling/ Dealing with Outliers}:
 \begin{enumerate}
-    \item Ignore these abnormalities and go ahead with the data. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \item Ignore these abnormalities and go ahead with the data. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Delete/ remove the suspected records/ entries. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \item Delete/ remove the suspected records/ entries. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Substitute them, using statistical methods, with a more plausible alternative. (aka \textbf{imputation}) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\label{Data/Outliers/imputation}
+    \item Substitute them, using statistical methods, with a more plausible alternative. (aka \textbf{imputation}) \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\label{Data/Outliers/imputation}
 \end{enumerate}
 
 
@@ -108,13 +107,13 @@
 \subsection{Unrealistic Values \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Data/Measurement-Levels/Unrealistic Values}
 
 \begin{enumerate}
-    \item An unrealistic value is a data point that is not plausible within the context of the dataset, often due to data entry errors or faulty sensors. \cite{common/online/chatgpt}
+    \item An unrealistic value is a data point that is not plausible within the context of the dataset, often due to data entry errors or faulty sensors. \hfill \cite{common/online/chatgpt}
 
-    \item Caused by Human error, sensor malfunction, or corruption during data transmission. \cite{common/online/chatgpt}
+    \item Caused by Human error, sensor malfunction, or corruption during data transmission. \hfill \cite{common/online/chatgpt}
 
-    \item Typically identified using domain knowledge or logical constraints. \cite{common/online/chatgpt}
+    \item Typically identified using domain knowledge or logical constraints. \hfill \cite{common/online/chatgpt}
 
-    \item Unlike outliers, unrealistic values are generally not useful and need correction or removal. \cite{common/online/chatgpt}
+    \item Unlike outliers, unrealistic values are generally not useful and need correction or removal. \hfill \cite{common/online/chatgpt}
 
 \end{enumerate}
 
@@ -122,19 +121,19 @@
 
 \textbf{Examples}:
 \begin{enumerate}
-    \item A recorded body temperature of 200°C for a human is unrealistic, as it’s physically impossible for a person to survive at that temperature. \cite{common/online/chatgpt}
+    \item A recorded body temperature of 200°C for a human is unrealistic, as it’s physically impossible for a person to survive at that temperature. \hfill \cite{common/online/chatgpt}
 
-    \item Negative age of a person \cite{common/online/chatgpt}
+    \item Negative age of a person \hfill \cite{common/online/chatgpt}
 
-    \item Missing values \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \item Missing values \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Incorrect datatype of value \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \item Incorrect datatype of value \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 \vspace{0.3cm}
 \textbf{Handling/ Dealing with Unrealistic values}:
 \begin{enumerate}
-    \item Delete/ remove the suspected records/ entries. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \item Delete/ remove the suspected records/ entries. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     
 \end{enumerate}
 
@@ -144,10 +143,19 @@
 
 \section{Describing Data \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data}
 
-Some \textbf{descriptive statistics}\label{Data/Describing Data/descriptive statistics} (or just \textbf{descriptives}\label{Data/Describing Data/descriptives}) that we introduce are often used for data of a certain measurement level. \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+Some \textbf{descriptive statistics}\label{Data/Describing Data/descriptive statistics} (or just \textbf{descriptives}\label{Data/Describing Data/descriptives}) that we introduce are often used for data of a certain measurement level. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-\input{contents/data/descriptives/frequency_table}
-\input{contents/data/descriptives/central_tendencies}
+
+
+\input{contents/data/__parts__/frequency_table}
+\input{contents/data/__parts__/central_tendencies}
+\input{contents/data/__parts__/aggregated_data}
+
+
+
+
+
+
 
 
 
