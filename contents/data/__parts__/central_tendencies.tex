@@ -26,21 +26,56 @@ data = np.round(data, 1)
 \subsubsection{(Arithmetic) mean/ average (TODO / $\mu$ ) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/(Arithmetic) mean or average}
 
 \begin{table}[H]
-    \begin{minipage}{0.3\linewidth}
-        $
-            \bar{x} = \dfrac{1}{n} \dsum_{i=1}^{n} x_i
-        $
-    \end{minipage}
-    \begin{minipage}{0.65\linewidth}
-        \begin{table}[H]
-            \begin{tabular}{l l}
-                $\bar{x}$ & mean \\
-                $x_i$ & item \\
-                $n$ & number of items \\
-            \end{tabular}
-        \end{table}
-    \end{minipage}
+\begin{minipage}[t]{0.25\linewidth}
+
+\textbf{Sample} \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \label{Data/Describing Data/Central Tendency/(Arithmetic) mean or average/Sample}
+
+\vspace{0.3cm}
+
+$
+    \bar{x} = \dfrac{1}{n} \dsum_{i=1}^{n} x_i
+$
+
+\end{minipage}
+\hspace{0.3cm}
+\vrule width 1pt
+\hspace{0.3cm}
+\begin{minipage}[t]{0.25\linewidth}
+
+\textbf{Population} \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \label{Data/Describing Data/Central Tendency/(Arithmetic) mean or average/Population}
+
+\vspace{0.3cm}
+
+$
+    \mu = \dfrac{1}{N} \dsum_{i=1}^{n} x_i
+$
+
+\end{minipage}
+\hspace{0.3cm}
+\vrule width 1pt
+\hspace{0.3cm}
+\begin{minipage}[t]{0.25\linewidth}
+
+{\hfill\textbf{Notations}\hfill}
+
+\begin{table}[H]
+    \begin{tabular}{l l}
+        $\mu$ & Population mean \\
+        $\bar{x}$ & Sample mean \\
+        $x_i$ & population item \\
+        $x_i$ & sample item \\
+        $N$ & population size \\
+        $n$ & sample size \\
+    \end{tabular}
 \end{table}
+
+
+\end{minipage}
+\end{table}
+
+
+
+
 
 
 \begin{lstlisting}[
@@ -313,20 +348,58 @@ print(np.pow(data - x_bar, 2).mean())
 
 \subsubsection{Variance ( $s^2$ / $\sigma^2$ ) \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}} \label{Data/Describing Data/Central Tendency/Variance}
 
-\textbf{Formulas}:
-\begin{enumerate}
-    \item Sample:
-    \label{Data/Describing Data/Central Tendency/Variance/sample} \\
-        $
-            \begin{aligned}
-                s^2 
-                &= \dfrac{1}{n-1} \dsum_{i=1}^{n} (x_i - \bar{x})^2
-                &= MSD \cdot \dfrac{n}{n-1}
-            \end{aligned}
-        $
+\begin{table}[H]
+\begin{minipage}[t]{0.25\linewidth}
 
-    \item Population:
-\end{enumerate}
+\textbf{Sample}\label{Data/Describing Data/Central Tendency/Variance/sample} \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\vspace{0.3cm}
+
+$
+    \begin{aligned}
+        s^2 
+        &= \dfrac{1}{n-1} \dsum_{i=1}^{n} (x_i - \bar{x})^2 \\
+        &= MSD \cdot \dfrac{n}{n-1}
+    \end{aligned}
+$
+
+\end{minipage}
+\hspace{0.3cm}
+\vrule width 1pt
+\hspace{0.3cm}
+\begin{minipage}[t]{0.25\linewidth}
+
+\textbf{Population}\label{Data/Describing Data/Central Tendency/Variance/population} \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\vspace{0.3cm}
+
+$
+    \sigma^2 
+    = \dfrac{1}{N} \dsum_{i=1}^{n} (x_i - \mu)^2
+$
+
+\end{minipage}
+\hspace{0.3cm}
+\vrule width 1pt
+\hspace{0.3cm}
+\begin{minipage}[t]{0.25\linewidth}
+
+{\hfill\textbf{Notations}\hfill}
+
+\begin{table}[H]
+    \begin{tabular}{l l}
+        $\mu$ & Population mean \\
+        $\bar{x}$ & Sample mean \\
+        $x_i$ & population item \\
+        $x_i$ & sample item \\
+        $N$ & population size \\
+        $n$ & sample size \\
+    \end{tabular}
+\end{table}
+
+\end{minipage}
+\end{table}
+
 
 \vspace{0.2cm}
 \textbf{Note}:

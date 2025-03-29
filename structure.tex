@@ -335,19 +335,19 @@
 \def\@makechapterhead#1{%
   \vspace*{-20\p@}% Reduce space above chapter title (negative value moves it up)
   {\parindent \z@ \centering % No paragraph indent, center align the chapter title
-    \normalfont % Use the normal font style
+    \fontsize{15}{17} % Use the normal font style
     \ifnum \c@secnumdepth >\m@ne % Check if section numbering depth is greater than -1
       \if@mainmatter % Ensure this is in the main part of the document (not frontmatter)
         %\huge\bfseries % (Commented out) Previously set large, bold text for chapter number
         \scshape % Use small caps for chapter number
         \@chapapp\space \thechapter % Display "Chapter X" where X is the chapter number
         \par\nobreak % Prevent a page break immediately after the chapter number
-        %\vskip 20\p@ % (Commented out) Was adding 20pt space after the chapter number
+        \vskip 5\p@ % (Commented out) Was adding 20pt space after the chapter number
       \fi
     \fi
     % \interlinepenalty\@M % Prevent line breaks within the title (maximum penalty)
-    \Huge \bfseries #1\par\nobreak % Display the chapter title in huge, bold text
-    % \vskip 10\p@ % Add 40pt space below the chapter title
+    \fontsize{30}{30} \bfseries #1\par\nobreak % Display the chapter title in huge, bold text
+    \vskip 20\p@ % Add 40pt space below the chapter title
   }}
 
 % Define how unnumbered chapter heads are created
@@ -360,13 +360,13 @@
     
 % Define how the chapter title is displayed for unnumbered chapters
 \def\@makeschapterhead#1{%
-  \vspace*{10\p@}% Add 20pt space above the chapter title
+  \vspace*{5\p@}% Add 20pt space above the chapter title
   {\parindent \z@ \centering % No indent, center align the title
-    \normalfont % Use the normal font style
+    \fontsize{15}{17} % Use the normal font style
     \scshape % Use small caps for the chapter title
     % \interlinepenalty\@M % Prevent line breaks within the title
-    \Huge \bfseries #1\par\nobreak % Display the title in huge, bold text
-    \vskip 10\p@ % Add 40pt space below the chapter title
+    \fontsize{30}{30} \bfseries #1\par\nobreak % Display the title in huge, bold text
+    \vskip 20\p@ % Add 40pt space below the chapter title
   }}
 
 %%%%%%%%%%%%%%%%%              section            %%%%%%%%%%%%%%%%%%%%%%%
@@ -793,9 +793,19 @@
     \vfill % Push the content to the center vertically
 
     \begin{center}
-        {\centering \fontsize{30}{30}\selectfont Part \thepartitioncounter} \\[1cm] % Display "Part I, Part II..." in large, bold font
+        {
+            \fontsize{30}{50}
+            \selectfont 
+            Part \thepartitioncounter
+        } \\[1cm] % Display "Part I, Part II..."
 
-        {\fontsize{50}{50} \selectfont \textsc{#1}} % Display the partition title in a smaller but bold font, 1cm below
+        {
+            \fontsize{45}{50}
+            \selectfont
+            \linespread{2}
+            \selectfont
+            \textsc{#1}
+        }
     \end{center}
     
     \vfill % Add vertical space to balance the design
@@ -809,4 +819,9 @@
     }
 }
 
+
+
+
+
+\newcommand{\textib}[1]{\textbf{\textit{#1}}}
 
