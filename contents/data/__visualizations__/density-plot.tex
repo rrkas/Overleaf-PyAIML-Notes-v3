@@ -1,0 +1,41 @@
+\section{Density Plot \cite{data/online/seaborn.displot}} \label{Visualizing Data/Density Plot}
+
+\begin{table}[H]
+\begin{minipage}[t]{0.35\linewidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth, height=10cm, keepaspectratio]{images/data/__visualizations__/sns-density-kde-rating-face-data.png}
+    \caption{Density plot (py-sns) output (face\_data.csv)}
+\end{figure}
+\end{minipage}
+\hspace{0.2cm}
+\vrule width 1pt
+\hspace{0.5cm}
+\begin{minipage}[t]{0.57\linewidth}
+\begin{lstlisting}[
+    language=Python,
+    caption=Density Plot: py-sns: face\_data.csv
+]
+sns.displot(df["rating"], kind="kde")
+
+plt.show()
+\end{lstlisting}
+
+\vspace{0.2cm}
+
+\begin{enumerate}
+    \item A density plot - at least in this setting - can be considered a “continuous approximation” of a histogram. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+    SEE: \fullref{Visualizing Data/Histogram}
+    
+    \item It gives per range of values of the continuous variable the probability of observing a value within that range. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+\end{enumerate}
+
+\end{minipage}
+\end{table}
+
+
+
+
+

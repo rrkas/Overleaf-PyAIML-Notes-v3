@@ -1,6 +1,10 @@
 \documentclass[11pt,fleqn,twoside]{book} % Default font size and left-justified equations
-\newcommand{\bookname}{PyAIML Notes V3}
-\newcommand{\authorname}{Rohnak Agarwal}
+
+\newcommand{\booknameSimple}{PyAIML Notes V3}
+\newcommand{\authornameSimple}{Rohnak Agarwal}
+
+\newcommand{\bookname}{\href{https://www.overleaf.com/read/kxpnmgkydymz\#606c1d}{\booknameSimple}}
+\newcommand{\authorname}{\href{mailto:rrka79wal@gmail.com}{\authornameSimple}}
 
 \input{structure}
 
@@ -22,9 +26,10 @@
 
 \mainmatter
 \pagenumbering{roman}
-\pagestyle{extra}
+% \pagestyle{extra}
 \tableofcontents
 \listoffigures
+\clearpage
 \listoftables
 \listofalgorithms
 \lstlistoflistings
@@ -43,13 +48,12 @@
 \cleardoublepage
 
 
-
+\partition{Foundation}
 \input{contents/basic_math/basic_functions}
+
+\partition{Data}
 \input{contents/data/data}
 \input{contents/data/data-visualizations}
-
-
-
 
 
 
@@ -65,9 +69,15 @@
 \backmatter
 \pagestyle{empty}
 \cleardoublepage
-
 \pagenumbering{roman}
 \pagestyle{extra}
+
+
+\partition{Appendices}
+\input{contents/datasets}
+
+
+
 \nocite{*}
 
 \defbibheading{bibempty}{\chapter*{References}}

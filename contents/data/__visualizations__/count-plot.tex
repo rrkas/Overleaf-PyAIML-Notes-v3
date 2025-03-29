@@ -15,10 +15,9 @@
 \begin{minipage}[t]{0.57\linewidth}
 \begin{lstlisting}[
     language=Python,
-    caption=Pairwise Plot: py-sns: face\_data.csv
+    caption=Count Plot: py-sns: face\_data.csv
 ]
-vals = df.copy()
-vals = vals[vals["age"] != " "]
+vals = df[df["age"] != " "].copy()
 
 sns.countplot(
     x='age', 
@@ -37,6 +36,8 @@ plt.show()
 \vspace{0.3cm}
 
 \begin{enumerate}
-    \item 
+    \item Show the counts of observations in each categorical bin using bars.
+
+    
 \end{enumerate}
 

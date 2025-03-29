@@ -231,9 +231,6 @@
 \usepackage{fancyhdr} % Required for header and footer configuration
 
 
-% Define a custom command \authorbook to display the author and book title in a styled format
-\newcommand{\authorbook}{{\color{blue}\textbf{\bookname}} \textit{by} \textbf{\authorname}}
-
 % Customize the chapter and section headers with specific fonts and styles
 \renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.\ #1}{}} % Chapter text font settings
 \renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}} % Section text font settings
@@ -247,8 +244,8 @@
     \setlength{\headwidth}{\textwidth} % Width of the header line
     
     % Configure left, center, and right header content
-    \fancyhead[L]{{\color{blue}\textbf{\bookname}}} % Left side: Book title in blue
-    \fancyhead[C]{\textbf{Chapter \thechapter}} % Center: Current chapter number
+    \fancyhead[L]{{\bookname}} % Left side: Book title in blue
+    \fancyhead[C]{\textsc{Chapter \thechapter}} % Center: Current chapter number
     \fancyhead[R]{By \textbf{\authorname}} % Right side: Author name
     
     % Configure center footer to show current page and total pages
@@ -309,8 +306,8 @@
     bookmarks=true, % Enable PDF bookmarks for easy navigation
     bookmarksopen=true, % Automatically expand bookmarks in the PDF viewer    
     % Metadata for the PDF document
-    pdftitle={\bookname}, % Set the title of the PDF
-    pdfauthor={\authorname} % Set the author name in the PDF metadata
+    pdftitle={\booknameSimple}, % Set the title of the PDF
+    pdfauthor={\authornameSimple} % Set the author name in the PDF metadata
 }
 
 
@@ -348,28 +345,28 @@
         %\vskip 20\p@ % (Commented out) Was adding 20pt space after the chapter number
       \fi
     \fi
-    \interlinepenalty\@M % Prevent line breaks within the title (maximum penalty)
+    % \interlinepenalty\@M % Prevent line breaks within the title (maximum penalty)
     \Huge \bfseries #1\par\nobreak % Display the chapter title in huge, bold text
-    \vskip 40\p@ % Add 40pt space below the chapter title
+    % \vskip 10\p@ % Add 40pt space below the chapter title
   }}
 
 % Define how unnumbered chapter heads are created
 \def\@schapter#1{\if@twocolumn % Check if the document is in two-column mode
-                   \@topnewpage[\@makeschapterhead{#1}]% Start a new page for the chapter title in two-column mode
-                 \else
-                   \@makeschapterhead{#1}% Otherwise, create the chapter title normally
-                   \@afterheading % Adjust spacing after the chapter heading
-                 \fi}
-
+       \@topnewpage[\@makeschapterhead{#1}]% Start a new page for the chapter title in two-column mode
+     \else
+       \@makeschapterhead{#1}% Otherwise, create the chapter title normally
+       \@afterheading % Adjust spacing after the chapter heading
+     \fi}
+    
 % Define how the chapter title is displayed for unnumbered chapters
 \def\@makeschapterhead#1{%
-  \vspace*{20\p@}% Add 20pt space above the chapter title
+  \vspace*{10\p@}% Add 20pt space above the chapter title
   {\parindent \z@ \centering % No indent, center align the title
     \normalfont % Use the normal font style
     \scshape % Use small caps for the chapter title
-    \interlinepenalty\@M % Prevent line breaks within the title
+    % \interlinepenalty\@M % Prevent line breaks within the title
     \Huge \bfseries #1\par\nobreak % Display the title in huge, bold text
-    \vskip 40\p@ % Add 40pt space below the chapter title
+    \vskip 10\p@ % Add 40pt space below the chapter title
   }}
 
 %%%%%%%%%%%%%%%%%              section            %%%%%%%%%%%%%%%%%%%%%%%
@@ -395,7 +392,7 @@
 \def\numberedsectionwithtwoarguments[#1]#2{%
   \ifhmode\par\fi % Ensure we are in vertical mode by breaking the current line if necessary
   \removelastskip % Remove any extra space above
-  \vskip 2ex\goodbreak % Add 5ex vertical space and encourage a page break if needed
+  \vskip 5ex\goodbreak % Add 5ex vertical space and encourage a page break if needed
   \refstepcounter{section}% Increase the section counter and make it referencable
   \phantomsection % Create hyperlink target
   \edef\@currentlabelname{#2} % Set the section title for \nameref
@@ -760,3 +757,56 @@
 #1%
 \end{enumerate}%
 \vspace{-\baselineskip}\mbox{}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\usepackage{tocloft} % Package to manage table of contents formatting
+
+% Define a counter for partition pages
+\newcounter{partitioncounter} % Create a new counter called partitioncounter
+\renewcommand{\thepartitioncounter}{\Roman{partitioncounter}} % Display the counter in Roman numerals (I, II, III...)
+
+% Define a reusable command to create partition pages
+\newcommand{\partition}[1]{ % #1 is the argument for the partition name
+    \cleardoublepage % Ensure the partition starts on an odd-numbered (right-hand) page in a book
+    \stepcounter{partitioncounter} % Increment the partition counter
+    \thispagestyle{empty} % Remove the page number from the partition page
+
+    \null % Ensure proper alignment by adding an invisible object
+    \vfill % Push the content to the center vertically
+
+    \begin{center}
+        {\centering \fontsize{30}{30}\selectfont Part \thepartitioncounter} \\[1cm] % Display "Part I, Part II..." in large, bold font
+
+        {\fontsize{50}{50} \selectfont \textsc{#1}} % Display the partition title in a smaller but bold font, 1cm below
+    \end{center}
+    
+    \vfill % Add vertical space to balance the design
+    \cleardoublepage % Ensure the next chapter starts on an odd-numbered page
+
+    % Add the partition to the table of contents without making it clickable
+    \addtocontents{toc}{
+        \protect\contentsline{chapter}{
+            \fontsize{17}{17}\selectfont \textbf{Part \thepartitioncounter: #1}
+        }{}{}
+    }
+}
+
+

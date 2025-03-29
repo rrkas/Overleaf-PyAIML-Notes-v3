@@ -1,0 +1,79 @@
+\section{Box and Whiskers Plot/ Box Plot \cite{data/online/seaborn.boxplot, data/online/matplotlib.pyplot.boxplot}} \label{Visualizing Data/Box and Whiskers Plot or Box Plot}
+
+\begin{lstlisting}[numbers=none]
+
+                     Q1-1.5IQR   Q1   median  Q3   Q3+1.5IQR
+                                  |-----:-----|
+                  o      |--------|     :     |--------|    o  o
+                                  |-----:-----|
+                flier             <----------->            fliers
+                                       IQR
+
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+\begin{table}[H]
+\begin{minipage}[t]{0.35\linewidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth, height=10cm, keepaspectratio]{images/data/__visualizations__/plt-box-rating-face-data.png}
+    \caption{Box and Whiskers plot (py-plt) output (face\_data.csv)}
+\end{figure}
+\end{minipage}
+\hspace{0.2cm}
+\vrule width 1pt
+\hspace{0.5cm}
+\begin{minipage}[t]{0.57\linewidth}
+\begin{lstlisting}[
+    language=Python,
+    caption=Box and Whiskers Plot: py-plt: face\_data.csv
+]
+_col = "rating"
+
+plt.boxplot(df[_col])
+plt.xticks([1], [_col])
+plt.show()
+\end{lstlisting}
+\end{minipage}
+\end{table}
+
+
+
+\begin{table}[H]
+\begin{minipage}[t]{0.35\linewidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth, height=10cm, keepaspectratio]{images/data/__visualizations__/sns-box-rating-face-data.png}
+    \caption{Box and Whiskers plot (py-sns) output (face\_data.csv)}
+\end{figure}
+\end{minipage}
+\hspace{0.2cm}
+\vrule width 1pt
+\hspace{0.5cm}
+\begin{minipage}[t]{0.57\linewidth}
+\begin{lstlisting}[
+    language=Python,
+    caption=Box and Whiskers Plot: py-sns: face\_data.csv
+]
+_col = "rating"
+
+sns.boxplot(df[_col])
+plt.ylabel("")
+plt.xticks([0], [_col])
+plt.show()
+\end{lstlisting}
+\end{minipage}
+\end{table}
+
+
+
+
+\begin{enumerate}
+    \item A box plot (or box-and-whisker plot) shows the distribution of quantitative data in a way that facilitates comparisons between variables or across levels of a categorical variable.  \hfill \cite{data/online/seaborn.boxplot}
+    
+    \item The box shows the quartiles of the dataset while the whiskers extend to show the rest of the distribution, except for points that are determined to be “outliers” using a method that is a function of the inter-quartile range. \hfill \cite{data/online/seaborn.boxplot}
+\end{enumerate}
+
+
+
