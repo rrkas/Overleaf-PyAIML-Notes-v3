@@ -109,6 +109,15 @@
 \begin{enumerate}
     \item Although these sampling methods are frequently in use, it is strongly recommended not to apply these methods, unless knowledge is available on how to adjust or correct the sample for inferential purposes.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item These have the risk that some units are much more likely to be included in the sample than others, which can make statistics computed on the sample data bad estimates for the population parameters of interest.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item With non-representative sampling some units are not only more likely to be included in the sample, we also do not actually know how likely units were included. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Even if we wanted to, we could not control for these systematic differences between units.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 \subsection{Convenience Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Non-representative Sampling/Convenience Sampling}
@@ -122,8 +131,38 @@
 
     \item  Convenience sampling is often justified by using the argument of population homogeneity. This insinuates that either the population units are not truly different or the process produces the population of units in random order. 
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
+
+
+\subsection{Haphazard Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Non-representative Sampling/Haphazard Sampling}
+
+\begin{enumerate}
+    \item Haphazard sampling is often believed to be an excellent way of collecting samples, because it gives a feeling or the impression that each unit was collected completely at random.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Despite the feeling of randomness when performing haphazard sampling, often the resulting sample is not truly random.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\subsection{Purposive Sampling/ Judgmental Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Non-representative Sampling/Purposive Sampling or Judgmental Sampling}
+
+\begin{enumerate}
+    \item Purposive sampling or judgmental sampling tries to sample units for a specific purpose. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     
+    \item This means that the collection of units is focused on one or more particular characteristics and hence it implies that only units that are more alike are sampled.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This way of sampling is strongly related to the definition of the population, since deliberately excluding units from the sample is analogous to limiting the population of interest.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Purposive sampling may be useful, but it is limited since it does not allow us in general to make statements about the whole population, and at best only about a limited part of the population (although we may not be sure either).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item It does most likely produce a biased sample with respect to the complete population.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
@@ -135,6 +174,87 @@
 
 
 
+
+
+
+\section{Representative Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Representative Sampling}
+
+\begin{enumerate}
+    \item We sample units in such a way that we do know how likely units are to be included in the sample (even if they will be different from unit to unit).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Random sampling is a sampling method that uses a random mechanism. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \begin{enumerate}
+        \item The probability of each unit in the population of becoming part of the sample is both positive and known.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Important Notes}
+
+\subsection{Haphazard Sampling VS Random Sampling \cite{common/online/chatgpt}}\label{Sampling Plans/Important Notes/Haphazard Sampling VS Random Sampling}
+
+\begin{customArrayStretch}{1.3}
+\begin{longtable}{|p{3cm}|p{6cm}|p{6cm}|}
+
+\hline
+\textbf{Aspect} & \textbf{Haphazard Sampling} & \textbf{Random Sampling} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{Aspect} & \textbf{Haphazard Sampling} & \textbf{Random Sampling} \\ \hline
+\endhead
+
+\hline\endlastfoot
+\hline\endfoot
+
+
+
+\textbf{Method} & 
+    Non-systematic, no clear plan & 
+    Systematic, with equal chances for all \\ \hline
+
+\textbf{Bias} & 
+    High due to human judgment & 
+    Low, minimal bias \\ \hline
+
+\textbf{Reproducibility} & 
+    Difficult to reproduce & 
+    Easy to reproduce \\ \hline
+
+\textbf{Accuracy} & 
+    Low accuracy and reliability & 
+    High accuracy and reliability \\ \hline
+
+\textbf{Use Case} & 
+    Informal or exploratory research & 
+    Formal research, clinical trials \\ \hline
+
+
+
+\end{longtable}
+\end{customArrayStretch}
 
 
 

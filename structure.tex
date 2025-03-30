@@ -575,75 +575,6 @@
 
 
 
-% Import the titletoc package for customizing the table of contents (TOC)
-\usepackage{titletoc} % Required for manipulating the table of contents
-
-% Remove the default margin for the table of contents entries
-\contentsmargin{0cm}
-
-% --------------------
-% Chapter text styling
-% --------------------
-\titlecontents{chapter}[0.75cm] % Indent chapter titles by 1.25 cm
-{\addvspace{10pt}\fontsize{17pt}{17pt}\selectfont\bfseries} % Add vertical space and set chapter titles to large, bold font
-{\contentslabel[\thecontentslabel]{1cm}\color{black}} % Display chapter numbers in large size with custom color
-{} % No additional text before the chapter title
-{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{\_}\;\thecontentspage} % Display page numbers with a dotted line separator
-
-% --------------------
-% Section text styling
-% --------------------
-\titlecontents{section}[0.75cm] % Indent section titles by 1.5 cm
-{\addvspace{3pt}\fontsize{14pt}{14pt}\selectfont} % Add vertical space before sections
-{\contentslabel[\thecontentslabel]{1.25cm}\color{black}} % Display section numbers with appropriate alignment
-{} % No additional text before the section title
-{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{- -}\;\thecontentspage} % Display page numbers with a dotted line separator
-[] % No additional customization
-
-% ------------------------
-% Subsection text styling
-% ------------------------
-\titlecontents{subsection}[0.75cm] % Indent subsection titles by 1.75 cm
-{\addvspace{3pt}\fontsize{12pt}{12pt}\selectfont} % Add minimal vertical space before subsections
-{\contentslabel[\thecontentslabel]{1.5cm}\color{black}} % Display subsection numbers with alignment
-{} % No additional text before the subsection title
-{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
-[] % No additional customization
-
-% ----------------------------
-% Subsubsection text styling
-% ----------------------------
-\titlecontents{subsubsection}[0.75cm] % Indent subsubsection titles by 2 cm
-{\addvspace{3pt}} % Add minimal vertical space
-{\contentslabel[\thecontentslabel]{1.75cm}\color{black}} % Display subsubsection numbers with alignment
-{} % No additional text before the subsubsection title
-{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
-[] % No additional customization
-
-% --------------------
-% Paragraph text styling
-% --------------------
-\titlecontents{paragraph}[0.75cm] % Indent paragraph titles by 2.25 cm
-{\addvspace{1pt}} % Add minimal vertical space
-{\contentslabel[\thecontentslabel]{2cm}\color{black}} % Display paragraph numbers with alignment
-{} % No additional text before the paragraph title
-{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
-[] % No additional customization
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -765,6 +696,7 @@
 
 
 
+\newcommand{\textib}[1]{\textbf{\textit{#1}}}
 
 
 
@@ -777,11 +709,84 @@
 
 
 
-\usepackage{tocloft} % Package to manage table of contents formatting
+
+
+
+% Import the titletoc package for customizing the table of contents (TOC)
+\usepackage{titletoc} % Required for manipulating the table of contents
+
 
 % Define a counter for partition pages
 \newcounter{partitioncounter} % Create a new counter called partitioncounter
 \renewcommand{\thepartitioncounter}{\Roman{partitioncounter}} % Display the counter in Roman numerals (I, II, III...)
+
+
+% Remove the default margin for the table of contents entries
+\contentsmargin{0cm}
+
+
+% --------------------
+% partition text styling
+% --------------------
+\titlecontents{partition}[-0.25cm] % Indent chapter titles by 1.25 cm
+{\addvspace{10pt}\fontsize{19pt}{19pt}\selectfont\bfseries} % Add vertical space and set chapter titles to large, bold font
+{\contentslabel[\thecontentslabel]{1cm}\color{black}} % Display chapter numbers in large size with custom color
+{} % No additional text before the chapter title
+{} % Display page numbers with a dotted line separator
+
+
+% --------------------
+% Chapter text styling
+% --------------------
+\titlecontents{chapter}[0.75cm] % Indent chapter titles by 1.25 cm
+{\addvspace{10pt}\fontsize{17pt}{17pt}\selectfont\bfseries} % Add vertical space and set chapter titles to large, bold font
+{\contentslabel[\thecontentslabel]{1cm}\color{black}} % Display chapter numbers in large size with custom color
+{} % No additional text before the chapter title
+{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{\_}\;\thecontentspage} % Display page numbers with a dotted line separator
+
+% --------------------
+% Section text styling
+% --------------------
+\titlecontents{section}[0.75cm] % Indent section titles by 1.5 cm
+{\addvspace{3pt}\fontsize{14pt}{14pt}\selectfont} % Add vertical space before sections
+{\contentslabel[\thecontentslabel]{1.25cm}\color{black}} % Display section numbers with appropriate alignment
+{} % No additional text before the section title
+{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{- -}\;\thecontentspage} % Display page numbers with a dotted line separator
+[] % No additional customization
+
+% ------------------------
+% Subsection text styling
+% ------------------------
+\titlecontents{subsection}[0.75cm] % Indent subsection titles by 1.75 cm
+{\addvspace{3pt}\fontsize{12pt}{12pt}\selectfont} % Add minimal vertical space before subsections
+{\contentslabel[\thecontentslabel]{1.5cm}\color{black}} % Display subsection numbers with alignment
+{} % No additional text before the subsection title
+{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
+[] % No additional customization
+
+% ----------------------------
+% Subsubsection text styling
+% ----------------------------
+\titlecontents{subsubsection}[0.75cm] % Indent subsubsection titles by 2 cm
+{\addvspace{3pt}} % Add minimal vertical space
+{\contentslabel[\thecontentslabel]{1.75cm}\color{black}} % Display subsubsection numbers with alignment
+{} % No additional text before the subsubsection title
+{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
+[] % No additional customization
+
+% --------------------
+% Paragraph text styling
+% --------------------
+\titlecontents{paragraph}[0.75cm] % Indent paragraph titles by 2.25 cm
+{\addvspace{1pt}} % Add minimal vertical space
+{\contentslabel[\thecontentslabel]{2cm}\color{black}} % Display paragraph numbers with alignment
+{} % No additional text before the paragraph title
+{\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Display page numbers with a dotted line separator
+[] % No additional customization
+
+
+
+
 
 % Define a reusable command to create partition pages
 \newcommand{\partition}[1]{ % #1 is the argument for the partition name
@@ -813,8 +818,13 @@
 
     % Add the partition to the table of contents without making it clickable
     \addtocontents{toc}{
-        \protect\contentsline{chapter}{
-            \fontsize{17}{17}\selectfont \textbf{Part \thepartitioncounter: #1}
+        \protect\contentsline{partition}{
+            \fontsize{19}{19}\selectfont 
+            \textsc{
+                \makebox[0.1cm][r]{\thepartitioncounter}
+                \hspace{0.25cm}
+                #1
+            }
         }{}{}
     }
 }
@@ -823,5 +833,18 @@
 
 
 
-\newcommand{\textib}[1]{\textbf{\textit{#1}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
