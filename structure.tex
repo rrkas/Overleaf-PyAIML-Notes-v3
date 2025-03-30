@@ -88,6 +88,7 @@
 \usepackage{lipsum} % Inserts dummy text
 
 
+\usepackage{wrapfig}
 
 
 
@@ -647,8 +648,14 @@
 
 
 \newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\tsum}{\textstyle\sum}
+
 \newcommand{\dprod}{\displaystyle\prod}
+\newcommand{\tprod}{\textstyle\prod}
+
 \newcommand{\dint}{\displaystyle\int}
+\newcommand{\tint}{\textstyle\int}
+
 \newcommand{\dParenBrac}[1]{\left(#1\right)}
 \newcommand{\dSquareBrac}[1]{\left[#1\right]}
 \newcommand{\dCurlyBrac}[1]{\left\{#1\right\}}
@@ -799,17 +806,15 @@
 
     \begin{center}
         {
-            \fontsize{30}{50}
-            \selectfont 
-            Part \thepartitioncounter
-        } \\[1cm] % Display "Part I, Part II..."
-
-        {
             \fontsize{45}{50}
-            \selectfont
-            \linespread{2}
+            \selectfont 
+            \textsc{\thepartitioncounter}
+        } \\[0.5cm] % Display "Part I, Part II..."
+        {
+            \fontsize{40}{45}
             \selectfont
             \textsc{#1}
+            \par
         }
     \end{center}
     
