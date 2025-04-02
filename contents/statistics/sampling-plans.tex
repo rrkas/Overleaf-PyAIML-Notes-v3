@@ -91,24 +91,40 @@
 \section{Generic Formulation \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
 
 \begin{customArrayStretch}{1.3}
-\begin{longtable}{p{3.5cm} p{0.5cm} p{11cm}}
+\begin{longtable}{>{\RaggedRight\arraybackslash}p{4cm} >{\centering\arraybackslash}p{0.5cm} p{10.5cm}}
 
-\hline \endfirsthead
-\hline \endhead
-\hline \endfoot
-\hline \endlastfoot
+\hhline{=:=:=} \endfirsthead
+\hhline{=:=:=} \endhead
+\hhline{=:=:=} \endfoot
+\hhline{=:=:=} \endlastfoot
 
 
 \textbf{Population Size} &
     $N$ &
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\ \hline
 
 \textbf{Sample Size} &
     $n$ &
-    \begin{minipage}{10cm}
+    \begin{minipage}{10.3cm}
         \vspace{0.15cm}
-        \begin{enumerate}
+        \begin{enumerate}[itemsep=0.2cm]
             \item $n \leq N$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            
+        \end{enumerate}
+        \vspace{0.15cm}
+    \end{minipage} 
+    \\ \hline
+
+\textbf{Number of Possible Samples} &
+    $K$ &
+    \begin{minipage}{10.3cm}
+        \vspace{0.15cm}
+        \begin{enumerate}[itemsep=0.2cm]
+            \item exact value of $K$ depends on the sampling plan
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            
         \end{enumerate}
         \vspace{0.15cm}
     \end{minipage} 
@@ -116,11 +132,14 @@
 
 \textbf{Population} &
     $\Omega$ &
-    \begin{minipage}{10cm}
+    \begin{minipage}{10.3cm}
         \vspace{0.15cm}
-        \begin{enumerate}
+        \begin{enumerate}[itemsep=0.2cm]
             \item $\Omega = \dCurlyBrac{1,2,\cdots,N}$
-            \item $\Omega = $
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            
+            \item $\Omega = \dbigcup_{k=1}^K S_k$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
         \end{enumerate}
         \vspace{0.15cm}
     \end{minipage} 
@@ -129,13 +148,166 @@
 
 \textbf{Sample} &
     $S_k$ &
-    \begin{minipage}{10cm}
+    \begin{minipage}{10.3cm}
         \vspace{0.15cm}
-        \begin{enumerate}
-            \item $k \in \dCurlyBrac{1,2,\cdots, K}$
-            \item $S_k = \dCurlyBrac{i_1,i_2,\cdots,i_n}$
-            \item $S_k \subset \Omega$
+        \begin{enumerate}[itemsep=0.2cm]
             \item Subset of Population
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            
+            \item $k \in \dCurlyBrac{1,2,\cdots, K}$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            
+            \item $S_k = \dCurlyBrac{i_1,i_2,\cdots,i_n}$  ($i_h \in \dParenBrac{1,\cdots,N}$)
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            \\
+            ($n$ unique units, $h \neq l \Rightarrow i_h \neq i_l$)
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            
+            \item $S_k \subset \Omega \hspace{2cm} \forall\  k \in \dParenBrac{1,\cdots,K}$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+            \item Each subset is unique: $k\neq l \Rightarrow S_k \neq S_l$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+            \item Subsets may overlap: $S_k \ \cap\ S_l \neq \phi$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \end{enumerate}
+        \vspace{0.15cm}
+    \end{minipage} 
+    \\ \hline
+
+
+\textbf{Unit} &
+    $i$ &
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\ \hline
+
+\textbf{Unit's  theoretical value} &
+    $x_i$ &
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\ \hline
+
+\textbf{Sample probability} &
+    $\pi_k$ &
+    \begin{minipage}{10.3cm}
+        \vspace{0.15cm}
+        \begin{enumerate}[itemsep=0.2cm]
+            \item each subset $S_k$ is attached a probability $\pi_k$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            
+            \item $\pi_k > 0 \hspace{2cm}  k \in \dCurlyBrac{1,\cdots,K}$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            
+            \item $\dsum_{k=1}^K \pi_k = 1$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \end{enumerate}
+        \vspace{0.15cm}
+    \end{minipage} 
+    \\ \hline
+
+
+\textbf{Unit Probability} &
+    $p_i$ &
+    \begin{minipage}{10.3cm}
+        \vspace{0.15cm}
+        \begin{enumerate}[itemsep=0.2cm]
+            \item Probability of each unit in population
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            
+            \item $p_i > 0 \hspace{2cm} \ i \in \dCurlyBrac{1,\cdots,N}$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+            \item $\dsum_{i=1}^N p_i \neq 1$ since samples overlap
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+            \item the probabilities are \textbf{not} always the same for each unit.
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \end{enumerate}
+        \vspace{0.15cm}
+    \end{minipage} 
+    \\ \hline
+
+
+\textbf{Population Parameter} &
+    $\theta$ &
+    \begin{minipage}{10.3cm}
+        \vspace{0.15cm}
+        \begin{enumerate}[itemsep=0.2cm]
+            \item $\theta \equiv \theta(\mathbf{x})$ where $\mathbf{x} = \dParenBrac{x_1, x_2, \cdots, x_N}$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            
+        \end{enumerate}
+        \vspace{0.15cm}
+    \end{minipage} 
+    \\ \hline
+
+
+\textbf{Observations} &
+    $\mathbf{x}_k^\top$ &
+    \begin{minipage}{10.3cm}
+        \vspace{0.15cm}
+        \begin{enumerate}[itemsep=0.2cm]
+            \item $\mathbf{x}_k^\top = \dParenBrac{x_{i_1}, x_{i_2}, \cdots, x_{i_n}}$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+            \item Observed with every sample $S_k$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \end{enumerate}
+        \vspace{0.15cm}
+    \end{minipage} 
+    \\ \hline
+
+\textbf{Descriptive Statistic/ Estimate} &
+    $\hat{\theta}_k$ &
+    \begin{minipage}{10.3cm}
+        \vspace{0.15cm}
+        \begin{enumerate}[itemsep=0.2cm]
+            \item $\hat{\theta}_k = T(\mathbf{x}_k)$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+            \item Computed based on the observed data.
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+            \item used as an \textit{estimate} for the population parameter $\theta$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+            
+        \end{enumerate}
+        \vspace{0.15cm}
+    \end{minipage} 
+    \\ \hline
+
+\textbf{Estimator} &
+    $T(\cdot)$ &
+    \begin{minipage}{10.3cm}
+        \vspace{0.15cm}
+        \begin{enumerate}[itemsep=0.2cm]
+            \item It is a function applied to the observed data (i.e., some calculation procedure). 
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+            \item In many cases the function $T$ is identical to the calculation $\theta$ at the population level, but alternative functions may be used depending on the sampling plan.
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+            \item \textbf{Example}: For estimating population mean, $\bar{x}_k$ can be used as $T$ 
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \end{enumerate}
+        \vspace{0.15cm}
+    \end{minipage} 
+    \\ \hline
+
+\textbf{Expected Population Parameter} &
+    $\mathbb{E}(T)$ &
+    \begin{minipage}{10.3cm}
+        \vspace{0.15cm}
+        \begin{enumerate}[itemsep=0.2cm]
+            \item $
+                \mathbb{E}(T)
+                = \dsum_{k=1}^{K} \hat{\theta}_k \pi_k
+            $
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
         \end{enumerate}
         \vspace{0.15cm}
     \end{minipage} 
@@ -149,20 +321,40 @@
 \end{customArrayStretch}
 
 
-% \begin{enumerate}[itemsep=0.2cm]
-%     \item \textbf{Population}: $\dCurlyBrac{x_1, \cdots, x_N}$ ($N$ units) 
-%     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\begin{enumerate}[itemsep=0.2cm]
+    \item The set of samples $S_1, S_2,\cdots, S_K$ with their probabilities $\pi_1, \pi_2, \pi_3,\cdots,\pi_K$ is referred to as a \textbf{sampling plan}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-%     \item \textbf{Sample}: $\dCurlyBrac{x_{i_1}, \cdots, x_{i_n}}$ 
-%     ($n$ units, $n<N$) 
-%     ($i_h \in \dCurlyBrac{1, \cdots, N}$)
-%     ($h \neq l \Rightarrow i_h \neq i_l$)
-%     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \item The sampling plan contains all the information necessary to analyze the quality of a sampling procedure.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item \textbf{Population Mean}: \hspace{2cm} $
+        \mu
+        = \dfrac{1}{N}\dsum_{i=1}^N x_i
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item \textbf{Population Variance}: \hspace{2cm} $
+        \sigma^2
+        = \dfrac{1}{N}\dsum_{i=1}^N (x_i - \mu)^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item In general, the value $\hat{\theta}_k$ can be considered an estimate of the population parameter $\theta$ when sample $S_k$ would be collected. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item The estimate $\hat{\theta}_k$ will most likely be different from the population parameter $\theta$, because the sample is just a subset of the population. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     
-% \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
 
 
 
@@ -176,13 +368,61 @@
 \section{Measures of closeness}\label{Sampling Plans/Measures of closeness}
 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.7\linewidth, 
+        height=6cm,
+        keepaspectratio,
+    ]{images/statistics/bias-se-mse-visual.png}
+    \caption{Visual Representation of Bias, MSE and SE}
+\end{figure}
+
 
 \subsection{Bias}\label{Sampling Plans/Measures of closeness/Bias}
 
+\hfill 
+$
+    bias
+    = \dParenBrac{\dsum_{k=1}^{K} \hat{\theta}_k \pi_k} - \theta
+    = \mathbb{E}(T) - \theta
+$
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\vspace{0.5cm}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The bias is the difference between the weighted average - over all possible $K$ samples - of the sample estimate $\hat{\theta}_k$'s and the true population parameter $\theta$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The weights in this weighted average are provided by the probabilities $\pi_k$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly take samples using our sampling plan and repeatedly compute our statistic of interest, the average over all of those statistics is equal to the true population parameter. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    If the bias is \textbf{zero}, the estimator, under the sampling plan that is being evaluated, is said to be \textbf{unbiased}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The bias of an estimator is thus the difference between this estimator’s expected value and the true population value.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item A small bias of an estimator under a sampling plan does \textbf{not} guarantee that individual sample results $\hat{\theta}_k$ are actually close to the population parameter $\theta$; it just states that they are close on average, if we were to sample over and over again.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If the bias is small, $\mathbb{E}(T)$ is close to the parameter value $\theta$.\\
+    If the bias is large, $\mathbb{E}(T)$ is \textbf{not} close to $\theta$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If the sampling plan is unbiased and thus $\mathbb{E}(T) = \theta$, the RMSE and the SE are identical.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+\end{enumerate}
 
 
 
-\subsection{Standard Error (SE)}\label{Sampling Plans/Measures of closeness/Standard Error (SE)}
+
 
 
 
@@ -190,7 +430,79 @@
 
 \subsection{Mean Square Error (MSE)}\label{Sampling Plans/Measures of closeness/Mean Square Error (MSE)}
 
+\hfill
+$
+    MSE 
+    = \dsum_{k=1}^{K} \dParenBrac{\hat{\theta}_k - \theta}^2 \pi_k
+$
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item To capture the variability in the sample results $\hat{\theta}_1, \hat{\theta}_2,..., \hat{\theta}_K$ with respect to the true value $\theta$, we use the so-called mean squared error (MSE).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The MSE measures the weighted average squared distance of the sample results $\hat{\theta}_1, \hat{\theta}_2,..., \hat{\theta}_K$ from the population parameter $\theta$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The weights are determined by the sampling probabilities. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The smaller the MSE the better the sampling plan. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If the MSE is small, the variability of the $\hat{\theta}_k$'s around $\theta$ is small, \\
+    while if the MSE is large, the variability around $\theta$ is large.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+
+\subsection{Root Mean Square Error (RMSE)}\label{Sampling Plans/Measures of closeness/Root Mean Square Error (RMSE)}
+
+
+\hfill
+$
+    RMSE 
+    = \sqrt{MSE} 
+    = \sqrt{{SE}^2 + \dParenBrac{\mathbb{E}(T) - \theta}^2}
+$
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+
+
+
+
+\subsection{Standard Error (SE)}\label{Sampling Plans/Measures of closeness/Standard Error (SE)}
+
+
+\hfill
+$
+    SE = \sqrt{
+        \dsum_{k=1}^{K} \dParenBrac{
+            \hat{\theta}_k - \mathbb{E}(T)
+        }^2
+        \pi_k
+    }
+$
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item It represents the variability of the sampling plan with respect to the expected population parameter $\mathbb{E}(T)$ instead of using the true population parameter $\theta$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Standard error of an estimator is used as a measure to represent our uncertainty regarding an estimate.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If the SE is small, the variability of the $\hat{\theta}_k$’s around $\mathbb{E}(T)$ is small. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 
@@ -302,7 +614,7 @@
         $N$ & population size \\
         $n$ & sample size \\
         $K$ & number of possible samples \\
-        $k$ & sample index ($1 \leq k \leq K$) \\
+        $k$ & sample index ($ k \in \dParenBrac{1,\cdots,K}$) \\
         $S_k$ & sample\\
     \end{tabular}
 \end{table}
@@ -376,7 +688,7 @@
         $N$ & population size ($N=nm$)\\
         $n$ & number of groups \\
         $m$ & number of units in each group = number of possible samples ($S_k$)\\
-        $k$ & sample index ($1 \leq k \leq m$) \\
+        $k$ & sample index ($k \in \dParenBrac{1,\cdots,m}$) \\
         $S_k$ & sample\\
     \end{tabular}
 \end{table}
@@ -391,7 +703,7 @@
         \item First the population should be divided into $n$ groups and the order of the units (if Some order exists) should be maintained (or otherwise fix the order).\\
         Each group consists of $m$ units ordered from $1$ to $m$ in each group.
 
-        \item Collect $p$th unit ($1 \leq p \leq m$) from all $n$ groups with probability of $\dfrac{1}{m}$\\
+        \item Collect $p$th unit ($p \in \dParenBrac{1,\cdots,m}$) from all $n$ groups with probability of $\dfrac{1}{m}$\\
         (each unit in the population still has the same probability of being collected)\\
         Total units collected $= n$\\
         So, total number of samples $= m$ only
@@ -482,7 +794,7 @@
         \hspace{0.3cm} 
         \forall 
         \hspace{0.3cm} 
-        1\leq i,j \leq M 
+        i,j \in \dParenBrac{1,\cdots,M} 
     $, then its called \textbf{Proportional Stratified Sampling}.\label{Sampling Plans/Representative Sampling/Stratified Sampling/Proportional Stratified Sampling}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
