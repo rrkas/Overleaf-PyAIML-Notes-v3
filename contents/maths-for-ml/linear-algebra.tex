@@ -1,0 +1,99 @@
+\chapter{Linear Algebra}
+
+\begin{enumerate}
+    \item \textbf{Algebra} is constructing a set of objects (symbols) and a set of rules to manipulate these objects.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Linear algebra} is the study of vectors and certain rules to manipulate vectors.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+\section{Systems of Linear Equations}
+
+\begin{customArrayStretch}{1.3}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| l | l  l |}
+        \hline
+        
+        coefficients & $a_{ij}$    & $\in \mathbb{R}$ \\ \hline
+        
+         & $b_{i}$     & $\in \mathbb{R}$ \\ \hline
+    \end{tabular}
+    \caption*{Notations}
+\end{table}
+\end{customArrayStretch}
+
+
+\vspace{0.5cm}
+
+
+\begin{enumerate}[itemsep=0.3cm]
+    \item \textbf{general form} of a system of linear equations:
+    \\
+    $
+        \begin{aligned}
+            a_{11}x_1 & + & \cdots & + & a_{1n}x_n & = & b_1 \\
+            & & & & \vdots \\
+            a_{m1}x_1 & + & \cdots & + & a_{mn}x_n & = & b_m
+        \end{aligned}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item $x_1, \cdots , x_n$ are the \textbf{unknowns} of this system.
+
+        \item Every $n$-tuple $(x_1, \cdots , x_n) \in \mathbb{R}^n$ that satisfies this system is a \textbf{solution} of the linear equation system.
+    \end{enumerate}
+
+
+    \item \textbf{compact notation}:
+    \\[0.2cm]
+    $
+        \begin{bmatrix}a_{11}\\ \vdots\\ a_{m1}\end{bmatrix} x_1 +
+        \begin{bmatrix}a_{12}\\ \vdots\\ a_{m2}\end{bmatrix} x_2 +
+        \cdots +
+        \begin{bmatrix}a_{1n}\\ \vdots\\ a_{mn}\end{bmatrix} x_n =
+        \begin{bmatrix}b_{1}\\ \vdots\\ b_{m}\end{bmatrix}
+        \Longleftrightarrow
+        \begin{bmatrix}
+            a_{11} & \cdots & a_{1n} \\
+            \vdots & \ddots & \vdots \\
+            a_{m1} & \cdots & a_{mn}
+        \end{bmatrix}
+        \begin{bmatrix} x_{1} \\ \vdots \\ x_{n} \end{bmatrix}
+        =
+        \begin{bmatrix} b_{1} \\ \vdots \\ b_{m} \end{bmatrix}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    
+    
+\end{enumerate}
+
+
+\vspace{0.5cm}
+\textbf{Note}:
+\begin{enumerate}[itemsep=0.2cm]
+    \item In general, for a real-valued system of linear equations we obtain either no, exactly one, or infinitely many solutions. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Geometric Interpretation of Systems of Linear Equations}: 
+    In a system of linear equations with two variables $x_1$, $x_2$, each linear equation defines a line on the $x_1x_2$-plane. Since a solution to a system of linear equations must satisfy all equations simultaneously, the solution set is the intersection of these lines. This intersection set can be a line (if the linear equations describe the same line), a point, or empty (when the lines are parallel).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    Similarly, for three variables, each linear equation determines a plane in three-dimensional space. When we intersect these planes, i.e., satisfy all linear equations at the same time, we can obtain a solution set that is a plane, a line, a point or empty (when the planes have no common intersection).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+

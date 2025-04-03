@@ -138,7 +138,9 @@
   }
   \normalfont
   \thefield{title}%
-  \\\textsc{Series}: \printfield{series}%
+  \iffieldundef{series}{}{
+    \\\textsc{Series}: \printfield{series}
+  }
   \\\textsc{Author(s)}: \printnames{author}%
   \\\textsc{Publisher \& Year}: \printlist{publisher},%
   \ \printfield{year}%
@@ -706,7 +708,8 @@
 
 
 
-\newcommand{\textib}[1]{\textbf{\textit{#1}}}
+\newcommand{\textbfit}[1]{\textbf{\textit{#1}}}
+\newcommand{\textbfsc}[1]{\textbf{\textsc{#1}}}
 
 
 
