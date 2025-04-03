@@ -314,7 +314,29 @@
     \\ \hline
 
 
+\textbf{Weighted Average} &
+    $\bar{x}_{w,k}$ &
+    \begin{minipage}{10.3cm}
+        \vspace{0.15cm}
+        \begin{enumerate}[itemsep=0.2cm]
+            \item $
+                \bar{x}_{w,k}
+                = \dsum_{i \in S_k} w_{ik}x_i
+            $
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+            \item $
+                \dsum_{i \in S_k} w_{ik} = 1
+            $
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+            \item If every observation has the same weight, we obtain the arithmetic average $\bar{x}_k = \dfrac{1}{n} \dsum_{i \in S_k} x_i$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \end{enumerate}
+        \vspace{0.15cm}
+    \end{minipage} 
+    \\ \hline
 
 
 \end{longtable}
@@ -661,6 +683,57 @@ $
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item Number of samples that contain certain unit $i$ = $\dfrac{nK}{N}$ 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    $
+        \Rightarrow
+        \dsum_{k=1}^{K}\ \dsum_{i \in S_k} x_i
+        = \dfrac{nK}{N}\dsum_{i=1}^{N} x_i
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Population Variance: $
+        \sigma^2
+        = \dfrac{1}{N} \dsum_{i=1}^N (x_i-\mu)^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Estimator for population mean: $
+        T 
+        = \bar{x}
+        = \dfrac{1}{n} \dsum_{i=1}^n x_i
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}[itemsep=0.2cm]
+        \item Bias: $0$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $
+            MSE(\bar{x}_k)
+            = \dfrac{\sigma^2 }{n}
+            \dParenBrac{\dfrac{N}{N-1}}
+            \dParenBrac{1-\dfrac{n}{N}}
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\
+        MSE shows that it becomes equal to zero when the sample size $n$ becomes equal to the population size $N$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\
+        The MSE will not become zero when the estimator is biased, even if the sample size is equal to the population size.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+
+        \item $
+            \mathbb{E}(T) 
+            = \dfrac{1}{K}\dsum_{k=1}^{K} \bar{x}_k
+            = \dfrac{1}{nK}\dsum_{k=1}^{K}\ \dsum_{i \in S_k} x_i
+            = \dfrac{1}{N}\dsum_{i=1}^{N} x_i
+            = \mu
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
     \item \textbf{Disadvantage}: When the numbers of units across these subpopulations are (substantially) different, simple random may not collect units from each subgroup.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     
@@ -708,6 +781,24 @@ $
         Total units collected $= n$\\
         So, total number of samples $= m$ only
 
+    \end{enumerate}
+
+    \item Estimator for population mean: $
+        \dfrac{1}{n} \dsum_{i=1}^n x_i
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}[itemsep=0.2cm]
+        \item Bias: $0$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item MSE: $
+            \sigma^2 -
+            \dfrac{1}{N}
+            \dsum_{h=1}^{n}
+            \dsum_{i=1}^{m}
+            (x_{hi} - \bar{x}_h)^2
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
     \item The possible samples from systematic sampling are quite different from the set of samples that can be obtained with simple random sampling.
@@ -798,6 +889,31 @@ $
     $, then its called \textbf{Proportional Stratified Sampling}.\label{Sampling Plans/Representative Sampling/Stratified Sampling/Proportional Stratified Sampling}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item Estimator for population mean: $
+        \dsum_{h=1}^{M}
+        \dParenBrac{\dfrac{N_h}{N}}
+        \dParenBrac{\dfrac{1}{n_h} \dsum_{i=1}^{n_h} x_{hi}}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}[itemsep=0.2cm]
+        \item Bias: $0$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item MSE: $
+            \dsum_{h=1}^{M}
+            \dSquareBrac{
+                \dParenBrac{
+                    \dfrac{
+                        N_h^2\ (N_h - n_h)
+                    }{
+                        n_h\ (N_h-1)\ N^2
+                    }
+                } \sigma_h^2
+            }
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
 \end{enumerate}
 
 
@@ -851,9 +967,119 @@ $
 
     \item \textbf{Single-Stage Cluster Sampling}\label{Sampling Plans/Representative Sampling/Cluster Sampling/Single-Stage Cluster Sampling}: A single-stage cluster sample uses a random sample of the clusters and then all units from these clusters are selected. 
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item \textbf{cluster sizes are not all equal}:
+        \\
+        Estimator for population mean: $
+            \dsum_{h=1}^{m}
+            \dParenBrac{
+                \dfrac{N_h}{
+                    \tsum_{h=1}^{m} N_h
+                }
+            }
+            \bar{x}_h
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \begin{enumerate}[itemsep=0.25cm]
+            \item Bias: $\geq 0$ (bias is close to zero but positive)
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+            \item MSE: $
+                \sim 
+                \dfrac{M^2}{m\ (M-1)\ N^2}
+                \dParenBrac{1 - \dfrac{m}{M}}
+                \dsum_{h=1}^M N_h^2\ (\mu_h - \mu)^2
+            $
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \end{enumerate}
+
+
+        \item \textbf{cluster sizes are all equal}:
+        \\
+        Estimator for population mean: $
+            \dfrac{M}{m\ N}
+            \dsum_{h=1}^{m}
+            N_h \bar{x}_h
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \begin{enumerate}[itemsep=0.25cm]
+            \item Bias: $0$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+            \item MSE: $
+                \dfrac{M^2}{m\ (M-1)\ N^2}
+                \dParenBrac{1 - \dfrac{m}{M}}
+                \dsum_{h=1}^M \dParenBrac{N_h\mu_h - \dfrac{N\mu}{M}}^2
+            $
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \end{enumerate}
+    \end{enumerate}
+
 
     \item \textbf{Two-Stage Cluster Sampling}\label{Sampling Plans/Representative Sampling/Cluster Sampling/Two-Stage Cluster Sampling}: In a two-stage cluster sample, the units from the sampled clusters are also randomly sampled instead of taking all units from the cluster.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item \textbf{cluster sizes are not all equal}:
+        \\
+        Estimator for population mean: $
+            \dsum_{h=1}^{m}
+            \dParenBrac{
+                \dfrac{N_h}{
+                    \tsum_{h=1}^{m} N_h
+                }
+            }
+            \bar{x}_h
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \begin{enumerate}[itemsep=0.25cm]
+            \item Bias: $\geq 0$ (bias is close to zero but positive)
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+            \item MSE: $
+                \sim 
+                \dfrac{M}{m\ N^2}
+                \dSquareBrac{
+                    \dParenBrac{1 - \dfrac{m}{M}}
+                    \dfrac{1}{M-1}
+                    \dsum_{h=1}^{M} N_h^2\ (\mu_h - \mu)^2
+                    + \dsum_{h=1}^{M} \dParenBrac{
+                        \dfrac{N_h^2\ (N_h-n_h)}{n_h\ (N_h-1)}
+                        \sigma_h^2
+                    }
+                }
+            $
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \end{enumerate}
+
+
+        \item \textbf{cluster sizes are all equal}:
+        \\
+        Estimator for population mean: $
+            \dfrac{M}{m\ N}
+            \dsum_{h=1}^{m}
+            N_h \bar{x}_h
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \begin{enumerate}[itemsep=0.25cm]
+            \item Bias: $0$
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+            \item MSE: $
+                \dfrac{M}{m\ N^2}
+                \dSquareBrac{
+                    \dParenBrac{1 - \dfrac{m}{M}}
+                    \dfrac{1}{M-1}
+                    \dsum_{h=1}^{M} \dParenBrac{N_h\mu_h - \dfrac{N\mu}{M}}^2
+                    + \dsum_{h=1}^{M} \dParenBrac{
+                        \dfrac{N_h^2\ (N_h-n_h)}{n_h\ (N_h-1)}
+                    \sigma_h^2
+                    }
+                }
+            $
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \end{enumerate}
+    \end{enumerate}
+
 
     \item \textbf{Multi-Stage Cluster Sampling}\label{Sampling Plans/Representative Sampling/Cluster Sampling/Multi-Stage Cluster Sampling}: It is similar to two-stage cluster sampling, but multiple number of stages based on the application.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
