@@ -1,0 +1,129 @@
+\section{Systematic Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Representative Sampling/Systematic Sampling}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l l}
+        $N$ & population size & $N=nm$\\
+        $n$ & number of groups & = sample size \\
+        $m$ & number of units in each group & = number of possible samples\\
+        $k$ & sample index & $k \in \dParenBrac{1,\cdots,m}$ \\
+        $S_k$ & sample & \\
+    \end{tabular}
+\end{table}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item Implicitly assume that there is no particular group structure present in the population.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Steps:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}[itemsep=0.1cm]
+        \item First the population should be divided into $n$ groups and the order of the units (if Some order exists) should be maintained (or otherwise fix the order).\\
+        Each group consists of $m$ units ordered from $1$ to $m$ in each group.
+
+        \item Collect $p$th unit ($p \in \dParenBrac{1,\cdots,m}$) from all $n$ groups with probability of $\dfrac{1}{m}$\\
+        (each unit in the population still has the same probability of being collected)\\
+        $S_k = \dCurlyBrac{k, k + m, k + 2m, \cdots , k + (n - 1)m}$ 
+        \hfill
+        (Total units collected $= n$) 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+        So, total number of samples $= m$ only
+
+    \end{enumerate}
+
+    \item The possible samples from systematic sampling are quite different from the set of samples that can be obtained with simple random sampling.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item population mean: $
+        \mu 
+        = \dfrac{1}{N}\ \dsum^m_{h=1} \ \dsum^n_{i=1} x_{\ k+m(i-1)}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item population variance: $
+        \sigma^2 
+        = \dfrac{1}{N}\ \dsum^m_{k=1} \ \dsum^n_{i=1} (x_{\ k+m(i-1)} - \mu)^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item sample average for sample $S_k$: $
+        \bar{x}_k 
+        = \dfrac{1}{n}\ \dsum^n_{i=1} x_{\ k+m(i-1)}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Systematic sampling can be more efficient than simple random sampling, in particular when the variance in the systematic samples is larger than the population variance (which is impossible to verify in practice).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The most important \textbf{advantage} of systematic sampling over simple random sampling is the ease with which the sample may be collected.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item A clear \textbf{disadvantage} of systematic sampling is that the “period” for systematic sampling may coincide with particular patterns in the process or population.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Disadvantage}: When the numbers of units across these subpopulations are (substantially) different, systematic sampling may not collect units from each subgroup.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item TODO? Systematic Sampling samples ($S_1,\cdots,S_m$) are subset of Simple Random Sampling samples ($S_1,\cdots,S_K$).
+\end{enumerate}
+
+\vspace{0.5cm}
+\textbf{Example}:
+\begin{enumerate}[itemsep=0.3cm]
+    \item[] $N = 20,\ n = 5$
+
+    \item[] $m = \dfrac{20}{5}=4$
+
+    
+\end{enumerate}
+
+
+
+\subsection{Estimation for population mean}
+\begin{enumerate}[itemsep=0.2cm]
+    \item Estimator: $
+        \dfrac{1}{n} \dsum_{i=1}^n x_i
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    if population can be perfectly split up into $n$ groups of $m$ units:\\
+    Unbiased Estimator: $\bar{x}_k$
+    
+    \item Bias: $0$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item MSE: $
+        \sigma^2 -
+        \dfrac{1}{N}
+        \dsum_{h=1}^{n}
+        \dsum_{i=1}^{m}
+        (x_{h+m(i-1)} - \bar{x}_h)^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\end{enumerate}
+
+
+
+\subsection{Estimation of the MSE}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item In the general setting for systematic sampling, an unbiased estimation of the MSE is \textbf{not possible}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Given that there is no systematic difference between units based on their position in the groups (and the ratio of sample and population size is an integer), the MSE of the sample average under systematic sampling becomes equal to the MSE of the sample average under simple random sampling.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item unbiased estimator: $
+        \dfrac{N - 1}{N}\ s^2_k
+    $
+    \hfill
+    $
+        s^2_k = \dfrac{1}{n - 1} \dsum^n_{i=1} (x_{k+m(i-1)} - \bar{x}_k )^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+

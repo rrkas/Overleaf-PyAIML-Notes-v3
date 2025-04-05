@@ -1,0 +1,235 @@
+\section{Stratified Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Representative Sampling/Stratified Sampling}
+
+\begin{customArrayStretch}{1.3}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{6cm} p{3.5cm}}
+        \hline
+        
+        $N$ & total population size & \\ \hline
+        
+        $n$ & total sample size & \\ \hline
+        
+        $M$ & number of sub-populations & \\ \hline
+        
+        $N_h$ & $k$th sub-population size & $\tsum_{h=1}^{M} N_h = N$ \\ \hline
+        
+        $n_h$ & sample size from $k$th sub-population & $\tsum_{h=1}^{M} n_h = n$ \\ \hline
+
+        $h$ & Stratum index & $h \in \dCurlyBrac{1, \cdots, M}$ \\ \hline
+
+        $k$ & Stratum index & $k \in \dCurlyBrac{1, \cdots, K_S}$ \\ \hline
+        
+        $K_h$ & The number of possible samples that can be drawn from stratum $h$ \\ \hline
+        
+        $K_S$ & total number of possible samples \\ \hline
+        
+        $(h, i)$ & index of unit & \begin{minipage}{3.2cm}
+            \vspace{0.1cm}
+            $i \in \dCurlyBrac{1, 2,\cdots, N_h }$ \\
+            and $h \in \dCurlyBrac{1, 2,..., M}$
+            \vspace{0.1cm}
+        \end{minipage}  \\ \hline
+        
+        $x_{hi}$ & unit $i$ in stratum $h$ \\ \hline
+
+        $S_{h,k}$ & 
+        \multicolumn{2}{l}{
+            \begin{minipage}{11cm}
+                \vspace{0.1cm}
+                $S_{h,k}$ is the collected sample in stratum $h$ \\
+                The $k$-th possible sample from stratum $h$ \\
+                (e.g., $S_{2,3}$ is the $3$rd possible sample from stratum $2$) \\
+                focuses on one stratum
+                \vspace{0.1cm}
+            \end{minipage}
+        } \\ \hline
+
+        $S_k$ & 
+        \multicolumn{2}{l}{
+            \begin{minipage}{11cm}
+                \vspace{0.1cm}
+                The $k$-th possible full stratified sample (i.e., across all strata). \\
+                Each $S_k$ includes one selected sample from each stratum.\\
+                focuses on a complete sample (all strata combined)
+                \vspace{0.1cm}
+            \end{minipage}
+        } \\ \hline
+
+    \end{tabular}
+\end{table}
+\end{customArrayStretch}
+
+\begin{enumerate}[itemsep=0.3cm]
+    \item Stratified sampling is used to accommodate the issue of missing out on sub-populations during sampling by setting the sample size for each subpopulation (often called \textbf{strata}\label{Sampling Plans/Representative Sampling/Stratified Sampling/strata}) to a fixed percentage of the number of units of the subpopulation.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Steps:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item The population is then divided into $n$ groups such that the order in units is maintained.
+
+        \item From $k$th group/ strata one unit is randomly collected with probability $\dfrac{n_h}{N_h}$, when each group contains $n_h$ units.\\
+        Unlike systematic sampling, random unit is collected instead of $p$th unit.
+    \end{enumerate}
+
+    \item This form of stratified sampling is not identical to systematic sampling (although this method of stratified sampling is sometimes referred to as systematic sampling).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Stratified sampling may lead to samples that are not possible with systematic sampling, but it does not produce all possible samples from simple random sampling.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $
+        K_h = \binom{N_h}{n_h} = \dfrac{N_h!}{n_h!(N_h-n_h)!}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The number of possible samples: $
+        K_S
+        = \dprod_{h=1}^{M} \dfrac{N_h!}{n_h!(N_h-n_h)!}
+        = \dprod_{h=1}^{M} K_h
+    $ 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The probability of collecting any of the $K_S$ samples $
+        = \dfrac{1}{K_S}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The probability of collecting a unit now depends on the stratum the unit is part of.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If $
+        \dfrac{n_i}{N_i} = \dfrac{n_j}{N_j} 
+        \hspace{0.3cm} 
+        \forall 
+        \hspace{0.3cm} 
+        i,j \in \dParenBrac{1,\cdots,M} 
+    $, then its called \textbf{Proportional Stratified Sampling}.\label{Sampling Plans/Representative Sampling/Stratified Sampling/Proportional Stratified Sampling}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\end{enumerate}
+
+
+\vspace{0.5cm}
+\textbf{Example}: sample $10\%$ from each sub-population
+
+
+\subsection{population stratum}
+\begin{enumerate}[itemsep=0.2cm]
+    \item population stratum mean: $
+        \mu_h = \dfrac{1}{N_h} \ \dsum_{i=1}^{N_h} \ x_{hi}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item population stratum variance: $
+        \sigma^2_h = \dfrac{1}{N_h} \ \dsum_{i=1}^{N_h} \ (x_{hi} - \mu_h)^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\end{enumerate}
+
+
+
+\subsection{population}
+\begin{enumerate}[itemsep=0.2cm]
+    \item population mean: $
+        \mu
+        = \dfrac{1}{N} \ \dsum_{h=1}^M \ \dsum_{i=1}^n\  x_{hi}
+        = \dsum_{h=1}^M \ w_h\mu_h
+    $
+    \hfill
+    $\dParenBrac{\ w_h = \dfrac{N_h}{N} \ }$
+    \hfill
+    $\dParenBrac{\ \dsum_{h=1}^M \ w_h = 1 \ }$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item population variance: $
+        \sigma^2
+        \equiv \dfrac{1}{N} \ \dsum_{h=1}^M \ \dsum_{i=1}^{N_h} (x_{hi} - \mu)^2
+        = \dsum_{h=1}^M w_h \sigma_h^2 + \dsum_{h=1}^M w_h (\mu_h - \mu)^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item (\textbf{within (strata) variances}) the first part represents a weighted mean of the within strata variances
+        
+        \item (\textbf{between (strata) variances}) the second part represents a weighted mean of the squared distances of the strata means to the population mean
+    \end{enumerate}
+
+\end{enumerate}
+
+
+\subsection{sample stratum}
+\begin{enumerate}[itemsep=0.2cm]
+    \item sample stratum mean: $
+        \bar{x}_{h,k} = \dfrac{1}{n_h} \ \dsum_{i \ \in \ S_{h,k}} \ x_{hi}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item sample stratum variance: $
+        s^2_{h,k} = \dfrac{1}{n_h-1} \ \dsum_{i \ \in \ S_{h,k}} \ (x_{hi} - \bar{x}_{h,k})^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The bias and standard error within each stratum $h$ now follow the theory of simple random sampling.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item bias of $\bar{x}_{h,k}$ = 0 in stratum $h$ is zero for the stratum mean $\mu_h$
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Estimation for population mean}
+\begin{enumerate}[itemsep=0.3cm]
+    \item Estimator: $
+        \dsum_{h=1}^{M}
+        \dParenBrac{\dfrac{N_h}{N}}
+        \dParenBrac{\dfrac{1}{n_h} \dsum_{i=1}^{n_h} x_{hi}}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item Bias: $0$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item MSE: $
+        \dsum_{h=1}^{M}
+        \dSquareBrac{
+            \dParenBrac{
+                \dfrac{
+                    N_h^2\ (N_h - n_h)
+                }{
+                    n_h\ (N_h-1)\ N^2
+                }
+            } \sigma_h^2
+        }
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+\subsection{Estimation for sample stratum SE}
+\begin{enumerate}[itemsep=0.3cm]
+    \item $
+        \hat{SE}(\bar{x}_{h,k})
+        = \sqrt{\dfrac{1 - f_h}{n_h}} s_{h,k}
+    $
+    \hfill
+    $f_h = \dfrac{n_h}{N_h}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+

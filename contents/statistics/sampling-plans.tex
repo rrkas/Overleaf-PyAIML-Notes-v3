@@ -307,6 +307,11 @@
             $
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+            \item $
+                \mathbb{E}(cT) = c\ \mathbb{E}(T)
+                \hspace{1cm} \forall\  c \in \mathbb{R}
+            $
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
         \end{enumerate}
         \vspace{0.15cm}
@@ -386,7 +391,7 @@
 
 
 
-
+\clearpage
 \section{Measures of closeness}\label{Sampling Plans/Measures of closeness}
 
 
@@ -524,75 +529,8 @@ $
 
     \item If the SE is small, the variability of the $\hat{\theta}_k$’s around $\mathbb{E}(T)$ is small. 
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
 
-
-
-
-
-
-
-
-
-
-\section{Non-representative Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Non-representative Sampling}
-
-\begin{enumerate}
-    \item Although these sampling methods are frequently in use, it is strongly recommended not to apply these methods, unless knowledge is available on how to adjust or correct the sample for inferential purposes.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item These have the risk that some units are much more likely to be included in the sample than others, which can make statistics computed on the sample data bad estimates for the population parameters of interest.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item With non-representative sampling some units are not only more likely to be included in the sample, we also do not actually know how likely units were included. 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Even if we wanted to, we could not control for these systematic differences between units.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-\subsection{Convenience Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Non-representative Sampling/Convenience Sampling}
-
-\begin{enumerate}
-    \item Convenience sampling collects only units from the population that can be easily obtained.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item This may provide a biased sample, as it represents only one small part or time window of the whole processing window for a batch of products. The term \textbf{bias}\label{Sampling Plans/Non-representative Sampling/Convenience Sampling/bias} indicates that we obtain the value of interest with a systematic mistake.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item  Convenience sampling is often justified by using the argument of population homogeneity. This insinuates that either the population units are not truly different or the process produces the population of units in random order. 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-
-
-\subsection{Haphazard Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Non-representative Sampling/Haphazard Sampling}
-
-\begin{enumerate}
-    \item Haphazard sampling is often believed to be an excellent way of collecting samples, because it gives a feeling or the impression that each unit was collected completely at random.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Despite the feeling of randomness when performing haphazard sampling, often the resulting sample is not truly random.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-
-\subsection{Purposive Sampling/ Judgmental Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Non-representative Sampling/Purposive Sampling or Judgmental Sampling}
-
-\begin{enumerate}
-    \item Purposive sampling or judgmental sampling tries to sample units for a specific purpose. 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-    \item This means that the collection of units is focused on one or more particular characteristics and hence it implies that only units that are more alike are sampled.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item This way of sampling is strongly related to the definition of the population, since deliberately excluding units from the sample is analogous to limiting the population of interest.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Purposive sampling may be useful, but it is limited since it does not allow us in general to make statements about the whole population, and at best only about a limited part of the population (although we may not be sure either).
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item It does most likely produce a biased sample with respect to the complete population.
+    \item $SE(cT ) = c\ SE(T) \hspace{2cm} \forall\  c \in \mathbb{R}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
@@ -603,508 +541,84 @@ $
 
 
 
+\section{Types of Samplings}
 
+\begin{enumerate}[itemsep=0.5cm]
 
-
-
-
-\section{Representative Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Representative Sampling}
-
-\begin{enumerate}
-    \item We sample units in such a way that we do know how likely units are to be included in the sample (even if they will be different from unit to unit).
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Random sampling is a sampling method that uses a random mechanism. 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\item \textbf{Non-representative Sampling} \label{Sampling Plans/Non-representative Sampling}
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \begin{enumerate}
-        \item The probability of each unit in the population of becoming part of the sample is both positive and known.
+        \item Although these sampling methods are frequently in use, it is strongly recommended not to apply these methods, unless knowledge is available on how to adjust or correct the sample for inferential purposes.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-
-        
-    \end{enumerate}
-\end{enumerate}
-
-
-
-\subsection{Simple Random Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Representative Sampling/Simple Random Sampling}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l l}
-        $N$ & population size \\
-        $n$ & sample size \\
-        $K$ & number of possible samples \\
-        $k$ & sample index ($ k \in \dParenBrac{1,\cdots,K}$) \\
-        $S_k$ & sample\\
-    \end{tabular}
-\end{table}
-
-\begin{enumerate}[itemsep=0.2cm]
-    \item Implicitly assume that there is no particular group structure present in the population.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     
-    \item Simple random sampling is a way of collecting samples such that each unit from the population has the exact same probability of becoming part of the sample. 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
+        \item These have the risk that some units are much more likely to be included in the sample than others, which can make statistics computed on the sample data bad estimates for the population parameters of interest.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     
-    \item Simple random sampling is a conceptually easy method of forming random samples but it can prove hard in practice.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Simple random sampling is frequently combined with other choices or settings (see stratified and cluster sampling).
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Number of unique samples $
-        = K 
-        = \dfrac{N!}{n!(N-n)!}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item the probability of collecting sample $S_k$, using sequential sampling $
-        = \dfrac{1}{K} 
-        = \dfrac{n!(N-n)!}{N!}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The probability that a specific unit is part of the sample $
-        = \dfrac{n}{N}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The probability that a specific unit is \textbf{not} contained in the sample $
-        = 1 - \dfrac{n}{N}
-        = \dfrac{N-n}{N}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The number of samples that does \textbf{not} contain a specific unit $
-        = \dfrac{(N - 1)!}{n!(N - 1 - n)!}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Number of samples that contain certain unit $i$ = $\dfrac{nK}{N}$ 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \\
-    $
-        \Rightarrow
-        \dsum_{k=1}^{K}\ \dsum_{i \in S_k} x_i
-        = \dfrac{nK}{N}\dsum_{i=1}^{N} x_i
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Population Variance: $
-        \sigma^2
-        = \dfrac{1}{N} \dsum_{i=1}^N (x_i-\mu)^2
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Estimator for population mean: $
-        T 
-        = \bar{x}
-        = \dfrac{1}{n} \dsum_{i=1}^n x_i
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}[itemsep=0.2cm]
-        \item Bias: $0$
+        \item With non-representative sampling some units are not only more likely to be included in the sample, we also do not actually know how likely units were included. 
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-        \item $
-            MSE(\bar{x}_k)
-            = \dfrac{\sigma^2 }{n}
-            \dParenBrac{\dfrac{N}{N-1}}
-            \dParenBrac{1-\dfrac{n}{N}}
-        $
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        \\
-        MSE shows that it becomes equal to zero when the sample size $n$ becomes equal to the population size $N$.
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        \\
-        The MSE will not become zero when the estimator is biased, even if the sample size is equal to the population size.
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
-
-        \item $
-            \mathbb{E}(T) 
-            = \dfrac{1}{K}\dsum_{k=1}^{K} \bar{x}_k
-            = \dfrac{1}{nK}\dsum_{k=1}^{K}\ \dsum_{i \in S_k} x_i
-            = \dfrac{1}{N}\dsum_{i=1}^{N} x_i
-            = \mu
-        $
+    
+        \item Even if we wanted to, we could not control for these systematic differences between units.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item \textbf{Disadvantage}: When the numbers of units across these subpopulations are (substantially) different, simple random may not collect units from each subgroup.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-\end{enumerate}
-
-\vspace{0.5cm}
-\textbf{Example}:
-\begin{enumerate}[itemsep=0.3cm]
-    \item[] $N = 20,\ n = 5$
-
-    \item[] $K = \dfrac{20!}{5!\cdot 15!}=15504$
-
-    
-\end{enumerate}
-
-
-
-
-
-\subsection{Systematic Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Representative Sampling/Systematic Sampling}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l l}
-        $N$ & population size ($N=nm$)\\
-        $n$ & number of groups \\
-        $m$ & number of units in each group = number of possible samples ($S_k$)\\
-        $k$ & sample index ($k \in \dParenBrac{1,\cdots,m}$) \\
-        $S_k$ & sample\\
-    \end{tabular}
-\end{table}
-
-\begin{enumerate}[itemsep=0.2cm]
-    \item Implicitly assume that there is no particular group structure present in the population.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Steps:
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}[itemsep=0.1cm]
-        \item First the population should be divided into $n$ groups and the order of the units (if Some order exists) should be maintained (or otherwise fix the order).\\
-        Each group consists of $m$ units ordered from $1$ to $m$ in each group.
-
-        \item Collect $p$th unit ($p \in \dParenBrac{1,\cdots,m}$) from all $n$ groups with probability of $\dfrac{1}{m}$\\
-        (each unit in the population still has the same probability of being collected)\\
-        Total units collected $= n$\\
-        So, total number of samples $= m$ only
-
-    \end{enumerate}
-
-    \item Estimator for population mean: $
-        \dfrac{1}{n} \dsum_{i=1}^n x_i
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}[itemsep=0.2cm]
-        \item Bias: $0$
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-        \item MSE: $
-            \sigma^2 -
-            \dfrac{1}{N}
-            \dsum_{h=1}^{n}
-            \dsum_{i=1}^{m}
-            (x_{hi} - \bar{x}_h)^2
-        $
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \end{enumerate}
-
-    \item The possible samples from systematic sampling are quite different from the set of samples that can be obtained with simple random sampling.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The most important advantage of systematic sampling over simple random sampling is the ease with which the sample may be collected.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item A clear \textbf{disadvantage} of systematic sampling is that the “period” for systematic sampling may coincide with particular patterns in the process or population.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item \textbf{Disadvantage}: When the numbers of units across these subpopulations are (substantially) different, systematic sampling may not collect units from each subgroup.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item TODO? Systematic Sampling samples ($S_1,\cdots,S_m$) are subset of Simple Random Sampling samples ($S_1,\cdots,S_K$).
-\end{enumerate}
-
-\vspace{0.5cm}
-\textbf{Example}:
-\begin{enumerate}[itemsep=0.3cm]
-    \item[] $N = 20,\ n = 5$
-
-    \item[] $m = \dfrac{20}{5}=4$
-
-    
-\end{enumerate}
-
-
-
-
-
-
-\subsection{Stratified Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Representative Sampling/Stratified Sampling}
-
-\begin{customArrayStretch}{1.3}
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l l l}
-        $N$ & total population size & \\
-        $n$ & total sample size & \\
-        $M$ & number of sub-populations & \\
-        $N_k$ & $k$th sub-population size & $\tsum_{k=1}^{M} N_k = N$ \\
-        $n_k$ & sample size from $k$th sub-population & $\tsum_{k=1}^{M} n_k = n$ \\
-        $K_S$ & number of possible samples \\
-    \end{tabular}
-\end{table}
-\end{customArrayStretch}
-
-\begin{enumerate}[itemsep=0.3cm]
-    \item Stratified sampling is used to accommodate the issue of missing out on sub-populations during sampling by setting the sample size for each subpopulation (often called \textbf{strata}\label{Sampling Plans/Representative Sampling/Stratified Sampling/strata}) to a fixed percentage of the number of units of the subpopulation.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Steps:
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \vspace{0.2cm}
+    \textbf{SEE}:
     \begin{enumerate}
-        \item The population is then divided into $n$ groups such that the order in units is maintained.
-
-        \item From $k$th group/ strata one unit is randomly collected with probability $\dfrac{n_k}{N_k}$, when each group contains $n_k$ units.\\
-        Unlike systematic sampling, random unit is collected instead of $p$th unit.
+        \item \fullref{Sampling Plans/Non-representative Sampling/Convenience Sampling}
+        \item \fullref{Sampling Plans/Non-representative Sampling/Haphazard Sampling}
+        \item \fullref{Sampling Plans/Non-representative Sampling/Purposive Sampling or Judgmental Sampling}
     \end{enumerate}
 
-    \item This form of stratified sampling is not identical to systematic sampling (although this method of stratified sampling is sometimes referred to as systematic sampling).
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Stratified sampling may lead to samples that are not possible with systematic sampling, but it does not produce all possible samples from simple random sampling.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The number of possible samples: $
-        K_S
-        = \dprod_{k=1}^{M} \dfrac{N_k!}{n_k!(N_k-n_k)!}
-    $ 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The probability of collecting any of the $K_S$ samples $
-        = \dfrac{1}{K_S}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The probability of collecting a unit now depends on the stratum the unit is part of.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item If $
-        \dfrac{n_i}{N_i} = \dfrac{n_j}{N_j} 
-        \hspace{0.3cm} 
-        \forall 
-        \hspace{0.3cm} 
-        i,j \in \dParenBrac{1,\cdots,M} 
-    $, then its called \textbf{Proportional Stratified Sampling}.\label{Sampling Plans/Representative Sampling/Stratified Sampling/Proportional Stratified Sampling}
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Estimator for population mean: $
-        \dsum_{h=1}^{M}
-        \dParenBrac{\dfrac{N_h}{N}}
-        \dParenBrac{\dfrac{1}{n_h} \dsum_{i=1}^{n_h} x_{hi}}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}[itemsep=0.2cm]
-        \item Bias: $0$
+\item \textbf{Representative Sampling} \label{Sampling Plans/Representative Sampling}
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item We sample units in such a way that we do know how likely units are to be included in the sample (even if they will be different from unit to unit).
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-        \item MSE: $
-            \dsum_{h=1}^{M}
-            \dSquareBrac{
-                \dParenBrac{
-                    \dfrac{
-                        N_h^2\ (N_h - n_h)
-                    }{
-                        n_h\ (N_h-1)\ N^2
-                    }
-                } \sigma_h^2
-            }
-        $
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \end{enumerate}
-
-\end{enumerate}
-
-
-\vspace{0.5cm}
-\textbf{Example}: sample $10\%$ from each sub-population
-
-
-
-
-
-
-
-\subsection{Cluster Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Representative Sampling/Cluster Sampling}
-
-\begin{enumerate}[itemsep=0.2cm]
-    \item Cluster sampling involves random sampling of groups or clusters of units in the population.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Cluster sampling can be less representative than sampling units directly.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Cluster sampling introduces a specific structure in the sample which should also be addressed when the data is being analyzed. 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     
-    \item The cluster structure introduces two sources of variation in the data being collected. These sources of variation need to be quantified to make proper statements on the population of interest.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}[itemsep=0.1cm]
-        \item \textbf{Within-Cluster Variation}:\label{Sampling Plans/Representative Sampling/Cluster Sampling/Within-Cluster Variation}
-        \hfill \cite{common/online/chatgpt}
+        \item Random sampling is a sampling method that uses a random mechanism. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
         \begin{enumerate}
-            \item This refers to the differences among units within the same cluster.
-            \hfill \cite{common/online/chatgpt}
-
-            \item This variation is often smaller compared to between-cluster variation because individuals within a cluster tend to be more similar.
-            \hfill \cite{common/online/chatgpt}
-
+            \item The probability of each unit in the population of becoming part of the sample is both positive and known.
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
         \end{enumerate}
-
-        \item \textbf{Between-Cluster Variation}:\label{Sampling Plans/Representative Sampling/Cluster Sampling/Between-Cluster Variation}
-        \hfill \cite{common/online/chatgpt}
-        \begin{enumerate}
-            \item This refers to the differences between clusters.
-            \hfill \cite{common/online/chatgpt}
-
-            \item This variation is often larger in cluster sampling because different clusters may have distinct characteristics.
-            \hfill \cite{common/online/chatgpt}
-
-        \end{enumerate}
-        
     \end{enumerate}
 
-    \item \textbf{Single-Stage Cluster Sampling}\label{Sampling Plans/Representative Sampling/Cluster Sampling/Single-Stage Cluster Sampling}: A single-stage cluster sample uses a random sample of the clusters and then all units from these clusters are selected. 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \vspace{0.2cm}
+    \textbf{SEE}:
     \begin{enumerate}
-        \item \textbf{cluster sizes are not all equal}:
-        \\
-        Estimator for population mean: $
-            \dsum_{h=1}^{m}
-            \dParenBrac{
-                \dfrac{N_h}{
-                    \tsum_{h=1}^{m} N_h
-                }
-            }
-            \bar{x}_h
-        $
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        \begin{enumerate}[itemsep=0.25cm]
-            \item Bias: $\geq 0$ (bias is close to zero but positive)
-            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-            \item MSE: $
-                \sim 
-                \dfrac{M^2}{m\ (M-1)\ N^2}
-                \dParenBrac{1 - \dfrac{m}{M}}
-                \dsum_{h=1}^M N_h^2\ (\mu_h - \mu)^2
-            $
-            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        \end{enumerate}
-
-
-        \item \textbf{cluster sizes are all equal}:
-        \\
-        Estimator for population mean: $
-            \dfrac{M}{m\ N}
-            \dsum_{h=1}^{m}
-            N_h \bar{x}_h
-        $
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        \begin{enumerate}[itemsep=0.25cm]
-            \item Bias: $0$
-            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-            \item MSE: $
-                \dfrac{M^2}{m\ (M-1)\ N^2}
-                \dParenBrac{1 - \dfrac{m}{M}}
-                \dsum_{h=1}^M \dParenBrac{N_h\mu_h - \dfrac{N\mu}{M}}^2
-            $
-            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        \end{enumerate}
+        \item \fullref{Sampling Plans/Representative Sampling/Simple Random Sampling}
+        \item \fullref{Sampling Plans/Representative Sampling/Systematic Sampling}
+        \item \fullref{Sampling Plans/Representative Sampling/Stratified Sampling}
+        \item \fullref{Sampling Plans/Representative Sampling/Cluster Sampling}
     \end{enumerate}
-
-
-    \item \textbf{Two-Stage Cluster Sampling}\label{Sampling Plans/Representative Sampling/Cluster Sampling/Two-Stage Cluster Sampling}: In a two-stage cluster sample, the units from the sampled clusters are also randomly sampled instead of taking all units from the cluster.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}
-        \item \textbf{cluster sizes are not all equal}:
-        \\
-        Estimator for population mean: $
-            \dsum_{h=1}^{m}
-            \dParenBrac{
-                \dfrac{N_h}{
-                    \tsum_{h=1}^{m} N_h
-                }
-            }
-            \bar{x}_h
-        $
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        \begin{enumerate}[itemsep=0.25cm]
-            \item Bias: $\geq 0$ (bias is close to zero but positive)
-            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-            \item MSE: $
-                \sim 
-                \dfrac{M}{m\ N^2}
-                \dSquareBrac{
-                    \dParenBrac{1 - \dfrac{m}{M}}
-                    \dfrac{1}{M-1}
-                    \dsum_{h=1}^{M} N_h^2\ (\mu_h - \mu)^2
-                    + \dsum_{h=1}^{M} \dParenBrac{
-                        \dfrac{N_h^2\ (N_h-n_h)}{n_h\ (N_h-1)}
-                        \sigma_h^2
-                    }
-                }
-            $
-            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        \end{enumerate}
-
-
-        \item \textbf{cluster sizes are all equal}:
-        \\
-        Estimator for population mean: $
-            \dfrac{M}{m\ N}
-            \dsum_{h=1}^{m}
-            N_h \bar{x}_h
-        $
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        \begin{enumerate}[itemsep=0.25cm]
-            \item Bias: $0$
-            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-            \item MSE: $
-                \dfrac{M}{m\ N^2}
-                \dSquareBrac{
-                    \dParenBrac{1 - \dfrac{m}{M}}
-                    \dfrac{1}{M-1}
-                    \dsum_{h=1}^{M} \dParenBrac{N_h\mu_h - \dfrac{N\mu}{M}}^2
-                    + \dsum_{h=1}^{M} \dParenBrac{
-                        \dfrac{N_h^2\ (N_h-n_h)}{n_h\ (N_h-1)}
-                    \sigma_h^2
-                    }
-                }
-            $
-            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        \end{enumerate}
-    \end{enumerate}
-
-
-    \item \textbf{Multi-Stage Cluster Sampling}\label{Sampling Plans/Representative Sampling/Cluster Sampling/Multi-Stage Cluster Sampling}: It is similar to two-stage cluster sampling, but multiple number of stages based on the application.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The sampling units for the \textit{first stage} are referred to as \textbf{primary cluster units}\label{Sampling Plans/Representative Sampling/Cluster Sampling/primary cluster units}.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Sampling these different levels of clusters can be performed using simple random sampling, systematic sampling, or even stratified sampling, if certain cluster are put together on certain criteria.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Cluster sampling is in a way related to stratified sampling (clusters may be viewed as strata).
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Since we deal with multiple levels of hierarchical clusters, the calculation of the probability of collecting one unit from the population and the probability of collecting one of the many sample sets are complex.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
+\clearpage
+\input{contents/statistics/sampling-plans-subsections/Convenience-Sampling}
+\input{contents/statistics/sampling-plans-subsections/Haphazard-Sampling}
+\input{contents/statistics/sampling-plans-subsections/Purposive-Sampling}
+
+\clearpage
+\input{contents/statistics/sampling-plans-subsections/Simple-Random-Sampling}
+
+\clearpage
+\input{contents/statistics/sampling-plans-subsections/Systematic-Sampling}
+
+\clearpage
+\input{contents/statistics/sampling-plans-subsections/Stratified-Sampling}
+
+\clearpage
+\input{contents/statistics/sampling-plans-subsections/Cluster-Sampling}
 
 
 
 
 
 
-
-
+\clearpage
 \section{Important Notes}
 
 \subsection{Haphazard Sampling VS Random Sampling \cite{common/online/chatgpt}}\label{Sampling Plans/Important Notes/Haphazard Sampling VS Random Sampling}

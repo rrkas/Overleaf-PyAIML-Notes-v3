@@ -1,0 +1,184 @@
+\section{Cluster Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Representative Sampling/Cluster Sampling}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item Cluster sampling involves random sampling of groups or clusters of units in the population.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Cluster sampling can be less representative than sampling units directly.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Cluster sampling introduces a specific structure in the sample which should also be addressed when the data is being analyzed. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item The cluster structure introduces two sources of variation in the data being collected. These sources of variation need to be quantified to make proper statements on the population of interest.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}[itemsep=0.1cm]
+        \item \textbf{Within-Cluster Variation}:\label{Sampling Plans/Representative Sampling/Cluster Sampling/Within-Cluster Variation}
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item This refers to the differences among units within the same cluster.
+            \hfill \cite{common/online/chatgpt}
+
+            \item This variation is often smaller compared to between-cluster variation because individuals within a cluster tend to be more similar.
+            \hfill \cite{common/online/chatgpt}
+
+        \end{enumerate}
+
+        \item \textbf{Between-Cluster Variation}:\label{Sampling Plans/Representative Sampling/Cluster Sampling/Between-Cluster Variation}
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item This refers to the differences between clusters.
+            \hfill \cite{common/online/chatgpt}
+
+            \item This variation is often larger in cluster sampling because different clusters may have distinct characteristics.
+            \hfill \cite{common/online/chatgpt}
+
+        \end{enumerate}
+        
+    \end{enumerate}
+
+    \item The sampling units for the \textit{first stage} are referred to as \textbf{primary cluster units}\label{Sampling Plans/Representative Sampling/Cluster Sampling/primary cluster units}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Sampling these different levels of clusters can be performed using simple random sampling, systematic sampling, or even stratified sampling, if certain cluster are put together on certain criteria.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Cluster sampling is in a way related to stratified sampling (clusters may be viewed as strata).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Since we deal with multiple levels of hierarchical clusters, the calculation of the probability of collecting one unit from the population and the probability of collecting one of the many sample sets are complex.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+\subsection{Single-Stage Cluster Sampling}\label{Sampling Plans/Representative Sampling/Cluster Sampling/Single-Stage Cluster Sampling}
+
+A single-stage cluster sample uses a random sample of the clusters and then all units from these clusters are selected. 
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{cluster sizes are not all equal}
+    
+Estimator for population mean: $
+    \dsum_{h=1}^{m}
+    \dParenBrac{
+        \dfrac{N_h}{
+            \tsum_{h=1}^{m} N_h
+        }
+    }
+    \bar{x}_h
+$
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\begin{enumerate}[itemsep=0.25cm]
+    \item Bias: $\geq 0$ (bias is close to zero but positive)
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item MSE: $
+        \sim 
+        \dfrac{M^2}{m\ (M-1)\ N^2}
+        \dParenBrac{1 - \dfrac{m}{M}}
+        \dsum_{h=1}^M N_h^2\ (\mu_h - \mu)^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\subsubsection{cluster sizes are all equal}
+
+Estimator for population mean: $
+    \dfrac{M}{m\ N}
+    \dsum_{h=1}^{m}
+    N_h \bar{x}_h
+$
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\begin{enumerate}[itemsep=0.25cm]
+    \item Bias: $0$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item MSE: $
+        \dfrac{M^2}{m\ (M-1)\ N^2}
+        \dParenBrac{1 - \dfrac{m}{M}}
+        \dsum_{h=1}^M \dParenBrac{N_h\mu_h - \dfrac{N\mu}{M}}^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+\subsection{Two-Stage Cluster Sampling}\label{Sampling Plans/Representative Sampling/Cluster Sampling/Two-Stage Cluster Sampling}
+
+In a two-stage cluster sample, the units from the sampled clusters are also randomly sampled instead of taking all units from the cluster.
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{cluster sizes are not all equal}
+Estimator for population mean: $
+    \dsum_{h=1}^{m}
+    \dParenBrac{
+        \dfrac{N_h}{
+            \tsum_{h=1}^{m} N_h
+        }
+    }
+    \bar{x}_h
+$
+
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\begin{enumerate}[itemsep=0.25cm]
+    \item Bias: $\geq 0$ (bias is close to zero but positive)
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item MSE: $
+        \sim 
+        \dfrac{M}{m\ N^2}
+        \dSquareBrac{
+            \dParenBrac{1 - \dfrac{m}{M}}
+            \dfrac{1}{M-1}
+            \dsum_{h=1}^{M} N_h^2\ (\mu_h - \mu)^2
+            + \dsum_{h=1}^{M} \dParenBrac{
+                \dfrac{N_h^2\ (N_h-n_h)}{n_h\ (N_h-1)}
+                \sigma_h^2
+            }
+        }
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\subsubsection{cluster sizes are all equal}
+Estimator for population mean: $
+    \dfrac{M}{m\ N}
+    \dsum_{h=1}^{m}
+    N_h \bar{x}_h
+$
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\begin{enumerate}[itemsep=0.25cm]
+    \item Bias: $0$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item MSE: $
+        \dfrac{M}{m\ N^2}
+        \dSquareBrac{
+            \dParenBrac{1 - \dfrac{m}{M}}
+            \dfrac{1}{M-1}
+            \dsum_{h=1}^{M} \dParenBrac{N_h\mu_h - \dfrac{N\mu}{M}}^2
+            + \dsum_{h=1}^{M} \dParenBrac{
+                \dfrac{N_h^2\ (N_h-n_h)}{n_h\ (N_h-1)}
+            \sigma_h^2
+            }
+        }
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\subsection{Multi-Stage Cluster Sampling}\label{Sampling Plans/Representative Sampling/Cluster Sampling/Multi-Stage Cluster Sampling}
+It is similar to two-stage cluster sampling, but multiple number of stages based on the application.
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+
+
+
