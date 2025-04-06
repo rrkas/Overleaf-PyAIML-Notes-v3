@@ -8,17 +8,11 @@
 
 \input{structure}
 
-
-\title{\bookname}
-\author{\authorname}
-\date{This PDF Generated at \\ \textit{\today} at \textbf{\currenttime\ IST}}
-
 \begin{document}
 
 
-
 \frontmatter
-\maketitle
+\input{__extra-pages__/cover-page}
 
 %------------------------------
 %	  TABLE OF CONTENTS
@@ -39,6 +33,7 @@
 \lstlistoflistings
 
 \cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+
 
 
 %----------------
@@ -74,9 +69,9 @@
 
 
 \partition{Artificial Intelligence (AI)}
-\input{contents/artificial-intelligence/ai-intro}
-\input{contents/artificial-intelligence/ai-agents}
-
+\input{contents/artificial-intelligence/intro}
+\input{contents/artificial-intelligence/agents}
+\input{contents/artificial-intelligence/agent-programs}
 
 
 
@@ -91,6 +86,8 @@
 
 \label{MMLastPage}
 \cleardoublepage
+
+
 
 %-------------------------
 %	Additional pages
@@ -108,19 +105,21 @@
 \defbibheading{bibempty}{\chapter*{References}}
 
 
-% \twocolumn
-\newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm}
-\setlength{\columnsep}{15pt}
-\begin{multicols}{2}
-
+\clearpage
 {
+    % Save original geometry and fancyhdr settings
+    \newgeometry{left=1cm, right=1cm, top=1cm, bottom=2cm} % Leave bottom margin large enough for footer
+
+    \setlength{\columnsep}{15pt}
+    \begin{multicols}{2}
+
     \raggedright
-    \printbibliography[heading=bibempty] % No extra heading inside columns
+    \printbibliography[heading=bibempty]
+
+    \end{multicols}
+
+    \restoregeometry
+    \thispagestyle{fancy} % Restore footer on this page
 }
-
-\end{multicols}
-\setlength{\columnsep}{10pt}
-\restoregeometry
-
 
 \end{document}

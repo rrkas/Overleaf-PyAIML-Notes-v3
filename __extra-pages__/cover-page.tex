@@ -1,0 +1,62 @@
+\begin{titlepage}
+
+\newgeometry{left=0cm, right=0cm, top=0cm, bottom=0cm}
+
+\begin{tikzpicture}[remember picture, overlay]
+    \draw[line width=2pt] 
+        ([xshift=1cm,yshift=-1cm]current page.north west) 
+        rectangle 
+        ([xshift=-1cm,yshift=1cm]current page.south east);
+\end{tikzpicture}
+
+
+\begin{center}
+
+    
+\vspace*{2.5cm}
+{\Huge \bookname} \\[0.3cm]
+{\Large With \textbf{Python 3.x} implementations}
+
+\vfill
+
+\includegraphics[width=5cm, height=5cm, keepaspectratio]{images/logo.jpg}
+
+% \vspace{2cm}
+\vfill
+
+
+\RaggedRight
+\hspace{1.5cm}
+{
+\begin{minipage}{12cm}
+{\fontsize{19}{19}\selectfont \authorname} \\[0.2cm]
+\fontsize{15}{15}\selectfont 
+\begin{tabular}{l l}
+    \textsc{Mail}       & : \href{mailto:rrka79wal@gmail.com}{rrka79wal@gmail.com}  \\
+
+    \textsc{WhatsApp}   & : \href{https://wa.me/+919658600961?text=Hello}{+91-9658600961}  \\
+
+    \textsc{Mobile}     & : \href{tel:+919658600961}{+91-9658600961}/ 
+                        \href{tel:+917978928490}{+91-7978928490} \\
+
+\end{tabular}
+\end{minipage}
+}
+
+\vspace{1cm}
+\centering
+{
+    \fontsize{14}{14}\selectfont  
+    This PDF was generated at \textit{\today} at \textbf{\currenttime\ IST}
+}
+
+\vspace{1cm}
+
+
+\end{center}
+
+
+
+\restoregeometry
+
+\end{titlepage}
