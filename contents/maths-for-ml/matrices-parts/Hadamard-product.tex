@@ -1,0 +1,32 @@
+\subsection{Hadamard product ( $A \circ B$ OR $A \ast B$ ) \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
+
+element-wise multiplication: For $A,B \in \mathbb{R}^{m\times n}$
+\\
+$
+\hfill
+    C = A \circ B \in \mathbb{R}^{m\times n}
+$
+\hfill
+$
+    c_{ij} = a_{ij}\ b_{ij}
+\hfill
+$
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Hadamard product - numPy
+]
+import numpy as np
+import random
+
+m,n = 4,3
+
+A = np.random.randint(-10, 10, size=(m,n))
+B = np.random.randint(-10, 10, size=(m,n))
+
+C = A * B
+
+print("A:", A)
+print("B:", B)
+print("C:", C)
+\end{lstlisting}

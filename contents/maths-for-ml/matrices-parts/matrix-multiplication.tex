@@ -1,0 +1,93 @@
+\subsection{Matrix Multiplication ( $AB$ OR $A @ B$ OR $A\cdot B$ ) \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
+
+For matrices $A \in \mathbb{R}^{m\times n}$, $B \in \mathbb{R}^{n\times k}$ Note the size of the , the elements $c_{ij}$ of the product matrices. $C = AB \in \mathbb{R}^{m\times k}$ are computed as:
+
+\vspace{0.5cm}
+\hfill
+$
+    c_{ij} = \dsum_{l=1}^n a_{il}\ b_{lj}
+$
+\hfill
+$
+    i = 1,\cdots,m
+    \hspace{1cm}
+    j = 1,\cdots,k
+$
+\hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Matrix Multiplication - numPy
+]
+import numpy as np
+import random
+
+m,n,k = 4,3,5
+
+A = np.random.randint(-10, 10, size=(m, n))
+B = np.random.randint(-10, 10, size=(n, k))
+
+C1 = A @ B
+C2 = np.matmul(A, B)
+C3 = np.dot(A, B)
+
+print("A:", A)
+print("B:", B)
+print("C1:", C1)
+print("C2:", C2)
+print("C3:", C3)
+print(np.all(C1 == C2), np.all(C1 == C3))
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item To compute element $c_{ij}$ we multiply the elements of the $i$th row of $A$ with the $j$th column of $B$ and sum them up.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Matrices can only be multiplied if their “neighboring” dimensions match.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    \hfill
+    $
+        \underset{n\times k}{\underbrace{A}}\
+        \underset{k\times m}{\underbrace{B}}
+        =
+        \underset{n\times m}{\underbrace{C}}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    The product $BA$ is not defined if $m \neq n$ since the neighboring dimensions do not match.
+
+    \item Matrix multiplication is \textbf{not} defined as an element-wise operation on matrix elements, i.e., 
+    \\
+    $c_{ij} \neq a_{ij}\ b_{ij}$ (even if the size of $A$, $B$ was chosen appropriately).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+\subsubsection{Properties}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item matrix multiplication is \textbf{not} commutative: $AB \neq BA$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

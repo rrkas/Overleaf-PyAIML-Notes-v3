@@ -1,0 +1,60 @@
+\subsection{Matrix Inverse ( $A^{-1}$ ) \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
+
+Consider a square matrix $A \in \mathbb{R}^{n\times n}$. Let matrix $B \in \mathbb{R}^{n\times n}$ have the property that $AB = I_n = BA$. $B$ is called the inverse of $A$ and denoted by $A^{-1}$.
+\hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Matrix Inverse - numPy
+]
+import numpy as np
+import random
+
+n = 4
+
+A = np.random.randint(-10, 10, size=(n,n)).astype(float)
+A_inv = np.linalg.inv(A)
+
+print("A:", A)
+print("A_inv:", A_inv)
+print(A @ A_inv)
+print(np.allclose((A @ A_inv) , np.eye(n, n)))
+\end{lstlisting}
+
+
+
+\subsubsection{Properties}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item \textbf{Not} every matrix $A$ possesses an inverse $A^{-1}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Only square matrices might have inverse. Non-square matrices \textbf{don't} have inverse.
+
+    \item When the matrix inverse exists, it is \textbf{unique}.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item $
+        A = \begin{bmatrix}
+            a_{11} & a_{12} \\
+            a_{21} & a_{22} \\
+        \end{bmatrix} 
+        \in \mathbb{R}^{2\times 2}
+    $
+    \hspace{1cm} and \hspace{1cm}
+    $a_{11}\ a_{22} - a_{12}\ a_{21} \neq 0$ (determinant of $A$)\\[0.4cm] 
+    $\Rightarrow$
+    $
+        A^{-1} = 
+        \dfrac{1}{a_{11}\ a_{22} - a_{12}\ a_{21}}
+        \begin{bmatrix}
+            a_{22} & -a_{12} \\
+            -a_{21} & a_{11} \\
+        \end{bmatrix}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        
+\end{enumerate}
+

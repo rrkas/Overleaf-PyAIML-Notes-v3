@@ -3,7 +3,7 @@
 \begin{customArrayStretch}{1.3}
 \begin{table}[H]
     \centering
-    \begin{tabular}{l p{6cm} p{3.5cm}}
+    \begin{tabular}{>{\centering\arraybackslash}p{1.5cm} p{9cm} p{3.5cm}}
         \hline
         
         $N$ & total population size & \\ \hline
@@ -32,6 +32,24 @@
         \end{minipage}  \\ \hline
         
         $x_{hi}$ & unit $i$ in stratum $h$ \\ \hline
+
+        $w_{h}$ & 
+            weight of strata $h$ while sampling & 
+            \begin{minipage}{3.2cm}
+                \vspace{0.1cm}
+                $w_{h} = \dfrac{N_h}{N}$
+                \vspace{0.1cm}
+            \end{minipage}
+            \\ \hline
+
+        $f_{h}$ & 
+            sample fraction in stratum $h$ & 
+            \begin{minipage}{3.2cm}
+                \vspace{0.1cm}
+                $f_{h} = \dfrac{n_h}{N_h}$
+                \vspace{0.1cm}
+            \end{minipage}
+            \\ \hline
 
         $S_{h,k}$ & 
         \multicolumn{2}{l}{
@@ -111,7 +129,7 @@
 \end{enumerate}
 
 
-\vspace{0.5cm}
+\vspace{0.5cm}\hspace{0cm}
 \textbf{Example}: sample $10\%$ from each sub-population
 
 
@@ -138,64 +156,40 @@
         = \dfrac{1}{N} \ \dsum_{h=1}^M \ \dsum_{i=1}^n\  x_{hi}
         = \dsum_{h=1}^M \ w_h\mu_h
     $
-    \hfill
-    $\dParenBrac{\ w_h = \dfrac{N_h}{N} \ }$
-    \hfill
-    $\dParenBrac{\ \dsum_{h=1}^M \ w_h = 1 \ }$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}[itemsep=0.2cm]
+        \item $w_h = \dfrac{N_h}{N}$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+        \item $\dsum_{h=1}^M \ w_h = 1$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+    
+    
     \item population variance: $
         \sigma^2
         \equiv \dfrac{1}{N} \ \dsum_{h=1}^M \ \dsum_{i=1}^{N_h} (x_{hi} - \mu)^2
         = \dsum_{h=1}^M w_h \sigma_h^2 + \dsum_{h=1}^M w_h (\mu_h - \mu)^2
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}
-        \item (\textbf{within (strata) variances}) the first part represents a weighted mean of the within strata variances
+    \vspace{0.15cm}
+    \begin{enumerate}[itemsep=0.15cm]
+        \item \textbf{within (strata) variances}: the first part represents a weighted mean of the within strata variances
         
-        \item (\textbf{between (strata) variances}) the second part represents a weighted mean of the squared distances of the strata means to the population mean
+        \item \textbf{between (strata) variances}: the second part represents a weighted mean of the squared distances of the strata means to the population mean
     \end{enumerate}
 
 \end{enumerate}
 
 
-\subsection{sample stratum}
-\begin{enumerate}[itemsep=0.2cm]
-    \item sample stratum mean: $
-        \bar{x}_{h,k} = \dfrac{1}{n_h} \ \dsum_{i \ \in \ S_{h,k}} \ x_{hi}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item sample stratum variance: $
-        s^2_{h,k} = \dfrac{1}{n_h-1} \ \dsum_{i \ \in \ S_{h,k}} \ (x_{hi} - \bar{x}_{h,k})^2
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The bias and standard error within each stratum $h$ now follow the theory of simple random sampling.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item bias of $\bar{x}_{h,k}$ = 0 in stratum $h$ is zero for the stratum mean $\mu_h$
-
-\end{enumerate}
-
-
-
-
-
-
-
-
-
-
-
-
-
-\subsection{Estimation for population mean}
+\subsubsection{Estimation for population mean}
 \begin{enumerate}[itemsep=0.3cm]
     \item Estimator: $
         \dsum_{h=1}^{M}
-        \dParenBrac{\dfrac{N_h}{N}}
+        \dfrac{N_h}{N}
         \dParenBrac{\dfrac{1}{n_h} \dsum_{i=1}^{n_h} x_{hi}}
+        =
+        \dsum_{h=1}^{M} \ w_h \ \bar{x}_{h,k}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     
@@ -219,7 +213,34 @@
 
 
 
-\subsection{Estimation for sample stratum SE}
+
+\subsection{sample stratum}
+\begin{enumerate}[itemsep=0.2cm]
+    \item sample stratum mean: $
+        \bar{x}_{h,k} = \dfrac{1}{n_h} \ \dsum_{i \ \in \ S_{h,k}} \ x_{hi}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item sample stratum variance: $
+        s^2_{h,k} = \dfrac{1}{n_h-1} \ \dsum_{i \ \in \ S_{h,k}} \ (x_{hi} - \bar{x}_{h,k})^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item MSE for unbiased estimator: 
+    $
+        MSE(\bar{x}_{h,k}) = Var(\bar{x}_{h,k}) = SE^2(\bar{x}_{h,k})
+    $
+    \hfill \cite{common/online/chatgpt}
+
+    \item The bias and standard error within each stratum $h$ now follow the theory of simple random sampling.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item bias of $\bar{x}_{h,k}$ = 0 in stratum $h$ is zero for the stratum mean $\mu_h$
+
+\end{enumerate}
+
+
+\subsubsection{Estimation for sample stratum SE}
 \begin{enumerate}[itemsep=0.3cm]
     \item $
         \hat{SE}(\bar{x}_{h,k})
@@ -229,6 +250,66 @@
     $f_h = \dfrac{n_h}{N_h}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+
+\subsection{sample}
+\begin{enumerate}[itemsep=0.2cm]
+    \item Sample average: $
+        \bar{x}_k = \dsum^M_{h=1} w_h\ \bar{x}_{h,k}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the \textit{simple random samples} from the different strata are completely \textbf{unrelated}, which implies that the sum of the squared standard errors of $w_h \ \bar{x}_{h,k}$ form the squared standard error of the sample average $\bar{x}_k$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    $
+        Var(\bar{x}_k) = \dsum_{h=1}^M w_h^2 \cdot Var(\bar{x}_{h,k})
+    $
+    \hfill \cite{common/online/chatgpt}
+    
+    
+    \item squared standard error of $\bar{x}_k$: 
+    $
+        SE^2(\bar{x}_k) = \dsum_{h=1}^M w_h^2 \cdot SE^2(\bar{x}_{h,k})
+    $
+    \hfill \cite{common/online/chatgpt}
+
+    \item $
+        MSE(\bar{x}_k ) 
+        = \dsum^M_{h=1} w^2_h \cdot MSE(\bar{x}_{h,k} ) 
+        = \dsum^M_{h=1} \dfrac{N_h}{(N_h - 1)n_h} \ (1 - f_h)\ w^2_h\ \sigma^2_h$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\end{enumerate}
+
+
+\subsubsection{Estimation of the sample MSE}
+
+$
+    \hat{MSE} (\bar{x}_k )
+    = \dsum^M_{h=1} \dfrac{1 - f_h}{n_h} \ w^2_h\ s^2_{h,k}.
+$
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+\subsubsection{Estimation of the sample SE}
+
+An estimate of the standard error of $\bar{x}_k$ is now obtained by taking the square root of
+the estimated MSE:
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\\
+$
+    \hat{SE}(\bar{x}_k) = \sqrt{\hat{MSE} (\bar{x}_k )}
+$
+
+
+
+
+
+
+
+
 
 
 

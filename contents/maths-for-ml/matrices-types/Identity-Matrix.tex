@@ -1,0 +1,78 @@
+\subsection{Identity Matrix ( $I_n$ )}
+
+In $\mathbb{R}^{n\times n}$, we define the identity matrix:\\
+\vspace{0.5cm}
+\hfill
+$
+    I_n
+    := \begin{bmatrix}
+        1 & 0 & \cdots & 0 & \cdots & 0 \\
+        0 & 1 & \cdots & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & 1 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & 0 & \cdots & 1 \\
+    \end{bmatrix}
+    \in \mathbb{R}^{n\times n}
+$
+\hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\\
+as the $n \times n$-matrix containing $1$ on the diagonal and $0$ everywhere else.
+
+
+
+
+\subsubsection{Properties}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item \textbf{Associativity}: 
+    $
+        \forall 
+        A\in \mathbb{R}^{m\times n},\ 
+        B\in \mathbb{R}^{n\times p},\ 
+        C \in \mathbb{R}^{p\times q}
+    $:
+    
+        \begin{enumerate}
+            \item $(AB)C = A(BC)$
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{enumerate}
+
+    \item \textbf{Distributivity}: 
+    $
+        \forall 
+        A,\ B\in \mathbb{R}^{m\times n},\ 
+        C,\ D\in \mathbb{R}^{n\times p}
+    $:
+
+        \begin{enumerate}
+            \item $(A + B)C = AC + BC$
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+            
+            \item $A(C + D) = AC + AD$
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{enumerate}
+
+    \item Multiplication with the identity matrix: 
+    $
+        \forall 
+        A,\ B\in \mathbb{R}^{m\times n}
+    $:
+        \begin{enumerate}
+            \item $I_m\ A = A\ I_n = A$
+            \hfill $m\neq n \Rightarrow I_m \neq I_n$
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+            
+        \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+

@@ -102,6 +102,7 @@
         = \dfrac{\sigma^2 }{n}
         \dParenBrac{\dfrac{N}{N-1}}
         \dParenBrac{1-\dfrac{n}{N}}
+        = \dfrac{\sigma^2\ (N-n)}{n\ (N-1)}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
@@ -123,11 +124,12 @@
 \end{enumerate}
 
 
-\subsection{Estimation of the MSE}
+\subsection{Estimation of the sample MSE}
 
 \begin{enumerate}[itemsep=0.2cm]
-    \item unbiased estimator for $\sigma^2$: $
-        \dfrac{N - 1}{N}\ s^2_k
+    \item unbiased estimator for $\sigma^2$: \\
+    $
+       \hat{\sigma}^2 = \dfrac{N - 1}{N}\ s^2_k
     $
     \hfill 
     $
