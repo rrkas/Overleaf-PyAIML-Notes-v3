@@ -16,12 +16,14 @@ $
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 
+
+
+
 \begin{lstlisting}[
     language=Python,
     caption=Matrix Multiplication - numPy
 ]
 import numpy as np
-import random
 
 m,n,k = 4,3,5
 
@@ -32,13 +34,16 @@ C1 = A @ B
 C2 = np.matmul(A, B)
 C3 = np.dot(A, B)
 
-print("A:", A)
-print("B:", B)
-print("C1:", C1)
-print("C2:", C2)
-print("C3:", C3)
+print("A:\n", A)
+print("B:\n", B)
+print("C1:\n", C1)
+print("C2:\n", C2)
+print("C3:\n", C3)
 print(np.all(C1 == C2), np.all(C1 == C3))
 \end{lstlisting}
+
+
+
 
 \vspace{0.5cm}
 

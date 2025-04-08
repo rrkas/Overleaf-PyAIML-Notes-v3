@@ -55,15 +55,15 @@
         \cdots +
         \begin{bmatrix}a_{1n}\\ \vdots\\ a_{mn}\end{bmatrix} x_n =
         \begin{bmatrix}b_{1}\\ \vdots\\ b_{m}\end{bmatrix}
-        \Longleftrightarrow
-        \begin{bmatrix}
+    \Longleftrightarrow
+        \underset{A}{\underbrace{\begin{bmatrix}
             a_{11} & \cdots & a_{1n} \\
             \vdots & \ddots & \vdots \\
             a_{m1} & \cdots & a_{mn}
-        \end{bmatrix}
-        \begin{bmatrix} x_{1} \\ \vdots \\ x_{n} \end{bmatrix}
+        \end{bmatrix}}} \
+        \underset{x}{\underbrace{\begin{bmatrix} x_{1} \\ \vdots \\ x_{n} \end{bmatrix}}}
         =
-        \begin{bmatrix} b_{1} \\ \vdots \\ b_{m} \end{bmatrix}
+        \underset{b}{\underbrace{\begin{bmatrix} b_{1} \\ \vdots \\ b_{m} \end{bmatrix}}}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -83,6 +83,9 @@
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     Similarly, for three variables, each linear equation determines a plane in three-dimensional space. When we intersect these planes, i.e., satisfy all linear equations at the same time, we can obtain a solution set that is a plane, a line, a point or empty (when the planes have no common intersection).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item the product $Ax$ is a (linear) combination of the columns of $A$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     

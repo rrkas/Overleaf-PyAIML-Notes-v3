@@ -4,27 +4,30 @@ Consider a square matrix $A \in \mathbb{R}^{n\times n}$. Let matrix $B \in \math
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 
+
+
+
 \begin{lstlisting}[
     language=Python,
     caption=Matrix Inverse - numPy
 ]
 import numpy as np
-import random
 
 n = 4
 
 A = np.random.randint(-10, 10, size=(n,n)).astype(float)
 A_inv = np.linalg.inv(A)
 
-print("A:", A)
-print("A_inv:", A_inv)
+print("A:\n", A)
+print("A_inv:\n", A_inv)
 print(A @ A_inv)
 print(np.allclose((A @ A_inv) , np.eye(n, n)))
 \end{lstlisting}
 
 
 
-\subsubsection{Properties}
+
+
 
 \begin{enumerate}[itemsep=0.2cm]
     \item \textbf{Not} every matrix $A$ possesses an inverse $A^{-1}$.
@@ -55,6 +58,25 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        
 \end{enumerate}
+
+
+\subsubsection{Properties}
+
+\begin{multicols}{2}
+\begin{enumerate}[itemsep=0.2cm]
+    \item $AA^{-1} = I = A^{-1}A$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item $(AB)^{-1} = B^{-1}\ A^{-1}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item $(A + B)^{-1} \neq A^{-1} + B^{-1}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item $(A^{-1})^\top = (A^\top)^{-1} =: A^{-\top}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+\end{enumerate}
+\end{multicols}
 

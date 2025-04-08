@@ -1,0 +1,39 @@
+\subsection{Symmetric Matrix}
+
+A matrix $A \in \mathbb{R}^{n\times n}$ is symmetric if $A = A^\top$
+\hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Identity Matrix - numPy
+]
+import numpy as np
+
+n = 4
+
+A = np.random.randint(-10, 10, size=(n, n))
+
+# converting A to a symmetric matrix
+A = (A + A.T) / 2
+
+print(A)
+\end{lstlisting}
+
+\begin{enumerate}
+    \item only $(n,\ n)$-matrices can be symmetric
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The sum of symmetric matrices $A,\ B \in \mathbb{R}^{n\times n}$ is \textbf{always symmetric}. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item although the product of 2 symmetric matrices is \textbf{always defined}, it is generally \textbf{not symmetric}
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
+

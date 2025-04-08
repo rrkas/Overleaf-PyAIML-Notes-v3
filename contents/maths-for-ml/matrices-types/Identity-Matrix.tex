@@ -22,6 +22,27 @@ as the $n \times n$-matrix containing $1$ on the diagonal and $0$ everywhere els
 
 
 
+
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Identity Matrix - numPy
+]
+import numpy as np
+
+n = 4
+
+print(np.eye(n,n))
+\end{lstlisting}
+
+
+
+
+
+
+
+
 \subsubsection{Properties}
 
 \begin{enumerate}[itemsep=0.2cm]
@@ -34,7 +55,7 @@ as the $n \times n$-matrix containing $1$ on the diagonal and $0$ everywhere els
     $:
     
         \begin{enumerate}
-            \item $(AB)C = A(BC)$
+            \item $ABC = (AB)\ C = A\ (BC)$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
 
@@ -46,10 +67,10 @@ as the $n \times n$-matrix containing $1$ on the diagonal and $0$ everywhere els
     $:
 
         \begin{enumerate}
-            \item $(A + B)C = AC + BC$
+            \item $(A + B)\ C = AC + BC$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
             
-            \item $A(C + D) = AC + AD$
+            \item $A\ (C + D) = AC + AD$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
 
