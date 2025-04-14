@@ -1,0 +1,89 @@
+\subsection{Automated Taxi Driver \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item \textbf{Performance Measure}: Safe, fast, legal, comfortable trip, maximize profits
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Environment}: Roads, other traffic, pedestrians, customers
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Actuators}: Steering, accelerator, brake, signal, horn, display
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Sensors}: Cameras, sonar, speedometer, GPS, odometer, accelerometer, engine sensors, keyboard
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item an automated taxi cannot see what other drivers are thinking.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item partially cooperative multiagent environment: avoiding collisions maximizes the performance measure of all agents
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Task Environment}: partially observable, multiagent, stochastic, sequential, dynamic, continuous, and unknown
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    
+\end{enumerate}
+
+
+
+\subsubsection{As a table driven reflex agent}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item the visual input from a single camera comes in at the rate of roughly $27$ megabytes per second ($30$ frames per second, $640 \times 480$ pixels with $24$-bits of color information). 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    
+    \item This gives a lookup table with over $10^{250,000,000,000}$ entries for \textbf{an hour}’s driving.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Not possible} to construct the table
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
+
+
+
+\subsubsection{As model-based reflex agents}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item the taxi may be driving back home, and it may have a rule telling it to fill up with gas on the way home unless it has at least half a tank. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    
+    \item Although “driving back home” may seem to an aspect of the world state, the fact of the taxi’s destination is actually an aspect of the agent’s internal state. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    
+    \item If you find this puzzling, consider that the taxi could be in exactly the same place at the same time, but intending to reach a different destination.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    
+\end{enumerate}
+
+
+\subsubsection{As utility-based agents}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item \textbf{utility measures}: quicker, safer, more reliable, or cheaper 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
+
+
+\subsubsection{As Learning Agent}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The performance element consists of whatever collection of knowledge and procedures the taxi has for selecting its driving actions.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item  after the taxi makes a quick left turn across three lanes of traffic, the critic observes the shocking language used by other drivers.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item From this experience, the learning element is able to formulate a rule saying this was a bad action, and the performance element is modified by installation of the new rule. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
