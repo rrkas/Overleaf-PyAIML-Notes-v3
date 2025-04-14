@@ -4,8 +4,130 @@
     \item The field of machine learning is concerned with the question of how to construct computer programs that automatically improve with experience.
     \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
 
+    \item A computer program is said to \textbf{learn} from experience $E$ with respect to some class of tasks $T$ and performance measure $P$, if its performance at tasks in $T$, as measured by $P$, improves with experience $E$.
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+    \\
+    \textbf{Example}: A checkers learning problem
+    \begin{enumerate}
+        \item Task $T$: playing checkers
+        \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+        
+        \item Performance measure $P$: percent of games won against opponents
+        \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+        
+        \item Training experience $E$: playing practice games against itself 
+        \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+    \end{enumerate}
     
+    \item \textbf{learning}: class of programs that improve through experience, not other ways like Database updates, etc
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
 
+    \item 
 \end{enumerate}
+
+
+
+\section{Designing A Learning System}
+
+\subsection{Choosing the Training Experience \cite{ml/book/Machine-Learning/Tom-M-Mitchell}}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The type of training experience available can have a \textbf{significant impact} on success or failure of the learner.
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+    \item One key attribute is whether the training experience provides direct or indirect feedback regarding the choices made by the performance system.
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+    \begin{enumerate}
+        \item For example, in learning to play checkers, the system might learn from \textbf{direct} training examples consisting of individual checkers board states and the correct move for each.
+        \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+        \item it might have available only \textbf{indirect} information consisting of the move sequences and final outcomes of various games played. In this later case, information about the correctness of specific moves early in the game must be inferred indirectly from the fact that the game was eventually won or lost.
+        \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+    \end{enumerate}
+
+    \item learning from direct training feedback is typically easier than learning from indirect feedback.
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+    \item \textbf{credit assignment}: determining the degree to which each move in the sequence deserves credit or blame for the final outcome. Credit assignment can be a particularly difficult problem because the game can be lost even when early moves are optimal, if these are followed later by poor moves.
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+    \item A second important attribute of the training experience is the \textit{degree to which the learner controls the sequence of training examples}. 
+    \begin{enumerate}
+        \item For example, the learner might \textbf{rely on the teacher} to select informative board states and to provide the correct move for each. 
+        \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+        \item Alternatively, the learner might \textbf{itself} propose board states that it finds particularly confusing and ask the teacher for the correct move.
+        \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+        \item Or the learner may have complete control over \textbf{both} the board states and (indirect) training classifications, as it does when it learns by playing against itself with no teacher present.
+        \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+        \\
+        learner may choose between experimenting with novel board states that it has not yet considered, or honing its skill by playing minor variations of lines of play it currently finds most promising.
+        \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+    \end{enumerate}
+
+    \item A third important attribute of the training experience is how well it represents the distribution of examples over which the final system performance $P$ must be measured.
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+    \begin{enumerate}
+        \item learning is most reliable when the training examples follow a distribution similar to that of future test examples.
+        \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+        \item 
+        \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\subsection{Choosing the Target Function}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item determine exactly what type of knowledge will be learned and how this will be used by the performance program.
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+    \item Let us begin with a checkers-playing program that can generate the \textbf{legal moves} from any board state. The program needs only to learn how to choose the \textbf{best move} from among these legal moves.
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+    \item 
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
