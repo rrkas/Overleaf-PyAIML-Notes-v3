@@ -1,11 +1,49 @@
 \section{Problem-Solving Agent}\label{AI: Agent Programs/Problem-Solving Agent}
 
 
+
 \begin{enumerate}[itemsep=0.2cm]
     \item one kind of \textit{goal-based agent} that use \textbf{atomic} representations
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item 
+    \item \textbf{uninformed search algorithms}: algorithms that are given \textbf{no information} about the problem other than its definition
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \\
+    some of these algorithms can solve any solvable problem, none of them can do so efficiently
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Informed search algorithms}: can do quite well given some guidance on where to look for solutions.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Goal formulation}, based on the current situation and the agent’s performance measure, is the first step in problem solving.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item We consider a goal to be a set of world states—exactly those states in which the goal is satisfied. 
+    The agent’s task is to find out how to act, now and in the future, so that it reaches a goal state.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+\subsection*{Simple “formulate, search, execute” design}
+
+    \item \textbf{Problem formulation} is the process of deciding what actions and states to consider, given a goal. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item An agent with several immediate options of unknown value can decide what to do by first examining future actions that eventually lead to states of known value.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item The process of looking for a sequence of actions that reaches the goal is called \textbf{search}.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item A \textit{search algorithm} takes a problem as input and returns a \textbf{solution} in the form of an action sequence.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item Once a solution is found, the actions it recommends can be carried out. This is called the \textbf{execution} phase.
+    While the agent is executing the solution sequence it \textit{ignores} its percepts when choosing an action because it knows in advance what they will be.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item Once the solution has been executed, the agent will formulate a new goal.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item An agent that carries out its plans with its eyes closed, so to speak, must be quite certain of what is going on. Control theorists call this an \textbf{open-loop system}, because ignoring the percepts breaks the loop between agent and environment.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}
 
@@ -16,12 +54,92 @@
 
 
 
+\vspace{0.5cm}
+
+
+\begin{algorithm}[H]
+    \caption{A simple problem-solving agent. It first formulates a goal and a problem, searches for a sequence of actions that would solve the problem, and then executes the actions one at a time. When this is complete, it formulates another goal and starts over \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+
+    \SetKwFunction{FUNCTION}{\textsc{Simple-Problem-Solving-Agent}}
+    \SetKwProg{Fn}{function}{ returns \normalfont an action}{end}
+    \Fn{\FUNCTION{ percept }}{
+        \textbf{persistent}:\\ 
+            \hspace{1cm} $seq$, an action sequence, initially empty \\
+            \hspace{1cm} $state$, some description of the current world state \\
+            \hspace{1cm} $goal$, a goal, initially null \\
+            \hspace{1cm} $problem$, a problem formulation \\
+        \ \\
+        $state$ $\gets$ \textsc{Update-State}( $state,\ percept$ )
+
+        \If{$seq$ \normalfont is empty}{
+            $goal$ $\gets$ \textsc{Formulate-Goal}( $state$ ) \\
+            $problem$ $\gets$ \textsc{Formulate-Problem}( $state,\ goal$ )\\
+            $seq$ $\gets$ \textsc{Search}( $prolem$ ) \\
+
+            \If{$seq\ = \ failure$ }{
+                \Return a null action
+            }
+        }
+
+        $action$ $\gets$ \textsc{First}( $seq$ )\\
+        $seq$ $\gets$ \textsc{Rest}( $seq$ )
+        
+        \Return $action$
+    }
+\end{algorithm}
 
 
 
+\subsection{Defining \& Formulating Problem}
 
+\begin{enumerate}
+    \item The \textbf{initial state} that the agent starts in.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
+    \item A description of the possible \textbf{actions} available to the agent. Given a particular state $s$, \textsc{Actions}($s$) returns the set of actions that can be executed in $s$. We say that each of these actions is \textit{applicable} in $s$. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
+    \item A description of what each action does; the formal name for this is the \textbf{transition model}, specified by a function \textsc{Result}($s,\ a$) that returns the state that results from  doing action $a$ in state $s$. 
+    We also use the term \textbf{successor} to refer to any state reachable from a given state by a single action.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item The \textbf{goal test}, which determines whether a given state is a goal state. 
+    Sometimes there is an \textit{explicit} set of possible goal states, and the test simply checks whether the given state is one of them.
+    Sometimes the goal is specified by an \textit{abstract property} rather than an explicitly enumerated set of states.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item A \textbf{path cost} function that assigns a numeric cost to each path. The problem-solving agent chooses a cost function that reflects its own performance measure.
+    We assume that the cost of a path can be described as the \textit{sum} of the costs of the individual actions along the path.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
+
+\textbf{Note}:
+
+\begin{enumerate}
+    \item Together, the initial state, actions, and transition model implicitly define the \textbf{state space} of the problem—the set of all states reachable from the initial state by any sequence of actions. The state space forms a directed network or \textbf{graph} in which the nodes are states and the links between nodes are actions.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item A \textbf{path} in the state space is a sequence of states connected by a sequence of actions.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item The \textbf{step cost} of taking action $a$ in state $s$ to reach state $s^\prime$ is denoted by $c(s,\ a,\ s^\prime)$.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item A \textbf{solution} to a problem is an \textit{action sequence} that leads from the initial state to a goal state. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    
+    \item Solution quality is measured by the path cost function, and an \textbf{optimal solution} has the lowest path cost among all solutions.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item In addition to abstracting the state description, we must abstract the actions themselves.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item The abstraction is \textbf{valid} if we can expand any abstract solution into a solution in the more detailed world
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item The abstraction is \textbf{useful} if carrying out each of the actions in the solution is easier than the original problem
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
 
 
 

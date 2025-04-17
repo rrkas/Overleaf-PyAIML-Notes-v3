@@ -1,13 +1,26 @@
-\subsection{Vacuum Cleaner \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\subsection{Vacuum Cleaner (Toy problem) \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
 
 
 \begin{figure}[H]
     \centering
     \includegraphics[
-        width=0.5\linewidth
+        width=0.5\linewidth,
+        height=3cm,
+        keepaspectratio
     ]{images/artificial-intelligence/examples/example-vacuum-cleaner-world.png}
     \caption*{A vacuum-cleaner world with just two locations}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        % height=7cm,
+        keepaspectratio
+    ]{images/artificial-intelligence/examples/example-vacuum-state-space.png}
+    \caption*{The state space for the vacuum world. Links denote actions: L = Left, R = Right, S= Suck. \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\end{figure}
+
 
 
 \vspace{0.5cm}
@@ -88,6 +101,24 @@ $[A, \ Clean],\ [A, \ Clean],\ [A, \ Dirty]$ & $Suck$ \\
 
 
 
+
+
+
+\subsubsection{As a problem solving agent}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item \textbf{States}: The state is determined by both the agent location and the dirt locations. The agent is in one of two locations, each of which might or might not contain dirt. Thus, there are $2 \times 2^2\ =\ 8$ possible world states. A larger environment with $n$ locations has $n \cdot 2^n$ states.
+
+    \item \textbf{Initial state}: Any state can be designated as the initial state.
+
+    \item \textbf{Actions}: In this simple environment, each state has just three actions: Left, Right, and Suck. Larger environments might also include Up and Down.
+
+    \item \textbf{Transition model}: The actions have their expected effects, except that moving Left in the leftmost square, moving Right in the rightmost square, and Sucking in a clean square have no effect.
+
+    \item \textbf{Goal test}: This checks whether all the squares are clean.
+
+    \item \textbf{Path cost}: Each step costs $1$, so the path cost is the number of steps in the path.
+\end{enumerate}
 
 
 
