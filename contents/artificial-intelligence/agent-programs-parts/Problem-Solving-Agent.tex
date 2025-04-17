@@ -144,5 +144,66 @@
 
 
 
+\subsection{Measuring problem-solving performance}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item \textbf{Completeness}: Is the algorithm guaranteed to find a solution when there is one?
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Optimality}: Does the strategy find the optimal solution?
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Time complexity}: How long does it take to find a solution?
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Space complexity}: How much memory is needed to perform the search?
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
+
+
+\vspace{0.5cm}
+
+\begin{customArrayStretch}{1.3}
+\begin{table}[H]
+\centering
+\begin{tabular}{l l p{12cm}}
+
+$V$ & set ($\in \mathbb{R}^2$) & set of vertices (nodes) of the graph \\
+
+$E$ & set ($\in \mathbb{R}^2$) & set of edges (links) of the graph \\
+
+$b$ & int ($\in \mathbb{R}$) & \textbf{branching factor} or maximum number of successors of any node \\
+
+$d$ & int ($\in \mathbb{R}$) & \textbf{depth} of the \textbf{shallowest goal} node (i.e., the number of steps along the path from the root) \\
+
+$m$ & int ($\in \mathbb{R}$) & maximum length of any path in the state space \\
+
+\end{tabular}
+\caption*{Notations}
+\end{table}
+\end{customArrayStretch}
+
+
+\textbf{Note}:
+\begin{enumerate}[itemsep=0.2cm]
+    \item the typical measure is the \textbf{size} of the \textbf{state space graph}: $|V| + |E|$ 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item Time is often measured in terms of the number of nodes generated during the search, and space in terms of the maximum number of nodes stored in memory.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{effectiveness of a search algorithm}:
+    \begin{enumerate}[itemsep=0.2cm]
+        \item \textbf{search cost}: depends on the time complexity but can also include a term for memory usage
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item \textbf{total cost}: combines the search cost and the path cost of the solution found
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
 
 
