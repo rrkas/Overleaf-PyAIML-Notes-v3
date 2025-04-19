@@ -614,30 +614,37 @@
 \definecolor{vscode-comment}{rgb}{0.0,0.5,0.0} % Comments (Green)
 \definecolor{vscode-number}{rgb}{0.098,0.098,0.439} % Numbers (Dark Blue)
 
+
 % Define a custom style for Python-like code listings using the listings package
 \lstdefinestyle{pystyle}{
-    backgroundcolor=\color{vscode-bg},   % Set background color
-    commentstyle=\color{vscode-comment}, % Style for comments
-    keywordstyle=\color{vscode-keyword}, % Style for keywords
-    numberstyle=\tiny\color{vscode-gray}, % Style for line numbers
-    stringstyle=\color{vscode-string},   % Style for strings
-    basicstyle=\ttfamily,                % Use a monospaced font
-    breakatwhitespace=false,             % Allow breaking lines anywhere, not just at whitespace
-    breaklines=true,                     % Enable automatic line breaking
-    captionpos=b,                        % Position captions below listings
-    keepspaces=true,                     % Preserve spaces in code
-    numbers=left,                        % Display line numbers on the left side
-    numbersep=5pt,                       % Distance between line numbers and code
-    showspaces=false,                    % Don't show spaces as visible characters
-    showstringspaces=false,              % Don't show spaces inside strings as visible characters
-    showtabs=false,                      % Don't show tab characters
-    tabsize=4,                           % Set tab size to 4 spaces
-    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, % Add a red arrow at line breaks
-    columns=fullflexible,                % Adjust column widths to fit the content
+    backgroundcolor=\color{vscode-bg},
+    commentstyle=\color{vscode-comment},
+    keywordstyle=\color{vscode-keyword},
+    numberstyle=\tiny\color{vscode-gray},
+    stringstyle=\color{vscode-string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=true,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=true,
+    tabsize=4,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    columns=fullflexible,
+    % literate={ }{{\textperiodcentered}}1,
+    % literate={ }{{-}}1,
 }
 
 % Apply the custom style to all listings
 \lstset{style=pystyle}
+
+\newcommand{\indentrule}{\color{gray}\rlap{\smash{\hspace{6pt}\rule[-.35em]{1pt}{1.45em}}}}
+\lstset{mathescape=true}
+
 
 % Customize the name for code listings in captions and references
 \renewcommand{\lstlistingname}{Python Snippet}

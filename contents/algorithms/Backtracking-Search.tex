@@ -1,0 +1,67 @@
+\section{Backtracking Search \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item A variant of depth-first search that uses still less memory.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{only one successor} is generated at a time rather than all successors; each partially expanded node remembers which successor to generate next. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Performance}:
+    \begin{enumerate}
+        \item \textbf{Space Complexity}: $\mathcal{O}(m)$
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \end{enumerate}
+
+    \item \textbf{Advantages}:
+    \begin{enumerate}
+        \item  Backtracking search facilitates memory-saving (and time-saving) trick: the idea of generating a successor by \textbf{modifying} the current state description directly rather than copying it first.
+        For this to work, we must be able to \textbf{undo} each modification when we go back to generate the next successor.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item For problems with large state descriptions, such as robotic assembly, these techniques are critical to success.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \end{enumerate}
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Problem Solving Agent - Backtracking using recursion
+]
+def backtrack(node: Node, explored: set):
+    if problem.goal_test(node.state):
+        return solution(node)
+
+    explored.add(node)
+
+    for action in problem.actions(node.state):
+        child = child_node(problem, node, action)
+        if not any([child.state == n.state for n in explored]):
+            result = backtrack(child, explored)
+            if result is not None:
+                return result
+    
+    # Optional: allow revisiting for other paths (depends on problem)
+    explored.remove(node)  
+    return None
+
+def backtracking_search(problem: Problem):
+    root = Node(problem.initial_state, None, None, 0)
+    return backtrack(root, set())
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

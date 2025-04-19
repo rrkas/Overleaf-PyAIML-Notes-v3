@@ -80,17 +80,73 @@ For each \textsc{Node} $n$ of the tree, we have a structure that contains four c
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}
 
+\vspace{0.5cm}
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Problem Solving Agent - Search Node
+]
+class Node:
+    def __init__(self, state, parent, action, path_cost):
+        # the state in the state space to which the node corresponds
+        self.state = state
+
+        # the node in the search tree that generated this node
+        self.parent = parent
+
+        # the action that was applied to the parent to generate the node
+        self.action = action
+
+        """
+            the cost, traditionally denoted by g(n), of the path
+            from the initial state to the node, as indicated
+            by the parent pointers
+        """
+        self.path_cost = path_cost
+    
+    def __lt__(self, __o):
+        return self.path_cost < __o.path_cost
+
+    def __str__(self):
+        return (
+            "<Node "
+            + f"state: {self.state} "
+            + f"parent: {self.parent} "
+            + f"action: {self.action} "
+            + f"path_cost: {self.path_cost} "
+            + ">"
+        )
+    
+    def __repr__(self) -> str:
+        return str(self)
+\end{lstlisting}
+
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Problem Solving Agent - solution
+]
+def solution(node: Node):
+    path = []
+
+    while node.parent is not None:
+        path.insert(0, node.action)
+        node = node.parent
+    
+    return path
+\end{lstlisting}
 
 
 
 
 
 
+\section{General Algorithms \& Implementations}
 
+\subsection{Child-node}
 
-
-\section{General Algorithms}
-
+\vspace{0.2cm}
 
 \begin{algorithm}[H]
     \caption{The function \textsc{Child-Node} takes a parent node and an action and returns the resulting child node \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
@@ -107,7 +163,27 @@ For each \textsc{Node} $n$ of the tree, we have a structure that contains four c
     }
 \end{algorithm}
 
-\vspace{0.5cm}
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Problem Solving Agents - child\_node
+]
+def child_node(problem: Problem, parent: Node, action):
+    new_state = problem.result(parent.state, action)
+
+    return Node(
+        state=new_state,
+        parent=parent,
+        action=action,
+        path_cost=(parent.path_cost
+            + problem.step_cost(parent.state, action, new_state))
+    )
+\end{lstlisting}
+
+
+
+\subsection{Tree Search}
+\vspace{0.2cm}
 
 \begin{algorithm}[H]
     \caption{An informal description of the general tree-search algorithm. \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
@@ -131,9 +207,35 @@ For each \textsc{Node} $n$ of the tree, we have a structure that contains four c
 \end{algorithm}
 
 
-\vspace{0.5cm}
+\begin{lstlisting}[
+    language=Python,
+    caption=Problem Solving Agents - tree\_search
+]
+def tree_search(problem: Problem):
+    frontier = [Node(problem.initial_state, None, None, 0)]
+
+    while True:
+        if len(frontier) == 0:
+            return None
+        
+        node: Node = frontier.pop()
+
+        if problem.goal_test(node.state):
+            return solution(node)
+        
+        for action in problem.actions(node.state):
+            new_state = problem.result(node.state, action)
+            path_cost = (node.path_cost 
+                + problem.step_cost(node.state, action, new_state))
+            new_node = Node(new_state, node, action, path_cost)
+            frontier.append(new_node)
+\end{lstlisting}
 
 
+
+
+\subsection{Graph search}
+\vspace{0.2cm}
 
 \begin{algorithm}[H]
     \caption{An informal description of the general graph-search algorithm. The parts of \textsc{Graph-Search} marked in bold italic are the additions needed to handle repeated states. \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
@@ -159,6 +261,35 @@ For each \textsc{Node} $n$ of the tree, we have a structure that contains four c
         }
     }
 \end{algorithm}
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Problem Solving Agents - graph\_search
+]
+def graph_search(problem: Problem):
+    frontier = [Node(problem.initial_state, None, None, 0)]
+    explored = set()
+
+    while True:
+        if len(frontier) == 0:
+            return None
+
+        node: Node = frontier.pop()
+
+        if problem.goal_test(node.state):
+            return solution(node)
+
+        explored.add(node)
+
+        for action in problem.actions(node.state):
+            new_state = problem.result(node.state, action)
+            path_cost = (node.path_cost
+                + problem.step_cost(node.state, action, new_state))
+            new_node = Node(new_state, node, action, path_cost)
+            
+            if new_node not in frontier and new_node not in explored:
+                frontier.append(new_node)
+\end{lstlisting}
 
 
 \begin{enumerate}

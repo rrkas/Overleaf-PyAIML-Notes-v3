@@ -1,0 +1,135 @@
+\section{Depth-limited search \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The embarrassing failure of depth-first search in infinite state spaces can be alleviated by supplying depth-first search with a predetermined depth limit $\ell$. That is, nodes at depth  $\ell$ are treated as if they have no successors. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Performance}:
+    \begin{enumerate}
+        \item \textbf{Completeness}: NO \textbf{if} $\ell < d$ \textbf{else} YES
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item \textbf{Optimal}: NO \textbf{if} $\ell > d$ \textbf{else} YES
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item \textbf{time complexity}: $\mathcal{O}(b^\ell)$
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item \textbf{space complexity}: $\mathcal{O}(b\ell)$
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \end{enumerate}
+
+    \item Depth-first search can be viewed as a special case of depth-limited search with $\ell = \infty$.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item diameter of the state space can be a better limit for efficiency
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    
+\end{enumerate}
+
+
+\vspace{0.5cm}
+
+\begin{algorithm}[H]
+    \caption{A recursive implementation of depth-limited tree search. \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+
+
+    \SetKwFunction{FUNCTION}{\textsc{Depth-Limited-Search}}
+    \SetKwProg{Fn}{function}{ returns \normalfont{a solution, or failure/cutoff}}{end}
+    \Fn{\FUNCTION{problem, limit}}{
+        \Return \textsc{Recursive-DLS}( \\
+            \hspace{0.5cm}  \textsc{Make-Node}($problem$.\textsc{Initial-State}), \\
+            \hspace{0.5cm}  $problem$, \\
+            \hspace{0.5cm}  $limit$, \\
+        )
+    }
+    
+    \ \\
+    
+    \SetKwFunction{FUNCTION}{\textsc{Recursive-DLS}}
+    \SetKwProg{Fn}{function}{ returns \normalfont{a solution, or failure/cutoff}}{end}
+    \Fn{\FUNCTION{node, problem, limit}}{
+        \If{\normalfont $problem$.\textsc{Goal-Test}($node$.\textsc{State})}{
+            \Return \textsc{Solution}($node$) 
+        }
+        \ElseIf{limit = 0}{
+            \Return $cutoff$
+        }
+        \Else{
+            $cutoff\_occurred? \ \gets$ false\\
+            \ \\
+            \ForEach{\normalfont $action$ \textbf{in} $problem$.\textsc{Actions}($node$.\textsc{State})}{
+                $child \gets$ \textsc{Child-Node}($problem,\ node,\ action$)\\
+                $result \gets$ \textsc{Recursive-DLS}($child,\ problem,\ limit-1$)\\
+                \If{result = cutoff}{
+                    $cutoff\_occurred? \ \gets$ true
+                }
+                \ElseIf{result $\neq$ failure}{
+                    \Return $result$
+                }
+            }
+            \ \\
+            \If{$cutoff\_occurred?$}{
+                \Return $cutoff$
+            }
+            \Else{
+                \Return $failure$
+            }
+        }
+    }
+\end{algorithm}
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Problem Solving Agent - Depth limited search (recursive)
+]
+CUTOFF = "CUT-OFF"
+
+def depth_limited_search(problem: Problem, limit: int):
+    return recursive_dls(
+        Node(problem.initial_state, None, None, 0),
+        problem,
+        limit,
+    )
+
+def recursive_dls(node: Node, problem: Problem, limit: int):
+    if problem.goal_test(node.state):
+        return solution(node)
+    
+    elif limit == 0:
+        return CUTOFF
+    
+    else:
+        cutoff_occurred = False
+        for action in problem.actions(node.state):
+            child = child_node(problem, node, action)
+            result = recursive_dls(child, problem, limit-1)
+            if result == CUTOFF:
+                cutoff_occurred = True
+            elif result is not None:
+                return result
+        if cutoff_occurred:
+            return CUTOFF
+        else:
+            return
+\end{lstlisting}
+
+
+\vspace{0.5cm}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item $failure$ value indicates no solution
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item $cutoff$ value indicates no solution within the depth limit
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
+
+
+
+
+
+
+
