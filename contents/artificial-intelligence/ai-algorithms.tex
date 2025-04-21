@@ -3,7 +3,7 @@
 \begin{customArrayStretch}{1.3}
 \begin{table}[H]
 \centering
-\begin{tabular}{l l p{14cm}}
+\begin{tabular}{l c p{14.5cm}}
 
 $V$ & set & set of vertices (nodes) of the graph \\
 
@@ -23,10 +23,46 @@ $C^\ast$ & $\in \mathbb{R}$ & cost of the optimal solution \\
 
 $\ell$ & $\in \mathbb{R}$ & predetermined depth limit \\
 
+$g(n)$ & $\in \mathbb{R}$ & Path Cost (The \textbf{actual cost} from the \textbfit{start node} to the current node $n$) (Eg: UCS) \\
+
+$h(n)$ & $\in \mathbb{R}$ & Heuristic Estimate (The \textbf{estimated cost} from node $n$ to the \textbfit{goal}) (Eg: GBFS, A*) \\
+
+$f(n)$ & $\in \mathbb{R}$ & Evaluation Function (The \textbf{total estimated cost} of the \textbfit{cheapest solution} through $n$) (Eg: A*) \\
+
+
 \end{tabular}
 \caption*{Notations}
 \end{table}
 \end{customArrayStretch}
+
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item \textbf{heuristic function}
+    \begin{enumerate}
+        \item $h(n)$ = estimated cost of the cheapest path from the state at node $n$ to a goal state
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item Heuristic functions are the most common form in which additional knowledge of the problem is imparted to the search algorithm. 
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+        
+        \item if $n$ is a goal node, then $h(n)=0$
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \end{enumerate}
+
+    \item \textbf{evaluation function}:
+    \begin{enumerate}
+        \item The evaluation function $f$ is construed/ interpreted as a cost estimate, so the node with the lowest evaluation is expanded first.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+        
+        \item The choice of $f$ determines the search strategy.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item $f(n) = g(n)$ or $h(n)$ or $g(n)+h(n)$ or something else depending on the algorithm
+    \end{enumerate}
+\end{enumerate}
+
+
+
 
 
 \input{contents/algorithms/Breadth-first-search}
@@ -36,9 +72,9 @@ $\ell$ & $\in \mathbb{R}$ & predetermined depth limit \\
 \input{contents/algorithms/Depth-limited-search}
 \input{contents/algorithms/Iterative-Deepening-Search}
 \input{contents/algorithms/Iterative-Lengthening-Search}
+\input{contents/algorithms/Bidirectional-search}
 
 
-
-
+\input{contents/algorithms/Best-first-search}
 
 

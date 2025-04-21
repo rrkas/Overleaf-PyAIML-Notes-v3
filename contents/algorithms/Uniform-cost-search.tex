@@ -1,4 +1,5 @@
 \section{Uniform-cost search (UCS) \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\label{AI: Algorithms/Uniform-cost search (UCS)}
 
 
 \begin{enumerate}[itemsep=0.2cm]
@@ -7,10 +8,11 @@
 
     \item \textbf{Performance}:
     \begin{enumerate}[itemsep=0.2cm]
-        \item uniform-cost search is \textbf{optimal} in general. uniform-cost search expands nodes in order of their optimal path cost.
+        \item uniform-cost search is \textbf{optimal} in general. 
+        uniform-cost search expands nodes in order of their optimal path cost.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item \textbf{Completeness is guaranteed} provided the cost of every step exceeds some small positive constant $\varepsilon$.
+        \item \textbf{Completeness is guaranteed} provided the cost of every step exceeds some small positive constant $\varepsilon$ and $b$ is finite
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
         \item \textbf{Space Complexity}:
@@ -47,7 +49,7 @@
 
 
 
-\subsection{Implementation}
+\subsection*{Implementation}
 
 \begin{enumerate}
     \item  This is done by storing the frontier as a \textbf{priority queue} ordered by $g(n)$. 

@@ -1,4 +1,5 @@
 \section{Iterative Deepening Search (IDS) \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\label{AI: Algorithms/Iterative Deepening Search (IDS)}
 
 
 \begin{figure}[h!]
@@ -56,11 +57,34 @@
     \end{enumerate}
 \end{enumerate}
 
+\vspace{0.5cm}
+
+\begin{algorithm}[H]
+    \caption{The iterative deepening search algorithm, which repeatedly applies depth-limited search with increasing limits. It terminates when a solution is found or if the depth-limited search returns failure, meaning that no solution exists. \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+
+    \SetKwFunction{FUNCTION}{\textsc{Iterative-Deepening-Search}}
+    \SetKwProg{Fn}{function}{ returns \normalfont{a solution, or failure}}{end}
+    \Fn{\FUNCTION{problem}}{
+        \For{\normalfont $depth = 0$ \textbf{to} $\infty$}{
+            $result \gets$ \textsc{Depth-Limited-Search}($problem,\ depth$)\\
+            \If{$result \neq cutoff$}{
+                \Return $result$
+            }
+        }
+    }
+\end{algorithm}
 
 
-
-
-
+\begin{lstlisting}[
+    language=Python,
+    caption=Problem Solving Agent - Iterative Deepening Search 
+]
+def iterative_deepening_search(problem: Problem, limit=1000000):
+    for i in range(limit):
+        result = depth_limited_search(problem, i)
+        if result != CUTOFF:
+            return result
+\end{lstlisting}
 
 
 
