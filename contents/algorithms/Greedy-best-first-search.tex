@@ -1,0 +1,101 @@
+\section{Greedy best-first search (GBFS) \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\label{AI: Algorithms/Greedy best-first search (GBFS)}
+
+\ \hfill
+$f(n) = h(n)$
+\hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+\ \\
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item Greedy best-first search tries to expand the node that is \textbf{closest} to the goal, on the grounds that this is likely to lead to a solution quickly.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item at each step it tries to get as close to the goal as it can
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Performance}:
+    \begin{enumerate}
+        \item \textbf{Completeness}: YES \textbf{if} graph version is used \textbf{and} states are finite \textbf{else} NO
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item \textbf{time complexity}
+        \begin{enumerate}
+            \item worst case: $\mathcal{O}(b^m)$
+            \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+        \end{enumerate}
+
+        \item \textbf{space complexity}
+        \begin{enumerate}
+            \item worst case: $\mathcal{O}(b^m)$
+            \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Problem Solving Agent - Greedy Best-first search (GBFS) on a graph
+]
+import heapq
+
+def greedy_best_first_search(problem: Problem):
+    node = Node(problem.initial_state, None, None, 0)
+
+    if problem.goal_test(node.state):
+        return solution(node)
+
+    # Priority queue ordered by heuristic cost
+    frontier = [(problem.heuristic(node.state), node)]
+    heapq.heapify(frontier)
+
+    explored = set()
+
+    while len(frontier) > 0:
+        _, node = heapq.heappop(frontier)
+
+        if problem.goal_test(node.state):
+            return solution(node)
+
+        explored.add(node)
+
+        for action in problem.actions(node.state):
+            child = child_node(problem, node, action)
+            h_cost = problem.heuristic(child.state)
+
+            # Add child only if it's not in frontier or explored
+            in_frontier = any(n.state == child.state for _, n in frontier)
+            in_explored = any(n.state == child.state for n in explored)
+
+            if not in_frontier and not in_explored:
+                heapq.heappush(frontier, (h_cost, child))
+            else:
+                # Optional: If it's in the frontier but has a 
+                # better heuristic, replace it
+                for idx, (old_cost, old_node) in enumerate(frontier):
+                    if old_node.state == child.state and h_cost < old_cost:
+                        frontier[idx] = (h_cost, child)
+                        heapq.heapify(frontier)
+                        break
+
+    return None  # No solution found
+
+# Greedy Best-First Search using general best first search
+greedy_best_first_search_alt = lambda problem: best_first_search(
+    problem, 
+    f=lambda n: problem.heuristic(n.state)
+)
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+

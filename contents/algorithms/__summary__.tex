@@ -1,0 +1,209 @@
+\section{Summary}
+
+
+\begin{customArrayStretch}{1.7}
+\begin{longtable}{| 
+>{\RaggedRight\arraybackslash}p{5cm} | 
+>{\RaggedRight\arraybackslash}p{1.5cm} | 
+>{\RaggedRight\arraybackslash}p{3cm} | 
+>{\centering\arraybackslash}p{1cm} | 
+>{\centering\arraybackslash}p{1cm} | 
+>{\centering\arraybackslash}p{1cm} | 
+>{\centering\arraybackslash}p{0.7cm} |}
+
+\hline
+\multirow{2}{*}{\textbf{Algorithm}} & 
+\multirow{2}{*}{\textbf{Complete?}} &
+\multirow{2}{*}{\textbf{Optimal?}} & 
+\multicolumn{2}{c|}{\textbf{Time Complexity}} &
+\multicolumn{2}{c|}{\textbf{Space Complexity}}
+\\ \cline{4-7}
+&&& 
+\textbf{Graph} & \textbf{Tree} & 
+\textbf{Graph} & \textbf{Tree}
+\\ \hline
+\endfirsthead
+
+\hline
+\multirow{2}{*}{\textbf{Algorithm}} & 
+\multirow{2}{*}{\textbf{Complete?}} &
+\multirow{2}{*}{\textbf{Optimal?}} & 
+\multicolumn{2}{c|}{\textbf{Time Complexity}} &
+\multicolumn{2}{c|}{\textbf{Space Complexity}}
+\\ \cline{4-7}
+&&& 
+\textbf{Graph} & \textbf{Tree} & 
+\textbf{Graph} & \textbf{Tree}
+\\ \hline
+\endhead
+
+\hline\endfoot
+\hline\endlastfoot
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\multicolumn{7}{|c|}{\fontsize{17}{17}\selectfont \textsc{Uninformed Search/ Blind Search}} \\ \hline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hyperref[AI: Algorithms/Breadth-first search (BFS)]{\textbf{Breadth-first search (BFS)}} &
+YES$^3$ &
+YES$^{1|2}$ &
+\multicolumn{2}{c|}{$\mathcal{O}(b^d)$} &
+\multicolumn{2}{c|}{$\mathcal{O}(b^d)$}
+\\ \hline
+
+
+\hyperref[AI: Algorithms/Uniform-cost search (UCS)]{\textbf{Uniform-cost search (UCS)}} &
+YES$^4$ &
+YES &
+\multicolumn{2}{c|}{$\mathcal{O}(b^{1+\dfloor{C^\ast/\varepsilon}})$} &
+\multicolumn{2}{c|}{$\mathcal{O}(b^{1+\dfloor{C^\ast/\varepsilon}})$}
+\\ \hline
+
+
+\hyperref[AI: Algorithms/Depth-first search (DFS)]{\textbf{Depth-first search (DFS)}} &
+YES$^{3\&5}$ &
+NO &
+$\mathcal{O}(b^d)$ & $\mathcal{O}(b^m)$ &
+$\mathcal{O}(bd)$ & $\mathcal{O}(bm)$
+\\ \hline
+
+
+\hyperref[AI: Algorithms/Backtracking Search]{\textbf{Backtracking Search}} &
+YES$^{3\&5}$ &
+NO &
+$\mathcal{O}(b^d)$ & $\mathcal{O}(b^m)$ &
+$\mathcal{O}(d)$ & $\mathcal{O}(m)$
+\\ \hline
+
+
+\hyperref[AI: Algorithms/Depth-limited search (DLS)]{\textbf{Depth-limited search (DLS)}} &
+NO$^{6}$ &
+YES$^{6}$ &
+\multicolumn{2}{c|}{$\mathcal{O}(b^\ell)$} &
+\multicolumn{2}{c|}{$\mathcal{O}(b\ell)$}
+\\ \hline
+
+
+\hyperref[AI: Algorithms/Iterative Deepening Search (IDS)]{\textbf{Iterative Deepening Search (IDS)}} &
+YES$^{3}$ &
+YES$^{1|2}$ &
+\multicolumn{2}{c|}{$\mathcal{O}(b^d)$} &
+\multicolumn{2}{c|}{$\mathcal{O}(bd)$}
+\\ \hline
+
+
+\hyperref[AI: Algorithms/Iterative Lengthening Search (ILS)]{\textbf{Iterative Lengthening Search (ILS)}} &
+YES$^{4}$ &
+YES &
+\multicolumn{2}{c|}{$\mathcal{O}(b^{1+\dfloor{C^\ast/\varepsilon}})$} &
+\multicolumn{2}{c|}{$\mathcal{O}(bC^\ast/\varepsilon)$}
+\\ \hline
+
+
+\hyperref[AI: Algorithms/Bidirectional search]{\textbf{Bidirectional search}} &
+YES$^{7}$ &
+YES$^{2\&8}$ &
+\multicolumn{2}{c|}{$\mathcal{O}(b^{d/2})$} &
+\multicolumn{2}{c|}{$\mathcal{O}(b^{d/2})$}
+\\ \hline
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\multicolumn{7}{|c|}{\fontsize{17}{17}\selectfont \textsc{Informed Search/ Heuristic Search}} 
+\\ \hline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\hyperref[AI: Algorithms/Greedy best-first search (GBFS)]{\textbf{Greedy best-first search (GBFS)}} &
+YES$^{3\&5}$ &
+NO &
+\multicolumn{2}{c|}{$\mathcal{O}(b^m)$} &
+\multicolumn{2}{c|}{$\mathcal{O}(b^m)$}
+\\ \hline
+
+
+\hyperref[AI: Algorithms/A* Search]{\textbf{A* Search}} &
+YES$^{3\&4}$ &
+YES$^{(9\&10)|(5\&11)}$ &
+\multicolumn{2}{c|}{$\mathcal{O}(
+    b^\Delta)^{12}$ or 
+    $\mathcal{O}(b^{\Delta_rd})^{2}$
+} &
+\multicolumn{2}{c|}{$\mathcal{O}()$}
+\\ \hline
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{longtable}
+\end{customArrayStretch}
+
+\vspace{0.5cm}
+\textbf{Conditions}:
+\vspace{0.2cm}
+\begin{enumerate}[itemsep=0.1cm]
+% 1
+\item path cost is a non-decreasing function of the depth of the node
+% 2
+\item step costs are all identical
+% 3
+\item branching factor $b$ is finite (number of states are finite)
+% 4
+\item every step exceeds some small positive constant $\varepsilon > 0$
+% 5
+\item graph version is used
+% 6
+\item $\ell < d$
+% 7
+\item additional search is used to make sure the path isn’t another short-cut across the gap
+% 8
+\item both directions use breadth-first search
+% 9
+\item tree version is used
+% 10
+\item $h(n)$ is admissible
+% 11
+\item $h(n)$ is consistent
+% 12
+\item in the maximum absolute error
+\end{enumerate}
+
+
+\vspace{0.5cm}
+\textbf{Notation Interpretation}:
+\vspace{0.2cm}
+\begin{enumerate}[itemsep=0.2cm]
+
+\item YES$^{a|b}$ = YES \textbf{if} either $a$ \textbf{or} $b$ must satisfy \textbf{else} NO
+
+\item YES$^{a\&b}$ = YES \textbf{if} either $a$ \textbf{and} $b$ must satisfy \textbf{else} NO
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

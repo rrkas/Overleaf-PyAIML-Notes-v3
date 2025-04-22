@@ -1,9 +1,9 @@
-\section{Best-first search \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
-\label{AI: Algorithms/Best-first search}
+\section{Best-first search (BestFS) \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\label{AI: Algorithms/Best-first search (BestFS)}
 
 
 \begin{enumerate}
-    \item Best-first search is an instance of the general \textsc{Tree-Search} or \textsc{Graph-Search} algorithm in which a node is selected for expansion based on an \textbf{evaluation function}, $f(n)$.
+    \item Best-first search is an instance of the general \textsc{Tree-Search} or \textsc{Graph-Search} algorithm in which a node is selected for expansion based on an \textbf{evaluation function}, $f(n)$. $f(n)$ can be any function that returns a value for a given node.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item The implementation of best-first graph search is identical to that for uniform-cost search, except for the use of $f$ instead of $g$ to order the priority queue.
@@ -14,10 +14,43 @@
 \end{enumerate}
 
 
+\begin{lstlisting}[
+    language=Python,
+    caption=Problem Solving Agent - (General) Best-first search (BestFS) on a graph
+]
+def best_first_search(problem: Problem, f):
+    node = Node(problem.initial_state, None, None, 0)
 
+    if problem.goal_test(node.state):
+        return solution(node)
 
+    frontier = [(f(node), node)]
+    heapq.heapify(frontier)
+    explored = set()
 
+    while frontier:
+        _, node = heapq.heappop(frontier)
 
+        if problem.goal_test(node.state):
+            return solution(node)
+
+        explored.add(node)
+
+        for action in problem.actions(node.state):
+            child = child_node(problem, node, action)
+            if (all(n.state != child.state for n in explored) 
+                and all(n.state != child.state for _, n in frontier)):
+                heapq.heappush(frontier, (f(child), child))
+            else:
+                # Optional: Replace in frontier if better
+                for i, (old_f, old_node) in enumerate(frontier):
+                    if old_node.state == child.state and f(child) < old_f:
+                        frontier[i] = (f(child), child)
+                        heapq.heapify(frontier)
+                        break
+
+    return None
+\end{lstlisting}
 
 
 
