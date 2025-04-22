@@ -1,0 +1,85 @@
+\section{Recursive best-first search (RBFS) \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\label{AI: Algorithms/Recursive best-first search (RBFS)}
+
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item simple recursive algorithm that attempts to mimic the operation of standard best-first search, but using only \textbf{linear space}
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item Its structure is similar to that of a recursive depth-first search, but rather than continuing indefinitely down the current path, it uses the $f\_limit$ variable to keep track of the $f$-value of the best \textbf{alternative} path available from any ancestor of the current node. 
+    If the current node exceeds this limit, the recursion unwinds back to the alternative path.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item As the recursion unwinds, RBFS replaces the f-value of each node along the path with a \textbf{backed-up value} - the best f-value of its children. 
+    In this way, RBFS remembers the $f$-value of the best leaf in the forgotten sub-tree and can therefore decide whether it’s worth re-expanding the sub-tree at some later time.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item RBFS is somewhat more \textbf{efficient} than IDA$^\ast$
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Disadvantages}:
+    \begin{enumerate}
+        \item suffers from excessive node regeneration
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \end{enumerate}
+\end{enumerate}
+
+
+\vspace{0.5cm}
+
+\begin{algorithm}[H]
+    \caption{The algorithm for recursive best-first search. \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+
+
+    \SetKwFunction{FUNCTION}{\textsc{Recursive-Best-First-Search}}
+    \SetKwProg{Fn}{function}{ returns \normalfont{a solution, or failure}}{end}
+    \Fn{\FUNCTION{problem}}{
+        \Return \textsc{RBFS}(\\
+            \hspace{0.5cm} $problem$, \\
+            \hspace{0.5cm} \textsc{Make-Node}($problem$.\textsc{Initial-State}), \\
+            \hspace{0.5cm} $\infty$, \\
+        )
+    }
+    
+    \ \\
+    
+    \SetKwFunction{FUNCTION}{\textsc{RBFS}}
+    \SetKwProg{Fn}{function}{ returns \normalfont{a solution, or failure and a new f-cost limit}}{end}
+    \Fn{\FUNCTION{problem}}{
+        \lIf{$problem$.\textsc{Goal-Test}($node$.\textsc{State})}{
+            \Return \textsc{Solution}($node$)
+        }
+        $successors$ $\gets$ [] \\
+        \ForEach{\normalfont $action$ \textbf{in} $problem$.\textsc{Actions}($node$.\textsc{State})}{
+            add \textsc{Child-Node}($problem,\ node,\ action$) \textbf{into} $successors$
+        }
+        \lIf{\normalfont $successors$ is empty}{
+            \Return $failure,\ \infty$
+        }
+        \Comment{update $f$ with value from previous search, if any}
+        \lForEach{\normalfont $s$ \textbf{in} $successors$}{
+            $s.f$ $\gets$ max($s.g + s.h$, $node.f$)
+        }
+        \ \\
+        \While{}{
+            $best$ $\gets$ the lowest $f$-value node in $successors$ \\
+            \lIf{$best.f > f\_limit$}{
+                \Return $failure$, $best.f$
+            }
+            $alternative$ $\gets$ the second-lowest $f$-value among \textbf{successors} \\
+            $result,\ best.f$ $\gets$ \textsc{RBFS}($problem$, $best$, min($f\_limit,\ alternative$)) \\
+            \lIf{result $\neq$ failure}{
+                \Return $result$
+            }
+        }
+    }
+\end{algorithm}
+
+
+
+
+
+
+
+
+

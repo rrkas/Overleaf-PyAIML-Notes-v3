@@ -100,6 +100,12 @@ effective branching factor \\
 
         \item For almost all heuristics in practical use, the absolute error is at least proportional to the path cost $h^\ast$, so $\epsilon$ is constant or growing and the time complexity is exponential in $d$.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item When the state space has many goal states - particularly \textbf{near-optimal goal} states - the search process can be led astray from the optimal path and there is an extra cost proportional to the number of goals whose cost is within a factor  of the optimal cost.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item 
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \end{enumerate}
 
     \item \textbf{evaluation function}:
@@ -115,6 +121,11 @@ effective branching factor \\
         \item The fact that $f$-costs are \textit{non-decreasing} along any path also means that we can draw \textbf{contours} in the state space, just like the contours in a topographic map. 
         With more accurate heuristics, the bands will stretch toward the goal state and become more narrowly focused around the optimal path.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item There can be exponentially many states with $f(n) < C^\ast$ even if the absolute error is bounded by a constant.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        
     \end{enumerate}
 \end{enumerate}
 
@@ -135,6 +146,8 @@ effective branching factor \\
 \input{contents/algorithms/Best-first-search}
 \input{contents/algorithms/Greedy-best-first-search}
 \input{contents/algorithms/A-star-search}
+\input{contents/algorithms/Iterative-Deepening-A-star-search}
+\input{contents/algorithms/Recursive-best-first-search}
 
 
 \clearpage

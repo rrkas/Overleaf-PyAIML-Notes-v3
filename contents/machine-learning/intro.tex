@@ -92,6 +92,9 @@
     \item function $ChooseMove$ chooses the best move for any given board state
     \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
 
+    \item it is useful to reduce the problem of improving performance $P$ at task $T$ to the problem of learning some particular target function.
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
     \item $ChooseMove : B \to M$ indicates that this function accepts as input any board from the set of legal board states $B$ and produces as output some move from the set of legal moves $M$.
     \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
 
@@ -121,17 +124,6 @@
     \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
 
 
-    \item the fact that the game was eventually won or lost does not necessarily indicate that every board state along the game path was necessarily good or bad.
-    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
-    \\
-    For example, even if the program loses the game, it may still be the case that board states occurring early in the game should be rated very highly and that the cause of the loss was a subsequent poor move. 
-    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
-
-
-    
-
-
-
 
     \item[] \textbf{example}: Let:
     \\
@@ -151,35 +143,48 @@
     Then: 
     \\
     Partial design of a checkers learning program: 
-    \\
+    \\ \\
     .\hfill \textbf{(specification of the learning task)} \hfill.
-    \\
+    \\ \\
     Task $T$: playing checkers 
     \\
     Performance measure $P$: percent of games won in the world tournament 
     \\
     Training experience $E$: games played against itself 
-    \\
+    \\ \\
     .\hfill \textbf{(design choices for the implementation of the learning program)} \hfill.
-    \\
+    \\ \\
     Target function: $V: Board \to \mathbb{R}$ 
     \\
     Target function representation: $\hat{V}(b) = w_0 + w_1x_1 + w_2x_2 + w_3x_3 + w_4x_4 + w_5x_5 + w_6x_6$ 
     \\
-    each training example: $\dAngleBrac{b, V_{train}(b)}$
+    where $w_0$ through $w_6$ are numerical coefficients, or weights, to be chosen by the learning algorithm. Learned values for the weights $w_1$ through $w_6$ will determine the relative importance of the various board features in determining the value of the board, whereas the weight $w_0$ will provide an additive constant to the board value. 
+    
+    \item each training example: $\dAngleBrac{b, V_{train}(b)}$
         \hfill (board state $b$; training value $V_{train}(b)$ for $b$)
+
+    \item the fact that the game was eventually won or lost does not necessarily indicate that every board state along the game path was necessarily good or bad.
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
     \\
+    For example, even if the program loses the game, it may still be the case that board states occurring early in the game should be rated very highly and that the cause of the loss was a subsequent poor move. 
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+    \item Despite the ambiguity inherent in estimating training values for intermediate board states, one simple approach has been found to be surprisingly successful.
+    This approach is to assign the training value of $V_{train}(b)$ for any intermediate board state $b$ to be $\hat{V}(Successor(b))$, where $\hat{V}$ is the learner's current approximation to $V$ and where $Successor(b)$ denotes the next board state following $b$ for which it is again the program's turn to move.
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+
+    \item 
+    \textbf{Rule for estimating training values}: $V_{train}(b) \gets \hat{V}(Successor(b))$
+    \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
+    
+    \item 
     $\hat{V}(Successor(b))$ = training value of $V_{train}(b)$ for any intermediate board state $b$
     \\
     .\hspace{1cm} $\hat{V}$ is the learner's current approximation to $V$
     \\
     .\hspace{1cm} $Successor(b)$ denotes the next board state following $b$
     \vspace{0.3cm} \noindent
-    \\
-    \textbf{Rule for estimating training values}: $V_{train}(b) \gets \hat{V}(Successor(b))$
-    \vspace{0.3cm} \noindent
-    \\
-    where $w_0$ through $w_6$ are numerical coefficients, or weights, to be chosen by the learning algorithm. Learned values for the weights $w_1$ through $w_6$ will determine the relative importance of the various board features in determining the value of the board, whereas the weight $w_0$ will provide an additive constant to the board value. 
+    
 \end{enumerate}
 
 

@@ -52,10 +52,10 @@
     \SetKwFunction{FUNCTION}{\textsc{Recursive-DLS}}
     \SetKwProg{Fn}{function}{ returns \normalfont{a solution, or failure/cutoff}}{end}
     \Fn{\FUNCTION{node, problem, limit}}{
-        \If{\normalfont $problem$.\textsc{Goal-Test}($node$.\textsc{State})}{
+        \lIf{\normalfont $problem$.\textsc{Goal-Test}($node$.\textsc{State})}{
             \Return \textsc{Solution}($node$) 
         }
-        \ElseIf{limit = 0}{
+        \lElseIf{limit = 0}{
             \Return $cutoff$
         }
         \Else{
@@ -64,18 +64,18 @@
             \ForEach{\normalfont $action$ \textbf{in} $problem$.\textsc{Actions}($node$.\textsc{State})}{
                 $child \gets$ \textsc{Child-Node}($problem,\ node,\ action$)\\
                 $result \gets$ \textsc{Recursive-DLS}($child,\ problem,\ limit-1$)\\
-                \If{result = cutoff}{
+                \lIf{result = cutoff}{
                     $cutoff\_occurred? \ \gets$ true
                 }
-                \ElseIf{result $\neq$ failure}{
+                \lElseIf{result $\neq$ failure}{
                     \Return $result$
                 }
             }
             \ \\
-            \If{$cutoff\_occurred?$}{
+            \lIf{$cutoff\_occurred?$}{
                 \Return $cutoff$
             }
-            \Else{
+            \lElse{
                 \Return $failure$
             }
         }

@@ -1,0 +1,93 @@
+\section{Iterative-Deepening A$^\ast$ (IDA$^\ast$) search \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\label{AI: Algorithms/Iterative-Deepening A* search}
+
+
+\begin{enumerate}[itemsep=0.2cm]
+
+\item adapt the idea of iterative deepening to the heuristic search context
+\hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+\item The main difference between IDA$^\ast$ and standard iterative deepening is that the cutoff used is the $f$-cost ($g + h$) rather than the depth
+\hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+\item at each iteration, the cutoff value is the smallest $f$-cost of any node that exceeded the cutoff on the previous iteration
+\hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+\item IDA$^\ast$ is practical for many problems with unit step costs and avoids the substantial overhead associated with keeping a sorted queue of nodes. 
+\hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+\item \textbf{Disadvantages}:
+\begin{enumerate}[itemsep=0.2cm]
+    \item  it suffers from the same difficulties with realvalued costs
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Problem Solving Agent - Iterative-Deepening A$^\ast$ (IDA$^\ast$)
+]
+def ida_star_search(problem: Problem):
+    """
+    Performs Iterative Deepening A* Search.
+    Returns the solution as a list of actions, or None if no solution is found.
+    """
+
+    start_node = Node(problem.initial_state, None, None, 0)
+    bound = problem.heuristic(start_node.state)
+
+    while True:
+        result = _ida_search(start_node, problem, bound)
+
+        if isinstance(result, list):  # Found a solution
+            return result
+
+        if result == float('inf'):
+            return None  # No solution
+
+        bound = result  # Increase bound and try again
+
+
+def _ida_search(node: Node, problem: Problem, bound: float):
+    """
+    Helper function for IDA* search.
+    Returns either:
+    - A solution path (list of actions), or
+    - The next bound (float) to use in the next iteration
+    """
+    f = node.path_cost + problem.heuristic(node.state)
+
+    if f > bound:
+        return f
+
+    if problem.goal_test(node.state):
+        return solution(node)
+
+    min_threshold = float('inf')
+    for action in problem.actions(node.state):
+        child = child_node(problem, node, action)
+        result = _ida_search(child, problem, bound)
+
+        if isinstance(result, list):
+            return result  # Solution found
+
+        if result < min_threshold:
+            min_threshold = result
+
+    return min_threshold
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+

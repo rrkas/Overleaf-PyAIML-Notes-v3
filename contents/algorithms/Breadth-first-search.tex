@@ -99,19 +99,16 @@
     \SetKwProg{Fn}{function}{ returns \normalfont{a solution, or failure}}{end}
     \Fn{\FUNCTION{problem}}{
         $node \ \gets$ a node with \textsc{State} = $problem$.\textsc{Initial-State}, \textsc{Path-Cost} = $0$ \\
-        \ \\
-        \If{$problem$.\textsc{Goal-Test}($node$.\textsc{State})}{
+        \lIf{$problem$.\textsc{Goal-Test}($node$.\textsc{State})}{
             \Return \textsc{Solution}($node$)
         }
-        \ \\
         $frontier \ \gets$ a FIFO queue with node as the only element \\
         $explored \ \gets$ an empty set \\
         \ \\
         \While{}{
-            \If{\textsc{Empty?}($frontier$)}{
+            \lIf{\textsc{Empty?}($frontier$)}{
                 \Return failure
             }
-            \ \\
             \Comment{chooses the shallowest node in $frontier$}
             $node \ \gets$ \textsc{Pop}($frontier$) \\ 
             add $node$.\textsc{State} to $explored$ \\
@@ -119,7 +116,7 @@
             \ForEach{$action$ \textbf{in} $problem$.\textsc{Actions}($node$.\textsc{State})}{
                 $child \gets$ \textsc{Child-Node}($problem,\ node,\ action$) \\
                 \If{$child$.\textsc{State} is \textbf{not in} $explored$ or $frontier$}{
-                    \If{$problem$.\textsc{Goal-Test}($child$.\textsc{State})}{
+                    \lIf{$problem$.\textsc{Goal-Test}($child$.\textsc{State})}{
                         \Return \textsc{Solution}($child$)
                     }
                     $frontier \gets$ \textsc{Insert}($child,\ frontier$)

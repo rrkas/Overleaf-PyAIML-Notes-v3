@@ -67,7 +67,7 @@
     \Fn{\FUNCTION{problem}}{
         \For{\normalfont $depth = 0$ \textbf{to} $\infty$}{
             $result \gets$ \textsc{Depth-Limited-Search}($problem,\ depth$)\\
-            \If{$result \neq cutoff$}{
+            \lIf{$result \neq cutoff$}{
                 \Return $result$
             }
         }

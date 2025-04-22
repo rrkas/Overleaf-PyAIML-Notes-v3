@@ -40,6 +40,9 @@
     \begin{enumerate}[itemsep=0.2cm]
         \item it will get stuck in an \textbf{infinite loop} if there is a path with an infinite sequence of \textit{zero-cost actions} - for example, a sequence of $NoOp$ actions.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item  it suffers from the same difficulties with realvalued costs
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \end{enumerate}
 
     \item When all step costs are the same, uniform-cost search is similar to breadth-first search, except that the latter stops as soon as it generates a goal, whereas uniform-cost search examines all the nodes at the goal’s depth to see if one has a lower cost; thus uniform-cost search does strictly more work by expanding nodes at depth $d$ unnecessarily.
@@ -82,17 +85,14 @@
         $explored \ \gets$ an empty set \\
         \ \\
         \While{}{
-            \If{\textsc{Empty?}($frontier$)}{
+            \lIf{\textsc{Empty?}($frontier$)}{
                 \Return failure
             }
-            \ \\
             \Comment{chooses the lowest-cost node in $frontier$}
             $node \ \gets$ \textsc{Pop}($frontier$) \\ 
-            \ \\
-            \If{$problem$.\textsc{Goal-Test}($node$.\textsc{State})}{
+            \lIf{$problem$.\textsc{Goal-Test}($node$.\textsc{State})}{
                 \Return \textsc{Solution}($node$)
             }
-            \ \\
             add $node$.\textsc{State} to $explored$ \\
             \ \\
             \ForEach{$action$ \textbf{in} $problem$.\textsc{Actions}($node$.\textsc{State})}{
