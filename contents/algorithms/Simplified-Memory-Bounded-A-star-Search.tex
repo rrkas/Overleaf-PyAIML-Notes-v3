@@ -1,0 +1,44 @@
+\section{Simplified Memory-Bounded A$^\ast$ (SMA$^\ast$) Search \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\label{AI: Algorithms/Simplified Memory-Bounded A* (SMA*) Search}
+
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item SMA$^\ast$ proceeds just like A$^\ast$, expanding the best leaf until memory is full.
+    At this point, it cannot add a new node to the search tree without dropping an old one. 
+    SMA$^\ast$ always drops the \textbf{worst leaf node}—the one with the highest $f$-value.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item  Like RBFS, SMA$^\ast$ then backs up the value of the forgotten node to its parent. 
+    In this way, the ancestor of a forgotten sub-tree knows the quality of the best path in that sub-tree. 
+    SMA$^\ast$ regenerates the sub-tree only when all other paths have been shown to look worse than the path it has forgotten.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item  if all the descendants of a node $n$ are forgotten, then we will not know which way to go from $n$, but we will still have an idea of how worthwhile it is to go anywhere from $n$.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item if all the leaf nodes have the same f-value, SMA$^\ast$ expands the \textbf{newest best} leaf and deletes the \textbf{oldest worst} leaf to avoid selecting the same node for deletion and expansion
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item If the leaf is not a goal node, then even if it is on an optimal solution path, that solution is not reachable with the available memory. 
+    Therefore, the node can be discarded exactly as if it had no successors.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item In practical terms, SMA$^\ast$ is a fairly robust choice for finding optimal solutions, particularly when the state space is a graph, step costs are not uniform, and node generation is expensive compared to the overhead of maintaining the frontier and the explored set.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Disadvantages}:
+    \begin{enumerate}
+        \item On very hard problems, it will often be the case that SMA$^\ast$ is forced to switch back and forth continually among many candidate solution paths, only a small subset of which can fit in memory.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item the extra time required for repeated regeneration of the same nodes means that problems that would be practically solvable by A$^\ast$, given unlimited memory, become intractable for SMA$^\ast$.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+

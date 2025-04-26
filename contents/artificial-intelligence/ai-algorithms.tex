@@ -25,7 +25,19 @@ $\ell$ & $\in \mathbb{R}$ & predetermined depth limit \\
 
 $G_n$ & node & goal node closest to $n$ \\
 
+$M$ & $\in \mathbb{R}$ & memory bound \\
+
+$N$ & $\in \mathbb{R}$ & total number of nodes generated \\
+
+
+
+
+
 \hline
+
+
+
+
 
 $g(n)$ & $\in \mathbb{R}$ & Path Cost (The \textbf{actual cost} from the \textbfit{start node} to the current node $n$) (Eg: UCS) \\
 
@@ -35,7 +47,13 @@ $f(n)$ & $\in \mathbb{R}$ & Evaluation Function (The \textbf{total estimated cos
 
 $h^\ast(n)$ & $\in \mathbb{R}$ & actual cost of getting from the root to the goal \\
 
+
+
+
 \hline
+
+
+
 
 $\Delta$ & $\in \mathbb{R}$ & \textbf{absolute error}: $\Delta \equiv h^\ast - h$  \\
 
@@ -47,6 +65,8 @@ $\in \mathbb{R}$ &
 $b^{\Delta_r}$ \textbf{OR} $b^\epsilon$ &
 $\in \mathbb{R}$ & 
 effective branching factor \\
+
+
 
 
 
@@ -104,7 +124,17 @@ effective branching factor \\
         \item When the state space has many goal states - particularly \textbf{near-optimal goal} states - the search process can be led astray from the optimal path and there is an extra cost proportional to the number of goals whose cost is within a factor  of the optimal cost.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item 
+        \item experimental measurements of b$^\ast$ on a small set of problems can provide a good guide to the heuristic’s overall usefulness. 
+        A well-designed heuristic would have a value of b$^\ast$ close to $1$, allowing fairly large problems to be solved at reasonable computational cost.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item \textbf{Dominating heuristic}: if for any node $n$, $h_2(n) \geq h_1(n)$, $h_2$ \textbf{dominates} $h_1$.
+        Domination translates directly into efficiency: algorithm using $h_2$ will \textbf{never} expand more nodes than same algorithm using $h_1$ 
+        (except possibly for some nodes with $f(n) = C^\ast$).
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+        \\
+        For A$^\ast$ search, every node with $f(n) < C^\ast$ will surely be expanded.
+        This is the same as saying that every node with $h(n) < C^\ast - g(n)$ will surely be expanded.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \end{enumerate}
 
@@ -127,6 +157,12 @@ effective branching factor \\
 
         
     \end{enumerate}
+
+    \item memory limitations can make a problem intractable from the point of view of computation time
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item The effective branching factor can vary across problem instances, but usually it is fairly constant for sufficiently hard problems.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}
 
 
@@ -148,6 +184,9 @@ effective branching factor \\
 \input{contents/algorithms/A-star-search}
 \input{contents/algorithms/Iterative-Deepening-A-star-search}
 \input{contents/algorithms/Recursive-best-first-search}
+\input{contents/algorithms/Memory-Bounded-A-star-Search}
+\input{contents/algorithms/Simplified-Memory-Bounded-A-star-Search}
+
 
 
 \clearpage

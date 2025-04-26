@@ -3,20 +3,20 @@
 
 \begin{customArrayStretch}{1.7}
 \begin{longtable}{| 
->{\RaggedRight\arraybackslash}p{5cm} | 
->{\RaggedRight\arraybackslash}p{1.5cm} | 
->{\RaggedRight\arraybackslash}p{3cm} | 
+>{\RaggedRight\arraybackslash}p{4.5cm} | 
+>{\RaggedRight\arraybackslash}p{2cm} | 
+>{\RaggedRight\arraybackslash}p{2.5cm} | 
 >{\centering\arraybackslash}p{1cm} | 
 >{\centering\arraybackslash}p{1cm} | 
 >{\centering\arraybackslash}p{1cm} | 
->{\centering\arraybackslash}p{0.7cm} |}
+>{\centering\arraybackslash}p{1cm} |}
 
 \hline
 \multirow{2}{*}{\textbf{Algorithm}} & 
 \multirow{2}{*}{\textbf{Complete?}} &
 \multirow{2}{*}{\textbf{Optimal?}} & 
-\multicolumn{2}{c|}{\textbf{Time Complexity}} &
-\multicolumn{2}{c|}{\textbf{Space Complexity}}
+\multicolumn{2}{p{2cm}|}{\textbf{Time Complexity}} &
+\multicolumn{2}{p{2cm}|}{\textbf{Space Complexity}}
 \\ \cline{4-7}
 &&& 
 \textbf{Graph} & \textbf{Tree} & 
@@ -28,8 +28,8 @@
 \multirow{2}{*}{\textbf{Algorithm}} & 
 \multirow{2}{*}{\textbf{Complete?}} &
 \multirow{2}{*}{\textbf{Optimal?}} & 
-\multicolumn{2}{c|}{\textbf{Time Complexity}} &
-\multicolumn{2}{c|}{\textbf{Space Complexity}}
+\multicolumn{2}{p{2cm}|}{\textbf{Time Complexity}} &
+\multicolumn{2}{p{2cm}|}{\textbf{Space Complexity}}
 \\ \cline{4-7}
 &&& 
 \textbf{Graph} & \textbf{Tree} & 
@@ -147,9 +147,29 @@ YES$^{10}$ &
 \\ \hline
 
 
+\hyperref[AI: Algorithms/Recursive best-first search (RBFS)]{\textbf{Recursive best-first search (RBFS)}} &
+YES$^4$ &
+YES$^{10}$ &
+\multicolumn{2}{c|}{$\mathcal{O}(b^d)$} &
+\multicolumn{2}{c|}{$\mathcal{O}(bd)$}
+\\ \hline
 
 
 
+\hyperref[AI: Algorithms/Memory-Bounded A* (MA*) Search]{\textbf{Memory-Bounded A$^\ast$ (MA$^\ast$) Search}} &
+YES$^{13}$ &
+ &
+\multicolumn{2}{c|}{$\mathcal{O}()$} &
+\multicolumn{2}{c|}{$\mathcal{O}()$}
+\\ \hline
+
+
+\hyperref[AI: Algorithms/Simplified Memory-Bounded A* (SMA*) Search]{\textbf{Simplified Memory-Bounded A$^\ast$ (SMA$^\ast$) Search}} &
+YES$^{14}$ &
+YES$^{15}$ &
+\multicolumn{2}{c|}{$\mathcal{O}(b^d)$} &
+\multicolumn{2}{c|}{$\mathcal{O}(M)$}
+\\ \hline
 
 
 
@@ -159,10 +179,12 @@ YES$^{10}$ &
 \end{longtable}
 \end{customArrayStretch}
 
-\vspace{0.5cm}
-\textbf{Conditions}:
 \vspace{0.2cm}
+\textbf{Conditions}:
+
+\begin{multicols}{2}
 \begin{enumerate}[itemsep=0.1cm]
+
 % 1
 \item path cost is a non-decreasing function of the depth of the node
 % 2
@@ -187,8 +209,15 @@ YES$^{10}$ &
 \item $h(n)$ is consistent
 % 12
 \item in the maximum absolute error
-\end{enumerate}
+% 13
+\item memory bound is sufficient
+% 14
+\item depth of the shallowest goal node, is less than the memory size (expressed in nodes)
+% 15
+\item optimal solution is reachable
 
+\end{enumerate}
+\end{multicols}
 
 \vspace{0.5cm}
 \textbf{Notation Interpretation}:

@@ -17,9 +17,21 @@
     \item RBFS is somewhat more \textbf{efficient} than IDA$^\ast$
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
+    \item it depends both on the accuracy of the heuristic function and on how often the best path changes as nodes are expanded.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
     \item \textbf{Disadvantages}:
     \begin{enumerate}
         \item suffers from excessive node regeneration
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item Each mind change corresponds to an iteration of IDA$^\ast$ and could require many re-expansions of forgotten nodes to recreate the best path and extend it one more node.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item suffer from using too little memory.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item suffer the potentially exponential increase in complexity associated with redundant paths in graphs
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \end{enumerate}
 \end{enumerate}
