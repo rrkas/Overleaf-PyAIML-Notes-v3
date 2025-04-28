@@ -1,5 +1,7 @@
 \section{8-Puzzle \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
 
+\begin{table}[H]
+\begin{minipage}[t]{0.45\linewidth}
 \begin{figure}[H]
     \centering
     \includegraphics[
@@ -11,6 +13,24 @@
     \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
     \label{fig:images/artificial-intelligence/examples/8-puzzle-instance-26steps.png}
 \end{figure}
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}[t]{0.45\linewidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=4cm,
+        keepaspectratio,
+    ]{images/artificial-intelligence/examples/8-puzzle-instance-subprob-1234.png}
+    \caption{A subproblem of the 8-puzzle instance. 
+    The task is to get tiles 1, 2, 3, and 4 into their correct positions, without worrying about what happens to the other tiles.
+    \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\end{figure}
+\end{minipage}
+\end{table}
 
 \begin{enumerate}[itemsep=0.2cm]
     \item the objective of the puzzle is to slide the tiles horizontally or vertically into the empty space until the configuration matches the goal configuration
@@ -144,6 +164,42 @@ Data are averaged over $100$ instances of the $8$-puzzle for each of various sol
 
     
 \end{enumerate}
+
+
+
+
+\subsubsection{Generating admissible heuristics from subproblems: Pattern databases}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item[] \textbf{Relaxed Sub-problem method}
+    
+    \item The choice of 1-2-3-4 is fairly arbitrary; we could also construct databases for 5-6-7-8, for 2-4-6-8, and so on.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item the heuristics obtained from the 1-2-3-4 database and the 5-6-7-8 \textbf{cannot} be added
+     because the solutions of the 1-2-3-4 subproblem and the 5-6-7-8 subproblem for a given state will almost certainly share some moves—it is unlikely that 1-2-3-4 can be moved into place without touching 5-6-7-8, and vice versa. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item[] \textbf{Experience method}
+
+    \item “Experience” here means solving lots of $8$-puzzles. 
+    Each optimal solution to an 8-puzzle problem provides examples from which $h(n)$ can be learned. 
+    Each example consists of a state from the solution path and the actual cost of the solution from that point.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item From these examples, a learning algorithm can be used to construct a function $h(n)$ that can (with luck) predict solution costs for other states that arise during search. 
+    Techniques for doing this use neural nets, decision trees, and other methods or reinforcement learning.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
 
 
 

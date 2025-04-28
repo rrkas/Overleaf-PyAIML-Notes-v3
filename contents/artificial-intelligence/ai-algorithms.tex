@@ -136,6 +136,35 @@ effective branching factor \\
         For A$^\ast$ search, every node with $f(n) < C^\ast$ will surely be expanded.
         This is the same as saying that every node with $h(n) < C^\ast - g(n)$ will surely be expanded.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item One problem with generating new heuristic functions is that one often fails to get a single “clearly best” heuristic. 
+        If a collection of admissible heuristics $h_1, \cdots, h_m$ is available for a problem and none of them dominates any of the others, we need not make a choice:
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+        \\
+        .\hfill
+        $h(n) = \max\dCurlyBrac{h_1(n),\cdots,h_m(n)}$
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+        \\
+        This \textbf{composite heuristic} uses whichever function is most accurate on the node in question.
+        Because the component heuristics are admissible, $h$ is admissible; it is also easy to prove that $h$ is consistent. 
+        Furthermore, $h$ dominates all of its component heuristics.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item Note that a perfect heuristic can be obtained simply by allowing h to run a full breadth-first search “on the sly”. 
+        Thus, there is a tradeoff between accuracy and computation time for heuristic functions.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item Admissible heuristics can also be derived from the solution cost of a \textbf{subproblem} of a given problem.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item The idea behind \textbf{pattern databases} is to store these exact solution costs for every possible subproblem instance.
+        We compute an admissible heuristic $h_{DB}$ for each complete state encountered during a search simply by looking up the corresponding subproblem configuration in the database. 
+        The database itself is constructed by searching back from the goal and recording the cost of each new pattern encountered; the expense of this search is amortized over many subsequent problem instances.
+        Each database yields an admissible heuristic, and these heuristics can be combined by taking the maximum value.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item 
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \end{enumerate}
 
     \item \textbf{evaluation function}:
@@ -166,6 +195,26 @@ effective branching factor \\
 \end{enumerate}
 
 
+\vspace{1cm}
+{\centering\fontsize{25}{25}\selectfont\bfseries Classical Search Algorithms \par}
+\vspace{0.5cm}
+
+\begin{enumerate}
+    \item \textbf{category of problems}: observable, deterministic, known environments where the solution is a sequence of actions
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item These search algorithms are designed to explore search spaces \textbf{systematically}. 
+    This systematicity is achieved by keeping one or more paths in memory and by recording which alternatives have been explored at each point along the path. 
+    When a goal is found, the path to that goal also constitutes a solution to the problem. 
+    In many problems, however, the path to the goal is irrelevant.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
+\vspace{0.5cm}
+
+
+\clearpage
+{\centering\fontsize{22}{22}\selectfont\bfseries Uninformed Search/ Blind Search \par}
+\vspace{0.5cm}
 
 
 
@@ -179,6 +228,10 @@ effective branching factor \\
 \input{contents/algorithms/Bidirectional-search}
 
 
+\clearpage
+{\centering\fontsize{22}{22}\selectfont\bfseries Informed Search/ Heuristic Search \par}
+\vspace{0.5cm}
+
 \input{contents/algorithms/Best-first-search}
 \input{contents/algorithms/Greedy-best-first-search}
 \input{contents/algorithms/A-star-search}
@@ -186,6 +239,25 @@ effective branching factor \\
 \input{contents/algorithms/Recursive-best-first-search}
 \input{contents/algorithms/Memory-Bounded-A-star-Search}
 \input{contents/algorithms/Simplified-Memory-Bounded-A-star-Search}
+
+
+\clearpage
+{\centering\fontsize{22}{22}\selectfont\bfseries Local Search \par}
+\vspace{0.5cm}
+
+\input{contents/algorithms/Hill-Climbing-Search}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

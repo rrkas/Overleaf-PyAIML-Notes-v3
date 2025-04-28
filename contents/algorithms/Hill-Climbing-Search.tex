@@ -1,0 +1,55 @@
+\section{Hill Climbing Search/ greedy local search}
+
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item It is simply a loop that continually moves in the direction of increasing value—that is, uphill. 
+    It terminates when it reaches a “peak” where no neighbor has a higher value.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item The algorithm does not maintain a search tree, so the data structure for the current node need only record the state and the value of the objective function. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item Hill climbing does not look ahead beyond the immediate neighbors of the current state. This resembles trying to find the top of Mount Everest in a thick fog while suffering from amnesia.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\begin{algorithm}[H]
+    \caption{
+        The hill-climbing search algorithm (\textbf{steepest-ascent} version), which is the most basic local search technique. 
+        At each step the current node is replaced by the best neighbor; in this version, that means the neighbor with the highest \textsc{Value}, but if a heuristic cost estimate $h$ is used, we would find the neighbor with the lowest $h$. 
+        \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+
+    \SetKwFunction{FUNCTION}{\textsc{Hill-Climbing-Search}}
+    \SetKwProg{Fn}{function}{ returns \normalfont{a state that is a local maximum}}{end}
+    \Fn{\FUNCTION{problem}}{
+        $curent \gets$ \textsc{Make-Node}($problem$.\textsc{Initial-State}) \\
+        \ \\
+        \While{}{
+            $neighbor \gets$ a highest-valued successor of current \\
+            \lIf{$neighbor$.\textsc{Value} $\leq$ $current$.\textsc{Value}}{
+                \Return $current$.\textsc{State}
+            }
+            $current \gets neighbor$
+        }
+    }
+\end{algorithm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

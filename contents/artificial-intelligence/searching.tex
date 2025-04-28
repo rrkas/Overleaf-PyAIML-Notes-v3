@@ -314,7 +314,7 @@ def graph_search(problem: Problem):
 
 \subsection{Uninformed Search/ Blind Search}
 
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.2cm]
     \item strategies have \textbf{no} additional information about states beyond that provided in the problem definition.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -326,14 +326,14 @@ def graph_search(problem: Problem):
 \vspace{0.3cm}
 \textbf{SEE}:
 \begin{enumerate}
-    \item \fullref{AI: Algorithms/Breadth-first search (BFS)}
-    \item \fullref{AI: Algorithms/Uniform-cost search (UCS)}
-    \item \fullref{AI: Algorithms/Depth-first search (DFS)}
-    \item \fullref{AI: Algorithms/Backtracking Search}
-    \item \fullref{AI: Algorithms/Depth-limited search (DLS)}
-    \item \fullref{AI: Algorithms/Iterative Deepening Search (IDS)}
-    \item \fullref{AI: Algorithms/Iterative Lengthening Search (ILS)}
-    \item \fullref{AI: Algorithms/Bidirectional search}
+    \item[] \fullref{AI: Algorithms/Breadth-first search (BFS)}
+    \item[] \fullref{AI: Algorithms/Uniform-cost search (UCS)}
+    \item[] \fullref{AI: Algorithms/Depth-first search (DFS)}
+    \item[] \fullref{AI: Algorithms/Backtracking Search}
+    \item[] \fullref{AI: Algorithms/Depth-limited search (DLS)}
+    \item[] \fullref{AI: Algorithms/Iterative Deepening Search (IDS)}
+    \item[] \fullref{AI: Algorithms/Iterative Lengthening Search (ILS)}
+    \item[] \fullref{AI: Algorithms/Bidirectional search}
 \end{enumerate}
 
 
@@ -341,7 +341,7 @@ def graph_search(problem: Problem):
 
 \subsection{Informed Search/ Heuristic Search}
 
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.2cm]
     \item Strategies that know whether one non-goal state is “\textit{more promising}” than another 
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -355,14 +355,104 @@ def graph_search(problem: Problem):
 \vspace{0.3cm}
 \textbf{SEE}:
 \begin{enumerate}
-    \item \fullref{AI: Algorithms/Best-first search (BestFS)}
-    \item \fullref{AI: Algorithms/Greedy best-first search (GBFS)}
-    \item \fullref{AI: Algorithms/A* Search}
-    \item \fullref{AI: Algorithms/Iterative-Deepening A* search}
-    \item \fullref{AI: Algorithms/Recursive best-first search (RBFS)}
-    \item \fullref{AI: Algorithms/Memory-Bounded A* (MA*) Search}
-    \item \fullref{AI: Algorithms/Simplified Memory-Bounded A* (SMA*) Search}
+    \item[] \fullref{AI: Algorithms/Best-first search (BestFS)}
+    \item[] \fullref{AI: Algorithms/Greedy best-first search (GBFS)}
+    \item[] \fullref{AI: Algorithms/A* Search}
+    \item[] \fullref{AI: Algorithms/Iterative-Deepening A* search}
+    \item[] \fullref{AI: Algorithms/Recursive best-first search (RBFS)}
+    \item[] \fullref{AI: Algorithms/Memory-Bounded A* (MA*) Search}
+    \item[] \fullref{AI: Algorithms/Simplified Memory-Bounded A* (SMA*) Search}
 \end{enumerate}
+
+
+\subsection{Local Search}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=6cm,
+        keepaspectratio,
+    ]{images/artificial-intelligence/searching/state-space-landscape--objective-function.png}
+    \caption*{
+        A one-dimensional \textbf{state-space landscape} in which elevation corresponds to the objective function. The aim is to find the global maximum.
+        \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    }
+\end{figure}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item[] {\fontsize{18}{18} \textbf{State-space landscape}}:
+    
+    \item A landscape has both “location” (defined by the state) and “elevation” (defined by the value of the heuristic cost function or objective function).
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item if elevation corresponds to cost, then the aim is to find the lowest valley (\textbf{global minimum})
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item if elevation corresponds to an objective function, then the aim is to find the highest peak (\textbf{global maximum})
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item These can convert from one to the other just by inserting a minus sign.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item[] {\fontsize{18}{18} \textbf{Local Search}}:
+
+    \item evaluates and modifies one or more current states rather than systematically exploring paths from an initial state.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item These algorithms are suitable for problems in which all that matters is the solution state, not the path cost to reach it.
+    these do not worry about paths at all.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item The family of local search algorithms includes methods inspired by statistical physics (simulated annealing) and evolutionary biology (genetic algorithms).
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item Local search algorithms operate using a \textbf{single current node} (rather than multiple paths) and generally move only to neighbors of that node.
+    Typically, the paths followed by the search are \textbf{not retained}.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item local search algorithms are useful for solving \textbf{pure optimization problems}, in which the aim is to find the best state according to an \textbf{objective function}.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item Many optimization problems do not fit the “standard” search models. 
+    \textbf{For example}: nature provides an objective function—reproductive fitness—that Darwinian evolution could be seen as attempting to optimize, but there is no “goal test” and no “path cost” for this problem.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item  Local search algorithms explore this state-space landscape. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item A complete local search algorithm always finds a goal if one exists.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    
+    \item An optimal algorithm always finds a global minimum/ maximum.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Advantages}: 
+    \begin{enumerate}[itemsep=0.2cm]
+        \item they use very little memory—usually a constant amount
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item they can often find reasonable solutions in large or infinite (continuous) state spaces for which systematic algorithms are unsuitable
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+\subsection{Online Search}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item agent is faced with a state space that is initially unknown and must be explored.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    
+    
+\end{enumerate}
+
+
+
 
 
 
