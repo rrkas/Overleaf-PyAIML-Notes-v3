@@ -32,15 +32,15 @@
 \vspace{0.5cm}
 
 
-\begin{enumerate}[itemsep=0.3cm]
+\begin{enumerate}
     \item \textbf{general form} of a system of linear equations:
     \\
-    \ \hfill
+    .\hfill
     $
         \begin{aligned}
-            a_{11}x_1 & + & \cdots & + & a_{1n}x_n & = & b_1 \\
-            & & & & \vdots \\
-            a_{m1}x_1 & + & \cdots & + & a_{mn}x_n & = & b_m
+            a_{11}x_1\  & +\ & \cdots\ & +\ & a_{1n}x_n\ & =\ & b_1 \\
+            & & & \vdots \\
+            a_{m1}x_1\  & +\ & \cdots\ & +\ & a_{mn}x_n\ & =\ & b_m
         \end{aligned}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -79,7 +79,7 @@
 
 \vspace{0.5cm}
 \textbf{Note}:
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item In general, for a real-valued system of linear equations we obtain either no, exactly one, or infinitely many solutions. 
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -115,7 +115,7 @@
 
 \subsection{Solutions}
 
-\begin{enumerate}[itemsep=0.3cm]
+\begin{enumerate}
 
 \item \textbf{Unique Solution}:
 \begin{enumerate}
@@ -168,7 +168,7 @@
 
 \subsubsection{Finding Solution: Elementary Transformations}
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item keep the solution set the same, but that transform the equation system into a simpler form
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -196,7 +196,7 @@
 
 \subsubsection{Finding Solution: Row-Echelon Form (REF)}
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item \textbf{pivot}: The leading coefficient of a row (first nonzero number from the left) is called the pivot and is always strictly to the right of the pivot of the row above it.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -232,7 +232,7 @@
 
 \subsubsection{Finding Solution: Reduced Row-Echelon Form (RREF)/ row-reduced echelon form/ row canonical form \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item An equation system is in reduced reduced row-echelon form if:
     \begin{enumerate}
         \item It is in row-echelon form.
@@ -302,9 +302,54 @@
 
 \subsubsection{Finding Solutions to $Ax=0$: Minus-$1$ Trick \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
 
-\begin{enumerate}
-    \item 
+Let $A$ is in reduced row-echelon form without any rows that just contain zeros:\\
+.\hfill
+$
+    A
+    = 
+    \begin{bmatrix}
+        0 & \cdots & 0 & \mathbf{1} & * & \cdots & * & 0 & * & \cdots & * & 0 & * & \cdots & * \\
+        \vdots & & \vdots & 0 & 0 & \cdots & 0 & \mathbf{1} & * & \cdots & * & \vdots & \vdots & & \vdots\\
+        \vdots & & \vdots & \vdots & \vdots &  & \vdots & 0 & \vdots & & \vdots & \vdots & \vdots & & \vdots\\
+        \vdots & & \vdots & \vdots & \vdots &  & \vdots & \vdots & \vdots & & \vdots & 0 & \vdots & & \vdots\\
+        0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & \mathbf{1} & * & \cdots & *
+    \end{bmatrix}
+    \in \mathbb{R}^{k\times n}
+$
+\hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
+\vspace{0.2cm}
+
+\begin{enumerate}
+    \item $*$ can be an arbitrary real number
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item constraints:
+    \begin{enumerate}
+        \item first nonzero entry per row must be $1$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item all other entries in the corresponding column must be $0$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item The columns $j_1, \cdots , j_k$ with the pivots (marked in \textbf{bold}) are the standard unit vectors $e_1, \cdots , e_k \in \mathbb{R}^k$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item We extend this matrix to an $n \times n$-matrix $\tilde{A}$ by adding $n - k$ rows of the form 
+    $
+        \begin{bmatrix}
+            0 & \cdots & 0 & -1 & 0 & \cdots & 0
+        \end{bmatrix}
+    $
+    so that the diagonal of the augmented matrix $\tilde{A}$ contains either $1$ or $-1$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item columns of $\tilde{A}$ that contain the $-1$ as pivots are solutions of the homogeneous equation system $Ax = 0$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item To be more precise, these columns form a basis of the solution space of $Ax = 0$, called the kernel or null space.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
 
@@ -341,7 +386,7 @@
 \end{customArrayStretch}
 
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item The general approach we followed consisted of the following three steps:
     \begin{enumerate}
         \item Find a particular solution to $Ax = b$

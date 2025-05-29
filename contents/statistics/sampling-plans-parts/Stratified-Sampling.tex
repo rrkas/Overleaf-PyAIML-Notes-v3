@@ -78,7 +78,7 @@
 \end{table}
 \end{customArrayStretch}
 
-\begin{enumerate}[itemsep=0.3cm]
+\begin{enumerate}
     \item Stratified sampling is used to accommodate the issue of missing out on sub-populations during sampling by setting the sample size for each subpopulation (often called \textbf{strata}\label{Sampling Plans/Representative Sampling/Stratified Sampling/strata}) to a fixed percentage of the number of units of the subpopulation.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -134,7 +134,7 @@
 
 
 \subsection{population stratum}
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item population stratum mean: $
         \mu_h = \dfrac{1}{N_h} \ \dsum_{i=1}^{N_h} \ x_{hi}
     $
@@ -150,14 +150,14 @@
 
 
 \subsection{population}
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item population mean: $
         \mu
         = \dfrac{1}{N} \ \dsum_{h=1}^M \ \dsum_{i=1}^n\  x_{hi}
         = \dsum_{h=1}^M \ w_h\mu_h
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}[itemsep=0.2cm]
+    \begin{enumerate}
         \item $w_h = \dfrac{N_h}{N}$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -173,7 +173,7 @@
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \vspace{0.15cm}
-    \begin{enumerate}[itemsep=0.15cm]
+    \begin{enumerate}
         \item \textbf{within (strata) variances}: the first part represents a weighted mean of the within strata variances
         
         \item \textbf{between (strata) variances}: the second part represents a weighted mean of the squared distances of the strata means to the population mean
@@ -183,7 +183,7 @@
 
 
 \subsubsection{Estimation for population mean}
-\begin{enumerate}[itemsep=0.3cm]
+\begin{enumerate}
     \item Estimator: $
         \dsum_{h=1}^{M}
         \dfrac{N_h}{N}
@@ -215,7 +215,7 @@
 
 
 \subsection{sample stratum}
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item sample stratum mean: $
         \bar{x}_{h,k} = \dfrac{1}{n_h} \ \dsum_{i \ \in \ S_{h,k}} \ x_{hi}
     $
@@ -241,7 +241,7 @@
 
 
 \subsubsection{Estimation for sample stratum SE}
-\begin{enumerate}[itemsep=0.3cm]
+\begin{enumerate}
     \item $
         \hat{SE}(\bar{x}_{h,k})
         = \sqrt{\dfrac{1 - f_h}{n_h}} s_{h,k}
@@ -254,7 +254,7 @@
 
 
 \subsection{sample}
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item Sample average: $
         \bar{x}_k = \dsum^M_{h=1} w_h\ \bar{x}_{h,k}
     $

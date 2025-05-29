@@ -7,7 +7,7 @@ $f(n) = g(n) + h(n)$
 
 \ \\
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item It evaluates nodes by combining $g(n)$, the cost to reach the node, and $h(n)$, the cost to get from the node to the goal ($f(n)$ = estimated cost of the cheapest solution through $n$)
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -18,7 +18,7 @@ $f(n) = g(n) + h(n)$
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item If $C^\ast$ is the cost of the optimal solution path, then we can say the following:
-    \begin{enumerate}[itemsep=0.2cm]
+    \begin{enumerate}
         \item A$^\ast$ expands all nodes with $f(n) < C^\ast$
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -45,7 +45,7 @@ $f(n) = g(n) + h(n)$
     \end{enumerate}
 
     \item \textbf{Performance}:
-    \begin{enumerate}[itemsep=0.2cm]
+    \begin{enumerate}
         \item the \textit{tree-search} version of A$^\ast$ is \textbf{optimal} if $h(n)$ is admissible, 
         while the \textit{graph-search} version is \textbf{optimal} if $h(n)$ is consistent
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}

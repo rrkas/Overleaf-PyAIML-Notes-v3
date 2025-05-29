@@ -1,85 +1,114 @@
 \chapter{AI: Algorithms}\label{AI: Algorithms}
 
-\begin{customArrayStretch}{1.3}
-\begin{table}[H]
-\centering
-\begin{tabular}{r c p{12cm}}
+\begin{customArrayStretch}{1.5}
+\begin{longtable}{r c p{12cm}}
+$V$ & 
+set & 
+set of vertices (nodes) of the graph \\ \hline
 
-$V$ & set & set of vertices (nodes) of the graph \\
+$E$ & 
+set & 
+set of edges (links) of the graph \\ \hline
 
-$E$ & set  & set of edges (links) of the graph \\
+$b$ & 
+$\in \mathbb{R}$ & 
+\textbf{branching factor} or maximum number of successors of any node \\ \hline
 
-$b$ & $\in \mathbb{R}$ & \textbf{branching factor} or maximum number of successors of any node \\
+$d$ & 
+$\in \mathbb{R}$ & 
+\textbf{depth} of the \textbf{shallowest goal} node (i.e., the number of steps along the path from the root) \\ \hline
 
-$d$ & $\in \mathbb{R}$ & \textbf{depth} of the \textbf{shallowest goal} node (i.e., the number of steps along the path from the root) \\
+$m$ & 
+$\in \mathbb{R}$ & 
+maximum length of any path in the state space \\ \hline
 
-$m$ & $\in \mathbb{R}$ & maximum length of any path in the state space \\
+$\varepsilon$ & $\in \mathbb{R}$ & minimum step cost (small positive constant) \\ \hline
 
-$\varepsilon$ & $\in \mathbb{R}$ & minimum step cost (small positive constant) \\
+$C$ & $\in \mathbb{R}$ & cost of the solution \\ \hline
 
-$C$ & $\in \mathbb{R}$ & cost of the solution \\
+$C^\ast$ & $\in \mathbb{R}$ & cost of the optimal solution \\ \hline
 
-$C^\ast$ & $\in \mathbb{R}$ & cost of the optimal solution \\
+$\ell$ & $\in \mathbb{R}$ & predetermined depth limit \\ \hline
 
-$\ell$ & $\in \mathbb{R}$ & predetermined depth limit \\
+$G_n$ & node & goal node closest to $n$ \\ \hline
 
-$G_n$ & node & goal node closest to $n$ \\
+$M$ & $\in \mathbb{R}$ & memory bound \\ \hline
 
-$M$ & $\in \mathbb{R}$ & memory bound \\
+$N$ & $\in \mathbb{R}$ & total number of nodes generated \\ \hline
 
-$N$ & $\in \mathbb{R}$ & total number of nodes generated \\
+$k$ & $\in \mathbb{R}$ & \tableenumerate{
+    \item number of restarts (for \fullref{AI: Algorithms/Random-restart hill climbing search})
+    \item number of beams (for \fullref{AI: Algorithms/Local beam search})
+} \\ \hline
 
+$p$ & 
+$\in \mathbb{R}$ & 
+population size (for \fullref{AI: Algorithms/Genetic algorithm (GA)}) \\ \hline
 
-
-
-
-\hline
-
-
-
-
-
-$g(n)$ & $\in \mathbb{R}$ & Path Cost (The \textbf{actual cost} from the \textbfit{start node} to the current node $n$) (Eg: UCS) \\
-
-$h(n)$ & $\in \mathbb{R}$ & Heuristic Estimate (The \textbf{estimated cost} from node $n$ to the \textbfit{goal}) (Eg: GBFS, A*) \\
-
-$f(n)$ & $\in \mathbb{R}$ & Evaluation Function (The \textbf{total estimated cost} of the \textbfit{cheapest solution} through $n$) (Eg: A*) \\
-
-$h^\ast(n)$ & $\in \mathbb{R}$ & actual cost of getting from the root to the goal \\
-
-
-
-
-\hline
+$f$ & 
+$\in \mathbb{R}$ & 
+time to evaluate the fitness function (for \fullref{AI: Algorithms/Genetic algorithm (GA)}) \\ \hline
 
 
 
 
-$\Delta$ & $\in \mathbb{R}$ & \textbf{absolute error}: $\Delta \equiv h^\ast - h$  \\
+
+
+\hhline{===}
+
+
+
+
+
+$g(n)$ & 
+$\in \mathbb{R}$ & 
+Path Cost (The \textbf{actual cost} from the \textbfit{start node} to the current node $n$) (Eg: UCS) \\ \hline
+
+$h(n)$ & 
+$\in \mathbb{R}$ & 
+Heuristic Estimate (The \textbf{estimated cost} from node $n$ to the \textbfit{goal}) (Eg: GBFS, A*) \\ \hline
+
+$f(n)$ & 
+$\in \mathbb{R}$ & 
+Evaluation Function (The \textbf{total estimated cost} of the \textbfit{cheapest solution} through $n$) (Eg: A*) \\ \hline
+
+$h^\ast(n)$ & 
+$\in \mathbb{R}$ & 
+actual cost of getting from the root to the goal \\ \hline
+
+
+
+
+\hhline{===}
+
+
+
+
+$\Delta$ & 
+$\in \mathbb{R}$ & 
+\textbf{absolute error}: $\Delta \equiv h^\ast - h$  \\ \hline
 
 $\epsilon$ \textbf{OR} $\Delta_r$ & 
 $\in \mathbb{R}$ & 
-\textbf{relative error}: $\epsilon \equiv \Delta_r \equiv (h^\ast - h)/h^\ast$ \\
+\textbf{relative error}: $\epsilon \equiv \Delta_r \equiv (h^\ast - h)/h^\ast$ \\ \hline
 
 
-$b^{\Delta_r}$ \textbf{OR} $b^\epsilon$ &
+$b^{\Delta_r}$ \textbf{OR} $b^\epsilon$ \textbf{OR} $b^\ast$ &
 $\in \mathbb{R}$ & 
-effective branching factor \\
+effective branching factor \\ \hline
 
 
 
 
 
 
-\end{tabular}
-\caption*{Notations}
-\end{table}
+\end{longtable}
 \end{customArrayStretch}
 
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item \textbf{heuristic function}
-    \begin{enumerate}[itemsep=0.2cm]
+    \begin{enumerate}
         \item $h(n)$ = estimated cost of the cheapest path from the state at node $n$ to a goal state
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -168,7 +197,7 @@ effective branching factor \\
     \end{enumerate}
 
     \item \textbf{evaluation function}:
-    \begin{enumerate}[itemsep=0.2cm]
+    \begin{enumerate}
         \item The evaluation function $f$ is construed/ interpreted as a cost estimate, so the node with the lowest evaluation is expanded first.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
         
@@ -245,9 +274,14 @@ effective branching factor \\
 {\centering\fontsize{22}{22}\selectfont\bfseries Local Search \par}
 \vspace{0.5cm}
 
-\input{contents/algorithms/Hill-Climbing-Search}
-
-
+\input{contents/algorithms/Greedy-Hill-Climbing-Search}
+\input{contents/algorithms/Stochastic-hill-climbing-search}
+\input{contents/algorithms/First-choice-hill-climbing-search}
+\input{contents/algorithms/Random-restart-hill-climbing-search}
+\input{contents/algorithms/Simulated-annealing-search}
+\input{contents/algorithms/Local-beam-search}
+\input{contents/algorithms/stochastic-beam-search}
+\input{contents/algorithms/Genetic-algorithm}
 
 
 

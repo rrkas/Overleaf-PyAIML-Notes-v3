@@ -1,7 +1,7 @@
 \chapter{AI: Searching Solutions}
 
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item A solution is an action sequence, so search algorithms work by considering various possible action sequences.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -47,7 +47,7 @@
 
 \noindent
 For each \textsc{Node} $n$ of the tree, we have a structure that contains four components:
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item $n$.\textsc{State}: the state in the state space to which the node corresponds
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -314,7 +314,7 @@ def graph_search(problem: Problem):
 
 \subsection{Uninformed Search/ Blind Search}
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item strategies have \textbf{no} additional information about states beyond that provided in the problem definition.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -341,7 +341,7 @@ def graph_search(problem: Problem):
 
 \subsection{Informed Search/ Heuristic Search}
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item Strategies that know whether one non-goal state is “\textit{more promising}” than another 
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -367,6 +367,10 @@ def graph_search(problem: Problem):
 
 \subsection{Local Search}
 
+
+\begin{table}[H]
+
+\begin{minipage}[t]{0.55\linewidth}
 \begin{figure}[H]
     \centering
     \includegraphics[
@@ -379,8 +383,32 @@ def graph_search(problem: Problem):
         \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     }
 \end{figure}
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}[t]{0.40\linewidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=5cm,
+        keepaspectratio,
+    ]{images/artificial-intelligence/searching/local-search-ridges.png}
+    \caption*{
+        The grid of states (dark circles) is superimposed on a ridge rising from left to right, creating a sequence of local maxima that are not directly connected to each other. From each local maximum, all the available actions point downhill.
+        \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    }
+\end{figure}
+\end{minipage}
 
-\begin{enumerate}[itemsep=0.2cm]
+
+\end{table}
+
+
+
+
+\begin{enumerate}
     \item[] {\fontsize{18}{18} \textbf{State-space landscape}}:
     
     \item A landscape has both “location” (defined by the state) and “elevation” (defined by the value of the heuristic cost function or objective function).
@@ -395,6 +423,23 @@ def graph_search(problem: Problem):
     \item These can convert from one to the other just by inserting a minus sign.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
+
+    \item \textbf{Local maxima}: a local maximum is a peak that is higher than each of its neighboring states but lower than the global maximum.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Ridges}:  Ridges result in a sequence of local maxima
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Plateaux}: a plateau is a flat area of the state-space landscape. It can be a \textbf{flat local maximum}, from which no uphill exit exists, or a \textbf{shoulder}, from which progress is possible.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+
+
+
+
+
+
+    \vspace{1cm}
     \item[] {\fontsize{18}{18} \textbf{Local Search}}:
 
     \item evaluates and modifies one or more current states rather than systematically exploring paths from an initial state.
@@ -427,8 +472,11 @@ def graph_search(problem: Problem):
     \item An optimal algorithm always finds a global minimum/ maximum.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
+    \item Local search algorithms typically use a \textbf{complete-state formulation}.
+    \hfill  \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
     \item \textbf{Advantages}: 
-    \begin{enumerate}[itemsep=0.2cm]
+    \begin{enumerate}
         \item they use very little memory—usually a constant amount
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -443,7 +491,7 @@ def graph_search(problem: Problem):
 
 \subsection{Online Search}
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item agent is faced with a state space that is initially unknown and must be explored.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 

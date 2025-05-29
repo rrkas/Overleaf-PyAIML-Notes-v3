@@ -1,0 +1,44 @@
+\section{Local beam search \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\label{AI: Algorithms/Local beam search}
+
+
+\begin{enumerate}
+    \item The local beam search algorithm keeps track of $k$ states rather than just one.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item It begins with $k$ randomly generated states. 
+    At each step, all the successors of all $k$ states are generated. 
+    If any one is a goal, the algorithm halts. 
+    Otherwise, it selects the $k$ best successors from the complete list and repeats.
+    The algorithm quickly abandons unfruitful searches and moves its resources to where the most progress is being made.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item In a local beam search, useful information is passed among the parallel search threads.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item \textbf{Disadvantages}:
+    \begin{enumerate}
+        \item local beam search can suffer from a lack of diversity among the $k$ states—they can quickly become concentrated in a small region of the state space, making the search little more than an expensive version of hill climbing.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -59,7 +59,8 @@
 
 \usepackage{enumitem} 
 % Enhances the customization of lists (enumerated and itemized), providing control over label format, spacing, and more.
-\setlist{nolistsep} % Reduce spacing between bullet points and numbered lists
+\setlist{itemsep=0.1cm, topsep=0.1cm}
+
 
 \usepackage[none]{hyphenat} 
 % Disables hyphenation in the document, preventing words from being broken at the end of lines.
@@ -142,11 +143,17 @@
   \normalfont
   \thefield{title}%
   \iffieldundef{series}{}{
-    \\\textsc{Series}: \printfield{series}
+    \ \textsc{Series}: \printfield{series}
   }
-  \\\textsc{Author(s)}: \printnames{author}%
-  \\\textsc{Publisher \& Year}: \printlist{publisher},%
-  \ \printfield{year}%
+  \ \textsc{Author(s)}: \printnames{author}%
+  \iflistundef{publisher}{}{
+    \ \textsc{Publisher}: \printlist{publisher}
+  }
+  \iffieldundef{year}{}{
+    \ \textsc{Year}: \printfield{year}
+  }
+  % \\\textsc{Publisher \& Year}: \printlist{publisher},%
+  % \ \printfield{year}%
   \iffieldundef{url}{}{%
     \\ \textsc{url}: \url{\thefield{url}}
   }%
@@ -165,7 +172,7 @@
         \\ \textsc{url}: \url{\thefield{url}}
     }%
     \usebibmacro{finentry}%
-    } 
+} 
 
 
 
@@ -711,8 +718,8 @@
 
 \newcommand{\tableenumerate}[1]{%
 %\tightlist%
-\vspace{-4pt}
-\begin{enumerate}[nosep,topsep=0pt,leftmargin=*]%
+\vspace{-0.2cm}
+\begin{enumerate}[itemsep=0.1cm,topsep=-0.1cm,leftmargin=*]%
 #1%
 \end{enumerate}%
 \vspace{-\baselineskip}\mbox{}}

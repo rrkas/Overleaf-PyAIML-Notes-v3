@@ -2,12 +2,12 @@
 \label{AI: Algorithms/Uniform-cost search (UCS)}
 
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item Instead of expanding the shallowest node (as in BFS), uniform-cost search expands the node $n$ with the \textbfit{lowest path cost} $g(n)$.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item \textbf{Performance}:
-    \begin{enumerate}[itemsep=0.2cm]
+    \begin{enumerate}
         \item uniform-cost search is \textbf{optimal} in general. 
         uniform-cost search expands nodes in order of their optimal path cost.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
@@ -16,7 +16,7 @@
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
         \item \textbf{Space Complexity}:
-        \begin{enumerate}[itemsep=0.2cm]
+        \begin{enumerate}
             \item worst: $\mathcal{O}(b^{1 + \dfloor{C^\ast / \varepsilon}})$
             \hfill (can be much greater than $b^d$)
             \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
@@ -26,7 +26,7 @@
         \end{enumerate}
 
         \item \textbf{Time Complexity}:
-        \begin{enumerate}[itemsep=0.2cm]
+        \begin{enumerate}
             \item worst: $\mathcal{O}(b^{1 + \dfloor{C^\ast / \varepsilon}})$
             \hfill (can be much greater than $b^d$)
             \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
@@ -37,7 +37,7 @@
     \end{enumerate}
 
     \item \textbf{Disadvantages}:
-    \begin{enumerate}[itemsep=0.2cm]
+    \begin{enumerate}
         \item it will get stuck in an \textbf{infinite loop} if there is a path with an infinite sequence of \textit{zero-cost actions} - for example, a sequence of $NoOp$ actions.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 

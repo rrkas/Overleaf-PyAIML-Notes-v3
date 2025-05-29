@@ -1,0 +1,27 @@
+\section{Random-restart hill climbing search \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
+\label{AI: Algorithms/Random-restart hill climbing search}
+
+
+\begin{enumerate}
+    \item Random-restart hill climbing adopts the well-known adage, “\textit{If at first you don’t succeed, try, try again}”.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item It conducts a series of hill-climbing searches from randomly generated initial states, until a goal is found. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    
+    \item It is trivially complete with probability approaching 1, because it will eventually generate a goal state as the initial state. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item If each hill-climbing search has a probability $p$ of success, then the expected number of restarts required is $1/p$.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item The expected number of steps is the cost of one successful iteration plus $(1-p)/p$ times the cost of failure.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
+
+
+
+
+
+
+

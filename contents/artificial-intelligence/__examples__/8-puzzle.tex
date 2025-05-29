@@ -32,7 +32,7 @@
 \end{minipage}
 \end{table}
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item the objective of the puzzle is to slide the tiles horizontally or vertically into the empty space until the configuration matches the goal configuration
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -44,7 +44,7 @@
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item if the 8-puzzle actions are described as:
-    \begin{enumerate}[itemsep=0.2cm]
+    \begin{enumerate}
         \item A tile can move from square A to square B \textbf{if} A is horizontally or vertically \textit{adjacent} to B \textbf{and} B is \textit{blank}
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -66,7 +66,7 @@
 \subsection{Comparing heuristic functions}
 
 two commonly used candidates:
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item $h_1$: the number of misplaced tiles. 
     It is an \textbf{admissible} heuristic because it is clear that any tile that is out of place must be moved at least once.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
@@ -86,7 +86,7 @@ two commonly used candidates:
 
 \subsubsection{A$^\ast$ \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item $N +1=1+ b^\ast + (b^\ast)^2 + \cdots + (b^\ast)^d$
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -154,7 +154,7 @@ Data are averaged over $100$ instances of the $8$-puzzle for each of various sol
 \end{customArrayStretch}
 
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item $h_2$ is always better than $h_1$.
     for any node $n$, $h_2(n) \geq h_1(n)$.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
@@ -170,7 +170,7 @@ Data are averaged over $100$ instances of the $8$-puzzle for each of various sol
 
 \subsubsection{Generating admissible heuristics from subproblems: Pattern databases}
 
-\begin{enumerate}[itemsep=0.2cm]
+\begin{enumerate}
     \item[] \textbf{Relaxed Sub-problem method}
     
     \item The choice of 1-2-3-4 is fairly arbitrary; we could also construct databases for 5-6-7-8, for 2-4-6-8, and so on.
