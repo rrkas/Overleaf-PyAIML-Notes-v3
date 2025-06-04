@@ -1,10 +1,10 @@
 \chapter{Matrices}
 
 \begin{enumerate}
-    \item With $m, n \in \mathbb{N}$ a real-valued $(m, n)$ matrix $A$ is an $m\cdot n$-tuple of elements $a_{ij}$, $i = 1, \cdots , m$, $j = 1, \cdots , n$, which is ordered according to a rectangular scheme consisting of $m$ rows and $n$ columns:
+    \item With $m, n \in \mathbb{N}$ a real-valued $(m, n)$ matrix $\matname{A}$ is an $m\cdot n$-tuple of elements $a_{ij}$, $i = 1, \cdots , m$, $j = 1, \cdots , n$, which is ordered according to a rectangular scheme consisting of $m$ rows and $n$ columns:
     \\[0.2cm]
     $
-        A
+        \matname{A}
         = 
         \begin{bmatrix}
             a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -17,44 +17,76 @@
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item $\mathbb{R}^{m\times n}$ is the set of all real-valued $(m, n)$-matrices. $A \in \mathbb{R}^{m\times n}$ can be equivalently represented as $a \in \mathbb{R}^{mn}$ by stacking all $n$ columns of the matrix into a long vector.
+    \item $\mathbb{R}^{m\times n}$ is the set of all real-valued $(m, n)$-matrices. $\matname{A} \in \mathbb{R}^{m\times n}$ can be equivalently represented as $\matname{a} \in \mathbb{R}^{mn}$ by stacking all $n$ columns of the matrix into a long vector.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \vspace{0.5cm}
 
     \item They can be used to compactly represent systems of linear equations, but they also represent linear functions (linear mappings).
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item matrix represents a linear mapping or a collection of vectors.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
 
 \section{Matrix Operations}
 \input{contents/maths-for-ml/matrices-parts/matrix-addition}
-
-\clearpage
 \input{contents/maths-for-ml/matrices-parts/matrix-multiplication}
 \input{contents/maths-for-ml/matrices-parts/Multiplication-by-Scalar}
-
-\clearpage
 \input{contents/maths-for-ml/matrices-parts/Hadamard-product}
-
-\clearpage
 \input{contents/maths-for-ml/matrices-parts/Matrix-Inverse}
-
-\clearpage
 \input{contents/maths-for-ml/matrices-parts/Matrix-Transpose}
 
 
 
 
 
+\section{Rank of a matrix}
+
+\begin{enumerate}
+    \item \textbf{Definition}: The number of linearly independent columns of a matrix $\matname{A} \in \mathbb{R}^{m\times n}$ equals the number of linearly independent rows and is called the rank of $\matname{A}$ and is denoted by $\text{rk}(\matname{A})$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+\end{enumerate}
+
+
+\subsection{Properties of rank}
+
+\begin{enumerate}
+    \item $\text{rk}(\matname{A}) = \text{rk}(\matname{A}^\top)$, i.e., the column rank equals the row rank.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The columns of $\matname{A} \in \mathbb{R}^{m\times n}$ span a subspace $U \subseteq \mathbb{R}^m$ with $\dim(U) = \text{rk}(\matname{A})$. 
+    We call this subspace the \textbf{image or range}. 
+    A basis of $U$ can be found by applying Gaussian elimination to $\matname{A}$ to identify the \textbf{pivot columns}.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The rows of $\matname{A} \in  \mathbb{R}^{m\times n}$  span a subspace $W \subseteq \mathbb{R}^n$ with $\dim(W) = \text{rk}(\matname{A})$. 
+    A basis of $W$ can be found by applying Gaussian elimination to $\matname{A}^\top$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item For all $\matname{A} \in  \mathbb{R}^{n\times n}$ it holds that $\matname{A}$ is regular (invertible) if and only if $\text{rk}(\matname{A}) = n$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item For all $\matname{A} \in  \mathbb{R}^{m\times n}$  and all $\matname{b} \in  \mathbb{R}^m$ it holds that the linear equation system $Ax = b$ can be solved if and only if $\text{rk}(\matname{A}) = \text{rk}(\matname{A}|\matname{b})$, where $\matname{A}|\matname{b}$ denotes the augmented system.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item For $\matname{A} \in  \mathbb{R}^{m\times n}$  the subspace of solutions for $\matname{A}\matname{x} = \matname{0}$ possesses dimension $n - \text{rk}(\matname{A})$. 
+    We call this subspace the \textbf{kernel} or the \textbf{null space}.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item A matrix $\matname{A} \in  \mathbb{R}^{m\times n}$  has \textbf{full rank} if its rank equals the largest possible rank for a matrix of the same dimensions. 
+    This means that the rank of a full-rank matrix is the lesser of the number of rows and columns, i.e., $\text{rk}(\matname{A}) = min(m, n)$. 
+    A matrix is said to be \textbf{rank deficient} if it does not have full rank.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    
+\end{enumerate}
 
 
 
 
-
-
-
-\clearpage
 \section{Types of matrices}
 \input{contents/maths-for-ml/matrices-types/Square-Matrix}
 \input{contents/maths-for-ml/matrices-types/Identity-Matrix}

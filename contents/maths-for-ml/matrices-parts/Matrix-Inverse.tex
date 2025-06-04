@@ -1,6 +1,9 @@
-\subsection{Matrix Inverse ( $A^{-1}$ ) \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
+% \subsection{Matrix Inverse ( $A^{-1}$ ) \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
+\subsection{Matrix Inverse \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
 
-Consider a square matrix $A \in \mathbb{R}^{n\times n}$. Let matrix $B \in \mathbb{R}^{n\times n}$ have the property that $AB = I_n = BA$. $B$ is called the inverse of $A$ and denoted by $A^{-1}$.
+Consider a square matrix $\matname{A} \in \mathbb{R}^{n\times n}$. 
+Let matrix $\matname{B} \in \mathbb{R}^{n\times n}$ have the property that $\matname{A}\matname{B} = \matname{I}_n = \matname{B}\matname{A}$. 
+$\matname{B}$ is called the inverse of $\matname{A}$ and denoted by $\matname{A}^{-1}$.
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 
@@ -30,7 +33,7 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
 
 
 \begin{enumerate}
-    \item \textbf{Not} every matrix $A$ possesses an inverse $A^{-1}$.
+    \item \textbf{Not} every matrix $\matname{A}$ possesses an inverse $\matname{A}^{-1}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item Only square matrices might have inverse. Non-square matrices \textbf{don't} have inverse.
@@ -39,7 +42,7 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item $
-        A = \begin{bmatrix}
+        \matname{A} = \begin{bmatrix}
             a_{11} & a_{12} \\
             a_{21} & a_{22} \\
         \end{bmatrix} 
@@ -49,7 +52,7 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
     $a_{11}\ a_{22} - a_{12}\ a_{21} \neq 0$ (determinant of $A$)\\[0.4cm] 
     $\Rightarrow$
     $
-        A^{-1} = 
+        \matname{A}^{-1} = 
         \dfrac{1}{a_{11}\ a_{22} - a_{12}\ a_{21}}
         \begin{bmatrix}
             a_{22} & -a_{12} \\
@@ -65,10 +68,10 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
 \subsubsection{Matrix Inverse using Gaussian Elimination}
 
 \begin{enumerate}
-    \item Given a matrix $A \in \mathbb{R}^{n\times n}$, we need to find $X = A^{-1}$ such that $AX = I_n$
+    \item Given a matrix $\matname{A} \in \mathbb{R}^{n\times n}$, we need to find $\matname{X} = \matname{A}^{-1}$ such that $\matname{A}\matname{X} = \matname{I}_n$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     
-    \item We can write this down as a set of simultaneous linear equations $AX = I_n$, where we solve for $X = [x_1| \cdots |x_n]$. 
+    \item We can write this down as a set of simultaneous linear equations $\matname{A}\matname{X} = \matname{I}_n$, where we solve for $\matname{X} = [\matname{x}_1| \cdots |\matname{x}_n]$. 
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item augmented matrix notation for a compact representation of this set of systems of linear equations:
@@ -76,7 +79,9 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
     \\
     .\hfill
     $
-        [A|I_n] \curlyrightarrow \cdots \curlyrightarrow [I_n|A^{-1}]
+        [\matname{A}|\matname{I}_n] 
+        \curlyrightarrow \cdots \curlyrightarrow 
+        [\matname{I}_n|\matname{A}^{-1}]
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -90,9 +95,9 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
 
 $
     \begin{aligned}
-                         & AX = I \\
-        \Leftrightarrow\ & A^\top AX = A^\top \\
-        \Leftrightarrow\ & X = (A^\top A)^{-1} A^\top \\
+                         & \matname{A}\matname{X} = \matname{I} \\
+        \Leftrightarrow\ & \matname{A}^\top \matname{A}\matname{X} = \matname{A}^\top \\
+        \Leftrightarrow\ & \matname{X} = (\matname{A}^\top \matname{A})^{-1} \matname{A}^\top \\
     \end{aligned}
 $
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -103,7 +108,7 @@ $
 \begin{enumerate}
     \item Disadvantages:
     \begin{enumerate}
-        \item requires many computations for the matrix-matrix product and computing the inverse of $A^\top A$. 
+        \item requires many computations for the matrix-matrix product and computing the inverse of $\matname{A}^\top \matname{A}$. 
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
         \item for reasons of numerical precision it is generally not recommended
@@ -119,17 +124,19 @@ $
 
 \begin{multicols}{2}
 \begin{enumerate}
-    \item $AA^{-1} = I = A^{-1}A$
+    \item $\matname{A}\matname{A}^{-1} = \matname{I} = \matname{A}^{-1}\matname{A}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item $(AB)^{-1} = B^{-1}\ A^{-1}$
+    \item $(\matname{A}\matname{B})^{-1} = \matname{B}^{-1}\ \matname{A}^{-1}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item $(A + B)^{-1} \neq A^{-1} + B^{-1}$
+    \item $(\matname{A} + \matname{B})^{-1} \neq \matname{A}^{-1} + \matname{B}^{-1}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item $(A^{-1})^\top = (A^\top)^{-1} =: A^{-\top}$
+    \item $(\matname{A}^{-1})^\top = (\matname{A}^\top)^{-1} =: \matname{A}^{-\top}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item $(\matname{A}^{-1})^{-1} =  \matname{A}$
     
 \end{enumerate}
 \end{multicols}

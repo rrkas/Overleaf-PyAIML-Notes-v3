@@ -1,0 +1,694 @@
+\chapter{Vector Spaces}
+
+
+\section{Vector Space}
+
+\begin{enumerate}
+    \item \textbf{Definition}: A real-valued vector space $V = (\mathcal{V}, +, \cdot)$ is a set $\mathcal{V}$ with two operations:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item[] $+ :  \mathcal{V} \times \mathcal{V} \to \mathcal{V}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item[] $\cdot: \mathbb{R} \times \mathcal{V} \to \mathcal{V}$ 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+
+    \item addition ($+$) is inner operation: both operands must be from $\mathcal{V}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item multiplication by scalars ($\cdot$) is outer operation: one operand is from $\mathcal{V}$, another from $\mathbb{R}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The elements $\matname{x} \in \mathcal{V}$ are called \textbf{vectors}.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+\subsection{Properties of a vector Space}
+
+\begin{enumerate}
+    \item $(\mathcal{V}, +)$ is an Abelian group
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Distributivity:
+    \begin{enumerate}
+        \item $\forall \lambda  \in  \mathbb{R}, \matname{x}, \matname{y} \in  \mathcal{V} : \lambda  \cdot  (\matname{x} + \matname{y}) = \lambda  \cdot  \matname{x} + \lambda  \cdot  \matname{y}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $\forall \lambda , \psi  \in  \mathbb{R}, \matname{x} \in  \mathcal{V} : (\lambda  + \psi ) \cdot  \matname{x} = \lambda  \cdot  \matname{x} + \psi  \cdot  \matname{x}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item Associativity (outer operation): $\forall \lambda , \psi  \in  \mathbb{R}, \matname{x} \in  \mathcal{V} : \lambda \cdot (\psi \cdot x) = (\lambda \psi )\cdot \matname{x}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Neutral element with respect to the outer operation: $\forall \matname{x} \in  \mathcal{V} : 1\cdot \matname{x} = \matname{x}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The neutral element of $(\mathcal{V}, +)$ is the zero vector $\matname{0} = [0, \cdots , 0]^\top$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item A “vector multiplication” $\matname{ab}, \matname{a}, \matname{b} \in \mathbb{R}^n$, is \textbf{not defined}.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+\subsection{Dimension of a vector Space}
+
+
+\begin{enumerate}
+    \item the dimension of $V$ is the number of basis vectors of $V$ , and we write $\dim(V)$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The dimension of a vector space corresponds to the number of its basis vectors.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Intuitively, the dimension of a vector space can be thought of as the number of independent directions in this vector space.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The dimension of a vector space is not necessarily the number of elements in a vector. 
+    For instance, the vector space $V = \text{span}[\begin{bmatrix}0 \\ 1\end{bmatrix}]$ is one-dimensional, although the basis vector possesses two elements.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+\section{Vector Subspace/ linear subspace}
+
+
+\begin{enumerate}
+    \item \textbf{Definition}: Let $V = (\mathcal{V}, +, \cdot )$ be a vector space and $\mathcal{U} \subseteq \mathcal{V}, \mathcal{U} \neq \phi$. 
+    Then $U = (\mathcal{U}, +, \cdot )$ is called vector subspace of $V$ (or linear subspace) if $U$ is a vector space with the vector space operations $+$ and $\cdot$  restricted to $\mathcal{U} \times \mathcal{U}$ and $\mathbb{R} \times \mathcal{U}$. 
+    We write $U \subseteq V$ to denote a subspace $U$ of $V$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Intuitively, they are sets contained in the original vector space with the property that when we perform vector space operations on elements within this subspace, we will never leave it. 
+    In this sense, they are “closed”.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If $\mathcal{U} \subseteq \mathcal{V}$ and $V$ is a vector space, then $U$ naturally inherits many properties directly from $V$ because they hold for all $\matname{x} \in \mathcal{V}$, and in particular for all $\matname{x} \in \mathcal{U} \subseteq \mathcal{V}$. 
+    This includes the Abelian group properties, the distributivity, the associativity and the neutral element.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item To determine whether $(\mathcal{U}, +, \cdot)$ is a subspace of V we still do need to show:
+    \begin{enumerate}
+        \item $\mathcal{U} \neq \phi$, in particular: $\matname{0} \in \mathcal{U}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Closure of $U$:
+        \begin{enumerate}
+            \item With respect to the outer operation: $\forall \lambda  \in  \mathbb{R} \forall \matname{x} \in  \mathcal{U} : \lambda \matname{x} \in  \mathcal{U}$.
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+            
+            \item With respect to the inner operation: $\forall \matname{x}, \matname{y} \in  \mathcal{U} : \matname{x} + \matname{y} \in  \mathcal{U}$.
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{enumerate}
+    \end{enumerate}
+
+\end{enumerate}
+
+
+\subsection{Dimension of a Vector Subspace}
+
+\begin{enumerate}
+    \item If $U \subseteq V$ is a subspace of $V$ , then $\dim(U) \leq \dim(V )$ and $\dim(U) = \dim(V )$ if and only if $U = V$ .
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+\subsection{Basis of a Vector Subspace}
+
+\begin{enumerate}
+    \item A basis of a subspace $U = \text{span}[\matname{x}_1, \cdots , \matname{x}_m] \subseteq \mathbb{R}^n$ can be found by executing the following steps:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item Write the spanning vectors as columns of a matrix $\matname{A}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Determine the row-echelon form (REF) of $\matname{A}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The spanning vectors associated with the pivot columns are a basis of $U$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Vector}
+
+\begin{enumerate}
+    \item In general, vectors are special objects that can be added together and multiplied by scalars to produce another object of the same kind. From an abstract mathematical viewpoint, any object that satisfies these two properties can be considered a vector. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item By convention $(1, n)$-matrices are called rows and $(m, 1)$-matrices are called row columns. 
+    These special matrices are also called row/ column vectors.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    
+\end{enumerate}
+
+
+\subsection{Outer Product ($ab^\top$) }
+
+\begin{enumerate}
+    \item $\forall \matname{a}, \matname{b} \in \mathbb{R}^n, \matname{ab}^\top \in \mathbb{R}^{n\times n}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+\end{enumerate}
+
+
+
+\subsection{Inner/scalar/dot product ($a^\top b$)}
+
+
+\begin{enumerate}
+    \item $\forall \matname{a}, \matname{b} \in \mathbb{R}^n, \matname{a}^\top \matname{b} \in \mathbb{R}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+\end{enumerate}
+
+
+
+\subsection{Types of vectors}
+
+\begin{enumerate}
+    \item $\mathbb{R}^n$ or $\mathbb{R}^{n\times 1}$ : column vectors: 
+    $
+        \matname{x} = 
+        \begin{bmatrix}
+            x_1\\ \vdots \\ x_n
+        \end{bmatrix}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item $\mathbb{R}^{1\times n}$ : row vectors: 
+    $
+        \matname{x}^\top = \begin{bmatrix}x_1 & \cdots & x_n\end{bmatrix}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Linear Combination}
+
+\begin{enumerate}
+    \item \textbf{Definition}: Consider a vector space $V$ and a finite number of vectors $\matname{x}_1, \cdots , \matname{x}_k \in V$ . 
+    Then, every $\matname{v} \in V$ of the form:
+    \\
+    .\hfill
+    $
+        \matname{v} 
+        = \lambda _1 \matname{x}_1 + \cdots + \lambda _k \matname{x}_k
+        = \dsum_{i=1}^k \lambda _i \matname{x}_i
+        \in V
+    $
+    \hfill.
+    \\
+    with $\lambda _1, \cdots , \lambda _k \in \mathbb{R}$ is a linear combination of the vectors $\matname{x}_1, \cdots , \matname{x}_k$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The $\matname{0}$-vector can always be written as the linear combination of $k$ vectors $\matname{x}_1, \cdots , \matname{x}_k$ because $\matname{0} = \dsum ^k _{i=1} 0 \matname{x}_i$ is always true.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    
+\end{enumerate}
+
+
+
+\section{Linear (In)dependence}
+
+\begin{enumerate}
+    \item \textbf{Definition}: Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\matname{x}_1, \cdots , \matname{x}_k \in V$ . 
+    If there is a non-trivial linear combination, such that $\matname{0} = \dsum ^k _{i=1} \lambda_i \matname{x}_i$ with at least one $\lambda _i \neq 0$, the vectors  $\matname{x}_1, \cdots , \matname{x}_k$ are linearly dependent. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+    \item If only the trivial solution exists, i.e., $\lambda _1 = \cdots = \lambda _k = 0$ the vectors $\matname{x}_1, \cdots , \matname{x}_k$ are linearly independent.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Intuitively, a set of linearly independent vectors consists of vectors that have no redundancy, i.e., if we remove any of those vectors from the set, we will lose something.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+\subsection{Properties of Linear (In)dependence}
+\begin{enumerate}
+    \item $k$ vectors are either linearly dependent or linearly independent. There is no third option.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If at least one of the vectors $\matname{x}_1, \cdots , \matname{x}_k$ is $\matname{0}$ then they are linearly dependent. 
+    The same holds if two vectors are identical.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The vectors $\dCurlyBrac{\matname{x}_1, \cdots , \matname{x}_k : \matname{x}_i \neq 0, i = 1, \cdots , k}$, $k \geq 2$, are linearly dependent if and only if (at least) one of them is a linear combination of the others. 
+    In particular, if one vector is a multiple of another vector, i.e., $\matname{x}_i = \lambda \matname{x}_j , \lambda \in \mathbb{R}$ then the set $\dCurlyBrac{\matname{x}_1, \cdots , \matname{x}_k : \matname{x}_i \neq \matname{0}, i = 1, \cdots , k}$ is linearly dependent.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item A practical way of checking whether vectors $\matname{x}_1, \cdots , \matname{x}_k \in V$ are linearly independent is to use Gaussian elimination: 
+    Write all vectors as columns of a matrix $A$ and perform Gaussian elimination until the matrix is in row echelon form (the reduced row-echelon form is unnecessary here):
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item The pivot columns indicate the vectors, which are linearly independent of the vectors on the left. Note that there is an ordering of vectors when the matrix is built.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The non-pivot columns can be expressed as linear combinations of the pivot columns on their left.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    All column vectors are linearly independent if and only if all columns are pivot columns. If there is at least one non-pivot column, the columns (and, therefore, the corresponding vectors) are linearly dependent.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Consider a vector space $V$ with $k$ linearly independent vectors $\matname{b}_1, \cdots , \matname{b}_k$ and $m$ linear combinations:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \matname{x}_1 
+        = \dsum_{i=1}^k \lambda_{il} \matname{b}_i,
+        \hspace{1cm}
+        \cdots,
+        \hspace{1cm}
+        \matname{x}_m = \dsum_{i=1}^k \lambda_{im} \matname{b}_i
+    $
+    \hfill.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    \vspace{0.2cm}
+    Defining $\matname{B} = [\matname{b}_1, \cdots , \matname{b}_k]$ as the matrix whose columns are the linearly independent vectors $\matname{b}_1, \cdots , \matname{b}_k$, we can write:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \matname{x}_j = \matname{B}\lambda_j, 
+        \hspace{1cm}
+        \lambda_j = \begin{bmatrix}\lambda_{1j} \\ \vdots \\ \lambda_{kj}\end{bmatrix},
+        \hspace{1cm}
+        j=1,\cdots,m
+    $
+    \hfill.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    in a more compact form.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \begin{enumerate}
+        \item to test whether $\matname{x}_1, \cdots , \matname{x}_m$ are linearly independent:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \begin{enumerate}
+            \item general approach of testing: $\dsum^m_{j=1} \psi_j \matname{x}_j = 0$
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+            \item $
+                    \dsum^m_{j=1} \psi_j \matname{x}_j = 0
+                    \hspace{1cm}
+                    \Rightarrow \dsum^m_{j=1} \psi_j \matname{B} \lambda_j = 0
+                    \hspace{1cm}
+                    \Rightarrow \matname{B} \dsum^m_{j=1} \psi_j \lambda_j = 0
+            $
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+            \item This means that $\dCurlyBrac{\matname{x}_1, \cdots , \matname{x}_m}$ are linearly independent if and only if the column vectors $\dCurlyBrac{\lambda_1, . . . , \lambda_m}$ are linearly independent.
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{enumerate}
+
+        \item In a vector space $V$ , $m$ linear combinations of $k$ vectors $\matname{x}_1, \cdots , \matname{x}_k$ are linearly dependent if $m > k$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+\section{Generating Set}
+
+\begin{enumerate}
+    \item \textbf{Definition}: Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and set of vectors $\mathcal{A} = \dCurlyBrac{\matname{x}_1, \cdots , \matname{x}_k} \subseteq \mathcal{V}$. 
+    If every vector $\matname{v} \in \mathcal{V}$ can be expressed as a linear combination of $\matname{x}_1, \cdots , \matname{x}_k$, $\mathcal{A}$ is called a generating set generating set of $V$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Generating sets are sets of vectors that span vector (sub)spaces, i.e., every vector can be represented as a linear combination of the vectors in the generating set.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
+
+
+\section{Span}
+
+\begin{enumerate}
+    \item \textbf{Definition}: Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and set of vectors $\mathcal{A} = \dCurlyBrac{\matname{x}_1, \cdots , \matname{x}_k} \subseteq \mathcal{V}$. 
+    The set of all linear combinations of vectors in $\mathcal{A}$ is span called the span of $\mathcal{A}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If $\mathcal{A}$ spans the vector space $V$ , we write $V = \text{span}[\mathcal{A}]$ or $V = \text{span}[\matname{x}_1, \cdots , \matname{x}_k]$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+\section{Basis}
+
+\begin{enumerate}
+    \item \textbf{Definition}: Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and $\mathcal{A} \subseteq  \mathcal{V}$. 
+    A generating set $\mathcal{A}$ of $V$ is called minimal if there exists no smaller set $\tilde{\mathcal{A}} \subsetneq \mathcal{A} \subseteq \mathcal{V}$ that spans $V$ . 
+    Every linearly independent generating set of $V$ is minimal and is called a basis of $V$ .
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Let $V = (\mathcal{V}, +, \cdot)$ be a vector space and $\mathcal{B} \subseteq \mathcal{V}, \mathcal{B} \neq \phi$. Then, the following statements are equivalent:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item $\mathcal{B}$ is a basis of $V$ .
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $\mathcal{B}$ is a minimal generating set.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $\mathcal{B}$ is a maximal linearly independent set of vectors in $V$ , i.e., adding any other vector to this set will make it linearly dependent.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Every vector $\matname{x} \in V$ is a linear combination of vectors from $\mathcal{B}$, and every linear combination is unique, i.e., with
+        \\
+        $
+            \matname{x} 
+            = \dsum_{i=1}^k \lambda_i \matname{b}_i
+            = \dsum_{i=1}^k \psi_i \matname{b}_i
+        $
+        \\
+        and $\lambda_i , \psi_i \in \mathbb{R}, \matname{b}_i \in \mathcal{B}$ it follows that $\lambda_i = \psi_i , i = 1, \cdots , k$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item Every vector space $V$ possesses a basis $\mathcal{B}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item There can be many bases of a vector space $V$ , i.e., there is \textbf{no unique basis}. 
+    However, all bases possess the same number of elements, the \textbf{basis vectors}. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Unordered basis: $\mathcal{B} = \dCurlyBrac{\matname{b}_1, \cdots, \matname{b}_n}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Ordered basis: $B = (\matname{b}_1, \cdots, \matname{b}_n)$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item matrix whose columns are the vectors $\matname{b}_1, \cdots, \matname{b}_n$: $\matname{B} = [\matname{b}_1, \cdots, \matname{b}_n]$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+\subsection{Basis Change}
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Linear Mappings}
+
+\begin{enumerate}
+    \item \textbf{Definition}: For vector spaces $V, W$, a mapping $\Phi : V \to W$ is called a linear mapping (or vector space homomorphism/ linear transformation) if
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \forall \matname{x}, \matname{y} \in V \forall \lambda , \psi  \in \mathbb{R} : 
+        \Phi(\lambda \matname{x} + \psi \matname{y}) = \lambda \Phi(\matname{x}) + \psi \Phi(\matname{y})
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item we can represent linear mappings as matrices
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item For linear mappings $\Phi : V \to W$ and $\Psi : W \to X$, the mapping $\Psi \circ \Phi : V \to X$ is also linear.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If $\Phi : V \to W, \Psi : V \to W$ are linear, then $\Phi + \Psi$ and $\lambda\Phi, \lambda \in \mathbb{R}$, are linear, too.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+\subsection{Matrix Representation of Linear Mappings}
+
+\begin{enumerate}
+    \item Any $n$-dimensional vector space is isomorphic to $\mathbb{R}^n$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item We consider a basis $\dCurlyBrac{\matname{b}_1, \cdots , \matname{b}_n}$ of an $n$-dimensional vector space $V$ .
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\section{Injective, Surjective, Bijective Mappings}
+
+\textbf{Definition}: Consider a mapping $\Phi : \mathcal{V} \to \mathcal{W}$, where $\mathcal{V}, \mathcal{W}$ can be arbitrary sets. 
+Then $\Phi$ is called:
+\hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+\begin{enumerate}
+    \item \textbf{Injective} if $\forall \matname{x}, \matname{y} \in \mathcal{V} : \Phi(\matname{x}) = \Phi(\matname{y}) \Rightarrow \matname{x} = \matname{y}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Surjective} if $\Phi(\mathcal{V}) = \mathcal{W}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item If $\Phi$ is surjective, then every element in $\mathcal{W}$ can be “reached” from $\mathcal{V}$ using $\Phi$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+    
+    \item \textbf{Bijective} if it is injective and surjective
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item A bijective $\Phi$ can be “undone”, i.e., there exists a mapping $\Psi : W \to V$ so that $\Psi \circ \Phi(\matname{x}) = \matname{x}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item This mapping $\Psi$ is then called the inverse of $\Phi$ and normally denoted by $\Phi^{-1}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}    
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Special cases of Linear mappings}
+
+\textbf{Definition}: Consider a mapping $\Phi : V \to W$, where $V, W$ can be arbitrary vector spaces. 
+Then:
+\hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+\begin{enumerate}
+    \item \textbf{Isomorphism}: $\Phi : V \to W$ linear and bijective
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item \textbf{Theorem}: Finite-dimensional vector spaces $V$ and $W$ are isomorphic if and only if $\dim(V ) = \dim(W)$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item there exists a linear, bijective mapping between two vector spaces of the same dimension.
+        Intuitively, this means that vector spaces of the same dimension are kind of the same thing, as they can be transformed into each other without incurring any loss.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item It gives the justification to treat $\mathbb{R}^{m\times n}$ (the vector space of $m \times n$-matrices) and $\mathbb{R}^{mn}$ (the vector space of vectors of length $mn$) the same, as their dimensions are $mn$, and there exists a linear, bijective mapping that transforms one into the other.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item If $\Phi : V \to W$ is an isomorphism, then $\Phi ^{-1} : W \to V$ is an isomorphism, too.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item \textbf{Endomorphism}: $\Phi : V \to V$ linear
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Automorphism}: $\Phi : V \to V$ linear and bijective
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{identity mapping} or \textbf{identity automorphism}: $id_V : V \to V , \matname{x} \mapsto \matname{x}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
+
+
+\section{Transformation Matrix ( $A_\Phi$ )}
+
+\begin{enumerate}
+    \item \textbf{Definition}: Consider vector spaces $V$, $W$ with corresponding (ordered) bases $B = (\matname{b}_1, \cdots , \matname{b}_n)$ and $C = (\matname{c}_1, \cdots , \matname{c}_m)$. 
+    Moreover, we consider a linear mapping $\Phi : V \to W$. 
+    For $j \in \dCurlyBrac{1, \cdots , n}$,
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \Phi(\matname{b}_j ) = \alpha _{1j} \matname{c}_1 + \cdots + \alpha _{mj} \matname{c}_m 
+        = \dsum^m_{i=1} \alpha _{ij} \matname{c}_i
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    is the unique representation of $\Phi(\matname{b}_j )$ with respect to $C$. 
+    Then, we call the $m \times n$-matrix $\matname{A}_\Phi$, whose elements are given by $\matname{A}_\Phi(i, j) = \alpha_{ij}$ the transformation matrix of $\Phi$ (with respect to the ordered bases $B$ of $V$ and $C$ of $W$  ).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The transformation matrix can be used to map coordinates with respect to an ordered basis in $V$ to coordinates with respect to an ordered basis in $W$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
+\section{Coordinates}
+
+\begin{enumerate}
+    \item Consider a vector space $V$ and an ordered basis $B = (\matname{b}_1, \cdots , \matname{b}_n)$ of $V$ . 
+    For any $\matname{x} \in V$ we obtain a unique representation (linear combination):
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \matname{x} = \alpha_1 \matname{b}_1 + \cdots + \alpha_n \matname{b}_n
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    of $\matname{x}$ with respect to $B$. 
+    Then $\alpha_1, \cdots , \alpha_n$ are the coordinates of $\matname{x}$ with respect to $B$, and the vector:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \bm{\alpha} = \begin{bmatrix}
+            \alpha_1 \\
+            \vdots \\
+            \alpha_n
+        \end{bmatrix}
+        \in \mathbb{R}^n
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    is the \textbf{coordinate vector/ coordinate} representation of $\matname{x}$ with respect to the ordered basis $B$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item A basis effectively defines a coordinate system.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item For an $n$-dimensional vector space $V$ and an ordered basis $B$ of $V$ , the mapping $\Phi : \mathbb{R}^n \to V , \Phi(\matname{e}_i) = \matname{b}_i , i = 1, \cdots , n$, is linear, where $(\matname{e}_1, \cdots , \matname{e}_n)$ is the standard basis of $\mathbb{R}^n$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The coordinates of $\Phi(\matname{b}_j )$ with respect to the ordered basis $C$ of $W$ are the $j$-th column of $\matname{A}_\Phi$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item Consider (finite-dimensional) vector spaces $V$, $W$ with ordered bases $B$, $C$ and a linear mapping $\Phi : V \to W$ with transformation matrix $\matname{A}_\Phi$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item If $\hat{\matname{x}}$ is the coordinate vector of $\matname{x} \in V$ with respect to $B$ and $\hat{\matname{y}}$ the coordinate vector of $\matname{y} = \Phi(\matname{x}) \in W$ with respect to $C$, then $\hat{\matname{y}} = \matname{A}_\Phi \hat{\matname{x}}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

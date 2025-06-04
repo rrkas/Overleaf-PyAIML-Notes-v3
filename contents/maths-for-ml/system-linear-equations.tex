@@ -1,15 +1,13 @@
-\chapter{Linear Algebra}
+\chapter{Systems of Linear Equations}
 
-\begin{enumerate}
-    \item \textbf{Algebra} is constructing a set of objects (symbols) and a set of rules to manipulate these objects.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+% \begin{enumerate}
+%     \item \textbf{Algebra} is constructing a set of objects (symbols) and a set of rules to manipulate these objects.
+%     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Linear algebra} is the study of vectors and certain rules to manipulate vectors.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-\end{enumerate}
+%     \item \textbf{Linear algebra} is the study of vectors and certain rules to manipulate vectors.
+%     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+% \end{enumerate}
 
-
-\section{Systems of Linear Equations}
 
 \begin{customArrayStretch}{1.3}
 \begin{table}[H]
@@ -55,20 +53,20 @@
     \item \textbf{compact notation}:
     \\[0.2cm]
     $
-        \begin{bmatrix}a_{11}\\ \vdots\\ a_{m1}\end{bmatrix} x_1 +
-        \begin{bmatrix}a_{12}\\ \vdots\\ a_{m2}\end{bmatrix} x_2 +
+        \begin{bmatrix}a_{11}\\ \vdots\\ a_{m1}\end{bmatrix} \matname{x}_1 +
+        \begin{bmatrix}a_{12}\\ \vdots\\ a_{m2}\end{bmatrix} \matname{x}_2 +
         \cdots +
-        \begin{bmatrix}a_{1n}\\ \vdots\\ a_{mn}\end{bmatrix} x_n =
+        \begin{bmatrix}a_{1n}\\ \vdots\\ a_{mn}\end{bmatrix} \matname{x}_n =
         \begin{bmatrix}b_{1}\\ \vdots\\ b_{m}\end{bmatrix}
     \Longleftrightarrow
-        \underset{A}{\underbrace{\begin{bmatrix}
+        \underset{\displaystyle\matname{A}}{\underbrace{\begin{bmatrix}
             a_{11} & \cdots & a_{1n} \\
             \vdots & \ddots & \vdots \\
             a_{m1} & \cdots & a_{mn}
         \end{bmatrix}}} \
-        \underset{x}{\underbrace{\begin{bmatrix} x_{1} \\ \vdots \\ x_{n} \end{bmatrix}}}
+        \underset{\displaystyle\matname{x}}{\underbrace{\begin{bmatrix} x_{1} \\ \vdots \\ x_{n} \end{bmatrix}}}
         =
-        \underset{b}{\underbrace{\begin{bmatrix} b_{1} \\ \vdots \\ b_{m} \end{bmatrix}}}
+        \underset{\displaystyle\matname{b}}{\underbrace{\begin{bmatrix} b_{1} \\ \vdots \\ b_{m} \end{bmatrix}}}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -93,7 +91,7 @@
     \item the product $Ax$ is a (linear) combination of the columns of $A$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Augmented Matrix} ( $\dSquareBrac{A\ |\ b}$ ): 
+    \item \textbf{Augmented Matrix} ( $\dSquareBrac{\matname{A}|\matname{b}}$ ): 
     \\[0.2cm]
     $
         \left[
@@ -105,13 +103,13 @@
         \right]
     $
 
-    \item The solution set of a homogeneous system of linear equations $Ax = 0$ with $n$ unknowns $x = [x_1, \cdots , x_n]^\top$ is a subspace of $\mathbb{R}^n$.
+    \item The solution set of a homogeneous system of linear equations $\matname{Ax} = \matname{0}$ with $n$ unknowns $\matname{x} = [x_1, \cdots , x_n]^\top$ is a subspace of $\mathbb{R}^n$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Every subspace $U \subseteq (\mathbb{R}^n , +, \cdot)$ is the solution space of a homogeneous system of linear equations $Ax = 0$ for $x \in \mathbb{R}^n$.
+    \item Every subspace $U \subseteq (\mathbb{R}^n , +, \cdot)$ is the solution space of a homogeneous system of linear equations $\matname{Ax} = \matname{0}$ for $\matname{x} \in \mathbb{R}^n$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The solution of an inhomogeneous system of linear equations $Ax = b, b \neq 0$ is not a subspace of $\mathbb{R}^n$.
+    \item The solution of an inhomogeneous system of linear equations $\matname{Ax} = \matname{b}, \matname{b} \neq \matname{0}$ is not a subspace of $\mathbb{R}^n$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     
@@ -170,10 +168,10 @@
 \section{Finding Solutions using Matrix Inverse}
 
 \begin{enumerate}
-    \item if $A$ is a square matrix and invertible (strict conditions): $x = A^{-1}b$
+    \item if $\matname{A}$ is a square matrix and invertible (strict conditions): $\matname{x} = \matname{A}^{-1}\matname{b}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item if $A$ has linearly independent columns (mild assumptions): $x = (A^\top  A)^{-1}A^\top b$
+    \item if $\matname{A}$ has linearly independent columns (mild assumptions): $\matname{x} = (\matname{A}^\top  \matname{A})^{-1}\matname{A}^\top \matname{b}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item for reasons of numerical precision it is generally not recommended to compute the inverse or pseudo-inverse
@@ -229,7 +227,7 @@
     \item The variables corresponding to the pivots in the row-echelon form are called basic variables and the other variables are free variables.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item we express the right-hand side of the equation system using the pivot columns, such that $b = \dsum^P_{i=1} \lambda_i\ p_i$, where $p_i$ , $i = 1, \cdots , P$, are the pivot columns. 
+    \item we express the right-hand side of the equation system using the pivot columns, such that $\matname{b} = \dsum^P_{i=1} \lambda_i\ \matname{p}_i$, where $\matname{p}_i$ , $i = 1, \cdots , P$, are the pivot columns. 
     \\
     The $\lambda_i$ are determined easiest if we start with the rightmost pivot column and work our way to the left.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -300,10 +298,10 @@
 
 \subsection{Finding Solutions to $Ax=0$: Minus-$1$ Trick \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
 
-Let $A$ is in reduced row-echelon form without any rows that just contain zeros:\\
+Let $\matname{A}$ is in reduced row-echelon form without any rows that just contain zeros:\\
 .\hfill
 $
-    A
+    \matname{A}
     = 
     \begin{bmatrix}
         0 & \cdots & 0 & \mathbf{1} & * & \cdots & * & 0 & * & \cdots & * & 0 & * & \cdots & * \\
@@ -334,19 +332,19 @@ $
     \item The columns $j_1, \cdots , j_k$ with the pivots (marked in \textbf{bold}) are the standard unit vectors $e_1, \cdots , e_k \in \mathbb{R}^k$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item We extend this matrix to an $n \times n$-matrix $\tilde{A}$ by adding $n - k$ rows of the form 
+    \item We extend this matrix to an $n \times n$-matrix $\tilde{\matname{A}}$ by adding $n - k$ rows of the form 
     $
         \begin{bmatrix}
             0 & \cdots & 0 & -1 & 0 & \cdots & 0
         \end{bmatrix}
     $
-    so that the diagonal of the augmented matrix $\tilde{A}$ contains either $1$ or $-1$.
+    so that the diagonal of the augmented matrix $\tilde{\matname{A}}$ contains either $1$ or $-1$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item columns of $\tilde{A}$ that contain the $-1$ as pivots are solutions of the homogeneous equation system $Ax = 0$.
+    \item columns of $\tilde{\matname{A}}$ that contain the $-1$ as pivots are solutions of the homogeneous equation system $Ax = 0$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item To be more precise, these columns form a basis of the solution space of $Ax = 0$, called the kernel or null space.
+    \item To be more precise, these columns form a basis of the solution space of $\matname{Ax} = \matname{0}$, called the kernel or null space.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
@@ -382,10 +380,10 @@ $
 \begin{enumerate}
     \item The general approach we followed consisted of the following three steps:
     \begin{enumerate}
-        \item Find a particular solution to $Ax = b$
+        \item Find a particular solution to $\matname{Ax} = \matname{b}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item Find all solutions to $Ax = 0$
+        \item Find all solutions to $\matname{Ax} = \matname{0}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
         \item Combine the solutions from steps 1. and 2. to the general solution.
@@ -400,14 +398,14 @@ $
 \section{Finding Solutions using stationary iterative methods - TODO}
 
 \begin{enumerate}
-    \item Let $x_\ast$ be a solution of $Ax = b$. 
+    \item Let $\matname{x}_\ast$ be a solution of $\matname{Ax} = \matname{b}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     
     \item The key idea of these iterative methods is to set up an iteration of the form
     $
-        x^{(k+1)} = Cx^{(k)} + d
+        \matname{x}^{(k+1)} = C\matname{x}^{(k)} + d
     $
-    for suitable $C$ and $d$ that reduces the residual error $\dnorm{x^{(k+1)} - x_\ast}$ in every iteration and converges to $x_\ast$.
+    for suitable $C$ and $d$ that reduces the residual error $\dnorm{\matname{x}^{(k+1)} - \matname{x}_\ast}$ in every iteration and converges to $\matname{x}_\ast$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 \end{enumerate}
@@ -435,6 +433,7 @@ $
 
 
 \subsection{biconjugate gradients - TODO}
+
 
 
 

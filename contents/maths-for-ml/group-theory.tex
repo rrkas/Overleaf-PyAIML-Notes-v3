@@ -1,0 +1,92 @@
+\chapter{Group Theory}
+
+
+
+
+\section{Groups}
+
+\begin{enumerate}
+    \item \textbf{Definition}: Consider a set $\mathcal{G}$ and an (inner) operation $\otimes : \mathcal{G} \times \mathcal{G} \to \mathcal{G}$ group defined on $G$. Then $G := (\mathcal{G}, \otimes)$ is called a group if the following hold:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item Closure of $\mathcal{G}$ under $\otimes$: $\forall x, y \in \mathcal{G} : x \otimes y \in \mathcal{G}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Associativity: $\forall x, y, z \in  \mathcal{G} : (x \otimes  y) \otimes  z = x \otimes  (y \otimes  z)$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Neutral element: $\exists e \in  \mathcal{G} \forall x \in  \mathcal{G} : x \otimes  e = x and e \otimes  x = x$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Inverse element: $\forall x \in  \mathcal{G} \exists y \in  \mathcal{G}$ : $x \otimes  y = e$ and $y \otimes  x = e$, where $e$ is the neutral element. We often write $x^{-1}$ to denote the inverse element of $x$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item The inverse element is defined with respect to the operation $\otimes$ and does not necessarily mean $\dfrac{1}{x}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Group allows only inner operation $\otimes$, means the operands \textbf{must be} elements from $\mathcal{G}$.
+
+    \item Examples:
+    \begin{enumerate}
+        \item $(\mathbb{N}_0, +)$ is \textbf{not} a group: Although $(\mathbb{N}_0, +)$ possesses a neutral element ($0$), the inverse elements are missing.
+        \hfill $\mathbb{N}_0 := \mathbb{N} \cup \dCurlyBrac{0}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $(\mathbb{Z}, \cdot)$ is not a group: Although $(\mathbb{Z}, \cdot)$ contains a neutral element ($1$), the inverse elements for any $z \in \mathbb{Z}, z \neq \pm1$, are missing.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $(\mathbb{R}, \cdot)$ is not a group since $0$ does not possess an inverse element.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+\section{Abelian Group}
+
+\begin{enumerate}
+    \item \textbf{Definition}: A group $G = (\mathcal{G}, \otimes)$ is called Abelian group if $\forall x, y \in \mathcal{G} : x \otimes y = y \otimes x$ (commutative)
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Examples:
+    \begin{enumerate}
+        \item $(\mathbb{Z}, +)$ is an Abelian group
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $( \mathbb{R} \backslash \dCurlyBrac{0}, \cdot)$ is Abelian
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $(\mathbb{R}^n, +),(\mathbb{Z}^n, +), n \in \mathbb{N}$ are Abelian if + is defined component-wise:
+        \\
+        $
+            (x_1, \cdots , x_n) + (y_1, \cdots , y_n) = (x_1 + y_1, \cdots , x_n + y_n)
+        $
+        \\
+        Then, $(x_1, \cdots , x_n)^{-1} := (-x_1, \cdots , -x_n)$ is the inverse element and $e = (0, \cdots , 0)$ is the neutral element.
+
+        \item $(\mathbb{R}^{m\times n} , +)$, the set of $m \times n$-matrices is Abelian  (with component-wise addition)
+
+        
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+\section{General Linear Group}
+
+\begin{enumerate}
+    \item \textbf{Definition}: The set of regular (invertible) matrices $A \in \mathbb{R}^{n\times n}$ is a group with respect to matrix multiplication and is called general linear group $GL(n, \mathbb{R})$. 
+    
+    \item However, since matrix multiplication is not commutative, the group is not Abelian.
+
+    
+\end{enumerate}
+
