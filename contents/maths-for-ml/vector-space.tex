@@ -432,7 +432,92 @@
 \subsection{Basis Change}
 
 \begin{enumerate}
-    \item 
+    \item \textbf{Theorem}: For a linear mapping $\Phi : V \to W$, ordered bases
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        B = (\matname{b}_1, \cdots , \matname{b}_n), \ 
+        \tilde{B} = (\tilde{\matname{b}}_1, \cdots , \tilde{\matname{b}}_n)
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    of $V$ and
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        C = (\matname{c}_1, \cdots , \matname{c}_n), \ 
+        \tilde{C} = (\tilde{\matname{c}}_1, \cdots , \tilde{\matname{c}}_n)
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    of $W$, and a transformation matrix $\matname{A}_\Phi$ of $\Phi$ with respect to $B$ and $C$, the corresponding transformation matrix $\tilde{\matname{A}} _\Phi$ with respect to the bases $\tilde{B}$ and $\tilde{C}$ is given as
+    $
+        \tilde{\matname{A}} \Phi = \matname{T}^{-1}\matname{A}_\Phi \matname{S}
+    $.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    Here, $\matname{S} \in \mathbb{R}^{n\times n}$ is the transformation matrix of $\text{id}_V$ that maps coordinates with respect to $\tilde{B}$ onto coordinates with respect to $B$, \ 
+    and $\matname{T} \in \mathbb{R}^{m\times m}$ is the transformation matrix of $\text{id}_W$ that maps coordinates with respect to $\tilde{C}$ onto coordinates with respect to $C$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Proof}: we can write the vectors of the new basis $\tilde{B}$ of $V$ as a linear combination of the basis vectors of $B$, such that:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \tilde{\matname{b}}_j 
+        = s_{1j} \matname{b}_1 + \cdots + s_{nj} \matname{b}_n 
+        = \dsum^n _{i=1} s_{ij} \matname{b}_i 
+        , j = 1, \cdots , n
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    Similarly, we write the new basis vectors $\tilde{C}$ of $W$ as a linear combination of the basis vectors of $C$, which yields
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \tilde{\matname{c}}_k 
+        = t_{1k} \matname{c}_1 + \cdots + t_{mk} \matname{c}_m 
+        = \dsum^m _{l=1} t_{lk} \matname{c}_l 
+        , k = 1, \cdots , m
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    We define $\matname{S} = ((s_{ij} )) \in \mathbb{R}^{n\times n}$ as the transformation matrix that maps coordinates with respect to $\tilde{B}$ onto coordinates with respect to $B$ and $\matname{T} = ((t_{lk})) \in R^{m\times m}$ as the transformation matrix that maps coordinates with respect to $\tilde{C}$ onto coordinates with respect to $C$. 
+    In particular, the $j$-th column of $\matname{S}$ is the coordinate representation of $\tilde{\matname{b}}_j$ with respect to $B$ and the $k$-th column of $\matname{T}$ is the coordinate representation of $\tilde{\matname{c}}_k$ with respect to $C$. 
+    Note that both $\matname{S}$ and $\matname{T}$ are regular.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    We are going to look at $\Phi(\tilde{\matname{b}}_j )$ from two perspectives.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item Applying the mapping $\Phi$, we get that for all $j = 1, \cdots , n$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \Phi(\tilde{\matname{b}}_j )
+            = \dsum^m_{k=1} \underset{\displaystyle \in W}{
+                \underbrace{\tilde{a}_{kj} \textcolor{blue}{\tilde{\matname{c}}_k}}
+            }
+            = \dsum^m_{k=1} \tilde{a}_{kj} \textcolor{blue}{
+                \dsum^m_{l=1} t_{lk} \matname{c}_l
+            }
+            = \dsum^m_{l=1} \dParenBrac{
+                \dsum^m_{k=1} t_{lk} \tilde{a}_{kj} 
+            }  \matname{c}_l
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        where we first expressed the new basis vectors $\tilde{\matname{c}}_k \in W$ as linear combinations of the basis vectors $\matname{c}_l \in W$ and then swapped the order of summation.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+
+        \item 
+    \end{enumerate}
 \end{enumerate}
 
 
