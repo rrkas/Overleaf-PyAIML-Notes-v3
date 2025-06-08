@@ -1,12 +1,12 @@
 \subsection{Multiplication by a Scalar ( $\lambda A$ )}
 
-Let $\matname{A} \in \mathbb{R}^{m\times n}$ and $\lambda \in \mathbb{R}$. 
-Then $\lambda \matname{A} = \matname{K} \in \mathbb{R}^{m\times n}$, $k_{ij} = \lambda a_{ij}$.
+Let $\bm{A} \in \mathbb{R}^{m\times n}$ and $\lambda \in \mathbb{R}$. 
+Then $\lambda \bm{A} = \bm{K} \in \mathbb{R}^{m\times n}$, $k_{ij} = \lambda a_{ij}$.
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 
 \begin{enumerate}
-    \item $\lambda$ scales each element of $\matname{A}$
+    \item $\lambda$ scales each element of $\bm{A}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}    
 \end{enumerate}
 
@@ -20,38 +20,38 @@ $\forall\ \lambda,\ \psi \in \mathbb{R}$:
 \vspace{0.2cm}
 \begin{enumerate}
     \item \textbf{Associativity}:
-    $(\lambda \psi )\matname{C} = \lambda (\psi \matname{C})$ \hfill $\matname{C} \in  \mathbb{R}^{m\times n}$
+    $(\lambda \psi )\bm{C} = \lambda (\psi \bm{C})$ \hfill $\bm{C} \in  \mathbb{R}^{m\times n}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     
     \item $
-        \lambda (\matname{BC}) 
-        = (\lambda \matname{B})\matname{C} 
-        = \matname{B}(\lambda \matname{C}) 
-        = (\matname{BC})\lambda 
+        \lambda (\bm{BC}) 
+        = (\lambda \bm{B})\bm{C} 
+        = \bm{B}(\lambda \bm{C}) 
+        = (\bm{BC})\lambda 
         $ 
-    \hfill $\matname{B} \in  \mathbb{R}^{m\times n}, \matname{C} \in  \mathbb{R}^{n\times k}$
+    \hfill $\bm{B} \in  \mathbb{R}^{m\times n}, \bm{C} \in  \mathbb{R}^{n\times k}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     Note that this allows us to move scalar values around.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item $
-        (\lambda \matname{C}) ^\top  
-        = \matname{C}^\top \lambda ^\top  
-        = \matname{C}^\top \lambda  
-        = \lambda \matname{C}^\top 
+        (\lambda \bm{C}) ^\top  
+        = \bm{C}^\top \lambda ^\top  
+        = \bm{C}^\top \lambda  
+        = \lambda \bm{C}^\top 
     $
     \hfill $\lambda  = \lambda ^\top \  \forall \ \lambda  \in  \mathbb{R}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item \textbf{Distributivity}:
     \begin{enumerate}
-        \item $(\lambda  + \psi )\matname{C} = \lambda \matname{C} + \psi \matname{C}$
-        \hfill $\matname{C} \in  \mathbb{R}^{m\times n}$
+        \item $(\lambda  + \psi )\bm{C} = \lambda \bm{C} + \psi \bm{C}$
+        \hfill $\bm{C} \in  \mathbb{R}^{m\times n}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item $\lambda (\matname{B} + \matname{C}) = \lambda \matname{B} + \lambda \matname{C}$
-        \hfill $\matname{B}, \matname{C} \in  \mathbb{R}^{m\times n}$
+        \item $\lambda (\bm{B} + \bm{C}) = \lambda \bm{B} + \lambda \bm{C}$
+        \hfill $\bm{B}, \bm{C} \in  \mathbb{R}^{m\times n}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}        
     \end{enumerate}
 \end{enumerate}

@@ -1,6 +1,6 @@
 \subsection{Matrix Multiplication ( $AB$ OR $@$ OR $\cdot$ ) \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
 
-For matrices $\matname{A} \in \mathbb{R}^{m\times n}$, $\matname{B} \in \mathbb{R}^{n\times k}$, the elements $c_{ij}$ of the product matrices. $\matname{C} = \matname{AB} \in \mathbb{R}^{m\times k}$ are computed as:
+For matrices $\bm{A} \in \mathbb{R}^{m\times n}$, $\bm{B} \in \mathbb{R}^{n\times k}$, the elements $c_{ij}$ of the product matrices. $\bm{C} = \bm{AB} \in \mathbb{R}^{m\times k}$ are computed as:
 
 \vspace{0.5cm}
 \hfill
@@ -48,7 +48,7 @@ print(np.all(C1 == C2), np.all(C1 == C3))
 \vspace{0.5cm}
 
 \begin{enumerate}
-    \item To compute element $c_{ij}$ we multiply the elements of the $i$th row of $\matname{A}$ with the $j$th column of $\matname{B}$ and sum them up.
+    \item To compute element $c_{ij}$ we multiply the elements of the $i$th row of $\bm{A}$ with the $j$th column of $\bm{B}$ and sum them up.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item Matrices can only be multiplied if their “neighboring” dimensions match.
@@ -56,18 +56,18 @@ print(np.all(C1 == C2), np.all(C1 == C3))
     \\
     \hfill
     $
-        \underset{n\times k}{\underbrace{\matname{A}}}\
-        \underset{k\times m}{\underbrace{\matname{B}}}
+        \underset{n\times k}{\underbrace{\bm{A}}}\
+        \underset{k\times m}{\underbrace{\bm{B}}}
         =
-        \underset{n\times m}{\underbrace{\matname{C}}}
+        \underset{n\times m}{\underbrace{\bm{C}}}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
-    The product $\matname{BA}$ is not defined if $m \neq n$ since the neighboring dimensions do not match.
+    The product $\bm{BA}$ is not defined if $m \neq n$ since the neighboring dimensions do not match.
 
     \item Matrix multiplication is \textbf{not} defined as an element-wise operation on matrix elements, i.e., 
     \\
-    $c_{ij} \neq a_{ij}\ b_{ij}$ (even if the size of $\matname{A}$, $\matname{B}$ was chosen appropriately).
+    $c_{ij} \neq a_{ij}\ b_{ij}$ (even if the size of $\bm{A}$, $\bm{B}$ was chosen appropriately).
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
@@ -75,45 +75,45 @@ print(np.all(C1 == C2), np.all(C1 == C3))
 \subsubsection{Properties}
 
 \begin{enumerate}
-    \item matrix multiplication is \textbf{not} commutative: $\matname{AB} \neq \matname{BA}$
+    \item matrix multiplication is \textbf{not} commutative: $\bm{AB} \neq \bm{BA}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item \textbf{Associativity}: 
     $
         \forall 
-        \matname{A} \in \mathbb{R}^{m\times n},\ 
-        \matname{B} \in \mathbb{R}^{n\times p},\ 
-        \matname{C} \in \mathbb{R}^{p\times q}
+        \bm{A} \in \mathbb{R}^{m\times n},\ 
+        \bm{B} \in \mathbb{R}^{n\times p},\ 
+        \bm{C} \in \mathbb{R}^{p\times q}
     $:
     
         \begin{enumerate}
-            \item $\matname{ABC} = (\matname{AB})\ \matname{C} = \matname{A}\ (\matname{BC})$
+            \item $\bm{ABC} = (\bm{AB})\ \bm{C} = \bm{A}\ (\bm{BC})$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
 
     \item \textbf{Distributivity}: 
     $
         \forall 
-        \matname{A},\ \matname{B}\in \mathbb{R}^{m\times n},\ 
-        \matname{C},\ \matname{D}\in \mathbb{R}^{n\times p}
+        \bm{A},\ \bm{B}\in \mathbb{R}^{m\times n},\ 
+        \bm{C},\ \bm{D}\in \mathbb{R}^{n\times p}
     $:
 
         \begin{enumerate}
-            \item $(\matname{A} + \matname{B})\ \matname{C} = \matname{AC} + \matname{BC}$
+            \item $(\bm{A} + \bm{B})\ \bm{C} = \bm{AC} + \bm{BC}$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
             
-            \item $\matname{A}\ (\matname{C} + \matname{D}) = \matname{AC} + \matname{AD}$
+            \item $\bm{A}\ (\bm{C} + \bm{D}) = \bm{AC} + \bm{AD}$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
 
     \item Multiplication with the identity matrix: 
     $
         \forall 
-        \matname{A},\ \matname{B}\in \mathbb{R}^{m\times n}
+        \bm{A},\ \bm{B}\in \mathbb{R}^{m\times n}
     $:
         \begin{enumerate}
-            \item $\matname{I}_m\matname{A} = \matname{AI}_n = \matname{A}$
-            \hfill $m\neq n \Rightarrow \matname{I}_m \neq \matname{I}_n$
+            \item $\bm{I}_m\bm{A} = \bm{AI}_n = \bm{A}$
+            \hfill $m\neq n \Rightarrow \bm{I}_m \neq \bm{I}_n$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
 \end{enumerate}
