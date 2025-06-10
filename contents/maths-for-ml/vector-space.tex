@@ -305,6 +305,60 @@
 
 
 
+\subsection{Orthogonal Complement ( $U^\perp$ )}
+
+\begin{enumerate}
+    \item Consider a $D$-dimensional vector space $V$ and an $M$-dimensional subspace $U \subseteq V$ . 
+    Then its orthogonal complement $U^\perp$ is a $(D-M)$-dimensional subspace of $V$ and contains all vectors in $V$ that are orthogonal to every vector in $U$. 
+    Furthermore, $U \cap U^\perp = \dCurlyBrac{\bm{0}}$ so that any vector $\bm{x} \in V$ can be uniquely decomposed into
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \bm{x}
+        = \dsum^M_{m=1} \lambda_m \bm{b}_m + \dsum ^{D-M}_{j=1} \psi_j \bm{b}_j^\perp
+        \hspace{1cm}
+        \lambda_m, \psi_j \in \mathbb{R}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    where $(\bm{b}_1, \cdots , \bm{b}_M)$ is a basis of $U$ and $(\bm{b}^\perp _1 , \cdots , \bm{b}^\perp _{D-M})$ is a basis of $U^\perp$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item the orthogonal complement can also be used to describe a plane $U$ (two-dimensional subspace) in a three-dimensional vector space.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item the vector $\bm{w}$ with $\dnorm{\bm{w}} = 1$, which is orthogonal to the plane $U$, is the basis vector of $U^\perp$.
+    All vectors that are orthogonal to $\bm{w}$ must (by construction) lie in the plane $U$. 
+    The vector $\bm{w}$ is called the \textbf{normal vector} of $U$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item orthogonal complements can be used to describe hyperplanes in $n$-dimensional vector and affine spaces.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -567,6 +621,44 @@
 \end{enumerate}
 
 
+
+
+\subsection{Vector as a function}
+
+
+\begin{enumerate}
+    \item We can think of a vector $\bm{x} \in \mathbb{R}^n$ as a function with $n$ function values.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The concept of an inner product can be generalized to vectors with an infinite number of entries (countably infinite) and also continuous-valued functions (uncountably infinite).
+    Then the sum over individual components of vectors ( as in $\bm{a}^\top \bm{b} = \dsum^n_{i=1} a_i b_i$ ) turns into an integral.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    
+\end{enumerate}
+
+
+
+
+\subsubsection{Inner Product of Functions}
+
+
+\begin{enumerate}
+    \item An inner product of two functions $u : \mathbb{R} \to \mathbb{R}$ and $v : \mathbb{R} \to \mathbb{R}$ can be defined as the definite integral
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \dAngleBrac{\bm{u}, \bm{v}}
+        := \dint^b_a u(x)v(x) dx
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    for lower and upper limits $a, b < \infty$, respectively.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    
+\end{enumerate}
 
 
 
@@ -1029,11 +1121,36 @@
 
 
 
-\subsection{Orthonormal Basis}
+\subsection{Orthonormal Basis (ONB) \& Orthogonal Basis (OGB)}
 
 
 \begin{enumerate}
-    \item 
+    \item \textbf{Definition}: Consider an $n$-dimensional vector space $V$ and a basis $\dCurlyBrac{\bm{b}_1, \cdots , \bm{b}_n}$ of $V$ . 
+    If
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $\dAngleBrac{\bm{b}_i, \bm{b}_j} = 0$ for $i \neq j$ and $\dAngleBrac{\bm{b}_i, \bm{b}_i} = 1$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    for all $i, j = 1, \cdots , n$ then the basis is called an orthonormal basis (ONB).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If only $\dAngleBrac{\bm{b}_i, \bm{b}_j} = 0$ is satisfied, then the basis is called an \textbf{orthogonal basis}.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Note}: $\dAngleBrac{\bm{b}_i, \bm{b}_i} = 1$ implies that every basis vector has length/norm $1$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Gram-Schmidt process}: constructive way to iteratively build an orthonormal basis
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item Assume we are given a set $\dCurlyBrac{\tilde{\bm{b}}_1, \cdots ,\tilde{\bm{b}}_n}$ of non-orthogonal and un-normalized basis vectors.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item We concatenate them into a matrix $\tilde{\bm{B}} = [\tilde{\bm{b}}_1, \cdots ,\tilde{\bm{b}}_n]$ and apply Gaussian elimination to the augmented matrix $[\tilde{\bm{B}} \tilde{\bm{B}}^\top|\tilde{\bm{B}}]$ to obtain an orthonormal basis. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
 \end{enumerate}
 
 
@@ -1455,6 +1572,36 @@ Then:
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}    
 \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
