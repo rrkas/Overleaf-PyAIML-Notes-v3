@@ -580,10 +580,15 @@
 
 \begin{enumerate}
     \item Let $V$ be a vector space and $\Omega  : V \times  V \to  \mathbb{R}$ be a bilinear mapping that takes two vectors and maps them onto a real number. Then
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \begin{enumerate}
         \item A positive definite, symmetric bilinear mapping $\Omega  : V \times  V \to  \mathbb{R}$ is called an inner product on $V$ . 
         We typically write $\dAngleBrac{x, y}$ instead of $\Omega (x, y)$.        
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
+
+    \item default inner product is dot product: $\dAngleBrac{\bm{x}, \bm{y}} = \bm{x}^\top \bm{y}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
 
@@ -649,12 +654,34 @@
     \\
     .\hfill
     $
-        \dAngleBrac{\bm{u}, \bm{v}}
+        \dAngleBrac{u, v}
         := \dint^b_a u(x)v(x) dx
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     for lower and upper limits $a, b < \infty$, respectively.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item As with our usual inner product, we can define norms and orthogonality by looking at the inner product.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If $\dAngleBrac{u, v} = 0$, then the functions $u$ and $v$ are \textbf{orthogonal}.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item unlike inner products on finite-dimensional vectors, inner products on functions may diverge (have infinite value).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item It also holds that the collection of functions
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \dCurlyBrac{1, \cos(x), \cos(2x), \cos(3x), \cdots }
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    is orthogonal if we integrate from $-\pi$ to $\pi$, i.e., any pair of functions are orthogonal to each other.
+    The collection of functions spans a large subspace of the functions that are even and periodic on $[\pi, \pi)$, and projecting functions onto this subspace is the fundamental idea behind Fourier series.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     
@@ -1584,15 +1611,43 @@ Then:
 
 
 
+\section{Projections ( $\pi$ )}
+
+\begin{enumerate}
+    \item Projections are an important class of linear transformations (besides rotations and reflections) and play an important role in graphics, coding theory, statistics and machine learning.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item High-dimensional data is often hard to analyze or visualize. 
+    However, high-dimensional data quite often possesses the property that only a few dimensions contain most information, and most other dimensions are not essential to describe key properties of the data. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item When we compress or visualize high-dimensional data, we will lose information. To minimize this compression loss, we ideally find the most informative dimensions in the data.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item we can project the original high-dimensional data onto a lower-dimensional \textbf{feature space} and work in this lower-dimensional space to learn more about the dataset and extract relevant patterns.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item its a technique for dimensionality reduction.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item For a given lower-dimensional subspace, orthogonal projections of high-dimensional data retain as much information as possible and minimize the difference/ error between the original data and the corresponding projection.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Definition}: Let $V$ be a vector space and $U \subseteq V$ a subspace of $V$ . 
+    A linear mapping $\pi : V \to U$ is called a projection if $\pi^2 = \pi \circ \pi = \pi$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
 
 
 
+\subsection{Projection Matrix ( $P_\pi$ )}
 
+\begin{enumerate}
+    \item Since linear mappings can be expressed by transformation matrices, the definition of projection applies equally to a special kind  of transformation matrices, the projection matrices $\bm{P}_\pi$, which exhibit the property that $\bm{P}^2_\pi = \bm{P}_\pi$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-
-
-
-
+    
+\end{enumerate}
 
 
 
