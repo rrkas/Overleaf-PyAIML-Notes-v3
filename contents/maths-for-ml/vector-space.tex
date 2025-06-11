@@ -96,7 +96,7 @@
         In geometric terms, the triangle inequality states that for any triangle, the sum of the lengths of any two sides must be greater than or equal to the length of the remaining side.
         
 
-        \item Positive definite: $\dnorm{\bm{x}} \geq 0$ and $\dnorm{\bm{x}} = 0 \Leftrightarrow \bm{x} = \bm{0}$
+        \item Positive definite: $\dnorm{\bm{x}} \geq 0$ and $\dnorm{\bm{x}} = 0 \Longleftrightarrow \bm{x} = \bm{0}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 \end{enumerate}
@@ -215,7 +215,7 @@
     \item A metric $d$ satisfies the following:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \begin{enumerate}
-        \item $d$ is \textbf{positive definite}, i.e., $d(\bm{x}, \bm{y}) \geq 0$ for all $\bm{x}, \bm{y} \in V$ and $d(\bm{x}, \bm{y}) = 0 \Leftrightarrow \bm{x} = \bm{y}$ .
+        \item $d$ is \textbf{positive definite}, i.e., $d(\bm{x}, \bm{y}) \geq 0$ for all $\bm{x}, \bm{y} \in V$ and $d(\bm{x}, \bm{y}) = 0 \Longleftrightarrow \bm{x} = \bm{y}$ .
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
         \item $d$ is \textbf{symmetric}, i.e., $d(\bm{x}, \bm{y}) = d(\bm{y}, \bm{x})$ for all $\bm{x}, \bm{y} \in V$ .
@@ -1645,15 +1645,86 @@ Then:
 \begin{enumerate}
     \item Since linear mappings can be expressed by transformation matrices, the definition of projection applies equally to a special kind  of transformation matrices, the projection matrices $\bm{P}_\pi$, which exhibit the property that $\bm{P}^2_\pi = \bm{P}_\pi$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-
-    
 \end{enumerate}
 
 
 
+\subsection{Projection onto One-Dimensional Subspaces (Lines)}
 
+\begin{enumerate}
+    \item Assume we are given a line (one-dimensional subspace) through the origin with basis vector $\bm{b} \in \mathbb{R}^n$.
+    The line is a one-dimensional subspace $U \subseteq \mathbb{R}^n$ spanned by $\bm{b}$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
+    \item When we project $\bm{x} \in \mathbb{R}^n$ onto $U$, we seek the vector $\pi_U (\bm{x}) \in U$ that is closest to $\bm{x}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
+    \item properties of the projection $\pi_U (\bm{x})$:
+    \begin{enumerate}
+        \item The projection $\pi _U (\bm{x})$ is closest to $\bm{x}$, where “closest” implies that the distance $\dnorm{\bm{x} - \pi _U (\bm{x})}$ is minimal. 
+        It follows that the segment $\pi _U (\bm{x}) - x$ from $\pi _U (\bm{x})$ to $\bm{x}$ is orthogonal to $U$, and therefore the basis vector $\bm{b}$ of $U$. 
+        The orthogonality condition yields $\dAngleBrac{\pi _U (\bm{x})  -  \bm{x}, \bm{b}} = 0$ since angles between vectors are defined via the inner product.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The projection $\pi_U (\bm{x})$ of $\bm{x}$ onto $U$ must be an element of $U$ and, therefore, a multiple of the basis vector $\bm{b}$ that spans $U$. 
+        Hence, $\pi_U (\bm{x}) = \lambda\bm{b}$, for some $\lambda \in \mathbb{R}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item Steps to determine $\lambda$, the projection $\pi _U (\bm{x}) \in  U$, and the projection matrix $\bm{P}_ \pi $ that maps any $\bm{x} \in  \mathbb{R}^n$ onto $U$:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item Finding the coordinate $\lambda $:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        $
+            \begin{aligned}
+                & \dAngleBrac{\bm{x} - \pi_ U (x), \bm{b}} = 0 
+                \\
+                \Longleftrightarrow &
+                    \dAngleBrac{\bm{x} - \lambda \bm{b}, \bm{b}} = 0
+                    \Longleftrightarrow 
+                    \dAngleBrac{\bm{x}, \bm{b}} - \lambda  \dAngleBrac{\bm{b}, \bm{b}} = 0 
+                \\
+                \Longleftrightarrow &
+                    \lambda  
+                    = \dfrac{\dAngleBrac{\bm{x}, \bm{b}}}{\dAngleBrac{\bm{b}, \bm{b}}} 
+                    = \dfrac{\dAngleBrac{\bm{b}, \bm{x}}}{\dnorm{\bm{b}}^2}
+                    \Longleftrightarrow 
+                    \lambda 
+                    =\dfrac{\bm{b}^\top \bm{x}}{\bm{b}^\top \bm{b}}
+                    =\dfrac{\bm{b}^\top \bm{x}}{\dnorm{\bm{b}}^2}
+            \end{aligned}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        If $\dnorm{\bm{b}} = 1$, then the coordinate $\lambda$ of the projection is given by $\bm{b}^\top \bm{x}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Finding the projection point $\pi_U (\bm{x}) \in U$:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        $
+            \begin{aligned}
+                & \pi _U (\bm{x}) = \lambda  \bm{b} 
+                    = \dfrac{\dAngleBrac{\bm{x}, \bm{b}}}{\dnorm{\bm{b}}^2} \bm{b} 
+                    = \dfrac{\bm{b}^\top \bm{x}}{\dnorm{\bm{b}}^2} \bm{b} 
+                \\
+                \Rightarrow &
+                    \dnorm{\pi _U (\bm{x})} = \dnorm{\lambda  \bm{b}} = \dabs{\lambda} \dnorm{\bm{b}} 
+                    = \dfrac{\dabs{\bm{b}^\top \bm{x}}}{\dnorm{\bm{b}}^2} \dnorm{\bm{b}}
+                    = \dabs{\cos \omega} \dnorm{\bm{x}} \dnorm{\bm{b}} \dfrac{\dnorm{\bm{b}}}{\dnorm{\bm{b}}^2}
+                    = \dabs{\cos \omega} \dnorm{\bm{x}} 
+            \end{aligned}
+        $
+        \\
+        $\omega$ is the angle between $\bm{x}$ and $\bm{b}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+\end{enumerate}
 
 
 
