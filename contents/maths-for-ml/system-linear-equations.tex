@@ -395,6 +395,34 @@ $
 
 
 
+
+
+
+
+
+
+\section{Approximate Solution}
+
+\begin{enumerate}
+    \item Projections allow us to look at situations where we have a linear system $\bm{Ax} = \bm{b}$ without a solution.
+    This means that b does not lie in the span of $\bm{A}$, i.e., the vector $\bm{b}$ does not lie in the subspace spanned by the columns of $\bm{A}$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The idea is to find the vector in the subspace spanned by the columns of $\bm{A}$ that is closest to $\bm{b}$, i.e., we compute the orthogonal projection of $\bm{b}$ onto the subspace spanned by the columns of $\bm{A}$.
+    This problem arises often in practice, and the solution is called the \textbf{least-squares solution} (assuming the dot product as the inner product) of an overdetermined system. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
 \section{Finding Solutions using stationary iterative methods - TODO}
 
 \begin{enumerate}
@@ -433,6 +461,23 @@ $
 
 
 \subsection{biconjugate gradients - TODO}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

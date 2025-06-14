@@ -1169,31 +1169,81 @@
     \item \textbf{Note}: $\dAngleBrac{\bm{b}_i, \bm{b}_i} = 1$ implies that every basis vector has length/norm $1$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Gram-Schmidt process}: constructive way to iteratively build an orthonormal basis
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \begin{enumerate}
-        \item Assume we are given a set $\dCurlyBrac{\tilde{\bm{b}}_1, \cdots ,\tilde{\bm{b}}_n}$ of non-orthogonal and un-normalized basis vectors.
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
 
-        \item We concatenate them into a matrix $\tilde{\bm{B}} = [\tilde{\bm{b}}_1, \cdots ,\tilde{\bm{b}}_n]$ and apply Gaussian elimination to the augmented matrix $[\tilde{\bm{B}} \tilde{\bm{B}}^\top|\tilde{\bm{B}}]$ to obtain an orthonormal basis. 
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\subsubsection{Gram-Schmidt process}
+
+\begin{enumerate}
+    \item constructive way to iteratively build an orthonormal basis
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Assume we are given a set $\dCurlyBrac{\tilde{\bm{b}}_1, \cdots ,\tilde{\bm{b}}_n}$ of non-orthogonal and un-normalized basis vectors.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item We concatenate them into a matrix $\tilde{\bm{B}} = [\tilde{\bm{b}}_1, \cdots ,\tilde{\bm{b}}_n]$ and apply Gaussian elimination to the augmented matrix $[\tilde{\bm{B}} \tilde{\bm{B}}^\top|\tilde{\bm{B}}]$ to obtain an orthonormal basis. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+\subsubsection{Gram-Schmidt Orthogonalization}
+
+\begin{enumerate}
+    \item Method 1 \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item 
     \end{enumerate}
 \end{enumerate}
 
 
 
 
+\subsubsection{Gram-Schmidt process VS Gram-Schmidt Orthogonalization}
+
+\begin{customArrayStretch}{1.3}
+\begin{longtable}{|p{2cm}|p{6cm}|p{6cm}|}
+
+\caption{Gram-Schmidt process VS Gram-Schmidt Orthogonalization} \\
+
+\hline
+\textbf{Aspect} & \textbf{Gram-Schmidt Process} & \textbf{Gram-Schmidt Orthogonalization} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Aspect} & \textbf{Gram-Schmidt Process} & \textbf{Gram-Schmidt Orthogonalization} \\
+\hline
+\endhead
 
 
+\textbf{Definition} & 
+    An algorithm to transform a set of linearly independent vectors into an orthogonal (or orthonormal) set &
+    The result or method of obtaining an orthogonal set of vectors from a linearly independent set
+    \\ \hline
+
+\textbf{Emphasis} & 
+    Focuses on the step-by-step procedure (algorithmic perspective) & 
+    Focuses on the outcome or goal (mathematical transformation)
+    \\ \hline
+
+\textbf{Output} &
+    Sequence of orthogonal (or orthonormal) vectors & 
+    Orthogonal (or orthonormal) basis 
+    \\ \hline
 
 
+\textbf{Synonyms} & 
+    Gram-Schmidt algorithm & 
+    Orthogonalization via Gram-Schmidt
+    \\ \hline
 
+\textbf{Typical Use} & 
+    Teaching algorithms, computational steps & 
+    Theoretical or geometric discussion
+    \\ \hline
 
-
-
-
-
-
+\end{longtable}
+\end{customArrayStretch}
 
 
 
@@ -1636,6 +1686,27 @@ Then:
     \item \textbf{Definition}: Let $V$ be a vector space and $U \subseteq V$ a subspace of $V$ . 
     A linear mapping $\pi : V \to U$ is called a projection if $\pi^2 = \pi \circ \pi = \pi$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Any projection $\pi_U (\bm{x})$ onto $U$ is necessarily an element of $U$.
+    Therefore, they can be represented as linear combinations of the basis vectors $\bm{b}_1, \cdots , \bm{b}_m$ of $U$, such that $\pi_U (\bm{x}) = \dsum ^m _{i=1} \lambda_i \bm{b}_i$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Projection error/ reconstruction error}: The corresponding projection error is the norm of the difference vector between the original vector and its projection onto $U$: 
+    $
+        \dnorm{\bm{x} - \pi_U(\bm{x})}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The projections $\pi_U (\bm{x})$ are still vectors in $\mathbb{R}^n$ although they lie in an $m$-dimensional subspace $U \subseteq \mathbb{R}^n$ . 
+    However, to represent a projected vector we only need the $m$ coordinates $\lambda_1, \cdots , \lambda_m$ with respect to the basis vectors $\bm{b}_1, \cdots , \bm{b}_m$ of $U$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If the basis $\bm{B}$ is an ONB, the projection equation 
+    $
+        \pi_U (\bm{x}) 
+        = \bm{B} (\bm{B}^\top \bm{B})^{-1} \bm{B}^\top \bm{x}
+    $
+    simplifies greatly to $ \pi_U (\bm{x}) = \bm{B}\bm{B}^\top \bm{x}$ since $\bm{B}^\top \bm{B} = \bm{I}$ with coordinates $\bm{\lambda} = \bm{B}^\top \bm{x} $
 \end{enumerate}
 
 
@@ -1645,11 +1716,53 @@ Then:
 \begin{enumerate}
     \item Since linear mappings can be expressed by transformation matrices, the definition of projection applies equally to a special kind  of transformation matrices, the projection matrices $\bm{P}_\pi$, which exhibit the property that $\bm{P}^2_\pi = \bm{P}_\pi$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Projection matrices are always \textbf{symmetric}.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The projection matrix $\bm{P}_ \pi$ projects any vector $\bm{x} \in \mathbb{R}^n$ onto the line through the origin with direction $\bm{b}$ (equivalently, the subspace $U$ spanned by $\bm{b}$).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item $\pi_U (\bm{x})$ is an eigenvector of $\bm{P}_\pi$, and the corresponding eigenvalue is $1$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
 
 
 \subsection{Projection onto One-Dimensional Subspaces (Lines)}
+
+\begin{table}[H]
+\begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[
+            width=\linewidth,
+            height=4cm, 
+            keepaspectratio,
+        ]{images/maths-for-ml/Projection-1d-a.png}
+        \caption*{
+            Projection of $\bm{x} \in \mathbb{R}^2$ onto a subspace $U$ with basis vector $\bm{b}$.
+            \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        }
+    \end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[
+            width=\linewidth,
+            height=4cm, 
+            keepaspectratio,
+        ]{images/maths-for-ml/Projection-1d-b.png}
+        \caption*{
+            Projection of a two-dimensional vector $\bm{x}$ with $\dnorm{\bm{x}} = 1$ onto a one-dimensional subspace spanned by $\bm{b}$.
+            \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        }
+    \end{figure}
+\end{minipage}
+\end{table}
+
 
 \begin{enumerate}
     \item Assume we are given a line (one-dimensional subspace) through the origin with basis vector $\bm{b} \in \mathbb{R}^n$.
@@ -1721,7 +1834,32 @@ Then:
         $\omega$ is the angle between $\bm{x}$ and $\bm{b}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item 
+        \item Finding the projection matrix $\bm{P}_\pi$:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        $
+            \pi _U (\bm{x})
+            = \lambda \bm{b}
+            = \bm{b} \lambda
+            = \bm{b} \dfrac{\bm{b}^\top \bm{x}}{\dnorm{\bm{b}}^2}
+            = \dfrac{\bm{b}  \bm{b}^\top }{\dnorm{\bm{b}}^2} \bm{x}
+        $
+        \\
+        $
+            \begin{aligned}
+                & \pi _U (\bm{x}) = \bm{P}_\pi \bm{x} 
+                \\
+                \Longleftrightarrow &
+                \dfrac{\bm{b}  \bm{b}^\top }{\dnorm{\bm{b}}^2} \bm{x} = \bm{P}_\pi \bm{x} 
+                \\
+                \Longleftrightarrow &
+                \bm{P}_\pi = \dfrac{\bm{b}  \bm{b}^\top }{\dnorm{\bm{b}}^2}
+            \end{aligned}
+        $
+        \\[0.2cm]
+        Note that $\bm{bb}^\top$ (and, consequently, $\bm{P} _\pi$) is a symmetric matrix (of rank $1$), and $\dnorm{\bm{b}} ^2 = \dAngleBrac{\bm{b}, \bm{b}}$ is a scalar.\\
+        The projection $\pi_U (\bm{x}) \in \mathbb{R}^n$ is still an $n$-dimensional vector and not a scalar. 
+        However, we no longer require $n$ coordinates to represent the projection, but only a single one if we want to express it with respect to the basis vector $\bm{b}$ that spans the subspace $U$: $\lambda$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 \end{enumerate}
@@ -1739,6 +1877,155 @@ Then:
 
 
 
+
+
+\subsection{Projection onto General Subspaces}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=4cm,
+        keepaspectratio,
+    ]{images/maths-for-ml/Projection-2d.png}
+    \caption*{
+        Projection onto a two-dimensional subspace $U$ with basis $\bm{b}_1$, $\bm{b}_2$. 
+        The projection $\pi_U (\bm{x})$ of $\bm{x} \in \mathbb{R}^3$ onto $U$ can be expressed as a linear combination of $\bm{b}_1, \bm{b}_2$ and the displacement vector $\bm{x} - \pi_U (\bm{x})$ is orthogonal to both $\bm{b}_1$ and $\bm{b}_2$.
+        \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    }
+\end{figure}
+
+
+\begin{enumerate}
+    \item orthogonal projections of vectors $\bm{x} \in \mathbb{R}^n$ onto lower-dimensional subspaces $U \subseteq \mathbb{R}^n$ with $\dim(U) = m \geq 1$.
+
+    \item Assume that $(\bm{b}_1, \cdots , \bm{b}_m)$ is an ordered basis of $U$.
+    If $U$ is given by a set of spanning vectors, which are not a basis, make sure you determine a basis $\bm{b}_1, \cdots , \bm{b}_m$ before proceeding.
+
+    \item Steps:
+    \begin{enumerate}
+        \item Find the coordinates $\lambda_1, \cdots , \lambda_m$ of the projection (with respect to the basis of $U$), such that the linear combination:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \pi_U (\bm{x}) = \dsum^m _{i=1} \lambda_i \bm{b}_i = \bm{B \lambda}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \bm{B} = [\bm{b}_1, \cdots , \bm{b}_m] \in \mathbb{R}^{n\times m}, 
+            \bm{\lambda} = [\lambda_1, \cdots , \lambda_m]^\top \in \mathbb{R}^m
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\[0.2cm]
+        is closest to $\bm{x} \in \mathbb{R}^n$.
+        “Closest” means “minimum distance”, which implies that the vector connecting $\pi_U (\bm{x}) \in U$ and $\bm{x} \in \mathbb{R}^n$ must be orthogonal to all basis vectors of $U$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        we obtain $m$ simultaneous conditions (assuming the dot product as the inner product)
+        \\
+        .\hfill
+        $
+            \begin{aligned}
+                \dAngleBrac{\bm{b}_1, \bm{x} - \pi _U (\bm{x})} 
+                    &= \bm{b} ^\top _1 (\bm{x} - \pi _U (\bm{x})) = 0 
+                \\
+                & \vdots 
+                \\
+                \dAngleBrac{\bm{b}_m, \bm{x} - \pi _U (\bm{x})} 
+                    &= \bm{b} ^\top _m(\bm{x} - \pi _U (\bm{x})) = 0
+            \end{aligned}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        which, with $\pi_U (\bm{x}) = \bm{B \lambda}$, can be written as
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\[0.2cm]
+        .\hfill
+        $
+            \bm{b}^\top _1(\bm{x} - \bm{B \lambda}) = 0
+            \hspace{1cm}
+            \cdots
+            \hspace{1cm}
+            \bm{b}^\top _m(\bm{x} - \bm{B \lambda}) = 0
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        such that we obtain a homogeneous linear equation system
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+                \begin{bmatrix}
+                    \bm{b}^\top _1 \\
+                    \vdots \\
+                    \bm{b}^\top _m
+                \end{bmatrix}
+                \begin{bmatrix}
+                    \\
+                    \bm{x} - \bm{B\lambda} \\
+                    \\
+                \end{bmatrix} = \bm{0}
+                \hspace{0.5cm}
+                \Longleftrightarrow
+                \hspace{0.5cm}
+                \bm{B}^\top (\bm{x} - \bm{B\lambda}) = \bm{0} 
+                \hspace{0.5cm}
+                \Longleftrightarrow
+                \hspace{0.5cm}
+                \bm{B}^\top \bm{B\lambda} = \bm{B}^\top \bm{x}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        $\bm{B}^\top \bm{B\lambda} = \bm{B}^\top \bm{x}$ is called \textbf{normal equation}.
+        Since $\bm{b}_1, \cdots , \bm{b}_m$ are a basis of $U$ and, therefore, linearly independent, $\bm{B}^\top \bm{B} \in \mathbb{R}^{m\times m}$ is regular and can be inverted. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \bm{\lambda} = (\bm{B}^\top \bm{B})^{-1} \bm{B}^\top \bm{x}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        $(\bm{B}^\top \bm{B})^{-1} \bm{B}^\top$ is also called the pseudo-inverse of $\bm{B}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        In practical applications (e.g., linear regression), we often add a “\textbf{jitter term}” $\epsilon \bm{I}$ to $\bm{B}^\top \bm{B}$ to guarantee increased numerical stability and positive definiteness. 
+        This “ridge” can be rigorously derived using Bayesian inference. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        A ridge term is essentially the same as a jitter term but used in the context of regularization, especially in ridge regression (also called Tikhonov regularization). 
+        \hfill \cite{common/online/chatgpt}
+
+        \item Find the projection $\pi_U (\bm{x}) \in U$:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \pi_U (\bm{x}) 
+            = \bm{B\lambda}
+            = \bm{B} (\bm{B}^\top \bm{B})^{-1} \bm{B}^\top \bm{x}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Find the projection matrix $\bm{P} _\pi$:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \pi_U (\bm{x}) = \bm{P} _\pi \bm{x} = \bm{B} (\bm{B}^\top \bm{B})^{-1} \bm{B}^\top \bm{x}
+            \hspace{0.5cm}
+            \Longleftrightarrow
+            \hspace{0.5cm}
+            \bm{P} _\pi 
+                = \bm{B} (\bm{B}^\top \bm{B})^{-1} \bm{B}^\top
+                = \dfrac{\bm{B}\bm{B}^\top}{\bm{B}^\top \bm{B}}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+\end{enumerate}
 
 
 
