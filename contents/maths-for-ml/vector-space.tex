@@ -1188,11 +1188,78 @@
 
 \subsubsection{Gram-Schmidt Orthogonalization}
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=4cm,
+        keepaspectratio,
+    ]{images/maths-for-ml/Gram-Schmidt-orthogonalization-eg-3.12.png}
+    \caption*{
+        Gram-Schmidt orthogonalization. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        (a) non-orthogonal basis $(\bm{b}_1, \bm{b}_2)$ of $\mathbb{R}^2$ 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        (b) first constructed basis vector $\bm{u}_1$ and orthogonal projection of $\bm{b}_2$ onto $\text{span}[\bm{u}_1]$; 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        (c) orthogonal basis $(\bm{u}_1, \bm{u}_2)$ of $\mathbb{R}^2$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    }
+\end{figure}
+
+
 \begin{enumerate}
-    \item Method 1 \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item Method 1 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    Projections are at the core of the Gram-Schmidt method that allows us to constructively transform any basis $(\bm{b}_1, \cdots , \bm{b}_n)$ of an $n$-dimensional vector space $V$ into an orthogonal/orthonormal basis $(\bm{u}_1, \cdots ,\bm{u}_n)$ of $V$ .
+    This basis always exists and $\text{span}[\bm{b}_1, \cdots , \bm{b}_n] = \text{span}[\bm{u}_1, \cdots , \bm{u}_n]$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \begin{enumerate}
-        \item 
+        \item $\bm{u}_1 := \bm{b}_1$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $
+            \bm{u}_k := \bm{b}_k - \pi_{\text{span}[\bm{u}_1,\cdots,\bm{u}_{k-1}]}(\bm{b}_k)
+            \hspace{1cm}
+            ,k = 2, \cdots , n
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
+    the $k$-th basis vector $\bm{b}_k$ is projected onto the subspace spanned by the first $k - 1$ constructed orthogonal vectors $\bm{u}_1, \cdots ,\bm{u}_{k-1}$.
+    If we normalize the $\bm{u}_k$, we obtain an ONB where $\dnorm{\bm{u}_k} = 1$ for $k = 1, \cdots , n$
+    
+
+    \item Method 2
+    \hfill \cite{mfml/wiki/Gram-Schmidt_process}
+    \begin{enumerate}
+        \item ${
+            \displaystyle 
+            \operatorname {proj} _{\mathbf {u} }(\mathbf {b} )
+            ={\frac {\langle \mathbf {v} ,\mathbf {b} \rangle }{\langle \mathbf {u} ,\mathbf {u} \rangle }}
+            \,\mathbf {u} 
+        }$
+        \hfill \cite{mfml/wiki/Gram-Schmidt_process}
+
+        \item ${
+        \displaystyle 
+        {\begin{aligned}
+            \mathbf {u} _{1} &=\mathbf {b} _{1}, &\!\mathbf {e} _{1}&={\frac {\mathbf {u} _{1}}{\|\mathbf {u} _{1}\|}}
+            \\\mathbf {u} _{2}&=\mathbf {b} _{2}-\operatorname {proj} _{\mathbf {u} _{1}}(\mathbf {b} _{2}),&\!\mathbf {e} _{2}&={\frac {\mathbf {u} _{2}}{\|\mathbf {u} _{2}\|}}
+            \\\mathbf {u} _{3}&=\mathbf {b} _{3}-\operatorname {proj} _{\mathbf {u} _{1}}(\mathbf {b} _{3})-\operatorname {proj} _{\mathbf {u} _{2}}(\mathbf {b} _{3}),&\!\mathbf {e} _{3}&={\frac {\mathbf {u} _{3}}{\|\mathbf {u} _{3}\|}}
+            \\\mathbf {u} _{4}&=\mathbf {b} _{4}-\operatorname {proj} _{\mathbf {u} _{1}}(\mathbf {b} _{4})-\operatorname {proj} _{\mathbf {u} _{2}}(\mathbf {b} _{4})-\operatorname {proj} _{\mathbf {u} _{3}}(\mathbf {b} _{4}),&\!\mathbf {e} _{4}&={\mathbf {u} _{4} \over \|\mathbf {u} _{4}\|}
+            \\&{}\ \ \vdots &&{}\ \ \vdots 
+            \\\mathbf {u} _{k}&=\mathbf {b} _{k}-\sum _{j=1}^{k-1}\operatorname {proj} _{\mathbf {u} _{j}}(\mathbf {b} _{k}),&\!\mathbf {e} _{k}&={\frac {\mathbf {u} _{k}}{\|\mathbf {u} _{k}\|}}
+        \end{aligned}}
+        }$
+        \hfill \cite{mfml/wiki/Gram-Schmidt_process}
+    \end{enumerate}
+    The sequence ${\displaystyle \mathbf {u} _{1},\ldots ,\mathbf {u} _{k}}$ is the required system of orthogonal vectors, and the normalized vectors ${\displaystyle \mathbf {e} _{1},\ldots ,\mathbf {e} _{k}}$ form an orthonormal set. 
+    \hfill \cite{mfml/wiki/Gram-Schmidt_process}
 \end{enumerate}
 
 
@@ -2026,6 +2093,126 @@ Then:
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 \end{enumerate}
+
+
+
+
+
+
+
+\subsection{Projection onto Affine Subspaces}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=5cm,
+        keepaspectratio,
+    ]{images/maths-for-ml/Projection-onto-Affine-Subspaces.png}
+    \caption*{
+        Projection onto an affine space.
+        \\
+        (a) original setting; 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        (b) setting shifted by $-\bm{x}_0$ so that $\bm{x} - \bm{x}_0$ can be projected onto the direction space $U$;
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        (c) projection is translated back to $\bm{x}_0 + \pi_U (\bm{x} - \bm{x}_0)$, which gives the final orthogonal projection $\pi_L(\bm{x})$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    }
+\end{figure}
+
+
+\begin{enumerate}
+    \item We are given an affine space $L = \bm{x}_0 + U$, where $\bm{b}_1$, $\bm{b}_2$ are basis vectors of $U$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item To determine the orthogonal projection $\pi_L(\bm{x})$ of $\bm{x}$ onto $L$, we transform the problem into a problem that we know how to solve: the projection onto a vector subspace.
+
+    \item  In order to get there, we subtract the support point $\bm{x}_0$ from $\bm{x}$ and from $L$, so that $L - \bm{x}_0 = U$ is exactly the vector subspace $U$. 
+    
+    \item We can now use the orthogonal projections onto a subspace and obtain the projection $\pi_U (\bm{x} - \bm{x}_0)$.
+
+    \item This projection can now be translated back into $L$ by adding $\bm{x}_0$, such that we obtain the orthogonal projection onto an affine space $L$ as:
+    \\
+    .\hfill
+    $
+        \pi_L(\bm{x}) = \bm{x}_0 + \pi_U (\bm{x} - \bm{x}_0)
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    where $\pi_U (\cdot)$ is the orthogonal projection onto the subspace $U$, i.e., the direction space of $L$.
+
+    \item it is also evident that the distance of $\bm{x}$ from the affine space $L$ is identical to the distance of $\bm{x} - \bm{x}_0$ from $U$, i.e.,
+    \\
+    .\hfill
+    $
+        d(\bm{x}, L) 
+        = \dnorm{\bm{x} - \pi_L(x)} 
+        = \dnorm{\bm{x} - (\bm{x}_0 + \pi_U (\bm{x} - \bm{x}_0))}
+        = d(\bm{x} - \bm{x}_0, \pi_U (\bm{x} - \bm{x}_0)) 
+        = d(\bm{x} - \bm{x}_0, U)
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+\section{Rotations ($R$)}
+
+
+
+\begin{enumerate}
+    \item A rotation is a linear mapping (more specifically, an automorphism of rotation a Euclidean vector space) that rotates a plane by an angle $\theta$ about the origin, i.e., the origin is a fixed point.
+    
+    \item For a positive angle $\theta > 0$, by common convention, we rotate in a counterclockwise direction.
+\end{enumerate}
+
+
+\subsection{Rotations in R2 (plane)}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=4cm,
+        keepaspectratio,
+    ]{images/maths-for-ml/rotations-r2.png}
+    \caption{
+        Rotation of the standard basis in $\mathbb{R}^2$ by an angle $\theta$.
+    }
+\end{figure}
+
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
