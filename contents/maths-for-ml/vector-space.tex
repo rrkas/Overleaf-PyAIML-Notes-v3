@@ -2129,12 +2129,16 @@ Then:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item To determine the orthogonal projection $\pi_L(\bm{x})$ of $\bm{x}$ onto $L$, we transform the problem into a problem that we know how to solve: the projection onto a vector subspace.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item  In order to get there, we subtract the support point $\bm{x}_0$ from $\bm{x}$ and from $L$, so that $L - \bm{x}_0 = U$ is exactly the vector subspace $U$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     
     \item We can now use the orthogonal projections onto a subspace and obtain the projection $\pi_U (\bm{x} - \bm{x}_0)$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item This projection can now be translated back into $L$ by adding $\bm{x}_0$, such that we obtain the orthogonal projection onto an affine space $L$ as:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     .\hfill
     $
@@ -2143,8 +2147,10 @@ Then:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     where $\pi_U (\cdot)$ is the orthogonal projection onto the subspace $U$, i.e., the direction space of $L$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item it is also evident that the distance of $\bm{x}$ from the affine space $L$ is identical to the distance of $\bm{x} - \bm{x}_0$ from $U$, i.e.,
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     .\hfill
     $
@@ -2160,18 +2166,44 @@ Then:
 
 
 
-\section{Rotations ($R$)}
+\section{Rotations ($\Phi$) \& Rotation Matrix ($R(\theta)$)}
 
 
 
 \begin{enumerate}
     \item A rotation is a linear mapping (more specifically, an automorphism of rotation a Euclidean vector space) that rotates a plane by an angle $\theta$ about the origin, i.e., the origin is a fixed point.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     
     \item For a positive angle $\theta > 0$, by common convention, we rotate in a counterclockwise direction.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The rotated vectors are still linearly independent and, therefore, are a basis of $\mathbb{R}^2$. 
+    This means that the rotation performs a basis change.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Rotations $\Phi$ are linear mappings so that we can express them by a rotation matrix $\bm{R}(\theta)$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Properties}:
+    \begin{enumerate}
+        \item Rotations preserve distances, i.e., $\dnorm{\bm{x}-\bm{y}} = \dnorm{\bm{R}_\theta (\bm{x}) - \bm{R}_\theta (\bm{y})}$. In other words, rotations leave the distance between any two points unchanged after the transformation.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Rotations preserve angles, i.e., the angle between $\bm{R}_\theta \bm{x}$ and $\bm{R}_\theta \bm{y}$ equals the angle between $\bm{x}$ and $\bm{y}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Rotations in three (or more) dimensions are generally not commutative. 
+        Therefore, the order in which rotations are applied is important, even if they rotate about the same point. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item Only in two dimensions vector rotations are commutative, such that $\bm{R}(\phi)\bm{R}(\theta ) = \bm{R}(\theta )\bm{R}(\phi) \hspace{0.2cm} \forall \phi, \theta  \in [0, 2\pi)$. 
+        They form an Abelian group (with multiplication) only if they rotate about the same point (e.g., the origin).
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
 \end{enumerate}
 
 
-\subsection{Rotations in R2 (plane)}
+\subsection{Rotations in $R^2$}
 
 
 \begin{figure}[H]
@@ -2183,23 +2215,173 @@ Then:
     ]{images/maths-for-ml/rotations-r2.png}
     \caption{
         Rotation of the standard basis in $\mathbb{R}^2$ by an angle $\theta$.
+        \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     }
 \end{figure}
 
 
 \begin{enumerate}
-    \item 
+    \item Consider the standard basis 
+    $
+        \dCurlyBrac{
+            \bm{e}_1 = \begin{bmatrix}1\\0\end{bmatrix}, 
+            \bm{e}_2 = \begin{bmatrix}0\\1\end{bmatrix}
+        }
+    $ of $\mathbb{R}^2$ , which defines the standard coordinate system in $\mathbb{R}^2$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item using trigonometry:
+    $
+        \Phi(\bm{e}_1) = \begin{bmatrix}\cos \theta\\\sin \theta\end{bmatrix},
+        \hspace{0.15cm}
+        \Phi(\bm{e}_2) = \begin{bmatrix}-\sin \theta\\\cos \theta\end{bmatrix}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item the rotation matrix that performs the basis change into the rotated coordinates $\bm{R}(\theta)$ is given as:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \bm{R}(\theta)
+        = \begin{bmatrix}
+            \Phi(\bm{e}_1) & \Phi(\bm{e}_2)
+        \end{bmatrix}
+        = \begin{bmatrix}
+            \cos\theta & -\sin\theta \\
+            \sin\theta & \cos\theta
+        \end{bmatrix}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
 
+\subsection{Rotations in $R^3$}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=4cm,
+        keepaspectratio,
+    ]{images/maths-for-ml/rotations-r3.png}
+    \caption{
+        Rotation of a vector (gray) in $\mathbb{R}^3$ by an angle $\theta$ about the $\bm{e}_3$-axis. 
+        The rotated vector is shown in blue.
+        \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    }
+\end{figure}
+
+\begin{enumerate}
+    \item In contrast to the $\mathbb{R}^2$ case, in $\mathbb{R}^3$ we can rotate any two-dimensional plane about a one-dimensional axis.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The easiest way to specify the general rotation matrix is to specify how the images of the standard basis $\bm{e}_1$, $\bm{e}_2$, $\bm{e}_3$ are supposed to be rotated, and making sure these images $\bm{Re}_1$, $\bm{Re}_2$, $\bm{Re}_3$ are orthonormal to each other. 
+    We can then obtain a general rotation matrix $\bm{R}$ by combining the images of the standard basis.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item We use the convention that a “counterclockwise” (planar) rotation about an axis refers to a rotation about an axis when we look at the axis “head on, from the end toward the origin”.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 
 
+    \item Rotation about the $\bm{e}_1$-axis:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \bm{R}_1(\theta) 
+        = \begin{bmatrix}\Phi(\bm{e}_1) & \Phi(\bm{e}_2) & \Phi(\bm{e}_3)\end{bmatrix}
+        = \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & \cos \theta & - \sin \theta \\
+        0 & \sin \theta & \cos \theta \\
+        \end{bmatrix}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    Here, the $\bm{e}_1$ coordinate is fixed, and the counterclockwise rotation is performed in the $\bm{e}_2\bm{e}_3$ plane.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 
 
+    \item Rotation about the $\bm{e}_2$-axis:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \bm{R}_2(\theta) 
+        = \begin{bmatrix}
+        \cos \theta & 0 &  \sin \theta \\
+        0 & 1 & 0 \\
+        - \sin \theta & 0 & \cos \theta \\
+        \end{bmatrix}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    If we rotate the $\bm{e}_1\bm{e}_3$ plane about the $\bm{e}_2$ axis, we need to look at the $\bm{e}_2$ axis from its “tip” toward the origin.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 
+
+    \item Rotation about the $\bm{e}_3$-axis:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \bm{R}_3(\theta) 
+        = \begin{bmatrix}
+        \cos \theta &   -\sin \theta & 0\\
+        \sin \theta &  \cos \theta & 0\\
+        0 & 0 & 1 \\
+        \end{bmatrix}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+\end{enumerate}
+
+
+\subsection{Rotations in $n$ Dimensions (Givens Rotation)}
+
+\begin{enumerate}
+    \item The generalization of rotations from $2$D and $3$D to $n$-dimensional Euclidean vector spaces can be intuitively described as fixing $n - 2$ dimensions and restrict the rotation to a two-dimensional plane in the $n$-dimensional space.
+
+    \item \textbf{Definition}: \textit{Givens Rotation}: Let $V$ be an $n$-dimensional Euclidean vector space and $\Phi : V \to V$ an automorphism with transformation matrix:
+    \\
+    .\hfill
+    $
+        \bm{R}_{ij} (\theta) := 
+        \begin{bmatrix}
+            \bm{I}_{i-1} & 0 & \cdots &  \cdots & 0 \\
+            0 & \cos \theta & 0 & - \sin \theta & 0\\
+            0 & 0 & \bm{I}_{j-i-1} & 0 & 0\\
+            0 & \sin \theta &  0 & \cos \theta & 0\\
+            0 & \cdots & \cdots & 0 & \bm{I}_{n-j}
+        \end{bmatrix}
+        \in \mathbb{R}^{n\times n}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    for $1 \leq i < j \leq n$ and $\theta \in \mathbb{R}$. 
+    Then $\bm{R}_{ij} (\theta)$ is called a Givens rotation. 
+    Essentially, $\bm{R}_{ij} (\theta)$ is the identity matrix $\bm{I}_n$ with
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        r_{ii} = \cos \theta , 
+        \hspace{0.2cm}
+        r_{ij} = - \sin \theta,
+        \hspace{0.2cm}
+        r_{ji} = \sin \theta, 
+        \hspace{0.2cm}
+        r_{jj} = \cos \theta
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Note}: 2D is special case
+\end{enumerate}
 
 
 
