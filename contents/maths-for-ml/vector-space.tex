@@ -74,6 +74,37 @@
 \end{enumerate}
 
 
+\begin{lstlisting}[
+    language=Python,
+    caption=Dimension of vector space - numPy
+]
+import numpy as np
+
+# Define 3 column vectors in R^4
+v1 = np.array([1, 2, 3, 4]).reshape(-1, 1)
+v2 = np.array([2, 4, 6, 8]).reshape(-1, 1)
+v3 = np.array([0, 1, 0, 1]).reshape(-1, 1)
+
+# Put them into a matrix as columns => stack column-wise (axis=1)
+matrix = np.column_stack([v1, v2, v3])  # Shape: (4, 3)
+
+# Find the dimension = rank of the matrix
+dimension = np.linalg.matrix_rank(matrix)
+
+print(f"Dimension of the vector space: {dimension}")
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Norm}
 
 \begin{enumerate}
@@ -100,6 +131,75 @@
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 \end{enumerate}
+
+
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=General Norm of a vector - numPy
+]
+import numpy as np
+
+def norm_general(_arr: np.ndarray):
+    """
+    Compute the norm using custom formula/ calculations
+    """
+    raise NotImplementedError()
+\end{lstlisting}
+
+
+
+
+
+
+\subsection{General Inner Product ( $\Omega(a, b)$ )}
+
+\begin{enumerate}
+    \item A bilinear mapping $\Omega$ is a mapping with two arguments, and it is linear in each argument, i.e., when we look at a vector space $V$ then it holds that for all $\bm{x}, \bm{y}, \bm{z} \in V, \lambda , \psi  \in \mathbb{R}$ that
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $\Omega(\lambda \bm{x} + \psi \bm{y}, \bm{z}) = \lambda \Omega(\bm{x}, \bm{z}) + \psi \Omega(\bm{y}, \bm{z})$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $\Omega(\bm{x}, \lambda \bm{y} + \psi \bm{z}) = \lambda \Omega(\bm{x}, \bm{y}) + \psi \Omega(\bm{x}, \bm{z})$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Let $V$ be a vector space and $\Omega : V \times  V \to \mathbb{R}$ be a bilinear mapping that takes two vectors and maps them onto a real number. Then
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item $\Omega$ is called \textbf{symmetric} if $\Omega(\bm{x}, \bm{y}) = \Omega(\bm{y}, \bm{x})$ for all $\bm{x}, \bm{y} \in  V$ , i.e., the order of the arguments does not matter.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $\Omega$ is called \textbf{positive definite} if $\forall \bm{x} \in  V \backslash \dCurlyBrac{\bm{0}} : \Omega(\bm{x}, \bm{x}) > 0 , \Omega(\bm{0}, \bm{0}) = 0$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+\end{enumerate}
+
+
+
+
+
+\subsection{Inner Product ( $<x, y>$ )}
+
+\begin{enumerate}
+    \item Let $V$ be a vector space and $\Omega  : V \times  V \to  \mathbb{R}$ be a bilinear mapping that takes two vectors and maps them onto a real number. Then
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item A positive definite, symmetric bilinear mapping $\Omega  : V \times  V \to  \mathbb{R}$ is called an inner product on $V$ . 
+        We typically write $\dAngleBrac{x, y}$ instead of $\Omega (x, y)$.        
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item default inner product is dot product: $\dAngleBrac{\bm{x}, \bm{y}} = \bm{x}^\top \bm{y}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
 
 
 
@@ -135,7 +235,7 @@
     in a natural way, such that we can compute lengths of vectors using the inner product.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item length = norm
+    \item length depends on norm
     \hfill \cite{common/online/chatgpt}
     \\
     different norms lead to different lengths
@@ -199,7 +299,7 @@
     \item Every distance is a metric, but not every metric is necessarily defined as a distance using a norm or inner product.
     \hfill \cite{common/online/chatgpt}
 
-    \item \item Transformations with orthogonal matrices preserve distances.
+    \item Transformations with orthogonal matrices preserve distances.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
@@ -493,8 +593,33 @@
 \end{enumerate}
 
 
+\begin{lstlisting}[
+    language=Python,
+    caption=Row \& Column vectors - numPy
+]
+import numpy as np
 
+row_vec = np.array([1, 2, 3, 4]).reshape(1, -1)
+print(row_vec)
+print(row_vec.shape)
 
+col_vec = np.array([1, 2, 3, 4]).reshape(-1, 1)
+print(col_vec)
+print(col_vec.shape)
+\end{lstlisting}
+
+Output:
+\begin{lstlisting}[
+    language=bash,
+]
+[[1 2 3 4]]
+(1, 4)
+[[1]
+ [2]
+ [3]
+ [4]]
+(4, 1)
+\end{lstlisting}
 
 
 \subsection{Manhattan Norm/ $\ell_1$ Norm}
@@ -513,6 +638,16 @@
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
+
+\begin{lstlisting}[
+    language=Python,
+    caption=L1 Norm of a vector - numPy
+]
+import numpy as np
+
+def norm_l1(_arr: np.ndarray):
+    return np.sum(np.abs(_arr))
+\end{lstlisting}
 
 
 \subsection{Euclidean Norm/ $\ell_2$ Norm}
@@ -534,6 +669,22 @@
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
+\begin{lstlisting}[
+    language=Python,
+    caption=L2 Norm of a vector - numPy
+]
+import numpy as np
+
+def norm_l2(_arr: np.ndarray):
+    return np.sqrt(np.sum(np.square(_arr)))
+
+\end{lstlisting}
+
+
+
+
+
+
 
 
 \subsection{Outer Product ($ab^\top$) }
@@ -545,51 +696,37 @@
 \end{enumerate}
 
 
+\begin{lstlisting}[
+    language=Python,
+    caption=Outer product - numPy
+]
+import numpy as np
 
-\subsection{General Inner Product ( $\Omega(a, b)$ )}
+a = np.array([1, 2, 3]).reshape(-1, 1)  # Shape: (3, 1)
+print(a)
 
-\begin{enumerate}
-    \item A bilinear mapping $\Omega$ is a mapping with two arguments, and it is linear in each argument, i.e., when we look at a vector space $V$ then it holds that for all $\bm{x}, \bm{y}, \bm{z} \in V, \lambda , \psi  \in \mathbb{R}$ that
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $\Omega(\lambda \bm{x} + \psi \bm{y}, \bm{z}) = \lambda \Omega(\bm{x}, \bm{z}) + \psi \Omega(\bm{y}, \bm{z})$
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $\Omega(\bm{x}, \lambda \bm{y} + \psi \bm{z}) = \lambda \Omega(\bm{x}, \bm{y}) + \psi \Omega(\bm{x}, \bm{z})$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+b = np.array([4, 5]).reshape(1, -1)     # Shape: (1, 2)
+print(b)
 
-    \item Let $V$ be a vector space and $\Omega : V \times  V \to \mathbb{R}$ be a bilinear mapping that takes two vectors and maps them onto a real number. Then
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \begin{enumerate}
-        \item $\Omega$ is called \textbf{symmetric} if $\Omega(\bm{x}, \bm{y}) = \Omega(\bm{y}, \bm{x})$ for all $\bm{x}, \bm{y} \in  V$ , i.e., the order of the arguments does not matter.
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+outer = a @ b
+print(outer)
+\end{lstlisting}
 
-        \item $\Omega$ is called \textbf{positive definite} if $\forall \bm{x} \in  V \backslash \dCurlyBrac{\bm{0}} : \Omega(\bm{x}, \bm{x}) > 0 , \Omega(\bm{0}, \bm{0}) = 0$.
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \end{enumerate}
-
-\end{enumerate}
-
-
+output:
+\begin{lstlisting}
+[[1]
+ [2]
+ [3]]
+[[4 5]]
+[[ 4  5]
+ [ 8 10]
+ [12 15]]
+\end{lstlisting}
 
 
 
-\subsection{Inner Product ( $<x, y>$ )}
 
-\begin{enumerate}
-    \item Let $V$ be a vector space and $\Omega  : V \times  V \to  \mathbb{R}$ be a bilinear mapping that takes two vectors and maps them onto a real number. Then
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \begin{enumerate}
-        \item A positive definite, symmetric bilinear mapping $\Omega  : V \times  V \to  \mathbb{R}$ is called an inner product on $V$ . 
-        We typically write $\dAngleBrac{x, y}$ instead of $\Omega (x, y)$.        
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \end{enumerate}
 
-    \item default inner product is dot product: $\dAngleBrac{\bm{x}, \bm{y}} = \bm{x}^\top \bm{y}$
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-\end{enumerate}
 
 
 
@@ -606,6 +743,31 @@
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     
 \end{enumerate}
+
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Dot product - numPy
+]
+import numpy as np
+
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+print(np.dot(a, b))   # 32
+print(np.inner(a, b)) # 32
+print(a @ b)          # 32
+print(np.sum(a* b))   # 32
+\end{lstlisting}
+
+
+
+
+
+
+
+
 
 
 
@@ -1005,6 +1167,90 @@
 \end{enumerate}
 
 
+\subsection{Checking Basis}
+
+To check whether two given sets of basis vectors (say $\mathcal{B}_1$ and $\mathcal{B}_2$) span the same vector space: 
+\hfill \cite{common/online/chatgpt}
+\begin{enumerate}
+    \item \textbf{Method 1:} For each $\mathbf{b}_1 \in \mathcal{B}_1$, check if there exist scalars $\lambda_i \in \mathbb{R}$ such that
+    \hfill \cite{common/online/chatgpt}
+    \\
+    .\hfill
+    $
+        \mathbf{b}_1 = \sum_{\mathbf{b}_{2i} \in \mathcal{B}_2} \lambda_i \mathbf{b}_{2i}
+    $ 
+    \hfill \cite{common/online/chatgpt}
+    \\
+    and vice versa (i.e., every vector in $\mathcal{B}_2$ can be written as a linear combination of vectors in $\mathcal{B}_1$).  
+    If both conditions hold, then $\mathcal{B}_1$ and $\mathcal{B}_2$ span the same vector space.
+    \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{Method 2:} Let $\mathcal{B}_c$ be the matrix formed by concatenating all vectors from $\mathcal{B}_1$ and $\mathcal{B}_2$ as columns.  
+    If 
+    \hfill \cite{common/online/chatgpt}
+    \\
+    .\hfill
+    $
+        \dim(\mathrm{span}(\mathcal{B}_1)) = \dim(\mathrm{span}(\mathcal{B}_2)) = \dim(\mathrm{span}(\mathcal{B}_c))
+    $
+    \hfill \cite{common/online/chatgpt}
+    \\
+    then both sets span the same vector space.
+    \hfill \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Check basis sets span same vector space - numPy
+]
+import numpy as np
+
+# Define basis sets as lists of vectors (1D arrays)
+B1 = [np.array([1, 0]), np.array([0, 1])]               # Basis set 1
+B2 = [np.array([2, 1]), np.array([1, 2])]               # Basis set 2
+
+# Convert basis sets to matrices for method 2 when needed
+def to_matrix(basis_set):
+    return np.column_stack(basis_set)
+
+# Method 1: Check linear combination (span equivalence)
+def can_span(basis_from, basis_to):
+    A = to_matrix(basis_to)
+    for v in basis_from:
+        # x: solution vector (coefficients for linear combination)
+        # residuals: squared error ||Ax - v||^2 (empty if underdetermined)
+        # rank: number of linearly independent columns in A
+        # s: singular values of A
+        x, residuals, rank, s = np.linalg.lstsq(A, v, rcond=None)
+
+        if not np.allclose(A @ x, v):
+            return False
+
+    return True
+
+def same_vector_space_method1(B1, B2):
+    return can_span(B1, B2) and can_span(B2, B1)
+
+# Method 2: Compare ranks of spans
+def same_vector_space_method2(B1, B2):
+    M1 = to_matrix(B1)
+    M2 = to_matrix(B2)
+    M_combined = to_matrix(B1 + B2)
+
+    rank1 = np.linalg.matrix_rank(M1)
+    rank2 = np.linalg.matrix_rank(M2)
+    rank_combined = np.linalg.matrix_rank(M_combined)
+
+    return rank1 == rank2 == rank_combined
+
+# Run both methods
+print(same_vector_space_method1(B1, B2))        # True
+print(same_vector_space_method2(B1, B2))        # True
+\end{lstlisting}
+
+
+
 
 
 \subsection{Basis Change}
@@ -1171,7 +1417,7 @@
 
 \end{enumerate}
 
-\subsubsection{Gram-Schmidt process}
+\subsubsection{Orthogonalization using Gaussian Elimination}
 
 \begin{enumerate}
     \item constructive way to iteratively build an orthonormal basis
@@ -1183,6 +1429,57 @@
     \item We concatenate them into a matrix $\tilde{\bm{B}} = [\tilde{\bm{b}}_1, \cdots ,\tilde{\bm{b}}_n]$ and apply Gaussian elimination to the augmented matrix $[\tilde{\bm{B}} \tilde{\bm{B}}^\top|\tilde{\bm{B}}]$ to obtain an orthonormal basis. 
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Orthogonalization using Gaussian Elimination - numPy
+]
+import numpy as np
+from scipy.linalg import orth
+
+def gram_schmidt_from_augmented_matrix(basis_vectors):
+    """
+    Implements Gram-Schmidt as described via augmented matrix [B B^T | B]
+
+    Parameters:
+        basis_vectors (list of np.ndarray): List of non-orthogonal 
+            basis vectors (each of same length)
+
+    Returns:
+        np.ndarray: Matrix with orthonormal basis vectors as columns
+    """
+    # Step 1: Form B matrix from input list
+    B = np.column_stack(basis_vectors)  # Shape: (d, n)
+
+    # Step 2: Form the augmented matrix [B B^T | B]
+    BB_T = B @ B.T                      # Shape: (d, d)
+    augmented = np.hstack((BB_T, B))   # Shape: (d, d + n)
+
+    # Step 3: Apply Gaussian elimination to the augmented matrix
+    # Instead of manual row ops, we extract the column space of B using orth()
+    # This gives us an orthonormal basis for the column space of B
+    Q = orth(B)  # Shape: (d, r), where r = rank(B)
+
+    return Q  # Orthonormal basis matrix
+
+
+B_tilde = [
+    np.array([1, 1, 0]),
+    np.array([1, 0, 1]),
+    np.array([0, 1, 1])
+]
+
+Q = gram_schmidt_from_augmented_matrix(B_tilde)
+
+print("Orthonormal basis vectors:")
+for i in range(Q.shape[1]):
+    print(f"b_{i+1} =", Q[:, i])
+\end{lstlisting}
+
+
+
+
 
 
 
@@ -1261,6 +1558,131 @@
     The sequence ${\displaystyle \mathbf {u} _{1},\ldots ,\mathbf {u} _{k}}$ is the required system of orthogonal vectors, and the normalized vectors ${\displaystyle \mathbf {e} _{1},\ldots ,\mathbf {e} _{k}}$ form an orthonormal set. 
     \hfill \cite{mfml/wiki/Gram-Schmidt_process}
 \end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Gram-Schmidt Orthogonalization \& Orthonormalization - numPy
+]
+import numpy as np
+
+def gram_schmidt(vectors, inner_product=None):
+    """
+    Perform Gram-Schmidt orthogonalization on a list of vectors.
+
+    Parameters:
+        vectors (list of np.ndarray): List of n vectors in R^d 
+            (each a 1D array).
+        inner_product (function): Function to 
+            compute inner product, default is np.dot.
+
+    Returns:
+        orthogonal_basis (list of np.ndarray): Orthogonal 
+            (not normalized) basis vectors.
+    """
+
+    if inner_product is None:
+        inner_product = lambda u, v: np.dot(u, v)
+
+    orthogonal_basis = []
+
+    for i, v in enumerate(vectors):
+        v_proj = np.zeros_like(v)
+        for u in orthogonal_basis:
+            proj_coeff = inner_product(v, u) / inner_product(u, u)
+            v_proj += proj_coeff * u
+        u_i = v - v_proj
+        orthogonal_basis.append(u_i)
+
+    return orthogonal_basis
+
+
+def normalize_vectors(vectors, norm=None):
+    """
+    Normalize a list of vectors using the given norm.
+
+    Parameters:
+        vectors (list of np.ndarray): List of vectors to normalize.
+        norm (function): Norm function, default is np.linalg.norm.
+
+    Returns:
+        list of np.ndarray: Normalized vectors.
+    """
+    if norm is None:
+        norm = lambda v: np.linalg.norm(v)
+    return [v / norm(v) for v in vectors]
+
+
+# Define basis vectors in R^2
+b1 = np.array([1.0, 1.0])
+b2 = np.array([1.0, 0.0])
+
+basis = [b1, b2]
+
+# Use standard inner product and norm
+orthogonal_basis = gram_schmidt(basis)
+orthonormal_basis = normalize_vectors(orthogonal_basis)
+
+print("Orthogonal basis:")
+for v in orthogonal_basis:
+    print(v)
+
+print("\nOrthonormal basis:")
+for v in orthonormal_basis:
+    print(v)
+
+###### custom inner product/ norm
+
+# Weighted inner product with weight matrix W
+W = np.array([[2, 0], [0, 3]])
+def weighted_inner(u, v):
+    return np.dot(u.T, W @ v)
+
+# Weighted norm (induced by W)
+def weighted_norm(v):
+    return np.sqrt(weighted_inner(v, v))
+
+orthogonal_basis = gram_schmidt(basis, inner_product=weighted_inner)
+orthonormal_basis = normalize_vectors(orthogonal_basis, norm=weighted_norm)
+
+print("Orthogonal basis:")
+for v in orthogonal_basis:
+    print(v)
+
+print("\nOrthonormal basis:")
+for v in orthonormal_basis:
+    print(v)
+\end{lstlisting}
+
+output:
+\begin{lstlisting}[
+    % language=Python,
+    % caption=Gram-Schmidt Orthogonalization \& Orthonormalization - numPy
+]
+Orthogonal basis:
+[1. 1.]
+[ 0.5 -0.5]
+
+Orthonormal basis:
+[0.70710678 0.70710678]
+[ 0.70710678 -0.70710678]
+
+Orthogonal basis:
+[1. 1.]
+[ 0.6 -0.4]
+
+Orthonormal basis:
+[0.4472136 0.4472136]
+[ 0.54772256 -0.36514837]
+\end{lstlisting}
+
+
+
+
+
+
+
+
 
 
 
@@ -1933,10 +2355,67 @@ Then:
 
 
 
+\begin{lstlisting}[
+    language=Python,
+    caption=Projection onto One-Dimensional Subspaces (Lines) - numPy
+]
+import numpy as np
 
+def project_onto_line(x, b):
+    """
+    Projects vector x onto the line spanned by vector b.
 
+    Returns:
+        lambda_scalar: the coordinate (scalar) 
+                lambda such that projection = lambda * b
+        projection: the projection vector (x projected onto b)
+        projection_matrix: the projection matrix P such that P @ x = projection
+    """
+    b = b.reshape(-1, 1)
+    x = x.reshape(-1, 1)
 
+    # Coordinate lambda (scalar projection)
+    lambda_scalar = (b.T @ x / (b.T @ b)).item()
 
+    # Projection vector
+    projection = lambda_scalar * b  # Alternatively: (b @ b.T @ x) / (b.T @ b)
+
+    # Projection matrix
+    projection_matrix = (b @ b.T) / (b.T @ b)
+
+    return lambda_scalar, projection, projection_matrix
+
+# Example usage
+x = np.array([3, 4])
+b = np.array([1, 2])
+
+lambda_val, projection_vec, projection_mat = project_onto_line(x, b)
+
+print("Coordinate lambda:", lambda_val)
+print("Projection vector:\n", projection_vec)
+print("Projection matrix:\n", projection_mat)
+
+# should equal projection_vec
+print("P @ x:\n", projection_mat @ x.reshape(-1, 1))  
+\end{lstlisting}
+
+output:
+
+\begin{lstlisting}[
+    % language=Python,
+    % caption=Projection onto One-Dimensional Subspaces (Lines) - numPy
+]
+Coordinate lambda: 2.2
+Projection vector:
+ [[2.2]
+ [4.4]]
+Projection matrix:
+ [[0.2 0.4]
+ [0.4 0.8]]
+P @ x:
+ [[2.2]
+ [4.4]]
+\end{lstlisting}
 
 
 
@@ -2093,6 +2572,88 @@ Then:
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 \end{enumerate}
+
+
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Projection onto General Subspaces - numPy
+]
+import numpy as np
+
+def project_onto_subspace(x, B):
+    """
+    Projects vector x onto the subspace spanned by the column vectors of matrix B.
+
+    Args:
+        x: A numpy array of shape (n,) representing the vector to project
+        B: A numpy array of shape (n, m) whose 
+            columns are basis vectors of the subspace
+
+    Returns:
+        lambda_vec: Coordinate vector lambda such that projection = B @ lambda_vec
+        projection: The projection vector of x onto the subspace spanned by B
+        projection_matrix: The projection matrix P such that P @ x = projection
+    """
+    # Reshape x as column vector
+    x = x.reshape(-1, 1)
+
+    # Compute (B^T B)^(-1) B^T x
+    BtB_inv = np.linalg.inv(B.T @ B)
+    lambda_vec = BtB_inv @ B.T @ x
+
+    # Compute projection: B @ lambda
+    projection = B @ lambda_vec
+
+    # Projection matrix: B (B^T B)^(-1) B^T
+    projection_matrix = B @ BtB_inv @ B.T
+
+    return lambda_vec, projection, projection_matrix
+
+# Example usage
+x = np.array([2, 3, 4])
+
+# Define individual basis vectors (as 1D arrays or column vectors)
+b1 = np.array([1, 0, 1])
+b2 = np.array([0, 1, 1])
+
+# Stack them as columns to form matrix B
+B = np.column_stack((b1, b2))  # Equivalent to np.stack((b1, b2), axis=1)
+
+lambda_vec, projection_vec, projection_mat = project_onto_subspace(x, B)
+
+print("Coordinate vector lambda:\n", lambda_vec)
+print("Projection vector:\n", projection_vec)
+print("Projection matrix:\n", projection_mat)
+
+# should equal projection_vec
+print("P @ x:\n", projection_mat @ x.reshape(-1, 1))  
+\end{lstlisting}
+
+output:
+\begin{lstlisting}[
+    % language=Python,
+    % caption=Projection onto One-Dimensional Subspaces (Lines) - numPy
+]
+Coordinate vector lambda:
+ [[1.66666667]
+ [2.66666667]]
+Projection vector:
+ [[1.66666667]
+ [2.66666667]
+ [4.33333333]]
+Projection matrix:
+ [[ 0.66666667 -0.33333333  0.33333333]
+ [-0.33333333  0.66666667  0.33333333]
+ [ 0.33333333  0.33333333  0.66666667]]
+P @ x:
+ [[1.66666667]
+ [2.66666667]
+ [4.33333333]]
+\end{lstlisting}
+
+
 
 
 
