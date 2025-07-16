@@ -117,8 +117,67 @@ $
         \item $\det(\bm{A}_{k,j} )$ is called a \textbf{minor} and $(-1)^{k+j}\ \det(\bm{A}_{k,j} )$ a \textbf{cofactor}.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
+
 \end{enumerate}
 
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Determinant of matrix - numPy
+]
+import numpy as np
+
+# Define a square matrix
+A = np.array([
+    [1, 2],
+    [3, 4]
+])
+
+# Compute the determinant
+det_A = np.linalg.det(A)
+
+print("Matrix A:\n", A)
+print("Determinant of A:", det_A)
+\end{lstlisting}
+
+
+
+
+\subsubsection{Properties of Determinant}
+
+For $\bm{A} \in \mathbb{R}^{n\times n}$ the determinant exhibits the following properties:
+\hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+\begin{enumerate}
+    \item The determinant of a matrix product is the product of the corresponding determinants, $\det(\bm{AB}) = \det(\bm{A})\det(\bm{B})$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Determinants are invariant to transposition, i.e., $\det(\bm{A}) = \det(\bm{A}^\top)$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If $\bm{A}$ is regular (invertible), then $\det(\bm{A} ^{-1} ) = \dfrac{1} {\det(\bm{A})}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Similar matrices possess the same determinant. 
+    Therefore, for a linear mapping $\Phi : V \to V$ all transformation matrices $\bm{A}_\Phi$ of $\Phi$ have the same determinant. 
+    Thus, the determinant is invariant to the choice of basis of a linear mapping.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Adding a multiple of a column/row to another one does not change $\det(\bm{A})$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Multiplication of a column/row with $\lambda \in \mathbb{R}$ scales $\det(\bm{A})$ by $\lambda$. 
+    In particular, $\det(\lambda \bm{A}) = \lambda^ n \ \det(\bm{A})$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Swapping two rows/columns changes the sign of $\det(\bm{A})$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item[] \textbf{Note}: Because of the last three properties, we can use Gaussian elimination to compute $\det(\bm{A})$ by bringing $\bm{A}$ into row-echelon form. 
+    We can stop Gaussian elimination when we have $\bm{A}$ in a triangular form where the elements below the diagonal are all $0$. 
+    (the determinant of a triangular matrix is the product of the diagonal elements)
+\end{enumerate}
 
 
 
