@@ -1,14 +1,4 @@
-% \subsection{Matrix Inverse ( $A^{-1}$ ) \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
-\subsection{Matrix Inverse \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
-
-Consider a square matrix $\bm{A} \in \mathbb{R}^{n\times n}$. 
-Let matrix $\bm{B} \in \mathbb{R}^{n\times n}$ have the property that $\bm{A}\bm{B} = \bm{I}_n = \bm{B}\bm{A}$. 
-$\bm{B}$ is called the inverse of $\bm{A}$ and denoted by $\bm{A}^{-1}$.
-\hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-
-
-
-
+\subsection{Matrix Inverse ( $A^{-1}$ ) \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
 
 \begin{lstlisting}[
     language=Python,
@@ -33,6 +23,14 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
 
 
 \begin{enumerate}
+    \item Consider a square matrix $\bm{A} \in \mathbb{R}^{n\times n}$. 
+    Let matrix $\bm{B} \in \mathbb{R}^{n\times n}$ have the property that $\bm{A}\bm{B} = \bm{I}_n = \bm{B}\bm{A}$. 
+    $\bm{B}$ is called the inverse of $\bm{A}$ and denoted by $\bm{A}^{-1}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Theorem}: For any square matrix $\bm{A} \in \mathbb{R}^{n\times n}$ it holds that $\bm{A}$ is invertible if and only if $\det(\bm{A})\neq 0$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
     \item \textbf{Not} every matrix $\bm{A}$ possesses an inverse $\bm{A}^{-1}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -91,7 +89,7 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
 
 
 
-\subsubsection{Moore-Penrose pseudo-inverse}
+\subsubsection{Moore-Penrose pseudo-inverse ($({A}^\top {A})^{-1} {A}^\top$)}
 
 $
     \begin{aligned}

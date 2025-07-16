@@ -31,13 +31,12 @@
 
 
 \section{Matrix Operations}
-\input{contents/maths-for-ml/matrices-parts/matrix-addition}
-\input{contents/maths-for-ml/matrices-parts/matrix-multiplication}
-\input{contents/maths-for-ml/matrices-parts/Multiplication-by-Scalar}
-\input{contents/maths-for-ml/matrices-parts/Hadamard-product}
-\input{contents/maths-for-ml/matrices-parts/Matrix-Inverse}
-\input{contents/maths-for-ml/matrices-parts/Matrix-Transpose}
-
+\input{contents/maths-for-ml/matrices-operations/matrix-addition}
+\input{contents/maths-for-ml/matrices-operations/matrix-multiplication}
+\input{contents/maths-for-ml/matrices-operations/Multiplication-by-Scalar}
+\input{contents/maths-for-ml/matrices-operations/Hadamard-product}
+\input{contents/maths-for-ml/matrices-operations/Matrix-Transpose}
+\input{contents/maths-for-ml/matrices-operations/Matrix-Inverse}
 
 
 
@@ -83,6 +82,33 @@
 
     
 \end{enumerate}
+
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Rank of a matrix - numPy
+]
+import numpy as np
+
+# Define your matrix
+A = np.array([
+    [1, 2, 3],
+    [2, 4, 6],
+    [1, 0, 1]
+])
+
+# Compute the rank
+rank = np.linalg.matrix_rank(A)
+
+print("Rank of matrix A:", rank)
+\end{lstlisting}
+
+
+
+
+
+
 
 
 
@@ -172,6 +198,29 @@
 \input{contents/maths-for-ml/matrices-types/equivalent-matrices}
 \input{contents/maths-for-ml/matrices-types/similar-matrices}
 \input{contents/maths-for-ml/matrices-types/orthogonal-matrix}
+\input{contents/maths-for-ml/matrices-types/triangular-matrix}
+
+
+
+\section{Describing/summarizing Matrix}
+\input{contents/maths-for-ml/matrices-summary/determinant}
+\input{contents/maths-for-ml/matrices-summary/trace}
+
+
+
+\section{Matrix Decomposition/Factorization}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

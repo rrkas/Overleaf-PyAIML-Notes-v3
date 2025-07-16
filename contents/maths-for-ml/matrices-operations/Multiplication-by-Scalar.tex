@@ -57,6 +57,29 @@ $\forall\ \lambda,\ \psi \in \mathbb{R}$:
 \end{enumerate}
 
 
+\begin{lstlisting}[
+    language=Python,
+    caption=Multiplication by a Scalar - numPy
+]
+import numpy as np
+
+# Define a matrix or vector
+A = np.array([
+    [1, 2],
+    [3, 4]
+])
+
+# Define a scalar
+lambda = 5
+
+# Multiply the matrix by the scalar
+result = lambda * A
+
+print("Original matrix A:\n", A)
+print("Scalar lambda:", lambda)
+print("Result of lambda * A:\n", result)
+\end{lstlisting}
+
 
 
 
