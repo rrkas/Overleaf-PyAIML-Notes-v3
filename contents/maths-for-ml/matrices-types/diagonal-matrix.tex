@@ -1,0 +1,78 @@
+\subsection{Diagonal Matrix ($D$)}
+
+
+\begin{enumerate}
+    \item A diagonal matrix is a matrix that has value zero on all off-diagonal elements, i.e., they are of the form:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \bm{D} = \begin{bmatrix}
+        c_1 & \cdots & 0 \\
+        \vdots & \ddots & \vdots \\
+        0 & \cdots & c_n
+        \end{bmatrix}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item They allow fast computation of determinants, powers, and inverses.
+    \begin{enumerate}
+        \item The determinant is the product of its diagonal entries
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item a matrix power $\bm{D}^k$ is given by each diagonal element raised to the power $k$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item the inverse $\bm{D}^{-1}$ is the reciprocal of its diagonal elements if all of them are nonzero
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item[] 
+        $
+            \dabs{\bm{D}} 
+            = \begin{vmatrix}
+                c_1 & \cdots & 0 \\
+                \vdots & \ddots & \vdots \\
+                0 & \cdots & c_n
+            \end{vmatrix}
+            = \dprod_{i=1}^n c_i
+        $
+        \hfill
+        $
+            \bm{D}^k 
+            = \begin{bmatrix}
+                c_1^k & \cdots & 0 \\
+                \vdots & \ddots & \vdots \\
+                0 & \cdots & c_n^k
+            \end{bmatrix}
+        $
+        \hfill
+        $
+            \bm{D}^{-1} 
+            = \begin{bmatrix}
+                \dfrac{1}{c_1} & \cdots & 0 \\
+                \vdots & \ddots & \vdots \\
+                0 & \cdots & \dfrac{1}{c_n}
+            \end{bmatrix}
+        $
+    \end{enumerate}
+
+    \item 
+    \begin{definition}[Diagonalizable]
+        A matrix $\bm{A} \in \mathbb{R}^{n\times n}$ is diagonalizable if it is similar to a diagonal matrix, i.e., if there exists an invertible matrix $\bm{P} \in \mathbb{R}^{n\times n}$ such that $\bm{D} = \bm{P}^{-1}\bm{AP}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

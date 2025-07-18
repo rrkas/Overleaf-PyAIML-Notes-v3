@@ -1,16 +1,19 @@
 \subsection{Characteristic Polynomial ($p_A(\lambda)$)}
 
 \begin{enumerate}
-    \item \textbf{Definition}: For $\lambda \in \mathbb{R}$ and a square matrix $\bm{A} \in \mathbb{R}^{n\times n}$:
-    \\
-    $
-        \begin{aligned}
-            p_{\bm{A}}(\lambda ) &:= \det(\bm{A} - \lambda \bm{I}) \\
-            &= c_0 + c_1\lambda  + c_2\lambda  ^2 + \cdots + c_{n-1}\lambda ^{( n-1)} + (-1)^n\lambda^  n
-        \end{aligned}
-    $
-    \\
-    $c_0, \cdots , c_{n-1} \in \mathbb{R}$, is the characteristic polynomial of $\bm{A}$.
+    \item 
+    \begin{definition}[Characteristic Polynomial]
+        For $\lambda \in \mathbb{R}$ and a square matrix $\bm{A} \in \mathbb{R}^{n\times n}$:
+        \\
+        $
+            \begin{aligned}
+                p_{\bm{A}}(\lambda ) &:= \det(\bm{A} - \lambda \bm{I}) \\
+                &= c_0 + c_1\lambda  + c_2\lambda  ^2 + \cdots + c_{n-1}\lambda ^{( n-1)} + (-1)^n\lambda^  n
+            \end{aligned}
+        $
+        \\
+        $c_0, \cdots , c_{n-1} \in \mathbb{R}$, is the characteristic polynomial of $\bm{A}$.
+    \end{definition}
 
     \item $c_0 = \det(\bm{A}), c_{n-1} = (-1)^{n-1}\ tr(\bm{A})$
 \end{enumerate}

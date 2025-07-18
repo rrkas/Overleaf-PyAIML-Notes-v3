@@ -1,14 +1,6 @@
 \subsection{Trace ($tr(A)$)}
 
 
-\begin{enumerate}
-    \item The trace of a square matrix $\bm{A} \in \mathbb{R}^{n\times n}$ is defined as $tr(\bm{A}) := \dsum^n _{i=1} a_{ii}$ i.e. , the trace is the \textbf{sum of the diagonal elements} of $\bm{A}$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-
-    
-\end{enumerate}
-
-
 \begin{lstlisting}[
     language=Python,
     caption=Trace of a matrix - numPy
@@ -29,8 +21,28 @@ print("Matrix A:\n", A)
 print("Trace of A:", trace_A)
 \end{lstlisting}
 
+\begin{enumerate}
+    \item 
+    \begin{definition}[Trace]
+        The trace of a square matrix $\bm{A} \in \mathbb{R}^{n\times n}$ is defined as $tr(\bm{A}) := \dsum^n _{i=1} a_{ii}$ i.e. , the trace is the \textbf{sum of the diagonal elements} of $\bm{A}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
-
+    \item 
+    \begin{theorem}[Trace: sum of eigenvalues]
+        The trace of a matrix $\bm{A} \in \mathbb{R}^{n\times n}$ is the sum of its eigenvalues, i.e.,
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \det(\bm{A}) = \dsum_{i=1}^{n} \lambda_i
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        where $\lambda_i \in \mathbb{C}$ are (possibly repeated) eigenvalues of $\bm{A}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{theorem}
+\end{enumerate}
 
 
 \subsubsection{Properties of Trace}

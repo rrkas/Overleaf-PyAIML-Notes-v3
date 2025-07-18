@@ -4,15 +4,18 @@
 \section{Vector Space}
 
 \begin{enumerate}
-    \item \textbf{Definition}: A real-valued vector space $V = (\mathcal{V}, +, \cdot)$ is a set $\mathcal{V}$ with two operations:
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \begin{enumerate}
-        \item[] $+ :  \mathcal{V} \times \mathcal{V} \to \mathcal{V}$
+    \item 
+    \begin{definition}[Vector Space]
+        A real-valued vector space $V = (\mathcal{V}, +, \cdot)$ is a set $\mathcal{V}$ with two operations:
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-
-        \item[] $\cdot: \mathbb{R} \times \mathcal{V} \to \mathcal{V}$ 
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \end{enumerate}
+        \begin{enumerate}
+            \item[] $+ :  \mathcal{V} \times \mathcal{V} \to \mathcal{V}$
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+            \item[] $\cdot: \mathbb{R} \times \mathcal{V} \to \mathcal{V}$ 
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{enumerate}
+    \end{definition}
 
 
     \item addition ($+$) is inner operation: both operands must be from $\mathcal{V}$
@@ -108,15 +111,18 @@ print(f"Dimension of the vector space: {dimension}")
 \subsection{Norm}
 
 \begin{enumerate}
-    \item \textbf{Definition}: A norm on a vector space $V$ is a function
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $\dnorm{\cdot}: V \to \mathbb{R}$ such that $\bm{x} \mapsto \dnorm{\bm{x}}$
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    which assigns each vector $\bm{x}$ its length $\dnorm{\bm{x}} \in \mathbb{R}$, such that for all $\lambda \in \mathbb{R}$ and $\bm{x}, \bm{y} \in V$ the following hold:
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Norm]
+        A norm on a vector space $V$ is a function
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $\dnorm{\cdot}: V \to \mathbb{R}$ such that $\bm{x} \mapsto \dnorm{\bm{x}}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        which assigns each vector $\bm{x}$ its length $\dnorm{\bm{x}} \in \mathbb{R}$, such that for all $\lambda \in \mathbb{R}$ and $\bm{x}, \bm{y} \in V$ the following hold:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
     \begin{enumerate}
         \item Absolutely homogeneous: $\dnorm{\lambda \bm{x}} = \dabs{\lambda} \dnorm{\bm{x}}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -125,7 +131,7 @@ print(f"Dimension of the vector space: {dimension}")
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         In geometric terms, the triangle inequality states that for any triangle, the sum of the lengths of any two sides must be greater than or equal to the length of the remaining side.
-        
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
         \item Positive definite: $\dnorm{\bm{x}} \geq 0$ and $\dnorm{\bm{x}} = 0 \Longleftrightarrow \bm{x} = \bm{0}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -244,12 +250,15 @@ def norm_general(_arr: np.ndarray):
     \item Not every norm is induced by an inner product (eg: Manhattan norm).
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Cauchy-Schwarz Inequality}: For an inner product vector space $(V,\dAngleBrac{\cdot, \cdot})$ the induced norm $\dnorm{\cdot}$ satisfies the Cauchy-Schwarz inequality
+    \item 
+    \begin{definition}[Cauchy-Schwarz Inequality]
+    For an inner product vector space $(V,\dAngleBrac{\cdot, \cdot})$ the induced norm $\dnorm{\cdot}$ satisfies the Cauchy-Schwarz inequality
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     .\hfill
     $\dabs{\dAngleBrac{\bm{x}, \bm{y}}} \leq \dnorm{\bm{x}} \dnorm{\bm{y}}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item Transformations by orthogonal matrices are special because the length of a vector $\bm{x}$ is not changed when transforming it using an orthogonal matrix $\bm{A}$. 
     For the dot product, we obtain
@@ -309,8 +318,11 @@ def norm_general(_arr: np.ndarray):
 \subsection{Metric}
 
 \begin{enumerate}
-    \item \textbf{Definition}: The mapping $d : V \times V \to \mathbb{R}$, $(\bm{x}, \bm{y}) \mapsto d(\bm{x}, \bm{y})$ is called a \textbf{metric}.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Metric]
+        The mapping $d : V \times V \to \mathbb{R}$, $(\bm{x}, \bm{y}) \mapsto d(\bm{x}, \bm{y})$ is called a \textbf{metric}.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item A metric $d$ satisfies the following:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -476,10 +488,13 @@ def norm_general(_arr: np.ndarray):
 
 
 \begin{enumerate}
-    \item \textbf{Definition}: Let $V = (\mathcal{V}, +, \cdot )$ be a vector space and $\mathcal{U} \subseteq \mathcal{V}, \mathcal{U} \neq \phi$. 
-    Then $U = (\mathcal{U}, +, \cdot )$ is called vector subspace of $V$ (or linear subspace) if $U$ is a vector space with the vector space operations $+$ and $\cdot$  restricted to $\mathcal{U} \times \mathcal{U}$ and $\mathbb{R} \times \mathcal{U}$. 
-    We write $U \subseteq V$ to denote a subspace $U$ of $V$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Vector Subspace]
+        Let $V = (\mathcal{V}, +, \cdot )$ be a vector space and $\mathcal{U} \subseteq \mathcal{V}, \mathcal{U} \neq \phi$. 
+        Then $U = (\mathcal{U}, +, \cdot )$ is called vector subspace of $V$ (or linear subspace) if $U$ is a vector space with the vector space operations $+$ and $\cdot$  restricted to $\mathcal{U} \times \mathcal{U}$ and $\mathbb{R} \times \mathcal{U}$. 
+        We write $U \subseteq V$ to denote a subspace $U$ of $V$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item Intuitively, they are sets contained in the original vector space with the property that when we perform vector space operations on elements within this subspace, we will never leave it. 
     In this sense, they are “closed”.
@@ -774,8 +789,11 @@ print(np.sum(a* b))   # 32
 \subsection{Orthogonal ( $x \perp y$ ) \& orthonormal vectors}
 
 \begin{enumerate}
-    \item \textbf{Definition}: Two vectors $\bm{x}$ and $\bm{y}$ are orthogonal if and only if $\dAngleBrac{\bm{x}, \bm{y}} = 0$, and we write $\bm{x} \perp \bm{y}$. 
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Orthogonal Vectors]
+        Two vectors $\bm{x}$ and $\bm{y}$ are orthogonal if and only if $\dAngleBrac{\bm{x}, \bm{y}} = 0$, and we write $\bm{x} \perp \bm{y}$. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
     
     \item If additionally $\dnorm{\bm{x}} = 1 = \dnorm{\bm{y}}$, i.e., the vectors are unit vectors, then $\bm{x}$ and $\bm{y}$ are orthonormal.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -861,11 +879,17 @@ print(np.sum(a* b))   # 32
 \subsection{Collinearity and Codirection}
 
 \begin{enumerate}
-    \item \textbf{Definition}: Two vectors that point in the same direction are called codirected. 
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Codirection]
+        Two vectors that point in the same direction are called codirected. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
     
-    \item \textbf{Definition}: Two vectors are collinear if they point in the same or the opposite direction. 
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Collinearity]
+        Two vectors are collinear if they point in the same or the opposite direction. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 \end{enumerate}
 
 
@@ -886,20 +910,23 @@ print(np.sum(a* b))   # 32
 \section{Linear Combination}
 
 \begin{enumerate}
-    \item \textbf{Definition}: Consider a vector space $V$ and a finite number of vectors $\bm{x}_1, \cdots , \bm{x}_k \in V$ . 
-    Then, every $\bm{v} \in V$ of the form:
-    \\
-    .\hfill
-    $
-        \bm{v} 
-        = \lambda _1 \bm{x}_1 + \cdots + \lambda _k \bm{x}_k
-        = \dsum_{i=1}^k \lambda _i \bm{x}_i
-        \in V
-    $
-    \hfill.
-    \\
-    with $\lambda _1, \cdots , \lambda _k \in \mathbb{R}$ is a linear combination of the vectors $\bm{x}_1, \cdots , \bm{x}_k$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Linear Combination of vectors]
+        Consider a vector space $V$ and a finite number of vectors $\bm{x}_1, \cdots , \bm{x}_k \in V$ . 
+        Then, every $\bm{v} \in V$ of the form:
+        \\
+        .\hfill
+        $
+            \bm{v} 
+            = \lambda _1 \bm{x}_1 + \cdots + \lambda _k \bm{x}_k
+            = \dsum_{i=1}^k \lambda _i \bm{x}_i
+            \in V
+        $
+        \hfill.
+        \\
+        with $\lambda _1, \cdots , \lambda _k \in \mathbb{R}$ is a linear combination of the vectors $\bm{x}_1, \cdots , \bm{x}_k$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item The $\bm{0}$-vector can always be written as the linear combination of $k$ vectors $\bm{x}_1, \cdots , \bm{x}_k$ because $\bm{0} = \dsum ^k _{i=1} 0 \bm{x}_i$ is always true.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -916,23 +943,26 @@ print(np.sum(a* b))   # 32
 \section{Affine Subspaces}
 
 \begin{enumerate}
-    \item \textbf{Definition}: Let $V$ be a vector space, $\bm{x}_0 \in V$ and $U \subseteq V$ a subspace. 
-    Then the subset 
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $
-        L 
-        = \bm{x}_0 + U 
-        := \dCurlyBrac{\bm{x}_0 + \bm{u} : \bm{u} \in  U}
-        = \dCurlyBrac{\bm{v} \in  V | \exists \bm{u} \in  U : \bm{v} = \bm{x}_0 + \bm{u}} \subseteq V
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    is called \textbf{affine subspace} or \textbf{linear manifold} of $V$.
-    $U$ is called \textbf{direction} or \textbf{direction space}, and $\bm{x}_0$ is called \textbf{support point}.
-    $L$ is also known as \textbf{hyperplane}.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item
+    \begin{definition}[Affine Subspaces]
+        Let $V$ be a vector space, $\bm{x}_0 \in V$ and $U \subseteq V$ a subspace. 
+        Then the subset 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            L 
+            = \bm{x}_0 + U 
+            := \dCurlyBrac{\bm{x}_0 + \bm{u} : \bm{u} \in  U}
+            = \dCurlyBrac{\bm{v} \in  V | \exists \bm{u} \in  U : \bm{v} = \bm{x}_0 + \bm{u}} \subseteq V
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        is called \textbf{affine subspace} or \textbf{linear manifold} of $V$.
+        $U$ is called \textbf{direction} or \textbf{direction space}, and $\bm{x}_0$ is called \textbf{support point}.
+        $L$ is also known as \textbf{hyperplane}.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item Note that the definition of an affine subspace excludes $\bm{0}$ if $\bm{x}_0 \notin U$.
     Therefore, an affine subspace is not a (linear) subspace (vector subspace) of $V$ for $\bm{x}_0 \notin U$.
@@ -993,9 +1023,12 @@ print(np.sum(a* b))   # 32
 \section{Linear (In)dependence}
 
 \begin{enumerate}
-    \item \textbf{Definition}: Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\bm{x}_1, \cdots , \bm{x}_k \in V$ . 
-    If there is a non-trivial linear combination, such that $\bm{0} = \dsum ^k _{i=1} \lambda_i \bm{x}_i$ with at least one $\lambda _i \neq 0$, the vectors  $\bm{x}_1, \cdots , \bm{x}_k$ are linearly dependent. 
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Linear (In)dependence]
+        Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\bm{x}_1, \cdots , \bm{x}_k \in V$ . 
+        If there is a non-trivial linear combination, such that $\bm{0} = \dsum ^k _{i=1} \lambda_i \bm{x}_i$ with at least one $\lambda _i \neq 0$, the vectors  $\bm{x}_1, \cdots , \bm{x}_k$ are linearly dependent. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
     
     \item If only the trivial solution exists, i.e., $\lambda _1 = \cdots = \lambda _k = 0$ the vectors $\bm{x}_1, \cdots , \bm{x}_k$ are linearly independent.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1097,9 +1130,12 @@ print(np.sum(a* b))   # 32
 \section{Generating Set}
 
 \begin{enumerate}
-    \item \textbf{Definition}: Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and set of vectors $\mathcal{A} = \dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_k} \subseteq \mathcal{V}$. 
-    If every vector $\bm{v} \in \mathcal{V}$ can be expressed as a linear combination of $\bm{x}_1, \cdots , \bm{x}_k$, $\mathcal{A}$ is called a generating set generating set of $V$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Generating Set]
+        Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and set of vectors $\mathcal{A} = \dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_k} \subseteq \mathcal{V}$. 
+        If every vector $\bm{v} \in \mathcal{V}$ can be expressed as a linear combination of $\bm{x}_1, \cdots , \bm{x}_k$, $\mathcal{A}$ is called a generating set generating set of $V$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item Generating sets are sets of vectors that span vector (sub)spaces, i.e., every vector can be represented as a linear combination of the vectors in the generating set.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1115,9 +1151,12 @@ print(np.sum(a* b))   # 32
 \section{Span}
 
 \begin{enumerate}
-    \item \textbf{Definition}: Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and set of vectors $\mathcal{A} = \dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_k} \subseteq \mathcal{V}$. 
-    The set of all linear combinations of vectors in $\mathcal{A}$ is span called the span of $\mathcal{A}$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item
+    \begin{definition}[Span]
+        Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and set of vectors $\mathcal{A} = \dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_k} \subseteq \mathcal{V}$. 
+        The set of all linear combinations of vectors in $\mathcal{A}$ is span called the span of $\mathcal{A}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item If $\mathcal{A}$ spans the vector space $V$ , we write $V = \text{span}[\mathcal{A}]$ or $V = \text{span}[\bm{x}_1, \cdots , \bm{x}_k]$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1130,10 +1169,13 @@ print(np.sum(a* b))   # 32
 \section{Basis}
 
 \begin{enumerate}
-    \item \textbf{Definition}: Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and $\mathcal{A} \subseteq  \mathcal{V}$. 
-    A generating set $\mathcal{A}$ of $V$ is called minimal if there exists no smaller set $\tilde{\mathcal{A}} \subsetneq \mathcal{A} \subseteq \mathcal{V}$ that spans $V$ . 
-    Every linearly independent generating set of $V$ is minimal and is called a basis of $V$ .
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item
+    \begin{definition}[Basis]
+        Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and $\mathcal{A} \subseteq  \mathcal{V}$. 
+        A generating set $\mathcal{A}$ of $V$ is called minimal if there exists no smaller set $\tilde{\mathcal{A}} \subsetneq \mathcal{A} \subseteq \mathcal{V}$ that spans $V$ . 
+        Every linearly independent generating set of $V$ is minimal and is called a basis of $V$ .
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item Let $V = (\mathcal{V}, +, \cdot)$ be a vector space and $\mathcal{B} \subseteq \mathcal{V}, \mathcal{B} \neq \phi$. Then, the following statements are equivalent:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1284,117 +1326,122 @@ print(same_vector_space_method2(B1, B2))        # True
 
 
 \begin{enumerate}
-    \item \textbf{Theorem}: For a linear mapping $\Phi : V \to W$, ordered bases
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $
-        B = (\bm{b}_1, \cdots , \bm{b}_n), \ 
-        \tilde{B} = (\tilde{\bm{b}}_1, \cdots , \tilde{\bm{b}}_n)
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    of $V$ and
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $
-        C = (\bm{c}_1, \cdots , \bm{c}_n), \ 
-        \tilde{C} = (\tilde{\bm{c}}_1, \cdots , \tilde{\bm{c}}_n)
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    of $W$, and a transformation matrix $\bm{A}_\Phi$ of $\Phi$ with respect to $B$ and $C$, the corresponding transformation matrix $\tilde{\bm{A}} _\Phi$ with respect to the bases $\tilde{B}$ and $\tilde{C}$ is given as
-    $
-        \tilde{\bm{A}} \Phi = \bm{T}^{-1}\bm{A}_\Phi \bm{S}
-    $.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    Here, $\bm{S} \in \mathbb{R}^{n\times n}$ is the transformation matrix of $\text{id}_V$ that maps coordinates with respect to $\tilde{B}$ onto coordinates with respect to $B$, \ 
-    and $\bm{T} \in \mathbb{R}^{m\times m}$ is the transformation matrix of $\text{id}_W$ that maps coordinates with respect to $\tilde{C}$ onto coordinates with respect to $C$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-
-    \item \textbf{Proof}: we can write the vectors of the new basis $\tilde{B}$ of $V$ as a linear combination of the basis vectors of $B$, such that:
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $
-        \tilde{\bm{b}}_j 
-        = s_{1j} \bm{b}_1 + \cdots + s_{nj} \bm{b}_n 
-        = \dsum^n _{i=1} s_{ij} \bm{b}_i 
-        , j = 1, \cdots , n
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    Similarly, we write the new basis vectors $\tilde{C}$ of $W$ as a linear combination of the basis vectors of $C$, which yields
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $
-        \tilde{\bm{c}}_k 
-        = t_{1k} \bm{c}_1 + \cdots + t_{mk} \bm{c}_m 
-        = \dsum^m _{l=1} t_{lk} \bm{c}_l 
-        , k = 1, \cdots , m
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    We define $\bm{S} = ((s_{ij} )) \in \mathbb{R}^{n\times n}$ as the transformation matrix that maps coordinates with respect to $\tilde{B}$ onto coordinates with respect to $B$ and $\bm{T} = ((t_{lk})) \in R^{m\times m}$ as the transformation matrix that maps coordinates with respect to $\tilde{C}$ onto coordinates with respect to $C$. 
-    In particular, the $j$-th column of $\bm{S}$ is the coordinate representation of $\tilde{\bm{b}}_j$ with respect to $B$ and the $k$-th column of $\bm{T}$ is the coordinate representation of $\tilde{\bm{c}}_k$ with respect to $C$. 
-    Note that both $\bm{S}$ and $\bm{T}$ are regular.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    We are going to look at $\Phi(\tilde{\bm{b}}_j )$ from two perspectives.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \begin{enumerate}
-        \item Applying the mapping $\Phi$, we get that for all $j = 1, \cdots , n$
+    \item
+    \begin{theorem}[Basis Change]
+        For a linear mapping $\Phi : V \to W$, ordered bases
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         .\hfill
         $
-            \Phi(\tilde{\bm{b}}_j )
-            = \dsum^m_{k=1} \underset{\displaystyle \in W}{
-                \underbrace{\tilde{a}_{kj} \textcolor{blue}{\tilde{\bm{c}}_k}}
-            }
-            = \dsum^m_{k=1} \tilde{a}_{kj} \textcolor{blue}{
-                \dsum^m_{l=1} t_{lk} \bm{c}_l
-            }
-            = \dsum^m_{l=1} \dParenBrac{
-                \textcolor{PineGreen}{\dsum^m_{k=1} t_{lk} \tilde{a}_{kj}} 
-            }  \bm{c}_l
+            B = (\bm{b}_1, \cdots , \bm{b}_n), \ 
+            \tilde{B} = (\tilde{\bm{b}}_1, \cdots , \tilde{\bm{b}}_n)
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        where we first expressed the new basis vectors $\tilde{\bm{c}}_k \in W$ as linear combinations of the basis vectors $\bm{c}_l \in W$ and then swapped the order of summation.
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-
-
-        \item when we express the $\tilde{\bm{b}}_j \in V$ as linear combinations of $\bm{b}_j \in V$ , we arrive at ($j = 1,\cdots, n$) :
+        of $V$ and
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         .\hfill
         $
-            \Phi (\tilde{\bm{b}}_j ) 
-            = \Phi  \dParenBrac{ \textcolor{blue}{\dsum ^n _{i=1} s_{ij} \bm{b}_i}}
-            = \dsum ^n _{i=1} s_{ij} \textcolor{red}{\Phi (\bm{b}_i)} 
-            = \dsum^n _{i=1} s_{ij} \textcolor{red}{\dsum ^m _{l=1} a_{li} \bm{c}_l}
-            = \dsum ^m _{l=1} \dParenBrac{ \textcolor{PineGreen}{\dsum^n _{i=1} s_{ij} a_{li}} } \bm{c}_l
+            C = (\bm{c}_1, \cdots , \bm{c}_n), \ 
+            \tilde{C} = (\tilde{\bm{c}}_1, \cdots , \tilde{\bm{c}}_n)
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-
-        \item $
-            \begin{aligned}
-                \dsum^m_{k=1} t_{lk} \tilde{a}_{kj} = \dsum^n _{i=1} s_{ij} a_{li}
-                \hspace{1cm}
-                \Rightarrow 
-                \bm{T} \tilde{\bm{A}}_\Phi = \bm{A}_\Phi \bm{S} 
-                \in \mathbb{R}^{m\times n}
-                \hspace{1cm}
-                \Rightarrow 
-                \tilde{\bm{A}}_\Phi = \bm{T}^{-1} \bm{A}_\Phi \bm{S}
-            \end{aligned}
+        \\
+        of $W$, and a transformation matrix $\bm{A}_\Phi$ of $\Phi$ with respect to $B$ and $C$, the corresponding transformation matrix $\tilde{\bm{A}} _\Phi$ with respect to the bases $\tilde{B}$ and $\tilde{C}$ is given as
         $
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}        
-    \end{enumerate}
+            \tilde{\bm{A}} \Phi = \bm{T}^{-1}\bm{A}_\Phi \bm{S}
+        $.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        Here, $\bm{S} \in \mathbb{R}^{n\times n}$ is the transformation matrix of $\text{id}_V$ that maps coordinates with respect to $\tilde{B}$ onto coordinates with respect to $B$, \ 
+        and $\bm{T} \in \mathbb{R}^{m\times m}$ is the transformation matrix of $\text{id}_W$ that maps coordinates with respect to $\tilde{C}$ onto coordinates with respect to $C$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{theorem}
+
+    \begin{proof}
+        we can write the vectors of the new basis $\tilde{B}$ of $V$ as a linear combination of the basis vectors of $B$, such that:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \tilde{\bm{b}}_j 
+            = s_{1j} \bm{b}_1 + \cdots + s_{nj} \bm{b}_n 
+            = \dsum^n _{i=1} s_{ij} \bm{b}_i 
+            , j = 1, \cdots , n
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        Similarly, we write the new basis vectors $\tilde{C}$ of $W$ as a linear combination of the basis vectors of $C$, which yields
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \tilde{\bm{c}}_k 
+            = t_{1k} \bm{c}_1 + \cdots + t_{mk} \bm{c}_m 
+            = \dsum^m _{l=1} t_{lk} \bm{c}_l 
+            , k = 1, \cdots , m
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        We define $\bm{S} = ((s_{ij} )) \in \mathbb{R}^{n\times n}$ as the transformation matrix that maps coordinates with respect to $\tilde{B}$ onto coordinates with respect to $B$ and $\bm{T} = ((t_{lk})) \in R^{m\times m}$ as the transformation matrix that maps coordinates with respect to $\tilde{C}$ onto coordinates with respect to $C$. 
+        In particular, the $j$-th column of $\bm{S}$ is the coordinate representation of $\tilde{\bm{b}}_j$ with respect to $B$ and the $k$-th column of $\bm{T}$ is the coordinate representation of $\tilde{\bm{c}}_k$ with respect to $C$. 
+        Note that both $\bm{S}$ and $\bm{T}$ are regular.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        We are going to look at $\Phi(\tilde{\bm{b}}_j )$ from two perspectives.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \begin{enumerate}
+            \item Applying the mapping $\Phi$, we get that for all $j = 1, \cdots , n$
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+            \\
+            .\hfill
+            $
+                \Phi(\tilde{\bm{b}}_j )
+                = \dsum^m_{k=1} \underset{\displaystyle \in W}{
+                    \underbrace{\tilde{a}_{kj} \textcolor{blue}{\tilde{\bm{c}}_k}}
+                }
+                = \dsum^m_{k=1} \tilde{a}_{kj} \textcolor{blue}{
+                    \dsum^m_{l=1} t_{lk} \bm{c}_l
+                }
+                = \dsum^m_{l=1} \dParenBrac{
+                    \textcolor{PineGreen}{\dsum^m_{k=1} t_{lk} \tilde{a}_{kj}} 
+                }  \bm{c}_l
+            $
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+            \\
+            where we first expressed the new basis vectors $\tilde{\bm{c}}_k \in W$ as linear combinations of the basis vectors $\bm{c}_l \in W$ and then swapped the order of summation.
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+    
+            \item when we express the $\tilde{\bm{b}}_j \in V$ as linear combinations of $\bm{b}_j \in V$ , we arrive at ($j = 1,\cdots, n$) :
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+            \\
+            .\hfill
+            $
+                \Phi (\tilde{\bm{b}}_j ) 
+                = \Phi  \dParenBrac{ \textcolor{blue}{\dsum ^n _{i=1} s_{ij} \bm{b}_i}}
+                = \dsum ^n _{i=1} s_{ij} \textcolor{red}{\Phi (\bm{b}_i)} 
+                = \dsum^n _{i=1} s_{ij} \textcolor{red}{\dsum ^m _{l=1} a_{li} \bm{c}_l}
+                = \dsum ^m _{l=1} \dParenBrac{ \textcolor{PineGreen}{\dsum^n _{i=1} s_{ij} a_{li}} } \bm{c}_l
+            $
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+            \item $
+                \begin{aligned}
+                    \dsum^m_{k=1} t_{lk} \tilde{a}_{kj} = \dsum^n _{i=1} s_{ij} a_{li}
+                    \hspace{1cm}
+                    \Rightarrow 
+                    \bm{T} \tilde{\bm{A}}_\Phi = \bm{A}_\Phi \bm{S} 
+                    \in \mathbb{R}^{m\times n}
+                    \hspace{1cm}
+                    \Rightarrow 
+                    \tilde{\bm{A}}_\Phi = \bm{T}^{-1} \bm{A}_\Phi \bm{S}
+                \end{aligned}
+            $
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}        
+        \end{enumerate}
+    \end{proof}
 
     
 \end{enumerate}
@@ -1408,16 +1455,19 @@ print(same_vector_space_method2(B1, B2))        # True
 
 
 \begin{enumerate}
-    \item \textbf{Definition}: Consider an $n$-dimensional vector space $V$ and a basis $\dCurlyBrac{\bm{b}_1, \cdots , \bm{b}_n}$ of $V$ . 
-    If
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $\dAngleBrac{\bm{b}_i, \bm{b}_j} = 0$ for $i \neq j$ and $\dAngleBrac{\bm{b}_i, \bm{b}_i} = 1$
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    for all $i, j = 1, \cdots , n$ then the basis is called an orthonormal basis (ONB).
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item
+    \begin{definition}[Orthonormal Basis (ONB)]
+        Consider an $n$-dimensional vector space $V$ and a basis $\dCurlyBrac{\bm{b}_1, \cdots , \bm{b}_n}$ of $V$ . 
+        If
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $\dAngleBrac{\bm{b}_i, \bm{b}_j} = 0$ for $i \neq j$ and $\dAngleBrac{\bm{b}_i, \bm{b}_i} = 1$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        for all $i, j = 1, \cdots , n$ then the basis is called an orthonormal basis (ONB).
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item If only $\dAngleBrac{\bm{b}_i, \bm{b}_j} = 0$ is satisfied, then the basis is called an \textbf{orthogonal basis}.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1721,15 +1771,18 @@ Orthonormal basis:
 \end{figure}
 
 \begin{enumerate}
-    \item \textbf{Definition}: For vector spaces $V, W$, a mapping $\Phi : V \to W$ is called a linear mapping (or vector space homomorphism/ linear transformation) if
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $
-        \forall \bm{x}, \bm{y} \in V \forall \lambda , \psi  \in \mathbb{R} : 
-        \Phi(\lambda \bm{x} + \psi \bm{y}) = \lambda \Phi(\bm{x}) + \psi \Phi(\bm{y})
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item
+    \begin{definition}[Linear Mapping]
+        For vector spaces $V, W$, a mapping $\Phi : V \to W$ is called a linear mapping (or vector space homomorphism/ linear transformation) if
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \forall \bm{x}, \bm{y} \in V \forall \lambda , \psi  \in \mathbb{R} : 
+            \Phi(\lambda \bm{x} + \psi \bm{y}) = \lambda \Phi(\bm{x}) + \psi \Phi(\bm{y})
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item we can represent linear mappings as matrices
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1759,27 +1812,33 @@ Orthonormal basis:
 \subsection{Image/Range \& Kernel/Null space}
 
 \begin{enumerate}
-    \item \textbf{Definition}: For $\Phi  : V \to W$, we define the image/range
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $
-        \text{Im}(\Phi ) 
-        := \Phi (V ) 
-        = \dCurlyBrac{\bm{w} \in W|\exists \bm{v} \in V : \Phi (\bm{v}) = \bm{w}}
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item
+    \begin{definition}[Image/ Range]
+        For $\Phi  : V \to W$, we define the image/range
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \text{Im}(\Phi ) 
+            := \Phi (V ) 
+            = \dCurlyBrac{\bm{w} \in W|\exists \bm{v} \in V : \Phi (\bm{v}) = \bm{w}}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
-    \item \textbf{Definition}: For $\Phi  : V \to W$, we define the kernel/null space
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $
-        \ker(\Phi ) 
-        := \Phi ^{-1} (\bm{0}_W ) 
-        = \dCurlyBrac{\bm{v} \in V : \Phi (\bm{v}) = \bm{0}_W }
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item
+    \begin{definition}[Kernel/ Null Space]
+        For $\Phi  : V \to W$, we define the kernel/null space
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \ker(\Phi ) 
+            := \Phi ^{-1} (\bm{0}_W ) 
+            = \dCurlyBrac{\bm{v} \in V : \Phi (\bm{v}) = \bm{0}_W }
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
 
     \item We also call $V$ and $W$ also the \textbf{domain} and \textbf{codomain} of $\Phi$, respectively.
@@ -1801,8 +1860,11 @@ Orthonormal basis:
     \item $\Phi$ is injective (one-to-one) if and only if $\ker(\Phi) = \dCurlyBrac{\bm{0}}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Rank-Nullity Theorem}: For vector spaces $V, W$ and a linear mapping $\Phi : V \to W$ it holds that $\dim(\ker(\Phi)) + \dim(\text{Im}(\Phi)) = \dim(V )$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item
+    \begin{theorem}[Rank-Nullity Theorem]
+        For vector spaces $V, W$ and a linear mapping $\Phi : V \to W$ it holds that $\dim(\ker(\Phi)) + \dim(\text{Im}(\Phi)) = \dim(V )$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{theorem}
     \begin{enumerate}
         \item The rank-nullity theorem is also referred to as the \textbf{fundamental theorem of linear mappings}
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1838,16 +1900,19 @@ Orthonormal basis:
 \section{Affine Mapping}
 
 \begin{enumerate}
-    \item \textbf{Definition}: For two vector spaces $V, W$, a linear mapping $\Phi : V \to W$, and $\bm{a} \in W$, the mapping:
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $ \phi : V \to W $ such that $ \bm{x} \mapsto \bm{a} + \Phi(\bm{x}) $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    is an affine mapping from $V$ to $W$. 
-    The vector a is called the \textbf{translation vector} of $\phi$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item
+    \begin{definition}[Affine Mapping]
+        For two vector spaces $V, W$, a linear mapping $\Phi : V \to W$, and $\bm{a} \in W$, the mapping:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $ \phi : V \to W $ such that $ \bm{x} \mapsto \bm{a} + \Phi(\bm{x}) $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        is an affine mapping from $V$ to $W$. 
+        The vector a is called the \textbf{translation vector} of $\phi$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item Every affine mapping $\phi  : V \to W$ is also the composition of a linear mapping $\phi  : V \to W$ and a translation $\tau : W \to W$ in $W$, such that $\phi  = \tau \circ \phi $. 
     The mappings $\phi $ and $\tau$ are uniquely determined.
@@ -1889,23 +1954,32 @@ Orthonormal basis:
 
 \section{Injective, Surjective, Bijective Mappings}
 
-\textbf{Definition}: Consider a mapping $\Phi : \mathcal{V} \to \mathcal{W}$, where $\mathcal{V}, \mathcal{W}$ can be arbitrary sets. 
+Consider a mapping $\Phi : \mathcal{V} \to \mathcal{W}$, where $\mathcal{V}, \mathcal{W}$ can be arbitrary sets. 
 Then $\Phi$ is called:
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 \begin{enumerate}
-    \item \textbf{Injective} if $\forall \bm{x}, \bm{y} \in \mathcal{V} : \Phi(\bm{x}) = \Phi(\bm{y}) \Rightarrow \bm{x} = \bm{y}$
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Injective] 
+        if $\forall \bm{x}, \bm{y} \in \mathcal{V} : \Phi(\bm{x}) = \Phi(\bm{y}) \Rightarrow \bm{x} = \bm{y}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
-    \item \textbf{Surjective} if $\Phi(\mathcal{V}) = \mathcal{W}$
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Surjective]
+        if $\Phi(\mathcal{V}) = \mathcal{W}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
     \begin{enumerate}
         \item If $\Phi$ is surjective, then every element in $\mathcal{W}$ can be “reached” from $\mathcal{V}$ using $\Phi$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
     
-    \item \textbf{Bijective} if it is injective and surjective
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Bijective]
+        if it is injective and surjective
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
     \begin{enumerate}
         \item A bijective $\Phi$ can be “undone”, i.e., there exists a mapping $\Psi : W \to V$ so that $\Psi \circ \Phi(\bm{x}) = \bm{x}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1935,16 +2009,22 @@ Then $\Phi$ is called:
 
 \section{Special cases of Linear mappings}
 
-\textbf{Definition}: Consider a mapping $\Phi : V \to W$, where $V, W$ can be arbitrary vector spaces. 
+Consider a mapping $\Phi : V \to W$, where $V, W$ can be arbitrary vector spaces. 
 Then:
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 \begin{enumerate}
-    \item \textbf{Isomorphism}: $\Phi : V \to W$ linear and bijective
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \begin{enumerate}
-        \item \textbf{Theorem}: Finite-dimensional vector spaces $V$ and $W$ are isomorphic if and only if $\dim(V ) = \dim(W)$.
+    \item 
+    \begin{definition}[Isomorphism]
+        $\Phi : V \to W$ linear and bijective
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+    \begin{enumerate}
+        \item
+        \begin{theorem}[isomorphic vector spaces]
+            Finite-dimensional vector spaces $V$ and $W$ are isomorphic if and only if $\dim(V ) = \dim(W)$.
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{theorem}
 
         \item there exists a linear, bijective mapping between two vector spaces of the same dimension.
         Intuitively, this means that vector spaces of the same dimension are kind of the same thing, as they can be transformed into each other without incurring any loss.
@@ -1957,14 +2037,23 @@ Then:
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
-    \item \textbf{Endomorphism}: $\Phi : V \to V$ linear
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Endomorphism]
+        $\Phi : V \to V$ linear
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
-    \item \textbf{Automorphism}: $\Phi : V \to V$ linear and bijective
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Automorphism]
+        $\Phi : V \to V$ linear and bijective
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
-    \item \textbf{identity mapping} or \textbf{identity automorphism}: $id_V : V \to V , \bm{x} \mapsto \bm{x}$
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[identity mapping/ identity automorphism]
+        $id_V : V \to V , \bm{x} \mapsto \bm{x}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 \end{enumerate}
 
 
@@ -1988,21 +2077,24 @@ Then:
 \section{Transformation Matrix ( $A_\Phi$ )}
 
 \begin{enumerate}
-    \item \textbf{Definition}: Consider vector spaces $V$, $W$ with corresponding (ordered) bases $B = (\bm{b}_1, \cdots , \bm{b}_n)$ and $C = (\bm{c}_1, \cdots , \bm{c}_m)$. 
-    Moreover, we consider a linear mapping $\Phi : V \to W$. 
-    For $j \in \dCurlyBrac{1, \cdots , n}$,
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $
-        \Phi(\bm{b}_j ) = \alpha _{1j} \bm{c}_1 + \cdots + \alpha _{mj} \bm{c}_m 
-        = \dsum^m_{i=1} \alpha _{ij} \bm{c}_i
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    is the unique representation of $\Phi(\bm{b}_j )$ with respect to $C$. 
-    Then, we call the $m \times n$-matrix $\bm{A}_\Phi$, whose elements are given by $\bm{A}_\Phi(i, j) = \alpha_{ij}$ the transformation matrix of $\Phi$ (with respect to the ordered bases $B$ of $V$ and $C$ of $W$  ).
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Transformation Matrix]
+        Consider vector spaces $V$, $W$ with corresponding (ordered) bases $B = (\bm{b}_1, \cdots , \bm{b}_n)$ and $C = (\bm{c}_1, \cdots , \bm{c}_m)$. 
+        Moreover, we consider a linear mapping $\Phi : V \to W$. 
+        For $j \in \dCurlyBrac{1, \cdots , n}$,
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \Phi(\bm{b}_j ) = \alpha _{1j} \bm{c}_1 + \cdots + \alpha _{mj} \bm{c}_m 
+            = \dsum^m_{i=1} \alpha _{ij} \bm{c}_i
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        is the unique representation of $\Phi(\bm{b}_j )$ with respect to $C$. 
+        Then, we call the $m \times n$-matrix $\bm{A}_\Phi$, whose elements are given by $\bm{A}_\Phi(i, j) = \alpha_{ij}$ the transformation matrix of $\Phi$ (with respect to the ordered bases $B$ of $V$ and $C$ of $W$  ).
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item The transformation matrix can be used to map coordinates with respect to an ordered basis in $V$ to coordinates with respect to an ordered basis in $W$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -2134,19 +2226,25 @@ Then:
     \item For a given lower-dimensional subspace, orthogonal projections of high-dimensional data retain as much information as possible and minimize the difference/ error between the original data and the corresponding projection.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Definition}: Let $V$ be a vector space and $U \subseteq V$ a subspace of $V$ . 
-    A linear mapping $\pi : V \to U$ is called a projection if $\pi^2 = \pi \circ \pi = \pi$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[projection]
+        Let $V$ be a vector space and $U \subseteq V$ a subspace of $V$ . 
+        A linear mapping $\pi : V \to U$ is called a projection if $\pi^2 = \pi \circ \pi = \pi$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item Any projection $\pi_U (\bm{x})$ onto $U$ is necessarily an element of $U$.
     Therefore, they can be represented as linear combinations of the basis vectors $\bm{b}_1, \cdots , \bm{b}_m$ of $U$, such that $\pi_U (\bm{x}) = \dsum ^m _{i=1} \lambda_i \bm{b}_i$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Projection error/ reconstruction error}: The corresponding projection error is the norm of the difference vector between the original vector and its projection onto $U$: 
-    $
-        \dnorm{\bm{x} - \pi_U(\bm{x})}
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Projection error/ reconstruction error]
+        The corresponding projection error is the norm of the difference vector between the original vector and its projection onto $U$: 
+        $
+            \dnorm{\bm{x} - \pi_U(\bm{x})}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item The projections $\pi_U (\bm{x})$ are still vectors in $\mathbb{R}^n$ although they lie in an $m$-dimensional subspace $U \subseteq \mathbb{R}^n$ . 
     However, to represent a projected vector we only need the $m$ coordinates $\lambda_1, \cdots , \lambda_m$ with respect to the basis vectors $\bm{b}_1, \cdots , \bm{b}_m$ of $U$.
@@ -2870,38 +2968,41 @@ P @ x:
 \begin{enumerate}
     \item The generalization of rotations from $2$D and $3$D to $n$-dimensional Euclidean vector spaces can be intuitively described as fixing $n - 2$ dimensions and restrict the rotation to a two-dimensional plane in the $n$-dimensional space.
 
-    \item \textbf{Definition}: \textit{Givens Rotation}: Let $V$ be an $n$-dimensional Euclidean vector space and $\Phi : V \to V$ an automorphism with transformation matrix:
-    \\
-    .\hfill
-    $
-        \bm{R}_{ij} (\theta) := 
-        \begin{bmatrix}
-            \bm{I}_{i-1} & 0 & \cdots &  \cdots & 0 \\
-            0 & \cos \theta & 0 & - \sin \theta & 0\\
-            0 & 0 & \bm{I}_{j-i-1} & 0 & 0\\
-            0 & \sin \theta &  0 & \cos \theta & 0\\
-            0 & \cdots & \cdots & 0 & \bm{I}_{n-j}
-        \end{bmatrix}
-        \in \mathbb{R}^{n\times n}
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    for $1 \leq i < j \leq n$ and $\theta \in \mathbb{R}$. 
-    Then $\bm{R}_{ij} (\theta)$ is called a Givens rotation. 
-    Essentially, $\bm{R}_{ij} (\theta)$ is the identity matrix $\bm{I}_n$ with
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
-    .\hfill
-    $
-        r_{ii} = \cos \theta , 
-        \hspace{0.2cm}
-        r_{ij} = - \sin \theta,
-        \hspace{0.2cm}
-        r_{ji} = \sin \theta, 
-        \hspace{0.2cm}
-        r_{jj} = \cos \theta
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item
+    \begin{definition}[Givens Rotation]
+        Let $V$ be an $n$-dimensional Euclidean vector space and $\Phi : V \to V$ an automorphism with transformation matrix:
+        \\
+        .\hfill
+        $
+            \bm{R}_{ij} (\theta) := 
+            \begin{bmatrix}
+                \bm{I}_{i-1} & 0 & \cdots &  \cdots & 0 \\
+                0 & \cos \theta & 0 & - \sin \theta & 0\\
+                0 & 0 & \bm{I}_{j-i-1} & 0 & 0\\
+                0 & \sin \theta &  0 & \cos \theta & 0\\
+                0 & \cdots & \cdots & 0 & \bm{I}_{n-j}
+            \end{bmatrix}
+            \in \mathbb{R}^{n\times n}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        for $1 \leq i < j \leq n$ and $\theta \in \mathbb{R}$. 
+        Then $\bm{R}_{ij} (\theta)$ is called a Givens rotation. 
+        Essentially, $\bm{R}_{ij} (\theta)$ is the identity matrix $\bm{I}_n$ with
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            r_{ii} = \cos \theta , 
+            \hspace{0.2cm}
+            r_{ij} = - \sin \theta,
+            \hspace{0.2cm}
+            r_{ji} = \sin \theta, 
+            \hspace{0.2cm}
+            r_{jj} = \cos \theta
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item \textbf{Note}: 2D is special case
 \end{enumerate}

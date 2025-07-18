@@ -4,10 +4,13 @@
     \item Eigen is a German word meaning “characteristic”, “self”, or “own”.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Definition}: Let $\bm{A} \in \mathbb{R}^{n\times n}$ be a square matrix. 
-    Then $\lambda \in \mathbb{R}$ is an eigenvalue of $\bm{A}$ and $\bm{x} \in \mathbb{R}^n\backslash\dCurlyBrac{0}$ is the corresponding eigenvector of $\bm{A}$ if
-    $\bm{Ax} = \lambda \bm{x}$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Eigenvalues \& Eigenvectors]
+        Let $\bm{A} \in \mathbb{R}^{n\times n}$ be a square matrix. 
+        Then $\lambda \in \mathbb{R}$ is an eigenvalue of $\bm{A}$ and $\bm{x} \in \mathbb{R}^n\backslash\dCurlyBrac{0}$ is the corresponding eigenvector of $\bm{A}$ if
+        $\bm{Ax} = \lambda \bm{x}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item $\bm{Ax} = \lambda \bm{x}$ is called eigenvalue equation.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -33,17 +36,26 @@
     \item \textbf{Non-uniqueness of eigenvectors}: If $\bm{x}$ is an eigenvector of $\bm{A}$ associated with eigenvalue $\lambda$, then for any $c \in \mathbb{R}\backslash \dCurlyBrac{0}$ it holds that $c\bm{x}$ is an eigenvector of $\bm{A}$ with the same eigenvalue since $\bm{A}(c\bm{x}) = c\bm{Ax} = c\lambda\bm{x} = \lambda(c\bm{x})$. All vectors that are collinear to $\bm{x}$ are also eigenvectors of $\bm{A}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Theorem}: $\lambda  \in \mathbb{R}$ is an eigenvalue of $\bm{A} \in \mathbb{R}^{n\times n}$ if and only if $\lambda$  is a root of the characteristic polynomial $p_{\bm{A}}(\lambda )$ of $\bm{A}$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{theorem}[Eigenvalue: root of the characteristic polynomial]
+        $\lambda  \in \mathbb{R}$ is an eigenvalue of $\bm{A} \in \mathbb{R}^{n\times n}$ if and only if $\lambda$  is a root of the characteristic polynomial $p_{\bm{A}}(\lambda )$ of $\bm{A}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{theorem}
 
-    \item \textbf{Definition}: Let a square matrix $\bm{A}$ have an eigenvalue $\lambda_i$ . 
-    The \textbf{algebraic  multiplicity} of $\lambda_i$ is the number of times the root appears in the characteristic polynomial.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Algebraic Multiplicity]
+        Let a square matrix $\bm{A}$ have an eigenvalue $\lambda_i$ . 
+        The \textbf{algebraic multiplicity} of $\lambda_i$ is the number of times the root appears in the characteristic polynomial.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
-    \item \textbf{Definition}: Let $\lambda_i$ be an eigenvalue of a square matrix $\bm{A}$. 
-    Then the \textbf{geometric multiplicity} of $\lambda_i$ is the number of linearly independent eigenvectors associated with $\lambda_i$. 
-    In other words, it is the dimensionality of the eigenspace spanned by the eigenvectors associated with $\lambda_i$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item
+    \begin{definition}[Geometric Multiplicity]
+        Let $\lambda_i$ be an eigenvalue of a square matrix $\bm{A}$. 
+        Then the \textbf{geometric multiplicity} of $\lambda_i$ is the number of linearly independent eigenvectors associated with $\lambda_i$. 
+        In other words, it is the dimensionality of the eigenspace spanned by the eigenvectors associated with $\lambda_i$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item A specific eigenvalue’s geometric multiplicity must be at least one because every eigenvalue has at least one associated eigenvector. 
     An eigenvalue’s geometric multiplicity cannot exceed its algebraic multiplicity, but it may be lower.
@@ -58,11 +70,13 @@
     Because of this, the sole eigenspace $E_1$ of the identity matrix spans $n$ dimensions, and all $n$ standard basis vectors of $\mathbb{R}^n$ are eigenvectors of $\bm{I}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Theorem}: The eigenvectors $\bm{x}_1, \cdots , \bm{x}_n$ of a matrix $\bm{A} \in \mathbb{R}^{n\times n}$ with $n$ distinct eigenvalues $\lambda _1, \cdots , \lambda _n$ are linearly independent.
-    This theorem states that eigenvectors of a matrix with $n$ distinct eigenvalues form a basis of $\mathbb{R}^n$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-
     \item 
+    \begin{theorem}[eigenvectors: linearly independent]
+        The eigenvectors $\bm{x}_1, \cdots , \bm{x}_n$ of a matrix $\bm{A} \in \mathbb{R}^{n\times n}$ with $n$ distinct eigenvalues $\lambda _1, \cdots , \lambda _n$ are linearly independent.
+        This theorem states that eigenvectors of a matrix with $n$ distinct eigenvalues form a basis of $\mathbb{R}^n$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{theorem}
+
 \end{enumerate}
 
 
@@ -108,11 +122,17 @@ print(eigenvectors)
 \subsection{Eigenspace ($E_\lambda $) \& Eigenspectrum}
 
 \begin{enumerate}
-    \item \textbf{Definition}: For $\bm{A} \in \mathbb{R}^{n\times n}$ , the set of all eigenvectors of $\bm{A}$ associated with an eigenvalue $\lambda $ spans a subspace of $\mathbb{R}^n$, which is called the \textbf{eigenspace} of $\bm{A}$ with respect to $\lambda $ and is denoted by $E_\lambda $.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Eigenspace]
+        For $\bm{A} \in \mathbb{R}^{n\times n}$ , the set of all eigenvectors of $\bm{A}$ associated with an eigenvalue $\lambda $ spans a subspace of $\mathbb{R}^n$, which is called the \textbf{eigenspace} of $\bm{A}$ with respect to $\lambda $ and is denoted by $E_\lambda $.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
-    \item \textbf{Definition}: The set of all eigenvalues of $\bm{A}$ is called the \textbf{eigenspectrum}, or just spectrum, of $\bm{A}$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Eigenspectrum]
+        The set of all eigenvalues of $\bm{A}$ is called the \textbf{eigenspectrum}, or just spectrum, of $\bm{A}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item If $\lambda $ is an eigenvalue of $\bm{A} \in \mathbb{R}^{n\times n}$ , then the corresponding eigenspace $E_\lambda $ is the solution space of the homogeneous system of linear equations $(\bm{A} - \lambda \bm{I})\bm{x} = 0$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}

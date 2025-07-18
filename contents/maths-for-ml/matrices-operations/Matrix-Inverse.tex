@@ -28,8 +28,11 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
     $\bm{B}$ is called the inverse of $\bm{A}$ and denoted by $\bm{A}^{-1}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Theorem}: For any square matrix $\bm{A} \in \mathbb{R}^{n\times n}$ it holds that $\bm{A}$ is invertible if and only if $\det(\bm{A})\neq 0$.
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{theorem}[Square Matrix: Invertible]
+        For any square matrix $\bm{A} \in \mathbb{R}^{n\times n}$ it holds that $\bm{A}$ is invertible if and only if $\det(\bm{A})\neq 0$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{theorem}
 
     \item \textbf{Not} every matrix $\bm{A}$ possesses an inverse $\bm{A}^{-1}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}

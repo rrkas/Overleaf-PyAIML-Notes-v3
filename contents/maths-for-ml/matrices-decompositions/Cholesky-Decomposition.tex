@@ -1,0 +1,101 @@
+\subsection{Cholesky Decomposition ($A=LL^\top$)}
+
+\begin{enumerate}
+    \item 
+    \begin{theorem}[Cholesky Decomposition]
+        A symmetric, positive definite matrix $\bm{A}$ can be factorized into a product $\bm{A} = \bm{LL}^\top$, where L is a lower-triangular matrix with positive diagonal elements:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \underset
+            {
+                \displaystyle
+                \bm{A}
+            } 
+            {\underbrace{
+                \displaystyle
+                \begin{bmatrix}
+                    a_{11} & \cdots & a_{1n} \\
+                    \vdots & \ddots & \vdots \\
+                    a_{n1} & \cdots & a_{nn}
+                \end{bmatrix}
+            }}
+            =
+            \underset
+            {
+                \displaystyle
+                \bm{L}
+            } 
+            {\underbrace{
+                \displaystyle
+                \begin{bmatrix}
+                    l_{11} & \cdots & 0 \\
+                    \vdots & \ddots & \vdots \\
+                    l_{n1} & \cdots & l_{nn}
+                \end{bmatrix}
+            }}
+            \underset
+            {
+                \displaystyle
+                \bm{L}^\top
+            } 
+            {\underbrace{
+                \displaystyle
+                \begin{bmatrix}
+                    l_{11} & \cdots & l_{n1} \\
+                    \vdots & \ddots & \vdots \\
+                    0 & \cdots & l_{nn}
+                \end{bmatrix}
+            }}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        $\bm{L}$ is called the \textbf{Cholesky factor} of $\bm{A}$, and $\bm{L}$ is unique.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{theorem}
+
+    \item In machine learning, symmetric positive definite matrices require frequent manipulation, e.g., the covariance matrix of a multivariate Gaussian variable is symmetric, positive definite. 
+    The Cholesky factorization of this covariance matrix allows us to generate samples from a Gaussian distribution.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item  It also allows us to perform a linear transformation of random variables, which is heavily exploited when computing gradients in deep stochastic models, such as the variational auto-encoder.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The Cholesky decomposition also allows us to compute determinants very efficiently: 
+    $
+        \det(\bm{A}) 
+        = \det(\bm{L}) \det(\bm{L}^\top) 
+        = \det(\bm{L})^2
+        = \dprod_i l_{ii}^2
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+\begin{lstlisting}[
+    language=Python,
+    caption=Cholesky Decomposition - numPy
+]
+import numpy as np
+
+# generate a random matrix
+A = np.random.randint(-10, 10, size=(3,3))
+# Create a symmetric positive definite matrix
+A = A.T @ A
+
+# Perform Cholesky decomposition
+L = np.linalg.cholesky(A)
+
+print("Matrix A:")
+print(A)
+print("\nCholesky factor L:")
+print(L)
+\end{lstlisting}
+
+
+
+
+
+
+

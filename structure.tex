@@ -870,12 +870,37 @@
 
 
 
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+\newtheoremstyle{normalstyle} % Name of the style
+  {3pt}   % Space above
+  {3pt}   % Space below
+  {\normalfont}  % Body font
+  {}      % Indent amount
+  {\bfseries} % Theorem head font
+  {.}     % Punctuation after theorem head
+  {.5em}  % Space after theorem head
+  {}      % Theorem head spec
+
+\theoremstyle{normalstyle}
 
 
+% \declaretheorem[
+%   name=Theorem,
+%   numberwithin=chapter,
+%   list=theorem
+% ]{theorem}
+
+% \declaretheorem[
+%   name=Definition,
+%   numberwithin=chapter,
+%   list=definition
+% ]{definition}
 
 
-
-
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{definition}{Definition}[chapter]
 
 
 
