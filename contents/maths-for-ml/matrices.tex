@@ -220,8 +220,55 @@ print("Rank of matrix A:", rank)
 \input{contents/maths-for-ml/matrices-decompositions/Singular-Value-Decomposition}
 
 
+\subsection{Eigenvalue Decomposition ($A = P DP ^{-1}$) vs. Singular Value Decomposition ($A = U \Sigma V^\top$)}
 
+\begin{enumerate}
+    \item The SVD always exists for any matrix $\mathbb{R}^{m\times n}$ . 
+    The eigendecomposition is only defined for square matrices $\mathbb{R}^{n\times n}$ and only exists if we can find a basis of eigenvectors of $\mathbb{R}^n$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
+    \item The vectors in the eigendecomposition matrix $\bm{P}$ are not necessarily orthogonal, i.e., the change of basis is not a simple rotation and scaling. 
+    On the other hand, the vectors in the matrices $\bm{U}$ and $\bm{V}$ in the SVD are orthonormal, so they do represent rotations.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Both the eigendecomposition and the SVD are compositions of three linear mappings:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item Change of basis in the domain
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Independent scaling of each new basis vector and mapping from domain to codomain
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Change of basis in the codomain
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+    A key difference between the eigendecomposition and the SVD is that in the SVD, domain and codomain can be vector spaces of different dimensions.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item In the SVD, the left- and right-singular vector matrices $\bm{U}$ and $\bm{V}$ are generally not inverse of each other (they perform basis changes in different vector spaces). 
+    In the eigendecomposition, the basis change matrices $\bm{P}$ and $\bm{P}^{ -1}$ are inverses of each other.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item In the SVD, the entries in the diagonal matrix $\bm{\Sigma}$ are all real and nonnegative, which is not generally true for the diagonal matrix in the eigendecomposition.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The SVD and the eigendecomposition are closely related through their projections:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item The left-singular vectors of $\bm{A}$ are eigenvectors of $\bm{AA}^\top$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The right-singular vectors of $\bm{A}$ are eigenvectors of $\bm{A}^\top \bm{A}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The nonzero singular values of $\bm{A}$ are the square roots of the nonzero eigenvalues of both $\bm{AA}^\top$ and $\bm{A} ^\top \bm{A}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item For symmetric matrices $\bm{A} \in \mathbb{R}^{n\times n}$ , the eigenvalue decomposition and the SVD are one and the same, which follows from the spectral theorem.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
 
 
 
