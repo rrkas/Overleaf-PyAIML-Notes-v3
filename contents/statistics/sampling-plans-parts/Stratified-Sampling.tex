@@ -1,81 +1,82 @@
 \section{Stratified Sampling \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}\label{Sampling Plans/Representative Sampling/Stratified Sampling}
 
 \begin{customArrayStretch}{1.3}
-\begin{table}[H]
-    \centering
-    \begin{tabular}{>{\centering\arraybackslash}p{1.5cm} p{9cm} p{3.5cm}}
-        \hline
-        
-        $N$ & total population size & \\ \hline
-        
-        $n$ & total sample size & \\ \hline
-        
-        $M$ & number of sub-populations & \\ \hline
-        
-        $N_h$ & $k$th sub-population size & $\tsum_{h=1}^{M} N_h = N$ \\ \hline
-        
-        $n_h$ & sample size from $k$th sub-population & $\tsum_{h=1}^{M} n_h = n$ \\ \hline
+\begin{longtable}{>{\centering\arraybackslash}p{1.5cm} p{9cm} p{3.5cm}}
 
-        $h$ & Stratum index & $h \in \dCurlyBrac{1, \cdots, M}$ \\ \hline
+\hline\endfirsthead
+\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
 
-        $k$ & Stratum index & $k \in \dCurlyBrac{1, \cdots, K_S}$ \\ \hline
-        
-        $K_h$ & The number of possible samples that can be drawn from stratum $h$ \\ \hline
-        
-        $K_S$ & total number of possible samples \\ \hline
-        
-        $(h, i)$ & index of unit & \begin{minipage}{3.2cm}
-            \vspace{0.1cm}
-            $i \in \dCurlyBrac{1, 2,\cdots, N_h }$ \\
-            and $h \in \dCurlyBrac{1, 2,..., M}$
-            \vspace{0.1cm}
-        \end{minipage}  \\ \hline
-        
-        $x_{hi}$ & unit $i$ in stratum $h$ \\ \hline
+$N$ & total population size & \\ \hline
 
-        $w_{h}$ & 
-            weight of strata $h$ while sampling & 
-            \begin{minipage}{3.2cm}
-                \vspace{0.1cm}
-                $w_{h} = \dfrac{N_h}{N}$
-                \vspace{0.1cm}
-            \end{minipage}
-            \\ \hline
+$n$ & total sample size & \\ \hline
 
-        $f_{h}$ & 
-            sample fraction in stratum $h$ & 
-            \begin{minipage}{3.2cm}
-                \vspace{0.1cm}
-                $f_{h} = \dfrac{n_h}{N_h}$
-                \vspace{0.1cm}
-            \end{minipage}
-            \\ \hline
+$M$ & number of sub-populations & \\ \hline
 
-        $S_{h,k}$ & 
-        \multicolumn{2}{l}{
-            \begin{minipage}{11cm}
-                \vspace{0.1cm}
-                $S_{h,k}$ is the collected sample in stratum $h$ \\
-                The $k$-th possible sample from stratum $h$ \\
-                (e.g., $S_{2,3}$ is the $3$rd possible sample from stratum $2$) \\
-                focuses on one stratum
-                \vspace{0.1cm}
-            \end{minipage}
-        } \\ \hline
+$N_h$ & $k$th sub-population size & $\tsum_{h=1}^{M} N_h = N$ \\ \hline
 
-        $S_k$ & 
-        \multicolumn{2}{l}{
-            \begin{minipage}{11cm}
-                \vspace{0.1cm}
-                The $k$-th possible full stratified sample (i.e., across all strata). \\
-                Each $S_k$ includes one selected sample from each stratum.\\
-                focuses on a complete sample (all strata combined)
-                \vspace{0.1cm}
-            \end{minipage}
-        } \\ \hline
+$n_h$ & sample size from $k$th sub-population & $\tsum_{h=1}^{M} n_h = n$ \\ \hline
 
-    \end{tabular}
-\end{table}
+$h$ & Stratum index & $h \in \dCurlyBrac{1, \cdots, M}$ \\ \hline
+
+$k$ & Stratum index & $k \in \dCurlyBrac{1, \cdots, K_S}$ \\ \hline
+
+$K_h$ & The number of possible samples that can be drawn from stratum $h$ \\ \hline
+
+$K_S$ & total number of possible samples \\ \hline
+
+$(h, i)$ & index of unit & \begin{minipage}{3.2cm}
+    \vspace{0.1cm}
+    $i \in \dCurlyBrac{1, 2,\cdots, N_h }$ \\
+    and $h \in \dCurlyBrac{1, 2,..., M}$
+    \vspace{0.1cm}
+\end{minipage}  \\ \hline
+
+$x_{hi}$ & unit $i$ in stratum $h$ \\ \hline
+
+$w_{h}$ & 
+    weight of strata $h$ while sampling & 
+    \begin{minipage}{3.2cm}
+        \vspace{0.1cm}
+        $w_{h} = \dfrac{N_h}{N}$
+        \vspace{0.1cm}
+    \end{minipage}
+    \\ \hline
+
+$f_{h}$ & 
+    sample fraction in stratum $h$ & 
+    \begin{minipage}{3.2cm}
+        \vspace{0.1cm}
+        $f_{h} = \dfrac{n_h}{N_h}$
+        \vspace{0.1cm}
+    \end{minipage}
+    \\ \hline
+
+$S_{h,k}$ & 
+\multicolumn{2}{l}{
+    \begin{minipage}{11cm}
+        \vspace{0.1cm}
+        $S_{h,k}$ is the collected sample in stratum $h$ \\
+        The $k$-th possible sample from stratum $h$ \\
+        (e.g., $S_{2,3}$ is the $3$rd possible sample from stratum $2$) \\
+        focuses on one stratum
+        \vspace{0.1cm}
+    \end{minipage}
+} \\ \hline
+
+$S_k$ & 
+\multicolumn{2}{l}{
+    \begin{minipage}{11cm}
+        \vspace{0.1cm}
+        The $k$-th possible full stratified sample (i.e., across all strata). \\
+        Each $S_k$ includes one selected sample from each stratum.\\
+        focuses on a complete sample (all strata combined)
+        \vspace{0.1cm}
+    \end{minipage}
+} \\ \hline
+
+\end{longtable}
 \end{customArrayStretch}
 
 \begin{enumerate}

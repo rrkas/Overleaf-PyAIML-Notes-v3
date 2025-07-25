@@ -1,0 +1,405 @@
+\chapter{Probability Theory}
+
+
+\begin{enumerate}
+    \item \textbf{Descriptive statistics} summarizes and visualizes the observed data. It is usually not very difficult, but it forms an essential part of reporting(scientific)results.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Inferential statistics} tries to draw conclusions from the data that would hold true for part or the whole of the population from which the data is collected.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The \textbf{theory of probability} makes it possible to connect the two disciplines of descriptive and inferential statistics.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\end{enumerate}
+
+
+\section{Definitions}
+
+\begin{enumerate}
+    \item An \textbf{event} is defined as something that happens or it is seen as a result of something.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Definition 1}: probability of an event $A$ for a finite population can be given by $P(A) = \dfrac{N_A}{N}$ with $N_A$ the number of units with characteristic $A$ and $N$ the size of the population.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item This definition is only correct if each opportunity for the event to occur is as likely to produce the event as any other opportunity.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item Another limitation of this definition is that it is defined for finite populations only.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item \textbf{Definition 2} (more theoretical): Probability is the proportion of the occurrence of an event obtained from infinitely many repeated and identical trials or experiments under similar conditions. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item \textbf{Example}: if a die is thrown $n$ times and the event $A$ is the single dot facing up, then the probability $P (A)$ of the event $A$ can be \textbf{approximated} by the ratio of the number of throws $n_A$ with a single dot facing up and the total number of throws $n$, i.e., $P(A) \approx \dfrac{n_A}{n}$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item When the number of repeated trials $n$ is increased it is expected that the proportion $\dfrac{n_A}{n}$ converges to some value $p$ (which would be equal to $1/6$ if the die is \textit{fair}).
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $P(A) =\displaystyle \lim_{n\to \infty} \dfrac{n_A}{n} = p$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+    
+    \item we simply define the probability $P(A)$ of an event $A$ as an (unknown) value between zero and one, $0 \leq P (A) \leq 1$, where both boundaries are allowed, which could either be approximated by collecting appropriate and real data or by the limit of a proportion of repeated and identical trials.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\section{Event Axioms}
+
+\begin{enumerate}
+    \item The complement of event $A$ is denoted by $A^c$ and it indicates that event $A$ does not occur.
+    The probability that event $A$ occurs is one minus the probability that the event $A$ does not occur; thus $P (A) = 1 - P (A^c)$.
+    This rule is based on the assumption that either event $A$ occurs or event $A^c$ occurs.
+    This means that $P (A \cup A^c) = 1$, since we will see either $A$ or $A^c$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    \begin{definition}[joint event/ mutual event ($A \cap B$)]
+        The occurrence of two events $A$ and $B$ at the same time is denoted by $A \cap B$. 
+        This is often referred to as the joint or mutual event. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{definition}
+
+    \item The event that either $A$ or $B$ (or both) occurs is denoted by $A \cup B$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The probability of no event must be zero. 
+    Not having events is indicated by the empty set $\varnothing$ and the probability is $P(\varnothing) = 0$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+    \item 
+    \begin{definition}[mutually exclusive events ($P (A \cap B) = P (\varnothing) = 0$)]
+        if two events $A$ and $B$ can never occur together (mutually exclusive events), then it follows that $A \cap B = \varnothing$ and $P (A \cap B) = P (\varnothing) = 0$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{definition}
+
+    \item 
+    \begin{definition}[independent events ($A \perp B$) ($P (A \cap B) = P (A) \cdot P (B)$)]
+        We call two events $A$ and $B$ independent if and only if the probability of the mutual event is equal to the product of the probabilities of each event $A$ and $B$ separately.
+        Thus the independence of events A and B (denoted by $A \perp B$) is equivalent with $P (A \cap B) = P (A) \cdot P (B)$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{definition}
+    \begin{enumerate}
+        \item any event $A$ with the non-event $\varnothing$ is independent: $P(A \cap \varnothing) = P(\varnothing) = 0 = 0 \cdot P(A) = P(\varnothing) P(A)$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item  if two events with a positive probability ($P(A) > 0$ and $P(B) > 0$) that are also mutually exclusive can never be independent: $0 = P(\varnothing) = P(A \cap B) < P(A) P(B)$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item 
+    \begin{definition}[associated events/ associated variables]
+        Two events or variables are considered associated when they are not independent.
+    \end{definition}
+\end{enumerate}
+
+
+\section{Event Rules}
+
+\begin{enumerate}
+    \item If the events $A$ and $B$ are independent, then the events $A$ and $B^c$, the events $A^c$ and $B$, and the events $A^c$ and $B^c$ are also independent. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The probability of the occurrence of either event $A$ or $B$ or both is equal to the sum of the probabilities of these events separately minus the probability that both events occur at the same time, i.e., $P (A \cup B) = P (A) + P (B) - P (A \cap B)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item For mutually exclusive events $A$ and $B$, $P (A \cup B) = P (A) + P (B)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    \begin{definition}[law of total probability ($P (A) = P (A \cap B) + P (A \cap B^c)$)]
+        The probability of an event $A$ is the sum of the probability of both events $A$ and $B$ and the probability of both events $A$ and $B^c$, thus $P (A) = P (A \cap B) + P (A \cap B^c)$. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}    
+    \end{definition}
+\end{enumerate}
+
+
+
+\section{Conditional Probability ($P(A|B)$)}
+
+
+\begin{enumerate}
+    \item In some situations probability statements are of interest for a particular subset of outcomes.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If event A represents the occurrence of a specific condition or outcome, and event B represents the occurrence of a related or influencing condition or characteristic, then the probability of interest is the conditional probability of A given B, denoted by $P(A|B)$.
+    We refer to this conditional probability as the probability of event A \textit{given} event B.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $P(A|B) = \begin{cases}
+        \dfrac{P(A\cap B)}{P(B)} & \text{if } P(B) > 0 \\
+        0 & \text{if } P(B) = 0
+    \end{cases} 
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item if event $B$ could never occur (i.e., $P (B) = 0$), there is no reason to define the conditional probability
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If we deal with two events $A$ and $B$, the relevant probabilities can be summarized in the a $2 \times 2$ contingency table. 
+    In column $A$ and row $B$, the probability of the occurrence of both events $A$ and $B$ at the same time is given by $P (A \cap B)$.
+    Using the conditional relation, it can also be expressed by $P(A|B) P(B)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    \begin{customArrayStretch}{1.2}
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|l||l|l|l|}
+                  \hline
+                  & $A$ & $A^c$ &  \\
+                  \hline\hline
+                  
+                  $B$ & $P (A \cap B) = P (A|B) P (B)$ & $P (A^c \cap B) = P (A^c|B) P (B)$ & $P (B)$ \\
+                  \hline
+                  
+                  $B^c$ & $P (A \cap B^c) = P (A|B^c) P (B^c)$ & $P (A^c \cap B^c) = P (A^c|B^c) P (B^c)$ & $P (B^c)$ \\
+                  \hline
+                  
+                  & $P (A)$ & $P (A^c)$ & $1$ \\
+                  \hline
+            \end{tabular}
+            \caption{Conditional probabilities in a $2 \times 2$ contingency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+        \end{table}
+    \end{customArrayStretch}
+
+    \item 
+    \begin{theorem}[Bayes Theorem]
+        \[
+            P(B|A) 
+            = \dfrac{P(A\cap B)}{P(A)} = \dfrac{P(A|B) P(B)}{P(A)}
+            \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+        \]
+    \end{theorem}
+\end{enumerate}
+
+
+
+
+\section{Association Measures/ Measures of Risk}
+
+\begin{enumerate}
+    \item $D$: the event of interest, such as a disease, failure, or success (also referred to as the outcome or result).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, common/online/chatgpt}
+
+    \item $E$: the event representing a possible influencing factor, such as exposure, a risk factor, or treatment (also called an explanatory variable).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, common/online/chatgpt}
+\end{enumerate}
+
+\subsection{Risk Difference/ Excess Risk ($ER = P(D|E) - P(D|E^c)$)}
+
+\begin{enumerate}
+    \item The risk difference or excess risk is an absolute measure of risk, since it is nothing more than the difference in the conditional probabilities, i.e.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \[
+        ER = P(D|E) - P(D|E^c)
+        \hfill 
+        \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+    \]
+
+    \item The risk difference is based on an additive model, i.e., $P (D|E) = ER + P (D|E^c)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item It always lies between $-1$ and $1$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $
+        \begin{aligned}
+            ER = 0 
+            & \Longleftrightarrow 
+            P (D|E) = P (D|E^c) \\
+            & \Longleftrightarrow 
+            P (E^c) P (D \cap E) = P (E) P (D \cap E^c) \\
+            & \Longleftrightarrow 
+            [1 - P (E)] P (D \cap E) = P (E)[P(D) - P (D \cap E)] \\
+            & \Longleftrightarrow 
+            P (D \cap E) = P (D) P (E)
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item it can be viewed as the excess number of cases ($D$) as a fraction of the population size. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item If the complete population (of size $N$) were to be exposed, the number of cases would be equal to $N \cdot P (D) = N \cdot P (D|E)$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item If the complete population were unexposed the number of cases would be equal to $N \cdot P (D) = N \cdot P (D|E^c)$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Thus the difference in these numbers of cases indicates how the number of cases were to change if a completely exposed population would change to a completely unexposed population.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{customArrayStretch}{1.2}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|p{14cm}|}
+            \hline
+    
+            $ER < 0$ & exposure ($E$) is protective for the outcome 
+            \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+            \hline
+            
+            $ER = 0$ & the outcome ($D$) is independent of the exposure ($E$) 
+            \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+            \hline
+            
+            $ER > 0$ & there is a greater risk of the outcome when exposed ($E$) than when unexposed ($E^c$) 
+            \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{customArrayStretch}
+
+
+
+
+\subsection{Relative Risk ($RR = {P(D|E)}/{P(D|E^c)}$)}
+
+\begin{enumerate}
+    \item The relative risk would compare the two conditional probabilities $P (D|E)$ and $P (D|E^c)$ by taking the ratio, i.e.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \[
+        RR = \dfrac{P(D|E)}{P(D|E^c)}
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+    \]
+
+    \item It is common to take as denominator the risk of the outcome D for the unexposed group.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The relative risk is based on a multiplicative model, i.e., $P (D|E) = RR \cdot P (D|E^c)$.
+\end{enumerate}
+
+
+
+\begin{customArrayStretch}{1.2}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|p{14cm}|}
+            \hline
+    
+            $RR < 1$ & unexposed group has a higher probability of the outcome
+            \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+            \hline
+            
+            $RR = 1$ & outcome and exposure are independent 
+            \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+            \hline
+            
+            $RR > 1$ & exposed group has a higher probability of the outcome ($D$) than the unexposed one 
+            \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{customArrayStretch}
+
+
+
+\subsection{Odds Ratio ($OR = ({P (D^c|E^c)}/{P (D^c|E)}) \times RR$)}
+
+\begin{enumerate}
+    \item  
+    \begin{definition}[Odds]    
+        The odds is a measure of how likely the outcome occurs with respect to not observing this outcome.
+        The odds comes from gambling, where profits of bets are expressed as $1$ to $x$. 
+        For instance, the odds of $1$ to $n$ means that it is $n$ times more likely to loose than to win.
+        The odds can be defined mathematically by $O = \dfrac{p}{(1 - p)}$, with $p$ the probability of winning.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{definition}
+
+    \item The odds ratio compares the odds for the exposed group with the odds for the unexposed group.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The odds of the exposed group is $O_E = \dfrac{P (D|E)}{1 - P (D|E)}$ and the odds for the unexposed group is $O_{E^c} = \dfrac{P (D|E^c)}{1 - P (D|E^c)}$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The odds ratio is given by:
+    \[
+        OR 
+        = \dfrac{O_E}{O_{E^c}} 
+        = \dfrac{P (D|E)[1 - P (D|E^c)]}{P (D|E^c)[1 - P (D|E)] }
+        = \dfrac{P (D^c|E^c)}{P (D^c|E)} \times RR
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+    \]
+
+    \item  it is common to use the unexposed group as reference group, which implies that the odds of the unexposed group $O_{E^c}$ is used in the denominator.
+\end{enumerate}
+
+
+\begin{customArrayStretch}{1.2}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|p{14cm}|}
+            \hline
+    
+            $OR < 1$ & unexposed group has a higher probability of the outcome
+            \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+            \hline
+            
+            $OR = 1$ & outcome is independent of the exposure
+            \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+            \hline
+            
+            $OR > 1$ & exposed group has a higher odds than the unexposed group, which implies that the exposed group has a higher probability of outcome $D$
+            \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{customArrayStretch}
+
+
+
+\subsection{Relation in ER, RR \& OR}
+
+\begin{enumerate}
+    \item the odds ratio and relative risk are always ordered
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item odds ratio is always further away from 1 than the relative risk
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill 
+    $1 < RR < OR$ 
+    \hfill \textbf{OR} \hfill 
+    $OR < RR < 1$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Proof: 
+    \begin{enumerate}
+        \item  If $RR > 1$, we have that $P(D|E) > P(D|E^c)$, using its definition. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Since $P(D^c|E) = 1 - P(D|E)$ and $P(D^c|E^c) = 1 - P(D|E^c)$, we obtain that $P(D^c|E) < P(D^c|E^c)$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Combining this inequality with the relation in Odds Ratio equation, we see that $OR > RR$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \end{enumerate}
+
+    \item the odds ratio and relative risk are equal to each other when $RR = 1$ (or $OR = 1$).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
