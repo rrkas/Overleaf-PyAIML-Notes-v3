@@ -45,6 +45,14 @@
     
     \item we simply define the probability $P(A)$ of an event $A$ as an (unknown) value between zero and one, $0 \leq P (A) \leq 1$, where both boundaries are allowed, which could either be approximated by collecting appropriate and real data or by the limit of a proportion of repeated and identical trials.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    \begin{definition}[Observed probabilities]
+        Observed probabilities are empirical probabilities — that is, probabilities calculated from the sample data.
+    \end{definition}
+    \begin{enumerate}
+        \item These probabilities are \textbf{not theoretical}, but come directly from real-world observations.
+    \end{enumerate}
 \end{enumerate}
 
 
@@ -120,7 +128,7 @@
 
 
 
-\section{Conditional Probability ($P(A|B)$)}
+\section{Conditional Probability ($P(A|B)$)}\label{statistics/probability-theory/Conditional Probability}
 
 
 \begin{enumerate}
@@ -164,6 +172,7 @@
                   \hline
             \end{tabular}
             \caption{Conditional probabilities in a $2 \times 2$ contingency table \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+            \label{statistics/probability-theory/Conditional Probability/Conditional-probabilities-contingency-table}
         \end{table}
     \end{customArrayStretch}
 
@@ -189,6 +198,29 @@
     \item $E$: the event representing a possible influencing factor, such as exposure, a risk factor, or treatment (also called an explanatory variable).
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, common/online/chatgpt}
 \end{enumerate}
+
+\begin{customArrayStretch}{1.2}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+
+        \multirow{2}{*}{Exposure} &  \multicolumn{2}{|l|}{Outcome} & \multirow{2}{*}{TOTAL} \\
+        \cline{2-3}
+        & $D$ & $D^c$ & \\
+        \hline
+
+        $E$ & $P(D|E)$ & $P(D^c|E)$ & $P(E)$ \\ \hline
+        
+        $E^c$ & $P(D|E^c)$ & $P(D^c|E^c)$ & $P(E^c)$ \\ \hline
+    
+        TOTAL & $P(D)$ & $P(D^c)$ & $1$ \\ \hline
+
+    \end{tabular}
+    \caption{$2 \times 2$ contingency table for exposure-outcome}
+    \label{statistics/probability-theory/Conditional Probability/contingency-table-exposure-outcome}
+\end{table}
+\end{customArrayStretch}
 
 \subsection{Risk Difference/ Excess Risk ($ER = P(D|E) - P(D|E^c)$)}
 
@@ -385,6 +417,18 @@
 
     \item the odds ratio and relative risk are equal to each other when $RR = 1$ (or $OR = 1$).
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The odds ratio is often considered more complex than the relative risk, in particular because of the simplicity of interpretation of the relative risk.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The odds ratio is, however, more frequently used in practice than the relative risk. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item An important reason for this is that the odds ratio is symmetric in exposure $E$ and outcome $D$.
+        If the roles of the exposure and outcome are interchanged the odds ratio does not change, but the relative risk does.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+    \end{enumerate}
 \end{enumerate}
 
 
@@ -393,6 +437,131 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Simpson’s Paradox}
+
+\begin{enumerate}
+    \item Simpson’s Paradox is when a trend or relationship that appears in separate groups of data reverses or disappears when the groups are combined.
+    \hfill \cite{common/online/chatgpt}
+
+    \item In other words:
+    \begin{enumerate}
+        \item A conclusion that seems true when you look at each group individually
+        \hfill \cite{common/online/chatgpt}
+
+        \item Can be completely misleading or even opposite when you combine the data.
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+
+    \item Why does it happen? Because of confounding variables — something else (like unequal group sizes) is influencing the results.
+    \hfill \cite{common/online/chatgpt}
+
+    \item Simpson demonstrated that the association between $D$ and $E$ in the collapsed contingency table is preserved in the two separate contingency tables for $C$ and $C^c$ whenever one or both of the following restrictions hold true:
+    \[
+        P (D \cap  E \cap  C) P (D \cap  E^c \cap  C^c) = P (D \cap  E^c \cap  C) P (D \cap  E \cap  C^c)
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+    \]
+    \[
+        P (D \cap  E \cap  C) P(D^c \cap  E \cap  C^c)= P(D^c \cap  E \cap  C)P(D \cap  E \cap  C^c)
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+    \]
+
+    \begin{enumerate}
+        \item The first equation implies that the odds ratio for having the exposure $E$ for the presence or absence of $C$ in the outcome group $D$ is equal to one, i.e.
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+        \[
+            OR_{EC|D} = \dfrac{P (E|C, D)[1 - P (E|C^c, D)]}{P (E|C^c, D)[1 - P (E|C, D)]} = 1
+            \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+        \]
+        Thus $E$ and $C$ must be independent in the outcome group $D$, which means that $P (E \cap C|D) = P (E|D) P (C|D)$.
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+
+        \item The second equation implies that the odds ratio for the outcome $D$ in the presence or absence of $C$ in the exposed group $E$ is equal to one, i.e.
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+        \[
+            OR_{DC|E} = \dfrac{P (D|C, E)[1 - P (D|C^c, E)]}{P (D|C^c, E)[1 - P (D|C, E)]} = 1
+            \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+        \]
+        Thus this means that $D$ and $C$ are independent in the exposed group $E$, which means that $P (D \cap C|E) = P (D|E) P (C|E)$.
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+    \end{enumerate}
+\end{enumerate}
+
+\textbf{Example}:
+
+\begin{customArrayStretch}{1.2}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \multirow{2}{*}{Exposure} & \multicolumn{2}{c|}{Kidney Stones Outcome $\leq$ 2cm ($C$)} & \multirow{2}{*}{Total}\\
+        \cline{2-3}
+        & Removal ($D$) & No Removal ($D^c$) & \\
+        \hline
+        Nephrolithotomy ($E$) & 234 & 36 & 270 \\ \hline
+        Open Surgery($E^c$) & 81 & 6 & 87 \\ \hline
+        Total & 315 & 42 & 357 \\ 
+
+        \hline \hline
+
+        \hline
+        \multirow{2}{*}{Exposure} & \multicolumn{2}{c|}{Kidney Stones Outcome $>$ 2cm ($C^c$)} & \multirow{2}{*}{Total}\\
+        \cline{2-3}
+        & Removal ($D$) & No Removal ($D^c$) & \\
+        \hline
+
+        Nephrolithotomy ($E$) & 55 & 25 & 80 \\ \hline
+        Open Surgery($E^c$) & 192 & 71 & 263 \\ \hline
+        Total & 247 & 96 & 343 \\ \hline
+    \end{tabular}
+    \caption{
+        $2 \times 2$ contingency table for removal of kidney stones and two surgical treatments by size of kidney stones.
+        \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    }
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \multirow{2}{*}{Exposure} & \multicolumn{2}{c|}{Kidney Stones Outcome} & \multirow{2}{*}{Total}\\
+        \cline{2-3}
+        & Removal ($D$) & No Removal ($D^c$) & \\
+        \hline
+
+        Nephrolithotomy ($E$) & 289 & 61 & 350 \\ \hline
+        Open surgery ($E^c$) & 273 & 77 & 350 \\ \hline
+        Total & 562 & 138 & 700 \\ \hline
+    \end{tabular}
+    \caption{
+        $2 \times 2$ contingency table for removal of kidney stones and two surgical treatments
+        \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    }
+\end{table}
+\end{customArrayStretch}
+
+
+\begin{enumerate}
+    \item $RR = (289/350)/(273/350) = 1.0586$.  This means that percutaneous nephrolithotomy increases the “risk” of successful removal of the kidney stones with respect to open surgery.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $RR_{\leq 2} = 0.9309$ and $RR_{>2} = 0.9417$. it seems that open surgery has a higher success of kidney stone removal than percutaneous nephrolithotomy for both small and large stones. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This is a contradiction.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 
