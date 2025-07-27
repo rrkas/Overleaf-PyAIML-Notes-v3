@@ -496,6 +496,32 @@
         Thus this means that $D$ and $C$ are independent in the exposed group $E$, which means that $P (D \cap C|E) = P (D|E) P (C|E)$.
         \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
     \end{enumerate}
+
+    \item If the two independence requirements are violated, the event C is called a \textbf{confounder}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item To say that C is not a confounder, we would want:
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item C is independent of E (i.e., the confounder is not related to the exposure): $C\perp E$
+            \hfill \cite{common/online/chatgpt}
+
+            \item C is independent of D given E (i.e., once we account for exposure, the confounder does not affect disease): $C \perp D | E$
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+
+        \item If C is related to both E and D — i.e.,
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item C affects the likelihood of being exposed (E), and
+            \hfill \cite{common/online/chatgpt}
+
+            \item C also affects the chance of getting the disease (D) independently of E,
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+        Then the independence assumptions are violated. Therefore, C is a confounder — because it distorts the observed relationship between E and D.
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
 \end{enumerate}
 
 \textbf{Example}:
