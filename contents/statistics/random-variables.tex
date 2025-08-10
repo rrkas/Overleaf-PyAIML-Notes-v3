@@ -1,5 +1,110 @@
 \chapter{Random Variables}
 
+\section{Intro}
+
+
+\begin{enumerate}
+    \item A random variable is a numerical outcome of a random process.
+    A random variable assigns a number to each possible outcome of a random experiment.
+    \hfill \cite{common/online/chatgpt}
+
+    \item Why is it called "random"? 
+    Because the value it takes depends on chance.
+    You don’t know the outcome in advance, but you know the possible values and can assign probabilities to them.
+    \hfill \cite{common/online/chatgpt}
+
+    \item This allows us to extend our theory on probability to other types of data without restricting it to specific events (i.e., binary data).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Types of Random Variables:
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item Discrete Random Variable:
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item Takes countable values (e.g., 0, 1, 2, 3…)
+            \hfill \cite{common/online/chatgpt}
+            
+            \item Examples: number of heads in 10 coin tosses, number of emails received
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+
+        \item Continuous Random Variable
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item Takes uncountably many values in an interval (e.g., any real number)
+            \hfill \cite{common/online/chatgpt}
+            
+            \item Examples: height of a person, temperature, time taken to run a race
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+    \end{enumerate}
+
+    \item Notation:
+    \begin{enumerate}
+        \item Random variables are often written as capital letters like $X, Y, Z$
+        \hfill \cite{common/online/chatgpt}
+
+        \item Their values are written in lowercase, e.g., $X=x$
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+\section{Probability Density Functions (PDF) ($f$ or $f_\theta$ or $f(\cdot|\theta)$)}
+
+\begin{enumerate}
+    \item The density function may be viewed as a smooth version of the histogram if we standardize the frequencies on the vertical axis to proportions. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The density function characterizes the occurrence of values for a specific variable (as depicted on the x-axis) on all units from the population. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Since in practice all populations are finite, the density function is an abstract formulation of, or a “model” for, the “frequencies” of all population values.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item PDF must satisfy two important conditions or properties:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item  it cannot be negative, i.e., $f (x) \geq 0$ for every value $x$ that is present in the population
+        For values of $x$ outside this domain, the PDF can then be defined equal to zero: $f (x) = 0$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item  the “area under the curve” (AUC) is equal to one, i.e., $\dint_{\mathbb{R}} f(x) dx = 1$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item Many different PDFs exist and they have been proposed over a period of more than two centuries to be able to describe populations and data in practical settings.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item These functions are often parametric functions, i.e., the PDF is known up to a set of parameters.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The PDF is then often denoted by $f_{\bm{\theta}}$ , where $\bm{\theta}$ represents the set or \textbf{vector} of $m$ density parameters: 
+        $\bm{\theta} = 
+        \begin{bmatrix}
+            \theta_1 & \theta_2 & \cdots &\theta_m
+        \end{bmatrix} 
+        ^\top
+        $.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

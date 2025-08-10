@@ -361,7 +361,8 @@
       \fi
     \fi
     % \interlinepenalty\@M % Prevent line breaks within the title (maximum penalty)
-    \fontsize{30}{30} \bfseries #1\par\nobreak % Display the chapter title in huge, bold text
+    \fontsize{30}{30} \bfseries \texorpdfstring{#1}{}\par\nobreak
+    % Display the chapter title in huge, bold text
     \vskip 20\p@ % Add 40pt space below the chapter title
   }}
 
@@ -380,7 +381,8 @@
     \fontsize{15}{17} % Use the normal font style
     \scshape % Use small caps for the chapter title
     % \interlinepenalty\@M % Prevent line breaks within the title
-    \fontsize{30}{30} \bfseries #1\par\nobreak % Display the title in huge, bold text
+    \fontsize{30}{30} \bfseries \texorpdfstring{#1}{}\par\nobreak
+    % Display the title in huge, bold text
     \vskip 20\p@ % Add 40pt space below the chapter title
   }}
 
@@ -416,7 +418,7 @@
       \leavevmode
       \fontsize{17pt}{17pt}\selectfont
       \bfseries\raggedright % Use large, bold, left-aligned text
-      \thesection.\ \texorpdfstring{#2}{}\par % Display section number followed by title
+      \thesection.\ \texorpdfstring{#2}{#1}\par % Display section number followed by title
       \vskip -1.5ex % Reduce space below the title
       \noindent\hrulefill % Draw a horizontal line across the page
       }}\nobreak
@@ -440,7 +442,7 @@
       \fontsize{17pt}{17pt}\selectfont
       \bfseries\raggedright % Large, bold, left-aligned title
 %      \thesection\ % (Commented out) Section number is not displayed
-      \texorpdfstring{#2}{}\par % Display the section title
+      \texorpdfstring{#2}{#1}\par % Display the section title
       \vskip -1.5ex % Reduce space below the title
       \noindent\hrulefill % Draw a horizontal line
       }}\nobreak
