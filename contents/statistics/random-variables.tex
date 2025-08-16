@@ -8,12 +8,24 @@
     A random variable assigns a number to each possible outcome of a random experiment.
     \hfill \cite{common/online/chatgpt}
 
+    \item An intuitive definition of a random variable or random quantity is a variable for which the value or outcome is unknown and for which the outcome is influenced by some form of random phenomenon. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
     \item Why is it called "random"? 
     Because the value it takes depends on chance.
     You don’t know the outcome in advance, but you know the possible values and can assign probabilities to them.
     \hfill \cite{common/online/chatgpt}
 
     \item This allows us to extend our theory on probability to other types of data without restricting it to specific events (i.e., binary data).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The probability sampling approach makes the variable of interest a random variable, as the sampling approach is here the random phenomenon.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item A realization or an outcome of the random variable is then indicated by the same, but lower case, letter.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item a random variable may be seen as a variable that can in principle be equal to any of the values in the population, and after probability sampling the outcome(s) will become known. 
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Types of Random Variables:
@@ -48,11 +60,15 @@
         \item Their values are written in lowercase, e.g., $X=x$
         \hfill \cite{common/online/chatgpt}
     \end{enumerate}
+
+    \item The \textbf{probability function} $P(X \leq x)$ is a general concept and can be used for any random variable. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
 \end{enumerate}
 
 
 
-\section{Probability Density Functions (PDF) ($f$ or $f_\theta$ or $f(\cdot|\theta)$)}
+\section{Probability Density Functions (PDF) ($f(x)$)}
 
 \begin{enumerate}
     \item The density function may be viewed as a smooth version of the histogram if we standardize the frequencies on the vertical axis to proportions. 
@@ -90,20 +106,63 @@
         $.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
+
+    \item  $f(x)$ may \textbf{not} be equal to $P(X = x)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item The probability $P(X = x)$ is equal to zero for continuous random variables, since there is no surface area under $f (x)$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
 \end{enumerate}
 
 
 
 
+\section{Cumulative Density Functions (CDF) ($F(x) = P(X \leq x)$)}
+
+\begin{enumerate}
+    \item The probability $P(X \leq x)$ is also referred to as the \textbf{distribution function} obtained in $x$ and it is denoted by $F(x) = P(X \leq x)$. 
+    Thus every random variable $X$ has a distribution function $F$ through $F(x) = P(X \leq x)$, but also every distribution function $F$ has a random variable $X$, namely the random variable $X$ that makes $P(X \leq x) = F(x)$.
+    Thus the two concepts are directly related to each other and we then typically say that $X$ is distributed according to $F$, i.e., $X \sim F$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Each distribution function $F$ typically satisfies three conditions:
+    \begin{enumerate}
+        \item When the value $x$ increases to infinity, the distribution function becomes equal to one, i.e., $\lim _{x\to \infty} F(x) = 1$. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item When the value $x$ decreases to minus infinity the distribution function becomes equal to zero, i.e., $\lim _{x\to -\infty} F(x) = 0$. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The distribution function is a non-decreasing function, i.e., $F(x_1) \leq F(x_2)$ when $x_1 \leq x_2$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item There is a direct relation between distribution functions and densities. 
+    If we start with a PDF, we can define a distribution function in the following way:
+    $
+        F(x) = \dint_{-\infty}^{x} f(z) dz
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $P(X < x) = P(X \leq x)$ for continuous random variables
+
+    \item $P(X > x) = 1 - P(X \leq x)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $P( x_1 < X \leq x_2) = P(X \leq x_2) - P(X \leq x_1)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\end{enumerate}
 
 
 
+\section{Expected Values}
 
-
-
-
-
-
+\begin{enumerate}
+    \item 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 
