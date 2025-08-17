@@ -123,7 +123,7 @@
 \begin{enumerate}
     \item The probability $P(X \leq x)$ is also referred to as the \textbf{distribution function} obtained in $x$ and it is denoted by $F(x) = P(X \leq x)$. 
     Thus every random variable $X$ has a distribution function $F$ through $F(x) = P(X \leq x)$, but also every distribution function $F$ has a random variable $X$, namely the random variable $X$ that makes $P(X \leq x) = F(x)$.
-    Thus the two concepts are directly related to each other and we then typically say that $X$ is distributed according to $F$, i.e., $X \sim F$.
+    Thus the two concepts are directly related to each other and we then typically say that $X$ is distributed according to $F$, i.e., \colorbox{yellow}{$X \sim F$}.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Each distribution function $F$ typically satisfies three conditions:
@@ -145,6 +145,45 @@
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item The full distribution function of $\psi(X)$ can always be established, but it does not always have a simple workable form.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    $
+        P(\psi^{-1}(X) \leq x)
+        = P(X \leq \psi(x)) 
+        = F(\psi(x))
+        =\dint_{-\infty}^{\psi(x)} f(z) dz
+        =\dint_{-\infty}^{x} \psi^{\prime}(z)\ f(\psi(z))\ dz
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    \textbf{Example}: Let $X$ being normally distributed with parameters $\mu$ and $\sigma$, and consider the function $\psi(x) = \exp\dCurlyBrac{x}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    $
+        P(X \leq x)
+        = \dint_{-\infty}^{x} \dfrac{1}{\sigma} \phi\dParenBrac{\dfrac{z - \mu}{\sigma}}
+        = \dint_{-\infty}^{(x - \mu)/\sigma} \phi(z)\ dz
+        = \Phi\dParenBrac{\dfrac{x - \mu}{\sigma}}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    $
+        \begin{aligned}
+            P(\exp\dCurlyBrac{X} \leq x) 
+                &= P(X \leq \log(x))
+                = \Phi\dParenBrac{\dfrac{\log(x) - \mu}{\sigma}} \\  
+                &= \dint_{-\infty}^{\log(x)} \dfrac{1}{\sigma} \phi\dParenBrac{\dfrac{z - \mu}{\sigma}} dz
+                = \dint_{0}^{x} \dfrac{1}{z\sigma} \phi\dParenBrac{\dfrac{\log(z) - \mu}{\sigma}} dz
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+
+
+
+
     \item $P(X < x) = P(X \leq x)$ for continuous random variables
 
     \item $P(X > x) = 1 - P(X \leq x)$
@@ -152,15 +191,50 @@
 
     \item $P( x_1 < X \leq x_2) = P(X \leq x_2) - P(X \leq x_1)$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
 \end{enumerate}
 
 
 
-\section{Expected Values}
+\section{Expected Values ($E(X)$)}
 
 \begin{enumerate}
-    \item 
+    \item If we consider a (not necessarily continuous or differentiable) function $\psi : \mathbb{R} \to \mathbb{R}$, then the expected value of the random variable $\psi (X)$ is defined by
+    \colorbox{yellow}{$
+        \mathbb{E}\psi(X) 
+        = \mathbb{E}(\psi(X))
+        = \dint_{\mathbb{R}} \psi(x)\ f(x)\ dx
+    $}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item \textbf{First moment}: Let $X$ be a continuous random variable with density $f$ , then the expected value of random variable $X$ is defined by
+    $
+        \mu 
+        = \mathbb{E}(X) 
+        = \dint_{\mathbb{R}} x\ f(x)\ dx
+    $
+    \hfill \colorbox{yellow}{$\psi(x)=\mu$}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Second central moment}: The population variance $\sigma^ 2$ is now given by 
+    $
+        \sigma^ 2 
+        = \mathbb{E}(X - \mu)^2
+        = \mathbb{E}((X - \mu)^2)
+        = \dint_{\mathbb{R}} (x - \mu)^2\ f(x)\ dx
+    $
+    \hfill \colorbox{yellow}{$\psi(x)=(x -\mu)^2$}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{pth moment} of random variable $X$ is obtained by \colorbox{yellow}{$\psi(x) = x^p$}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{pth central moment} of random variable $X$ is obtained by choosing \colorbox{yellow}{$\psi(x) = (x - \mu)^p$}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{skewness}: \colorbox{yellow}{$\gamma_1 = \dfrac{\mu_3}{\sigma^3}$}, where $\mu_3 = \mathbb{E}[(x-\mu)^3]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{kurtosis}: \colorbox{yellow}{$\gamma_2 = \dfrac{\mu_4}{\sigma^4} - 3$}, where $\mu_4 = \mathbb{E}[(x-\mu)^4]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
