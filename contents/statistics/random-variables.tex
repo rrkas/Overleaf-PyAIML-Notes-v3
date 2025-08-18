@@ -63,12 +63,16 @@
 
     \item The \textbf{probability function} $P(X \leq x)$ is a general concept and can be used for any random variable. 
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
+    \item The PMF for a discrete random variable is the equivalent of the PDF for a continuous random variable. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
 
-\section{Probability Density Functions (PDF) ($f(x)$)}
+\section{Probability Density Functions (PDF) ($f(x) \neq P(X = x)$)}
+
+\textbf{For Continuous Random Variable}
 
 \begin{enumerate}
     \item The density function may be viewed as a smooth version of the histogram if we standardize the frequencies on the vertical axis to proportions. 
@@ -107,7 +111,7 @@
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item  $f(x)$ may \textbf{not} be equal to $P(X = x)$
+    \item  $f(x)$ is \textbf{not} be equal to $P(X = x)$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
         \item The probability $P(X = x)$ is equal to zero for continuous random variables, since there is no surface area under $f (x)$.
@@ -118,7 +122,41 @@
 
 
 
+
+\section{Probability Mass Function (PMF) ($f(x_k) = p_k = P(X = x_k)$)}
+
+\textbf{For Discrete Random Variable}
+
+\begin{enumerate}
+    \item Discrete does not always mean that we observe values in $\mathbb{N}$. 
+    For instance, grades on a data science test may take values in $\dCurlyBrac{1, 1.5, 2.0, 2.5, \cdots , 9.0, 9.5, 10}$. 
+    Thus, it would be more rigorous to say that a discrete random variable $X$ takes its values in the set $\dCurlyBrac{x_0, x_1, x_2, \cdots , x _k , \cdots}$, with $x _k$ an element of the real line $(x _k \in \mathbb{R})$ and with an ordering of the values $x_0 < x_1 < x_2 < \cdots$ . 
+    However, in many practical settings we can map this set to a subset of $\mathbb{N}$ or to the whole set $\mathbb{N}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item For discrete random variables we can define $p _k = P(X = k)$ as the probability of observing the outcome $k$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This is referred to as the probability mass function (PMF) if the probabilities $p _k$ satisfy two conditions. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item all probabilities $p _k$ should be nonnegative ( $p _k \geq 0, \forall\ k$)
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item probabilities need to add up to one, i.e., $\dsum^{\infty}_{k=0} p _k = 1$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
 \section{Cumulative Density Functions (CDF) ($F(x) = P(X \leq x)$)}
+
+\subsection{Intro}
 
 \begin{enumerate}
     \item The probability $P(X \leq x)$ is also referred to as the \textbf{distribution function} obtained in $x$ and it is denoted by $F(x) = P(X \leq x)$. 
@@ -138,11 +176,21 @@
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
+
+\end{enumerate}
+
+
+\subsection{CDF of PDF (Continuous)}
+
+
+\begin{enumerate}
     \item There is a direct relation between distribution functions and densities. 
     If we start with a PDF, we can define a distribution function in the following way:
-    $
-        F(x) = \dint_{-\infty}^{x} f(z) dz
-    $
+    \colorbox{yellow}{$
+        F(x) 
+        = P(X \leq x)
+        = \dint_{-\infty}^{x} f(z) dz
+    $}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The full distribution function of $\psi(X)$ can always be established, but it does not always have a simple workable form.
@@ -157,6 +205,9 @@
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\[0.2cm]
+    The calculations now show that the distribution function of random variable $\psi^{-1}(X)$ is equal to $F(\psi(x))$ and the PDF is $\psi^\prime(x)\ f (\psi(x))$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.5cm]
     \textbf{Example}: Let $X$ being normally distributed with parameters $\mu$ and $\sigma$, and consider the function $\psi(x) = \exp\dCurlyBrac{x}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\[0.2cm]
@@ -195,7 +246,22 @@
 
 
 
+\subsection{CDF of PMF (Discrete)}
+
+\begin{enumerate}
+    \item The distribution function or cumulative density function (CDF) for a discrete random variable $X$ is now given by \colorbox{yellow}{$F(x) = P(X \leq x) = \dsum^{x}_ {k=0} f (k)$}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If the set is $\dCurlyBrac{x_0, x_1, x_2, \cdots , x _k , \cdots}$, with $x_0 < x_1 < x_2 < \cdots$ , then the CDF is defined as \colorbox{yellow}{$F(x) =\dsum^{m_x} _{k=0} f (x _k )$}, with $m _x$ the largest value for $k$ that satisfies $x_ k \leq x$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
 \section{Expected Values ($E(X)$)}
+
+\subsection{For PDF (Continuous)}
 
 \begin{enumerate}
     \item If we consider a (not necessarily continuous or differentiable) function $\psi : \mathbb{R} \to \mathbb{R}$, then the expected value of the random variable $\psi (X)$ is defined by
@@ -205,24 +271,32 @@
         = \dint_{\mathbb{R}} \psi(x)\ f(x)\ dx
     $}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-    \item \textbf{First moment}: Let $X$ be a continuous random variable with density $f$ , then the expected value of random variable $X$ is defined by
-    $
-        \mu 
-        = \mathbb{E}(X) 
-        = \dint_{\mathbb{R}} x\ f(x)\ dx
-    $
-    \hfill \colorbox{yellow}{$\psi(x)=\mu$}
+\end{enumerate}
+
+\subsection{For PMF (Discrete)}
+
+\begin{enumerate}
+    \item The expectation of a discrete random variable $\psi(X)$ is given by 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    \colorbox{yellow}{$
+        \mathbb{E} (\psi(X)) \ 
+        = \dsum^{\infty}_{k=0}\ \psi(k)\ p _k \
+        = \dsum^{\infty}_{k=0}\ \psi(k)\ P(X = k)
+    $}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item \textbf{Second central moment}: The population variance $\sigma^ 2$ is now given by 
-    $
-        \sigma^ 2 
-        = \mathbb{E}(X - \mu)^2
-        = \mathbb{E}((X - \mu)^2)
-        = \dint_{\mathbb{R}} (x - \mu)^2\ f(x)\ dx
-    $
-    \hfill \colorbox{yellow}{$\psi(x)=(x -\mu)^2$}
+    \item If we would collect many realizations of the discrete random variable $X$, say $N$ realizations, we expect to see value $k$ with frequency $N \cdot p _k$ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\subsection{Common for PDF \& PMF}
+
+\begin{enumerate}
+    \item \textbf{First moment}: mean $\mu$ is obtained by \colorbox{yellow}{$\psi(x)=x$}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Second central moment}: The population variance $\sigma^ 2$ is obtained by \colorbox{yellow}{$\psi(x)=(x -\mu)^2$}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item \textbf{pth moment} of random variable $X$ is obtained by \colorbox{yellow}{$\psi(x) = x^p$}
@@ -238,8 +312,12 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
-
-
+\vspace{0.5cm}
+\textbf{Note}:
+\begin{enumerate}
+    \item the moments of a discrete random variable $X$ may not always exist: this depends on the choice of probabilities $p _k $.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 
