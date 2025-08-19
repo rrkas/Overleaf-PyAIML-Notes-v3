@@ -1,0 +1,115 @@
+\section{Negative binomial distribution ($ {\displaystyle  {NB} (r,\,p)}$)}
+
+
+
+
+
+
+
+\subsection{Summary}
+
+\begin{enumerate}
+    \item \textbf{Notation}: 
+    $
+         {\displaystyle \mathrm {NB} (r,\,p)}
+    $
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{Parameters}:
+    $r > 0$ — number of successes until the experiment is stopped (integer, but the definition can also be extended to reals) $p \in [0, 1]$ — success probability in each experiment (real)
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{Support}: 
+     $k \in \dCurlyBrac{0, 1, 2, 3, \cdots}$ — number of failures
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{PMF}:
+    ${\displaystyle k\mapsto {k+r-1 \choose k}\cdot (1-p)^{k}p^{r}}$ 
+    involving a binomial coefficient
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{CDF}:
+    ${\displaystyle k\mapsto I_{p}(r,\,k+1)}$ 
+    the regularized incomplete beta function
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{Mean}: 
+    $
+         {\displaystyle {\frac {r(1-p)}{p}}}
+    $
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    % \item \textbf{Median}: 
+    % $
+    % $
+    % \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{Mode}: 
+    $
+         {\displaystyle {\begin{cases}\left\lfloor {\frac {(r-1)(1-p)}{p}}\right\rfloor &{\text{if }}r>1\\0&{\text{if }}r\leq 1\end{cases}}}
+    $
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{Variance}: 
+    $ 
+         {\displaystyle {\frac {r(1-p)}{p^{2}}}}
+    $
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    % \item \textbf{Median absolute deviation (MAD)}: 
+    % $    
+    % $
+    % \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{Skewness}:
+    $
+         {\displaystyle {\frac {2-p}{\sqrt {(1-p)r}}}}
+    $
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{Excess kurtosis}: 
+    $
+         {\displaystyle {\frac {6}{r}}+{\frac {p^{2}}{(1-p)r}}}
+    $
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    % \item \textbf{Entropy}: 
+    % \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{Moment-generating function (MGF)}: 
+    $
+         {\displaystyle {\biggl (}{\frac {p}{1-(1-p)e^{t}}}{\biggr )}^{\!r}{\text{ for }}t<-\log(1-p)}
+    $
+    \hfill \cite{wiki/Negative_binomial_distribution}
+    
+    \item \textbf{Characteristic function (CF)}:
+    $   
+         {\displaystyle {\biggl (}{\frac {p}{1-(1-p)e^{i\,t}}}{\biggr )}^{\!r}{\text{ with }}t\in \mathbb {R} }
+    $
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{Probability-generating function (PGF)}:
+    $
+         {\displaystyle {\biggl (}{\frac {p}{1-(1-p)z}}{\biggr )}^{\!r}{\text{ for }}|z|<{\frac {1}{p}}}
+    $
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{Fisher information}:
+    $
+         {\displaystyle {\frac {r}{p^{2}(1-p)}}}
+    $
+    \hfill \cite{wiki/Negative_binomial_distribution}
+
+    \item \textbf{Method of moments}:
+    $ {\displaystyle r={\frac {E[X]^{2}}{V[X]-E[X]}}}$
+    \hspace{1cm}
+    $ {\displaystyle p={\frac {E[X]}{V[X]}}}$
+    \hfill \cite{wiki/Negative_binomial_distribution}
+\end{enumerate}
+
+
+
+
+
+
+
