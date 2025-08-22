@@ -1,7 +1,50 @@
 \section{Negative binomial distribution ($ {\displaystyle  {NB} (r,\,p)}$)}
 
 
+\subsection{PMF}
 
+\begin{enumerate}
+    \item The negative binomial PMF is often considered a Poisson PMF with an extra amount of variation
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Parameters}:
+    \begin{enumerate}
+        \item $\lambda$: mean, the same as for the Poisson random variable
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $\delta$: overdispersion parameter, indicating the extra amount of variation on top of the Poisson variation.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item A negative binomial random variable $X$ has its outcomes in the set $\dCurlyBrac{0, 1, 2, 3, ....}$, like the Poisson random variable. 
+    The PMF is defined by:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    $
+        P(X=x)
+        = f_{\lambda,\ \delta}(k)
+        = \dfrac{\Gamma(k + \delta^{-1})}{\Gamma(k + 1)\ \Gamma(\delta^{-1})}
+        \dfrac{(\delta\lambda)^k}{(1+\delta\lambda)^{k+\delta^{-1}}}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    $
+        \Gamma(z) = \begin{cases}
+            \dint_{0}^{\infty} x^{z-1} \exp\dCurlyBrac{x} dx & \text{ in general} \\
+            (k-1)! & \text{ when $k$ is integer}
+        \end{cases}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mu = \mathbb{E}(X) = \lambda$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\sigma^2 = \mathbb{E}(X - \lambda)^2 = \lambda + \delta\lambda^2$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item In case the parameter $\delta$ converges to zero, the variance converges to the variance of a Poisson random variable. 
+    This is the reason that the parameter $\delta$ is called the overdispersion.
+\end{enumerate}
 
 
 
