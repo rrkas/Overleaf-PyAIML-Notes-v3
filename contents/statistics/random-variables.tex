@@ -70,6 +70,8 @@
 
 
 
+
+
 \section{Probability Density Functions (PDF) ($f(x) \neq P(X = x)$)}
 
 \textbf{For Continuous Random Variable}
@@ -318,6 +320,94 @@
     \item the moments of a discrete random variable $X$ may \textbf{not} always exist: this depends on the choice of probabilities $p _k $.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+\section{Calculation Rules for Random Variables}
+
+Let we have 2 random variables $X, \ Y$, either discrete or continuous, and a constant $c$.
+\\
+$F _X$ and $F_Y$ the CDFs for $X$ and $Y$ , respectively. $P(X \leq x, Y \leq y)$ is the joint CDF
+of $X$ and $Y$ , denoted by $F _{X Y} (x, y)$
+\\
+Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
+
+\begin{multicols}{2}
+\begin{enumerate}[series=calcrulesrv]
+    \item $\mathbb{E} (c) = c$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mathbb{E} (cX) = c \mathbb{E} (X)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\text{Var}(X) \geq 0$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\text{Var}(X + c) = \text{Var}(X)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\text{Var}(cX) = c^2\ \text{Var}(X)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\text{Var}(X) = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mathbb{E} (X) = \mathbb{E} (Y )$ , when $X = Y$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mathbb{E} (X + Y ) = \mathbb{E} (X) + \mathbb{E} (Y )$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+\end{multicols}
+
+\textbf{if $X$ and $Y$ are independent:}
+
+\begin{multicols}{2}
+\begin{enumerate}[resume*=calcrulesrv]
+    \item $\phi(X)$ and $\psi(Y)$ are also independent
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mathbb{E}(X Y ) = \mathbb{E}(X)\ \mathbb{E}(Y )$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\text{Var}(X \pm Y ) = \text{Var}(X) + \text{Var}(Y )$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\end{enumerate}
+\end{multicols}
+
+
+\begin{enumerate}[resume*=calcrulesrv]
+    \item 
+    $
+        P(X \leq x, Y \leq y) 
+        = P(A \cap B) 
+        = P(A) P(B) 
+        = P(X \leq x) P(Y \leq y) 
+        = F _X (x)\ F_Y (y)
+    $ 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \text{Var}(X Y ) 
+        = \text{Var}(X) \text{Var}(Y) 
+            + \text{Var}(X)(\mathbb{E}(Y))^2 
+            + \text{Var}(Y)(\mathbb{E}(X))^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
