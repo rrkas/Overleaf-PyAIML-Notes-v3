@@ -206,6 +206,25 @@ print("Rank of matrix A:", rank)
 
 
 
+
+
+\section{Norms of a Matrix}
+
+\begin{enumerate}
+    \item \begin{definition}[Spectral Norm of a Matrix]
+        For $\bm{x} \in \mathbb{R}^n\backslash \dCurlyBrac{0}$, the spectral norm of a matrix $\bm{A} \in \mathbb{R}^{m\times n}$ is defined as
+        $
+            \dnorm{\bm{A}}_2 
+            := \displaystyle\max_{\bm{x}} \dfrac{\dnorm{\bm{Ax}}_2}{\dnorm{\bm{x}}_2}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+\end{enumerate}
+
+
+
+
+
 \section{Describing/summarizing Matrix}
 \input{contents/maths-for-ml/matrices-summary/determinant}
 \input{contents/maths-for-ml/matrices-summary/trace}
@@ -269,6 +288,151 @@ print("Rank of matrix A:", rank)
     \item For symmetric matrices $\bm{A} \in \mathbb{R}^{n\times n}$ , the eigenvalue decomposition and the SVD are one and the same, which follows from the spectral theorem.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
+
+
+
+
+
+
+\section{Matrix Approximation}
+
+\begin{enumerate}
+    \item Instead of doing the full SVD factorization, SVD allows us to represent a matrix $\bm{A}$ as a sum of simpler (low-rank) matrices $\bm{A}_i$, which lends itself to a matrix approximation scheme that is cheaper to compute than the full SVD.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item We construct a rank-1 matrix 
+    $
+        \bm{A}_i
+        := \bm{u}_i \bm{v}_i^\top 
+        \in \mathbb{R}^{m\times n}
+    $
+    which is formed by the outer product of the $i$-th orthogonal column vector of $\bm{U}$ and $\bm{V}$ .
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item A matrix $\bm{A} \in \mathbb{R}^{m\times n}$ of rank $r$ can be written as a sum of rank-1 matrices $\bm{A}_i$ so that 
+    $
+        \bm{A} 
+        = \dsum_{i=1}^r \sigma_i \bm{u}_i \bm{v}_i^\top
+        = \dsum_{i=1}^r \sigma_i \bm{A}_i
+    $
+    where the outer-product matrices $\bm{A}_i$ are weighted by the $i$-th singular value $\sigma_i$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If the sum does not run over all matrices $\bm{A}_i$, $i = 1, \cdots , r$, but only up to an intermediate value $k < r$, we obtain a rank-$k$ approximation
+    $
+        \hat{\bm{A}}(k) 
+        = \dsum_{i=1}^k \sigma_i \bm{u}_i \bm{v}_i^\top
+        = \dsum_{i=1}^k \sigma_i \bm{A}_i
+    $
+    of $\bm{A}$ with $rk(\hat{\bm{A}}(k)) = k$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \begin{theorem}[Eckart-Young Theorem]
+        Consider a matrix $\bm{A} \in \mathbb{R}^{m\times n}$ of rank $r$ and let $\bm{B} \in \mathbb{R}^{m\times n}$ be a matrix of rank $k$. 
+        For any $k \leq r$ with $\hat{\bm{A}}(k) = \dsum^k_{i=1} \sigma_i \bm{u}_i \bm{v}_i^\top$ it holds that
+        ${
+            \displaystyle
+            \hat{\bm{A}}(k)
+            = {\arg\max}_{\text{rk}(\bm{B})=k} \dnorm{\bm{A} - \bm{B}}_2
+        }$,
+        \hspace{0.5cm}
+        ${
+            \displaystyle
+            \dnorm{\bm{A} - \hat{\bm{A}}(k)}_2 = \sigma_{k+1}.
+        }$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{theorem}
+    \begin{enumerate}
+        \item The Eckart-Young theorem states explicitly how much error we introduce by approximating $\bm{A}$ using a rank-$k$ approximation.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item We can interpret the rank-$k$ approximation obtained with the SVD as a projection of the full-rank matrix $\bm{A}$ onto a lower-dimensional space of rank-at-most-$k$ matrices.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The SVD minimizes the error (with respect to the spectral norm) between $\bm{A}$ and any rank-$k$ approximation.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The Eckart-Young theorem implies that we can use SVD to reduce a rank-$r$ matrix $\bm{A}$ to a rank-$k$ matrix $\hat{\bm{A}}$ in a principled, optimal (in the spectral norm sense) manner. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item the difference between $\bm{A} - \hat{\bm{A}}(k)$ is a matrix containing the sum of the remaining rank-$1$ matrices
+    $
+        \bm{A} - \hat{\bm{A}}(k)
+        = \dsum_{i=k+1}^r \sigma_i \bm{u}_i \bm{v}_i^\top
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If we assume that there is another matrix $\bm{B}$ with $\text{rk}(\bm{B}) \leq k$, such that 
+    $
+        \dnorm{\bm{A} - \bm{B}}_2 \leq \dnorm{\bm{A} - \hat{\bm{A}}(k)}_2
+    $,
+    then there exists an at least $(n - k)$-dimensional null space $Z \subseteq \mathbb{R}^n$, such that $\bm{x} \in \mathbb{Z}$ implies that $\bm{Bx} = \bm{0}$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    Then it follows that 
+    $
+        \dnorm{\bm{Ax}}_2 = \dnorm{(\bm{A} - \bm{B})\bm{x}}_2
+    $
+    and by using a version of the Cauchy-Schwartz inequality that encompasses norms of matrices, we obtain
+    $
+        \dnorm{\bm{Ax}}_2 
+        \leq \dnorm{\bm{A} - \bm{B}}_2 \dnorm{\bm{x}}_2
+        < \sigma_{k+2} \dnorm{\bm{x}}_2
+    $.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    However, there exists a ($k + 1$)-dimensional subspace where $\dnorm{\bm{Ax}}_2 \geq \sigma_{k+1} \dnorm{\bm{x}}_2$, which is spanned by the right-singular vectors $\bm{v}_j$ , $j \leq k + 1$ of $\bm{A}$.
+    \\
+    Adding up dimensions of these two spaces yields a number greater than $n$, as there must be a nonzero vector in both spaces. This is a contradiction of the rank-nullity theorem
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \vspace{0.5cm}
+    \\
+    \textbf{Explaining the contradiction part}:
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item $\text{rank}(\bm{B})+\text{nullity}(\bm{B})=n$
+
+        \item So if $\text{rank}(\bm{B})< k$, then nullity $>n-k$.
+
+        \item Consider:
+        \begin{enumerate}
+            \item The subspace where $\bm{Bx}=\bm{0}$: null space of dimension $>n-k$
+            \item The subspace spanned by $\bm{v}_{k+1},\cdots,\bm{v}_r$: has dimension $\geq n-k$
+        \end{enumerate}
+
+        \item If both have more than $n-k$ dimensions, their intersection must be nonzero (they must share a direction). That means:
+        \begin{enumerate}
+            \item There exists a nonzero vector xx that’s in both: in the null space of BB and in the span of $\bm{v}_{k+1},\cdots,\bm{v}_r$
+
+            \item For that $\bm{x}$, we must have: $\dnorm{\bm{Ax}}_2 \geq \sigma_{k+1}$. 
+            But this contradicts the earlier assumption that $\dnorm{\bm{Ax}}_2 < \sigma_{k+1}$. 
+        \end{enumerate}
+
+        \item Thus, assuming that $\dnorm{\bm{A}-\bm{B}}_2<\sigma_{k+1}$ leads to a contradiction with rank-nullity. 
+        Therefore: $\dnorm{\bm{A}-\bm{B}}_2 \geq \sigma_{k+1}$ which confirms the theorem.
+
+        \item \textbf{in Simple Terms}:
+        \begin{enumerate}
+            \item You’re trying to approximate a matrix using fewer components (rank $k$).
+
+            \item The best you can do (smallest error) is using the top $k$ singular values from SVD.
+
+            \item If you try to do better, you run into a contradiction with basic linear algebra — namely, the rank-nullity theorem.
+
+            \item So, SVD gives the best possible low-rank approximation, and the error is exactly the $(k+1)$-th singular value.
+        \end{enumerate}
+    \end{enumerate}
+
+    \item We can interpret the approximation of $\bm{A}$ by a rank-$k$ matrix as a form of \textbf{lossy compression}.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
 
 
 
