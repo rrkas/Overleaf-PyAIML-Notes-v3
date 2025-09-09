@@ -1,5 +1,196 @@
 \chapter{Vector Calculus}
 
+\section{Function ($f(x)$)}
+
+\begin{enumerate}
+    \item A function $f$ is a quantity that relates two quantities to each other. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item These quantities are typically inputs $\bm{x} \in \mathbb{R}^D$ and targets (function values) $f (\bm{x})$, which we assume are real-valued if not stated otherwise. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+    \item $\mathbb{R}^D$ is the domain of $f$ , and the function values $f (\bm{x})$ are the image/codomain of $f$ .
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item We often write 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item $f: \mathbb{R}^D \to \mathbb{R}$ 
+        (specifies that $f$ is a mapping from $\mathbb{R}^D$ to $\mathbb{R}$ )
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item $\bm{x} \mapsto f(\bm{x})$ 
+        (specifies the explicit assignment of an input $\bm{x}$ to a function value $f(\bm{x})$)
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+    to specify a function.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item A function $f$ assigns every input x exactly one function value $f (\bm{x})$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+\vspace{0.5cm}
+\textbf{ALSO SEE/ RELATED}:
+\begin{enumerate}
+    \item \fullref{vector space/Linear Mappings}
+\end{enumerate}
+
+
+
+\subsection{Differentiation of Univariate Functions}
+
+\begin{enumerate}
+    \item Univariate function: $y = f(x),\ x, y \in \mathbb{R}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    \begin{definition}[Difference Quotient]
+        The difference quotient
+        $
+            \dfrac{\delta y}{\delta x} 
+            := \dfrac{f(x + \delta x) - f(x)}{\delta x}
+        $
+        computes the slope of the secant line through two points on the graph of $f$ .
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+
+    \item The derivative of $f$ points in the direction of steepest ascent of $f$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    \begin{definition}[Taylor Polynomial ( $T_n(x)$ )]
+        The Taylor polynomial of degree $n$ of $f : \mathbb{R} \to \mathbb{R}$ at $x_0$ is defined as
+        $
+            T_n(x)
+            := \dsum_{k=0}^n \dfrac{f^{(k)}(x_0)}{k!} (x - x_0)^k
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        where $f ^{(k)}(x_0)$ is the $k$-th derivative of $f$ at $x_0$ (which we assume exists) and $\dfrac{f ^{(k)}(x_0)}{ k!}$ are the coefficients of the polynomial.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        We define $t^0 := 1$ for all $t \in \mathbb{R}$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+    \begin{enumerate}
+        \item In general, a Taylor polynomial of degree $n$ is an \textbf{approximation} of a function, which does not need to be a polynomial. 
+        The Taylor polynomial is similar to $f$ in a neighborhood around $x_0$. 
+        Higher-order Taylor polynomials approximate the function $f$ better and more globally.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item A Taylor polynomial of degree $n$ is an \textbf{exact} representation of a polynomial $f$ of degree $k \leq n$ since all derivatives $f (i)$, $i > k$ vanish. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+
+    \item 
+    \begin{definition}[Power Series]
+        $
+            f(x) = \dsum_{k=0}^{\infty} a_k (x-c)^k
+        $
+        \\
+        where $a_k$ are coefficients and $c$ is a constant
+    \end{definition}
+
+
+    \item 
+    \begin{definition}[Taylor Series ($T_{\infty}(x)$)]
+        For a smooth function $f \in C^{\infty}$, $f : \mathbb{R} \to \mathbb{R}$, the Taylor series of $f$ at $x_0$ is defined as
+        $
+            T_{\infty}(x)
+            = \dsum_{k=0}^{\infty} \dfrac{f^{(k)}(x_0)}{k!} (x - x_0)^k
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+         $f \in C^{\infty}$ means that $f$ is continuously differentiable infinitely many times
+         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+    \begin{enumerate}
+        \item 
+        \begin{definition}[Maclaurin series]        
+            For $x_0 = 0$, we obtain the \textbf{Maclaurin series} as a special instance of the Taylor series. 
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{definition}
+
+        \item 
+        \begin{definition}[Analytic]        
+            If $f (x) = T_{\infty}(x)$, then $f$ is called \textbf{analytic}.
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{definition}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Differentiation Rules}
+
+\begin{enumerate}
+    \item \textbf{Product rule}: 
+    $
+        (f(x)g(x))^\prime
+        = \dfrac{d}{dx}(f(x)g(x))
+        = g(x)\dfrac{d}{dx}f(x) + f(x)\dfrac{d}{dx}g(x)
+        = f^\prime(x)g(x) + f(x)g^\prime(x)
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Quotient rule}:
+    $
+        \dParenBrac{\dfrac{f(x)}{g(x)}}^\prime
+        = \dfrac{d}{dx}\dParenBrac{\dfrac{f(x)}{g(x)}}
+        = \dfrac{f^\prime(x)g(x) - f(x)g^\prime(x)}{(g(x))^2}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Sum Rule}:
+    $
+        (f(x) + g(x))^\prime
+        = f^\prime(x) + g^\prime(x)
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item \textbf{Chain Rule}: 
+    $
+        (g(f(x)))^\prime
+        = (g \circ f)^\prime(x)
+        = g^\prime(f(x)) f^\prime(x)
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    $g \circ f$ denotes function composition $x \mapsto f (x) \mapsto g(f (x))$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
