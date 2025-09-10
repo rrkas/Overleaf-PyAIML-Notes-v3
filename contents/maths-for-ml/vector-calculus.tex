@@ -319,9 +319,67 @@
 
 
 
+\section{Gradients of Matrices}
 
 
+\begin{table}[H]
+\hfill
+\begin{minipage}{0.45\linewidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=5cm,
+        keepaspectratio,
+    ]{images/Vector-Calculus/Gradients-of-Matrices-approach1.png}
+    \caption*{
+        \textbf{Approach 1}: 
+        We compute the partial derivative 
+        $\dfrac{\partial \bm{A}}{\partial x_1}$ , 
+        $\dfrac{\partial \bm{A}}{\partial x_2}$ , 
+        $\dfrac{\partial \bm{A}}{\partial x_3}$ , each of which is a $4 \times 2$ matrix, 
+        and collate them in a $4 \times 2 \times 3$ tensor.
+        \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    }
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\linewidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=5cm,
+        keepaspectratio,
+    ]{images/Vector-Calculus/Gradients-of-Matrices-approach2.png}
+    \caption*{
+        \textbf{Approach 2}: We re-shape (flatten) $\bm{A} \in \mathbb{R}^{4\times 2}$ into a vector $\tilde{\bm{A}} \in \mathbb{R}^8$. 
+        Then, we compute the gradient $\dfrac{d\tilde{\bm{A}}}{d\bm{x}} \in \mathbb{R}^{8\times 3}$. 
+        We obtain the gradient tensor by re-shaping this gradient as illustrated above.
+        \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    }
+\end{figure}
+\end{minipage}
+\hfill
+\end{table}
 
+
+\begin{enumerate}
+    \item 
+    \begin{definition}[Tensor]
+        Tensor is a multidimensional array
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+
+    \item 
+    \begin{definition}[Flattening (matrix $\to$ vector)]
+        Matrices can be transformed into vectors by stacking the columns of the matrix
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+
+    \item if we compute the gradient of an $m \times  n$ matrix $\bm{A}$ with respect to a $p \times  q$ matrix $\bm{B}$, the resulting Jacobian would be $(m\times n)\times (p\times q)$, i.e., a four-dimensional tensor $\bm{J}$, whose entries are given as $J_{ijkl} = \dfrac{\partial A_{ij}}{\partial B_{kl}}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
 
 
 
@@ -334,7 +392,7 @@
 
 \section{Differentiation Rules}
 
-\begin{enumerate}
+\begin{enumerate}[series=vcalrules]
     \item \textbf{Product rule}: 
     \begin{enumerate}
         \item $
@@ -398,6 +456,84 @@
 \end{enumerate}
 
 \vspace{0.5cm}
+\textbf{Gradients of Matrices \& Vectors}:
+
+\begin{multicols}{2}
+\begin{enumerate}[resume*=vcalrules]
+    \item $
+        \dfrac{\partial \bm{f}(\bm{A})^\top}{\partial \bm{A}}
+        = \dParenBrac{\dfrac{\partial \bm{f}(\bm{A})}{\partial \bm{A}}}^\top
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item $
+        \dfrac{\partial\ \tr(\bm{f}(\bm{A}))}{\partial \bm{A}}
+        = \tr\dParenBrac{\dfrac{\partial \bm{f}(\bm{A})}{\partial \bm{A}}}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    $
+        \dfrac{\partial \bm{f}(\bm{A})^{-1}}{\partial \bm{A}}
+        = -\bm{f}(\bm{A})^{-1}\ \dfrac{\partial \bm{f}(\bm{A})}{\partial \bm{A}} \ \bm{f}(\bm{A})^{-1}
+    $ 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    $
+        \dfrac{\partial\ \bm{x}^\top \bm{A}^{-1}\bm{y}}{\partial \bm{A}}
+        = -(\bm{A}^{-1})^\top \bm{xy}^\top (\bm{A}^{-1})^\top
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    $
+        \dfrac{\partial\ \bm{x}^\top \bm{A}\bm{y}}{\partial \bm{A}}
+        = \bm{xy}^\top 
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    $
+        \dfrac{\partial\ \bm{x}^\top \bm{A}\bm{x}}{\partial \bm{x}}
+        = \bm{x}^\top(\bm{A} + \bm{A}^\top) 
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    $
+        \dfrac{\partial\ \bm{x}^\top \bm{y}}{\partial\ \bm{x}} = \bm{y}^\top
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    $
+        \dfrac{\partial\ \bm{y}^\top \bm{x}}{\partial\ \bm{x}} = \bm{y}^\top
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+\end{multicols}
+
+\vspace{0.5cm}
+\begin{enumerate}[resume*=vcalrules]
+    \item $
+        \dfrac{\partial \det(\bm{f}(\bm{A}))}{\partial \bm{A}}
+        = \det(\bm{f}(\bm{A}))\ \tr\dParenBrac{\bm{f}(\bm{A})^{-1}\ \dfrac{\partial \bm{f}(\bm{A})}{\partial \bm{A}}}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    $
+        \dfrac{\partial\ (\bm{x} - \bm{As})^\top \bm{W} (\bm{x} - \bm{As})}{\partial\bm{s}}
+        = -2(\bm{x} - \bm{As})^\top \bm{WA}
+    $
+    \hfill
+    (for symmetric $\bm{W}$)
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+\vspace{0.5cm}
 \textbf{Examples}
 \begin{enumerate}
     \item Consider a function $f : \mathbb{R}^2 \to \mathbb{R}$ of two variables $x_1, x_2$. 
@@ -452,6 +588,168 @@
     
 \end{enumerate}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Backpropagation: Gradients in DNN}
+
+\begin{table}[H]
+\begin{minipage}{0.48\linewidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[
+            width=\linewidth,
+            height=3cm,
+            keepaspectratio,
+        ]{images/Vector-Calculus/sample-dnn-bp-ad.png}
+        \caption*{
+            Forward pass in a multi-layer neural network to compute the loss $L$ as a function of the inputs $\bm{x}$ and the parameters $\bm{A}_i, \bm{b}_i$.
+            \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        }
+    \end{figure}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[
+            width=\linewidth,
+            height=3cm,
+            keepaspectratio,
+        ]{images/Vector-Calculus/sample-dnn-bp-ad2.png}
+        \caption*{
+            Backward pass in a multi-layer neural network to compute the gradients of the loss function.
+            \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        }
+    \end{figure}
+\end{minipage}
+\end{table}
+
+\begin{enumerate}
+    \item An area where the chain rule is used to an extreme is deep learning, where the function value $\bm{y}$ is computed as a many-level function composition 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $
+        \bm{y}
+        = (f_K \circ f_{K-1} \circ \cdots \circ f_1)(\bm{x})
+        = f_K (f_{K-1}(\cdots (f_1(\bm{x}))\cdots))
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    where $\bm{x}$ are the inputs (e.g., images), $\bm{y}$ are the observations (e.g., class labels), and every function $f_i, i = 1, \cdots , K$, possesses its own parameters.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    \begin{multicols}{2}
+    \begin{enumerate}[series=grad-dnn]
+        \item $\bm{f}_0 := \bm{x}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $\bm{f}_i := \sigma_i(\bm{A}_{i-1}\bm{f}_{i-1} + \bm{b}_{i-1})$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $\bm{f}_i(\bm{x}_{i-1}) = \sigma_i(\bm{A}_{i-1}\bm{x}_{i-1} + \bm{b}_{i-1})$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $\bm{y} = \bm{f}_K(\bm{x}_{K-1})$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+    \end{multicols}
+    \begin{multicols}{2}
+    \begin{enumerate}[resume*=grad-dnn]
+        \item $L(\bm{\theta}) = \dnorm{\bm{y} - \bm{f}_K(\bm{\theta},\ \bm{x})}^2$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item 
+        $
+            \dfrac{\partial L}{\partial \bm{\theta}_{K-1}}
+            = \dfrac{\partial L}{\partial \bm{f}_K} \textcolor{blue}{\dfrac{\partial \bm{f}_K}{\partial \bm{\theta}_{K-1}}}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item 
+        $
+            \dfrac{\partial L}{\partial \bm{\theta}_{K-2}}
+            = \dfrac{\partial L}{\partial \bm{f}_K} 
+            \textcolor{orange}{\dfrac{\partial \bm{f}_K}{\partial \bm{\theta}_{K-1}}}
+            \textcolor{blue}{\dfrac{\partial \bm{f}_{K-1}}{\partial \bm{\theta}_{K-2}}}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item 
+        $
+            \dfrac{\partial L}{\partial \bm{\theta}_{K-2}}
+            = \dfrac{\partial L}{\partial \bm{f}_K} 
+            \textcolor{orange}{
+                \dfrac{\partial \bm{f}_K}{\partial \bm{\theta}_{K-1}} 
+                \cdots
+                \dfrac{\partial \bm{f}_{i+2}}{\partial \bm{\theta}_{i+1}} 
+            }
+            \textcolor{blue}{\dfrac{\partial \bm{f}_{i+1}}{\partial \bm{\theta}_{i}}}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+    \end{multicols}
+    \begin{enumerate}
+        \item [\textcolor{orange}{orange}] partial derivatives of the output of a layer with respect to its inputs
+
+        \item [\textcolor{blue}{blue}] partial derivatives of the output of a layer with respect to its parameters
+    \end{enumerate}
+    \vspace{0.5cm}
+    \textbf{where}:
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $i$: layer ($i = 1,\cdots,K$)
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item $\bm{x}_{i-1}$: output of layer $i - 1$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item $\sigma_i$: activation function of layer $i$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $L$: loss function
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $\bm{A}_{j},\ \bm{b}_{j}$: parameters ($j = 0,\cdots,K-1$)
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $\bm{\theta} = \dCurlyBrac{\bm{A}_{0},\ \bm{b}_{0}, \cdots, \bm{A}_{K-1},\ \bm{b}_{K-1}}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+    \end{multicols}
+
+    \item 
+\end{enumerate}
+
+
+
+
+
+\section{Automatic Differentiation}
+
+\begin{enumerate}
+    \item Automatic differentiation is different from symbolic differentiation and numerical approximations of the gradient, e.g., by using finite differences.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
 
 
 

@@ -1,4 +1,4 @@
-\subsection{Trace ($tr(A)$)}
+\subsection{Trace ($\tr(A)$)}
 
 
 \begin{lstlisting}[
@@ -24,7 +24,7 @@ print("Trace of A:", trace_A)
 \begin{enumerate}
     \item 
     \begin{definition}[Trace]
-        The trace of a square matrix $\bm{A} \in \mathbb{R}^{n\times n}$ is defined as $tr(\bm{A}) := \dsum^n _{i=1} a_{ii}$ i.e. , the trace is the \textbf{sum of the diagonal elements} of $\bm{A}$.
+        The trace of a square matrix $\bm{A} \in \mathbb{R}^{n\times n}$ is defined as $\tr(\bm{A}) := \dsum^n _{i=1} a_{ii}$ i.e. , the trace is the \textbf{sum of the diagonal elements} of $\bm{A}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
@@ -48,28 +48,28 @@ print("Trace of A:", trace_A)
 \subsubsection{Properties of Trace}
 
 \begin{enumerate}
-    \item $tr(\bm{A} + \bm{B}) = tr(\bm{A}) + tr(\bm{B})$ for $\bm{A}, \bm{B} \in \mathbb{R}^{n\times n}$
+    \item $\tr(\bm{A} + \bm{B}) = \tr(\bm{A}) + \tr(\bm{B})$ for $\bm{A}, \bm{B} \in \mathbb{R}^{n\times n}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item $tr(\alpha \bm{A}) = \alpha\ tr(\bm{A}), \alpha \in \mathbb{R}$ for $\bm{A} \in \mathbb{R}^{n\times n}$
+    \item $\tr(\alpha \bm{A}) = \alpha\ \tr(\bm{A}), \alpha \in \mathbb{R}$ for $\bm{A} \in \mathbb{R}^{n\times n}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     
-    \item $tr(\bm{I}_n) = n$
+    \item $\tr(\bm{I}_n) = n$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     
-    \item $tr(\bm{AB}) = tr(\bm{BA})$ for $\bm{A} \in \mathbb{R}^{n\times k}, \bm{B} \in \mathbb{R}^{k\times n}$
+    \item $\tr(\bm{AB}) = \tr(\bm{BA})$ for $\bm{A} \in \mathbb{R}^{n\times k}, \bm{B} \in \mathbb{R}^{k\times n}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The trace is invariant under cyclic permutations, ie, $tr(\bm{AKL}) = tr(\bm{KLA})$ for matrices $\bm{A} \in  \mathbb{R}^{a \times k}, \bm{K} \in  \mathbb{R}^{k \times l}, \bm{L} \in  \mathbb{R}^{l \times a}$. 
+    \item The trace is invariant under cyclic permutations, ie, $\tr(\bm{AKL}) = \tr(\bm{KLA})$ for matrices $\bm{A} \in  \mathbb{R}^{a \times k}, \bm{K} \in  \mathbb{R}^{k \times l}, \bm{L} \in  \mathbb{R}^{l \times a}$. 
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item $
-        tr(\bm{xy}^\top) = tr(\bm{y} ^\top \bm{x}) = \bm{y} ^\top \bm{x} \in \mathbb{R}\ 
+        \tr(\bm{xy}^\top) = \tr(\bm{y} ^\top \bm{x}) = \bm{y} ^\top \bm{x} \in \mathbb{R}\ 
         \forall \bm{x}, \bm{y} \in \mathbb{R}^n
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Given $\Phi : V \to V$, then $tr(\Phi) = tr(\bm{A}_\Phi)$. while matrix representations of linear mappings are basis dependent the trace of a linear mapping $\Phi$ is independent of the basis.
+    \item Given $\Phi : V \to V$, then $\tr(\Phi) = \tr(\bm{A}_\Phi)$. while matrix representations of linear mappings are basis dependent the trace of a linear mapping $\Phi$ is independent of the basis.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
