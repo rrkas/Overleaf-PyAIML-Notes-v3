@@ -38,11 +38,14 @@
 
 
 
-\subsection{Differentiation of Univariate Functions}
+\subsection{Differentiation of Uni-variate Functions}
 
 \begin{enumerate}
-    \item Univariate function: $y = f(x),\ x, y \in \mathbb{R}$
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \item 
+    \begin{definition}[Univariate function ($f : \mathbb{R} \to \mathbb{R}$)]
+        Univariate function: $y = f(x),\ x, y \in \mathbb{R}$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
     \item 
     \begin{definition}[Difference Quotient]
@@ -124,6 +127,197 @@
 
 
 
+\subsection{Differentiation of multi-variate Functions}
+
+\begin{enumerate}
+    \item 
+    \begin{definition}[multi-variate Functions ($f : \mathbb{R}^n \to \mathbb{R}$)]
+        The general case where the function $f$ depends on one or more variables $\bm{x} \in \mathbb{R}^n$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+
+    \item 
+    \begin{definition}[Partial Derivative ($\dfrac{\partial f}{\partial x_i}$)]
+        For a function $f : \mathbb{R}^n \to \mathbb{R}$, $\bm{x} \mapsto f (\bm{x})$, $\bm{x} \in \mathbb{R}^n$ of $n$ variables $x_1, \cdots , x_n$ we define the partial derivatives as
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        ${
+            \displaystyle
+            \begin{matrix}
+                \dfrac{\partial f}{\partial x_1} 
+                & 
+                = 
+                & 
+                \lim_{h\to 0} \dfrac{f (x_1 + h, x_2, \cdots , x_n) - f (\bm{x})}{h}
+                \\
+                & \vdots &
+                \\
+                \dfrac{\partial f}{\partial x_n} 
+                & 
+                = 
+                & 
+                \lim_{h\to 0} \dfrac{f (x_1 , x_2, \cdots , x_n+ h) - f (\bm{x})}{h}
+            \end{matrix}
+        }$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+\end{enumerate}
+
+\subsubsection{Gradient}
+
+\begin{enumerate}
+    \item The generalization of the derivative to functions of several variables is the \textbf{gradient}.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item We find the gradient of the function $f$ with respect to $\bm{x}$ by varying one variable at a time and keeping the others constant. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+    \item The gradient is then the \textbf{collection} of these partial derivatives.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    \begin{definition}[Gradient ($\nabla_x f \in \mathbb{R}^{1 \times n}$)]
+        For a function $f : \mathbb{R}^n \to \mathbb{R}$, $\bm{x} \mapsto f (\bm{x})$, $\bm{x} \in \mathbb{R}^n$ of $n$ variables $x_1, \cdots , x_n$:
+        \\
+        .\hfill
+        $
+            \nabla_x f
+            = \text{grad} f
+            = \dfrac{df}{d\bm{x}}
+            = \begin{bmatrix}
+                \dfrac{\partial f(\bm{x})}{\partial x_1} &
+                \dfrac{\partial f(\bm{x})}{\partial x_2} &
+                \cdots
+                \dfrac{\partial f(\bm{x})}{\partial x_n}
+            \end{bmatrix}
+            \in \mathbb{R}^{1 \times n}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        where $n$ is the number of variables and $1$ is the dimension of the image/range/codomain of $f$ .
+        The row vector is called the gradient of $f$ or the Jacobian.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+
+    \item This definition of Jacobian is a special case of the general definition of the Jacobian for vector-valued functions as the collection of partial derivatives.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The reason why we define the gradient vector as a row vector:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item we can consistently generalize the gradient to vector-valued functions $f : \mathbb{R}^n \to \mathbb{R}^m$ (then the gradient becomes a matrix)
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item we can immediately apply the multi-variate chain rule without paying attention to the dimension of the gradient.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+\section{Gradients of Vector-Valued Functions ($\nabla_x f$)}
+
+\begin{enumerate}
+    \item 
+    \begin{definition}[vector-valued functions/ vector fields ($\bm{f} : \mathbb{R}^n \to \mathbb{R}^m$)]
+        vector-valued functions (vector fields) are defined as $\bm{f} : \mathbb{R}^n \to \mathbb{R}^m$, where $n \geq 1$ and $m > 1$.
+        For a function $\bm{f} : \mathbb{R}^n \to \mathbb{R}^m$ and a vector $\bm{x} = [x_1, \cdots , x_n]^\top \in \mathbb{R}^n$, the corresponding vector of function values is given as
+        $
+            \bm{f}(\bm{x})
+            = \begin{bmatrix}
+                f_1(\bm{x}) \\
+                \vdots \\
+                f_m(\bm{x})
+            \end{bmatrix}
+            \in \mathbb{R}^m
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+
+    \item Writing the vector-valued function in this way allows us to view a vector-valued function $\bm{f} : \mathbb{R}^n \to \mathbb{R}^m$ as a vector of functions $[f_1, \cdots , f_m]^\top$, $f_i : \mathbb{R}^n \to \mathbb{R}$ that map onto $\mathbb{R}$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    .\hfill
+    ${
+        \displaystyle
+        \dfrac{\partial\bm{f}}{\partial x_i}
+        = \begin{bmatrix}
+            \dfrac{\partial f_1}{\partial x_i} \\
+            \vdots \\
+            \dfrac{\partial f_m}{\partial x_i}
+        \end{bmatrix}
+        = \begin{bmatrix}
+            \lim_{h \to 0} \dfrac{f_1(x_1,\cdots,x_{i-1},x_i+h,x_{i+1},\cdots x_n)-f_1(\bm{x})}{h} \\
+            \vdots \\
+            \lim_{h \to 0} \dfrac{f_m(x_1,\cdots,x_{i-1},x_i+h,x_{i+1},\cdots x_n)-f_m(\bm{x})}{h}
+        \end{bmatrix}
+        \in \mathbb{R}^m
+    }$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    \begin{definition}[Jacobian ($\bm{J} = \nabla_{\bm{x}}\bm{f} = \dfrac{d \bm{f}(\bm{x})}{d \bm{x}}$)]
+        The collection of all first-order partial derivatives of a vector-valued function $\bm{f} : \mathbb{R}^n \to \mathbb{R}^m$ is called the Jacobian. 
+        The Jacobian $\bm{J}$ is an $m \times n$ matrix, which we define and arrange as follows:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \bm{J} 
+            = \nabla_{\bm{x}}\bm{f}
+            = \dfrac{d \bm{f}(\bm{x})}{d \bm{x}}
+            = \begin{bmatrix}
+                \dfrac{\partial \bm{f}(\bm{x})}{\partial x_1} &
+                \cdots &
+                \dfrac{\partial \bm{f}(\bm{x})}{\partial x_n}
+            \end{bmatrix}
+            = \begin{bmatrix}
+                \dfrac{\partial f_1(\bm{x})}{\partial x_1} &
+                \cdots &
+                \dfrac{\partial f_1(\bm{x})}{\partial x_n} \\
+                \vdots & \ddots & \vdots \\
+                \dfrac{\partial f_m(\bm{x})}{\partial x_1} &
+                \cdots &
+                \dfrac{\partial f_m(\bm{x})}{\partial x_n} \\
+            \end{bmatrix}
+            \in \mathbb{R}^{m\times n}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            \bm{x} = \begin{bmatrix}
+                x_1 \\ \cdots \\ x_n
+            \end{bmatrix},
+            \hspace{1cm}
+            J(i,j) = \dfrac{\partial f_i}{\partial x_j}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+    \begin{enumerate}
+        \item As a special case, a function $f : \mathbb{R}^n \to \mathbb{R}^1$, which maps a vector $\bm{x} \in \mathbb{R}^n$ onto a scalar (e.g., $f (x) = \dsum^n _{i=1} x_i$), possesses a Jacobian that is a row vector (matrix of dimension $1 \times n$)
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Jacobian is used in the change-of-variable method for probability distributions. 
+        The amount of scaling due to the transformation of a variable is provided by the determinant.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The absolute value of the Jacobian determinant $\dabs{det(\bm{J})}$ is the factor by which areas or volumes are scaled when coordinates are transformed.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Geometrically, the Jacobian determinant gives the magnification/ scaling factor when we transform an area or volume.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+\end{enumerate}
+
+
+
 
 
 
@@ -142,13 +336,21 @@
 
 \begin{enumerate}
     \item \textbf{Product rule}: 
-    $
-        (f(x)g(x))^\prime
-        = \dfrac{d}{dx}(f(x)g(x))
-        = g(x)\dfrac{d}{dx}f(x) + f(x)\dfrac{d}{dx}g(x)
-        = f^\prime(x)g(x) + f(x)g^\prime(x)
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item $
+            (f(x)g(x))^\prime
+            = \dfrac{d}{dx}(f(x)g(x))
+            = g(x)\dfrac{d}{dx}f(x) + f(x)\dfrac{d}{dx}g(x)
+            = f^\prime(x)g(x) + f(x)g^\prime(x)
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $
+            \dfrac{\partial}{\partial \bm{x}}(f(\bm{x})g(\bm{x}))
+            = g(\bm{x})\dfrac{\partial}{\partial \bm{x}}f(\bm{x}) 
+                + f(\bm{x})\dfrac{\partial}{\partial \bm{x}}g(\bm{x})
+        $ \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
 
     \item \textbf{Quotient rule}:
     $
@@ -159,25 +361,96 @@
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item \textbf{Sum Rule}:
-    $
-        (f(x) + g(x))^\prime
-        = f^\prime(x) + g^\prime(x)
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item $
+            (f(x) + g(x))^\prime
+            = f^\prime(x) + g^\prime(x)
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $
+            \dfrac{\partial}{\partial \bm{x}}(f(\bm{x}) + g(\bm{x}))
+            = \dfrac{\partial}{\partial \bm{x}}f(\bm{x}) 
+                + \dfrac{\partial}{\partial \bm{x}}g(\bm{x})
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
 
     \item \textbf{Chain Rule}: 
-    $
-        (g(f(x)))^\prime
-        = (g \circ f)^\prime(x)
-        = g^\prime(f(x)) f^\prime(x)
-    $
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \\
+    \begin{enumerate}
+        \item $
+            (g(f(x)))^\prime
+            = (g \circ f)^\prime(x)
+            = g^\prime(f(x)) f^\prime(x)
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $
+            \dfrac{\partial}{\partial \bm{x}}(g(f(\bm{x})))
+            = \dfrac{\partial}{\partial \bm{x}}(g \circ f)(\bm{x})
+            = \dfrac{\partial g(\bm{x})}{\partial f(\bm{x})}
+                \dfrac{\partial f(\bm{x})}{\partial \bm{x}}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
     $g \circ f$ denotes function composition $x \mapsto f (x) \mapsto g(f (x))$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
+\vspace{0.5cm}
+\textbf{Examples}
+\begin{enumerate}
+    \item Consider a function $f : \mathbb{R}^2 \to \mathbb{R}$ of two variables $x_1, x_2$. 
+    Furthermore, $x_1(t)$ and $x_2(t)$ are themselves functions of $t$. 
+    \\
+    $
+        \nabla_t f(x_1, x_2)
+        = \dfrac{df}{dt}
+        = \begin{bmatrix}
+            \dfrac{\partial f(x_1, x_2)}{\partial x_1(t)} &
+            \dfrac{\partial f(x_1, x_2)}{\partial x_2(t)}
+        \end{bmatrix}
+        \begin{bmatrix}
+            \dfrac{\partial x_1(t)}{\partial t} \\
+            \dfrac{\partial x_2(t)}{\partial t}
+        \end{bmatrix}
+        = \dfrac{\partial f(x_1, x_2)}{\partial x_1(t)} \dfrac{\partial x_1(t)}{\partial t}
+        + \dfrac{\partial f(x_1, x_2)}{\partial x_2(t)} \dfrac{\partial x_2(t)}{\partial t}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
+    \item If $f (x_1, x_2)$ is a function of $x_1$ and $x_2$, where $x_1(s, t)$ and $x_2(s, t)$ are themselves functions of two variables $s$ and $t$:
+    \\
+    $
+        \begin{aligned}
+        \nabla_{(s,t)} f(x_1, x_2)
+        &= \dfrac{df(x_1, x_2)}{d(s,t)}
+        = \dfrac{\partial f}{\partial \bm{x}} \dfrac{\partial \bm{x}}{\partial (s,t)}
+        = \begin{bmatrix}
+            \dfrac{\partial f(x_1, x_2)}{\textcolor{blue}{\partial x_1(s,t)}} &
+            \dfrac{\partial f(x_1, x_2)}{\textcolor{green}{\partial x_2(s,t)}}
+        \end{bmatrix}
+        \begin{bmatrix}
+            \textcolor{blue}{\dfrac{\partial x_1(s,t)}{\partial s}} & \textcolor{blue}{\dfrac{\partial x_1(s,t)}{\partial t}} \\
+            \textcolor{green}{\dfrac{\partial x_2(s,t)}{\partial s}} & \textcolor{green}{\dfrac{\partial x_2(s,t)}{\partial t}}
+        \end{bmatrix}
+        \\
+        &= 
+        \begin{bmatrix}
+            \dfrac{\partial f(x_1, x_2)}{\textcolor{blue}{\partial x_1(s,t)}}
+            \textcolor{blue}{\dfrac{\partial x_1(s,t)}{\partial s}} +
+            \dfrac{\partial f(x_1, x_2)}{\textcolor{green}{\partial x_2(s,t)}}
+            \textcolor{green}{\dfrac{\partial x_2(s,t)}{\partial s}} \\ 
+            \dfrac{\partial f(x_1, x_2)}{\textcolor{blue}{\partial x_1(s,t)}}
+            \textcolor{blue}{\dfrac{\partial x_1(s,t)}{\partial t}} +
+            \dfrac{\partial f(x_1, x_2)}{\textcolor{green}{\partial x_2(s,t)}}
+            \textcolor{green}{\dfrac{\partial x_2(s,t)}{\partial t}}
+        \end{bmatrix}
+        \end{aligned}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+\end{enumerate}
 
 
 
