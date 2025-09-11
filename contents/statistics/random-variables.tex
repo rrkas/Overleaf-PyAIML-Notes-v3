@@ -93,7 +93,7 @@
         For values of $x$ outside this domain, the PDF can then be defined equal to zero: $f (x) = 0$.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-        \item  the “area under the curve” (AUC) is equal to one, i.e., $\dint_{\mathbb{R}} f(x) dx = 1$
+        \item  the “area under the curve” (AUC) is equal to one, i.e., $\dint_{\mbbR} f(x) dx = 1$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
@@ -132,7 +132,7 @@
 \begin{enumerate}
     \item Discrete does not always mean that we observe values in $\mathbb{N}$. 
     For instance, grades on a data science test may take values in $\dCurlyBrac{1, 1.5, 2.0, 2.5, \cdots , 9.0, 9.5, 10}$. 
-    Thus, it would be more rigorous to say that a discrete random variable $X$ takes its values in the set $\dCurlyBrac{x_0, x_1, x_2, \cdots , x _k , \cdots}$, with $x _k$ an element of the real line $(x _k \in \mathbb{R})$ and with an ordering of the values $x_0 < x_1 < x_2 < \cdots$ . 
+    Thus, it would be more rigorous to say that a discrete random variable $X$ takes its values in the set $\dCurlyBrac{x_0, x_1, x_2, \cdots , x _k , \cdots}$, with $x _k$ an element of the real line $(x _k \in \mbbR)$ and with an ordering of the values $x_0 < x_1 < x_2 < \cdots$ . 
     However, in many practical settings we can map this set to a subset of $\mathbb{N}$ or to the whole set $\mathbb{N}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -266,11 +266,11 @@
 \subsection{For PDF (Continuous)}
 
 \begin{enumerate}
-    \item If we consider a (not necessarily continuous or differentiable) function $\psi : \mathbb{R} \to \mathbb{R}$, then the expected value of the random variable $\psi (X)$ is defined by
+    \item If we consider a (not necessarily continuous or differentiable) function $\psi : \mbbR \to \mbbR$, then the expected value of the random variable $\psi (X)$ is defined by
     \colorbox{yellow}{$
         \mathbb{E}\psi(X) 
         = \mathbb{E}(\psi(X))
-        = \dint_{\mathbb{R}} \psi(x)\ f(x)\ dx
+        = \dint_{\mbbR} \psi(x)\ f(x)\ dx
     $}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}

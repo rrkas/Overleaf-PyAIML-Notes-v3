@@ -14,7 +14,7 @@
 
     \item 
     \begin{theorem}[SVD Theorem]
-        Let $\bm{A} \in \mathbb{R}^{m\times n}$ be a rectangular matrix of rank $r \in [0,\ \min(m, n)]$. 
+        Let $\bm{A} \in \mbbR^{m\times n}$ be a rectangular matrix of rank $r \in [0,\ \min(m, n)]$. 
         The SVD of $\bm{A}$ is a decomposition of the form 
         $
             \underset{\displaystyle m\times n}{\bm{A}} = 
@@ -22,7 +22,7 @@
             \underset{\displaystyle m\times n}{\bm{\Sigma}}\ 
             \underset{\displaystyle n\times n}{\bm{V}^\top}
         $ 
-        with an orthogonal matrix $\bm{U} \in \mathbb{R}^{m\times m}$ with column vectors $\bm{u}_i$ , $i = 1, \cdots , m$, and an orthogonal matrix $\bm{V} \in \mathbb{R}^{n\times n}$ with column vectors $\bm{v}_j$ , $j = 1, \cdots , n$.
+        with an orthogonal matrix $\bm{U} \in \mbbR^{m\times m}$ with column vectors $\bm{u}_i$ , $i = 1, \cdots , m$, and an orthogonal matrix $\bm{V} \in \mbbR^{n\times n}$ with column vectors $\bm{v}_j$ , $j = 1, \cdots , n$.
         Moreover, $\bm{\Sigma}$ is an $m \times n$ matrix with $\Sigma_{ii} = \sigma_i \geq 0$ and $\Sigma_{ij} = 0, i \neq j$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
@@ -155,28 +155,28 @@
         keepaspectratio,
     ]{images/maths-for-ml/singular-value-decomposition.png}
     \caption*{
-        Intuition behind the SVD of a matrix $\bm{A} \in \mathbb{R}^{3\times 2}$ as sequential transformations.
+        Intuition behind the SVD of a matrix $\bm{A} \in \mbbR^{3\times 2}$ as sequential transformations.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        \textbf{Top-left to bottom-left}: $\bm{V}^\top$ performs a basis change in $\mathbb{R}^2$.
+        \textbf{Top-left to bottom-left}: $\bm{V}^\top$ performs a basis change in $\mbbR^2$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        \textbf{Bottom-left to bottom-right}: $\Sigma$ scales and maps from $\mathbb{R}^2$ to $\mathbb{R}^3$ . The ellipse in the bottom-right lives in $\mathbb{R}^3$. The third dimension is orthogonal to the surface of the elliptical disk.
+        \textbf{Bottom-left to bottom-right}: $\Sigma$ scales and maps from $\mbbR^2$ to $\mbbR^3$ . The ellipse in the bottom-right lives in $\mbbR^3$. The third dimension is orthogonal to the surface of the elliptical disk.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        \textbf{Bottom-right to top-right}: $\bm{U}$ performs a basis change within $\mathbb{R}^3$.
+        \textbf{Bottom-right to top-right}: $\bm{U}$ performs a basis change within $\mbbR^3$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     }
 \end{figure}
 
 SVD as sequential linear transformations performed on the bases. 
-The SVD of a matrix can be interpreted as a decomposition of a corresponding linear mapping $\Phi : \mathbb{R}^n \to \mathbb{R}^m$ into three operations.
-Assume we are given a transformation matrix of a linear mapping $\Phi : \mathbb{R}^n \to \mathbb{R}^m$ with respect to the standard bases $B$ and $C$ of $\mathbb{R}^n$ and $\mathbb{R}^m$, respectively. 
-Moreover, assume a second basis $\tilde{B}$ of $\mathbb{R}^n$ and $\tilde{C}$ of $\mathbb{R}^m$. Then:
+The SVD of a matrix can be interpreted as a decomposition of a corresponding linear mapping $\Phi : \mbbR^n \to \mbbR^m$ into three operations.
+Assume we are given a transformation matrix of a linear mapping $\Phi : \mbbR^n \to \mbbR^m$ with respect to the standard bases $B$ and $C$ of $\mbbR^n$ and $\mbbR^m$, respectively. 
+Moreover, assume a second basis $\tilde{B}$ of $\mbbR^n$ and $\tilde{C}$ of $\mbbR^m$. Then:
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 \begin{enumerate}
-    \item The matrix $\bm{V}$ performs a basis change in the domain $\mathbb{R}^n$ from $\tilde{B}$ (represented by the red and orange vectors $\bm{v}_1$ and $\bm{v}_2$ in the top-left) to the standard basis $B$. 
+    \item The matrix $\bm{V}$ performs a basis change in the domain $\mbbR^n$ from $\tilde{B}$ (represented by the red and orange vectors $\bm{v}_1$ and $\bm{v}_2$ in the top-left) to the standard basis $B$. 
     $\bm{V}^\top = \bm{V}^{-1}$ performs a basis change from $B$ to $\tilde{B}$. 
     The red and orange vectors are now aligned with the canonical basis in the bottom-left.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -184,7 +184,7 @@ Moreover, assume a second basis $\tilde{B}$ of $\mathbb{R}^n$ and $\tilde{C}$ of
     \item Having changed the coordinate system to $\tilde{B}$, $\bm{\Sigma}$ scales the new coordinates by the singular values $\sigma _i$ (and adds or deletes dimensions), i.e., $\bm{\Sigma}$  is the transformation matrix of $\Phi$ with respect to $\tilde{B}$ and $\tilde{C}$, represented by the red and orange vectors being stretched and lying in the $\bm{e}_1-\bm{e}_2$ plane, which is now embedded in a third dimension in the bottom-right.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item $\bm{U}$ performs a basis change in the co-domain $\mathbb{R}^m$ from $\tilde{C}$ into the canonical basis of $\mathbb{R}^m$, represented by a rotation of the red and orange vectors out of the $\bm{e}_1-\bm{e}_2$ plane. 
+    \item $\bm{U}$ performs a basis change in the co-domain $\mbbR^m$ from $\tilde{C}$ into the canonical basis of $\mbbR^m$, represented by a rotation of the red and orange vectors out of the $\bm{e}_1-\bm{e}_2$ plane. 
     This is shown in the top-right.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -208,7 +208,7 @@ Moreover, assume a second basis $\tilde{B}$ of $\mathbb{R}^n$ and $\tilde{C}$ of
                 \vdots & \ddots & \vdots \\
                 0 & \cdots & \lambda_n
             \end{bmatrix} \bm{P} ^\top  
-            \in \mathbb{R}^{n\times n}
+            \in \mbbR^{n\times n}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -231,7 +231,7 @@ Moreover, assume a second basis $\tilde{B}$ of $\mathbb{R}^n$ and $\tilde{C}$ of
                 \vdots & \ddots & \vdots \\
                 0 & \cdots & \sigma_n^2
             \end{bmatrix} \bm{V} ^\top  
-            \in \mathbb{R}^{n\times n}
+            \in \mbbR^{n\times n}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -255,7 +255,7 @@ Moreover, assume a second basis $\tilde{B}$ of $\mathbb{R}^n$ and $\tilde{C}$ of
                 \vdots & \ddots & \vdots \\
                 0 & \cdots & \lambda_m
             \end{bmatrix} \bm{S} ^\top  
-            \in \mathbb{R}^{m\times m}
+            \in \mbbR^{m\times m}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -275,7 +275,7 @@ Moreover, assume a second basis $\tilde{B}$ of $\mathbb{R}^n$ and $\tilde{C}$ of
                 \vdots & \ddots & \vdots \\
                 0 & \cdots & \sigma_m^2
             \end{bmatrix} \bm{U} ^\top  
-            \in \mathbb{R}^{m\times m}
+            \in \mbbR^{m\times m}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -303,7 +303,7 @@ Moreover, assume a second basis $\tilde{B}$ of $\mathbb{R}^n$ and $\tilde{C}$ of
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item For the case $m \geq r$ (where $r = rk(\bm{A})$), it holds that $\dCurlyBrac{\bm{Av}_1, \cdots , \bm{Av}_r}$ is a basis of an r-dimensional subspace of $\mathbb{R}^m$.
+        \item For the case $m \geq r$ (where $r = rk(\bm{A})$), it holds that $\dCurlyBrac{\bm{Av}_1, \cdots , \bm{Av}_r}$ is a basis of an r-dimensional subspace of $\mbbR^m$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
         \item To complete the SVD construction, we need left-singular vectors that are orthonormal: 
@@ -357,7 +357,7 @@ Moreover, assume a second basis $\tilde{B}$ of $\mathbb{R}^n$ and $\tilde{C}$ of
         \item For $i>n$, $\bm{u} _i$  are not defined via $\bm{Av}_ i$ .
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong, common/online/chatgpt}
 
-        \item But by construction of SVD, we choose $\bm{u}_ i$  to complete an orthonormal basis for $\mathbb{R}^ m$ , so the extra $\bm{u}_ i$ 's (for $i>n$) are orthonormal anyway.
+        \item But by construction of SVD, we choose $\bm{u}_ i$  to complete an orthonormal basis for $\mbbR^ m$ , so the extra $\bm{u}_ i$ 's (for $i>n$) are orthonormal anyway.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong, common/online/chatgpt}
     \end{enumerate}
 

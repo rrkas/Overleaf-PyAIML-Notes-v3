@@ -101,7 +101,7 @@
     \item let \textbf{evaluation function}: $V$
     \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
 
-    \item notation $V : B \to \mathbb{R}$ denote that $V$ maps any legal board state from the set $B$ to some real value (we use $\mathbb{R}$ to denote the set of real numbers). We intend for this target function $V$ to assign higher scores to better board states. If the system can successfully learn such a target function $V$, then it can easily use it to select the best move from any current board position.
+    \item notation $V : B \to \mbbR$ denote that $V$ maps any legal board state from the set $B$ to some real value (we use $\mbbR$ to denote the set of real numbers). We intend for this target function $V$ to assign higher scores to better board states. If the system can successfully learn such a target function $V$, then it can easily use it to select the best move from any current board position.
     \hfill \cite{ml/book/Machine-Learning/Tom-M-Mitchell}
 
     \item This can be accomplished by generating the successor board state produced by every legal move, then using $V$ to choose the best successor state and therefore the best legal move. 
@@ -154,7 +154,7 @@
     \\ \\
     .\hfill \textbf{(design choices for the implementation of the learning program)} \hfill.
     \\ \\
-    Target function: $V: Board \to \mathbb{R}$ 
+    Target function: $V: Board \to \mbbR$ 
     \\
     Target function representation: $\hat{V}(b) = w_0 + w_1x_1 + w_2x_2 + w_3x_3 + w_4x_4 + w_5x_5 + w_6x_6$ 
     \\

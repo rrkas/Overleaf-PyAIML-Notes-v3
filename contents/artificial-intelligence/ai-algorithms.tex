@@ -11,42 +11,42 @@ set &
 set of edges (links) of the graph \\ \hline
 
 $b$ & 
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 \textbf{branching factor} or maximum number of successors of any node \\ \hline
 
 $d$ & 
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 \textbf{depth} of the \textbf{shallowest goal} node (i.e., the number of steps along the path from the root) \\ \hline
 
 $m$ & 
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 maximum length of any path in the state space \\ \hline
 
-$\varepsilon$ & $\in \mathbb{R}$ & minimum step cost (small positive constant) \\ \hline
+$\varepsilon$ & $\in \mbbR$ & minimum step cost (small positive constant) \\ \hline
 
-$C$ & $\in \mathbb{R}$ & cost of the solution \\ \hline
+$C$ & $\in \mbbR$ & cost of the solution \\ \hline
 
-$C^\ast$ & $\in \mathbb{R}$ & cost of the optimal solution \\ \hline
+$C^\ast$ & $\in \mbbR$ & cost of the optimal solution \\ \hline
 
-$\ell$ & $\in \mathbb{R}$ & predetermined depth limit \\ \hline
+$\ell$ & $\in \mbbR$ & predetermined depth limit \\ \hline
 
 $G_n$ & node & goal node closest to $n$ \\ \hline
 
-$M$ & $\in \mathbb{R}$ & memory bound \\ \hline
+$M$ & $\in \mbbR$ & memory bound \\ \hline
 
-$N$ & $\in \mathbb{R}$ & total number of nodes generated \\ \hline
+$N$ & $\in \mbbR$ & total number of nodes generated \\ \hline
 
-$k$ & $\in \mathbb{R}$ & \tableenumerate{
+$k$ & $\in \mbbR$ & \tableenumerate{
     \item number of restarts (for \fullref{AI: Algorithms/Random-restart hill climbing search})
     \item number of beams (for \fullref{AI: Algorithms/Local beam search})
 } \\ \hline
 
 $p$ & 
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 population size (for \fullref{AI: Algorithms/Genetic algorithm (GA)}) \\ \hline
 
 $f$ & 
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 time to evaluate the fitness function (for \fullref{AI: Algorithms/Genetic algorithm (GA)}) \\ \hline
 
 
@@ -61,19 +61,19 @@ time to evaluate the fitness function (for \fullref{AI: Algorithms/Genetic algor
 
 
 $g(n)$ & 
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 Path Cost (The \textbf{actual cost} from the \textbfit{start node} to the current node $n$) (Eg: UCS) \\ \hline
 
 $h(n)$ & 
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 Heuristic Estimate (The \textbf{estimated cost} from node $n$ to the \textbfit{goal}) (Eg: GBFS, A*) \\ \hline
 
 $f(n)$ & 
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 Evaluation Function (The \textbf{total estimated cost} of the \textbfit{cheapest solution} through $n$) (Eg: A*) \\ \hline
 
 $h^\ast(n)$ & 
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 actual cost of getting from the root to the goal \\ \hline
 
 
@@ -85,16 +85,16 @@ actual cost of getting from the root to the goal \\ \hline
 
 
 $\Delta$ & 
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 \textbf{absolute error}: $\Delta \equiv h^\ast - h$  \\ \hline
 
 $\epsilon$ \textbf{OR} $\Delta_r$ & 
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 \textbf{relative error}: $\epsilon \equiv \Delta_r \equiv (h^\ast - h)/h^\ast$ \\ \hline
 
 
 $b^{\Delta_r}$ \textbf{OR} $b^\epsilon$ \textbf{OR} $b^\ast$ &
-$\in \mathbb{R}$ & 
+$\in \mbbR$ & 
 effective branching factor \\ \hline
 
 

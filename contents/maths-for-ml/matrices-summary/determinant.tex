@@ -56,10 +56,10 @@ $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item Determinants are \textbf{only} defined for square matrices $\bm{A} \in \mathbb{R}^{n\times n}$ ,i.e., matrices with the same number of rows and columns.
+    \item Determinants are \textbf{only} defined for square matrices $\bm{A} \in \mbbR^{n\times n}$ ,i.e., matrices with the same number of rows and columns.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The determinant of a square matrix $\bm{A} \in \mathbb{R}^{n\times n}$ is a function that maps $\bm{A}$ onto a real number.
+    \item The determinant of a square matrix $\bm{A} \in \mbbR^{n\times n}$ is a function that maps $\bm{A}$ onto a real number.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item For $n=1$, $\det(\bm{A}) = \det(a_{11}) = a_{11}$
@@ -93,7 +93,7 @@ $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item For a triangular matrix $\bm{T} \in \mathbb{R}^{n\times n}$ , the determinant is the product of the diagonal elements, i.e., $\det(\bm{T}) = \dsum ^n _{i=1} \bm{T}_{ii}$
+    \item For a triangular matrix $\bm{T} \in \mbbR^{n\times n}$ , the determinant is the product of the diagonal elements, i.e., $\det(\bm{T}) = \dsum ^n _{i=1} \bm{T}_{ii}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item the determinant $\det(\bm{A})$ is the signed volume of an n-dimensional parallelepiped formed by columns of the matrix $\bm{A}$.
@@ -104,7 +104,7 @@ $
 
     \item 
     \begin{theorem}[Determinant: Laplace Expansion]
-    Consider a matrix $\bm{A} \in \mathbb{R}^{n\times n}$. Then, for all $j = 1, \cdots , n$:
+    Consider a matrix $\bm{A} \in \mbbR^{n\times n}$. Then, for all $j = 1, \cdots , n$:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
     \begin{enumerate}
@@ -120,7 +120,7 @@ $
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item $\bm{A}_{k,j} \in \mathbb{R}^{(n-1)\times(n-1)}$ is the sub-matrix of $\bm{A}$ that we obtain when deleting row $k$ and column $j$.
+        \item $\bm{A}_{k,j} \in \mbbR^{(n-1)\times(n-1)}$ is the sub-matrix of $\bm{A}$ that we obtain when deleting row $k$ and column $j$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
         \item $\det(\bm{A}_{k,j} )$ is called a \textbf{minor} and $(-1)^{k+j}\ \det(\bm{A}_{k,j} )$ a \textbf{cofactor}.
@@ -128,7 +128,7 @@ $
     \end{enumerate}
 
     \item \begin{theorem}[Determinant: product of eigenvalues]
-        The determinant of a matrix $\bm{A} \in \mathbb{R}^{n\times n}$ is the product of its eigenvalues, i.e.,
+        The determinant of a matrix $\bm{A} \in \mbbR^{n\times n}$ is the product of its eigenvalues, i.e.,
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         .\hfill
@@ -169,7 +169,7 @@ print("Determinant of A:", det_A)
 
 \subsubsection{Properties of Determinant}
 
-For $\bm{A} \in \mathbb{R}^{n\times n}$ the determinant exhibits the following properties:
+For $\bm{A} \in \mbbR^{n\times n}$ the determinant exhibits the following properties:
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 \begin{enumerate}
@@ -190,7 +190,7 @@ For $\bm{A} \in \mathbb{R}^{n\times n}$ the determinant exhibits the following p
     \item Adding a multiple of a column/row to another one does not change $\det(\bm{A})$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Multiplication of a column/row with $\lambda \in \mathbb{R}$ scales $\det(\bm{A})$ by $\lambda$. 
+    \item Multiplication of a column/row with $\lambda \in \mbbR$ scales $\det(\bm{A})$ by $\lambda$. 
     In particular, $\det(\lambda \bm{A}) = \lambda^ n \ \det(\bm{A})$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 

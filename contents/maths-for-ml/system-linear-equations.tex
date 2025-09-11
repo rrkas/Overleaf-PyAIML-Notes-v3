@@ -15,11 +15,11 @@
     \begin{tabular}{| l | l  l |}
         \hline
         
-        coefficients & $a_{ij}$    & $\in \mathbb{R}$ \\ \hline
+        coefficients & $a_{ij}$    & $\in \mbbR$ \\ \hline
         
-        constants & $b_{i}$     & $\in \mathbb{R}$ \\ \hline
+        constants & $b_{i}$     & $\in \mbbR$ \\ \hline
 
-        unknowns & $x_{i}$     & $\in \mathbb{R}$ \\ \hline
+        unknowns & $x_{i}$     & $\in \mbbR$ \\ \hline
 
     \end{tabular}
     \caption*{Notations}
@@ -46,7 +46,7 @@
     \begin{enumerate}
         \item $x_1, \cdots , x_n$ are the \textbf{unknowns} of this system.
 
-        \item Every $n$-tuple $(x_1, \cdots , x_n) \in \mathbb{R}^n$ that satisfies this system is a \textbf{solution} of the linear equation system.
+        \item Every $n$-tuple $(x_1, \cdots , x_n) \in \mbbR^n$ that satisfies this system is a \textbf{solution} of the linear equation system.
     \end{enumerate}
 
 
@@ -103,13 +103,13 @@
         \right]
     $
 
-    \item The solution set of a homogeneous system of linear equations $\bm{Ax} = \bm{0}$ with $n$ unknowns $\bm{x} = [x_1, \cdots , x_n]^\top$ is a subspace of $\mathbb{R}^n$.
+    \item The solution set of a homogeneous system of linear equations $\bm{Ax} = \bm{0}$ with $n$ unknowns $\bm{x} = [x_1, \cdots , x_n]^\top$ is a subspace of $\mbbR^n$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Every subspace $U \subseteq (\mathbb{R}^n , +, \cdot)$ is the solution space of a homogeneous system of linear equations $\bm{Ax} = \bm{0}$ for $\bm{x} \in \mathbb{R}^n$.
+    \item Every subspace $U \subseteq (\mbbR^n , +, \cdot)$ is the solution space of a homogeneous system of linear equations $\bm{Ax} = \bm{0}$ for $\bm{x} \in \mbbR^n$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The solution of an inhomogeneous system of linear equations $\bm{Ax} = \bm{b}, \bm{b} \neq \bm{0}$ is not a subspace of $\mathbb{R}^n$.
+    \item The solution of an inhomogeneous system of linear equations $\bm{Ax} = \bm{b}, \bm{b} \neq \bm{0}$ is not a subspace of $\mbbR^n$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     
@@ -190,7 +190,7 @@
         \item Exchange of two equations (rows in the matrix representing the system of equations)
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item Multiplication of an equation (row) with a constant $\lambda \in \mathbb{R} \backslash \dCurlyBrac{0}$
+        \item Multiplication of an equation (row) with a constant $\lambda \in \mbbR \backslash \dCurlyBrac{0}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
         \item Addition of two equations (rows) 
@@ -313,7 +313,7 @@ $
         \vdots & & \vdots & \vdots & \vdots &  & \vdots & \vdots & \vdots & & \vdots & 0 & \vdots & & \vdots\\
         0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & \mathbf{1} & * & \cdots & *
     \end{bmatrix}
-    \in \mathbb{R}^{k\times n}
+    \in \mbbR^{k\times n}
 $
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -332,7 +332,7 @@ $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
-    \item The columns $j_1, \cdots , j_k$ with the pivots (marked in \textbf{bold}) are the standard unit vectors $e_1, \cdots , e_k \in \mathbb{R}^k$.
+    \item The columns $j_1, \cdots , j_k$ with the pivots (marked in \textbf{bold}) are the standard unit vectors $e_1, \cdots , e_k \in \mbbR^k$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item We extend this matrix to an $n \times n$-matrix $\tilde{\bm{A}}$ by adding $n - k$ rows of the form 

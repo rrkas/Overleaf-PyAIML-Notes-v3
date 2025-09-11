@@ -6,17 +6,17 @@
     \item A function $f$ is a quantity that relates two quantities to each other. 
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item These quantities are typically inputs $\bm{x} \in \mathbb{R}^D$ and targets (function values) $f (\bm{x})$, which we assume are real-valued if not stated otherwise. 
+    \item These quantities are typically inputs $\bm{x} \in \mbbR^D$ and targets (function values) $f (\bm{x})$, which we assume are real-valued if not stated otherwise. 
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     
-    \item $\mathbb{R}^D$ is the domain of $f$ , and the function values $f (\bm{x})$ are the image/codomain of $f$ .
+    \item $\mbbR^D$ is the domain of $f$ , and the function values $f (\bm{x})$ are the image/codomain of $f$ .
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item We often write 
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \begin{enumerate}
-        \item $f: \mathbb{R}^D \to \mathbb{R}$ 
-        (specifies that $f$ is a mapping from $\mathbb{R}^D$ to $\mathbb{R}$ )
+        \item $f: \mbbR^D \to \mbbR$ 
+        (specifies that $f$ is a mapping from $\mbbR^D$ to $\mbbR$ )
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         
         \item $\bm{x} \mapsto f(\bm{x})$ 
@@ -42,8 +42,8 @@
 
 \begin{enumerate}
     \item 
-    \begin{definition}[Univariate function ($f : \mathbb{R} \to \mathbb{R}$)]
-        Univariate function: $y = f(x),\ x, y \in \mathbb{R}$
+    \begin{definition}[Univariate function ($f : \mbbR \to \mbbR$)]
+        Univariate function: $y = f(x),\ x, y \in \mbbR$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
@@ -63,7 +63,7 @@
 
     \item 
     \begin{definition}[Taylor Polynomial ( $T_n(x)$ )]
-        The Taylor polynomial of degree $n$ of $f : \mathbb{R} \to \mathbb{R}$ at $x_0$ is defined as
+        The Taylor polynomial of degree $n$ of $f : \mbbR \to \mbbR$ at $x_0$ is defined as
         $
             T_n(x)
             := \dsum_{k=0}^n \dfrac{f^{(k)}(x_0)}{k!} (x - x_0)^k
@@ -73,7 +73,7 @@
         where $f ^{(k)}(x_0)$ is the $k$-th derivative of $f$ at $x_0$ (which we assume exists) and $\dfrac{f ^{(k)}(x_0)}{ k!}$ are the coefficients of the polynomial.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        We define $t^0 := 1$ for all $t \in \mathbb{R}$.
+        We define $t^0 := 1$ for all $t \in \mbbR$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
     \begin{enumerate}
@@ -99,7 +99,7 @@
 
     \item 
     \begin{definition}[Taylor Series ($T_{\infty}(x)$)]
-        For a smooth function $f \in C^{\infty}$, $f : \mathbb{R} \to \mathbb{R}$, the Taylor series of $f$ at $x_0$ is defined as
+        For a smooth function $f \in C^{\infty}$, $f : \mbbR \to \mbbR$, the Taylor series of $f$ at $x_0$ is defined as
         $
             T_{\infty}(x)
             = \dsum_{k=0}^{\infty} \dfrac{f^{(k)}(x_0)}{k!} (x - x_0)^k
@@ -131,14 +131,14 @@
 
 \begin{enumerate}
     \item 
-    \begin{definition}[multi-variate Functions ($f : \mathbb{R}^n \to \mathbb{R}$)]
-        The general case where the function $f$ depends on one or more variables $\bm{x} \in \mathbb{R}^n$
+    \begin{definition}[multi-variate Functions ($f : \mbbR^n \to \mbbR$)]
+        The general case where the function $f$ depends on one or more variables $\bm{x} \in \mbbR^n$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
     \item 
     \begin{definition}[Partial Derivative ($\dfrac{\partial f}{\partial x_i}$)]
-        For a function $f : \mathbb{R}^n \to \mathbb{R}$, $\bm{x} \mapsto f (\bm{x})$, $\bm{x} \in \mathbb{R}^n$ of $n$ variables $x_1, \cdots , x_n$ we define the partial derivatives as
+        For a function $f : \mbbR^n \to \mbbR$, $\bm{x} \mapsto f (\bm{x})$, $\bm{x} \in \mbbR^n$ of $n$ variables $x_1, \cdots , x_n$ we define the partial derivatives as
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         .\hfill
@@ -177,8 +177,8 @@
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item 
-    \begin{definition}[Gradient ($\nabla_x f \in \mathbb{R}^{1 \times n}$)]
-        For a function $f : \mathbb{R}^n \to \mathbb{R}$, $\bm{x} \mapsto f (\bm{x})$, $\bm{x} \in \mathbb{R}^n$ of $n$ variables $x_1, \cdots , x_n$:
+    \begin{definition}[Gradient ($\nabla_x f \in \mbbR^{1 \times n}$)]
+        For a function $f : \mbbR^n \to \mbbR$, $\bm{x} \mapsto f (\bm{x})$, $\bm{x} \in \mbbR^n$ of $n$ variables $x_1, \cdots , x_n$:
         \\
         .\hfill
         $
@@ -191,7 +191,7 @@
                 \cdots
                 \dfrac{\partial f(\bm{x})}{\partial x_n}
             \end{bmatrix}
-            \in \mathbb{R}^{1 \times n}
+            \in \mbbR^{1 \times n}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
@@ -206,7 +206,7 @@
     \item The reason why we define the gradient vector as a row vector:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \begin{enumerate}
-        \item we can consistently generalize the gradient to vector-valued functions $f : \mathbb{R}^n \to \mathbb{R}^m$ (then the gradient becomes a matrix)
+        \item we can consistently generalize the gradient to vector-valued functions $f : \mbbR^n \to \mbbR^m$ (then the gradient becomes a matrix)
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
         \item we can immediately apply the multi-variate chain rule without paying attention to the dimension of the gradient.
@@ -219,13 +219,13 @@
 
 
 
-\section{Gradients of Vector-Valued Functions ($\nabla_x f$)}
+\section{Gradients of Vector-Valued Functions ($J = \nabla_x f$)}
 
 \begin{enumerate}
     \item 
-    \begin{definition}[vector-valued functions/ vector fields ($\bm{f} : \mathbb{R}^n \to \mathbb{R}^m$)]
-        vector-valued functions (vector fields) are defined as $\bm{f} : \mathbb{R}^n \to \mathbb{R}^m$, where $n \geq 1$ and $m > 1$.
-        For a function $\bm{f} : \mathbb{R}^n \to \mathbb{R}^m$ and a vector $\bm{x} = [x_1, \cdots , x_n]^\top \in \mathbb{R}^n$, the corresponding vector of function values is given as
+    \begin{definition}[vector-valued functions/ vector fields ($\bm{f} : \mbbR^n \to \mbbR^m$)]
+        vector-valued functions (vector fields) are defined as $\bm{f} : \mbbR^n \to \mbbR^m$, where $n \geq 1$ and $m > 1$.
+        For a function $\bm{f} : \mbbR^n \to \mbbR^m$ and a vector $\bm{x} = [x_1, \cdots , x_n]^\top \in \mbbR^n$, the corresponding vector of function values is given as
         $
             \bm{f}(\bm{x})
             = \begin{bmatrix}
@@ -233,12 +233,12 @@
                 \vdots \\
                 f_m(\bm{x})
             \end{bmatrix}
-            \in \mathbb{R}^m
+            \in \mbbR^m
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item Writing the vector-valued function in this way allows us to view a vector-valued function $\bm{f} : \mathbb{R}^n \to \mathbb{R}^m$ as a vector of functions $[f_1, \cdots , f_m]^\top$, $f_i : \mathbb{R}^n \to \mathbb{R}$ that map onto $\mathbb{R}$. 
+    \item Writing the vector-valued function in this way allows us to view a vector-valued function $\bm{f} : \mbbR^n \to \mbbR^m$ as a vector of functions $[f_1, \cdots , f_m]^\top$, $f_i : \mbbR^n \to \mbbR$ that map onto $\mbbR$. 
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item 
@@ -256,13 +256,13 @@
             \vdots \\
             \lim_{h \to 0} \dfrac{f_m(x_1,\cdots,x_{i-1},x_i+h,x_{i+1},\cdots x_n)-f_m(\bm{x})}{h}
         \end{bmatrix}
-        \in \mathbb{R}^m
+        \in \mbbR^m
     }$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item 
     \begin{definition}[Jacobian ($\bm{J} = \nabla_{\bm{x}}\bm{f} = \dfrac{d \bm{f}(\bm{x})}{d \bm{x}}$)]
-        The collection of all first-order partial derivatives of a vector-valued function $\bm{f} : \mathbb{R}^n \to \mathbb{R}^m$ is called the Jacobian. 
+        The collection of all first-order partial derivatives of a vector-valued function $\bm{f} : \mbbR^n \to \mbbR^m$ is called the Jacobian. 
         The Jacobian $\bm{J}$ is an $m \times n$ matrix, which we define and arrange as follows:
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
@@ -285,7 +285,7 @@
                 \cdots &
                 \dfrac{\partial f_m(\bm{x})}{\partial x_n} \\
             \end{bmatrix}
-            \in \mathbb{R}^{m\times n}
+            \in \mbbR^{m\times n}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
@@ -300,7 +300,7 @@
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
     \begin{enumerate}
-        \item As a special case, a function $f : \mathbb{R}^n \to \mathbb{R}^1$, which maps a vector $\bm{x} \in \mathbb{R}^n$ onto a scalar (e.g., $f (x) = \dsum^n _{i=1} x_i$), possesses a Jacobian that is a row vector (matrix of dimension $1 \times n$)
+        \item As a special case, a function $f : \mbbR^n \to \mbbR^1$, which maps a vector $\bm{x} \in \mbbR^n$ onto a scalar (e.g., $f (x) = \dsum^n _{i=1} x_i$), possesses a Jacobian that is a row vector (matrix of dimension $1 \times n$)
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
         \item Jacobian is used in the change-of-variable method for probability distributions. 
@@ -315,6 +315,82 @@
     \end{enumerate}
 
 \end{enumerate}
+
+
+
+
+
+
+
+\section{Higher-Order Derivatives}
+
+.\hfill
+$
+    \dfrac{\partial^2 f}{\partial x^2} = \dfrac{\partial}{\partial x} \dParenBrac{\dfrac{\partial f}{\partial x}}
+$
+\hfill \vrule \hfill
+$
+    \dfrac{\partial^2 f}{\partial y \partial x} = \dfrac{\partial}{\partial y} \dParenBrac{\dfrac{\partial f}{\partial x}}
+$
+\hfill \vrule \hfill
+$
+    \dfrac{\partial^2 f}{\partial x \partial y} = \dfrac{\partial}{\partial x} \dParenBrac{\dfrac{\partial f}{\partial y}}
+$
+\hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\\[0.2cm]
+.\hfill
+$
+    \dfrac{\partial^n f}{\partial x^n} = 
+    \dfrac{\partial}{\partial x} \dParenBrac{
+        \overset{n \text{ times}}{\cdots} 
+        \dParenBrac{\dfrac{\partial}{\partial x} \dParenBrac{\dfrac{\partial f}{\partial x}}}
+        \cdots
+    }
+$
+\hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+\begin{enumerate}
+    \item 
+    \begin{definition}[Hessian ($\bm{H} = \nabla^2_{x,y}f(x,y)$)]    
+        The Hessian is the collection of all second-order partial derivatives.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+
+    \item If $f (x, y)$ is a twice (continuously) differentiable function, then 
+    $
+        \dfrac{\partial^2 f}{\partial y \partial x}
+        = \dfrac{\partial^2 f}{\partial x \partial y}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    $
+        \bm{H}
+        = \nabla^2_{x,y}f(x,y)
+        = \begin{bmatrix}
+            \dfrac{\partial^2 f}{\partial x^2} & \dfrac{\partial^2 f}{\partial x \partial y} \\
+            \dfrac{\partial^2 f}{\partial x \partial y} & \dfrac{\partial^2 f}{\partial y^2}
+        \end{bmatrix}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Generally, for $\bm{x} \in \mbbR^n$ and $f : \mbbR^n \to \mbbR$, the Hessian is an $n \times n$ matrix. 
+    The Hessian measures the curvature of the function locally around $(x, y)$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item (Hessian of a Vector Field) If $\bm{f} : \mbbR^n \to \mbbR^m$ is a vector field, the Hessian is an $(m \times n \times n)$-tensor. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -353,8 +429,8 @@
         keepaspectratio,
     ]{images/Vector-Calculus/Gradients-of-Matrices-approach2.png}
     \caption*{
-        \textbf{Approach 2}: We re-shape (flatten) $\bm{A} \in \mathbb{R}^{4\times 2}$ into a vector $\tilde{\bm{A}} \in \mathbb{R}^8$. 
-        Then, we compute the gradient $\dfrac{d\tilde{\bm{A}}}{d\bm{x}} \in \mathbb{R}^{8\times 3}$. 
+        \textbf{Approach 2}: We re-shape (flatten) $\bm{A} \in \mbbR^{4\times 2}$ into a vector $\tilde{\bm{A}} \in \mbbR^8$. 
+        Then, we compute the gradient $\dfrac{d\tilde{\bm{A}}}{d\bm{x}} \in \mbbR^{8\times 3}$. 
         We obtain the gradient tensor by re-shaping this gradient as illustrated above.
         \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     }
@@ -536,7 +612,7 @@
 \vspace{0.5cm}
 \textbf{Examples}
 \begin{enumerate}
-    \item Consider a function $f : \mathbb{R}^2 \to \mathbb{R}$ of two variables $x_1, x_2$. 
+    \item Consider a function $f : \mbbR^2 \to \mbbR$ of two variables $x_1, x_2$. 
     Furthermore, $x_1(t)$ and $x_2(t)$ are themselves functions of $t$. 
     \\
     $
@@ -737,8 +813,98 @@
     \end{enumerate}
     \end{multicols}
 
-    \item 
 \end{enumerate}
+
+
+
+
+
+
+
+
+\section{Computational Graph}
+
+\begin{enumerate}
+    \item 
+    \begin{definition}[Computational Graph]
+        Computational graphs are a type of graph that can be used to represent mathematical expressions. 
+        This is similar to descriptive language in the case of deep learning models, providing a functional description of the required computation.
+        \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+    \end{definition}
+
+    \item In general, the computational graph is a \textbf{directed graph} that is used for expressing and evaluating mathematical expressions. 
+    \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+
+    \item These can be used for two different types of calculations:
+    \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+    \begin{enumerate}
+        \item Forward computation
+        \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+        
+        \item Backward computation
+        \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+    \end{enumerate}
+
+    \item Structure of a computational graph:
+    \begin{enumerate}
+        \item A variable is represented by a \textbf{node} in a graph. 
+        It could be a scalar, vector, matrix, tensor, or even another type of variable.
+        \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+    
+        \item A function argument and data dependency are both represented by an \textbf{edge}. 
+        These are similar to node pointers.
+        \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+    
+        \item A simple function of one or more variables is called an operation. 
+        There is a set of operations that are permitted. 
+        Functions that are more complex than these operations in this set can be represented by combining multiple operations.
+        \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+    \end{enumerate}
+
+    \item Types of computational graphs:
+    \begin{enumerate}
+        \item Static Computational Graphs
+        \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+
+        \item Dynamic Computational Graphs
+        \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsection{Static Computational Graphs}
+\begin{enumerate}
+    \item Involves two phases
+    \begin{enumerate}
+        \item Phase 1:- Make a plan for your architecture
+        \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+
+        \item Phase 2:- To train the model and generate predictions, feed it a lot of data.
+        \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+    \end{enumerate}
+
+    \item The benefit of utilizing this graph is that it enables powerful offline graph optimization and scheduling. As a result, they should be faster than dynamic graphs in general.
+    \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+
+    \item The drawback is that dealing with structured and even variable-sized data is unsightly.
+    \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
+\end{enumerate}
+
+
+
+\subsection{Dynamic Computational Graphs}
+
+\begin{enumerate}
+    \item As the forward computation is performed, the graph is implicitly defined.
+    
+    \item This graph has the advantage of being more adaptable. 
+    The library is less intrusive and enables interleaved graph generation and evaluation. 
+    The forward computation is implemented in your preferred programming language, complete with all of its features and algorithms. 
+    Debugging dynamic graphs is simple because it permits line-by-line execution of the code and access to all variables, finding bugs in your code is considerably easier. 
+    
+    \item The disadvantage of employing this graph is that there is limited time for graph optimization, and the effort may be wasted if the graph does not change.
+\end{enumerate}
+
 
 
 
@@ -747,8 +913,136 @@
 \section{Automatic Differentiation}
 
 \begin{enumerate}
-    \item Automatic differentiation is different from symbolic differentiation and numerical approximations of the gradient, e.g., by using finite differences.
+    \item[] \textbf{Example}: $x \mapsto a \mapsto b \mapsto y$
+    \hspace{1cm}
+    $
+        \dfrac{dy}{dx} = \dfrac{dy}{db}\ \dfrac{db}{da}\ \dfrac{da}{dx}
+    $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    \begin{definition}[Automatic differentiation]
+        Automatic differentiation is different from symbolic differentiation and numerical approximations of the gradient, e.g., by using finite differences.
+        We can think of automatic differentiation as a set of techniques to numerically (in contrast to symbolically) evaluate the exact (up to machine precision) gradient of a function by working with intermediate variables and applying the chain rule.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+
+
+    \item Automatic differentiation applies a series of elementary arithmetic operations, e.g., addition and multiplication and elementary functions, e.g., sin, cos, exp, log. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+    \item By applying the chain rule to these operations, the gradient of quite complicated functions can be computed automatically.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Automatic differentiation applies to general computer programs and has forward and reverse modes.
+    Intuitively, the forward and reverse mode differ in the order of multiplication.
+    \\
+    $\dfrac{dy}{dx} = \dParenBrac{\dfrac{dy}{db}\ \dfrac{db}{da}}\ \dfrac{da}{dx}$ would be the reverse mode because gradients are propagated backward through the graph, i.e., reverse to the data flow.
+    $\dfrac{dy}{dx} = \dfrac{dy}{db}\ \dParenBrac{\dfrac{db}{da}\ \dfrac{da}{dx}}$ would be the forward mode, where the gradients flow with the data from left to right through the graph.
+    
+    \item In the context of neural networks, where the input dimensionality is often much higher than the dimensionality of the labels, the reverse mode is computationally significantly cheaper than the forward mode.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Let $x_1, \cdots , x_d$ be the input variables to the function, $x_{d+1}, \cdots , x_{D-1}$ be the intermediate variables, and $x_D$ the output variable. Then the computation graph can be expressed as follows:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    \textbf{Forward propagation}:\hfill
+    $x_i = g_i(x_{Pa(x_i)})$ 
+    \hspace{1cm} 
+    $i = d+1, \cdots, D$
+    \hspace{1cm} 
+    $f = x_D$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    where 
+    $g_i(\cdot)$ are elementary functions 
+    $Pa(x_i)$ are indices (ex: $Pa(x_0) = \dCurlyBrac{1, 2}$) of parent nodes of the variable $x_i$ in the graph
+    and 
+    $x_{Pa(x_i)}$ are the parent nodes (ex: $x_{Pa(x_0)} = \dCurlyBrac{x_1, x_2}$) of the variable $x_i$ in the graph.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    \textbf{Backward propagation}:\hfill
+    $\dfrac{\partial f}{\partial x_D} = 1$
+    \hspace{1cm}
+    $
+        \dfrac{\partial f}{\partial x_i}
+        = \dsum_{j; i \in Pa(x_j)} \dfrac{\partial f}{\partial x_j} \dfrac{\partial x_j}{\partial x_i}
+        = \dsum_{j; i \in Pa(x_j)} \dfrac{\partial f}{\partial x_j} \dfrac{\partial g_j}{\partial x_i}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+
+    \item The automatic differentiation approach above works whenever we have a function that can be expressed as a computation graph, where the elementary functions are differentiable. 
+    In fact, the function may not even be a mathematical function but a computer program. 
+    However, not all computer programs can be automatically differentiated, e.g., if we cannot find differential elementary functions. 
+    Programming structures, such as \verb|for| loops and \verb|if| statements, require more care as well.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+
+
+
+
+
+
+    \item \textbf{Example}: $f(x) = \sqrt{x^2 + \exp(x^2)} + \cos\dParenBrac{x^2 + \exp(x^2)}$
+    \begin{figure}[H]
+        \centering
+        \includegraphics[
+            width=\linewidth,
+            height=2cm,
+            keepaspectratio,
+        ]{images/Vector-Calculus/example-auto-diff-comp-graph.png}
+        \caption*{
+            Computation graph with inputs $x$, function values $f$, and intermediate variables $a, b, c, d, e$.
+            \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        }
+    \end{figure}
+    \begin{multicols}{6}
+    \begin{enumerate}[leftmargin=0.1cm, label={}]
+        \item[] $a = x^2$
+        \item[] $b = \exp(a)$
+        \item[] $c = a+b$
+        \item[] $d = \sqrt{c}$
+        \item[] $e = \cos(c)$
+        \item[] $f = d+e$
+    \end{enumerate}
+    \end{multicols}
+    \begin{multicols}{6}
+    \begin{enumerate}[leftmargin=0.1cm, label={}]
+        \item[] $\dfrac{\partial a}{\partial x} = 2x$
+        \item[] $\dfrac{\partial b}{\partial a} = \exp(a)$
+        \item[] $\dfrac{\partial c}{\partial a} = \dfrac{\partial c}{\partial b} = 1$
+        \item[] $\dfrac{\partial d}{\partial c} = \dfrac{1}{2\sqrt{c}}$
+        \item[] $\dfrac{\partial e}{\partial c} = -\sin(c)$
+        \item[] $\dfrac{\partial f}{\partial d} = \dfrac{\partial f}{\partial e} = 1$
+    \end{enumerate}
+    \end{multicols}
+    \begin{multicols}{3}
+    \begin{enumerate}[leftmargin=0.1cm, label={}]
+        \item[] $
+            \dfrac{\partial f}{\partial c}
+            = \dfrac{\partial f}{\partial d} \dfrac{\partial d}{\partial c}
+            + \dfrac{\partial f}{\partial e} \dfrac{\partial e}{\partial c}
+        $
+        \item[] $
+            \dfrac{\partial f}{\partial a}
+            = \dfrac{\partial f}{\partial b} \dfrac{\partial b}{\partial a}
+            + \dfrac{\partial f}{\partial c} \dfrac{\partial c}{\partial a}
+        $
+        \item[] 
+        $
+            \dfrac{\partial f}{\partial b}
+            = \dfrac{\partial f}{\partial c} \dfrac{\partial c}{\partial b}
+        $
+            \hspace{0.2cm}
+            \vline
+            \hspace{0.2cm}
+        $
+            \dfrac{\partial f}{\partial x}
+            = \dfrac{\partial f}{\partial a} \dfrac{\partial a}{\partial x}
+        $
+    \end{enumerate}
+    \end{multicols}
 \end{enumerate}
 
 

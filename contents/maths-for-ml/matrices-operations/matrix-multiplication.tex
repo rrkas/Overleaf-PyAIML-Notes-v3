@@ -1,6 +1,6 @@
 \subsection{Matrix Multiplication ( $AB$ OR $@$ OR $\cdot$ ) \cite{mfml/book/mml/Deisenroth-Faisal-Ong}}
 
-For matrices $\bm{A} \in \mathbb{R}^{m\times n}$, $\bm{B} \in \mathbb{R}^{n\times k}$, the elements $c_{ij}$ of the product matrices. $\bm{C} = \bm{AB} \in \mathbb{R}^{m\times k}$ are computed as:
+For matrices $\bm{A} \in \mbbR^{m\times n}$, $\bm{B} \in \mbbR^{n\times k}$, the elements $c_{ij}$ of the product matrices. $\bm{C} = \bm{AB} \in \mbbR^{m\times k}$ are computed as:
 
 \vspace{0.5cm}
 \hfill
@@ -81,9 +81,9 @@ print(np.all(C1 == C2), np.all(C1 == C3))
     \item \textbf{Associativity}: 
     $
         \forall 
-        \bm{A} \in \mathbb{R}^{m\times n},\ 
-        \bm{B} \in \mathbb{R}^{n\times p},\ 
-        \bm{C} \in \mathbb{R}^{p\times q}
+        \bm{A} \in \mbbR^{m\times n},\ 
+        \bm{B} \in \mbbR^{n\times p},\ 
+        \bm{C} \in \mbbR^{p\times q}
     $:
     
         \begin{enumerate}
@@ -94,8 +94,8 @@ print(np.all(C1 == C2), np.all(C1 == C3))
     \item \textbf{Distributivity}: 
     $
         \forall 
-        \bm{A},\ \bm{B}\in \mathbb{R}^{m\times n},\ 
-        \bm{C},\ \bm{D}\in \mathbb{R}^{n\times p}
+        \bm{A},\ \bm{B}\in \mbbR^{m\times n},\ 
+        \bm{C},\ \bm{D}\in \mbbR^{n\times p}
     $:
 
         \begin{enumerate}
@@ -109,7 +109,7 @@ print(np.all(C1 == C2), np.all(C1 == C3))
     \item Multiplication with the identity matrix: 
     $
         \forall 
-        \bm{A},\ \bm{B}\in \mathbb{R}^{m\times n}
+        \bm{A},\ \bm{B}\in \mbbR^{m\times n}
     $:
         \begin{enumerate}
             \item $\bm{I}_m\bm{A} = \bm{AI}_n = \bm{A}$

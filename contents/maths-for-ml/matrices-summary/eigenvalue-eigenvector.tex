@@ -6,8 +6,8 @@
 
     \item 
     \begin{definition}[Eigenvalues \& Eigenvectors]
-        Let $\bm{A} \in \mathbb{R}^{n\times n}$ be a square matrix. 
-        Then $\lambda \in \mathbb{R}$ is an eigenvalue of $\bm{A}$ and $\bm{x} \in \mathbb{R}^n\backslash\dCurlyBrac{0}$ is the corresponding eigenvector of $\bm{A}$ if
+        Let $\bm{A} \in \mbbR^{n\times n}$ be a square matrix. 
+        Then $\lambda \in \mbbR$ is an eigenvalue of $\bm{A}$ and $\bm{x} \in \mbbR^n\backslash\dCurlyBrac{0}$ is the corresponding eigenvector of $\bm{A}$ if
         $\bm{Ax} = \lambda \bm{x}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
@@ -20,10 +20,10 @@
 
     \item The following statements are equivalent:
     \begin{enumerate}
-        \item $\lambda$ is an eigenvalue of $\bm{A} \in \mathbb{R}^{n\times n}$
+        \item $\lambda$ is an eigenvalue of $\bm{A} \in \mbbR^{n\times n}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item There exists an $\bm{x} \in \mathbb{R}^n\backslash\dCurlyBrac{0}$ with $\bm{Ax} = \lambda \bm{x}$, or equivalently, $(\bm{A} - \lambda \bm{I}_n)\bm{x} = 0$ can be solved non-trivially, i.e., $\bm{x} \neq 0$.
+        \item There exists an $\bm{x} \in \mbbR^n\backslash\dCurlyBrac{0}$ with $\bm{Ax} = \lambda \bm{x}$, or equivalently, $(\bm{A} - \lambda \bm{I}_n)\bm{x} = 0$ can be solved non-trivially, i.e., $\bm{x} \neq 0$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
         \item $rk(\bm{A} - \lambda \bm{I}_n) < n$
@@ -33,12 +33,12 @@
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
-    \item \textbf{Non-uniqueness of eigenvectors}: If $\bm{x}$ is an eigenvector of $\bm{A}$ associated with eigenvalue $\lambda$, then for any $c \in \mathbb{R}\backslash \dCurlyBrac{0}$ it holds that $c\bm{x}$ is an eigenvector of $\bm{A}$ with the same eigenvalue since $\bm{A}(c\bm{x}) = c\bm{Ax} = c\lambda\bm{x} = \lambda(c\bm{x})$. All vectors that are collinear to $\bm{x}$ are also eigenvectors of $\bm{A}$.
+    \item \textbf{Non-uniqueness of eigenvectors}: If $\bm{x}$ is an eigenvector of $\bm{A}$ associated with eigenvalue $\lambda$, then for any $c \in \mbbR\backslash \dCurlyBrac{0}$ it holds that $c\bm{x}$ is an eigenvector of $\bm{A}$ with the same eigenvalue since $\bm{A}(c\bm{x}) = c\bm{Ax} = c\lambda\bm{x} = \lambda(c\bm{x})$. All vectors that are collinear to $\bm{x}$ are also eigenvectors of $\bm{A}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item 
     \begin{theorem}[Eigenvalue: root of the characteristic polynomial]
-        $\lambda  \in \mathbb{R}$ is an eigenvalue of $\bm{A} \in \mathbb{R}^{n\times n}$ if and only if $\lambda$  is a root of the characteristic polynomial $p_{\bm{A}}(\lambda )$ of $\bm{A}$.
+        $\lambda  \in \mbbR$ is an eigenvalue of $\bm{A} \in \mbbR^{n\times n}$ if and only if $\lambda$  is a root of the characteristic polynomial $p_{\bm{A}}(\lambda )$ of $\bm{A}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
 
@@ -65,21 +65,21 @@
     If the eigenvalue is negative, the direction of the stretching is flipped.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{The Case of the Identity Matrix}: The identity matrix $\bm{I} \in \mathbb{R}^{n\times n}$ has characteristic polynomial $p_{\bm{I}} (\lambda ) = \det(\bm{I} -\lambda \bm{I}) = (1-\bm{\lambda }) ^n = 0$, which has only one eigenvalue $\lambda  = 1$ that occurs $n$ times. 
-    Moreover, $\bm{Ix} = \lambda \bm{x} = 1\bm{x}$ holds for all vectors $\bm{x} \in \mathbb{R}^n\backslash \dCurlyBrac{0}$. 
-    Because of this, the sole eigenspace $E_1$ of the identity matrix spans $n$ dimensions, and all $n$ standard basis vectors of $\mathbb{R}^n$ are eigenvectors of $\bm{I}$.
+    \item \textbf{The Case of the Identity Matrix}: The identity matrix $\bm{I} \in \mbbR^{n\times n}$ has characteristic polynomial $p_{\bm{I}} (\lambda ) = \det(\bm{I} -\lambda \bm{I}) = (1-\bm{\lambda }) ^n = 0$, which has only one eigenvalue $\lambda  = 1$ that occurs $n$ times. 
+    Moreover, $\bm{Ix} = \lambda \bm{x} = 1\bm{x}$ holds for all vectors $\bm{x} \in \mbbR^n\backslash \dCurlyBrac{0}$. 
+    Because of this, the sole eigenspace $E_1$ of the identity matrix spans $n$ dimensions, and all $n$ standard basis vectors of $\mbbR^n$ are eigenvectors of $\bm{I}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item 
     \begin{theorem}[eigenvectors: linearly independent]
-        The eigenvectors $\bm{x}_1, \cdots , \bm{x}_n$ of a matrix $\bm{A} \in \mathbb{R}^{n\times n}$ with $n$ distinct eigenvalues $\lambda _1, \cdots , \lambda _n$ are linearly independent.
-        This theorem states that eigenvectors of a matrix with $n$ distinct eigenvalues form a basis of $\mathbb{R}^n$.
+        The eigenvectors $\bm{x}_1, \cdots , \bm{x}_n$ of a matrix $\bm{A} \in \mbbR^{n\times n}$ with $n$ distinct eigenvalues $\lambda _1, \cdots , \lambda _n$ are linearly independent.
+        This theorem states that eigenvectors of a matrix with $n$ distinct eigenvalues form a basis of $\mbbR^n$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
 
     \item 
     \begin{theorem}[Spectral Theorem]
-        If $\bm{A} \in \mathbb{R}^{n\times n}$ is symmetric, there exists an orthonormal basis of the corresponding vector space $V$ consisting of eigenvectors of $\bm{A}$, and each eigenvalue is real.
+        If $\bm{A} \in \mbbR^{n\times n}$ is symmetric, there exists an orthonormal basis of the corresponding vector space $V$ consisting of eigenvectors of $\bm{A}$, and each eigenvalue is real.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
     \begin{enumerate}
@@ -133,7 +133,7 @@ print(eigenvectors)
 \begin{enumerate}
     \item 
     \begin{definition}[Eigenspace]
-        For $\bm{A} \in \mathbb{R}^{n\times n}$ , the set of all eigenvectors of $\bm{A}$ associated with an eigenvalue $\lambda $ spans a subspace of $\mathbb{R}^n$, which is called the \textbf{eigenspace} of $\bm{A}$ with respect to $\lambda $ and is denoted by $E_\lambda $.
+        For $\bm{A} \in \mbbR^{n\times n}$ , the set of all eigenvectors of $\bm{A}$ associated with an eigenvalue $\lambda $ spans a subspace of $\mbbR^n$, which is called the \textbf{eigenspace} of $\bm{A}$ with respect to $\lambda $ and is denoted by $E_\lambda $.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
@@ -143,7 +143,7 @@ print(eigenvectors)
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item If $\lambda $ is an eigenvalue of $\bm{A} \in \mathbb{R}^{n\times n}$ , then the corresponding eigenspace $E_\lambda $ is the solution space of the homogeneous system of linear equations $(\bm{A} - \lambda \bm{I})\bm{x} = 0$.
+    \item If $\lambda $ is an eigenvalue of $\bm{A} \in \mbbR^{n\times n}$ , then the corresponding eigenspace $E_\lambda $ is the solution space of the homogeneous system of linear equations $(\bm{A} - \lambda \bm{I})\bm{x} = 0$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 

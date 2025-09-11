@@ -23,14 +23,14 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
 
 
 \begin{enumerate}
-    \item Consider a square matrix $\bm{A} \in \mathbb{R}^{n\times n}$. 
-    Let matrix $\bm{B} \in \mathbb{R}^{n\times n}$ have the property that $\bm{A}\bm{B} = \bm{I}_n = \bm{B}\bm{A}$. 
+    \item Consider a square matrix $\bm{A} \in \mbbR^{n\times n}$. 
+    Let matrix $\bm{B} \in \mbbR^{n\times n}$ have the property that $\bm{A}\bm{B} = \bm{I}_n = \bm{B}\bm{A}$. 
     $\bm{B}$ is called the inverse of $\bm{A}$ and denoted by $\bm{A}^{-1}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item 
     \begin{theorem}[Square Matrix: Invertible]
-        For any square matrix $\bm{A} \in \mathbb{R}^{n\times n}$ it holds that $\bm{A}$ is invertible if and only if $\det(\bm{A})\neq 0$.
+        For any square matrix $\bm{A} \in \mbbR^{n\times n}$ it holds that $\bm{A}$ is invertible if and only if $\det(\bm{A})\neq 0$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
 
@@ -47,7 +47,7 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
             a_{11} & a_{12} \\
             a_{21} & a_{22} \\
         \end{bmatrix} 
-        \in \mathbb{R}^{2\times 2}
+        \in \mbbR^{2\times 2}
     $
     \hspace{1cm} and \hspace{1cm}
     $a_{11}\ a_{22} - a_{12}\ a_{21} \neq 0$ (determinant of $A$)\\[0.4cm] 
@@ -69,7 +69,7 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
 \subsubsection{Matrix Inverse using Gaussian Elimination}
 
 \begin{enumerate}
-    \item Given a matrix $\bm{A} \in \mathbb{R}^{n\times n}$, we need to find $\bm{X} = \bm{A}^{-1}$ such that $\bm{A}\bm{X} = \bm{I}_n$
+    \item Given a matrix $\bm{A} \in \mbbR^{n\times n}$, we need to find $\bm{X} = \bm{A}^{-1}$ such that $\bm{A}\bm{X} = \bm{I}_n$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     
     \item We can write this down as a set of simultaneous linear equations $\bm{A}\bm{X} = \bm{I}_n$, where we solve for $\bm{X} = [\bm{x}_1| \cdots |\bm{x}_n]$. 

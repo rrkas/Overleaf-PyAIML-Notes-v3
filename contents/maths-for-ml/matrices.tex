@@ -13,11 +13,11 @@
             a_{m1} & a_{m2} & \cdots & a_{mn} \\
         \end{bmatrix}
         \hfill
-        (\ a_{ij} \in \mathbb{R} \ )
+        (\ a_{ij} \in \mbbR \ )
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item $\mathbb{R}^{m\times n}$ is the set of all real-valued $(m, n)$-matrices. $\bm{A} \in \mathbb{R}^{m\times n}$ can be equivalently represented as $\bm{a} \in \mathbb{R}^{mn}$ by stacking all $n$ columns of the matrix into a long vector.
+    \item $\mbbR^{m\times n}$ is the set of all real-valued $(m, n)$-matrices. $\bm{A} \in \mbbR^{m\times n}$ can be equivalently represented as $\bm{a} \in \mbbR^{mn}$ by stacking all $n$ columns of the matrix into a long vector.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \vspace{0.5cm}
@@ -46,7 +46,7 @@
 \begin{enumerate}
     \item 
     \begin{definition}[Rank of a matrix]
-        The number of linearly independent columns of a matrix $\bm{A} \in \mathbb{R}^{m\times n}$ equals the number of linearly independent rows and is called the rank of $\bm{A}$ and is denoted by $\text{rk}(\bm{A})$.
+        The number of linearly independent columns of a matrix $\bm{A} \in \mbbR^{m\times n}$ equals the number of linearly independent rows and is called the rank of $\bm{A}$ and is denoted by $\text{rk}(\bm{A})$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
@@ -59,26 +59,26 @@
     \item $\text{rk}(\bm{A}) = \text{rk}(\bm{A}^\top)$, i.e., the column rank equals the row rank.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The columns of $\bm{A} \in \mathbb{R}^{m\times n}$ span a subspace $U \subseteq \mathbb{R}^m$ with $\dim(U) = \text{rk}(\bm{A})$. 
+    \item The columns of $\bm{A} \in \mbbR^{m\times n}$ span a subspace $U \subseteq \mbbR^m$ with $\dim(U) = \text{rk}(\bm{A})$. 
     We call this subspace the \textbf{image or range}. 
     A basis of $U$ can be found by applying Gaussian elimination to $\bm{A}$ to identify the \textbf{pivot columns}.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The rows of $\bm{A} \in  \mathbb{R}^{m\times n}$  span a subspace $W \subseteq \mathbb{R}^n$ with $\dim(W) = \text{rk}(\bm{A})$. 
+    \item The rows of $\bm{A} \in  \mbbR^{m\times n}$  span a subspace $W \subseteq \mbbR^n$ with $\dim(W) = \text{rk}(\bm{A})$. 
     A basis of $W$ can be found by applying Gaussian elimination to $\bm{A}^\top$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item For all $\bm{A} \in  \mathbb{R}^{n\times n}$ it holds that $\bm{A}$ is regular (invertible) if and only if $\text{rk}(\bm{A}) = n$.
+    \item For all $\bm{A} \in  \mbbR^{n\times n}$ it holds that $\bm{A}$ is regular (invertible) if and only if $\text{rk}(\bm{A}) = n$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item For all $\bm{A} \in  \mathbb{R}^{m\times n}$  and all $\bm{b} \in  \mathbb{R}^m$ it holds that the linear equation system $Ax = b$ can be solved if and only if $\text{rk}(\bm{A}) = \text{rk}(\bm{A}|\bm{b})$, where $\bm{A}|\bm{b}$ denotes the augmented system.
+    \item For all $\bm{A} \in  \mbbR^{m\times n}$  and all $\bm{b} \in  \mbbR^m$ it holds that the linear equation system $Ax = b$ can be solved if and only if $\text{rk}(\bm{A}) = \text{rk}(\bm{A}|\bm{b})$, where $\bm{A}|\bm{b}$ denotes the augmented system.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item For $\bm{A} \in  \mathbb{R}^{m\times n}$  the subspace of solutions for $\bm{A}\bm{x} = \bm{0}$ possesses dimension $n - \text{rk}(\bm{A})$. 
+    \item For $\bm{A} \in  \mbbR^{m\times n}$  the subspace of solutions for $\bm{A}\bm{x} = \bm{0}$ possesses dimension $n - \text{rk}(\bm{A})$. 
     We call this subspace the \textbf{kernel} or the \textbf{null space}.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item A matrix $\bm{A} \in  \mathbb{R}^{m\times n}$  has \textbf{full rank} if its rank equals the largest possible rank for a matrix of the same dimensions. 
+    \item A matrix $\bm{A} \in  \mbbR^{m\times n}$  has \textbf{full rank} if its rank equals the largest possible rank for a matrix of the same dimensions. 
     This means that the rank of a full-rank matrix is the lesser of the number of rows and columns, i.e., $\text{rk}(\bm{A}) = min(m, n)$. 
     A matrix is said to be \textbf{rank deficient} if it does not have full rank.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -118,7 +118,7 @@ print("Rank of matrix A:", rank)
 \section{Null Space and Column Space}
 
 \begin{enumerate}
-    \item Let us consider $\bm{A} \in \mathbb{R}^{m\times n}$ and a linear mapping $\Phi : \mathbb{R}^n \to \mathbb{R}^m$, $\bm{x} \mapsto \bm{Ax}$.
+    \item Let us consider $\bm{A} \in \mbbR^{m\times n}$ and a linear mapping $\Phi : \mbbR^n \to \mbbR^m$, $\bm{x} \mapsto \bm{Ax}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item For $\bm{A} = [\bm{a}_1, \cdots , \bm{a}_n]$, where $\bm{a}_i$ are the columns of $\bm{A}$, we obtain
@@ -127,23 +127,23 @@ print("Rank of matrix A:", rank)
     .\hfill
     $
         Im(\Phi) 
-        = \dCurlyBrac{\bm{Ax} : \bm{x} \in \mathbb{R}^ n } 
-        = \dCurlyBrac{\dsum ^n _{i=1} x_i \bm{a}_i : x_1, \cdots , x_n \in \mathbb{R}}
-        = span[\bm{a}_1, \cdots , \bm{a}_n] \subseteq \mathbb{R}^m
+        = \dCurlyBrac{\bm{Ax} : \bm{x} \in \mbbR^ n } 
+        = \dCurlyBrac{\dsum ^n _{i=1} x_i \bm{a}_i : x_1, \cdots , x_n \in \mbbR}
+        = span[\bm{a}_1, \cdots , \bm{a}_n] \subseteq \mbbR^m
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     i.e., the image is the span of the columns of $\bm{A}$, also called the \textbf{column space}. 
-    Therefore, the column space (image) is a subspace of $\mathbb{R}^m$, where $m$ is the “height” of the matrix.
+    Therefore, the column space (image) is a subspace of $\mbbR^m$, where $m$ is the “height” of the matrix.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item $\text{rk}(\bm{A}) = \dim(\text{Im}(\Phi))$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The kernel/null space $\ker(\Phi)$ is the general solution to the homogeneous system of linear equations $\bm{Ax} = \bm{0}$ and captures all possible linear combinations of the elements in $\mathbb{R}^n$ that produce $\bm{0} \in \mathbb{R}^m$.
+    \item The kernel/null space $\ker(\Phi)$ is the general solution to the homogeneous system of linear equations $\bm{Ax} = \bm{0}$ and captures all possible linear combinations of the elements in $\mbbR^n$ that produce $\bm{0} \in \mbbR^m$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The kernel is a subspace of $\mathbb{R}^n$ , where $n$ is the “width” of the matrix.
+    \item The kernel is a subspace of $\mbbR^n$ , where $n$ is the “width” of the matrix.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item The kernel focuses on the relationship among the columns, and we can use it to determine whether/how we can express a column as a linear combination of other columns.
@@ -158,11 +158,11 @@ print("Rank of matrix A:", rank)
 \section{Inhomogeneous systems of linear equations and affine subspaces}
 
 \begin{enumerate}
-    \item For $\bm{A} \in \mathbb{R}^{m\times n}$ and $\bm{x} \in \mathbb{R}^m$, the solution of the system of linear equations $\bm{A} \bm{\lambda}  = \bm{x}$ is either the empty set or an affine subspace of $\mathbb{R}^n$ of dimension $n - \text{rk}(\bm{A})$. 
-    In particular, the solution of the linear equation $\lambda _1 \bm{b}_1 + \cdots + \lambda _n \bm{b}_n = \bm{x}$, where $(\lambda _1, \cdots , \lambda _n) \neq (0, . . . , 0)$, is a hyperplane in $\mathbb{R}^n$ .
+    \item For $\bm{A} \in \mbbR^{m\times n}$ and $\bm{x} \in \mbbR^m$, the solution of the system of linear equations $\bm{A} \bm{\lambda}  = \bm{x}$ is either the empty set or an affine subspace of $\mbbR^n$ of dimension $n - \text{rk}(\bm{A})$. 
+    In particular, the solution of the linear equation $\lambda _1 \bm{b}_1 + \cdots + \lambda _n \bm{b}_n = \bm{x}$, where $(\lambda _1, \cdots , \lambda _n) \neq (0, . . . , 0)$, is a hyperplane in $\mbbR^n$ .
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item In $\mathbb{R}^n$ , every $k$-dimensional affine subspace is the solution of an inhomogeneous system of linear equations $\bm{Ax} = \bm{b}$, where $\bm{A} \in \mathbb{R}^{m\times n}$ , $\bm{b} \in \mathbb{R}^m$ and $\text{rk}(\bm{A}) = n - k$. 
+    \item In $\mbbR^n$ , every $k$-dimensional affine subspace is the solution of an inhomogeneous system of linear equations $\bm{Ax} = \bm{b}$, where $\bm{A} \in \mbbR^{m\times n}$ , $\bm{b} \in \mbbR^m$ and $\text{rk}(\bm{A}) = n - k$. 
     For homogeneous equation systems $\bm{Ax} = \bm{0}$ the solution was a vector subspace, which we can also think of as a special affine space with support point $\bm{x}_0 = \bm{0}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
@@ -212,7 +212,7 @@ print("Rank of matrix A:", rank)
 
 \begin{enumerate}
     \item \begin{definition}[Spectral Norm of a Matrix]
-        For $\bm{x} \in \mathbb{R}^n\backslash \dCurlyBrac{0}$, the spectral norm of a matrix $\bm{A} \in \mathbb{R}^{m\times n}$ is defined as
+        For $\bm{x} \in \mbbR^n\backslash \dCurlyBrac{0}$, the spectral norm of a matrix $\bm{A} \in \mbbR^{m\times n}$ is defined as
         $
             \dnorm{\bm{A}}_2 
             := \displaystyle\max_{\bm{x}} \dfrac{\dnorm{\bm{Ax}}_2}{\dnorm{\bm{x}}_2}
@@ -242,8 +242,8 @@ print("Rank of matrix A:", rank)
 \subsection{Eigenvalue Decomposition ($A = P DP ^{-1}$) vs. Singular Value Decomposition ($A = U \Sigma V^\top$)}
 
 \begin{enumerate}
-    \item The SVD always exists for any matrix $\mathbb{R}^{m\times n}$ . 
-    The eigendecomposition is only defined for square matrices $\mathbb{R}^{n\times n}$ and only exists if we can find a basis of eigenvectors of $\mathbb{R}^n$.
+    \item The SVD always exists for any matrix $\mbbR^{m\times n}$ . 
+    The eigendecomposition is only defined for square matrices $\mbbR^{n\times n}$ and only exists if we can find a basis of eigenvectors of $\mbbR^n$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item The vectors in the eigendecomposition matrix $\bm{P}$ are not necessarily orthogonal, i.e., the change of basis is not a simple rotation and scaling. 
@@ -285,7 +285,7 @@ print("Rank of matrix A:", rank)
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
-    \item For symmetric matrices $\bm{A} \in \mathbb{R}^{n\times n}$ , the eigenvalue decomposition and the SVD are one and the same, which follows from the spectral theorem.
+    \item For symmetric matrices $\bm{A} \in \mbbR^{n\times n}$ , the eigenvalue decomposition and the SVD are one and the same, which follows from the spectral theorem.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
@@ -304,12 +304,12 @@ print("Rank of matrix A:", rank)
     $
         \bm{A}_i
         := \bm{u}_i \bm{v}_i^\top 
-        \in \mathbb{R}^{m\times n}
+        \in \mbbR^{m\times n}
     $
     which is formed by the outer product of the $i$-th orthogonal column vector of $\bm{U}$ and $\bm{V}$ .
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item A matrix $\bm{A} \in \mathbb{R}^{m\times n}$ of rank $r$ can be written as a sum of rank-1 matrices $\bm{A}_i$ so that 
+    \item A matrix $\bm{A} \in \mbbR^{m\times n}$ of rank $r$ can be written as a sum of rank-1 matrices $\bm{A}_i$ so that 
     $
         \bm{A} 
         = \dsum_{i=1}^r \sigma_i \bm{u}_i \bm{v}_i^\top
@@ -328,7 +328,7 @@ print("Rank of matrix A:", rank)
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item \begin{theorem}[Eckart-Young Theorem]
-        Consider a matrix $\bm{A} \in \mathbb{R}^{m\times n}$ of rank $r$ and let $\bm{B} \in \mathbb{R}^{m\times n}$ be a matrix of rank $k$. 
+        Consider a matrix $\bm{A} \in \mbbR^{m\times n}$ of rank $r$ and let $\bm{B} \in \mbbR^{m\times n}$ be a matrix of rank $k$. 
         For any $k \leq r$ with $\hat{\bm{A}}(k) = \dsum^k_{i=1} \sigma_i \bm{u}_i \bm{v}_i^\top$ it holds that
         ${
             \displaystyle
@@ -367,7 +367,7 @@ print("Rank of matrix A:", rank)
     $
         \dnorm{\bm{A} - \bm{B}}_2 \leq \dnorm{\bm{A} - \hat{\bm{A}}(k)}_2
     $,
-    then there exists an at least $(n - k)$-dimensional null space $Z \subseteq \mathbb{R}^n$, such that $\bm{x} \in \mathbb{Z}$ implies that $\bm{Bx} = \bm{0}$. 
+    then there exists an at least $(n - k)$-dimensional null space $Z \subseteq \mbbR^n$, such that $\bm{x} \in \mathbb{Z}$ implies that $\bm{Bx} = \bm{0}$. 
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     Then it follows that 

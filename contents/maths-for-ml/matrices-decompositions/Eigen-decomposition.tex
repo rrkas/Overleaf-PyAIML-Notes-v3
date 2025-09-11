@@ -10,7 +10,7 @@
     \caption*{
         Intuition behind the eigendecomposition as sequential transformations.
         \\
-        \textbf{Top-left to bottom-left}: $\bm{P}^{-1}$ performs a basis change (here drawn in $\mathbb{R}^2$ and depicted as a rotation-like operation) from the standard basis into the eigenbasis.
+        \textbf{Top-left to bottom-left}: $\bm{P}^{-1}$ performs a basis change (here drawn in $\mbbR^2$ and depicted as a rotation-like operation) from the standard basis into the eigenbasis.
         \\
         \textbf{Bottom-left to bottom-right}: $\bm{D}$ performs a scaling along the remapped orthogonal eigenvectors, depicted here by a circle being stretched to an ellipse. 
         \\
@@ -22,7 +22,7 @@
 \begin{enumerate}
     \item 
     \begin{theorem}[Eigendecomposition]
-        A square matrix $\bm{A} \in \mathbb{R}^{n\times n}$ can be factored into $\bm{A} = \bm{PDP}^{-1}$ where $\bm{P} \in \mathbb{R}^{n\times n}$ and $\bm{D}$ is a diagonal matrix whose diagonal entries are the eigenvalues of $\bm{A}$, if and only if the eigenvectors of $\bm{A}$ form a basis of $\mathbb{R}^n$.
+        A square matrix $\bm{A} \in \mbbR^{n\times n}$ can be factored into $\bm{A} = \bm{PDP}^{-1}$ where $\bm{P} \in \mbbR^{n\times n}$ and $\bm{D}$ is a diagonal matrix whose diagonal entries are the eigenvalues of $\bm{A}$, if and only if the eigenvectors of $\bm{A}$ form a basis of $\mbbR^n$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
 
@@ -30,7 +30,7 @@
     \begin{enumerate}
         \item Compute eigenvalues and eigenvectors
 
-        \item Check for existence (eigenvectors span $\mathbb{R}^n$ or not)
+        \item Check for existence (eigenvectors span $\mbbR^n$ or not)
 
         \item Construct the matrix P to diagonalize A
         \begin{enumerate}
@@ -41,7 +41,7 @@
         \end{enumerate}
     \end{enumerate}
 
-    \item we can find a matrix power for a matrix $\bm{A} \in \mathbb{R}^{n\times n}$ via the eigenvalue decomposition (if it exists) so that:
+    \item we can find a matrix power for a matrix $\bm{A} \in \mbbR^{n\times n}$ via the eigenvalue decomposition (if it exists) so that:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     .\hfill
