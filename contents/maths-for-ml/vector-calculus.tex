@@ -62,32 +62,6 @@
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item 
-    \begin{definition}[Taylor Polynomial ( $T_n(x)$ )]
-        The Taylor polynomial of degree $n$ of $f : \mbbR \to \mbbR$ at $x_0$ is defined as
-        $
-            T_n(x)
-            := \dsum_{k=0}^n \dfrac{f^{(k)}(x_0)}{k!} (x - x_0)^k
-        $
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        \\
-        where $f ^{(k)}(x_0)$ is the $k$-th derivative of $f$ at $x_0$ (which we assume exists) and $\dfrac{f ^{(k)}(x_0)}{ k!}$ are the coefficients of the polynomial.
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        \\
-        We define $t^0 := 1$ for all $t \in \mbbR$.
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \end{definition}
-    \begin{enumerate}
-        \item In general, a Taylor polynomial of degree $n$ is an \textbf{approximation} of a function, which does not need to be a polynomial. 
-        The Taylor polynomial is similar to $f$ in a neighborhood around $x_0$. 
-        Higher-order Taylor polynomials approximate the function $f$ better and more globally.
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        
-        \item A Taylor polynomial of degree $n$ is an \textbf{exact} representation of a polynomial $f$ of degree $k \leq n$ since all derivatives $f (i)$, $i > k$ vanish. 
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \end{enumerate}
-
-
-    \item 
     \begin{definition}[Power Series]
         $
             f(x) = \dsum_{k=0}^{\infty} a_k (x-c)^k
@@ -96,32 +70,6 @@
         where $a_k$ are coefficients and $c$ is a constant
     \end{definition}
 
-
-    \item 
-    \begin{definition}[Taylor Series ($T_{\infty}(x)$)]
-        For a smooth function $f \in C^{\infty}$, $f : \mbbR \to \mbbR$, the Taylor series of $f$ at $x_0$ is defined as
-        $
-            T_{\infty}(x)
-            = \dsum_{k=0}^{\infty} \dfrac{f^{(k)}(x_0)}{k!} (x - x_0)^k
-        $
-        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        \\
-         $f \in C^{\infty}$ means that $f$ is continuously differentiable infinitely many times
-         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \end{definition}
-    \begin{enumerate}
-        \item 
-        \begin{definition}[Maclaurin series]        
-            For $x_0 = 0$, we obtain the \textbf{Maclaurin series} as a special instance of the Taylor series. 
-            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        \end{definition}
-
-        \item 
-        \begin{definition}[Analytic]        
-            If $f (x) = T_{\infty}(x)$, then $f$ is called \textbf{analytic}.
-            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        \end{definition}
-    \end{enumerate}
 \end{enumerate}
 
 
@@ -1049,9 +997,94 @@ $
 
 
 
+\section{Taylor Series \& Polynomial}
 
+\begin{enumerate}
+    \item 
+    \begin{definition}[Taylor Series ($T_{\infty}(x)$)]
+        For a smooth function $f \in C^{\infty}$, $f : \mbbR \to \mbbR$, the Taylor series of $f$ at $x_0$ is defined as
+        $
+            f(x) = T_{\infty}(x)
+            = \dsum_{k=0}^{\infty} \dfrac{f^{(k)}(x_0)}{k!} (x - x_0)^k
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+         $f \in C^{\infty}$ means that $f$ is continuously differentiable infinitely many times
+         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+    \begin{enumerate}
+        \item 
+        \begin{definition}[Maclaurin series]        
+            For $x_0 = 0$, we obtain the \textbf{Maclaurin series} as a special instance of the Taylor series. 
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{definition}
 
+        \item 
+        \begin{definition}[Analytic]        
+            If $f (x) = T_{\infty}(x)$, then $f$ is called \textbf{analytic}.
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{definition}
+    \end{enumerate}
 
+    \item 
+    \begin{definition}[Multivariate Taylor Series]
+        We consider a function $f: \mbbR^D \to \mbbR, \bm{x} \mapsto f(\bm{x}), \bm{x} \in \mbbR^D$ that is smooth at $\bm{x}_0$. 
+        When we define the difference vector $\bm{\delta} := \bm{x} - \bm{x}_0$, the multivariate Taylor series of $f$ at $(\bm{x}_0)$ is defined as
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        .\hfill
+        $
+            f(\bm{x})
+            = \dsum_{k=0}^{\infty} \dfrac{D^k_{\bm{x}}\ f(\bm{x}_0)}{k!} \bm{\delta}^k
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        where $D^k _{\bm{x}}\ f (\bm{x}_0)$ is the $k$-th (total) derivative of $f$ with respect to $\bm{x}$, evaluated at $\bm{x}_0$.
+        \\
+        SEE: Outer product
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+
+    \item 
+    \begin{definition}[Taylor Polynomial ( $T_n(x)$ )]
+        The Taylor polynomial of degree $n$ of $f : \mbbR \to \mbbR$ at $x_0$ is defined as
+        $
+            T_n(x)
+            := \dsum_{k=0}^n \dfrac{f^{(k)}(x_0)}{k!} (x - x_0)^k
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        where $f ^{(k)}(x_0)$ is the $k$-th derivative of $f$ at $x_0$ (which we assume exists) and $\dfrac{f ^{(k)}(x_0)}{ k!}$ are the coefficients of the polynomial.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        We define $t^0 := 1$ for all $t \in \mbbR$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+    \begin{enumerate}
+        \item In general, a Taylor polynomial of degree $n$ is an \textbf{approximation} of a function, which does not need to be a polynomial. 
+        The Taylor polynomial is similar to $f$ in a neighborhood around $x_0$. 
+        Higher-order Taylor polynomials approximate the function $f$ better and more globally.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item A Taylor polynomial of degree $n$ is an \textbf{exact} representation of a polynomial $f$ of degree $k \leq n$ since all derivatives $f (i)$, $i > k$ vanish. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item 
+    \begin{definition}[Multivariate Taylor Polynomial ( $T_n(\bm{x})$ )]
+        The Taylor polynomial of degree $n$ of $f : \mbbR^D \to \mbbR$ at $\bm{x}_0$ is defined as
+        $
+            T_n(x)
+            := \dsum_{k=0}^n \dfrac{D^k_{\bm{x}} f(\bm{x}_0)}{k!} \bm{\delta}^k
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\
+        where $D^k _{\bm{x}}\ f (\bm{x}_0)$ is the $k$-th (total) derivative of $f$ with respect to $\bm{x}$, evaluated at $\bm{x}_0$.
+        \\
+        SEE: Outer product
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+\end{enumerate}
 
 
 

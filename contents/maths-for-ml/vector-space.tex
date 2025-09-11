@@ -228,6 +228,30 @@ def norm_general(_arr: np.ndarray):
 
 
 
+
+
+\subsection{Outer Product ($\otimes$)}
+
+\begin{enumerate}
+    \item Given a vector $\bm{x} \in \mbbR^n$, we obtain the outer product $\bm{x}^m := \bm{x} \otimes \overset{m \text{ times}}{\cdots} \otimes \bm{x} \in \mbbR^{\overset{m \text{ times}}{\overbrace{n \times n \times \cdots \times n}}}$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Example: 
+    $
+        \bm{x} \in \mbbR^n 
+        \hspace{0.5cm}
+        \Rightarrow \bm{x}^2 = \bm{x} \otimes \bm{x} \in \mbbR^{n\times n}, 
+        \hspace{0.5cm}
+        \bm{x}^2[i, j] = x[i]x[j]
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
 \subsection{Lengths}
 
 \begin{enumerate}
