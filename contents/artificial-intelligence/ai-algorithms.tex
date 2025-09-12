@@ -1,5 +1,8 @@
 \chapter{AI: Algorithms}\label{AI: Algorithms}
 
+\section{Intro}
+
+
 \begin{customArrayStretch}{1.5}
 \begin{longtable}{r c p{12cm}}
 $V$ & 
@@ -243,9 +246,8 @@ effective branching factor \\ \hline
 
 \clearpage
 {\centering\fontsize{22}{22}\selectfont\bfseries Uninformed Search/ Blind Search \par}
+\addcontentsline{toc}{section}{\textbf{Uninformed Search/ Blind Search}}
 \vspace{0.5cm}
-
-
 
 \input{contents/algorithms/Breadth-first-search}
 \input{contents/algorithms/Uniform-cost-search}
@@ -257,8 +259,11 @@ effective branching factor \\ \hline
 \input{contents/algorithms/Bidirectional-search}
 
 
+
+
 \clearpage
 {\centering\fontsize{22}{22}\selectfont\bfseries Informed Search/ Heuristic Search \par}
+\addcontentsline{toc}{section}{\textbf{Informed Search/ Heuristic Search}}
 \vspace{0.5cm}
 
 \input{contents/algorithms/Best-first-search}
@@ -272,6 +277,7 @@ effective branching factor \\ \hline
 
 \clearpage
 {\centering\fontsize{22}{22}\selectfont\bfseries Local Search \par}
+\addcontentsline{toc}{section}{\textbf{Local Search}}
 \vspace{0.5cm}
 
 \input{contents/algorithms/Greedy-Hill-Climbing-Search}
@@ -284,9 +290,46 @@ effective branching factor \\ \hline
 \input{contents/algorithms/Genetic-algorithm}
 
 
+\clearpage
+{\centering\fontsize{22}{22}\selectfont\bfseries Local Search in Continuous Space \par}
+\addcontentsline{toc}{section}{\textbf{Local Search in Continuous Space}}
+\vspace{0.5cm}
 
+\begin{enumerate}
+    \item One way to avoid continuous problems is simply to discretize the neighborhood of each state.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
+    \item Many methods attempt to use the gradient of the landscape to find a maximum. 
+    The gradient of the objective function is a vector $\nabla f$ that gives the magnitude and direction of the steepest slope.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
+    \item In some cases, we can find a maximum by solving the equation $\nabla f = 0$. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item In many cases, however, this equation cannot be solved in closed form.
+    Given a locally correct expression for the gradient, we can perform \textbf{steepest-ascent hill climbing} by updating the current state according to the formula \colorbox{yellow}{$\bm{x} \gets \bm{x} + \alpha \nabla f(\bm{x})$} where $\alpha$ is a small constant often called the step size. 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \begin{enumerate}
+        \item he basic problem is that, if $\alpha$ is too small, too many steps are needed; if $\alpha$ is too large, the search could overshoot the maximum. 
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item The technique of \textbf{line search} tries to overcome this dilemma by extending the current gradient direction—usually by repeatedly doubling $\alpha$ — until $f$ starts to decrease again.
+        The point at which this occurs becomes the new current state.
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \end{enumerate}
+
+    \item In other cases, the objective function might not be available in a differentiable form at all. 
+    In those cases, we can calculate a so-called \textbf{empirical gradient} by evaluating the response to small increments and decrements in each coordinate. 
+    Empirical gradient search is the same as \textbf{steepest-ascent hill climbing} in a \textbf{discretized} version of the state space.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+    \item For many problems, the most effective algorithm is the venerable \textbf{Newton–Raphson method}. 
+    This is a general technique for finding roots of functions—that is, solving equations of the form $g(x) = 0$. 
+    It works by computing a new estimate for the root $x$ according to Newton’s formula \colorbox{yellow}{$x \gets x - \dfrac{g(x)}{g'(x)}$}.
+    To find a maximum or minimum of $f$ , we need to find $\bm{x}$ such that the gradient is zero (i.e., $\nabla f (\bm{x}) = \bm{0}$). 
+    Thus, $g(x)$ in Newton’s formula becomes $\nabla f (\bm{x})$, and the update equation can be written in matrix–vector form as \colorbox{yellow}{$\bm{x} \gets \bm{x} - \bm{H}_f^{-1}(\bm{x})\nabla f(\bm{x})$}, where $\bm{H}_f (\bm{x})$ is the \textbf{Hessian matrix} of second derivatives, whose elements $H_{ij} = \dfrac{ \partial ^2f}{ \partial x_i \partial x_j}$ . 
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
 
 
 

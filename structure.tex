@@ -257,14 +257,15 @@
     
     % Set the width of the header line to match the text width
     \setlength{\headwidth}{\textwidth} % Width of the header line
+
+
+    \fancyhead[LO]{\leftmark}
+    \fancyhead[RE]{\leftmark}
     
-    % Configure left, center, and right header content
-    \fancyhead[L]{{\bookname}} % Left side: Book title in blue
-    \fancyhead[C]{\textsc{Chapter \thechapter}} % Center: Current chapter number
-    \fancyhead[R]{By \textbf{\authorname}} % Right side: Author name
     
-    % Configure center footer to show current page and total pages
-    \fancyfoot[C]{Page \sffamily\normalsize\thepage\ of \protect\pageref*{MMLastPage}} % Footer with current and last page number
+    \fancyfoot[L]{{\bookname}} % Left side: Book title in blue
+    \fancyfoot[C]{Page \sffamily\normalsize\thepage\ of \protect\pageref*{MMLastPage}} 
+    \fancyfoot[R]{By \textbf{\authorname}} % Right side: Author name
     
     % Customize the header and footer rule thickness
     \renewcommand{\headrulewidth}{0.5pt} % Width of the rule under the header
@@ -277,7 +278,9 @@
     \fancyhf{} 
     \setlength{\headwidth}{\textwidth} % Width of the header line
     
+    \fancyfoot[L]{{\bookname}} % Left side: Book title in blue
     \fancyfoot[C]{\sffamily\normalsize\thepage}
+    \fancyfoot[R]{By \textbf{\authorname}} % Right side: Author name
     
     \renewcommand{\headrulewidth}{0pt} % Width of the rule under the header
     % \addtolength{\headheight}{2.5pt} % Increase the spacing around the header slightly
@@ -779,7 +782,7 @@
 % Chapter text styling
 % --------------------
 \titlecontents{chapter}[0.75cm] % Indent chapter titles by 1.25 cm
-{\addvspace{10pt}\fontsize{17pt}{17pt}\selectfont\bfseries} % Add vertical space and set chapter titles to large, bold font
+{\addvspace{10pt}\fontsize{16pt}{16pt}\selectfont\bfseries} % Add vertical space and set chapter titles to large, bold font
 {\contentslabel[\thecontentslabel]{1cm}\color{black}} % Display chapter numbers in large size with custom color
 {} % No additional text before the chapter title
 {\fontsize{11pt}{11pt}\selectfont\normalfont\sffamily\;\titlerule*[.5pc]{\_}\;\thecontentspage} % Display page numbers with a dotted line separator
