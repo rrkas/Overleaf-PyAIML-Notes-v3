@@ -1,13 +1,52 @@
 \chapter{Machine Learning: Introduction}
 
+\begin{customArrayStretch}{1.5}
+\begin{longtable}{l p{7cm}}
+
+\hline\endfirsthead
+\hline\endhead
+\hline\endfoot
+\hline
+\caption*{Notations} \\
+\endlastfoot
+
+$N$ & number of training records\\ \hline
+
+$\dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_N }$ & input records \\ \hline
+
+$\dCurlyBrac{\bm{y}_1, \cdots , \bm{y}_N }$ & (ground truth/ reference) outputs \\ \hline
+
+$\bm{y}(\cdot)$ & model/ function \\ \hline
+
+$\hat{\bm{y}}_i = \bm{y}(\bm{x_i})$ & (hypothesis) output of $i$-th input \\
+
+
+
+\end{longtable}
+\end{customArrayStretch}
 
 
 
 
 
+\section{Training/ Learning Phase}
+
+\begin{enumerate}
+    \item \textbf{Training set}: large set of $N$ records $\dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_N }$ that can be used to tune the parameters of an adaptive model. 
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item The result of running the machine learning algorithm can be expressed as a function $\bm{y}(\bm{x}_i)$ which takes a new input record $\bm{x}$ as input and that generates an output vector $\bm{y}_i$, encoded in the same way as the target vectors.
+    The precise form of the function $\bm{y}(\cdot)$ is determined during the training phase, also known as the learning phase, on the basis of the training data.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+\end{enumerate}
 
 
 
+\section{Testing/ Evaluation Phase}
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
 
 
 
