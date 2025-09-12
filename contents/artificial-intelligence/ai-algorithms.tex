@@ -291,9 +291,7 @@ effective branching factor \\ \hline
 
 
 \clearpage
-{\centering\fontsize{22}{22}\selectfont\bfseries Local Search in Continuous Space \par}
-\addcontentsline{toc}{section}{\textbf{Local Search in Continuous Space}}
-\vspace{0.5cm}
+\section{Local Search in Continuous Space}
 
 \begin{enumerate}
     \item One way to avoid continuous problems is simply to discretize the neighborhood of each state.
@@ -330,6 +328,32 @@ effective branching factor \\ \hline
     Thus, $g(x)$ in Newton’s formula becomes $\nabla f (\bm{x})$, and the update equation can be written in matrix–vector form as \colorbox{yellow}{$\bm{x} \gets \bm{x} - \bm{H}_f^{-1}(\bm{x})\nabla f(\bm{x})$}, where $\bm{H}_f (\bm{x})$ is the \textbf{Hessian matrix} of second derivatives, whose elements $H_{ij} = \dfrac{ \partial ^2f}{ \partial x_i \partial x_j}$ . 
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}
+
+
+
+\clearpage
+\section{Searching with Non-deterministic Actions}
+
+\begin{enumerate}
+    \item When the environment is either partially observable or nondeterministic (or both), percepts become useful.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \begin{enumerate}
+        \item In a partially observable environment, every percept helps narrow down the set of possible states the agent might be in, thus making it easier for the agent to achieve its goals. 
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+
+        \item When the environment is nondeterministic, percepts tell the agent which of the possible outcomes of its actions has actually occurred. 
+        \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+    \end{enumerate}
+    In both cases, the future percepts cannot be determined in advance and the agent’s future actions will depend on those future percepts.
+    So the solution to a problem is not a sequence but a \textbf{contingency plan} (also known as a \textbf{strategy}) that specifies what to do depending on what percepts are received.
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
+\end{enumerate}
+
+
+% \subsection{}
+
+
+
 
 
 
