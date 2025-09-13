@@ -1,0 +1,127 @@
+\chapter{ \emoji{star2} Loss Function (Criterion)}
+
+{\centering\fontsize{22}{22}\selectfont\bfseries Regression related Loss \par}
+\addcontentsline{toc}{section}{\textbf{Regression related Loss}}
+\vspace{0.5cm}
+
+\section{Sum of Errors (SE)}
+
+\begin{enumerate}
+    \item[] 
+    $
+        L = \dsum_{i=1}^n (\hat{y}_i - y_i)
+    $
+    \hfill \cite{medium.com/analytics-vidhya/common-loss-functions-in-machine-learning-for-a-regression-model-27d2bbda9c93}
+\end{enumerate}
+
+\section{Sum of Absolute Errors (SAE)}
+
+\begin{enumerate}
+    \item[] 
+    $
+        L = \dsum_{i=1}^n (\dabs{\hat{y}_i - y_i})
+    $
+    \hfill \cite{medium.com/analytics-vidhya/common-loss-functions-in-machine-learning-for-a-regression-model-27d2bbda9c93}
+\end{enumerate}
+
+\section{Sum of Squared Errors (SSE)}
+
+\begin{enumerate}
+    \item[] 
+    $
+        L = \dsum_{i=1}^n (\hat{y}_i - y_i)^2
+    $
+    \hfill \cite{medium.com/analytics-vidhya/common-loss-functions-in-machine-learning-for-a-regression-model-27d2bbda9c93}
+\end{enumerate}
+
+\section{Mean Absolute Error (MAE) / L1 Loss}
+
+\begin{enumerate}
+    \item[] 
+    $
+        L = \dfrac{1}{n} \dsum_{i=1}^n (\dabs{\hat{y}_i - y_i})
+    $
+    \hfill \cite{medium.com/analytics-vidhya/common-loss-functions-in-machine-learning-for-a-regression-model-27d2bbda9c93}
+\end{enumerate}
+
+\section{Mean Square Error (MSE) / L2 Loss}
+
+\begin{enumerate}
+    \item[] 
+    $
+        L = \dfrac{1}{n} \dsum_{i=1}^n (\hat{y}_i - y_i)^2
+    $
+    \hfill \cite{medium.com/analytics-vidhya/common-loss-functions-in-machine-learning-for-a-regression-model-27d2bbda9c93}
+\end{enumerate}
+
+\section{Root Mean Square Error (RMSE) Loss}
+
+\begin{enumerate}
+    \item[] 
+    $
+        L = \sqrt{\dfrac{1}{n} \dsum_{i=1}^n (\hat{y}_i - y_i)^2}
+    $
+    \hfill \cite{medium.com/analytics-vidhya/common-loss-functions-in-machine-learning-for-a-regression-model-27d2bbda9c93}
+\end{enumerate}
+
+\section{Huber Loss / Smooth Mean Absolute Error}
+
+
+\section{Mean Bias Error (MBE)}
+
+
+
+\clearpage
+{\centering\fontsize{22}{22}\selectfont\bfseries Classification related Loss \par}
+\addcontentsline{toc}{section}{\textbf{Classification related Loss}}
+\vspace{0.5cm}
+
+
+\section{Binary Cross-Entropy Loss / Log Loss}
+
+\begin{enumerate}
+    \item[]
+    $
+        L = -y * log(\hat{y}) - (1 - y)  \log(1 - \hat{y})
+    $
+    \hfill \cite{datacamp/tutorial/loss-function-in-machine-learning}
+\end{enumerate}
+
+\section{Categorical Cross-Entropy Loss}
+
+\section{Hinge Loss}
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+
+\section{Log Loss}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

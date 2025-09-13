@@ -1,0 +1,165 @@
+\chapter{ \emoji{star2} ML Project: Core Components \cite{common/online/chatgpt}}
+
+\section{Problem Definition}
+
+\begin{enumerate}
+    \item \textbf{Goal}: What are you trying to solve? (e.g., predict housing prices, detect spam, classify images)
+    \item \textbf{Type}: Supervised, unsupervised, reinforcement learning, etc.
+\end{enumerate}
+
+
+\section{Data}
+
+\begin{enumerate}
+    \item \textbf{Raw Data}: Collected from sensors, web scraping, databases, APIs, etc.
+    \item \textbf{Preprocessing}: Cleaning, normalization, handling missing values, feature extraction.
+
+    \item \textbf{Splits}:
+    \begin{enumerate}
+        \item Training Set
+        \item Validation Set
+        \item Test Set
+    \end{enumerate}
+    
+    \item \textbf{Data Loaders}: Handle batching, shuffling, and transformations (especially in deep learning frameworks like PyTorch, TensorFlow).
+\end{enumerate}
+
+
+
+\section{Model Architecture}
+
+\begin{enumerate}
+    \item \textbf{Definition}: The structure of your model (e.g., decision tree, CNN, transformer).
+    \item \textbf{Layers}: Input, hidden, and output layers (e.g., linear, convolutional, recurrent, etc.)
+    \item \textbf{Hyperparameters}: Number of layers, units per layer, activation functions, etc.
+\end{enumerate}
+
+
+
+\section{Loss Function (Criterion)}
+
+\begin{enumerate}
+    \item \textbf{Purpose}: Quantifies the error between predicted and actual outputs.
+    
+    \item \textbf{Examples}:
+    \begin{enumerate}
+        \item \textbf{Classification}: Cross-Entropy Loss
+        \item \textbf{Regression}: Mean Squared Error (MSE)
+        \item \textbf{Others}: Hinge Loss, Huber Loss, etc.
+    \end{enumerate}
+\end{enumerate}
+        
+
+
+
+\section{Optimizer}
+
+\begin{enumerate}
+    \item \textbf{Purpose}: Updates model parameters to minimize the loss function.
+    
+    \item \textbf{Examples}:
+    \begin{enumerate}
+        \item SGD (Stochastic Gradient Descent)
+        \item Adam
+        \item RMSProp
+        \item Adagrad
+    \end{enumerate}
+        
+    \item \textbf{Hyperparameters}: Learning rate, momentum, weight decay, etc.
+\end{enumerate}
+
+
+
+\section{Training Loop}
+
+\begin{enumerate}
+    \item \textbf{Steps}:
+    \begin{enumerate}
+        \item Forward Pass
+        \item Compute Loss
+        \item Backward Pass (Gradient Computation)
+        \item Optimizer Step (Parameter Update)
+    \end{enumerate}
+    
+    \item \textbf{Epochs}: Number of times the entire training data is passed through the model.
+    
+    \item \textbf{Batch Size}: Number of samples processed before the model is updated.
+\end{enumerate}
+    
+
+
+
+\section{Evaluation Metrics}
+
+\begin{enumerate}
+    \item Used to assess model performance
+    \item \textbf{Classification}: Accuracy, Precision, Recall, F1-Score, ROC-AUC
+    \item \textbf{Regression}: RMSE, MAE, R$^2$
+    \item \textbf{Custom Metrics}: Domain-specific metrics
+\end{enumerate}
+
+
+
+\section{Validation \& Testing}
+
+\begin{enumerate}
+    \item \textbf{Validation}: Tune hyperparameters, early stopping.
+    \item \textbf{Test}: Final evaluation to report performance.
+\end{enumerate}
+
+
+
+\section{Model Saving \& Loading}
+
+\begin{enumerate}
+    \item \textbf{Serialization}: Save model weights and architecture.
+    \item \textbf{Formats}: \verb|.pt|, \verb|.pth| (PyTorch), \verb|.h5|, \verb|.pb| (TensorFlow)
+\end{enumerate}
+
+
+
+\section{Inference / Deployment}
+
+\begin{enumerate}
+    \item \textbf{Inference}: Making predictions on new data.
+    \item \textbf{Deployment}: Integrating the model into production (e.g., via REST API, mobile app, web app, etc.)
+\end{enumerate}
+
+
+
+\section{Experiment Tracking}
+
+\begin{enumerate}
+    \item \textbf{Tools}: TensorBoard, Weights \& Biases, MLflow, etc.
+    \item \textbf{Track}: Parameters, metrics, model versions, logs.
+\end{enumerate}
+
+
+
+\section{Reproducibility \& Documentation}
+
+\begin{enumerate}
+    \item Code versioning (Git)
+    \item Environment management (Docker, Conda)
+    \item Documentation (README, Jupyter notebooks, etc.)
+\end{enumerate}
+
+
+
+\section*{Optional (but valuable) components}
+
+\begin{enumerate}
+    \item \textbf{Data Augmentation}: Especially for image/audio/text data
+    \item \textbf{Transfer Learning}: Pretrained models
+    \item \textbf{Hyperparameter Tuning}: Grid Search, Random Search, Bayesian Optimization
+    \item \textbf{Ensembling}: Combining predictions of multiple models
+    \item Fairness \& Bias Evaluation
+    \item \textbf{Model Explainability}: SHAP, LIME, Grad-CAM, etc.
+\end{enumerate}
+
+
+
+
+
+
+

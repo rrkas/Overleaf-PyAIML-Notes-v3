@@ -181,31 +181,95 @@ $\hat{\bm{y}}_i = \bm{y}(\bm{x_i})$ & (hypothesis) output of $i$-th input \\
 
 
 
+\section{Model Comparison OR Model Selection}
+
+\begin{enumerate}
+    \item A bad model can cause \textit{overfitting} or \textit{underfitting} and sometimes even lead to increased computational costs.
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+
+    \item Different models have different ways of processing data and choosing the right one ensures that the system works efficiently. 
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+    \begin{enumerate}
+        \item A simple model cannot capture details and has poor accuracy, while a model too complex might overfit that is doing very well on training data but fails on new data. 
+        \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+        
+        \item The goal is to find a model that learns patterns effectively without being too simple or too complex.
+        \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+    \end{enumerate}
+
+    \item Proper model selection involves experimenting with different models and comparing their performance using evaluation metrics such as accuracy, precision, recall or mean squared error. 
+    These metrics help in determining which model is best suited for a given task.
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+
+    \item Apart from performance metrics, other factors such as training time, dataset size and available computing power also play a crucial role in choosing the right model.
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+    
+    \item Selecting an appropriate model not only improves prediction accuracy but also enhances efficiency, making the system faster and more reliable.
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+\end{enumerate}
 
 
 
+\subsection{Model Selection Techniques in Machine Learning}
+
+\subsubsection{Grid Search}
+
+\begin{enumerate}
+    \item One of the simplest and most commonly used model selection techniques
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+
+    \item In this approach, systematically different combinations of hyper-parameters are tried and that gives the best performance chosen. 
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+    
+    \item It can be effective, but the main drawback will be computationally intensive, especially for complex models and many parameters.
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+\end{enumerate}
 
 
 
+\subsubsection{Random Search}
+
+\begin{enumerate}
+    \item Similar to grid search, random search doesn't check all possible combinations. Instead, it randomly chooses a subset of the hyperparameter combinations. 
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+    
+    \item The random search method often runs much faster than the grid search method and yet achieves equally good results.
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+\end{enumerate}
 
 
 
+\subsubsection{Bayesian Optimization}
+
+\begin{enumerate}
+    \item Bayesian optimization is a smarter approach to model selection. 
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+    
+    \item Instead of just randomly searching for the best hyper-parameters, it uses probability models to predict which parameters are likely to perform best and focuses on evaluating those. 
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+    
+    \item This method is efficient and often finds better results than grid or random search.
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+\end{enumerate}
 
 
 
+\subsubsection{Cross-Validation Based Selection}
 
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{enumerate}
+    \item This method involves using cross-validation to evaluate multiple models and selecting the one with the best average performance. 
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+    
+    \item Instead of relying on a single train-test split, cross-validation divides the dataset into multiple parts and trains the model on different subsets. 
+    This helps to ensure that the model’s performance is not just due to a specific split of data. 
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+    
+    \item By averaging the results from different splits, we get how well the model will perform on new, unseen data. 
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+    
+    \item This approach reduces the risk of overfitting and helps in selecting a good model.
+    \hfill \cite{geeksforgeeks/machine-learning/model-selection-for-machine-learning}
+\end{enumerate}
 
 
 

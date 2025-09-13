@@ -435,7 +435,7 @@
 \def\unnumberedsectionwithtwoarguments[#1]#2{%
   \ifhmode\par\fi % Ensure in vertical mode
   \removelastskip % Remove any extra space above
-  \vskip 2ex\goodbreak % Add 5ex vertical space and allow good breakpoints
+  \vskip 5ex\goodbreak % Add 5ex vertical space and allow good breakpoints
 %  \refstepcounter{section}% (Commented out) No section number since it's unnumbered
   \phantomsection % Create hyperlink target
   \edef\@currentlabelname{#2} % Set the section title for \nameref
@@ -910,6 +910,25 @@
 
 
 \setlength{\columnseprule}{0.4pt} % adds a thin vertical line
+
+% use LuaLaTex/ XeLaTex
+\usepackage{emoji} % https://2.mirrors.in.sahilister.net/ctan/macros/luatex/latex/emoji/emoji-doc.pdf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
