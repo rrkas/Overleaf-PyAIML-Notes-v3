@@ -3,8 +3,8 @@
 \begin{figure}[H]
     \centering
     \includegraphics[
-        width=0.5\linewidth, 
-        height=4cm, 
+        width=0.5\linewidth,
+        height=4cm,
         keepaspectratio
     ]{images/artificial-intelligence/ai-agents/agents-skeleton.png}
     \caption*{Agents interact with environments through sensors and actuators. \cite{common/online/tools/draw.io}}
@@ -35,7 +35,7 @@
 
     \item \textbf{Percept}: agent’s perceptual inputs at any given instant
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-    
+
     \item \textbf{Percept Sequence}: it is the complete history of everything the agent has ever perceived. In general, an agent’s choice of action at any given instant can depend on the entire percept sequence observed to date, but \textbf{not} on anything it hasn’t perceived.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -67,7 +67,7 @@
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
 
-    \item \textbf{Omniscient Agent}: An omniscient agent knows the actual outcome of its actions and can act accordingly; but omniscience is impossible in reality. 
+    \item \textbf{Omniscient Agent}: An omniscient agent knows the actual outcome of its actions and can act accordingly; but omniscience is impossible in reality.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
 
@@ -79,7 +79,7 @@
     \item When an agent is plunked down in an environment, it generates a sequence of actions according to the percepts it receives. This sequence of actions causes the environment to go through a sequence of states. If the sequence is desirable, then the agent has performed well.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item  If we define success in terms of agent’s opinion of its own performance, an agent could achieve perfect rationality simply by deluding itself that its performance was perfect. 
+    \item  If we define success in terms of agent’s opinion of its own performance, an agent could achieve perfect rationality simply by deluding itself that its performance was perfect.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item Human agents in particular are notorious for “sour grapes” - believing they did not really want something (e.g., a Nobel Prize) after not getting it.
@@ -94,13 +94,13 @@
     \item To the extent that an agent relies on the prior knowledge of its designer rather than on its own percepts, we say that the agent \textbf{lacks autonomy}.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \\
-    A rational agent should be \textbf{autonomous} - it should learn what it can to compensate for partial or incorrect prior knowledge. 
+    A rational agent should be \textbf{autonomous} - it should learn what it can to compensate for partial or incorrect prior knowledge.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item After sufficient experience of its environment, the behavior of a rational agent can become effectively \textbf{independent} of its prior knowledge. Hence, the incorporation of learning allows one to design a single rational agent that will succeed in a vast variety of environments.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    
+
 \end{enumerate}
 
 
@@ -113,13 +113,13 @@
     \item Task environments are essentially the “problems” to which rational agents are the “solutions.”
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    
+
 \end{enumerate}
 
 \subsection{PEAS: Defining Problem}
 
 \begin{enumerate}
-    \item \textbf{Performance}: 
+    \item \textbf{Performance}:
     \begin{enumerate}
         \item Desirable qualities
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
@@ -131,7 +131,7 @@
         \hfill \cite{common/online/chatgpt}
     \end{enumerate}
 
-    \item \textbf{Environment}: 
+    \item \textbf{Environment}:
     \begin{enumerate}
         \item The surroundings in which the agent operates.
         \hfill \cite{common/online/chatgpt}
@@ -140,7 +140,7 @@
         \hfill \cite{common/online/chatgpt}
     \end{enumerate}
 
-    \item \textbf{Actuators}: 
+    \item \textbf{Actuators}:
     \begin{enumerate}
         \item The mechanisms that allow the agent to take action.
         \hfill \cite{common/online/chatgpt}
@@ -151,7 +151,7 @@
         \hfill \cite{common/online/chatgpt}
     \end{enumerate}
 
-    \item \textbf{Sensors}: 
+    \item \textbf{Sensors}:
     \begin{enumerate}
         \item The components that allow the agent to perceive its environment.
         \hfill \cite{common/online/chatgpt}
@@ -169,10 +169,10 @@
 
 \textbf{Note}:
 \begin{enumerate}
-    \item some \textbf{software agents} (or \textbf{software robots} or \textbf{softbots}) exist in rich, unlimited domains. 
+    \item some \textbf{software agents} (or \textbf{software robots} or \textbf{softbots}) exist in rich, unlimited domains.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    
+
 \end{enumerate}
 
 
@@ -181,9 +181,9 @@
 
 \subsubsection{Fully observable, partially observable, unobservable}
 \begin{enumerate}
-    \item \textbf{fully observable}: If an agent’s sensors give it access to the complete state of the environment at each point in time, then we say that the task environment is fully observable. 
+    \item \textbf{fully observable}: If an agent’s sensors give it access to the complete state of the environment at each point in time, then we say that the task environment is fully observable.
     A task environment is effectively fully observable if the sensors detect all aspects that are \textbf{relevant} to the choice of action; relevance, in turn, depends on the performance measure.
-    Fully observable environments are convenient because the agent need not maintain any internal state to keep track of the world. 
+    Fully observable environments are convenient because the agent need not maintain any internal state to keep track of the world.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \vspace{0.2cm}
@@ -193,7 +193,7 @@
 
     \vspace{0.2cm}
 
-    \item \textbf{unobservable}: If the agent has no sensors at all then the environment is unobservable. 
+    \item \textbf{unobservable}: If the agent has no sensors at all then the environment is unobservable.
     The agent’s goals may still be achievable, sometimes with certainty.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}
@@ -217,7 +217,7 @@
         \item \textbf{communication} often emerges as a rational behavior in multiagent environments; in some competitive environments, \textbf{randomized behavior} is rational because it avoids the pitfalls of predictability.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \end{enumerate}
-    
+
 \end{enumerate}
 
 
@@ -235,11 +235,11 @@
     It implies that uncertainty about outcomes is quantified in terms of \textit{probabilities}.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item  We say an environment is \textbf{uncertain} if it is not fully observable or not deterministic. 
+    \item  We say an environment is \textbf{uncertain} if it is not fully observable or not deterministic.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item A \textbf{nondeterministic} environment is one in which actions are characterized by their possible outcomes, but no probabilities are attached to them. Non-deterministic environment descriptions are usually associated with performance measures that require the agent to succeed for all possible outcomes of its actions.
-    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}    
+    \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}
 
 
@@ -247,7 +247,7 @@
 \begin{enumerate}
     \item In an \textbf{episodic} task environment, the agent’s experience is divided into atomic episodes. In each episode the agent receives a percept and then performs a single action. Crucially, the next episode does not depend on the actions taken in previous episodes. Episodic environments are much simpler than sequential environments because the agent does not need to think ahead.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-    
+
     \item In \textbf{sequential} environments, on the other hand, the current decision could affect all future decisions.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}
@@ -258,10 +258,10 @@
     \item If the environment can change while an agent is deliberating, then we say the environment is \textbf{dynamic} for that agent; otherwise, it is \textbf{static}.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item Static environments are easy to deal with because the agent need not keep looking at the world while it is deciding on an action, nor need it worry about the passage of time. 
+    \item Static environments are easy to deal with because the agent need not keep looking at the world while it is deciding on an action, nor need it worry about the passage of time.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-    
-    \item  Dynamic environments, on the other hand, are continuously asking the agent what it wants to do; if it hasn’t decided yet, that counts as deciding to do nothing. 
+
+    \item  Dynamic environments, on the other hand, are continuously asking the agent what it wants to do; if it hasn’t decided yet, that counts as deciding to do nothing.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item If the environment itself does not change with the passage of time but the agent’s performance score does, then we say the environment is \textbf{semidynamic}.
@@ -274,14 +274,14 @@
     \item The discrete/continuous distinction applies to the state of the environment, to the way \textit{time} is handled, and to the percepts and actions of the agent.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    
+
 \end{enumerate}
 
 
 
 \subsubsection{Known, unknown}
 \begin{enumerate}
-    \item Strictly speaking, this distinction refers not to the environment itself but to the agent’s (or designer’s) state of knowledge about the “laws of physics” of the environment. 
+    \item Strictly speaking, this distinction refers not to the environment itself but to the agent’s (or designer’s) state of knowledge about the “laws of physics” of the environment.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item In a \textbf{known} environment, the outcomes (or outcome probabilities if the environment is stochastic) for all actions are given.
@@ -290,7 +290,7 @@
     \item  if the environment is \textbf{unknown}, the agent will have to learn how it works in order to make good decisions.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    
+
 \end{enumerate}
 
 
@@ -301,19 +301,19 @@
 \begin{tabular}{ | >{\fontsize{10}{10}\arraybackslash}l | l l l l l l | }
     \hline
 
-    \textbf{Task Environment} & \textbf{Observable} & \textbf{Agents} & 
-        \textbf{Deterministic} & \textbf{Episodic} &  
-        \textbf{Static} & \textbf{Discrete} \\ 
-        
+    \textbf{Task Environment} & \textbf{Observable} & \textbf{Agents} &
+        \textbf{Deterministic} & \textbf{Episodic} &
+        \textbf{Static} & \textbf{Discrete} \\
+
     \hline\hline
 
-    \textbf{Crossword puzzle} & Fully & Single & Deterministic & Sequential & Static & Discrete \\ 
+    \textbf{Crossword puzzle} & Fully & Single & Deterministic & Sequential & Static & Discrete \\
 
-    \textbf{Chess with a clock} & Fully & Multi & Deterministic & Sequential & Semi & Discrete \\ 
-    
+    \textbf{Chess with a clock} & Fully & Multi & Deterministic & Sequential & Semi & Discrete \\
+
     \hline
 
-    \textbf{Poker} & Partially & Multi & Stochastic & Sequential & Static & Discrete \\    
+    \textbf{Poker} & Partially & Multi & Stochastic & Sequential & Static & Discrete \\
 
     \textbf{Backgammon} & Fully & Multi & Stochastic & Sequential & Static & Discrete \\
 
@@ -326,13 +326,13 @@
     \hline
 
     \textbf{Image analysis} & Fully & Single & Deterministic & Episodic & Semi & Continuous \\
-    
+
     \textbf{Part-picking robot} & Partially & Single & Stochastic & Episodic & Dynamic & Continuous \\
 
     \hline
 
-    \textbf{Refinery controller} & Partially & Single & Stochastic & Sequential & Dynamic & Continuous \\   
-    
+    \textbf{Refinery controller} & Partially & Single & Stochastic & Sequential & Dynamic & Continuous \\
+
     \textbf{Interactive English tutor} & Partially & Multi & Stochastic & Sequential & Dynamic & Discrete \\
 
     \hline
@@ -343,9 +343,9 @@
 
 \subsubsection*{Note}
 \begin{enumerate}
-    \item  the distinction between known and unknown environments is not the same as the one between fully and partially observable environments. 
+    \item  the distinction between known and unknown environments is not the same as the one between fully and partially observable environments.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-    
+
     \item It is quite possible for a \textbf{known} environment to be \textbf{partially observable}—for example, in solitaire card games, I know the rules but am still unable to see the cards that have not yet been turned over.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -358,7 +358,7 @@
     \item \textbf{environment generator}: An environment generator is a tool or function that creates individual environments sampled from an environment class. It automates the creation of diverse scenarios for training or evaluating agents.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig, common/online/chatgpt}
 
-    
+
 \end{enumerate}
 
 

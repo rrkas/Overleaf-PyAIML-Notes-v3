@@ -4,8 +4,8 @@
 \begin{figure}[H]
     \centering
     \includegraphics[
-        width=0.5\linewidth, 
-        height=5cm, 
+        width=0.5\linewidth,
+        height=5cm,
         keepaspectratio
     ]{images/statistics/sampling-plan.png}
 
@@ -14,9 +14,9 @@
 
 
 \begin{enumerate}
-    \item \textbf{Statistical Inference}\label{Sampling Plans/Statistical Inference}: To extend your conclusions beyond the observed data. 
-    The field of \textbf{inferential statistics} tries to use the information from a sample to make statements or decisions about the population of interest. 
-    It takes into account the uncertainty that the information is coming from sampling and does not perfectly represent the population, since another sample would give different outcomes. 
+    \item \textbf{Statistical Inference}\label{Sampling Plans/Statistical Inference}: To extend your conclusions beyond the observed data.
+    The field of \textbf{inferential statistics} tries to use the information from a sample to make statements or decisions about the population of interest.
+    It takes into account the uncertainty that the information is coming from sampling and does not perfectly represent the population, since another sample would give different outcomes.
     An important aspect of inferential statistics is estimation of the population parameters of interest.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -35,10 +35,10 @@
     Properly defining or describing a population can be difficult. Furthermore, even if the population is established, measuring all units is often impossible or too elaborate. This means that information about the population can only be obtained by considering a subset of the population.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item \textbf{Sample}\label{Sampling Plans/Sample}: The set of units for which we have obtained data is referred to as the sample. 
+    \item \textbf{Sample}\label{Sampling Plans/Sample}: The set of units for which we have obtained data is referred to as the sample.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
-    The sample is typically a subset of the population, although in theory the sample can form the whole population or the sample can contain units that are not from the target population. 
+    The sample is typically a subset of the population, although in theory the sample can form the whole population or the sample can contain units that are not from the target population.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item \textbf{Representative Sample}\label{Sampling Plans/Representative Sample}:  A representative sample can be intuitively defined as a sample of units that has approximately the same distribution of characteristics as the population from which it was drawn.
@@ -64,7 +64,7 @@
 
     \item Reasons for sample instead of population:
     \begin{enumerate}
-        \item In many applications we really can’t measure the complete population. For instance, one of the tests applied to aircraft engines is the “frozen bird test”. 
+        \item In many applications we really can’t measure the complete population. For instance, one of the tests applied to aircraft engines is the “frozen bird test”.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
         \item Time, space, or budget restrictions often do not allow us to measure all units from a population.
@@ -114,10 +114,10 @@
         \begin{enumerate}
             \item $n \leq N$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-            
+
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 \textbf{Number of Possible Samples} &
@@ -127,10 +127,10 @@
         \begin{enumerate}
             \item exact value of $K$ depends on the sampling plan
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-            
+
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 \textbf{Population} &
@@ -140,12 +140,12 @@
         \begin{enumerate}
             \item $\Omega = \dCurlyBrac{1,2,\cdots,N}$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-            
+
             \item $\Omega = \dbigcup_{k=1}^K S_k$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 
@@ -156,16 +156,16 @@
         \begin{enumerate}
             \item Subset of Population
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-            
+
             \item $k \in \dCurlyBrac{1,2,\cdots, K}$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-            
+
             \item $S_k = \dCurlyBrac{i_1,i_2,\cdots,i_n}$  ($i_h \in \dParenBrac{1,\cdots,N}$)
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
             \\
             ($n$ unique units, $h \neq l \Rightarrow i_h \neq i_l$)
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-            
+
             \item $S_k \subset \Omega \hspace{2cm} \forall\  k \in \dParenBrac{1,\cdots,K}$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -177,7 +177,7 @@
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 
@@ -198,15 +198,15 @@
         \begin{enumerate}
             \item each subset $S_k$ is attached a probability $\pi_k$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-            
+
             \item $\pi_k > 0 \hspace{2cm}  k \in \dCurlyBrac{1,\cdots,K}$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-            
+
             \item $\dsum_{k=1}^K \pi_k = 1$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 
@@ -217,7 +217,7 @@
         \begin{enumerate}
             \item Probability of each unit in population
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-            
+
             \item $p_i > 0 \hspace{2cm} \ i \in \dCurlyBrac{1,\cdots,N}$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -229,7 +229,7 @@
 
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 
@@ -240,10 +240,10 @@
         \begin{enumerate}
             \item $\theta \equiv \theta(\mathbf{x})$ where $\mathbf{x} = \dParenBrac{x_1, x_2, \cdots, x_N}$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-            
+
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 
@@ -259,7 +259,7 @@
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 \textbf{Descriptive Statistic/ Estimate} &
@@ -275,10 +275,10 @@
 
             \item used as an \textit{estimate} for the population parameter $\theta$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-            
+
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 \textbf{Estimator} &
@@ -286,17 +286,17 @@
     \begin{minipage}{10.3cm}
         \vspace{0.15cm}
         \begin{enumerate}
-            \item It is a function applied to the observed data (i.e., some calculation procedure). 
+            \item It is a function applied to the observed data (i.e., some calculation procedure).
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
             \item In many cases the function $T$ is identical to the calculation $\theta$ at the population level, but alternative functions may be used depending on the sampling plan.
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-            \item \textbf{Example}: For estimating population mean, $\bar{x}_k$ can be used as $T$ 
+            \item \textbf{Example}: For estimating population mean, $\bar{x}_k$ can be used as $T$
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 \textbf{Expected Population Parameter} &
@@ -318,7 +318,7 @@
 
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 
@@ -343,7 +343,7 @@
 
         \end{enumerate}
         \vspace{0.15cm}
-    \end{minipage} 
+    \end{minipage}
     \\ \hline
 
 
@@ -370,13 +370,13 @@
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item In general, the value $\hat{\theta}_k$ can be considered an estimate of the population parameter $\theta$ when sample $S_k$ would be collected. 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-    \item The estimate $\hat{\theta}_k$ will most likely be different from the population parameter $\theta$, because the sample is just a subset of the population. 
+    \item In general, the value $\hat{\theta}_k$ can be considered an estimate of the population parameter $\theta$ when sample $S_k$ would be collected.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    
+    \item The estimate $\hat{\theta}_k$ will most likely be different from the population parameter $\theta$, because the sample is just a subset of the population.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
 \end{enumerate}
 
 
@@ -401,7 +401,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[
-        width=0.7\linewidth, 
+        width=0.7\linewidth,
         height=6cm,
         keepaspectratio,
     ]{images/statistics/bias-se-mse-visual.png}
@@ -411,7 +411,7 @@
 
 \subsection{Bias}\label{Sampling Plans/Measures of closeness/Bias}
 
-\hfill 
+\hfill
 $
     bias
     = \dParenBrac{\dsum_{k=1}^{K} \hat{\theta}_k \pi_k} - \theta
@@ -428,7 +428,7 @@ $
     \item The weights in this weighted average are provided by the probabilities $\pi_k$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item  If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly take samples using our sampling plan and repeatedly compute our statistic of interest, the average over all of those statistics is equal to the true population parameter. 
+    \item  If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly take samples using our sampling plan and repeatedly compute our statistic of interest, the average over all of those statistics is equal to the true population parameter.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
     If the bias is \textbf{zero}, the estimator, under the sampling plan that is being evaluated, is said to be \textbf{unbiased}.
@@ -447,7 +447,7 @@ $
     \item If the sampling plan is unbiased and thus $\mathbb{E}(T) = \theta$, the RMSE and the SE are identical.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    
+
 \end{enumerate}
 
 
@@ -462,7 +462,7 @@ $
 
 \hfill
 $
-    MSE 
+    MSE
     = \dsum_{k=1}^{K} \dParenBrac{\hat{\theta}_k - \theta}^2 \pi_k
 $
 \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -475,10 +475,10 @@ $
     \item The MSE measures the weighted average squared distance of the sample results $\hat{\theta}_1, \hat{\theta}_2,..., \hat{\theta}_K$ from the population parameter $\theta$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The weights are determined by the sampling probabilities. 
+    \item The weights are determined by the sampling probabilities.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The smaller the MSE the better the sampling plan. 
+    \item The smaller the MSE the better the sampling plan.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item If the MSE is small, the variability of the $\hat{\theta}_k$'s around $\theta$ is small, \\
@@ -497,8 +497,8 @@ $
 
 \hfill
 $
-    RMSE 
-    = \sqrt{MSE} 
+    RMSE
+    = \sqrt{MSE}
     = \sqrt{{SE}^2 + \dParenBrac{\mathbb{E}(T) - \theta}^2}
 $
 \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -530,7 +530,7 @@ $
     \item Standard error of an estimator is used as a measure to represent our uncertainty regarding an estimate.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item If the SE is small, the variability of the $\hat{\theta}_k$’s around $\mathbb{E}(T)$ is small. 
+    \item If the SE is small, the variability of the $\hat{\theta}_k$’s around $\mathbb{E}(T)$ is small.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $SE(cT ) = c\ SE(T) \hspace{2cm} \forall\  c \in \mbbR$
@@ -554,13 +554,13 @@ $
     \begin{enumerate}
         \item Although these sampling methods are frequently in use, it is strongly recommended not to apply these methods, unless knowledge is available on how to adjust or correct the sample for inferential purposes.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
         \item These have the risk that some units are much more likely to be included in the sample than others, which can make statistics computed on the sample data bad estimates for the population parameters of interest.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-        \item With non-representative sampling some units are not only more likely to be included in the sample, we also do not actually know how likely units were included. 
+
+        \item With non-representative sampling some units are not only more likely to be included in the sample, we also do not actually know how likely units were included.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
         \item Even if we wanted to, we could not control for these systematic differences between units.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
@@ -579,10 +579,10 @@ $
     \begin{enumerate}
         \item We sample units in such a way that we do know how likely units are to be included in the sample (even if they will be different from unit to unit).
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-        \item Random sampling is a sampling method that uses a random mechanism. 
+
+        \item Random sampling is a sampling method that uses a random mechanism.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
         \begin{enumerate}
             \item The probability of each unit in the population of becoming part of the sample is both positive and known.
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -657,24 +657,24 @@ $
 
 
 
-\textbf{Method} & 
-    Non-systematic, no clear plan & 
+\textbf{Method} &
+    Non-systematic, no clear plan &
     Systematic, with equal chances for all \\ \hline
 
-\textbf{Bias} & 
-    High due to human judgment & 
+\textbf{Bias} &
+    High due to human judgment &
     Low, minimal bias \\ \hline
 
-\textbf{Reproducibility} & 
-    Difficult to reproduce & 
+\textbf{Reproducibility} &
+    Difficult to reproduce &
     Easy to reproduce \\ \hline
 
-\textbf{Accuracy} & 
-    Low accuracy and reliability & 
+\textbf{Accuracy} &
+    Low accuracy and reliability &
     High accuracy and reliability \\ \hline
 
-\textbf{Use Case} & 
-    Informal or exploratory research & 
+\textbf{Use Case} &
+    Informal or exploratory research &
     Formal research, clinical trials \\ \hline
 
 

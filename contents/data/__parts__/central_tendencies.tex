@@ -79,7 +79,7 @@ $
 
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Arithmetic mean - using numPy
 ]
 print(data.sum() / len(data))
@@ -95,11 +95,11 @@ print(data.mean())
     \item The mode is merely the most frequently occurring value. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item There might be multiple modes. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
 \end{enumerate}
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Mode - using numPy
 ]
 values, counts = np.unique(data, return_counts=True)
@@ -129,7 +129,7 @@ print(values[mode_idx], counts[mode_idx])
 
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Median - using numPy
 ]
 print(np.median(data))
@@ -146,7 +146,7 @@ print(np.median(data))
 
         \item $(1 - q) \cdot 100\%$ of the data is above the value $x_q$
     \end{enumerate}
-    
+
     \item The parameter $q$ can take any value in the interval $[0, 1]$. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Quantiles can be calculated in different ways, depending on the way we "interpolate" between two values. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
@@ -173,7 +173,7 @@ print(np.median(data))
 \end{enumerate}
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Quantile - using numPy
 ]
 q = np.round(random.random(), 2)
@@ -200,7 +200,7 @@ print(q, np.quantile(data, q))
 \end{enumerate}
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Quartile - using numPy
 ]
 _splits = 5
@@ -225,7 +225,7 @@ np.percentile(data, np.linspace(0, 1, _splits))
 
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Decile - using numPy
 ]
 _splits = 11
@@ -250,7 +250,7 @@ print(np.percentile(data, np.linspace(0, 1, _splits)))
 
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Percentile - using numPy
 ]
 _splits = 101
@@ -262,7 +262,7 @@ print(np.percentile(data, np.linspace(0, 1, _splits)))
 
 \begin{enumerate}
     \item Range is the difference between the maximum and minimum. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item It quantifies the maximum distance between any two data points. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The range is sensitive to outliers. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -270,7 +270,7 @@ print(np.percentile(data, np.linspace(0, 1, _splits)))
 
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Range - using numPy
 ]
 print(np.max(data) - np.min(data))
@@ -288,7 +288,7 @@ print(np.max(data) - np.min(data))
 \end{enumerate}
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=IQR - using numPy
 ]
 print(np.percentile(data, 0.75), np.percentile(data, 0.25))
@@ -314,7 +314,7 @@ SEE: \fullref{Basic Functions/Absolute Value function or Modulus Function}
 \end{enumerate}
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Mean Absolute Deviation (MAD) - using numPy
 ]
 x_bar = data.mean()
@@ -333,12 +333,12 @@ $ \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \begin{enumerate}
     \item It does the same as MAD, but now it uses squared distances with respect to the mean.  \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}\\
     SEE: \fullref{Data/Describing Data/Central Tendency/Mean Absolute Deviation (MAD)}
-    
+
 \end{enumerate}
 
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Mean Squared Deviation (MSD)- using numPy
 ]
 x_bar = data.mean()
@@ -357,7 +357,7 @@ print(np.pow(data - x_bar, 2).mean())
 
 $
     \begin{aligned}
-        s^2 
+        s^2
         &= \dfrac{1}{n-1} \dsum_{i=1}^{n} (x_i - \bar{x})^2 \\
         &= MSD \cdot \dfrac{n}{n-1}
     \end{aligned}
@@ -374,7 +374,7 @@ $
 \vspace{0.3cm}
 
 $
-    \sigma^2 
+    \sigma^2
     = \dfrac{1}{N} \dsum_{i=1}^{n} (x_i - \mu)^2
 $
 
@@ -407,13 +407,13 @@ $
     \item The variance is almost identical to the mean squared deviation. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item For small sample sizes the MSD and variance are not the same, but for large sample sizes they are obviously very similar. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item The variance is often preferred over the MSD. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Variance - using numPy
 ]
 x_bar = data.mean()
@@ -435,7 +435,7 @@ print(np.pow(data - x_bar, 2).mean())
         $
             \begin{aligned}
                 s
-                &=\sqrt{s^2} 
+                &=\sqrt{s^2}
                 &= \sqrt{\dfrac{1}{n-1} \dsum_{i=1}^{n} (x_i - \bar{x})^2}
                 &= \sqrt{MSD \cdot \dfrac{n}{n-1}}
             \end{aligned}
@@ -450,12 +450,12 @@ print(np.pow(data - x_bar, 2).mean())
 \begin{enumerate}
     \item The standard deviation is on the same scale as the original variable, instead of a squared scale for the variance. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    
+
 \end{enumerate}
 
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Standard Deviation - using numPy
 ]
 x_bar = data.mean()
@@ -465,7 +465,7 @@ s2 = np.pow(data - x_bar, 2).sum() / (len(data) - 1)
 print(np.sqrt(s2))
 
 # population
-sig2 = np.pow(data - x_bar, 2).mean() 
+sig2 = np.pow(data - x_bar, 2).mean()
 print(np.sqrt(sig2))
 \end{lstlisting}
 
@@ -481,7 +481,7 @@ print(np.sqrt(sig2))
     \item Data is considered skewed or asymmetric when the variation on one side of the middle of the data is larger than the variation on the other side. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item In practice, researchers sometimes compare the mean with the median to get an impression of the skewness, since the median and mean are identical under symmetric data, but this measure is more difficult to interpret than $g_1$. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item Data with skewness values of $\dabs{g_1} \leq 0.3$ are considered close to symmetry, \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $g_1$ remains \textbf{unchanged} when all values $\dCurlyBrac{x_1, x_2, \cdots, x_n}$ are shifted by a fixed number or when they are multiplied with a fixed number. \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
@@ -495,9 +495,9 @@ print(np.sqrt(sig2))
     \item Sample:
     \label{Data/Describing Data/Central Tendency/Skewness/Sample}
     \label{Data/Describing Data/Central Tendency/Skewness/z-value}
-    \hspace{1cm}  
-    $z_i = \dfrac{x_i - \bar{x}}{s}$ 
-    \hspace{1cm}  
+    \hspace{1cm}
+    $z_i = \dfrac{x_i - \bar{x}}{s}$
+    \hspace{1cm}
     $g_1 = \dfrac{1}{n} \dsum_{i=1}^{n} z_i^3$
 
     \item Population:
@@ -512,11 +512,11 @@ print(np.sqrt(sig2))
     \hline
     \textbf{Condition} & \textbf{Conclusions}\\ \hline
     \endhead
-    
+
     \hline
     $g_1 > 0$ & \tableenumerate{
         \item data is called skewed to the right
-        \item The values on the right side of the mean are further away from each other than the values on the left side of the mean. 
+        \item The values on the right side of the mean are further away from each other than the values on the left side of the mean.
         \item  In other words, the “tail” on the right is longer than the “tail” on the left.
     } \\[0.2cm] \hline
 
@@ -527,7 +527,7 @@ print(np.sqrt(sig2))
 
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Skewness - using numPy
 ]
 x_bar = data.mean()
@@ -540,7 +540,7 @@ g1 = np.pow(z, 3).mean()
 print(g1)
 
 # population
-sig2 = np.pow(data - x_bar, 2).mean() 
+sig2 = np.pow(data - x_bar, 2).mean()
 sig = np.sqrt(sig2)
 z = (data - data.mean()) / sig
 g1 = np.pow(z, 3).mean()
@@ -571,11 +571,11 @@ print(g1)
     \item Sample:
     \label{Data/Describing Data/Central Tendency/Kurtosis/Sample}
     \label{Data/Describing Data/Central Tendency/Kurtosis/z-value}
-    \hspace{1cm}  
-    $z_i = \dfrac{x_i - \bar{x}}{s}$ 
+    \hspace{1cm}
+    $z_i = \dfrac{x_i - \bar{x}}{s}$
     \hspace{1cm}
     $g_2 = \dfrac{1}{n} \dsum_{i=1}^{n} z_i^4 - 3$
-    
+
 
     \item Population:
 \end{enumerate}
@@ -589,7 +589,7 @@ print(g1)
     \hline
     \textbf{Condition} & \textbf{Condition Name} & \textbf{Conclusions}\\ \hline
     \endhead
-    
+
     \hline
 
     $g_2 > 0$ & leptokurtic \label{Data/Describing Data/Central Tendency/Kurtosis/leptokurtic} & data has long heavy tails and is severely peaked in the middle \\ \hline
@@ -600,7 +600,7 @@ print(g1)
 \end{longtable}
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Kurtosis - using numPy
 ]
 x_bar = data.mean()
@@ -613,7 +613,7 @@ g2 = np.pow(z, 4).mean() - 3
 print(g2)
 
 # population
-sig2 = np.pow(data - x_bar, 2).mean() 
+sig2 = np.pow(data - x_bar, 2).mean()
 sig = np.sqrt(sig2)
 z = (data - data.mean()) / sig
 g2 = np.pow(z, 4).mean() - 3

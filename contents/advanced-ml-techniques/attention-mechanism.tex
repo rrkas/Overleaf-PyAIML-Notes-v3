@@ -1,30 +1,30 @@
 \chapter{Attention Mechanism (2014)}
 
 \begin{center}
-    \textbf{Source}: \cite{adv-ml-tech/paper/arxiv.org/1409.0473}, 
+    \textbf{Source}: \cite{adv-ml-tech/paper/arxiv.org/1409.0473},
     \textbf{General Context Extracted Using}: \cite{common/online/chatgpt}
 \end{center}
 
 
 \begin{enumerate}
-    \item allows the model to dynamically and softly focus on different parts of the input when generating each part of the output, without needing to explicitly isolate those parts in advance. 
+    \item allows the model to dynamically and softly focus on different parts of the input when generating each part of the output, without needing to explicitly isolate those parts in advance.
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473, common/online/chatgpt}
 
     \item This approach leads to improved results and produces attention patterns that align with human intuition about which input elements are most relevant at each step.
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473, common/online/chatgpt}
 
-    \item an extension to the sequence model that learns to align relevant parts of the input while generating the output. 
+    \item an extension to the sequence model that learns to align relevant parts of the input while generating the output.
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473, common/online/chatgpt}
 
     \item At each step of output generation, the model softly identifies positions in the input sequence that contain the most relevant information.
     It then uses this focused context, along with all previously generated outputs, to predict the next output element.
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473, common/online/chatgpt}
 
-    \item it avoids compressing the entire input into a single fixed-length vector. Instead, it encodes the input sequence into a sequence of vectors and adaptively selects a subset of these vectors during output generation. 
+    \item it avoids compressing the entire input into a single fixed-length vector. Instead, it encodes the input sequence into a sequence of vectors and adaptively selects a subset of these vectors during output generation.
     This removes the burden of forcing all input information—regardless of length—into one compact representation, enabling the model to handle longer inputs more effectively.
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473, common/online/chatgpt}
 
-    
+
 \end{enumerate}
 
 
@@ -46,7 +46,7 @@
         \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
     \end{enumerate}
 
-    
+
     \item Forward RNN ($\overset{\rightarrow}{f}$) reads the input sequence as it is ordered (from $x_1$ to $x_{T_x}$ ) and calculates a sequence of forward hidden states ( $\overset{\rightarrow}{h}_1, \cdots , \overset{\rightarrow}{h}_{T_x}$ ).
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
 
@@ -59,7 +59,7 @@
     .\hfill
     $
         h_j = \dSquareBrac{
-            \overset{\rightarrow}{h} _j^\top ; \ 
+            \overset{\rightarrow}{h} _j^\top ; \
             \overset{\leftarrow}{h} _j^\top
         }
     $
@@ -81,7 +81,7 @@
     \item decoder hidden state: $s_i = f(s_{i-1}, y_{i-1}, c_i)$
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
 
-    \item conditional probability: $p(y_i | y_1, \cdots , y_{i-1}, x) = g(y_{i-1}, s_i, c_i)$
+    \item conditional probability: $P(y_i | y_1, \cdots , y_{i-1}, x) = g(y_{i-1}, s_i, c_i)$
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
 
 
@@ -94,7 +94,7 @@
     \begin{enumerate}
         \item aka expected annotation
         \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-        
+
         \item $\alpha_{ij}$:  probability that the target word $y_i$ is aligned to, or translated from, a source word $x_j$
         \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
 
@@ -114,24 +114,24 @@
     \item alignment model/ energy: $e_{ij} = a(s_{i-1}, h_j)$\\
     scores how well the inputs around position $j$ and the output at position $i$ match.
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-    
+
     \item  We parametrize the alignment model a as a feedforward neural network which is jointly trained with all the other components of the proposed system.
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
 
-    \item the alignment is not considered to be a latent variable. 
-    Instead, the alignment model directly computes a soft alignment, which allows the gradient of the cost function to be backpropagated through. 
+    \item the alignment is not considered to be a latent variable.
+    Instead, the alignment model directly computes a soft alignment, which allows the gradient of the cost function to be backpropagated through.
     This gradient can be used to train the alignment model as well as the whole translation model jointly.
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
 
     \item The probability $\alpha_{ij}$, or its associated energy $e_{ij}$, reflects the importance of the annotation $h_j$ with respect to the previous hidden state $s_{i-1}$ in deciding the next state $s_i$ and generating $y_i$.
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
 
-    \item This implements a mechanism of attention in the decoder. 
-    The decoder decides parts of the source sentence to pay attention to. 
+    \item This implements a mechanism of attention in the decoder.
+    The decoder decides parts of the source sentence to pay attention to.
     By letting the decoder have an attention mechanism, we relieve the encoder from the burden of having to encode all information in the source sentence into a fixed-length vector.
     \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
 
-    
+
 \end{enumerate}
 
 

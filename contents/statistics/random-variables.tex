@@ -8,10 +8,10 @@
     A random variable assigns a number to each possible outcome of a random experiment.
     \hfill \cite{common/online/chatgpt}
 
-    \item An intuitive definition of a random variable or random quantity is a variable for which the value or outcome is unknown and for which the outcome is influenced by some form of random phenomenon. 
+    \item An intuitive definition of a random variable or random quantity is a variable for which the value or outcome is unknown and for which the outcome is influenced by some form of random phenomenon.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Why is it called "random"? 
+    \item Why is it called "random"?
     Because the value it takes depends on chance.
     You don’t know the outcome in advance, but you know the possible values and can assign probabilities to them.
     \hfill \cite{common/online/chatgpt}
@@ -25,7 +25,7 @@
     \item A realization or an outcome of the random variable is then indicated by the same, but lower case, letter.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item a random variable may be seen as a variable that can in principle be equal to any of the values in the population, and after probability sampling the outcome(s) will become known. 
+    \item a random variable may be seen as a variable that can in principle be equal to any of the values in the population, and after probability sampling the outcome(s) will become known.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Types of Random Variables:
@@ -36,7 +36,7 @@
         \begin{enumerate}
             \item Takes countable values (e.g., 0, 1, 2, 3…)
             \hfill \cite{common/online/chatgpt}
-            
+
             \item Examples: number of heads in 10 coin tosses, number of emails received
             \hfill \cite{common/online/chatgpt}
         \end{enumerate}
@@ -46,7 +46,7 @@
         \begin{enumerate}
             \item Takes uncountably many values in an interval (e.g., any real number)
             \hfill \cite{common/online/chatgpt}
-            
+
             \item Examples: height of a person, temperature, time taken to run a race
             \hfill \cite{common/online/chatgpt}
         \end{enumerate}
@@ -61,11 +61,14 @@
         \hfill \cite{common/online/chatgpt}
     \end{enumerate}
 
-    \item The \textbf{probability function} $P(X \leq x)$ is a general concept and can be used for any random variable. 
+    \item The \textbf{probability function} $P(X \leq x)$ is a general concept and can be used for any random variable.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The PMF for a discrete random variable is the equivalent of the PDF for a continuous random variable. 
+    \item The PMF for a discrete random variable is the equivalent of the PDF for a continuous random variable.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Data points that are drawn independently from the same distribution ($D$ OR $D(\cdots)$) are said to be \textbf{independent and identically distributed}, which is often abbreviated to i.i.d. (denoted by $x \sim D$ OR $x \sim D(\cdots)$)
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 \end{enumerate}
 
 
@@ -77,10 +80,10 @@
 \textbf{For Continuous Random Variable}
 
 \begin{enumerate}
-    \item The density function may be viewed as a smooth version of the histogram if we standardize the frequencies on the vertical axis to proportions. 
+    \item The density function may be viewed as a smooth version of the histogram if we standardize the frequencies on the vertical axis to proportions.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The density function characterizes the occurrence of values for a specific variable (as depicted on the x-axis) on all units from the population. 
+    \item The density function characterizes the occurrence of values for a specific variable (as depicted on the x-axis) on all units from the population.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Since in practice all populations are finite, the density function is an abstract formulation of, or a “model” for, the “frequencies” of all population values.
@@ -103,11 +106,11 @@
         \item These functions are often parametric functions, i.e., the PDF is known up to a set of parameters.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-        \item The PDF is then often denoted by $f_{\bm{\theta}}$ , where $\bm{\theta}$ represents the set or \textbf{vector} of $m$ density parameters: 
-        $\bm{\theta} = 
+        \item The PDF is then often denoted by $f_{\bm{\theta}}$ , where $\bm{\theta}$ represents the set or \textbf{vector} of $m$ density parameters:
+        $\bm{\theta} =
         \begin{bmatrix}
             \theta_1 & \theta_2 & \cdots &\theta_m
-        \end{bmatrix} 
+        \end{bmatrix}
         ^\top
         $.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -130,16 +133,16 @@
 \textbf{For Discrete Random Variable}
 
 \begin{enumerate}
-    \item Discrete does not always mean that we observe values in $\mathbb{N}$. 
-    For instance, grades on a data science test may take values in $\dCurlyBrac{1, 1.5, 2.0, 2.5, \cdots , 9.0, 9.5, 10}$. 
-    Thus, it would be more rigorous to say that a discrete random variable $X$ takes its values in the set $\dCurlyBrac{x_0, x_1, x_2, \cdots , x _k , \cdots}$, with $x _k$ an element of the real line $(x _k \in \mbbR)$ and with an ordering of the values $x_0 < x_1 < x_2 < \cdots$ . 
+    \item Discrete does not always mean that we observe values in $\mathbb{N}$.
+    For instance, grades on a data science test may take values in $\dCurlyBrac{1, 1.5, 2.0, 2.5, \cdots , 9.0, 9.5, 10}$.
+    Thus, it would be more rigorous to say that a discrete random variable $X$ takes its values in the set $\dCurlyBrac{x_0, x_1, x_2, \cdots , x _k , \cdots}$, with $x _k$ an element of the real line $(x _k \in \mbbR)$ and with an ordering of the values $x_0 < x_1 < x_2 < \cdots$ .
     However, in many practical settings we can map this set to a subset of $\mathbb{N}$ or to the whole set $\mathbb{N}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item For discrete random variables we can define $p _k = P(X = k)$ as the probability of observing the outcome $k$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item This is referred to as the probability mass function (PMF) if the probabilities $p _k$ satisfy two conditions. 
+    \item This is referred to as the probability mass function (PMF) if the probabilities $p _k$ satisfy two conditions.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
         \item all probabilities $p _k$ should be nonnegative ( $p _k \geq 0, \forall\ k$)
@@ -161,17 +164,17 @@
 \subsection{Intro}
 
 \begin{enumerate}
-    \item The probability $P(X \leq x)$ is also referred to as the \textbf{distribution function} obtained in $x$ and it is denoted by $F(x) = P(X \leq x)$. 
+    \item The probability $P(X \leq x)$ is also referred to as the \textbf{distribution function} obtained in $x$ and it is denoted by $F(x) = P(X \leq x)$.
     Thus every random variable $X$ has a distribution function $F$ through $F(x) = P(X \leq x)$, but also every distribution function $F$ has a random variable $X$, namely the random variable $X$ that makes $P(X \leq x) = F(x)$.
     Thus the two concepts are directly related to each other and we then typically say that $X$ is distributed according to $F$, i.e., \colorbox{yellow}{$X \sim F$}.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Each distribution function $F$ typically satisfies three conditions:
     \begin{enumerate}
-        \item When the value $x$ increases to infinity, the distribution function becomes equal to one, i.e., $\lim _{x\to \infty} F(x) = 1$. 
+        \item When the value $x$ increases to infinity, the distribution function becomes equal to one, i.e., $\lim _{x\to \infty} F(x) = 1$.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-        \item When the value $x$ decreases to minus infinity the distribution function becomes equal to zero, i.e., $\lim _{x\to -\infty} F(x) = 0$. 
+        \item When the value $x$ decreases to minus infinity the distribution function becomes equal to zero, i.e., $\lim _{x\to -\infty} F(x) = 0$.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
         \item The distribution function is a non-decreasing function, i.e., $F(x_1) \leq F(x_2)$ when $x_1 \leq x_2$.
@@ -186,10 +189,10 @@
 
 
 \begin{enumerate}
-    \item There is a direct relation between distribution functions and densities. 
+    \item There is a direct relation between distribution functions and densities.
     If we start with a PDF, we can define a distribution function in the following way:
     \colorbox{yellow}{$
-        F(x) 
+        F(x)
         = P(X \leq x)
         = \dint_{-\infty}^{x} f(z) dz
     $}
@@ -200,7 +203,7 @@
     \\[0.2cm]
     $
         P(\psi^{-1}(X) \leq x)
-        = P(X \leq \psi(x)) 
+        = P(X \leq \psi(x))
         = F(\psi(x))
         =\dint_{-\infty}^{\psi(x)} f(z) dz
         =\dint_{-\infty}^{x} \psi^{\prime}(z)\ f(\psi(z))\ dz
@@ -223,9 +226,9 @@
     \\[0.2cm]
     $
         \begin{aligned}
-            P(\exp\dCurlyBrac{X} \leq x) 
+            P(\exp\dCurlyBrac{X} \leq x)
                 &= P(X \leq \log(x))
-                = \Phi\dParenBrac{\dfrac{\log(x) - \mu}{\sigma}} \\  
+                = \Phi\dParenBrac{\dfrac{\log(x) - \mu}{\sigma}} \\
                 &= \dint_{-\infty}^{\log(x)} \dfrac{1}{\sigma} \phi\dParenBrac{\dfrac{z - \mu}{\sigma}} dz
                 = \dint_{0}^{x} \dfrac{1}{z\sigma} \phi\dParenBrac{\dfrac{\log(z) - \mu}{\sigma}} dz
         \end{aligned}
@@ -268,7 +271,7 @@
 \begin{enumerate}
     \item If we consider a (not necessarily continuous or differentiable) function $\psi : \mbbR \to \mbbR$, then the expected value of the random variable $\psi (X)$ is defined by
     \colorbox{yellow}{$
-        \mathbb{E}\psi(X) 
+        \mathbb{E}\psi(X)
         = \mathbb{E}(\psi(X))
         = \dint_{\mbbR} \psi(x)\ f(x)\ dx
     $}
@@ -278,11 +281,11 @@
 \subsection{For PMF (Discrete)}
 
 \begin{enumerate}
-    \item The expectation of a discrete random variable $\psi(X)$ is given by 
+    \item The expectation of a discrete random variable $\psi(X)$ is given by
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\[0.2cm]
     \colorbox{yellow}{$
-        \mathbb{E} (\psi(X)) \ 
+        \mathbb{E} (\psi(X)) \
         = \dsum^{\infty}_{k=0}\ \psi(k)\ p _k \
         = \dsum^{\infty}_{k=0}\ \psi(k)\ P(X = k)
     $}
@@ -377,21 +380,21 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 
 
 \begin{enumerate}[resume*=calcrulesrv]
-    \item 
+    \item
     $
-        P(X \leq x, Y \leq y) 
-        = P(A \cap B) 
-        = P(A) P(B) 
-        = P(X \leq x) P(Y \leq y) 
+        P(X \leq x, Y \leq y)
+        = P(A \cap B)
+        = P(A) P(B)
+        = P(X \leq x) P(Y \leq y)
         = F _X (x)\ F_Y (y)
-    $ 
+    $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
-        \text{Var}(X Y ) 
-        = \text{Var}(X) \text{Var}(Y) 
-            + \text{Var}(X)(\mathbb{E}(Y))^2 
+        \text{Var}(X Y )
+        = \text{Var}(X) \text{Var}(Y)
+            + \text{Var}(X)(\mathbb{E}(Y))^2
             + \text{Var}(Y)(\mathbb{E}(X))^2
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}

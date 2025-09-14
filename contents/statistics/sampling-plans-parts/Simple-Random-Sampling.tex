@@ -14,11 +14,11 @@
 \begin{enumerate}
     \item Implicitly assume that there is no particular group structure present in the population.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-    \item Simple random sampling is a way of collecting samples such that each unit from the population has the exact same probability of becoming part of the sample. 
+
+    \item Simple random sampling is a way of collecting samples such that each unit from the population has the exact same probability of becoming part of the sample.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    
+
     \item Simple random sampling is a conceptually easy method of forming random samples but it can prove hard in practice.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -26,13 +26,13 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Number of unique samples $
-        = K 
+        = K
         = \dfrac{N!}{n!(N-n)!}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item the probability of collecting sample $S_k$, using sequential sampling $
-        = \dfrac{1}{K} 
+        = \dfrac{1}{K}
         = \dfrac{n!(N-n)!}{N!}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -53,7 +53,7 @@
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Number of samples that contain certain unit $i$ = $\dfrac{nK}{N}$ 
+    \item Number of samples that contain certain unit $i$ = $\dfrac{nK}{N}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
     $
@@ -71,7 +71,7 @@
 
     \item \textbf{Disadvantage}: When the numbers of units across these subpopulations are (substantially) different, simple random may not collect units from each subgroup.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
 \end{enumerate}
 
 \vspace{0.5cm}
@@ -81,19 +81,19 @@
 
     \item[] $K = \dfrac{20!}{5!\cdot 15!}=15504$
 
-    
+
 \end{enumerate}
 
 
 \subsection{Estimation for population mean}
 \begin{enumerate}
     \item Estimator: $
-        T 
+        T
         = \bar{x}
         = \dfrac{1}{n} \dsum_{i=1}^n x_i
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item Bias: $0$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -111,10 +111,10 @@
     \\
     The MSE will not become zero when the estimator is biased, even if the sample size is equal to the population size.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
 
     \item $
-        \mathbb{E}(T) 
+        \mathbb{E}(T)
         = \dfrac{1}{K}\dsum_{k=1}^{K} \bar{x}_k
         = \dfrac{1}{nK}\dsum_{k=1}^{K}\ \dsum_{i \in S_k} x_i
         = \dfrac{1}{N}\dsum_{i=1}^{N} x_i
@@ -131,16 +131,16 @@
     $
        \hat{\sigma}^2 = \dfrac{N - 1}{N}\ s^2_k
     $
-    \hfill 
+    \hfill
     $
-        \dParenBrac{\ 
+        \dParenBrac{\
             s^2_k = \dfrac{1}{n - 1} \dsum_{i\ \in\ S_k} (x_i - \bar{x}_k )^2
         \ }
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $
-        \hat{MSE}(\bar{x}_k) 
+        \hat{MSE}(\bar{x}_k)
         = \dfrac{N - n}{N n}\ s^2_k
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -148,7 +148,7 @@
     \item This is an unbiased estimator of the MSE of the arithmetic average in $MSE(\bar{x}_k)$ and it may also be used when the observations are binary.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    
+
 \end{enumerate}
 
 

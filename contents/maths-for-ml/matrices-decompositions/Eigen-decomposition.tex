@@ -12,7 +12,7 @@
         \\
         \textbf{Top-left to bottom-left}: $\bm{P}^{-1}$ performs a basis change (here drawn in $\mbbR^2$ and depicted as a rotation-like operation) from the standard basis into the eigenbasis.
         \\
-        \textbf{Bottom-left to bottom-right}: $\bm{D}$ performs a scaling along the remapped orthogonal eigenvectors, depicted here by a circle being stretched to an ellipse. 
+        \textbf{Bottom-left to bottom-right}: $\bm{D}$ performs a scaling along the remapped orthogonal eigenvectors, depicted here by a circle being stretched to an ellipse.
         \\
         \textbf{Bottom-right to top-right}: $\bm{P}$ undoes the basis change (depicted as a reverse rotation) and restores the original coordinate frame.
     }
@@ -20,7 +20,7 @@
 
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{theorem}[Eigendecomposition]
         A square matrix $\bm{A} \in \mbbR^{n\times n}$ can be factored into $\bm{A} = \bm{PDP}^{-1}$ where $\bm{P} \in \mbbR^{n\times n}$ and $\bm{D}$ is a diagonal matrix whose diagonal entries are the eigenvalues of $\bm{A}$, if and only if the eigenvectors of $\bm{A}$ form a basis of $\mbbR^n$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -46,27 +46,27 @@
     \\
     .\hfill
     $
-        \bm{A}^k 
-        = (\bm{PDP}^{-1})^k 
-        = \bm{PDP}^{-1}\bm{PDP}^{-1}\cdots \bm{PDP}^{-1} 
+        \bm{A}^k
+        = (\bm{PDP}^{-1})^k
+        = \bm{PDP}^{-1}\bm{PDP}^{-1}\cdots \bm{PDP}^{-1}
         = \bm{PD}^k \bm{P}^{-1}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Assume that the eigendecomposition $\bm{A} = (\bm{PDP}^{-1})$ exists. Then: 
+    \item Assume that the eigendecomposition $\bm{A} = (\bm{PDP}^{-1})$ exists. Then:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     .\hfill
     $
-        \det(\bm{A}) 
-        = \det(\bm{PDP}^{ -1}) 
+        \det(\bm{A})
+        = \det(\bm{PDP}^{ -1})
         = \det(\bm{P}) \det(\bm{D}) \det(\bm{P}^{-1})
         = \det(\bm{D})
         = \dprod_{i} d_{ii}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item eigendecomposition operates within the same vector space, where the same basis change is applied and then undone. 
+    \item eigendecomposition operates within the same vector space, where the same basis change is applied and then undone.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 

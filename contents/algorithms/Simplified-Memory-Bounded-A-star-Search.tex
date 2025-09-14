@@ -4,12 +4,12 @@
 
 \begin{enumerate}
     \item SMA$^\ast$ proceeds just like A$^\ast$, expanding the best leaf until memory is full.
-    At this point, it cannot add a new node to the search tree without dropping an old one. 
+    At this point, it cannot add a new node to the search tree without dropping an old one.
     SMA$^\ast$ always drops the \textbf{worst leaf node}—the one with the highest $f$-value.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item  Like RBFS, SMA$^\ast$ then backs up the value of the forgotten node to its parent. 
-    In this way, the ancestor of a forgotten sub-tree knows the quality of the best path in that sub-tree. 
+    \item  Like RBFS, SMA$^\ast$ then backs up the value of the forgotten node to its parent.
+    In this way, the ancestor of a forgotten sub-tree knows the quality of the best path in that sub-tree.
     SMA$^\ast$ regenerates the sub-tree only when all other paths have been shown to look worse than the path it has forgotten.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -19,7 +19,7 @@
     \item if all the leaf nodes have the same f-value, SMA$^\ast$ expands the \textbf{newest best} leaf and deletes the \textbf{oldest worst} leaf to avoid selecting the same node for deletion and expansion
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item If the leaf is not a goal node, then even if it is on an optimal solution path, that solution is not reachable with the available memory. 
+    \item If the leaf is not a goal node, then even if it is on an optimal solution path, that solution is not reachable with the available memory.
     Therefore, the node can be discarded exactly as if it had no successors.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 

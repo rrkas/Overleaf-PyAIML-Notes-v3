@@ -4,9 +4,9 @@
     \item Eigen is a German word meaning “characteristic”, “self”, or “own”.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{definition}[Eigenvalues \& Eigenvectors]
-        Let $\bm{A} \in \mbbR^{n\times n}$ be a square matrix. 
+        Let $\bm{A} \in \mbbR^{n\times n}$ be a square matrix.
         Then $\lambda \in \mbbR$ is an eigenvalue of $\bm{A}$ and $\bm{x} \in \mbbR^n\backslash\dCurlyBrac{0}$ is the corresponding eigenvector of $\bm{A}$ if
         $\bm{Ax} = \lambda \bm{x}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -36,48 +36,48 @@
     \item \textbf{Non-uniqueness of eigenvectors}: If $\bm{x}$ is an eigenvector of $\bm{A}$ associated with eigenvalue $\lambda$, then for any $c \in \mbbR\backslash \dCurlyBrac{0}$ it holds that $c\bm{x}$ is an eigenvector of $\bm{A}$ with the same eigenvalue since $\bm{A}(c\bm{x}) = c\bm{Ax} = c\lambda\bm{x} = \lambda(c\bm{x})$. All vectors that are collinear to $\bm{x}$ are also eigenvectors of $\bm{A}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{theorem}[Eigenvalue: root of the characteristic polynomial]
         $\lambda  \in \mbbR$ is an eigenvalue of $\bm{A} \in \mbbR^{n\times n}$ if and only if $\lambda$  is a root of the characteristic polynomial $p_{\bm{A}}(\lambda )$ of $\bm{A}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
 
-    \item 
+    \item
     \begin{definition}[Algebraic Multiplicity]
-        Let a square matrix $\bm{A}$ have an eigenvalue $\lambda_i$ . 
+        Let a square matrix $\bm{A}$ have an eigenvalue $\lambda_i$ .
         The \textbf{algebraic multiplicity} of $\lambda_i$ is the number of times the root appears in the characteristic polynomial.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
     \item
     \begin{definition}[Geometric Multiplicity]
-        Let $\lambda_i$ be an eigenvalue of a square matrix $\bm{A}$. 
-        Then the \textbf{geometric multiplicity} of $\lambda_i$ is the number of linearly independent eigenvectors associated with $\lambda_i$. 
+        Let $\lambda_i$ be an eigenvalue of a square matrix $\bm{A}$.
+        Then the \textbf{geometric multiplicity} of $\lambda_i$ is the number of linearly independent eigenvectors associated with $\lambda_i$.
         In other words, it is the dimensionality of the eigenspace spanned by the eigenvectors associated with $\lambda_i$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item A specific eigenvalue’s geometric multiplicity must be at least one because every eigenvalue has at least one associated eigenvector. 
+    \item A specific eigenvalue’s geometric multiplicity must be at least one because every eigenvalue has at least one associated eigenvector.
     An eigenvalue’s geometric multiplicity cannot exceed its algebraic multiplicity, but it may be lower.
 
     \item Geometrically, the eigenvector corresponding to a nonzero eigenvalue points in a direction that is stretched by the linear mapping.
-    The eigenvalue is the factor by which it is stretched. 
+    The eigenvalue is the factor by which it is stretched.
     If the eigenvalue is negative, the direction of the stretching is flipped.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{The Case of the Identity Matrix}: The identity matrix $\bm{I} \in \mbbR^{n\times n}$ has characteristic polynomial $p_{\bm{I}} (\lambda ) = \det(\bm{I} -\lambda \bm{I}) = (1-\bm{\lambda }) ^n = 0$, which has only one eigenvalue $\lambda  = 1$ that occurs $n$ times. 
-    Moreover, $\bm{Ix} = \lambda \bm{x} = 1\bm{x}$ holds for all vectors $\bm{x} \in \mbbR^n\backslash \dCurlyBrac{0}$. 
+    \item \textbf{The Case of the Identity Matrix}: The identity matrix $\bm{I} \in \mbbR^{n\times n}$ has characteristic polynomial $p_{\bm{I}} (\lambda ) = \det(\bm{I} -\lambda \bm{I}) = (1-\bm{\lambda }) ^n = 0$, which has only one eigenvalue $\lambda  = 1$ that occurs $n$ times.
+    Moreover, $\bm{Ix} = \lambda \bm{x} = 1\bm{x}$ holds for all vectors $\bm{x} \in \mbbR^n\backslash \dCurlyBrac{0}$.
     Because of this, the sole eigenspace $E_1$ of the identity matrix spans $n$ dimensions, and all $n$ standard basis vectors of $\mbbR^n$ are eigenvectors of $\bm{I}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{theorem}[eigenvectors: linearly independent]
         The eigenvectors $\bm{x}_1, \cdots , \bm{x}_n$ of a matrix $\bm{A} \in \mbbR^{n\times n}$ with $n$ distinct eigenvalues $\lambda _1, \cdots , \lambda _n$ are linearly independent.
         This theorem states that eigenvectors of a matrix with $n$ distinct eigenvalues form a basis of $\mbbR^n$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
 
-    \item 
+    \item
     \begin{theorem}[Spectral Theorem]
         If $\bm{A} \in \mbbR^{n\times n}$ is symmetric, there exists an orthonormal basis of the corresponding vector space $V$ consisting of eigenvectors of $\bm{A}$, and each eigenvalue is real.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -131,13 +131,13 @@ print(eigenvectors)
 \subsection{Eigenspace ($E_\lambda $) \& Eigenspectrum}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Eigenspace]
         For $\bm{A} \in \mbbR^{n\times n}$ , the set of all eigenvectors of $\bm{A}$ associated with an eigenvalue $\lambda $ spans a subspace of $\mbbR^n$, which is called the \textbf{eigenspace} of $\bm{A}$ with respect to $\lambda $ and is denoted by $E_\lambda $.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item 
+    \item
     \begin{definition}[Eigenspectrum]
         The set of all eigenvalues of $\bm{A}$ is called the \textbf{eigenspectrum}, or just spectrum, of $\bm{A}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -159,7 +159,7 @@ print(eigenvectors)
         \begin{aligned}
             \bm{Ax} = \lambda \bm{x}
             & \Longleftrightarrow \bm{Ax} - \lambda \bm{x} = 0 \\
-            & \Longleftrightarrow (\bm{A} - \lambda \bm{I})\bm{x} = 0  
+            & \Longleftrightarrow (\bm{A} - \lambda \bm{I})\bm{x} = 0
             & \Longleftrightarrow \bm{x} \in \ker(\bm{A} - \lambda \bm{I})
         \end{aligned}
     $

@@ -38,7 +38,7 @@ def best_first_search(problem: Problem, f):
 
         for action in problem.actions(node.state):
             child = child_node(problem, node, action)
-            if (all(n.state != child.state for n in explored) 
+            if (all(n.state != child.state for n in explored)
                 and all(n.state != child.state for _, n in frontier)):
                 heapq.heappush(frontier, (f(child), child))
             else:

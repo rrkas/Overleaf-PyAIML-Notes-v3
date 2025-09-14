@@ -1,7 +1,7 @@
 \section{Greedy best-first search (GBFS) \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
 \label{AI: Algorithms/Greedy best-first search (GBFS)}
 
-\ \hfill
+.\hfill
 $f(n) = h(n)$
 \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -73,7 +73,7 @@ def greedy_best_first_search(problem: Problem):
             if not in_frontier and not in_explored:
                 heapq.heappush(frontier, (h_cost, child))
             else:
-                # Optional: If it's in the frontier but has a 
+                # Optional: If it's in the frontier but has a
                 # better heuristic, replace it
                 for idx, (old_cost, old_node) in enumerate(frontier):
                     if old_node.state == child.state and h_cost < old_cost:
@@ -85,7 +85,7 @@ def greedy_best_first_search(problem: Problem):
 
 # Greedy Best-First Search using general best first search
 greedy_best_first_search_alt = lambda problem: best_first_search(
-    problem, 
+    problem,
     f=lambda n: problem.heuristic(n.state)
 )
 \end{lstlisting}

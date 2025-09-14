@@ -5,24 +5,24 @@
 
 \begin{customArrayStretch}{1.5}
 \begin{longtable}{r c p{12cm}}
-$V$ & 
-set & 
+$V$ &
+set &
 set of vertices (nodes) of the graph \\ \hline
 
-$E$ & 
-set & 
+$E$ &
+set &
 set of edges (links) of the graph \\ \hline
 
-$b$ & 
-$\in \mbbR$ & 
+$b$ &
+$\in \mbbR$ &
 \textbf{branching factor} or maximum number of successors of any node \\ \hline
 
-$d$ & 
-$\in \mbbR$ & 
+$d$ &
+$\in \mbbR$ &
 \textbf{depth} of the \textbf{shallowest goal} node (i.e., the number of steps along the path from the root) \\ \hline
 
-$m$ & 
-$\in \mbbR$ & 
+$m$ &
+$\in \mbbR$ &
 maximum length of any path in the state space \\ \hline
 
 $\varepsilon$ & $\in \mbbR$ & minimum step cost (small positive constant) \\ \hline
@@ -44,12 +44,12 @@ $k$ & $\in \mbbR$ & \tableenumerate{
     \item number of beams (for \fullref{AI: Algorithms/Local beam search})
 } \\ \hline
 
-$p$ & 
-$\in \mbbR$ & 
+$p$ &
+$\in \mbbR$ &
 population size (for \fullref{AI: Algorithms/Genetic algorithm (GA)}) \\ \hline
 
-$f$ & 
-$\in \mbbR$ & 
+$f$ &
+$\in \mbbR$ &
 time to evaluate the fitness function (for \fullref{AI: Algorithms/Genetic algorithm (GA)}) \\ \hline
 
 
@@ -63,20 +63,20 @@ time to evaluate the fitness function (for \fullref{AI: Algorithms/Genetic algor
 
 
 
-$g(n)$ & 
-$\in \mbbR$ & 
+$g(n)$ &
+$\in \mbbR$ &
 Path Cost (The \textbf{actual cost} from the \textbfit{start node} to the current node $n$) (Eg: UCS) \\ \hline
 
-$h(n)$ & 
-$\in \mbbR$ & 
+$h(n)$ &
+$\in \mbbR$ &
 Heuristic Estimate (The \textbf{estimated cost} from node $n$ to the \textbfit{goal}) (Eg: GBFS, A*) \\ \hline
 
-$f(n)$ & 
-$\in \mbbR$ & 
+$f(n)$ &
+$\in \mbbR$ &
 Evaluation Function (The \textbf{total estimated cost} of the \textbfit{cheapest solution} through $n$) (Eg: A*) \\ \hline
 
-$h^\ast(n)$ & 
-$\in \mbbR$ & 
+$h^\ast(n)$ &
+$\in \mbbR$ &
 actual cost of getting from the root to the goal \\ \hline
 
 
@@ -87,17 +87,17 @@ actual cost of getting from the root to the goal \\ \hline
 
 
 
-$\Delta$ & 
-$\in \mbbR$ & 
+$\Delta$ &
+$\in \mbbR$ &
 \textbf{absolute error}: $\Delta \equiv h^\ast - h$  \\ \hline
 
-$\epsilon$ \textbf{OR} $\Delta_r$ & 
-$\in \mbbR$ & 
+$\epsilon$ \textbf{OR} $\Delta_r$ &
+$\in \mbbR$ &
 \textbf{relative error}: $\epsilon \equiv \Delta_r \equiv (h^\ast - h)/h^\ast$ \\ \hline
 
 
 $b^{\Delta_r}$ \textbf{OR} $b^\epsilon$ \textbf{OR} $b^\ast$ &
-$\in \mbbR$ & 
+$\in \mbbR$ &
 effective branching factor \\ \hline
 
 
@@ -115,9 +115,9 @@ effective branching factor \\ \hline
         \item $h(n)$ = estimated cost of the cheapest path from the state at node $n$ to a goal state
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item Heuristic functions are the most common form in which additional knowledge of the problem is imparted to the search algorithm. 
+        \item Heuristic functions are the most common form in which additional knowledge of the problem is imparted to the search algorithm.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-        
+
         \item if $n$ is a goal node, then $h(n)=0$
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -127,11 +127,11 @@ effective branching factor \\ \hline
         \item the values of heuristic (eg: $h_{SLD}$) \textbf{may not} be computed from the problem description itself. Moreover, it takes a certain amount of experience to know that $h_{SLD}$ is correlated with actual road distances and is, therefore, a useful heuristic.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item With a good heuristic function, however, the complexity can be reduced substantially. 
+        \item With a good heuristic function, however, the complexity can be reduced substantially.
         The amount of the reduction depends on the particular problem and on the quality of the heuristic.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item \textbf{admissible heuristic}: An admissible heuristic is one that \textbf{never overestimates} the cost to reach the goal. 
+        \item \textbf{admissible heuristic}: An admissible heuristic is one that \textbf{never overestimates} the cost to reach the goal.
         Admissible heuristics are by nature optimistic because they think the cost of solving the problem is less than it actually is.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -156,12 +156,12 @@ effective branching factor \\ \hline
         \item When the state space has many goal states - particularly \textbf{near-optimal goal} states - the search process can be led astray from the optimal path and there is an extra cost proportional to the number of goals whose cost is within a factor  of the optimal cost.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item experimental measurements of b$^\ast$ on a small set of problems can provide a good guide to the heuristic’s overall usefulness. 
+        \item experimental measurements of b$^\ast$ on a small set of problems can provide a good guide to the heuristic’s overall usefulness.
         A well-designed heuristic would have a value of b$^\ast$ close to $1$, allowing fairly large problems to be solved at reasonable computational cost.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
         \item \textbf{Dominating heuristic}: if for any node $n$, $h_2(n) \geq h_1(n)$, $h_2$ \textbf{dominates} $h_1$.
-        Domination translates directly into efficiency: algorithm using $h_2$ will \textbf{never} expand more nodes than same algorithm using $h_1$ 
+        Domination translates directly into efficiency: algorithm using $h_2$ will \textbf{never} expand more nodes than same algorithm using $h_1$
         (except possibly for some nodes with $f(n) = C^\ast$).
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
         \\
@@ -169,7 +169,7 @@ effective branching factor \\ \hline
         This is the same as saying that every node with $h(n) < C^\ast - g(n)$ will surely be expanded.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item One problem with generating new heuristic functions is that one often fails to get a single “clearly best” heuristic. 
+        \item One problem with generating new heuristic functions is that one often fails to get a single “clearly best” heuristic.
         If a collection of admissible heuristics $h_1, \cdots, h_m$ is available for a problem and none of them dominates any of the others, we need not make a choice:
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
         \\
@@ -178,11 +178,11 @@ effective branching factor \\ \hline
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
         \\
         This \textbf{composite heuristic} uses whichever function is most accurate on the node in question.
-        Because the component heuristics are admissible, $h$ is admissible; it is also easy to prove that $h$ is consistent. 
+        Because the component heuristics are admissible, $h$ is admissible; it is also easy to prove that $h$ is consistent.
         Furthermore, $h$ dominates all of its component heuristics.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item Note that a perfect heuristic can be obtained simply by allowing h to run a full breadth-first search “on the sly”. 
+        \item Note that a perfect heuristic can be obtained simply by allowing h to run a full breadth-first search “on the sly”.
         Thus, there is a tradeoff between accuracy and computation time for heuristic functions.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -190,12 +190,12 @@ effective branching factor \\ \hline
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
         \item The idea behind \textbf{pattern databases} is to store these exact solution costs for every possible subproblem instance.
-        We compute an admissible heuristic $h_{DB}$ for each complete state encountered during a search simply by looking up the corresponding subproblem configuration in the database. 
+        We compute an admissible heuristic $h_{DB}$ for each complete state encountered during a search simply by looking up the corresponding subproblem configuration in the database.
         The database itself is constructed by searching back from the goal and recording the cost of each new pattern encountered; the expense of this search is amortized over many subsequent problem instances.
         Each database yields an admissible heuristic, and these heuristics can be combined by taking the maximum value.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item 
+        \item
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \end{enumerate}
 
@@ -203,20 +203,20 @@ effective branching factor \\ \hline
     \begin{enumerate}
         \item The evaluation function $f$ is construed/ interpreted as a cost estimate, so the node with the lowest evaluation is expanded first.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-        
+
         \item The choice of $f$ determines the search strategy.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
         \item $f(n) = g(n)$ or $h(n)$ or $g(n)+h(n)$ or something else depending on the algorithm
 
-        \item The fact that $f$-costs are \textit{non-decreasing} along any path also means that we can draw \textbf{contours} in the state space, just like the contours in a topographic map. 
+        \item The fact that $f$-costs are \textit{non-decreasing} along any path also means that we can draw \textbf{contours} in the state space, just like the contours in a topographic map.
         With more accurate heuristics, the bands will stretch toward the goal state and become more narrowly focused around the optimal path.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
         \item There can be exponentially many states with $f(n) < C^\ast$ even if the absolute error is bounded by a constant.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        
+
     \end{enumerate}
 
     \item memory limitations can make a problem intractable from the point of view of computation time
@@ -235,9 +235,9 @@ effective branching factor \\ \hline
     \item \textbf{category of problems}: observable, deterministic, known environments where the solution is a sequence of actions
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item These search algorithms are designed to explore search spaces \textbf{systematically}. 
-    This systematicity is achieved by keeping one or more paths in memory and by recording which alternatives have been explored at each point along the path. 
-    When a goal is found, the path to that goal also constitutes a solution to the problem. 
+    \item These search algorithms are designed to explore search spaces \textbf{systematically}.
+    This systematicity is achieved by keeping one or more paths in memory and by recording which alternatives have been explored at each point along the path.
+    When a goal is found, the path to that goal also constitutes a solution to the problem.
     In many problems, however, the path to the goal is irrelevant.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}
@@ -297,18 +297,18 @@ effective branching factor \\ \hline
     \item One way to avoid continuous problems is simply to discretize the neighborhood of each state.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item Many methods attempt to use the gradient of the landscape to find a maximum. 
+    \item Many methods attempt to use the gradient of the landscape to find a maximum.
     The gradient of the objective function is a vector $\nabla f$ that gives the magnitude and direction of the steepest slope.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item In some cases, we can find a maximum by solving the equation $\nabla f = 0$. 
+    \item In some cases, we can find a maximum by solving the equation $\nabla f = 0$.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item In many cases, however, this equation cannot be solved in closed form.
-    Given a locally correct expression for the gradient, we can perform \textbf{steepest-ascent hill climbing} by updating the current state according to the formula \colorbox{yellow}{$\bm{x} \gets \bm{x} + \alpha \nabla f(\bm{x})$} where $\alpha$ is a small constant often called the step size. 
+    Given a locally correct expression for the gradient, we can perform \textbf{steepest-ascent hill climbing} by updating the current state according to the formula \colorbox{yellow}{$\bm{x} \gets \bm{x} + \alpha \nabla f(\bm{x})$} where $\alpha$ is a small constant often called the step size.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \begin{enumerate}
-        \item he basic problem is that, if $\alpha$ is too small, too many steps are needed; if $\alpha$ is too large, the search could overshoot the maximum. 
+        \item he basic problem is that, if $\alpha$ is too small, too many steps are needed; if $\alpha$ is too large, the search could overshoot the maximum.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
         \item The technique of \textbf{line search} tries to overcome this dilemma by extending the current gradient direction—usually by repeatedly doubling $\alpha$ — until $f$ starts to decrease again.
@@ -316,16 +316,16 @@ effective branching factor \\ \hline
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \end{enumerate}
 
-    \item In other cases, the objective function might not be available in a differentiable form at all. 
-    In those cases, we can calculate a so-called \textbf{empirical gradient} by evaluating the response to small increments and decrements in each coordinate. 
+    \item In other cases, the objective function might not be available in a differentiable form at all.
+    In those cases, we can calculate a so-called \textbf{empirical gradient} by evaluating the response to small increments and decrements in each coordinate.
     Empirical gradient search is the same as \textbf{steepest-ascent hill climbing} in a \textbf{discretized} version of the state space.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item For many problems, the most effective algorithm is the venerable \textbf{Newton–Raphson method}. 
-    This is a general technique for finding roots of functions—that is, solving equations of the form $g(x) = 0$. 
+    \item For many problems, the most effective algorithm is the venerable \textbf{Newton–Raphson method}.
+    This is a general technique for finding roots of functions—that is, solving equations of the form $g(x) = 0$.
     It works by computing a new estimate for the root $x$ according to Newton’s formula \colorbox{yellow}{$x \gets x - \dfrac{g(x)}{g'(x)}$}.
-    To find a maximum or minimum of $f$ , we need to find $\bm{x}$ such that the gradient is zero (i.e., $\nabla f (\bm{x}) = \bm{0}$). 
-    Thus, $g(x)$ in Newton’s formula becomes $\nabla f (\bm{x})$, and the update equation can be written in matrix–vector form as \colorbox{yellow}{$\bm{x} \gets \bm{x} - \bm{H}_f^{-1}(\bm{x})\nabla f(\bm{x})$}, where $\bm{H}_f (\bm{x})$ is the \textbf{Hessian matrix} of second derivatives, whose elements $H_{ij} = \dfrac{ \partial ^2f}{ \partial x_i \partial x_j}$ . 
+    To find a maximum or minimum of $f$ , we need to find $\bm{x}$ such that the gradient is zero (i.e., $\nabla f (\bm{x}) = \bm{0}$).
+    Thus, $g(x)$ in Newton’s formula becomes $\nabla f (\bm{x})$, and the update equation can be written in matrix–vector form as \colorbox{yellow}{$\bm{x} \gets \bm{x} - \bm{H}_f^{-1}(\bm{x})\nabla f(\bm{x})$}, where $\bm{H}_f (\bm{x})$ is the \textbf{Hessian matrix} of second derivatives, whose elements $H_{ij} = \dfrac{ \partial ^2f}{ \partial x_i \partial x_j}$ .
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}
 
@@ -338,10 +338,10 @@ effective branching factor \\ \hline
     \item When the environment is either partially observable or nondeterministic (or both), percepts become useful.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \begin{enumerate}
-        \item In a partially observable environment, every percept helps narrow down the set of possible states the agent might be in, thus making it easier for the agent to achieve its goals. 
+        \item In a partially observable environment, every percept helps narrow down the set of possible states the agent might be in, thus making it easier for the agent to achieve its goals.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item When the environment is nondeterministic, percepts tell the agent which of the possible outcomes of its actions has actually occurred. 
+        \item When the environment is nondeterministic, percepts tell the agent which of the possible outcomes of its actions has actually occurred.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \end{enumerate}
     In both cases, the future percepts cannot be determined in advance and the agent’s future actions will depend on those future percepts.

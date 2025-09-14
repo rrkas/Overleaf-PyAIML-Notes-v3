@@ -10,7 +10,7 @@
     \caption*{
     Three ways to represent states and the transitions between them.
     \\
-    \textbf{(a)} Atomic representation: a state (such as B or C) is a black box with no internal structure;  
+    \textbf{(a)} Atomic representation: a state (such as B or C) is a black box with no internal structure;
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \\
     \textbf{(b)} Factored representation: a state consists of a vector of attribute values; values can be Boolean, realvalued, or one of a fixed set of symbols.
@@ -24,7 +24,7 @@
 
 
 \begin{enumerate}
-    \item Roughly speaking, a more expressive representation can capture, at least as concisely, everything a less expressive one can capture, plus some more. 
+    \item Roughly speaking, a more expressive representation can capture, at least as concisely, everything a less expressive one can capture, plus some more.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item Often, the more expressive language is much more concise; for example, the rules of chess can be written in a page or two of a structured-representation language such as first-order logic but require thousands of pages when written in a factored-representation language such as propositional logic.
@@ -45,7 +45,7 @@
 \subsection{Atomic representation}
 
 \begin{enumerate}
-    \item each state of the world is indivisible - it has no internal structure. 
+    \item each state of the world is indivisible - it has no internal structure.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item two different atomic states have nothing in common—they are just different black boxes
@@ -122,7 +122,7 @@
         \item first-order logic
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item first-order probability models 
+        \item first-order probability models
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
         \item knowledge-based learning
@@ -140,7 +140,7 @@
     language=Python,
     caption=Problem Solving Agent - State skeleton
 ]
-class State:    
+class State:
     def copy(self):
         raise NotImplementedError()
 \end{lstlisting}

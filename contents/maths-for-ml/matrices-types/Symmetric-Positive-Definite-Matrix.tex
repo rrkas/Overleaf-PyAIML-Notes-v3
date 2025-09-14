@@ -1,14 +1,14 @@
 \subsection{Symmetric, Positive Definite (SPD) Matrix}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Symmetric, Positive Definite (SPD) Matrix]
         A symmetric matrix $\bm{A} \in \mbbR^{n\times n}$ that satisfies $\forall \bm{x} \in V \backslash \dCurlyBrac{\bm{0}} : \bm{x}^\top \bm{Ax} > 0$ is called \textbf{symmetric, positive definite}, or just \textbf{positive definite}.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item Consider an $n$-dimensional vector space $V$ with an inner product $\dAngleBrac{\cdot, \cdot} : V \times V \to \mbbR$ and an ordered basis $B = (\bm{b}_1, \cdots , \bm{b}_n)$ of $V$ . 
-    Any vectors $\bm{x}, \bm{y} \in  V$ can be written as linear combinations of the basis vectors so that $\bm{x} = \dsum^n _{i=1} \psi _i \bm{b}_i \in  V$ and $\bm{y} = \dsum ^n _{j=1} \lambda _j \bm{b}_j \in  V$ for suitable $\psi _i , \lambda _j \in  \mbbR$. 
+    \item Consider an $n$-dimensional vector space $V$ with an inner product $\dAngleBrac{\cdot, \cdot} : V \times V \to \mbbR$ and an ordered basis $B = (\bm{b}_1, \cdots , \bm{b}_n)$ of $V$ .
+    Any vectors $\bm{x}, \bm{y} \in  V$ can be written as linear combinations of the basis vectors so that $\bm{x} = \dsum^n _{i=1} \psi _i \bm{b}_i \in  V$ and $\bm{y} = \dsum ^n _{j=1} \lambda _j \bm{b}_j \in  V$ for suitable $\psi _i , \lambda _j \in  \mbbR$.
     Due to the bilinearity of the inner product, it holds for all $\bm{x}, \bm{y} \in  V$ that
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
@@ -25,8 +25,8 @@
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     where $A_{ij} := \dAngleBrac{\bm{b}_i , \bm{b}_j}$ and $\hat{\bm{x}}, \hat{\bm{y}}$ are the coordinates of $\bm{x}$ and $\bm{y}$ with respect to the basis $B$.
-    This implies that the inner product $\dAngleBrac{\cdot, \cdot}$ is uniquely determined through $\bm{A}$. 
-    The symmetry of the inner product also means that $\bm{A}$ is symmetric. 
+    This implies that the inner product $\dAngleBrac{\cdot, \cdot}$ is uniquely determined through $\bm{A}$.
+    The symmetry of the inner product also means that $\bm{A}$ is symmetric.
     Furthermore, the positive definiteness of the inner product implies that
     \\
     $\forall \bm{x} \in V \backslash \dCurlyBrac{\bm{0}} : \bm{x}^\top \bm{Ax} > 0$.
@@ -45,7 +45,7 @@
     defines an inner product with respect to an ordered basis $B$, where $\hat{\bm{x}}$ and $\hat{\bm{y}}$ are the coordinate representations of $\bm{x}, \bm{y} \in V$ with respect to $B$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{theorem}[SPD: inner product]
         For a real-valued, finite-dimensional vector space $V$ and an ordered basis $B$ of $V$ , it holds that $\dAngleBrac{\cdot, \cdot} : V \times V \to \mbbR$ is an inner product if and only if there exists a symmetric, positive definite matrix $\bm{A} \in \mbbR^{n\times n}$ with
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -54,11 +54,11 @@
         $\dAngleBrac{\bm{x}, \bm{y}} = \hat{\bm{x}} ^\top \bm{A} \hat{\bm{y}}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
-    
+
     The following properties hold if $\bm{A} \in \mbbR^{n\times n}$ is symmetric and positive definite:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \begin{enumerate}
-        \item The null space (kernel) of $\bm{A}$ consists only of $\bm{0}$ because $\bm{x} ^\top \bm{Ax} > 0$ for all $\bm{x} \neq \bm{0}$. 
+        \item The null space (kernel) of $\bm{A}$ consists only of $\bm{0}$ because $\bm{x} ^\top \bm{Ax} > 0$ for all $\bm{x} \neq \bm{0}$.
         This implies that $\bm{Ax} \neq \bm{0}$ if $\bm{x} \neq \bm{0}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -66,7 +66,7 @@
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
-    \item 
+    \item
     \begin{theorem}[SPD: obtaining SPD]
         Given a matrix $\bm{A} \in \mbbR^{m\times n}$ , we can always obtain a symmetric, positive semidefinite matrix $\bm{S} \in \mbbR^{n\times n}$ by defining $\bm{S} := \bm{A}^\top \bm{A}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}

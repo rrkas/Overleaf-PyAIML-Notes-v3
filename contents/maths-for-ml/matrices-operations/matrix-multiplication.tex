@@ -65,7 +65,7 @@ print(np.all(C1 == C2), np.all(C1 == C3))
     \\
     The product $\bm{BA}$ is not defined if $m \neq n$ since the neighboring dimensions do not match.
 
-    \item Matrix multiplication is \textbf{not} defined as an element-wise operation on matrix elements, i.e., 
+    \item Matrix multiplication is \textbf{not} defined as an element-wise operation on matrix elements, i.e.,
     \\
     $c_{ij} \neq a_{ij}\ b_{ij}$ (even if the size of $\bm{A}$, $\bm{B}$ was chosen appropriately).
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -78,37 +78,37 @@ print(np.all(C1 == C2), np.all(C1 == C3))
     \item matrix multiplication is \textbf{not} commutative: $\bm{AB} \neq \bm{BA}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Associativity}: 
+    \item \textbf{Associativity}:
     $
-        \forall 
-        \bm{A} \in \mbbR^{m\times n},\ 
-        \bm{B} \in \mbbR^{n\times p},\ 
+        \forall
+        \bm{A} \in \mbbR^{m\times n},\
+        \bm{B} \in \mbbR^{n\times p},\
         \bm{C} \in \mbbR^{p\times q}
     $:
-    
+
         \begin{enumerate}
             \item $\bm{ABC} = (\bm{AB})\ \bm{C} = \bm{A}\ (\bm{BC})$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
 
-    \item \textbf{Distributivity}: 
+    \item \textbf{Distributivity}:
     $
-        \forall 
-        \bm{A},\ \bm{B}\in \mbbR^{m\times n},\ 
+        \forall
+        \bm{A},\ \bm{B}\in \mbbR^{m\times n},\
         \bm{C},\ \bm{D}\in \mbbR^{n\times p}
     $:
 
         \begin{enumerate}
             \item $(\bm{A} + \bm{B})\ \bm{C} = \bm{AC} + \bm{BC}$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-            
+
             \item $\bm{A}\ (\bm{C} + \bm{D}) = \bm{AC} + \bm{AD}$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
 
-    \item Multiplication with the identity matrix: 
+    \item Multiplication with the identity matrix:
     $
-        \forall 
+        \forall
         \bm{A},\ \bm{B}\in \mbbR^{m\times n}
     $:
         \begin{enumerate}

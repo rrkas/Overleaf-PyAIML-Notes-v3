@@ -3,7 +3,7 @@
 
 
 \begin{enumerate}
-    \item The embarrassing failure of depth-first search in infinite state spaces can be alleviated by supplying depth-first search with a predetermined depth limit $\ell$. That is, nodes at depth  $\ell$ are treated as if they have no successors. 
+    \item The embarrassing failure of depth-first search in infinite state spaces can be alleviated by supplying depth-first search with a predetermined depth limit $\ell$. That is, nodes at depth  $\ell$ are treated as if they have no successors.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item \textbf{Performance}:
@@ -27,7 +27,7 @@
     \item diameter of the state space can be a better limit for efficiency
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    
+
 \end{enumerate}
 
 
@@ -46,14 +46,14 @@
             \hspace{0.5cm}  $limit$, \\
         )
     }
-    
+
     \ \\
-    
+
     \SetKwFunction{FUNCTION}{\textsc{Recursive-DLS}}
     \SetKwProg{Fn}{function}{ returns \normalfont{a solution, or failure/cutoff}}{end}
     \Fn{\FUNCTION{node, problem, limit}}{
         \lIf{\normalfont $problem$.\textsc{Goal-Test}($node$.\textsc{State})}{
-            \Return \textsc{Solution}($node$) 
+            \Return \textsc{Solution}($node$)
         }
         \lElseIf{limit = 0}{
             \Return $cutoff$
@@ -99,10 +99,10 @@ def depth_limited_search(problem: Problem, limit: int):
 def recursive_dls(node: Node, problem: Problem, limit: int):
     if problem.goal_test(node.state):
         return solution(node)
-    
+
     elif limit == 0:
         return CUTOFF
-    
+
     else:
         cutoff_occurred = False
         for action in problem.actions(node.state):

@@ -1,7 +1,7 @@
 \subsection{Cholesky Decomposition ($A=LL^\top$)}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{theorem}[Cholesky Decomposition]
         A symmetric, positive definite matrix $\bm{A}$ can be factorized into a product $\bm{A} = \bm{LL}^\top$, where L is a lower-triangular matrix with positive diagonal elements:
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -12,7 +12,7 @@
             {
                 \displaystyle
                 \bm{A}
-            } 
+            }
             {\underbrace{
                 \displaystyle
                 \begin{bmatrix}
@@ -26,7 +26,7 @@
             {
                 \displaystyle
                 \bm{L}
-            } 
+            }
             {\underbrace{
                 \displaystyle
                 \begin{bmatrix}
@@ -39,7 +39,7 @@
             {
                 \displaystyle
                 \bm{L}^\top
-            } 
+            }
             {\underbrace{
                 \displaystyle
                 \begin{bmatrix}
@@ -55,17 +55,17 @@
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
 
-    \item In machine learning, symmetric positive definite matrices require frequent manipulation, e.g., the covariance matrix of a multivariate Gaussian variable is symmetric, positive definite. 
+    \item In machine learning, symmetric positive definite matrices require frequent manipulation, e.g., the covariance matrix of a multivariate Gaussian variable is symmetric, positive definite.
     The Cholesky factorization of this covariance matrix allows us to generate samples from a Gaussian distribution.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item  It also allows us to perform a linear transformation of random variables, which is heavily exploited when computing gradients in deep stochastic models, such as the variational auto-encoder.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The Cholesky decomposition also allows us to compute determinants very efficiently: 
+    \item The Cholesky decomposition also allows us to compute determinants very efficiently:
     $
-        \det(\bm{A}) 
-        = \det(\bm{L}) \det(\bm{L}^\top) 
+        \det(\bm{A})
+        = \det(\bm{L}) \det(\bm{L}^\top)
         = \det(\bm{L})^2
         = \dprod_i l_{ii}^2
     $

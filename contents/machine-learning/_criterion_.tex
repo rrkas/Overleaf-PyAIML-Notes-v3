@@ -7,7 +7,7 @@
 \section{Sum of Errors (SE)}
 
 \begin{enumerate}
-    \item[] 
+    \item[]
     $
         L = \dsum_{i=1}^n (\hat{y}_i - y_i)
     $
@@ -17,7 +17,7 @@
 \section{Sum of Absolute Errors (SAE)}
 
 \begin{enumerate}
-    \item[] 
+    \item[]
     $
         L = \dsum_{i=1}^n (\dabs{\hat{y}_i - y_i})
     $
@@ -27,7 +27,7 @@
 \section{Sum of Squared Errors (SSE)}
 
 \begin{enumerate}
-    \item[] 
+    \item[]
     $
         L = \dsum_{i=1}^n (\hat{y}_i - y_i)^2
     $
@@ -37,7 +37,7 @@
 \section{Mean Absolute Error (MAE) / L1 Loss}
 
 \begin{enumerate}
-    \item[] 
+    \item[]
     $
         L = \dfrac{1}{n} \dsum_{i=1}^n (\dabs{\hat{y}_i - y_i})
     $
@@ -47,7 +47,7 @@
 \section{Mean Square Error (MSE) / L2 Loss}
 
 \begin{enumerate}
-    \item[] 
+    \item[]
     $
         L = \dfrac{1}{n} \dsum_{i=1}^n (\hat{y}_i - y_i)^2
     $
@@ -57,7 +57,7 @@
 \section{Root Mean Square Error (RMSE) Loss}
 
 \begin{enumerate}
-    \item[] 
+    \item[]
     $
         L = \sqrt{\dfrac{1}{n} \dsum_{i=1}^n (\hat{y}_i - y_i)^2}
     $
@@ -92,7 +92,7 @@
 \section{Hinge Loss}
 
 \begin{enumerate}
-    \item 
+    \item
 \end{enumerate}
 
 
@@ -108,9 +108,9 @@
 
 
 \begin{enumerate}
-    \item Regularization is an important technique in machine learning that helps to improve model accuracy by preventing overfitting which happens when a model learns the training data too well including noise and outliers and perform poor on new data. 
+    \item Regularization is an important technique in machine learning that helps to improve model accuracy by preventing overfitting which happens when a model learns the training data too well including noise and outliers and perform poor on new data.
     \hfill \cite{geeksforgeeks/machine-learning/regularization-in-machine-learning}
-    
+
     \item By adding a penalty for complexity it helps simpler models to perform better on new data.
     \hfill \cite{geeksforgeeks/machine-learning/regularization-in-machine-learning}
 \end{enumerate}
@@ -153,13 +153,13 @@
     \\
     $\lambda$: weight decay coefficient (hyperparameter)
 
-    \item A regression model which uses the L1 Regularization technique is called LASSO (Least Absolute Shrinkage and Selection Operator) regression. 
-    Techniques such as this are known in the statistics literature as \textbf{shrinkage} methods because they reduce the value of the coefficients. 
+    \item A regression model which uses the L1 Regularization technique is called LASSO (Least Absolute Shrinkage and Selection Operator) regression.
+    Techniques such as this are known in the statistics literature as \textbf{shrinkage} methods because they reduce the value of the coefficients.
     \hfill \cite{geeksforgeeks/machine-learning/regularization-in-machine-learning}
-    
-    \item It adds the absolute value of magnitude of the coefficient as a penalty term to the loss function(L). 
+
+    \item It adds the absolute value of magnitude of the coefficient as a penalty term to the loss function(L).
     \hfill \cite{geeksforgeeks/machine-learning/regularization-in-machine-learning}
-    
+
     \item This penalty can shrink some coefficients to zero which helps in selecting only the important features and ignoring the less important ones.
     \hfill \cite{geeksforgeeks/machine-learning/regularization-in-machine-learning}
 \end{enumerate}
@@ -179,13 +179,13 @@
     $
     \\
     $\lambda$: weight decay coefficient (hyperparameter)
-    
-    \item A regression model that uses the L2 regularization technique is called Ridge regression. 
+
+    \item A regression model that uses the L2 regularization technique is called Ridge regression.
     \hfill \cite{geeksforgeeks/machine-learning/regularization-in-machine-learning}
-    
-    \item It adds the squared magnitude of the coefficient as a penalty term to the loss function(L). 
+
+    \item It adds the squared magnitude of the coefficient as a penalty term to the loss function(L).
     \hfill \cite{geeksforgeeks/machine-learning/regularization-in-machine-learning}
-    
+
     \item It handles multicollinearity by shrinking the coefficients of correlated features instead of eliminating them.
     \hfill \cite{geeksforgeeks/machine-learning/regularization-in-machine-learning}
 \end{enumerate}
@@ -201,12 +201,12 @@
     \\
     $0 \leq \alpha \leq 1$: Mixing parameter, $\alpha=0$: Lasso, $\alpha=1$: Ridge
 
-    \item Elastic Net Regression is a combination of both L1 as well as L2 regularization. 
+    \item Elastic Net Regression is a combination of both L1 as well as L2 regularization.
     \hfill \cite{geeksforgeeks/machine-learning/regularization-in-machine-learning}
-    
-    \item That shows that we add the absolute norm of the weights as well as the squared measure of the weights. 
+
+    \item That shows that we add the absolute norm of the weights as well as the squared measure of the weights.
     \hfill \cite{geeksforgeeks/machine-learning/regularization-in-machine-learning}
-    
+
     \item With the help of an extra hyperparameter that controls the ratio of the L1 and L2 regularization.
     \hfill \cite{geeksforgeeks/machine-learning/regularization-in-machine-learning}
 \end{enumerate}

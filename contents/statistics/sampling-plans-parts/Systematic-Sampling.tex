@@ -23,9 +23,9 @@
 
         \item Collect $p$th unit ($p \in \dParenBrac{1,\cdots,m}$) from all $n$ groups with probability of $\dfrac{1}{m}$\\
         (each unit in the population still has the same probability of being collected)\\
-        $S_k = \dCurlyBrac{k, k + m, k + 2m, \cdots , k + (n - 1)m}$ 
+        $S_k = \dCurlyBrac{k, k + m, k + 2m, \cdots , k + (n - 1)m}$
         \hfill
-        (Total units collected $= n$) 
+        (Total units collected $= n$)
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
         So, total number of samples $= m$ only
 
@@ -35,19 +35,19 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item population mean: $
-        \mu 
+        \mu
         = \dfrac{1}{N}\ \dsum^m_{h=1} \ \dsum^n_{i=1} x_{\ k+m(i-1)}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item population variance: $
-        \sigma^2 
+        \sigma^2
         = \dfrac{1}{N}\ \dsum^m_{k=1} \ \dsum^n_{i=1} (x_{\ k+m(i-1)} - \mu)^2
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item sample average for sample $S_k$: $
-        \bar{x}_k 
+        \bar{x}_k
         = \dfrac{1}{n}\ \dsum^n_{i=1} x_{\ k+m(i-1)}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -74,7 +74,7 @@
 
     \item[] $m = \dfrac{20}{5}=4$
 
-    
+
 \end{enumerate}
 
 
@@ -88,7 +88,7 @@
     \\
     if population can be perfectly split up into $n$ groups of $m$ units:\\
     Unbiased Estimator: $\bar{x}_k$
-    
+
     \item Bias: $0$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -113,7 +113,7 @@
 
     \item Given that there is no systematic difference between units based on their position in the groups (and the ratio of sample and population size is an integer), the MSE of the sample average under systematic sampling becomes equal to the MSE of the sample average under simple random sampling.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item unbiased estimator: $
         \dfrac{N - 1}{N}\ s^2_k
     $

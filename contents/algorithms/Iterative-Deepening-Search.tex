@@ -23,7 +23,7 @@
     \item Iterative deepening combines the benefits of depth-first and breadth-first search.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \begin{enumerate}
-        \item Like depth-first search, its memory requirements are modest: $\mathcal{O}(b d)$ to be precise. 
+        \item Like depth-first search, its memory requirements are modest: $\mathcal{O}(b d)$ to be precise.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
         \item Like breadth-first search, it is complete when the branching factor is finite and optimal when the path cost is a non-decreasing function of the depth of the node.
@@ -48,7 +48,7 @@
 
         \item \textbf{optimal}: YES \textbf{if} path cost is a non-deceasing function of depth of the node \textbf{else} NO
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-        
+
         \item \textbf{space complexity}: $\mathcal{O}(b d)$
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -77,7 +77,7 @@
 
 \begin{lstlisting}[
     language=Python,
-    caption=Problem Solving Agent - Iterative Deepening Search 
+    caption=Problem Solving Agent - Iterative Deepening Search
 ]
 def iterative_deepening_search(problem: Problem, limit=1000000):
     for i in range(limit):

@@ -6,7 +6,7 @@
     \item A variant of depth-first search that uses still less memory.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item \textbf{only one successor} is generated at a time rather than all successors; each partially expanded node remembers which successor to generate next. 
+    \item \textbf{only one successor} is generated at a time rather than all successors; each partially expanded node remembers which successor to generate next.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item \textbf{Performance}:
@@ -44,9 +44,9 @@ def backtrack(node: Node, explored: set):
             result = backtrack(child, explored)
             if result is not None:
                 return result
-    
+
     # Optional: allow revisiting for other paths (depends on problem)
-    explored.remove(node)  
+    explored.remove(node)
     return None
 
 def backtracking_search(problem: Problem):

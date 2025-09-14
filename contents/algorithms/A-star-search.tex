@@ -36,17 +36,17 @@ $f(n) = g(n) + h(n)$
     \begin{enumerate}
         \item Single goal state
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-        
+
         \item Tree structure
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-        
+
         \item Reversible actions
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \end{enumerate}
 
     \item \textbf{Performance}:
     \begin{enumerate}
-        \item the \textit{tree-search} version of A$^\ast$ is \textbf{optimal} if $h(n)$ is admissible, 
+        \item the \textit{tree-search} version of A$^\ast$ is \textbf{optimal} if $h(n)$ is admissible,
         while the \textit{graph-search} version is \textbf{optimal} if $h(n)$ is consistent
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -57,7 +57,7 @@ $f(n) = g(n) + h(n)$
         \begin{enumerate}
             \item in maximum absolute error: $\mathcal{O}(b^\Delta)$
             \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-            
+
             \item constant step costs: $\mathcal{O}(b^{\Delta_rd})$ or $\mathcal{O}(b^{\epsilon d})$
             \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
         \end{enumerate}
@@ -71,7 +71,7 @@ $f(n) = g(n) + h(n)$
         \item Because it keeps all generated nodes in memory (as do all \textsc{Graph-Search} algorithms), A$^\ast$ usually runs out of space long before it runs out of time.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-        \item A$^\ast$ is not practical for many large-scale problems. 
+        \item A$^\ast$ is not practical for many large-scale problems.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
         \item The existence of an effective branching factor follows from the result that the number of nodes expanded by A$^\ast$ grows exponentially with solution depth.
@@ -115,7 +115,7 @@ def a_star_search(problem: Problem):
             f_child = child.path_cost + problem.heuristic(child.state)
 
             # Check if child.state was already explored with a lower path_cost
-            if (any(n.state == child.state for n in explored) or 
+            if (any(n.state == child.state for n in explored) or
                 explored[child] > child.path_cost):
                 heapq.heappush(frontier, (f_child, child))
 
@@ -123,7 +123,7 @@ def a_star_search(problem: Problem):
 
 # A* Search using general best first search
 a_star_search_alt = lambda problem: best_first_search(
-    problem, 
+    problem,
     f=lambda n: n.path_cost + problem.heuristic(n.state)
 )
 \end{lstlisting}

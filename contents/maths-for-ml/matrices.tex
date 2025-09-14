@@ -5,7 +5,7 @@
     \\[0.2cm]
     $
         \bm{A}
-        = 
+        =
         \begin{bmatrix}
             a_{11} & a_{12} & \cdots & a_{1n} \\
             a_{21} & a_{22} & \cdots & a_{2n} \\
@@ -44,7 +44,7 @@
 \section{Rank of a matrix}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Rank of a matrix]
         The number of linearly independent columns of a matrix $\bm{A} \in \mbbR^{m\times n}$ equals the number of linearly independent rows and is called the rank of $\bm{A}$ and is denoted by $\text{rk}(\bm{A})$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -59,12 +59,12 @@
     \item $\text{rk}(\bm{A}) = \text{rk}(\bm{A}^\top)$, i.e., the column rank equals the row rank.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The columns of $\bm{A} \in \mbbR^{m\times n}$ span a subspace $U \subseteq \mbbR^m$ with $\dim(U) = \text{rk}(\bm{A})$. 
-    We call this subspace the \textbf{image or range}. 
+    \item The columns of $\bm{A} \in \mbbR^{m\times n}$ span a subspace $U \subseteq \mbbR^m$ with $\dim(U) = \text{rk}(\bm{A})$.
+    We call this subspace the \textbf{image or range}.
     A basis of $U$ can be found by applying Gaussian elimination to $\bm{A}$ to identify the \textbf{pivot columns}.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The rows of $\bm{A} \in  \mbbR^{m\times n}$  span a subspace $W \subseteq \mbbR^n$ with $\dim(W) = \text{rk}(\bm{A})$. 
+    \item The rows of $\bm{A} \in  \mbbR^{m\times n}$  span a subspace $W \subseteq \mbbR^n$ with $\dim(W) = \text{rk}(\bm{A})$.
     A basis of $W$ can be found by applying Gaussian elimination to $\bm{A}^\top$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -74,16 +74,16 @@
     \item For all $\bm{A} \in  \mbbR^{m\times n}$  and all $\bm{b} \in  \mbbR^m$ it holds that the linear equation system $Ax = b$ can be solved if and only if $\text{rk}(\bm{A}) = \text{rk}(\bm{A}|\bm{b})$, where $\bm{A}|\bm{b}$ denotes the augmented system.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item For $\bm{A} \in  \mbbR^{m\times n}$  the subspace of solutions for $\bm{A}\bm{x} = \bm{0}$ possesses dimension $n - \text{rk}(\bm{A})$. 
+    \item For $\bm{A} \in  \mbbR^{m\times n}$  the subspace of solutions for $\bm{A}\bm{x} = \bm{0}$ possesses dimension $n - \text{rk}(\bm{A})$.
     We call this subspace the \textbf{kernel} or the \textbf{null space}.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item A matrix $\bm{A} \in  \mbbR^{m\times n}$  has \textbf{full rank} if its rank equals the largest possible rank for a matrix of the same dimensions. 
-    This means that the rank of a full-rank matrix is the lesser of the number of rows and columns, i.e., $\text{rk}(\bm{A}) = min(m, n)$. 
+    \item A matrix $\bm{A} \in  \mbbR^{m\times n}$  has \textbf{full rank} if its rank equals the largest possible rank for a matrix of the same dimensions.
+    This means that the rank of a full-rank matrix is the lesser of the number of rows and columns, i.e., $\text{rk}(\bm{A}) = min(m, n)$.
     A matrix is said to be \textbf{rank deficient} if it does not have full rank.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    
+
 \end{enumerate}
 
 
@@ -126,14 +126,14 @@ print("Rank of matrix A:", rank)
     \\
     .\hfill
     $
-        Im(\Phi) 
-        = \dCurlyBrac{\bm{Ax} : \bm{x} \in \mbbR^ n } 
+        Im(\Phi)
+        = \dCurlyBrac{\bm{Ax} : \bm{x} \in \mbbR^ n }
         = \dCurlyBrac{\dsum ^n _{i=1} x_i \bm{a}_i : x_1, \cdots , x_n \in \mbbR}
         = span[\bm{a}_1, \cdots , \bm{a}_n] \subseteq \mbbR^m
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
-    i.e., the image is the span of the columns of $\bm{A}$, also called the \textbf{column space}. 
+    i.e., the image is the span of the columns of $\bm{A}$, also called the \textbf{column space}.
     Therefore, the column space (image) is a subspace of $\mbbR^m$, where $m$ is the “height” of the matrix.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -158,11 +158,11 @@ print("Rank of matrix A:", rank)
 \section{Inhomogeneous systems of linear equations and affine subspaces}
 
 \begin{enumerate}
-    \item For $\bm{A} \in \mbbR^{m\times n}$ and $\bm{x} \in \mbbR^m$, the solution of the system of linear equations $\bm{A} \bm{\lambda}  = \bm{x}$ is either the empty set or an affine subspace of $\mbbR^n$ of dimension $n - \text{rk}(\bm{A})$. 
+    \item For $\bm{A} \in \mbbR^{m\times n}$ and $\bm{x} \in \mbbR^m$, the solution of the system of linear equations $\bm{A} \bm{\lambda}  = \bm{x}$ is either the empty set or an affine subspace of $\mbbR^n$ of dimension $n - \text{rk}(\bm{A})$.
     In particular, the solution of the linear equation $\lambda _1 \bm{b}_1 + \cdots + \lambda _n \bm{b}_n = \bm{x}$, where $(\lambda _1, \cdots , \lambda _n) \neq (0, . . . , 0)$, is a hyperplane in $\mbbR^n$ .
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item In $\mbbR^n$ , every $k$-dimensional affine subspace is the solution of an inhomogeneous system of linear equations $\bm{Ax} = \bm{b}$, where $\bm{A} \in \mbbR^{m\times n}$ , $\bm{b} \in \mbbR^m$ and $\text{rk}(\bm{A}) = n - k$. 
+    \item In $\mbbR^n$ , every $k$-dimensional affine subspace is the solution of an inhomogeneous system of linear equations $\bm{Ax} = \bm{b}$, where $\bm{A} \in \mbbR^{m\times n}$ , $\bm{b} \in \mbbR^m$ and $\text{rk}(\bm{A}) = n - k$.
     For homogeneous equation systems $\bm{Ax} = \bm{0}$ the solution was a vector subspace, which we can also think of as a special affine space with support point $\bm{x}_0 = \bm{0}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
@@ -214,7 +214,7 @@ print("Rank of matrix A:", rank)
     \item \begin{definition}[Spectral Norm of a Matrix]
         For $\bm{x} \in \mbbR^n\backslash \dCurlyBrac{0}$, the spectral norm of a matrix $\bm{A} \in \mbbR^{m\times n}$ is defined as
         $
-            \dnorm{\bm{A}}_2 
+            \dnorm{\bm{A}}_2
             := \displaystyle\max_{\bm{x}} \dfrac{\dnorm{\bm{Ax}}_2}{\dnorm{\bm{x}}_2}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -242,11 +242,11 @@ print("Rank of matrix A:", rank)
 \subsection{Eigenvalue Decomposition ($A = P DP ^{-1}$) vs. Singular Value Decomposition ($A = U \Sigma V^\top$)}
 
 \begin{enumerate}
-    \item The SVD always exists for any matrix $\mbbR^{m\times n}$ . 
+    \item The SVD always exists for any matrix $\mbbR^{m\times n}$ .
     The eigendecomposition is only defined for square matrices $\mbbR^{n\times n}$ and only exists if we can find a basis of eigenvectors of $\mbbR^n$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The vectors in the eigendecomposition matrix $\bm{P}$ are not necessarily orthogonal, i.e., the change of basis is not a simple rotation and scaling. 
+    \item The vectors in the eigendecomposition matrix $\bm{P}$ are not necessarily orthogonal, i.e., the change of basis is not a simple rotation and scaling.
     On the other hand, the vectors in the matrices $\bm{U}$ and $\bm{V}$ in the SVD are orthonormal, so they do represent rotations.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -265,7 +265,7 @@ print("Rank of matrix A:", rank)
     A key difference between the eigendecomposition and the SVD is that in the SVD, domain and codomain can be vector spaces of different dimensions.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item In the SVD, the left- and right-singular vector matrices $\bm{U}$ and $\bm{V}$ are generally not inverse of each other (they perform basis changes in different vector spaces). 
+    \item In the SVD, the left- and right-singular vector matrices $\bm{U}$ and $\bm{V}$ are generally not inverse of each other (they perform basis changes in different vector spaces).
     In the eigendecomposition, the basis change matrices $\bm{P}$ and $\bm{P}^{ -1}$ are inverses of each other.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -300,35 +300,35 @@ print("Rank of matrix A:", rank)
     \item Instead of doing the full SVD factorization, SVD allows us to represent a matrix $\bm{A}$ as a sum of simpler (low-rank) matrices $\bm{A}_i$, which lends itself to a matrix approximation scheme that is cheaper to compute than the full SVD.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item We construct a rank-1 matrix 
+    \item We construct a rank-1 matrix
     $
         \bm{A}_i
-        := \bm{u}_i \bm{v}_i^\top 
+        := \bm{u}_i \bm{v}_i^\top
         \in \mbbR^{m\times n}
     $
     which is formed by the outer product of the $i$-th orthogonal column vector of $\bm{U}$ and $\bm{V}$ .
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item A matrix $\bm{A} \in \mbbR^{m\times n}$ of rank $r$ can be written as a sum of rank-1 matrices $\bm{A}_i$ so that 
+    \item A matrix $\bm{A} \in \mbbR^{m\times n}$ of rank $r$ can be written as a sum of rank-1 matrices $\bm{A}_i$ so that
     $
-        \bm{A} 
+        \bm{A}
         = \dsum_{i=1}^r \sigma_i \bm{u}_i \bm{v}_i^\top
         = \dsum_{i=1}^r \sigma_i \bm{A}_i
     $
-    where the outer-product matrices $\bm{A}_i$ are weighted by the $i$-th singular value $\sigma_i$. 
+    where the outer-product matrices $\bm{A}_i$ are weighted by the $i$-th singular value $\sigma_i$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item If the sum does not run over all matrices $\bm{A}_i$, $i = 1, \cdots , r$, but only up to an intermediate value $k < r$, we obtain a rank-$k$ approximation
     $
-        \hat{\bm{A}}(k) 
+        \hat{\bm{A}}(k)
         = \dsum_{i=1}^k \sigma_i \bm{u}_i \bm{v}_i^\top
         = \dsum_{i=1}^k \sigma_i \bm{A}_i
     $
-    of $\bm{A}$ with $rk(\hat{\bm{A}}(k)) = k$. 
+    of $\bm{A}$ with $rk(\hat{\bm{A}}(k)) = k$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item \begin{theorem}[Eckart-Young Theorem]
-        Consider a matrix $\bm{A} \in \mbbR^{m\times n}$ of rank $r$ and let $\bm{B} \in \mbbR^{m\times n}$ be a matrix of rank $k$. 
+        Consider a matrix $\bm{A} \in \mbbR^{m\times n}$ of rank $r$ and let $\bm{B} \in \mbbR^{m\times n}$ be a matrix of rank $k$.
         For any $k \leq r$ with $\hat{\bm{A}}(k) = \dsum^k_{i=1} \sigma_i \bm{u}_i \bm{v}_i^\top$ it holds that
         ${
             \displaystyle
@@ -352,7 +352,7 @@ print("Rank of matrix A:", rank)
         \item The SVD minimizes the error (with respect to the spectral norm) between $\bm{A}$ and any rank-$k$ approximation.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item The Eckart-Young theorem implies that we can use SVD to reduce a rank-$r$ matrix $\bm{A}$ to a rank-$k$ matrix $\hat{\bm{A}}$ in a principled, optimal (in the spectral norm sense) manner. 
+        \item The Eckart-Young theorem implies that we can use SVD to reduce a rank-$r$ matrix $\bm{A}$ to a rank-$k$ matrix $\hat{\bm{A}}$ in a principled, optimal (in the spectral norm sense) manner.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
@@ -363,20 +363,20 @@ print("Rank of matrix A:", rank)
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item If we assume that there is another matrix $\bm{B}$ with $\text{rk}(\bm{B}) \leq k$, such that 
+    \item If we assume that there is another matrix $\bm{B}$ with $\text{rk}(\bm{B}) \leq k$, such that
     $
         \dnorm{\bm{A} - \bm{B}}_2 \leq \dnorm{\bm{A} - \hat{\bm{A}}(k)}_2
     $,
-    then there exists an at least $(n - k)$-dimensional null space $Z \subseteq \mbbR^n$, such that $\bm{x} \in \mathbb{Z}$ implies that $\bm{Bx} = \bm{0}$. 
+    then there exists an at least $(n - k)$-dimensional null space $Z \subseteq \mbbR^n$, such that $\bm{x} \in \mathbb{Z}$ implies that $\bm{Bx} = \bm{0}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
-    Then it follows that 
+    Then it follows that
     $
         \dnorm{\bm{Ax}}_2 = \dnorm{(\bm{A} - \bm{B})\bm{x}}_2
     $
     and by using a version of the Cauchy-Schwartz inequality that encompasses norms of matrices, we obtain
     $
-        \dnorm{\bm{Ax}}_2 
+        \dnorm{\bm{Ax}}_2
         \leq \dnorm{\bm{A} - \bm{B}}_2 \dnorm{\bm{x}}_2
         < \sigma_{k+2} \dnorm{\bm{x}}_2
     $.
@@ -405,11 +405,11 @@ print("Rank of matrix A:", rank)
         \begin{enumerate}
             \item There exists a nonzero vector xx that’s in both: in the null space of BB and in the span of $\bm{v}_{k+1},\cdots,\bm{v}_r$
 
-            \item For that $\bm{x}$, we must have: $\dnorm{\bm{Ax}}_2 \geq \sigma_{k+1}$. 
-            But this contradicts the earlier assumption that $\dnorm{\bm{Ax}}_2 < \sigma_{k+1}$. 
+            \item For that $\bm{x}$, we must have: $\dnorm{\bm{Ax}}_2 \geq \sigma_{k+1}$.
+            But this contradicts the earlier assumption that $\dnorm{\bm{Ax}}_2 < \sigma_{k+1}$.
         \end{enumerate}
 
-        \item Thus, assuming that $\dnorm{\bm{A}-\bm{B}}_2<\sigma_{k+1}$ leads to a contradiction with rank-nullity. 
+        \item Thus, assuming that $\dnorm{\bm{A}-\bm{B}}_2<\sigma_{k+1}$ leads to a contradiction with rank-nullity.
         Therefore: $\dnorm{\bm{A}-\bm{B}}_2 \geq \sigma_{k+1}$ which confirms the theorem.
 
         \item \textbf{in Simple Terms}:

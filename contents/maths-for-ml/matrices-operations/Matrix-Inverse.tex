@@ -23,12 +23,12 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
 
 
 \begin{enumerate}
-    \item Consider a square matrix $\bm{A} \in \mbbR^{n\times n}$. 
-    Let matrix $\bm{B} \in \mbbR^{n\times n}$ have the property that $\bm{A}\bm{B} = \bm{I}_n = \bm{B}\bm{A}$. 
+    \item Consider a square matrix $\bm{A} \in \mbbR^{n\times n}$.
+    Let matrix $\bm{B} \in \mbbR^{n\times n}$ have the property that $\bm{A}\bm{B} = \bm{I}_n = \bm{B}\bm{A}$.
     $\bm{B}$ is called the inverse of $\bm{A}$ and denoted by $\bm{A}^{-1}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{theorem}[Square Matrix: Invertible]
         For any square matrix $\bm{A} \in \mbbR^{n\times n}$ it holds that $\bm{A}$ is invertible if and only if $\det(\bm{A})\neq 0$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -46,14 +46,14 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
         \bm{A} = \begin{bmatrix}
             a_{11} & a_{12} \\
             a_{21} & a_{22} \\
-        \end{bmatrix} 
+        \end{bmatrix}
         \in \mbbR^{2\times 2}
     $
     \hspace{1cm} and \hspace{1cm}
-    $a_{11}\ a_{22} - a_{12}\ a_{21} \neq 0$ (determinant of $A$)\\[0.4cm] 
+    $a_{11}\ a_{22} - a_{12}\ a_{21} \neq 0$ (determinant of $A$)\\[0.4cm]
     $\Rightarrow$
     $
-        \bm{A}^{-1} = 
+        \bm{A}^{-1} =
         \dfrac{1}{a_{11}\ a_{22} - a_{12}\ a_{21}}
         \begin{bmatrix}
             a_{22} & -a_{12} \\
@@ -71,8 +71,8 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
 \begin{enumerate}
     \item Given a matrix $\bm{A} \in \mbbR^{n\times n}$, we need to find $\bm{X} = \bm{A}^{-1}$ such that $\bm{A}\bm{X} = \bm{I}_n$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
-    \item We can write this down as a set of simultaneous linear equations $\bm{A}\bm{X} = \bm{I}_n$, where we solve for $\bm{X} = [\bm{x}_1| \cdots |\bm{x}_n]$. 
+
+    \item We can write this down as a set of simultaneous linear equations $\bm{A}\bm{X} = \bm{I}_n$, where we solve for $\bm{X} = [\bm{x}_1| \cdots |\bm{x}_n]$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item augmented matrix notation for a compact representation of this set of systems of linear equations:
@@ -80,13 +80,13 @@ print(np.allclose((A @ A_inv) , np.eye(n, n)))
     \\
     .\hfill
     $
-        [\bm{A}|\bm{I}_n] 
-        \curlyrightarrow \cdots \curlyrightarrow 
+        [\bm{A}|\bm{I}_n]
+        \curlyrightarrow \cdots \curlyrightarrow
         [\bm{I}_n|\bm{A}^{-1}]
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    
+
 \end{enumerate}
 
 
@@ -109,7 +109,7 @@ $
 \begin{enumerate}
     \item Disadvantages:
     \begin{enumerate}
-        \item requires many computations for the matrix-matrix product and computing the inverse of $\bm{A}^\top \bm{A}$. 
+        \item requires many computations for the matrix-matrix product and computing the inverse of $\bm{A}^\top \bm{A}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
         \item for reasons of numerical precision it is generally not recommended
@@ -138,7 +138,7 @@ $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item $(\bm{A}^{-1})^{-1} =  \bm{A}$
-    
+
 \end{enumerate}
 \end{multicols}
 

@@ -4,15 +4,15 @@
 \section{Vector Space}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Vector Space]
         A real-valued vector space $V = (\mathcal{V}, +, \cdot)$ is a set $\mathcal{V}$ with two operations:
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \begin{enumerate}
             \item[] $+ :  \mathcal{V} \times \mathcal{V} \to \mathcal{V}$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
-            \item[] $\cdot: \mbbR \times \mathcal{V} \to \mathcal{V}$ 
+
+            \item[] $\cdot: \mbbR \times \mathcal{V} \to \mathcal{V}$
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
     \end{definition}
@@ -71,7 +71,7 @@
     \item Intuitively, the dimension of a vector space can be thought of as the number of independent directions in this vector space.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The dimension of a vector space is not necessarily the number of elements in a vector. 
+    \item The dimension of a vector space is not necessarily the number of elements in a vector.
     For instance, the vector space $V = \text{span}[\begin{bmatrix}0 \\ 1\end{bmatrix}]$ is one-dimensional, although the basis vector possesses two elements.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
@@ -111,7 +111,7 @@ print(f"Dimension of the vector space: {dimension}")
 \subsection{Norm}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Norm]
         A norm on a vector space $V$ is a function
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -195,8 +195,8 @@ def norm_general(_arr: np.ndarray):
     \item Let $V$ be a vector space and $\Omega  : V \times  V \to  \mbbR$ be a bilinear mapping that takes two vectors and maps them onto a real number. Then
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \begin{enumerate}
-        \item A positive definite, symmetric bilinear mapping $\Omega  : V \times  V \to  \mbbR$ is called an inner product on $V$ . 
-        We typically write $\dAngleBrac{x, y}$ instead of $\Omega (x, y)$.        
+        \item A positive definite, symmetric bilinear mapping $\Omega  : V \times  V \to  \mbbR$ is called an inner product on $V$ .
+        We typically write $\dAngleBrac{x, y}$ instead of $\Omega (x, y)$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
@@ -213,7 +213,7 @@ def norm_general(_arr: np.ndarray):
 \subsection{Inner Product Space}
 
 \begin{enumerate}
-    \item Let $V$ be a vector space and $\Omega  : V \times  V \to  \mbbR$ be a bilinear mapping that takes two vectors and maps them onto a real number. 
+    \item Let $V$ be a vector space and $\Omega  : V \times  V \to  \mbbR$ be a bilinear mapping that takes two vectors and maps them onto a real number.
     Then the pair $(V, \dAngleBrac{\cdot, \cdot})$ is called an \textbf{inner product space} or \textbf{(real) vector space with inner product}.
 \end{enumerate}
 
@@ -236,11 +236,11 @@ def norm_general(_arr: np.ndarray):
     \item Given a vector $\bm{x} \in \mbbR^n$, we obtain the outer product $\bm{x}^m := \bm{x} \otimes \overset{m \text{ times}}{\cdots} \otimes \bm{x} \in \mbbR^{\overset{m \text{ times}}{\overbrace{n \times n \times \cdots \times n}}}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Example: 
+    \item Example:
     $
-        \bm{x} \in \mbbR^n 
+        \bm{x} \in \mbbR^n
         \hspace{0.5cm}
-        \Rightarrow \bm{x}^2 = \bm{x} \otimes \bm{x} \in \mbbR^{n\times n}, 
+        \Rightarrow \bm{x}^2 = \bm{x} \otimes \bm{x} \in \mbbR^{n\times n},
         \hspace{0.5cm}
         \bm{x}^2[i, j] = x[i]x[j]
     $
@@ -274,7 +274,7 @@ def norm_general(_arr: np.ndarray):
     \item Not every norm is induced by an inner product (eg: Manhattan norm).
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{definition}[Cauchy-Schwarz Inequality]
     For an inner product vector space $(V,\dAngleBrac{\cdot, \cdot})$ the induced norm $\dnorm{\cdot}$ satisfies the Cauchy-Schwarz inequality
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -284,13 +284,13 @@ def norm_general(_arr: np.ndarray):
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item Transformations by orthogonal matrices are special because the length of a vector $\bm{x}$ is not changed when transforming it using an orthogonal matrix $\bm{A}$. 
+    \item Transformations by orthogonal matrices are special because the length of a vector $\bm{x}$ is not changed when transforming it using an orthogonal matrix $\bm{A}$.
     For the dot product, we obtain
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     .\hfill
     $
-        \dnorm{\bm{Ax}}^2 
+        \dnorm{\bm{Ax}}^2
         = (\bm{Ax})^\top (\bm{Ax})
         = \bm{x}^\top \bm{A}^\top \bm{Ax}
         = \bm{x}^\top \bm{Ix}
@@ -307,7 +307,7 @@ def norm_general(_arr: np.ndarray):
 \subsection{Distance}
 
 \begin{enumerate}
-    \item Consider an inner product space $(V,\dAngleBrac{\cdot, \cdot})$. 
+    \item Consider an inner product space $(V,\dAngleBrac{\cdot, \cdot})$.
     Then
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
@@ -326,7 +326,7 @@ def norm_general(_arr: np.ndarray):
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item Similar to the length of a vector, the distance between vectors does not require an inner product: a norm is sufficient.
-    If we have a norm induced by an inner product, the distance may vary depending on the choice of the inner product. 
+    If we have a norm induced by an inner product, the distance may vary depending on the choice of the inner product.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item Every distance is a metric, but not every metric is necessarily defined as a distance using a norm or inner product.
@@ -342,7 +342,7 @@ def norm_general(_arr: np.ndarray):
 \subsection{Metric}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Metric]
         The mapping $d : V \times V \to \mbbR$, $(\bm{x}, \bm{y}) \mapsto d(\bm{x}, \bm{y})$ is called a \textbf{metric}.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -367,7 +367,7 @@ def norm_general(_arr: np.ndarray):
 \subsection{Inner Product VS Metric}
 
 \begin{enumerate}
-    \item the lists of properties of inner products and metrics look very similar. 
+    \item the lists of properties of inner products and metrics look very similar.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item $\dAngleBrac{\bm{x}, \bm{y}}$ and $d(\bm{x}, \bm{y})$ behave in opposite directions.
@@ -383,13 +383,13 @@ def norm_general(_arr: np.ndarray):
 \subsection{Angles}
 
 \begin{enumerate}
-    \item We use the Cauchy-Schwarz inequality to define angles $\omega$ in inner product spaces between two vectors $\bm{x}, \bm{y}$, and this notion coincides with our intuition in $\mbbR^2$ and $\mbbR^3$. 
-    Assume that $\bm{x} \neq \bm{0}$, $\bm{y} \neq \bm{0}$. 
+    \item We use the Cauchy-Schwarz inequality to define angles $\omega$ in inner product spaces between two vectors $\bm{x}, \bm{y}$, and this notion coincides with our intuition in $\mbbR^2$ and $\mbbR^3$.
+    Assume that $\bm{x} \neq \bm{0}$, $\bm{y} \neq \bm{0}$.
     Then
     $
         -1 \leq \dfrac{\dAngleBrac{\bm{x}, \bm{y}}}{\dnorm{\bm{x}} \dnorm{\bm{y}}} \leq 1
-    $. 
-    Therefore, there exists a unique $\omega \in [0, \pi]$ with 
+    $.
+    Therefore, there exists a unique $\omega \in [0, \pi]$ with
     $
         \cos(\omega) = \dfrac{\dAngleBrac{\bm{x}, \bm{y}}}{\dnorm{\bm{x}} \dnorm{\bm{y}}}
     $
@@ -404,7 +404,7 @@ def norm_general(_arr: np.ndarray):
     \item Transformations with orthogonal matrices preserve angles.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
-    The angle between any two vectors $\bm{x}, \bm{y}$, as measured by their inner product, is also unchanged when transforming both of them using an orthogonal matrix $\bm{A}$. 
+    The angle between any two vectors $\bm{x}, \bm{y}$, as measured by their inner product, is also unchanged when transforming both of them using an orthogonal matrix $\bm{A}$.
     Assuming the dot product as the inner product, the angle of the images $\bm{Ax}$ and $\bm{Ay}$ is given as
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
@@ -444,8 +444,8 @@ def norm_general(_arr: np.ndarray):
 \subsection{Orthogonal Complement ( $U^\perp$ )}
 
 \begin{enumerate}
-    \item Consider a $D$-dimensional vector space $V$ and an $M$-dimensional subspace $U \subseteq V$ . 
-    Then its orthogonal complement $U^\perp$ is a $(D-M)$-dimensional subspace of $V$ and contains all vectors in $V$ that are orthogonal to every vector in $U$. 
+    \item Consider a $D$-dimensional vector space $V$ and an $M$-dimensional subspace $U \subseteq V$ .
+    Then its orthogonal complement $U^\perp$ is a $(D-M)$-dimensional subspace of $V$ and contains all vectors in $V$ that are orthogonal to every vector in $U$.
     Furthermore, $U \cap U^\perp = \dCurlyBrac{\bm{0}}$ so that any vector $\bm{x} \in V$ can be uniquely decomposed into
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
@@ -465,7 +465,7 @@ def norm_general(_arr: np.ndarray):
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item the vector $\bm{w}$ with $\dnorm{\bm{w}} = 1$, which is orthogonal to the plane $U$, is the basis vector of $U^\perp$.
-    All vectors that are orthogonal to $\bm{w}$ must (by construction) lie in the plane $U$. 
+    All vectors that are orthogonal to $\bm{w}$ must (by construction) lie in the plane $U$.
     The vector $\bm{w}$ is called the \textbf{normal vector} of $U$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -512,19 +512,19 @@ def norm_general(_arr: np.ndarray):
 
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Vector Subspace]
-        Let $V = (\mathcal{V}, +, \cdot )$ be a vector space and $\mathcal{U} \subseteq \mathcal{V}, \mathcal{U} \neq \phi$. 
-        Then $U = (\mathcal{U}, +, \cdot )$ is called vector subspace of $V$ (or linear subspace) if $U$ is a vector space with the vector space operations $+$ and $\cdot$  restricted to $\mathcal{U} \times \mathcal{U}$ and $\mbbR \times \mathcal{U}$. 
+        Let $V = (\mathcal{V}, +, \cdot )$ be a vector space and $\mathcal{U} \subseteq \mathcal{V}, \mathcal{U} \neq \phi$.
+        Then $U = (\mathcal{U}, +, \cdot )$ is called vector subspace of $V$ (or linear subspace) if $U$ is a vector space with the vector space operations $+$ and $\cdot$  restricted to $\mathcal{U} \times \mathcal{U}$ and $\mbbR \times \mathcal{U}$.
         We write $U \subseteq V$ to denote a subspace $U$ of $V$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item Intuitively, they are sets contained in the original vector space with the property that when we perform vector space operations on elements within this subspace, we will never leave it. 
+    \item Intuitively, they are sets contained in the original vector space with the property that when we perform vector space operations on elements within this subspace, we will never leave it.
     In this sense, they are “closed”.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item If $\mathcal{U} \subseteq \mathcal{V}$ and $V$ is a vector space, then $U$ naturally inherits many properties directly from $V$ because they hold for all $\bm{x} \in \mathcal{V}$, and in particular for all $\bm{x} \in \mathcal{U} \subseteq \mathcal{V}$. 
+    \item If $\mathcal{U} \subseteq \mathcal{V}$ and $V$ is a vector space, then $U$ naturally inherits many properties directly from $V$ because they hold for all $\bm{x} \in \mathcal{V}$, and in particular for all $\bm{x} \in \mathcal{U} \subseteq \mathcal{V}$.
     This includes the Abelian group properties, the distributivity, the associativity and the neutral element.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -537,7 +537,7 @@ def norm_general(_arr: np.ndarray):
         \begin{enumerate}
             \item With respect to the outer operation: $\forall \lambda  \in  \mbbR \forall \bm{x} \in  \mathcal{U} : \lambda \bm{x} \in  \mathcal{U}$.
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-            
+
             \item With respect to the inner operation: $\forall \bm{x}, \bm{y} \in  \mathcal{U} : \bm{x} + \bm{y} \in  \mathcal{U}$.
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
@@ -598,10 +598,10 @@ def norm_general(_arr: np.ndarray):
 \section{Vector}
 
 \begin{enumerate}
-    \item In general, vectors are special objects that can be added together and multiplied by scalars to produce another object of the same kind. From an abstract mathematical viewpoint, any object that satisfies these two properties can be considered a vector. 
+    \item In general, vectors are special objects that can be added together and multiplied by scalars to produce another object of the same kind. From an abstract mathematical viewpoint, any object that satisfies these two properties can be considered a vector.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item By convention $(1, n)$-matrices are called rows and $(m, 1)$-matrices are called row columns. 
+    \item By convention $(1, n)$-matrices are called rows and $(m, 1)$-matrices are called row columns.
     These special matrices are also called row/ column vectors.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -615,16 +615,16 @@ def norm_general(_arr: np.ndarray):
 \subsection{Types of vectors}
 
 \begin{enumerate}
-    \item $\mbbR^n$ or $\mbbR^{n\times 1}$ : column vectors: 
+    \item $\mbbR^n$ or $\mbbR^{n\times 1}$ : column vectors:
     $
-        \bm{x} = 
+        \bm{x} =
         \begin{bmatrix}
             x_1\\ \vdots \\ x_n
         \end{bmatrix}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item $\mbbR^{1\times n}$ : row vectors: 
+    \item $\mbbR^{1\times n}$ : row vectors:
     $
         \bm{x}^\top = \begin{bmatrix}x_1 & \cdots & x_n\end{bmatrix}
     $
@@ -731,7 +731,7 @@ def norm_l2(_arr: np.ndarray):
 \begin{enumerate}
     \item $\forall \bm{a}, \bm{b} \in \mbbR^n, \bm{ab}^\top \in \mbbR^{n\times n}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
 \end{enumerate}
 
 
@@ -776,11 +776,11 @@ output:
 
 \begin{enumerate}
     \item $
-        \forall \bm{a}, \bm{b} \in \mbbR^n, 
-        \bm{a}^\top \bm{b} = \dsum^n_{i=1} a_i b_i \in \mbbR    
+        \forall \bm{a}, \bm{b} \in \mbbR^n,
+        \bm{a}^\top \bm{b} = \dsum^n_{i=1} a_i b_i \in \mbbR
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
 \end{enumerate}
 
 
@@ -813,12 +813,12 @@ print(np.sum(a* b))   # 32
 \subsection{Orthogonal ( $x \perp y$ ) \& orthonormal vectors}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Orthogonal Vectors]
-        Two vectors $\bm{x}$ and $\bm{y}$ are orthogonal if and only if $\dAngleBrac{\bm{x}, \bm{y}} = 0$, and we write $\bm{x} \perp \bm{y}$. 
+        Two vectors $\bm{x}$ and $\bm{y}$ are orthogonal if and only if $\dAngleBrac{\bm{x}, \bm{y}} = 0$, and we write $\bm{x} \perp \bm{y}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
-    
+
     \item If additionally $\dnorm{\bm{x}} = 1 = \dnorm{\bm{y}}$, i.e., the vectors are unit vectors, then $\bm{x}$ and $\bm{y}$ are orthonormal.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -843,7 +843,7 @@ print(np.sum(a* b))   # 32
     Then the sum over individual components of vectors ( as in $\bm{a}^\top \bm{b} = \dsum^n_{i=1} a_i b_i$ ) turns into an integral.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    
+
 \end{enumerate}
 
 
@@ -888,7 +888,7 @@ print(np.sum(a* b))   # 32
     The collection of functions spans a large subspace of the functions that are even and periodic on $[\pi, \pi)$, and projecting functions onto this subspace is the fundamental idea behind Fourier series.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    
+
 \end{enumerate}
 
 
@@ -903,15 +903,15 @@ print(np.sum(a* b))   # 32
 \subsection{Collinearity and Codirection}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Codirection]
-        Two vectors that point in the same direction are called codirected. 
+        Two vectors that point in the same direction are called codirected.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
-    
-    \item 
+
+    \item
     \begin{definition}[Collinearity]
-        Two vectors are collinear if they point in the same or the opposite direction. 
+        Two vectors are collinear if they point in the same or the opposite direction.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 \end{enumerate}
@@ -934,14 +934,14 @@ print(np.sum(a* b))   # 32
 \section{Linear Combination}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Linear Combination of vectors]
-        Consider a vector space $V$ and a finite number of vectors $\bm{x}_1, \cdots , \bm{x}_k \in V$ . 
+        Consider a vector space $V$ and a finite number of vectors $\bm{x}_1, \cdots , \bm{x}_k \in V$ .
         Then, every $\bm{v} \in V$ of the form:
         \\
         .\hfill
         $
-            \bm{v} 
+            \bm{v}
             = \lambda _1 \bm{x}_1 + \cdots + \lambda _k \bm{x}_k
             = \dsum_{i=1}^k \lambda _i \bm{x}_i
             \in V
@@ -955,7 +955,7 @@ print(np.sum(a* b))   # 32
     \item The $\bm{0}$-vector can always be written as the linear combination of $k$ vectors $\bm{x}_1, \cdots , \bm{x}_k$ because $\bm{0} = \dsum ^k _{i=1} 0 \bm{x}_i$ is always true.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    
+
 \end{enumerate}
 
 
@@ -969,14 +969,14 @@ print(np.sum(a* b))   # 32
 \begin{enumerate}
     \item
     \begin{definition}[Affine Subspaces]
-        Let $V$ be a vector space, $\bm{x}_0 \in V$ and $U \subseteq V$ a subspace. 
-        Then the subset 
+        Let $V$ be a vector space, $\bm{x}_0 \in V$ and $U \subseteq V$ a subspace.
+        Then the subset
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         .\hfill
         $
-            L 
-            = \bm{x}_0 + U 
+            L
+            = \bm{x}_0 + U
             := \dCurlyBrac{\bm{x}_0 + \bm{u} : \bm{u} \in  U}
             = \dCurlyBrac{\bm{v} \in  V | \exists \bm{u} \in  U : \bm{v} = \bm{x}_0 + \bm{u}} \subseteq V
         $
@@ -992,11 +992,11 @@ print(np.sum(a* b))   # 32
     Therefore, an affine subspace is not a (linear) subspace (vector subspace) of $V$ for $\bm{x}_0 \notin U$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Consider two affine subspaces $L = \bm{x}_0 + U$ and $\tilde{L} = \tilde{\bm{x}}_0 + \tilde{U}$ of a vector space $V$ . 
+    \item Consider two affine subspaces $L = \bm{x}_0 + U$ and $\tilde{L} = \tilde{\bm{x}}_0 + \tilde{U}$ of a vector space $V$ .
     Then, $L \subseteq \tilde{L}$ if and only if $U \subseteq \tilde{U}$ and $\bm{x}_0 - \tilde{\bm{x}}_0 \in \tilde{U}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Affine subspaces are often described by parameters: Consider a $k$-dimensional affine space $L = \bm{x}_0 + U$ of $V$ . 
+    \item Affine subspaces are often described by parameters: Consider a $k$-dimensional affine space $L = \bm{x}_0 + U$ of $V$ .
     If $(\bm{b}_1, \cdots , \bm{b}_k)$ is an ordered basis of $U$, then every element $\bm{x} \in L$ can be uniquely described as
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
@@ -1006,26 +1006,26 @@ print(np.sum(a* b))   # 32
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
-    where $\lambda _1, \cdots , \lambda _k \in \mbbR$. 
+    where $\lambda _1, \cdots , \lambda _k \in \mbbR$.
     This representation is called parametric equation of $L$ with directional vectors $\bm{b}_1, \cdots , \bm{b}_k$ and parameters $\lambda _1, \cdots , \lambda _k$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item One-dimensional affine subspaces are called \textbf{lines} and can be written as $\bm{y} = \bm{x}_0 + \lambda \bm{b}_1$, where $\lambda  \in \mbbR$ and $U = \text{span}[\bm{b}_1] \subseteq \mbbR^n$ is a one-dimensional subspace of $\mbbR^n$ . 
+    \item One-dimensional affine subspaces are called \textbf{lines} and can be written as $\bm{y} = \bm{x}_0 + \lambda \bm{b}_1$, where $\lambda  \in \mbbR$ and $U = \text{span}[\bm{b}_1] \subseteq \mbbR^n$ is a one-dimensional subspace of $\mbbR^n$ .
     This means that a line is defined by a support point $\bm{x}_0$ and a vector $\bm{b}_1$ that defines the direction.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Two-dimensional affine subspaces of $\bm{R}^n$ are called \textbf{planes}. 
-    The parametric equation for planes is $\bm{y} = \bm{x}_0 + \lambda _1 \bm{b}_1 + \lambda _2 \bm{b}_2$, where $\lambda _1, \lambda _2 \in \mbbR$ and $U = \text{span}[\bm{b}_1, \bm{b}_2] \subseteq \mbbR^n$ . 
+    \item Two-dimensional affine subspaces of $\bm{R}^n$ are called \textbf{planes}.
+    The parametric equation for planes is $\bm{y} = \bm{x}_0 + \lambda _1 \bm{b}_1 + \lambda _2 \bm{b}_2$, where $\lambda _1, \lambda _2 \in \mbbR$ and $U = \text{span}[\bm{b}_1, \bm{b}_2] \subseteq \mbbR^n$ .
     This means that a plane is defined by a support point $\bm{x}_0$ and two linearly independent vectors $\bm{b}_1, \bm{b}_2$ that span the direction space.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item In $\mbbR^n$, the $(n - 1)$-dimensional affine subspaces are called \textbf{hyperplanes}, and the corresponding parametric equation is $\bm{y} = \bm{x}_0 + \dsum^ {n-1} _{i=1} \lambda_i \bm{b}_i$ , where $\bm{b}_1, \cdots , \bm{b}_{n-1}$ form a basis of an $(n - 1)$-dimensional subspace $U$ of $\mbbR^n$ . 
-    This means that a hyperplane is defined by a support point $\bm{x}_0$ and $(n - 1)$ linearly independent vectors $\bm{b}_1, \cdots , \bm{b}_{n-1}$ that span the direction space. 
-    In $\mbbR^2$ , a line is also a hyperplane. 
+    \item In $\mbbR^n$, the $(n - 1)$-dimensional affine subspaces are called \textbf{hyperplanes}, and the corresponding parametric equation is $\bm{y} = \bm{x}_0 + \dsum^ {n-1} _{i=1} \lambda_i \bm{b}_i$ , where $\bm{b}_1, \cdots , \bm{b}_{n-1}$ form a basis of an $(n - 1)$-dimensional subspace $U$ of $\mbbR^n$ .
+    This means that a hyperplane is defined by a support point $\bm{x}_0$ and $(n - 1)$ linearly independent vectors $\bm{b}_1, \cdots , \bm{b}_{n-1}$ that span the direction space.
+    In $\mbbR^2$ , a line is also a hyperplane.
     In $\mbbR^3$ , a plane is also a hyperplane.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    
+
 \end{enumerate}
 
 
@@ -1047,13 +1047,13 @@ print(np.sum(a* b))   # 32
 \section{Linear (In)dependence}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Linear (In)dependence]
-        Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\bm{x}_1, \cdots , \bm{x}_k \in V$ . 
-        If there is a non-trivial linear combination, such that $\bm{0} = \dsum ^k _{i=1} \lambda_i \bm{x}_i$ with at least one $\lambda _i \neq 0$, the vectors  $\bm{x}_1, \cdots , \bm{x}_k$ are linearly dependent. 
+        Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\bm{x}_1, \cdots , \bm{x}_k \in V$ .
+        If there is a non-trivial linear combination, such that $\bm{0} = \dsum ^k _{i=1} \lambda_i \bm{x}_i$ with at least one $\lambda _i \neq 0$, the vectors  $\bm{x}_1, \cdots , \bm{x}_k$ are linearly dependent.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
-    
+
     \item If only the trivial solution exists, i.e., $\lambda _1 = \cdots = \lambda _k = 0$ the vectors $\bm{x}_1, \cdots , \bm{x}_k$ are linearly independent.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -1067,15 +1067,15 @@ print(np.sum(a* b))   # 32
     \item $k$ vectors are either linearly dependent or linearly independent. There is no third option.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item If at least one of the vectors $\bm{x}_1, \cdots , \bm{x}_k$ is $\bm{0}$ then they are linearly dependent. 
+    \item If at least one of the vectors $\bm{x}_1, \cdots , \bm{x}_k$ is $\bm{0}$ then they are linearly dependent.
     The same holds if two vectors are identical.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The vectors $\dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_k : \bm{x}_i \neq 0, i = 1, \cdots , k}$, $k \geq 2$, are linearly dependent if and only if (at least) one of them is a linear combination of the others. 
+    \item The vectors $\dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_k : \bm{x}_i \neq 0, i = 1, \cdots , k}$, $k \geq 2$, are linearly dependent if and only if (at least) one of them is a linear combination of the others.
     In particular, if one vector is a multiple of another vector, i.e., $\bm{x}_i = \lambda \bm{x}_j , \lambda \in \mbbR$ then the set $\dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_k : \bm{x}_i \neq \bm{0}, i = 1, \cdots , k}$ is linearly dependent.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item A practical way of checking whether vectors $\bm{x}_1, \cdots , \bm{x}_k \in V$ are linearly independent is to use Gaussian elimination: 
+    \item A practical way of checking whether vectors $\bm{x}_1, \cdots , \bm{x}_k \in V$ are linearly independent is to use Gaussian elimination:
     Write all vectors as columns of a matrix $A$ and perform Gaussian elimination until the matrix is in row echelon form (the reduced row-echelon form is unnecessary here):
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \begin{enumerate}
@@ -1094,7 +1094,7 @@ print(np.sum(a* b))   # 32
     \\
     .\hfill
     $
-        \bm{x}_1 
+        \bm{x}_1
         = \dsum_{i=1}^k \lambda_{il} \bm{b}_i,
         \hspace{1cm}
         \cdots,
@@ -1110,7 +1110,7 @@ print(np.sum(a* b))   # 32
     \\
     .\hfill
     $
-        \bm{x}_j = \bm{B}\lambda_j, 
+        \bm{x}_j = \bm{B}\lambda_j,
         \hspace{1cm}
         \lambda_j = \begin{bmatrix}\lambda_{1j} \\ \vdots \\ \lambda_{kj}\end{bmatrix},
         \hspace{1cm}
@@ -1154,9 +1154,9 @@ print(np.sum(a* b))   # 32
 \section{Generating Set}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Generating Set]
-        Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and set of vectors $\mathcal{A} = \dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_k} \subseteq \mathcal{V}$. 
+        Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and set of vectors $\mathcal{A} = \dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_k} \subseteq \mathcal{V}$.
         If every vector $\bm{v} \in \mathcal{V}$ can be expressed as a linear combination of $\bm{x}_1, \cdots , \bm{x}_k$, $\mathcal{A}$ is called a generating set generating set of $V$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
@@ -1177,7 +1177,7 @@ print(np.sum(a* b))   # 32
 \begin{enumerate}
     \item
     \begin{definition}[Span]
-        Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and set of vectors $\mathcal{A} = \dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_k} \subseteq \mathcal{V}$. 
+        Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and set of vectors $\mathcal{A} = \dCurlyBrac{\bm{x}_1, \cdots , \bm{x}_k} \subseteq \mathcal{V}$.
         The set of all linear combinations of vectors in $\mathcal{A}$ is span called the span of $\mathcal{A}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
@@ -1195,8 +1195,8 @@ print(np.sum(a* b))   # 32
 \begin{enumerate}
     \item
     \begin{definition}[Basis]
-        Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and $\mathcal{A} \subseteq  \mathcal{V}$. 
-        A generating set $\mathcal{A}$ of $V$ is called minimal if there exists no smaller set $\tilde{\mathcal{A}} \subsetneq \mathcal{A} \subseteq \mathcal{V}$ that spans $V$ . 
+        Consider a vector space $V = (\mathcal{V}, +, \cdot)$ and $\mathcal{A} \subseteq  \mathcal{V}$.
+        A generating set $\mathcal{A}$ of $V$ is called minimal if there exists no smaller set $\tilde{\mathcal{A}} \subsetneq \mathcal{A} \subseteq \mathcal{V}$ that spans $V$ .
         Every linearly independent generating set of $V$ is minimal and is called a basis of $V$ .
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
@@ -1216,7 +1216,7 @@ print(np.sum(a* b))   # 32
         \item Every vector $\bm{x} \in V$ is a linear combination of vectors from $\mathcal{B}$, and every linear combination is unique, i.e., with
         \\
         $
-            \bm{x} 
+            \bm{x}
             = \dsum_{i=1}^k \lambda_i \bm{b}_i
             = \dsum_{i=1}^k \psi_i \bm{b}_i
         $
@@ -1228,8 +1228,8 @@ print(np.sum(a* b))   # 32
     \item Every vector space $V$ possesses a basis $\mathcal{B}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item There can be many bases of a vector space $V$ , i.e., there is \textbf{no unique basis}. 
-    However, all bases possess the same number of elements, the \textbf{basis vectors}. 
+    \item There can be many bases of a vector space $V$ , i.e., there is \textbf{no unique basis}.
+    However, all bases possess the same number of elements, the \textbf{basis vectors}.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item Unordered basis: $\mathcal{B} = \dCurlyBrac{\bm{b}_1, \cdots, \bm{b}_n}$
@@ -1245,7 +1245,7 @@ print(np.sum(a* b))   # 32
 
 \subsection{Checking Basis}
 
-To check whether two given sets of basis vectors (say $\mathcal{B}_1$ and $\mathcal{B}_2$) span the same vector space: 
+To check whether two given sets of basis vectors (say $\mathcal{B}_1$ and $\mathcal{B}_2$) span the same vector space:
 \hfill \cite{common/online/chatgpt}
 \begin{enumerate}
     \item \textbf{Method 1:} For each $\mathbf{b}_1 \in \mathcal{B}_1$, check if there exist scalars $\lambda_i \in \mbbR$ such that
@@ -1254,15 +1254,15 @@ To check whether two given sets of basis vectors (say $\mathcal{B}_1$ and $\math
     .\hfill
     $
         \mathbf{b}_1 = \sum_{\mathbf{b}_{2i} \in \mathcal{B}_2} \lambda_i \mathbf{b}_{2i}
-    $ 
+    $
     \hfill \cite{common/online/chatgpt}
     \\
-    and vice versa (i.e., every vector in $\mathcal{B}_2$ can be written as a linear combination of vectors in $\mathcal{B}_1$).  
+    and vice versa (i.e., every vector in $\mathcal{B}_2$ can be written as a linear combination of vectors in $\mathcal{B}_1$).
     If both conditions hold, then $\mathcal{B}_1$ and $\mathcal{B}_2$ span the same vector space.
     \hfill \cite{common/online/chatgpt}
 
-    \item \textbf{Method 2:} Let $\mathcal{B}_c$ be the matrix formed by concatenating all vectors from $\mathcal{B}_1$ and $\mathcal{B}_2$ as columns.  
-    If 
+    \item \textbf{Method 2:} Let $\mathcal{B}_c$ be the matrix formed by concatenating all vectors from $\mathcal{B}_1$ and $\mathcal{B}_2$ as columns.
+    If
     \hfill \cite{common/online/chatgpt}
     \\
     .\hfill
@@ -1334,12 +1334,12 @@ print(same_vector_space_method2(B1, B2))        # True
 \begin{figure}[H]
     \centering
     \includegraphics[
-        width=\linewidth, 
+        width=\linewidth,
         height=4cm,
         keepaspectratio,
     ]{images/maths-for-ml/basis-change.png}
     \caption*{
-        For a homomorphism $\Phi  : V \to  W$ and ordered bases $B, \tilde{B}$ of $V$ and $C, \tilde{C}$ of $W$ (marked in \textcolor{blue}{blue}), we can express the mapping $\Phi _{\tilde{C} \tilde{B}}$ with respect to the bases $\tilde{B}, \tilde{C}$ equivalently as a composition of the homomorphisms $\Phi _{\tilde{C} \tilde{B}} = \Xi _{\tilde{C}C} \circ \Phi _{CB} \circ \Psi _{B\tilde{B}}$ with respect to the bases in the subscripts. 
+        For a homomorphism $\Phi  : V \to  W$ and ordered bases $B, \tilde{B}$ of $V$ and $C, \tilde{C}$ of $W$ (marked in \textcolor{blue}{blue}), we can express the mapping $\Phi _{\tilde{C} \tilde{B}}$ with respect to the bases $\tilde{B}, \tilde{C}$ equivalently as a composition of the homomorphisms $\Phi _{\tilde{C} \tilde{B}} = \Xi _{\tilde{C}C} \circ \Phi _{CB} \circ \Psi _{B\tilde{B}}$ with respect to the bases in the subscripts.
         \\
         The corresponding transformation matrices are in \textcolor{red}{red}.
         \\
@@ -1357,7 +1357,7 @@ print(same_vector_space_method2(B1, B2))        # True
         \\
         .\hfill
         $
-            B = (\bm{b}_1, \cdots , \bm{b}_n), \ 
+            B = (\bm{b}_1, \cdots , \bm{b}_n), \
             \tilde{B} = (\tilde{\bm{b}}_1, \cdots , \tilde{\bm{b}}_n)
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1367,7 +1367,7 @@ print(same_vector_space_method2(B1, B2))        # True
         \\
         .\hfill
         $
-            C = (\bm{c}_1, \cdots , \bm{c}_n), \ 
+            C = (\bm{c}_1, \cdots , \bm{c}_n), \
             \tilde{C} = (\tilde{\bm{c}}_1, \cdots , \tilde{\bm{c}}_n)
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1378,7 +1378,7 @@ print(same_vector_space_method2(B1, B2))        # True
         $.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        Here, $\bm{S} \in \mbbR^{n\times n}$ is the transformation matrix of $\text{id}_V$ that maps coordinates with respect to $\tilde{B}$ onto coordinates with respect to $B$, \ 
+        Here, $\bm{S} \in \mbbR^{n\times n}$ is the transformation matrix of $\text{id}_V$ that maps coordinates with respect to $\tilde{B}$ onto coordinates with respect to $B$, \
         and $\bm{T} \in \mbbR^{m\times m}$ is the transformation matrix of $\text{id}_W$ that maps coordinates with respect to $\tilde{C}$ onto coordinates with respect to $C$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
@@ -1389,9 +1389,9 @@ print(same_vector_space_method2(B1, B2))        # True
         \\
         .\hfill
         $
-            \tilde{\bm{b}}_j 
-            = s_{1j} \bm{b}_1 + \cdots + s_{nj} \bm{b}_n 
-            = \dsum^n _{i=1} s_{ij} \bm{b}_i 
+            \tilde{\bm{b}}_j
+            = s_{1j} \bm{b}_1 + \cdots + s_{nj} \bm{b}_n
+            = \dsum^n _{i=1} s_{ij} \bm{b}_i
             , j = 1, \cdots , n
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1401,15 +1401,15 @@ print(same_vector_space_method2(B1, B2))        # True
         \\
         .\hfill
         $
-            \tilde{\bm{c}}_k 
-            = t_{1k} \bm{c}_1 + \cdots + t_{mk} \bm{c}_m 
-            = \dsum^m _{l=1} t_{lk} \bm{c}_l 
+            \tilde{\bm{c}}_k
+            = t_{1k} \bm{c}_1 + \cdots + t_{mk} \bm{c}_m
+            = \dsum^m _{l=1} t_{lk} \bm{c}_l
             , k = 1, \cdots , m
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        We define $\bm{S} = ((s_{ij} )) \in \mbbR^{n\times n}$ as the transformation matrix that maps coordinates with respect to $\tilde{B}$ onto coordinates with respect to $B$ and $\bm{T} = ((t_{lk})) \in R^{m\times m}$ as the transformation matrix that maps coordinates with respect to $\tilde{C}$ onto coordinates with respect to $C$. 
-        In particular, the $j$-th column of $\bm{S}$ is the coordinate representation of $\tilde{\bm{b}}_j$ with respect to $B$ and the $k$-th column of $\bm{T}$ is the coordinate representation of $\tilde{\bm{c}}_k$ with respect to $C$. 
+        We define $\bm{S} = ((s_{ij} )) \in \mbbR^{n\times n}$ as the transformation matrix that maps coordinates with respect to $\tilde{B}$ onto coordinates with respect to $B$ and $\bm{T} = ((t_{lk})) \in R^{m\times m}$ as the transformation matrix that maps coordinates with respect to $\tilde{C}$ onto coordinates with respect to $C$.
+        In particular, the $j$-th column of $\bm{S}$ is the coordinate representation of $\tilde{\bm{b}}_j$ with respect to $B$ and the $k$-th column of $\bm{T}$ is the coordinate representation of $\tilde{\bm{c}}_k$ with respect to $C$.
         Note that both $\bm{S}$ and $\bm{T}$ are regular.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
@@ -1429,45 +1429,45 @@ print(same_vector_space_method2(B1, B2))        # True
                     \dsum^m_{l=1} t_{lk} \bm{c}_l
                 }
                 = \dsum^m_{l=1} \dParenBrac{
-                    \textcolor{PineGreen}{\dsum^m_{k=1} t_{lk} \tilde{a}_{kj}} 
+                    \textcolor{PineGreen}{\dsum^m_{k=1} t_{lk} \tilde{a}_{kj}}
                 }  \bm{c}_l
             $
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
             \\
             where we first expressed the new basis vectors $\tilde{\bm{c}}_k \in W$ as linear combinations of the basis vectors $\bm{c}_l \in W$ and then swapped the order of summation.
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
-    
+
+
             \item when we express the $\tilde{\bm{b}}_j \in V$ as linear combinations of $\bm{b}_j \in V$ , we arrive at ($j = 1,\cdots, n$) :
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
             \\
             .\hfill
             $
-                \Phi (\tilde{\bm{b}}_j ) 
+                \Phi (\tilde{\bm{b}}_j )
                 = \Phi  \dParenBrac{ \textcolor{blue}{\dsum ^n _{i=1} s_{ij} \bm{b}_i}}
-                = \dsum ^n _{i=1} s_{ij} \textcolor{red}{\Phi (\bm{b}_i)} 
+                = \dsum ^n _{i=1} s_{ij} \textcolor{red}{\Phi (\bm{b}_i)}
                 = \dsum^n _{i=1} s_{ij} \textcolor{red}{\dsum ^m _{l=1} a_{li} \bm{c}_l}
                 = \dsum ^m _{l=1} \dParenBrac{ \textcolor{PineGreen}{\dsum^n _{i=1} s_{ij} a_{li}} } \bm{c}_l
             $
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
             \item $
                 \begin{aligned}
                     \dsum^m_{k=1} t_{lk} \tilde{a}_{kj} = \dsum^n _{i=1} s_{ij} a_{li}
                     \hspace{1cm}
-                    \Rightarrow 
-                    \bm{T} \tilde{\bm{A}}_\Phi = \bm{A}_\Phi \bm{S} 
+                    \Rightarrow
+                    \bm{T} \tilde{\bm{A}}_\Phi = \bm{A}_\Phi \bm{S}
                     \in \mbbR^{m\times n}
                     \hspace{1cm}
-                    \Rightarrow 
+                    \Rightarrow
                     \tilde{\bm{A}}_\Phi = \bm{T}^{-1} \bm{A}_\Phi \bm{S}
                 \end{aligned}
             $
-            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}        
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
     \end{proof}
 
-    
+
 \end{enumerate}
 
 
@@ -1481,7 +1481,7 @@ print(same_vector_space_method2(B1, B2))        # True
 \begin{enumerate}
     \item
     \begin{definition}[Orthonormal Basis (ONB)]
-        Consider an $n$-dimensional vector space $V$ and a basis $\dCurlyBrac{\bm{b}_1, \cdots , \bm{b}_n}$ of $V$ . 
+        Consider an $n$-dimensional vector space $V$ and a basis $\dCurlyBrac{\bm{b}_1, \cdots , \bm{b}_n}$ of $V$ .
         If
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
@@ -1510,7 +1510,7 @@ print(same_vector_space_method2(B1, B2))        # True
     \item Assume we are given a set $\dCurlyBrac{\tilde{\bm{b}}_1, \cdots ,\tilde{\bm{b}}_n}$ of non-orthogonal and un-normalized basis vectors.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item We concatenate them into a matrix $\tilde{\bm{B}} = [\tilde{\bm{b}}_1, \cdots ,\tilde{\bm{b}}_n]$ and apply Gaussian elimination to the augmented matrix $[\tilde{\bm{B}} \tilde{\bm{B}}^\top|\tilde{\bm{B}}]$ to obtain an orthonormal basis. 
+    \item We concatenate them into a matrix $\tilde{\bm{B}} = [\tilde{\bm{b}}_1, \cdots ,\tilde{\bm{b}}_n]$ and apply Gaussian elimination to the augmented matrix $[\tilde{\bm{B}} \tilde{\bm{B}}^\top|\tilde{\bm{B}}]$ to obtain an orthonormal basis.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
@@ -1527,7 +1527,7 @@ def gram_schmidt_from_augmented_matrix(basis_vectors):
     Implements Gram-Schmidt as described via augmented matrix [B B^T | B]
 
     Parameters:
-        basis_vectors (list of np.ndarray): List of non-orthogonal 
+        basis_vectors (list of np.ndarray): List of non-orthogonal
             basis vectors (each of same length)
 
     Returns:
@@ -1578,13 +1578,13 @@ for i in range(Q.shape[1]):
         keepaspectratio,
     ]{images/maths-for-ml/Gram-Schmidt-orthogonalization-eg-3.12.png}
     \caption*{
-        Gram-Schmidt orthogonalization. 
+        Gram-Schmidt orthogonalization.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        (a) non-orthogonal basis $(\bm{b}_1, \bm{b}_2)$ of $\mbbR^2$ 
+        (a) non-orthogonal basis $(\bm{b}_1, \bm{b}_2)$ of $\mbbR^2$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        (b) first constructed basis vector $\bm{u}_1$ and orthogonal projection of $\bm{b}_2$ onto $\text{span}[\bm{u}_1]$; 
+        (b) first constructed basis vector $\bm{u}_1$ and orthogonal projection of $\bm{b}_2$ onto $\text{span}[\bm{u}_1]$;
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         (c) orthogonal basis $(\bm{u}_1, \bm{u}_2)$ of $\mbbR^2$.
@@ -1594,7 +1594,7 @@ for i in range(Q.shape[1]):
 
 
 \begin{enumerate}
-    \item Method 1 
+    \item Method 1
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     Projections are at the core of the Gram-Schmidt method that allows us to constructively transform any basis $(\bm{b}_1, \cdots , \bm{b}_n)$ of an $n$-dimensional vector space $V$ into an orthogonal/orthonormal basis $(\bm{u}_1, \cdots ,\bm{u}_n)$ of $V$ .
@@ -1613,33 +1613,33 @@ for i in range(Q.shape[1]):
     \end{enumerate}
     the $k$-th basis vector $\bm{b}_k$ is projected onto the subspace spanned by the first $k - 1$ constructed orthogonal vectors $\bm{u}_1, \cdots ,\bm{u}_{k-1}$.
     If we normalize the $\bm{u}_k$, we obtain an ONB where $\dnorm{\bm{u}_k} = 1$ for $k = 1, \cdots , n$
-    
+
 
     \item Method 2
     \hfill \cite{wiki/Gram-Schmidt_process}
     \begin{enumerate}
         \item ${
-            \displaystyle 
+            \displaystyle
             \operatorname {proj} _{\mathbf {u} }(\mathbf {b} )
-            ={\frac {\langle \mathbf {v} ,\mathbf {b} \rangle }{\langle \mathbf {u} ,\mathbf {u} \rangle }}
-            \,\mathbf {u} 
+            ={\dfrac {\langle \mathbf {v} ,\mathbf {b} \rangle }{\langle \mathbf {u} ,\mathbf {u} \rangle }}
+            \,\mathbf {u}
         }$
         \hfill \cite{wiki/Gram-Schmidt_process}
 
         \item ${
-        \displaystyle 
+        \displaystyle
         {\begin{aligned}
-            \mathbf {u} _{1} &=\mathbf {b} _{1}, &\!\mathbf {e} _{1}&={\frac {\mathbf {u} _{1}}{\|\mathbf {u} _{1}\|}}
-            \\\mathbf {u} _{2}&=\mathbf {b} _{2}-\operatorname {proj} _{\mathbf {u} _{1}}(\mathbf {b} _{2}),&\!\mathbf {e} _{2}&={\frac {\mathbf {u} _{2}}{\|\mathbf {u} _{2}\|}}
-            \\\mathbf {u} _{3}&=\mathbf {b} _{3}-\operatorname {proj} _{\mathbf {u} _{1}}(\mathbf {b} _{3})-\operatorname {proj} _{\mathbf {u} _{2}}(\mathbf {b} _{3}),&\!\mathbf {e} _{3}&={\frac {\mathbf {u} _{3}}{\|\mathbf {u} _{3}\|}}
+            \mathbf {u} _{1} &=\mathbf {b} _{1}, &\!\mathbf {e} _{1}&={\dfrac {\mathbf {u} _{1}}{\|\mathbf {u} _{1}\|}}
+            \\\mathbf {u} _{2}&=\mathbf {b} _{2}-\operatorname {proj} _{\mathbf {u} _{1}}(\mathbf {b} _{2}),&\!\mathbf {e} _{2}&={\dfrac {\mathbf {u} _{2}}{\|\mathbf {u} _{2}\|}}
+            \\\mathbf {u} _{3}&=\mathbf {b} _{3}-\operatorname {proj} _{\mathbf {u} _{1}}(\mathbf {b} _{3})-\operatorname {proj} _{\mathbf {u} _{2}}(\mathbf {b} _{3}),&\!\mathbf {e} _{3}&={\dfrac {\mathbf {u} _{3}}{\|\mathbf {u} _{3}\|}}
             \\\mathbf {u} _{4}&=\mathbf {b} _{4}-\operatorname {proj} _{\mathbf {u} _{1}}(\mathbf {b} _{4})-\operatorname {proj} _{\mathbf {u} _{2}}(\mathbf {b} _{4})-\operatorname {proj} _{\mathbf {u} _{3}}(\mathbf {b} _{4}),&\!\mathbf {e} _{4}&={\mathbf {u} _{4} \over \|\mathbf {u} _{4}\|}
-            \\&{}\ \ \vdots &&{}\ \ \vdots 
-            \\\mathbf {u} _{k}&=\mathbf {b} _{k}-\sum _{j=1}^{k-1}\operatorname {proj} _{\mathbf {u} _{j}}(\mathbf {b} _{k}),&\!\mathbf {e} _{k}&={\frac {\mathbf {u} _{k}}{\|\mathbf {u} _{k}\|}}
+            \\&{}\ \ \vdots &&{}\ \ \vdots
+            \\\mathbf {u} _{k}&=\mathbf {b} _{k}-\sum _{j=1}^{k-1}\operatorname {proj} _{\mathbf {u} _{j}}(\mathbf {b} _{k}),&\!\mathbf {e} _{k}&={\dfrac {\mathbf {u} _{k}}{\|\mathbf {u} _{k}\|}}
         \end{aligned}}
         }$
         \hfill \cite{wiki/Gram-Schmidt_process}
     \end{enumerate}
-    The sequence ${\displaystyle \mathbf {u} _{1},\ldots ,\mathbf {u} _{k}}$ is the required system of orthogonal vectors, and the normalized vectors ${\displaystyle \mathbf {e} _{1},\ldots ,\mathbf {e} _{k}}$ form an orthonormal set. 
+    The sequence ${\displaystyle \mathbf {u} _{1},\ldots ,\mathbf {u} _{k}}$ is the required system of orthogonal vectors, and the normalized vectors ${\displaystyle \mathbf {e} _{1},\ldots ,\mathbf {e} _{k}}$ form an orthonormal set.
     \hfill \cite{wiki/Gram-Schmidt_process}
 \end{enumerate}
 
@@ -1655,13 +1655,13 @@ def gram_schmidt(vectors, inner_product=None):
     Perform Gram-Schmidt orthogonalization on a list of vectors.
 
     Parameters:
-        vectors (list of np.ndarray): List of n vectors in R^d 
+        vectors (list of np.ndarray): List of n vectors in R^d
             (each a 1D array).
-        inner_product (function): Function to 
+        inner_product (function): Function to
             compute inner product, default is np.dot.
 
     Returns:
-        orthogonal_basis (list of np.ndarray): Orthogonal 
+        orthogonal_basis (list of np.ndarray): Orthogonal
             (not normalized) basis vectors.
     """
 
@@ -1802,7 +1802,7 @@ Orthonormal basis:
         \\
         .\hfill
         $
-            \forall \bm{x}, \bm{y} \in V \forall \lambda , \psi  \in \mbbR : 
+            \forall \bm{x}, \bm{y} \in V \forall \lambda , \psi  \in \mbbR :
             \Phi(\lambda \bm{x} + \psi \bm{y}) = \lambda \Phi(\bm{x}) + \psi \Phi(\bm{y})
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1843,8 +1843,8 @@ Orthonormal basis:
         \\
         .\hfill
         $
-            \text{Im}(\Phi ) 
-            := \Phi (V ) 
+            \text{Im}(\Phi )
+            := \Phi (V )
             = \dCurlyBrac{\bm{w} \in W|\exists \bm{v} \in V : \Phi (\bm{v}) = \bm{w}}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1857,8 +1857,8 @@ Orthonormal basis:
         \\
         .\hfill
         $
-            \ker(\Phi ) 
-            := \Phi ^{-1} (\bm{0}_W ) 
+            \ker(\Phi )
+            := \Phi ^{-1} (\bm{0}_W )
             = \dCurlyBrac{\bm{v} \in V : \Phi (\bm{v}) = \bm{0}_W }
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1874,7 +1874,7 @@ Orthonormal basis:
     \item Intuitively, the kernel is the set of vectors $\bm{v} \in V$ that $\Phi$ maps onto the neutral element $\bm{0}_W \in W$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item It always holds that $\Phi(\bm{0}_V ) = \bm{0}_W$ and, therefore, $\bm{0}_V \in \ker(\Phi)$. 
+    \item It always holds that $\Phi(\bm{0}_V ) = \bm{0}_W$ and, therefore, $\bm{0}_V \in \ker(\Phi)$.
     In particular, the null space is never empty.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -1933,19 +1933,19 @@ Orthonormal basis:
         $ \phi : V \to W $ such that $ \bm{x} \mapsto \bm{a} + \Phi(\bm{x}) $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        is an affine mapping from $V$ to $W$. 
+        is an affine mapping from $V$ to $W$.
         The vector a is called the \textbf{translation vector} of $\phi$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item Every affine mapping $\phi  : V \to W$ is also the composition of a linear mapping $\phi  : V \to W$ and a translation $\tau : W \to W$ in $W$, such that $\phi  = \tau \circ \phi $. 
+    \item Every affine mapping $\phi  : V \to W$ is also the composition of a linear mapping $\phi  : V \to W$ and a translation $\tau : W \to W$ in $W$, such that $\phi  = \tau \circ \phi $.
     The mappings $\phi $ and $\tau$ are uniquely determined.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item The composition $\phi ^\prime \circ \phi $ of affine mappings $\phi  : V \to W, \phi ^\prime: W \to X$ is affine.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Affine mappings keep the geometric structure invariant. 
+    \item Affine mappings keep the geometric structure invariant.
     They also preserve the dimension and parallelism.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
@@ -1978,18 +1978,18 @@ Orthonormal basis:
 
 \section{Injective, Surjective, Bijective Mappings}
 
-Consider a mapping $\Phi : \mathcal{V} \to \mathcal{W}$, where $\mathcal{V}, \mathcal{W}$ can be arbitrary sets. 
+Consider a mapping $\Phi : \mathcal{V} \to \mathcal{W}$, where $\mathcal{V}, \mathcal{W}$ can be arbitrary sets.
 Then $\Phi$ is called:
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 \begin{enumerate}
-    \item 
-    \begin{definition}[Injective] 
+    \item
+    \begin{definition}[Injective]
         if $\forall \bm{x}, \bm{y} \in \mathcal{V} : \Phi(\bm{x}) = \Phi(\bm{y}) \Rightarrow \bm{x} = \bm{y}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item 
+    \item
     \begin{definition}[Surjective]
         if $\Phi(\mathcal{V}) = \mathcal{W}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -1998,8 +1998,8 @@ Then $\Phi$ is called:
         \item If $\Phi$ is surjective, then every element in $\mathcal{W}$ can be “reached” from $\mathcal{V}$ using $\Phi$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
-    
-    \item 
+
+    \item
     \begin{definition}[Bijective]
         if it is injective and surjective
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -2010,7 +2010,7 @@ Then $\Phi$ is called:
 
         \item This mapping $\Psi$ is then called the inverse of $\Phi$ and normally denoted by $\Phi^{-1}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \end{enumerate}    
+    \end{enumerate}
 
 \end{enumerate}
 
@@ -2033,12 +2033,12 @@ Then $\Phi$ is called:
 
 \section{Special cases of Linear mappings}
 
-Consider a mapping $\Phi : V \to W$, where $V, W$ can be arbitrary vector spaces. 
+Consider a mapping $\Phi : V \to W$, where $V, W$ can be arbitrary vector spaces.
 Then:
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Isomorphism]
         $\Phi : V \to W$ linear and bijective
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -2061,19 +2061,19 @@ Then:
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
-    \item 
+    \item
     \begin{definition}[Endomorphism]
         $\Phi : V \to V$ linear
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item 
+    \item
     \begin{definition}[Automorphism]
         $\Phi : V \to V$ linear and bijective
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item 
+    \item
     \begin{definition}[identity mapping/ identity automorphism]
         $id_V : V \to V , \bm{x} \mapsto \bm{x}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -2101,21 +2101,21 @@ Then:
 \section{Transformation Matrix ( $A_\Phi$ )}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Transformation Matrix]
-        Consider vector spaces $V$, $W$ with corresponding (ordered) bases $B = (\bm{b}_1, \cdots , \bm{b}_n)$ and $C = (\bm{c}_1, \cdots , \bm{c}_m)$. 
-        Moreover, we consider a linear mapping $\Phi : V \to W$. 
+        Consider vector spaces $V$, $W$ with corresponding (ordered) bases $B = (\bm{b}_1, \cdots , \bm{b}_n)$ and $C = (\bm{c}_1, \cdots , \bm{c}_m)$.
+        Moreover, we consider a linear mapping $\Phi : V \to W$.
         For $j \in \dCurlyBrac{1, \cdots , n}$,
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         .\hfill
         $
-            \Phi(\bm{b}_j ) = \alpha _{1j} \bm{c}_1 + \cdots + \alpha _{mj} \bm{c}_m 
+            \Phi(\bm{b}_j ) = \alpha _{1j} \bm{c}_1 + \cdots + \alpha _{mj} \bm{c}_m
             = \dsum^m_{i=1} \alpha _{ij} \bm{c}_i
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        is the unique representation of $\Phi(\bm{b}_j )$ with respect to $C$. 
+        is the unique representation of $\Phi(\bm{b}_j )$ with respect to $C$.
         Then, we call the $m \times n$-matrix $\bm{A}_\Phi$, whose elements are given by $\bm{A}_\Phi(i, j) = \alpha_{ij}$ the transformation matrix of $\Phi$ (with respect to the ordered bases $B$ of $V$ and $C$ of $W$  ).
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
@@ -2123,12 +2123,12 @@ Then:
     \item The transformation matrix can be used to map coordinates with respect to an ordered basis in $V$ to coordinates with respect to an ordered basis in $W$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Consider vector spaces $V, W, X$. 
-    We already know that for linear mappings $\Phi  : V \to  W$ and $\Psi : W \to  X$ the mapping $\Psi \circ \Phi  : V \to  X$ is also linear. 
+    \item Consider vector spaces $V, W, X$.
+    We already know that for linear mappings $\Phi  : V \to  W$ and $\Psi : W \to  X$ the mapping $\Psi \circ \Phi  : V \to  X$ is also linear.
     With transformation matrices $\bm{A}_\Phi$  and $\bm{A}_\Psi$ of the corresponding mappings, the overall transformation matrix is $\bm{A}_{\Psi\circ\Phi}  = \bm{A}_\Psi \bm{A}_\Phi$ .
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     $\bm{A}_\Phi$  is the transformation matrix of a linear mapping $\Phi _{CB} : V \to  W$ with respect to the bases $B, C$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\[0.2cm]
@@ -2146,13 +2146,13 @@ Then:
     \\[0.2cm]
     .\hfill
     $
-        \tilde{B} \to  \tilde{C} = \textcolor{blue}{\tilde{B} \to  B} \textcolor{red}{\to  C} \to  \tilde{C} 
+        \tilde{B} \to  \tilde{C} = \textcolor{blue}{\tilde{B} \to  B} \textcolor{red}{\to  C} \to  \tilde{C}
         \Rightarrow
         \tilde{\bm{A}}_\Phi  = \bm{T}^{-1} \textcolor{red}{\bm{A}_\Phi} \textcolor{blue}{\bm{S}}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\[0.2cm]
-    Note that the execution order is from \textbf{right to left} because vectors are multiplied at the right-hand side so that 
+    Note that the execution order is from \textbf{right to left} because vectors are multiplied at the right-hand side so that
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\[0.2cm]
     .\hfill
@@ -2171,7 +2171,7 @@ Then:
 \section{Coordinates}
 
 \begin{enumerate}
-    \item Consider a vector space $V$ and an ordered basis $B = (\bm{b}_1, \cdots , \bm{b}_n)$ of $V$ . 
+    \item Consider a vector space $V$ and an ordered basis $B = (\bm{b}_1, \cdots , \bm{b}_n)$ of $V$ .
     For any $\bm{x} \in V$ we obtain a unique representation (linear combination):
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
@@ -2181,7 +2181,7 @@ Then:
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
-    of $\bm{x}$ with respect to $B$. 
+    of $\bm{x}$ with respect to $B$.
     Then $\alpha_1, \cdots , \alpha_n$ are the coordinates of $\bm{x}$ with respect to $B$, and the vector:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
@@ -2214,7 +2214,7 @@ Then:
 
         \item If $\hat{\bm{x}}$ is the coordinate vector of $\bm{x} \in V$ with respect to $B$ and $\hat{\bm{y}}$ the coordinate vector of $\bm{y} = \Phi(\bm{x}) \in W$ with respect to $C$, then $\hat{\bm{y}} = \bm{A}_\Phi \hat{\bm{x}}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    \end{enumerate}    
+    \end{enumerate}
 \end{enumerate}
 
 
@@ -2234,8 +2234,8 @@ Then:
     \item Projections are an important class of linear transformations (besides rotations and reflections) and play an important role in graphics, coding theory, statistics and machine learning.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item High-dimensional data is often hard to analyze or visualize. 
-    However, high-dimensional data quite often possesses the property that only a few dimensions contain most information, and most other dimensions are not essential to describe key properties of the data. 
+    \item High-dimensional data is often hard to analyze or visualize.
+    However, high-dimensional data quite often possesses the property that only a few dimensions contain most information, and most other dimensions are not essential to describe key properties of the data.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item When we compress or visualize high-dimensional data, we will lose information. To minimize this compression loss, we ideally find the most informative dimensions in the data.
@@ -2250,9 +2250,9 @@ Then:
     \item For a given lower-dimensional subspace, orthogonal projections of high-dimensional data retain as much information as possible and minimize the difference/ error between the original data and the corresponding projection.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{definition}[projection]
-        Let $V$ be a vector space and $U \subseteq V$ a subspace of $V$ . 
+        Let $V$ be a vector space and $U \subseteq V$ a subspace of $V$ .
         A linear mapping $\pi : V \to U$ is called a projection if $\pi^2 = \pi \circ \pi = \pi$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
@@ -2261,22 +2261,22 @@ Then:
     Therefore, they can be represented as linear combinations of the basis vectors $\bm{b}_1, \cdots , \bm{b}_m$ of $U$, such that $\pi_U (\bm{x}) = \dsum ^m _{i=1} \lambda_i \bm{b}_i$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{definition}[Projection error/ reconstruction error]
-        The corresponding projection error is the norm of the difference vector between the original vector and its projection onto $U$: 
+        The corresponding projection error is the norm of the difference vector between the original vector and its projection onto $U$:
         $
             \dnorm{\bm{x} - \pi_U(\bm{x})}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item The projections $\pi_U (\bm{x})$ are still vectors in $\mbbR^n$ although they lie in an $m$-dimensional subspace $U \subseteq \mbbR^n$ . 
+    \item The projections $\pi_U (\bm{x})$ are still vectors in $\mbbR^n$ although they lie in an $m$-dimensional subspace $U \subseteq \mbbR^n$ .
     However, to represent a projected vector we only need the $m$ coordinates $\lambda_1, \cdots , \lambda_m$ with respect to the basis vectors $\bm{b}_1, \cdots , \bm{b}_m$ of $U$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item If the basis $\bm{B}$ is an ONB, the projection equation 
+    \item If the basis $\bm{B}$ is an ONB, the projection equation
     $
-        \pi_U (\bm{x}) 
+        \pi_U (\bm{x})
         = \bm{B} (\bm{B}^\top \bm{B})^{-1} \bm{B}^\top \bm{x}
     $
     simplifies greatly to $ \pi_U (\bm{x}) = \bm{B}\bm{B}^\top \bm{x}$ since $\bm{B}^\top \bm{B} = \bm{I}$ with coordinates $\bm{\lambda} = \bm{B}^\top \bm{x} $
@@ -2310,7 +2310,7 @@ Then:
         \centering
         \includegraphics[
             width=\linewidth,
-            height=4cm, 
+            height=4cm,
             keepaspectratio,
         ]{images/maths-for-ml/Projection-1d-a.png}
         \caption*{
@@ -2325,7 +2325,7 @@ Then:
         \centering
         \includegraphics[
             width=\linewidth,
-            height=4cm, 
+            height=4cm,
             keepaspectratio,
         ]{images/maths-for-ml/Projection-1d-b.png}
         \caption*{
@@ -2339,7 +2339,7 @@ Then:
 
 \begin{enumerate}
     \item Assume we are given a line (one-dimensional subspace) through the origin with basis vector $\bm{b} \in \mbbR^n$.
-    The line is a one-dimensional subspace $U \subseteq \mbbR^n$ spanned by $\bm{b}$. 
+    The line is a one-dimensional subspace $U \subseteq \mbbR^n$ spanned by $\bm{b}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item When we project $\bm{x} \in \mbbR^n$ onto $U$, we seek the vector $\pi_U (\bm{x}) \in U$ that is closest to $\bm{x}$.
@@ -2347,12 +2347,12 @@ Then:
 
     \item properties of the projection $\pi_U (\bm{x})$:
     \begin{enumerate}
-        \item The projection $\pi _U (\bm{x})$ is closest to $\bm{x}$, where “closest” implies that the distance $\dnorm{\bm{x} - \pi _U (\bm{x})}$ is minimal. 
-        It follows that the segment $\pi _U (\bm{x}) - x$ from $\pi _U (\bm{x})$ to $\bm{x}$ is orthogonal to $U$, and therefore the basis vector $\bm{b}$ of $U$. 
+        \item The projection $\pi _U (\bm{x})$ is closest to $\bm{x}$, where “closest” implies that the distance $\dnorm{\bm{x} - \pi _U (\bm{x})}$ is minimal.
+        It follows that the segment $\pi _U (\bm{x}) - x$ from $\pi _U (\bm{x})$ to $\bm{x}$ is orthogonal to $U$, and therefore the basis vector $\bm{b}$ of $U$.
         The orthogonality condition yields $\dAngleBrac{\pi _U (\bm{x})  -  \bm{x}, \bm{b}} = 0$ since angles between vectors are defined via the inner product.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item The projection $\pi_U (\bm{x})$ of $\bm{x}$ onto $U$ must be an element of $U$ and, therefore, a multiple of the basis vector $\bm{b}$ that spans $U$. 
+        \item The projection $\pi_U (\bm{x})$ of $\bm{x}$ onto $U$ must be an element of $U$ and, therefore, a multiple of the basis vector $\bm{b}$ that spans $U$.
         Hence, $\pi_U (\bm{x}) = \lambda\bm{b}$, for some $\lambda \in \mbbR$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
@@ -2365,19 +2365,19 @@ Then:
         \\
         $
             \begin{aligned}
-                & \dAngleBrac{\bm{x} - \pi_ U (x), \bm{b}} = 0 
+                & \dAngleBrac{\bm{x} - \pi_ U (x), \bm{b}} = 0
                 \\
                 \Longleftrightarrow &
                     \dAngleBrac{\bm{x} - \lambda \bm{b}, \bm{b}} = 0
-                    \Longleftrightarrow 
-                    \dAngleBrac{\bm{x}, \bm{b}} - \lambda  \dAngleBrac{\bm{b}, \bm{b}} = 0 
+                    \Longleftrightarrow
+                    \dAngleBrac{\bm{x}, \bm{b}} - \lambda  \dAngleBrac{\bm{b}, \bm{b}} = 0
                 \\
                 \Longleftrightarrow &
-                    \lambda  
-                    = \dfrac{\dAngleBrac{\bm{x}, \bm{b}}}{\dAngleBrac{\bm{b}, \bm{b}}} 
+                    \lambda
+                    = \dfrac{\dAngleBrac{\bm{x}, \bm{b}}}{\dAngleBrac{\bm{b}, \bm{b}}}
                     = \dfrac{\dAngleBrac{\bm{b}, \bm{x}}}{\dnorm{\bm{b}}^2}
-                    \Longleftrightarrow 
-                    \lambda 
+                    \Longleftrightarrow
+                    \lambda
                     =\dfrac{\bm{b}^\top \bm{x}}{\bm{b}^\top \bm{b}}
                     =\dfrac{\bm{b}^\top \bm{x}}{\dnorm{\bm{b}}^2}
             \end{aligned}
@@ -2392,15 +2392,15 @@ Then:
         \\
         $
             \begin{aligned}
-                & \pi _U (\bm{x}) = \lambda  \bm{b} 
-                    = \dfrac{\dAngleBrac{\bm{x}, \bm{b}}}{\dnorm{\bm{b}}^2} \bm{b} 
-                    = \dfrac{\bm{b}^\top \bm{x}}{\dnorm{\bm{b}}^2} \bm{b} 
+                & \pi _U (\bm{x}) = \lambda  \bm{b}
+                    = \dfrac{\dAngleBrac{\bm{x}, \bm{b}}}{\dnorm{\bm{b}}^2} \bm{b}
+                    = \dfrac{\bm{b}^\top \bm{x}}{\dnorm{\bm{b}}^2} \bm{b}
                 \\
                 \Rightarrow &
-                    \dnorm{\pi _U (\bm{x})} = \dnorm{\lambda  \bm{b}} = \dabs{\lambda} \dnorm{\bm{b}} 
+                    \dnorm{\pi _U (\bm{x})} = \dnorm{\lambda  \bm{b}} = \dabs{\lambda} \dnorm{\bm{b}}
                     = \dfrac{\dabs{\bm{b}^\top \bm{x}}}{\dnorm{\bm{b}}^2} \dnorm{\bm{b}}
                     = \dabs{\cos \omega} \dnorm{\bm{x}} \dnorm{\bm{b}} \dfrac{\dnorm{\bm{b}}}{\dnorm{\bm{b}}^2}
-                    = \dabs{\cos \omega} \dnorm{\bm{x}} 
+                    = \dabs{\cos \omega} \dnorm{\bm{x}}
             \end{aligned}
         $
         \\
@@ -2420,10 +2420,10 @@ Then:
         \\
         $
             \begin{aligned}
-                & \pi _U (\bm{x}) = \bm{P}_\pi \bm{x} 
+                & \pi _U (\bm{x}) = \bm{P}_\pi \bm{x}
                 \\
                 \Longleftrightarrow &
-                \dfrac{\bm{b}  \bm{b}^\top }{\dnorm{\bm{b}}^2} \bm{x} = \bm{P}_\pi \bm{x} 
+                \dfrac{\bm{b}  \bm{b}^\top }{\dnorm{\bm{b}}^2} \bm{x} = \bm{P}_\pi \bm{x}
                 \\
                 \Longleftrightarrow &
                 \bm{P}_\pi = \dfrac{\bm{b}  \bm{b}^\top }{\dnorm{\bm{b}}^2}
@@ -2431,7 +2431,7 @@ Then:
         $
         \\[0.2cm]
         Note that $\bm{bb}^\top$ (and, consequently, $\bm{P} _\pi$) is a symmetric matrix (of rank $1$), and $\dnorm{\bm{b}} ^2 = \dAngleBrac{\bm{b}, \bm{b}}$ is a scalar.\\
-        The projection $\pi_U (\bm{x}) \in \mbbR^n$ is still an $n$-dimensional vector and not a scalar. 
+        The projection $\pi_U (\bm{x}) \in \mbbR^n$ is still an $n$-dimensional vector and not a scalar.
         However, we no longer require $n$ coordinates to represent the projection, but only a single one if we want to express it with respect to the basis vector $\bm{b}$ that spans the subspace $U$: $\lambda$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
@@ -2450,7 +2450,7 @@ def project_onto_line(x, b):
     Projects vector x onto the line spanned by vector b.
 
     Returns:
-        lambda_scalar: the coordinate (scalar) 
+        lambda_scalar: the coordinate (scalar)
                 lambda such that projection = lambda * b
         projection: the projection vector (x projected onto b)
         projection_matrix: the projection matrix P such that P @ x = projection
@@ -2480,7 +2480,7 @@ print("Projection vector:\n", projection_vec)
 print("Projection matrix:\n", projection_mat)
 
 # should equal projection_vec
-print("P @ x:\n", projection_mat @ x.reshape(-1, 1))  
+print("P @ x:\n", projection_mat @ x.reshape(-1, 1))
 \end{lstlisting}
 
 output:
@@ -2519,7 +2519,7 @@ P @ x:
         keepaspectratio,
     ]{images/maths-for-ml/Projection-2d.png}
     \caption*{
-        Projection onto a two-dimensional subspace $U$ with basis $\bm{b}_1$, $\bm{b}_2$. 
+        Projection onto a two-dimensional subspace $U$ with basis $\bm{b}_1$, $\bm{b}_2$.
         The projection $\pi_U (\bm{x})$ of $\bm{x} \in \mbbR^3$ onto $U$ can be expressed as a linear combination of $\bm{b}_1, \bm{b}_2$ and the displacement vector $\bm{x} - \pi_U (\bm{x})$ is orthogonal to both $\bm{b}_1$ and $\bm{b}_2$.
         \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     }
@@ -2545,7 +2545,7 @@ P @ x:
         \\
         .\hfill
         $
-            \bm{B} = [\bm{b}_1, \cdots , \bm{b}_m] \in \mbbR^{n\times m}, 
+            \bm{B} = [\bm{b}_1, \cdots , \bm{b}_m] \in \mbbR^{n\times m},
             \bm{\lambda} = [\lambda_1, \cdots , \lambda_m]^\top \in \mbbR^m
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -2559,12 +2559,12 @@ P @ x:
         .\hfill
         $
             \begin{aligned}
-                \dAngleBrac{\bm{b}_1, \bm{x} - \pi _U (\bm{x})} 
-                    &= \bm{b} ^\top _1 (\bm{x} - \pi _U (\bm{x})) = 0 
+                \dAngleBrac{\bm{b}_1, \bm{x} - \pi _U (\bm{x})}
+                    &= \bm{b} ^\top _1 (\bm{x} - \pi _U (\bm{x})) = 0
                 \\
-                & \vdots 
+                & \vdots
                 \\
-                \dAngleBrac{\bm{b}_m, \bm{x} - \pi _U (\bm{x})} 
+                \dAngleBrac{\bm{b}_m, \bm{x} - \pi _U (\bm{x})}
                     &= \bm{b} ^\top _m(\bm{x} - \pi _U (\bm{x})) = 0
             \end{aligned}
         $
@@ -2601,7 +2601,7 @@ P @ x:
                 \hspace{0.5cm}
                 \Longleftrightarrow
                 \hspace{0.5cm}
-                \bm{B}^\top (\bm{x} - \bm{B\lambda}) = \bm{0} 
+                \bm{B}^\top (\bm{x} - \bm{B\lambda}) = \bm{0}
                 \hspace{0.5cm}
                 \Longleftrightarrow
                 \hspace{0.5cm}
@@ -2610,7 +2610,7 @@ P @ x:
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         $\bm{B}^\top \bm{B\lambda} = \bm{B}^\top \bm{x}$ is called \textbf{normal equation}.
-        Since $\bm{b}_1, \cdots , \bm{b}_m$ are a basis of $U$ and, therefore, linearly independent, $\bm{B}^\top \bm{B} \in \mbbR^{m\times m}$ is regular and can be inverted. 
+        Since $\bm{b}_1, \cdots , \bm{b}_m$ are a basis of $U$ and, therefore, linearly independent, $\bm{B}^\top \bm{B} \in \mbbR^{m\times m}$ is regular and can be inverted.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         .\hfill
@@ -2622,11 +2622,11 @@ P @ x:
         $(\bm{B}^\top \bm{B})^{-1} \bm{B}^\top$ is also called the pseudo-inverse of $\bm{B}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        In practical applications (e.g., linear regression), we often add a “\textbf{jitter term}” $\epsilon \bm{I}$ to $\bm{B}^\top \bm{B}$ to guarantee increased numerical stability and positive definiteness. 
-        This “ridge” can be rigorously derived using Bayesian inference. 
+        In practical applications (e.g., linear regression), we often add a “\textbf{jitter term}” $\epsilon \bm{I}$ to $\bm{B}^\top \bm{B}$ to guarantee increased numerical stability and positive definiteness.
+        This “ridge” can be rigorously derived using Bayesian inference.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        A ridge term is essentially the same as a jitter term but used in the context of regularization, especially in ridge regression (also called Tikhonov regularization). 
+        A ridge term is essentially the same as a jitter term but used in the context of regularization, especially in ridge regression (also called Tikhonov regularization).
         \hfill \cite{common/online/chatgpt}
 
         \item Find the projection $\pi_U (\bm{x}) \in U$:
@@ -2634,7 +2634,7 @@ P @ x:
         \\
         .\hfill
         $
-            \pi_U (\bm{x}) 
+            \pi_U (\bm{x})
             = \bm{B\lambda}
             = \bm{B} (\bm{B}^\top \bm{B})^{-1} \bm{B}^\top \bm{x}
         $
@@ -2649,7 +2649,7 @@ P @ x:
             \hspace{0.5cm}
             \Longleftrightarrow
             \hspace{0.5cm}
-            \bm{P} _\pi 
+            \bm{P} _\pi
                 = \bm{B} (\bm{B}^\top \bm{B})^{-1} \bm{B}^\top
                 = \dfrac{\bm{B}\bm{B}^\top}{\bm{B}^\top \bm{B}}
         $
@@ -2672,7 +2672,7 @@ def project_onto_subspace(x, B):
 
     Args:
         x: A numpy array of shape (n,) representing the vector to project
-        B: A numpy array of shape (n, m) whose 
+        B: A numpy array of shape (n, m) whose
             columns are basis vectors of the subspace
 
     Returns:
@@ -2712,7 +2712,7 @@ print("Projection vector:\n", projection_vec)
 print("Projection matrix:\n", projection_mat)
 
 # should equal projection_vec
-print("P @ x:\n", projection_mat @ x.reshape(-1, 1))  
+print("P @ x:\n", projection_mat @ x.reshape(-1, 1))
 \end{lstlisting}
 
 output:
@@ -2757,7 +2757,7 @@ P @ x:
     \caption*{
         Projection onto an affine space.
         \\
-        (a) original setting; 
+        (a) original setting;
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         (b) setting shifted by $-\bm{x}_0$ so that $\bm{x} - \bm{x}_0$ can be projected onto the direction space $U$;
@@ -2776,9 +2776,9 @@ P @ x:
     \item To determine the orthogonal projection $\pi_L(\bm{x})$ of $\bm{x}$ onto $L$, we transform the problem into a problem that we know how to solve: the projection onto a vector subspace.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item  In order to get there, we subtract the support point $\bm{x}_0$ from $\bm{x}$ and from $L$, so that $L - \bm{x}_0 = U$ is exactly the vector subspace $U$. 
+    \item  In order to get there, we subtract the support point $\bm{x}_0$ from $\bm{x}$ and from $L$, so that $L - \bm{x}_0 = U$ is exactly the vector subspace $U$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
     \item We can now use the orthogonal projections onto a subspace and obtain the projection $\pi_U (\bm{x} - \bm{x}_0)$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -2799,10 +2799,10 @@ P @ x:
     \\
     .\hfill
     $
-        d(\bm{x}, L) 
-        = \dnorm{\bm{x} - \pi_L(x)} 
+        d(\bm{x}, L)
+        = \dnorm{\bm{x} - \pi_L(x)}
         = \dnorm{\bm{x} - (\bm{x}_0 + \pi_U (\bm{x} - \bm{x}_0))}
-        = d(\bm{x} - \bm{x}_0, \pi_U (\bm{x} - \bm{x}_0)) 
+        = d(\bm{x} - \bm{x}_0, \pi_U (\bm{x} - \bm{x}_0))
         = d(\bm{x} - \bm{x}_0, U)
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -2818,15 +2818,15 @@ P @ x:
 \begin{enumerate}
     \item A rotation is a linear mapping (more specifically, an automorphism of rotation a Euclidean vector space) that rotates a plane by an angle $\theta$ about the origin, i.e., the origin is a fixed point.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
     \item For a positive angle $\theta > 0$, by common convention, we rotate in a counterclockwise direction.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The rotated vectors are still linearly independent and, therefore, are a basis of $\mbbR^2$. 
+    \item The rotated vectors are still linearly independent and, therefore, are a basis of $\mbbR^2$.
     This means that the rotation performs a basis change.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Rotations $\Phi$ are linear mappings so that we can express them by a rotation matrix $\bm{R}(\theta)$. 
+    \item Rotations $\Phi$ are linear mappings so that we can express them by a rotation matrix $\bm{R}(\theta)$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item \textbf{Properties}:
@@ -2837,11 +2837,11 @@ P @ x:
         \item Rotations preserve angles, i.e., the angle between $\bm{R}_\theta \bm{x}$ and $\bm{R}_\theta \bm{y}$ equals the angle between $\bm{x}$ and $\bm{y}$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item Rotations in three (or more) dimensions are generally not commutative. 
-        Therefore, the order in which rotations are applied is important, even if they rotate about the same point. 
+        \item Rotations in three (or more) dimensions are generally not commutative.
+        Therefore, the order in which rotations are applied is important, even if they rotate about the same point.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        
-        \item Only in two dimensions vector rotations are commutative, such that $\bm{R}(\phi)\bm{R}(\theta ) = \bm{R}(\theta )\bm{R}(\phi) \hspace{0.2cm} \forall \phi, \theta  \in [0, 2\pi)$. 
+
+        \item Only in two dimensions vector rotations are commutative, such that $\bm{R}(\phi)\bm{R}(\theta ) = \bm{R}(\theta )\bm{R}(\phi) \hspace{0.2cm} \forall \phi, \theta  \in [0, 2\pi)$.
         They form an Abelian group (with multiplication) only if they rotate about the same point (e.g., the origin).
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -2872,10 +2872,10 @@ P @ x:
 
 
 \begin{enumerate}
-    \item Consider the standard basis 
+    \item Consider the standard basis
     $
         \dCurlyBrac{
-            \bm{e}_1 = \begin{bmatrix}1\\0\end{bmatrix}, 
+            \bm{e}_1 = \begin{bmatrix}1\\0\end{bmatrix},
             \bm{e}_2 = \begin{bmatrix}0\\1\end{bmatrix}
         }
     $ of $\mbbR^2$ , which defines the standard coordinate system in $\mbbR^2$.
@@ -2918,7 +2918,7 @@ P @ x:
         keepaspectratio,
     ]{images/maths-for-ml/rotations-r3.png}
     \caption{
-        Rotation of a vector (gray) in $\mbbR^3$ by an angle $\theta$ about the $\bm{e}_3$-axis. 
+        Rotation of a vector (gray) in $\mbbR^3$ by an angle $\theta$ about the $\bm{e}_3$-axis.
         The rotated vector is shown in blue.
         \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     }
@@ -2928,7 +2928,7 @@ P @ x:
     \item In contrast to the $\mbbR^2$ case, in $\mbbR^3$ we can rotate any two-dimensional plane about a one-dimensional axis.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item The easiest way to specify the general rotation matrix is to specify how the images of the standard basis $\bm{e}_1$, $\bm{e}_2$, $\bm{e}_3$ are supposed to be rotated, and making sure these images $\bm{Re}_1$, $\bm{Re}_2$, $\bm{Re}_3$ are orthonormal to each other. 
+    \item The easiest way to specify the general rotation matrix is to specify how the images of the standard basis $\bm{e}_1$, $\bm{e}_2$, $\bm{e}_3$ are supposed to be rotated, and making sure these images $\bm{Re}_1$, $\bm{Re}_2$, $\bm{Re}_3$ are orthonormal to each other.
     We can then obtain a general rotation matrix $\bm{R}$ by combining the images of the standard basis.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -2942,7 +2942,7 @@ P @ x:
     \\
     .\hfill
     $
-        \bm{R}_1(\theta) 
+        \bm{R}_1(\theta)
         = \begin{bmatrix}\Phi(\bm{e}_1) & \Phi(\bm{e}_2) & \Phi(\bm{e}_3)\end{bmatrix}
         = \begin{bmatrix}
         1 & 0 & 0 \\
@@ -2962,7 +2962,7 @@ P @ x:
     \\
     .\hfill
     $
-        \bm{R}_2(\theta) 
+        \bm{R}_2(\theta)
         = \begin{bmatrix}
         \cos \theta & 0 &  \sin \theta \\
         0 & 1 & 0 \\
@@ -2981,7 +2981,7 @@ P @ x:
     \\
     .\hfill
     $
-        \bm{R}_3(\theta) 
+        \bm{R}_3(\theta)
         = \begin{bmatrix}
         \cos \theta &   -\sin \theta & 0\\
         \sin \theta &  \cos \theta & 0\\
@@ -2989,7 +2989,7 @@ P @ x:
         \end{bmatrix}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
 \end{enumerate}
 
 
@@ -3004,7 +3004,7 @@ P @ x:
         \\
         .\hfill
         $
-            \bm{R}_{ij} (\theta) := 
+            \bm{R}_{ij} (\theta) :=
             \begin{bmatrix}
                 \bm{I}_{i-1} & 0 & \cdots &  \cdots & 0 \\
                 0 & \cos \theta & 0 & - \sin \theta & 0\\
@@ -3016,18 +3016,18 @@ P @ x:
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
-        for $1 \leq i < j \leq n$ and $\theta \in \mbbR$. 
-        Then $\bm{R}_{ij} (\theta)$ is called a Givens rotation. 
+        for $1 \leq i < j \leq n$ and $\theta \in \mbbR$.
+        Then $\bm{R}_{ij} (\theta)$ is called a Givens rotation.
         Essentially, $\bm{R}_{ij} (\theta)$ is the identity matrix $\bm{I}_n$ with
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         .\hfill
         $
-            r_{ii} = \cos \theta , 
+            r_{ii} = \cos \theta ,
             \hspace{0.2cm}
             r_{ij} = - \sin \theta,
             \hspace{0.2cm}
-            r_{ji} = \sin \theta, 
+            r_{ji} = \sin \theta,
             \hspace{0.2cm}
             r_{jj} = \cos \theta
         $

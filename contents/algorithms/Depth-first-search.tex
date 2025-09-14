@@ -10,7 +10,7 @@
     keepaspectratio,
 ]{images/algorithms/Depth-first-search-illustration.png}
 \caption*{
-    Depth-first search on a binary tree. The unexplored region is shown in light gray. Explored nodes with no descendants in the frontier are removed from memory. Nodes at depth $3$ have no successors and $M$ is the only goal node. 
+    Depth-first search on a binary tree. The unexplored region is shown in light gray. Explored nodes with no descendants in the frontier are removed from memory. Nodes at depth $3$ have no successors and $M$ is the only goal node.
     \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 }
 \end{figure}
@@ -64,7 +64,7 @@
     \item The depth-first search algorithm is an instance of the graph-search algorithm that uses a LIFO queue.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item  it is common to implement depth-first search with a recursive function that calls itself  on each of its children in turn. 
+    \item  it is common to implement depth-first search with a recursive function that calls itself  on each of its children in turn.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}
 
@@ -79,7 +79,7 @@ def depth_first_search(problem: Problem):
 
     if problem.goal_test(node.state):
         return solution(node)
-    
+
     frontier = LifoQueue()
     explored = set()
 
@@ -88,14 +88,14 @@ def depth_first_search(problem: Problem):
     while True:
         if frontier.empty():
             return None
-        
+
         node = frontier.get()
         explored.add(node)
 
         for action in problem.actions(node.state):
             child = child_node(problem, node, action)
 
-            if (not any([n.state == child.state for n in frontier.queue]) and 
+            if (not any([n.state == child.state for n in frontier.queue]) and
                 not any([n.state == child.state for n in explored])):
                 if problem.goal_test(child.state):
                     return solution(child)

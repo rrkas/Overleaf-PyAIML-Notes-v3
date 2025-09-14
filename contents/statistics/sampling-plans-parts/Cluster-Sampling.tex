@@ -7,9 +7,9 @@
     \item Cluster sampling can be less representative than sampling units directly.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Cluster sampling introduces a specific structure in the sample which should also be addressed when the data is being analyzed. 
+    \item Cluster sampling introduces a specific structure in the sample which should also be addressed when the data is being analyzed.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item The cluster structure introduces two sources of variation in the data being collected. These sources of variation need to be quantified to make proper statements on the population of interest.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
@@ -34,7 +34,7 @@
             \hfill \cite{common/online/chatgpt}
 
         \end{enumerate}
-        
+
     \end{enumerate}
 
     \item The sampling units for the \textit{first stage} are referred to as \textbf{primary cluster units}\label{Sampling Plans/Representative Sampling/Cluster Sampling/primary cluster units}.
@@ -55,11 +55,11 @@
 
 \subsection{Single-Stage Cluster Sampling}\label{Sampling Plans/Representative Sampling/Cluster Sampling/Single-Stage Cluster Sampling}
 
-A single-stage cluster sample uses a random sample of the clusters and then all units from these clusters are selected. 
+A single-stage cluster sample uses a random sample of the clusters and then all units from these clusters are selected.
 \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
 \subsubsection{cluster sizes are not all equal}
-    
+
 Estimator for population mean: $
     \dsum_{h=1}^{m}
     \dParenBrac{
@@ -76,7 +76,7 @@ $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item MSE: $
-        \sim 
+        \sim
         \dfrac{M^2}{m\ (M-1)\ N^2}
         \dParenBrac{1 - \dfrac{m}{M}}
         \dsum_{h=1}^M N_h^2\ (\mu_h - \mu)^2
@@ -130,7 +130,7 @@ $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item MSE: $
-        \sim 
+        \sim
         \dfrac{M}{m\ N^2}
         \dSquareBrac{
             \dParenBrac{1 - \dfrac{m}{M}}

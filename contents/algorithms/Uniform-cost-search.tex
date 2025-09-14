@@ -8,7 +8,7 @@
 
     \item \textbf{Performance}:
     \begin{enumerate}
-        \item uniform-cost search is \textbf{optimal} in general. 
+        \item uniform-cost search is \textbf{optimal} in general.
         uniform-cost search expands nodes in order of their optimal path cost.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -55,7 +55,7 @@
 \subsection*{Implementation}
 
 \begin{enumerate}
-    \item  This is done by storing the frontier as a \textbf{priority queue} ordered by $g(n)$. 
+    \item  This is done by storing the frontier as a \textbf{priority queue} ordered by $g(n)$.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item In addition to the ordering of the queue by path cost, there are two other significant differences from breadth-first search.
@@ -89,7 +89,7 @@
                 \Return failure
             }
             \Comment{chooses the lowest-cost node in $frontier$}
-            $node \ \gets$ \textsc{Pop}($frontier$) \\ 
+            $node \ \gets$ \textsc{Pop}($frontier$) \\
             \lIf{$problem$.\textsc{Goal-Test}($node$.\textsc{State})}{
                 \Return \textsc{Solution}($node$)
             }
@@ -120,7 +120,7 @@ def uniform_cost_search(problem: Problem):
 
     if problem.goal_test(node.state):
         return solution(node)
-    
+
     frontier = [(node.path_cost, node)]
     explored = set()
 
@@ -129,7 +129,7 @@ def uniform_cost_search(problem: Problem):
     while True:
         if len(frontier) == 0:
             return None
-        
+
         path_cost, node = frontier.pop(0)
 
         if problem.goal_test(node.state):

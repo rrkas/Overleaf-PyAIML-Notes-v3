@@ -35,8 +35,8 @@ $(h, i)$ & index of unit & \begin{minipage}{3.2cm}
 
 $x_{hi}$ & unit $i$ in stratum $h$ \\ \hline
 
-$w_{h}$ & 
-    weight of strata $h$ while sampling & 
+$w_{h}$ &
+    weight of strata $h$ while sampling &
     \begin{minipage}{3.2cm}
         \vspace{0.1cm}
         $w_{h} = \dfrac{N_h}{N}$
@@ -44,8 +44,8 @@ $w_{h}$ &
     \end{minipage}
     \\ \hline
 
-$f_{h}$ & 
-    sample fraction in stratum $h$ & 
+$f_{h}$ &
+    sample fraction in stratum $h$ &
     \begin{minipage}{3.2cm}
         \vspace{0.1cm}
         $f_{h} = \dfrac{n_h}{N_h}$
@@ -53,7 +53,7 @@ $f_{h}$ &
     \end{minipage}
     \\ \hline
 
-$S_{h,k}$ & 
+$S_{h,k}$ &
 \multicolumn{2}{l}{
     \begin{minipage}{11cm}
         \vspace{0.1cm}
@@ -65,7 +65,7 @@ $S_{h,k}$ &
     \end{minipage}
 } \\ \hline
 
-$S_k$ & 
+$S_k$ &
 \multicolumn{2}{l}{
     \begin{minipage}{11cm}
         \vspace{0.1cm}
@@ -107,7 +107,7 @@ $S_k$ &
         K_S
         = \dprod_{h=1}^{M} \dfrac{N_h!}{n_h!(N_h-n_h)!}
         = \dprod_{h=1}^{M} K_h
-    $ 
+    $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The probability of collecting any of the $K_S$ samples $
@@ -119,11 +119,11 @@ $S_k$ &
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item If $
-        \dfrac{n_i}{N_i} = \dfrac{n_j}{N_j} 
-        \hspace{0.3cm} 
-        \forall 
-        \hspace{0.3cm} 
-        i,j \in \dParenBrac{1,\cdots,M} 
+        \dfrac{n_i}{N_i} = \dfrac{n_j}{N_j}
+        \hspace{0.3cm}
+        \forall
+        \hspace{0.3cm}
+        i,j \in \dParenBrac{1,\cdots,M}
     $, then its called \textbf{Proportional Stratified Sampling}.\label{Sampling Plans/Representative Sampling/Stratified Sampling/Proportional Stratified Sampling}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -165,8 +165,8 @@ $S_k$ &
         \item $\dsum_{h=1}^M \ w_h = 1$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
-    
-    
+
+
     \item population variance: $
         \sigma^2
         \equiv \dfrac{1}{N} \ \dsum_{h=1}^M \ \dsum_{i=1}^{N_h} (x_{hi} - \mu)^2
@@ -176,7 +176,7 @@ $S_k$ &
     \vspace{0.15cm}
     \begin{enumerate}
         \item \textbf{within (strata) variances}: the first part represents a weighted mean of the within strata variances
-        
+
         \item \textbf{between (strata) variances}: the second part represents a weighted mean of the squared distances of the strata means to the population mean
     \end{enumerate}
 
@@ -193,7 +193,7 @@ $S_k$ &
         \dsum_{h=1}^{M} \ w_h \ \bar{x}_{h,k}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item Bias: $0$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -227,7 +227,7 @@ $S_k$ &
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item MSE for unbiased estimator: 
+    \item MSE for unbiased estimator:
     $
         MSE(\bar{x}_{h,k}) = Var(\bar{x}_{h,k}) = SE^2(\bar{x}_{h,k})
     $
@@ -268,17 +268,17 @@ $S_k$ &
         Var(\bar{x}_k) = \dsum_{h=1}^M w_h^2 \cdot Var(\bar{x}_{h,k})
     $
     \hfill \cite{common/online/chatgpt}
-    
-    
-    \item squared standard error of $\bar{x}_k$: 
+
+
+    \item squared standard error of $\bar{x}_k$:
     $
         SE^2(\bar{x}_k) = \dsum_{h=1}^M w_h^2 \cdot SE^2(\bar{x}_{h,k})
     $
     \hfill \cite{common/online/chatgpt}
 
     \item $
-        MSE(\bar{x}_k ) 
-        = \dsum^M_{h=1} w^2_h \cdot MSE(\bar{x}_{h,k} ) 
+        MSE(\bar{x}_k )
+        = \dsum^M_{h=1} w^2_h \cdot MSE(\bar{x}_{h,k} )
         = \dsum^M_{h=1} \dfrac{N_h}{(N_h - 1)n_h} \ (1 - f_h)\ w^2_h\ \sigma^2_h$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 

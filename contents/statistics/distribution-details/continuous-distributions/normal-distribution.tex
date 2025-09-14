@@ -1,4 +1,4 @@
-\section{Normal Distribution/ Gaussian Distribution (${N}(\mu, \sigma^2)$)}
+\section{Normal Distribution/ Gaussian Distribution (${N}(\mu, \sigma^2)$, ${N}(x|\mu, \sigma^2)$)}
 
 
 \begin{table}[H]
@@ -37,43 +37,62 @@
 \subsection{PDF ($f_{\mu, \sigma}(x)$ or $f(x|\mu, \sigma)$)}
 
 \begin{enumerate}
-    \item[]  $
+    \item  $
         f_{\mu, \sigma}(x)
         = \dfrac{1}{\sigma\sqrt{2\pi}} \exp\dParenBrac{-\dfrac{(x-\mu)^2}{2\sigma^2}}
-    $ 
+    $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
         \item[] $\mu \in \mbbR$: indicates the mean value of the population of the variable of interest
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-        \item[] $\sigma$: indicates the standard deviation ($\sigma^2 > 0$)
+        \item[] $\sigma \in \mbbR$: indicates the standard deviation ($\sigma^2 > 0$)
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item[] $f_{\mu, \sigma}(x) = \dfrac{1}{\sigma}\phi\dParenBrac{\dfrac{x-\mu}{\sigma}}$
+    \item $f_{\mu, \sigma}(x) = \dfrac{1}{\sigma}\phi\dParenBrac{\dfrac{x-\mu}{\sigma}}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item
+    $
+        \mathcal{N}(\bm{x}|\bm{\mu}, \bm{\Sigma})
+        = \dfrac{1}{(2\pi)^{D/2} \dabs{\bm{\Sigma}}^{1/2}} \,
+        \exp\dParenBrac{
+            -\dfrac{1}{2}
+            (\bm{x} - \bm{\mu})^\top \bm{\Sigma}^{-1} (\bm{x} - \bm{\mu})
+        }
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \\[0.2cm]
+    .\hfill
+    $\bm{x}, \bm{\mu} \in \mbbR^D$
+    \hfill
+    $\bm{\Sigma} \in \mbbR^{D \times D}$
+    \hfill
+    $\dabs{\bm{\Sigma}} = \det(\bm{\Sigma}) \in \mbbR$
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    
     \item it can be used to approximate other PDFs when the sample size or the size of the data is getting large.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item This has the advantage that important features of the normal density function can be transferred to other densities when the approximation is quite close. 
+    \item This has the advantage that important features of the normal density function can be transferred to other densities when the approximation is quite close.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The shape of the normal PDF is equal to the famous “bell-shape” curve 
+    \item The shape of the normal PDF is equal to the famous “bell-shape” curve
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item areas under the curve:
     \begin{enumerate}
         \item $99.73\%$ of all the population values fall within the interval $[\mu - 3\sigma, \mu + 3\sigma]$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-        \item $95.45\%$ of all the population values fall within the interval $[\mu - 2\sigma, \mu + 2\sigma]$ or 
+
+        \item $95.45\%$ of all the population values fall within the interval $[\mu - 2\sigma, \mu + 2\sigma]$ or
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
         \\
         $
             \dint_{\mu - 2\sigma}^{\mu + 2\sigma}
             \phi\dParenBrac{\dfrac{x-\mu}{\sigma}} dx
-            = 
+            =
             \dint_{-2}^{2}
             \phi(x) dx
             =
@@ -88,9 +107,65 @@
     \item  describes both positive and negative values
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item a random measurement error that could be described by a normal PDF is more likely to be closer to zero than to be further away from zero (due to the bell shape of the density). 
+    \item a random measurement error that could be described by a normal PDF is more likely to be closer to zero than to be further away from zero (due to the bell shape of the density).
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+
+
+
+
+
+
+
+\subsection{Maximum Likelihood}
+
+\begin{enumerate}
+    \item If our data set $\bm{x}$ is i.i.d., then we can therefore write the probability of the data set, given $\mu$  and $\sigma^2$, in the form
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \\
+    .\hfill
+    $
+        p(\bm{x}|\mu , \sigma^2) 
+        = \dprod^{N}_{n=1} \mathcal{N} (x_n|\mu , \sigma^2) 
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    
+    \item Log likelihood function:
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \\
+    .\hfill
+    $
+        \ln (p (\bm{x}|\mu , \sigma ^2)) 
+        = - \dfrac{1}{2\sigma ^2} \dsum^N_{n=1} (x_n - \mu )^2 - \dfrac{N }{2} \ln (\sigma ^2) - \dfrac{N }{2} \ln(2\pi)
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item Maximizing $\ln (p (\bm{x}|\mu , \sigma ^2))$ with respect to $\mu$, we obtain the maximum likelihood solution given by
+    $
+        \mu_{ML} 
+        = \dfrac{1}{N} \dsum_{n=1}^N x_n
+    $
+    which is the sample mean, i.e., the mean of the observed values $\dCurlyBrac{x_n}$.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item Maximizing $\ln (p (\bm{x}|\mu , \sigma ^2))$ with respect to $\sigma^2$, we obtain the maximum likelihood solution for the variance in the form
+    $
+        \sigma^2 _{ML} = \dfrac{1}{N} \dsum^N _{n=1} (x_n - \mu _{ML})^2
+    $
+    which is the sample variance measured with respect to the sample mean $\mu _{ML}$.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item 
+    $\mathbb{E}[\mu _{ML}] = \mu $
+    \hfill
+    $\mathbb{E}[\sigma ^2_{ML}] = \dParenBrac{\dfrac{N - 1}{N}} \sigma ^2$
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+\end{enumerate}
+
+
+
 
 
 
@@ -99,14 +174,14 @@
 
 \begin{enumerate}
 
-    \item 
+    \item
     \textbf{Notation}:
     $
         {\displaystyle {\mathcal {N}}(\mu ,\sigma ^{2})}
     $
-    \hfill \cite{wiki/Normal_distribution} 
+    \hfill \cite{wiki/Normal_distribution}
 
-    \item 
+    \item
     \textbf{Parameters}:
     \begin{enumerate}
         \item ${\displaystyle \mu \in \mathbb {R} }$ = mean (location)
@@ -116,77 +191,81 @@
         \hfill \cite{wiki/Normal_distribution}
     \end{enumerate}
 
-    \item 
-    \textbf{Support/ Rand Var}: 
-    $x \in \mbbR$ 
+    \item
+    \textbf{Support/ Rand Var}:
+    $x \in \mbbR$
     \hfill \cite{wiki/Normal_distribution}
 
-    \item 
-    \textbf{PDF}: 
-    $ {\displaystyle {\dfrac {1}{\sqrt {2\pi \sigma ^{2}}}}e^{-{\dfrac {(x-\mu )^{2}}{2\sigma ^{2}}}}} $ 
+    \item
+    \textbf{PDF}:
+    $ {\displaystyle {\dfrac {1}{\sqrt {2\pi \sigma ^{2}}}}e^{-{\dfrac {(x-\mu )^{2}}{2\sigma ^{2}}}}} $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
-    \textbf{CDF}: 
-    $ {\displaystyle \Phi \left({\dfrac {x-\mu }{\sigma }}\right)={\dfrac {1}{2}}\left[1+\operatorname {erf} \left({\dfrac {x-\mu }{\sigma {\sqrt {2}}}}\right)\right]} $ 
+    \item
+    \textbf{CDF}:
+    $ {\displaystyle \Phi \left({\dfrac {x-\mu }{\sigma }}\right)={\dfrac {1}{2}}\left[1+\operatorname {erf} \left({\dfrac {x-\mu }{\sigma {\sqrt {2}}}}\right)\right]} $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
+    \item
     \textbf{Quantile}:
-    $ {\displaystyle \mu +\sigma {\sqrt {2}}\operatorname {erf} ^{-1}(2p-1)} $ 
+    $ {\displaystyle \mu +\sigma {\sqrt {2}}\operatorname {erf} ^{-1}(2p-1)} $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
+    \item
     \textbf{Mean}:
-    $ {\displaystyle \mu } $ 
+    $ {\displaystyle \mu } $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
+    \item
     \textbf{Median}:
-    $ {\displaystyle \mu } $ 
+    $ {\displaystyle \mu } $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
+    \item
     \textbf{Mode}:
-    $ {\displaystyle \mu } $ 
+    $ {\displaystyle \mu } $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
+    \item
     \textbf{Variance}:
     $ {\displaystyle \sigma ^{2}} $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
+    \item
+    \textbf{Precision}: $\beta = \dfrac{1}{\sigma^2}$
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item
     \textbf{Median absolute deviation (MAD)}:
     $ {\displaystyle \sigma {\sqrt {2}}\,\operatorname {erf} ^{-1}(1/2)} $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
+    \item
     \textbf{Average absolute deviation (AAD)}:
     $ {\textstyle \sigma {\sqrt {2/\pi }}} $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
+    \item
     \textbf{Skewness}: $0$
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
+    \item
     \textbf{Excess kurtosis}: $0$
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
-    \textbf{Entropy}: $ {\textstyle {\tfrac {1}{2}}\log(2\pi e\sigma ^{2})} $
+    \item
+    \textbf{Entropy}: $ {\textstyle {\dfrac {1}{2}}\log(2\pi e\sigma ^{2})} $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
-    \textbf{Moment-generating function (MGF)}: $ {\displaystyle \exp(\mu t+\sigma ^{2}t^{2}/2)} $ 
+    \item
+    \textbf{Moment-generating function (MGF)}: $ {\displaystyle \exp(\mu t+\sigma ^{2}t^{2}/2)} $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
-    \textbf{Characteristic function (CF)}: $ {\displaystyle \exp(i\mu t-\sigma ^{2}t^{2}/2)} $ 
+    \item
+    \textbf{Characteristic function (CF)}: $ {\displaystyle \exp(i\mu t-\sigma ^{2}t^{2}/2)} $
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
+    \item
     \textbf{Fisher information}:
     \begin{enumerate}
         \item ${\displaystyle {\mathcal {I}}(\mu ,\sigma )={\begin{pmatrix}1/\sigma ^{2}&0\\0&2/\sigma ^{2}\end{pmatrix}}}$
@@ -194,16 +273,25 @@
         \item ${\displaystyle {\mathcal {I}}(\mu ,\sigma ^{2})={\begin{pmatrix}1/\sigma ^{2}&0\\0&1/(2\sigma ^{4})\end{pmatrix}}}$
     \end{enumerate}
     \hfill\cite{wiki/Normal_distribution}
-    
-    \item 
+
+    \item
     \textbf{Kullback–Leibler divergence}:
     ${\displaystyle D_{KL} = {1 \over 2}\left\{\left({\dfrac {\sigma _{0}}{\sigma _{1}}}\right)^{2}+{\dfrac {(\mu _{1}-\mu _{0})^{2}}{\sigma _{1}^{2}}}-1+\ln {\sigma _{1}^{2} \over \sigma _{0}^{2}}\right\}}$
     \hfill\cite{wiki/Normal_distribution}
 
-    \item 
+    \item
     \textbf{Expected shortfall}:
     ${\displaystyle \mu +\sigma {\dfrac {{\dfrac {1}{\sqrt {2\pi }}}e^{\dfrac {-\left(q_{p}\left({\dfrac {X-\mu }{\sigma }}\right)\right)^{2}}{2}}}{1-p}}}$
     \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{second order moment}:
+    $
+        \mathbb{E}[x^2]
+        = \dint_{-\infty}^\infty \mathcal{N}(x|\mu, \sigma^2) x^2 dx
+        = \mu^2 + \sigma^2
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 
 \end{enumerate}
 

@@ -89,32 +89,32 @@ class RomaniaState(State):
 
     def copy(self):
         return RomaniaState(self.city)
-    
+
     def __str__(self):
         return f"<RomaniaState city={self.city}>"
 
     def __repr__(self):
         return str(self)
-    
+
     def __eq__(self, __o):
         return self.city == __o.city
 
 class RomaniaProblem(Problem):
     def __init__(self, initial_state: RomaniaState):
         super().__init__(initial_state)
-    
+
     def goal_test(self, state: RomaniaState):
         return state.city == "Bucharest"
-    
+
     def step_cost(self, state: RomaniaState, action: str, new_state: RomaniaState):
         return romania_map_graph[state.city][new_state.city]
-    
+
     def heuristic(self, state: RomaniaState):
         return heuristic_Bucharest[state.city]
-    
+
     def actions(self, state: RomaniaState):
         return sorted(romania_map_graph[state.city].keys())
-    
+
     def result(self, state: RomaniaState, action: str):
         return RomaniaState(action)
 
@@ -135,9 +135,9 @@ node = Node(initial_state, None, None, 0)
 for e in path:
     new_node = child_node(problem, node, e)
     print(
-        node.state.city.ljust(20), 
-        new_node.state.city.ljust(20), 
-        str(new_node.path_cost - node.path_cost).rjust(5), 
+        node.state.city.ljust(20),
+        new_node.state.city.ljust(20),
+        str(new_node.path_cost - node.path_cost).rjust(5),
         str(new_node.path_cost).rjust(5)
     )
     node = new_node
@@ -154,9 +154,9 @@ node = Node(initial_state, None, None, 0)
 for e in path:
     new_node = child_node(problem, node, e)
     print(
-        node.state.city.ljust(20), 
-        new_node.state.city.ljust(20), 
-        str(new_node.path_cost - node.path_cost).rjust(5), 
+        node.state.city.ljust(20),
+        new_node.state.city.ljust(20),
+        str(new_node.path_cost - node.path_cost).rjust(5),
         str(new_node.path_cost).rjust(5)
     )
     node = new_node
@@ -174,9 +174,9 @@ node = Node(initial_state, None, None, 0)
 for e in path:
     new_node = child_node(problem, node, e)
     print(
-        node.state.city.ljust(20), 
-        new_node.state.city.ljust(20), 
-        str(new_node.path_cost - node.path_cost).rjust(5), 
+        node.state.city.ljust(20),
+        new_node.state.city.ljust(20),
+        str(new_node.path_cost - node.path_cost).rjust(5),
         str(new_node.path_cost).rjust(5)
     )
     node = new_node
@@ -193,9 +193,9 @@ node = Node(initial_state, None, None, 0)
 for e in path:
     new_node = child_node(problem, node, e)
     print(
-        node.state.city.ljust(20), 
-        new_node.state.city.ljust(20), 
-        str(new_node.path_cost - node.path_cost).rjust(5), 
+        node.state.city.ljust(20),
+        new_node.state.city.ljust(20),
+        str(new_node.path_cost - node.path_cost).rjust(5),
         str(new_node.path_cost).rjust(5)
     )
     node = new_node
@@ -213,9 +213,9 @@ node = Node(initial_state, None, None, 0)
 for e in path:
     new_node = child_node(problem, node, e)
     print(
-        node.state.city.ljust(20), 
-        new_node.state.city.ljust(20), 
-        str(new_node.path_cost - node.path_cost).rjust(5), 
+        node.state.city.ljust(20),
+        new_node.state.city.ljust(20),
+        str(new_node.path_cost - node.path_cost).rjust(5),
         str(new_node.path_cost).rjust(5)
     )
     node = new_node
@@ -230,9 +230,9 @@ if isinstance(path, list):
     for e in path:
         new_node = child_node(problem, node, e)
         print(
-            node.state.city.ljust(20), 
-            new_node.state.city.ljust(20), 
-            str(new_node.path_cost - node.path_cost).rjust(5), 
+            node.state.city.ljust(20),
+            new_node.state.city.ljust(20),
+            str(new_node.path_cost - node.path_cost).rjust(5),
             str(new_node.path_cost).rjust(5)
         )
         node = new_node
@@ -249,9 +249,9 @@ node = Node(initial_state, None, None, 0)
 for e in path:
     new_node = child_node(problem, node, e)
     print(
-        node.state.city.ljust(20), 
-        new_node.state.city.ljust(20), 
-        str(new_node.path_cost - node.path_cost).rjust(5), 
+        node.state.city.ljust(20),
+        new_node.state.city.ljust(20),
+        str(new_node.path_cost - node.path_cost).rjust(5),
         str(new_node.path_cost).rjust(5)
     )
     node = new_node
@@ -268,9 +268,9 @@ node = Node(initial_state, None, None, 0)
 for e in path:
     new_node = child_node(problem, node, e)
     print(
-        node.state.city.ljust(20), 
-        new_node.state.city.ljust(20), 
-        str(new_node.path_cost - node.path_cost).rjust(5), 
+        node.state.city.ljust(20),
+        new_node.state.city.ljust(20),
+        str(new_node.path_cost - node.path_cost).rjust(5),
         str(new_node.path_cost).rjust(5)
     )
     node = new_node

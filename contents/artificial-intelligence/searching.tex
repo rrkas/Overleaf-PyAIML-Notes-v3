@@ -5,23 +5,23 @@
     \item A solution is an action sequence, so search algorithms work by considering various possible action sequences.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item The possible action sequences starting at the initial state form a \textbf{search tree} with the initial state at the root; the branches are actions and the \textbf{nodes} correspond to states in the state space of the problem. 
+    \item The possible action sequences starting at the initial state form a \textbf{search tree} with the initial state at the root; the branches are actions and the \textbf{nodes} correspond to states in the state space of the problem.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item We consider taking various actions by \textbf{expanding} the current state; that is, applying each legal action to the current state, thereby \textbf{generating} a new set of states.
     The process of expanding nodes on the frontier continues until either a solution is found or there are no more states to expand.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item \textbf{leaf node}: a node with \textbf{no} children in the tree. 
+    \item \textbf{leaf node}: a node with \textbf{no} children in the tree.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item \textbf{frontier/ open list}: set of all leaf nodes available for expansion at any given point 
+    \item \textbf{frontier/ open list}: set of all leaf nodes available for expansion at any given point
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item Search algorithms all share this basic structure; they vary primarily according to how they choose which state to expand next - the so-called \textbf{search strategy}.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item Considering \textbf{loopy paths} means that the complete search tree is \textbf{infinite} because there is no limit to how often one can traverse a loop. 
+    \item Considering \textbf{loopy paths} means that the complete search tree is \textbf{infinite} because there is no limit to how often one can traverse a loop.
     loops can cause certain algorithms to fail, making otherwise solvable problems \textbf{unsolvable}.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -67,9 +67,9 @@ For each \textsc{Node} $n$ of the tree, we have a structure that contains four c
 
 \textbf{Note}:
 \begin{enumerate}
-    \item A node is a bookkeeping data structure used to represent the search tree. 
-    A state corresponds to a configuration of the world. 
-    Thus, nodes are on particular paths, as defined by \textsc{Parent} pointers, whereas states are not. 
+    \item A node is a bookkeeping data structure used to represent the search tree.
+    A state corresponds to a configuration of the world.
+    Thus, nodes are on particular paths, as defined by \textsc{Parent} pointers, whereas states are not.
     Furthermore, two different nodes can contain the same world state if that state is generated via two different search paths.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -103,7 +103,7 @@ class Node:
             by the parent pointers
         """
         self.path_cost = path_cost
-    
+
     def __lt__(self, __o):
         return self.path_cost < __o.path_cost
 
@@ -116,7 +116,7 @@ class Node:
             + f"path_cost: {self.path_cost} "
             + ">"
         )
-    
+
     def __repr__(self) -> str:
         return str(self)
 \end{lstlisting}
@@ -133,7 +133,7 @@ def solution(node: Node):
     while node.parent is not None:
         path.insert(0, node.action)
         node = node.parent
-    
+
     return path
 \end{lstlisting}
 
@@ -158,7 +158,7 @@ def solution(node: Node):
             \hspace{1cm} \textsc{State} = $problem$.\textsc{Result}($parent$.\textsc{State}, $action$),\\
             \hspace{1cm} \textsc{Parent} = $parent$,\\
             \hspace{1cm} \textsc{Action} = $action$, \\
-            \hspace{1cm} \textsc{Path-Cost} = $parent$.\textsc{Path-Cost} + 
+            \hspace{1cm} \textsc{Path-Cost} = $parent$.\textsc{Path-Cost} +
                 $problem$.\textsc{Step-Cost}($parent$.\textsc{State}, $action$)
     }
 \end{algorithm}
@@ -217,15 +217,15 @@ def tree_search(problem: Problem):
     while True:
         if len(frontier) == 0:
             return None
-        
+
         node: Node = frontier.pop()
 
         if problem.goal_test(node.state):
             return solution(node)
-        
+
         for action in problem.actions(node.state):
             new_state = problem.result(node.state, action)
-            path_cost = (node.path_cost 
+            path_cost = (node.path_cost
                 + problem.step_cost(node.state, action, new_state))
             new_node = Node(new_state, node, action, path_cost)
             frontier.append(new_node)
@@ -286,7 +286,7 @@ def graph_search(problem: Problem):
             path_cost = (node.path_cost
                 + problem.step_cost(node.state, action, new_state))
             new_node = Node(new_state, node, action, path_cost)
-            
+
             if new_node not in frontier and new_node not in explored:
                 frontier.append(new_node)
 \end{lstlisting}
@@ -296,7 +296,7 @@ def graph_search(problem: Problem):
     \item \textbf{explored set/ closed list}: remembers every expanded node
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item Newly generated nodes that match previously generated nodes - ones in the explored set or the frontier - can be discarded instead of being added to the frontier. 
+    \item Newly generated nodes that match previously generated nodes - ones in the explored set or the frontier - can be discarded instead of being added to the frontier.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item the search tree constructed by the \textsc{Graph-Search} algorithm contains \textbf{at most one copy} of each state, so we can think of it as growing a tree directly on the state-space graph.
@@ -305,7 +305,7 @@ def graph_search(problem: Problem):
     \item The explored set can be implemented with a \textbf{hash table} to allow efficient checking for repeated states.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    
+
 \end{enumerate}
 
 
@@ -318,7 +318,7 @@ def graph_search(problem: Problem):
     \item strategies have \textbf{no} additional information about states beyond that provided in the problem definition.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item All they can do is generate successors and distinguish a goal state from a non-goal state. All search strategies are distinguished by the order in which nodes are expanded. 
+    \item All they can do is generate successors and distinguish a goal state from a non-goal state. All search strategies are distinguished by the order in which nodes are expanded.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}
 
@@ -342,13 +342,13 @@ def graph_search(problem: Problem):
 \subsection{Informed Search/ Heuristic Search}
 
 \begin{enumerate}
-    \item Strategies that know whether one non-goal state is “\textit{more promising}” than another 
+    \item Strategies that know whether one non-goal state is “\textit{more promising}” than another
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item uses problem-specific knowledge beyond the definition of the problem itself - can find solutions more efficiently than can an uninformed strategy.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    
+
 \end{enumerate}
 
 
@@ -410,7 +410,7 @@ def graph_search(problem: Problem):
 
 \begin{enumerate}
     \item[] {\fontsize{18}{18} \textbf{State-space landscape}}:
-    
+
     \item A landscape has both “location” (defined by the state) and “elevation” (defined by the value of the heuristic cost function or objective function).
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -459,23 +459,23 @@ def graph_search(problem: Problem):
     \item local search algorithms are useful for solving \textbf{pure optimization problems}, in which the aim is to find the best state according to an \textbf{objective function}.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item Many optimization problems do not fit the “standard” search models. 
+    \item Many optimization problems do not fit the “standard” search models.
     \textbf{For example}: nature provides an objective function—reproductive fitness—that Darwinian evolution could be seen as attempting to optimize, but there is no “goal test” and no “path cost” for this problem.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item  Local search algorithms explore this state-space landscape. 
+    \item  Local search algorithms explore this state-space landscape.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item A complete local search algorithm always finds a goal if one exists.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-    
+
     \item An optimal algorithm always finds a global minimum/ maximum.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item Local search algorithms typically use a \textbf{complete-state formulation}.
     \hfill  \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item \textbf{Advantages}: 
+    \item \textbf{Advantages}:
     \begin{enumerate}
         \item they use very little memory—usually a constant amount
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
@@ -495,8 +495,8 @@ def graph_search(problem: Problem):
     \item agent is faced with a state space that is initially unknown and must be explored.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    
-    
+
+
 \end{enumerate}
 
 

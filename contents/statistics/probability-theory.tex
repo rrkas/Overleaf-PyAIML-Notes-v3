@@ -261,6 +261,21 @@
         = P_x(g(y)) \dabs{g^\prime(y)}
     $
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item \textbf{maximum likelihood}: $\bm{w}$ is set to the value that maximizes the likelihood function $P(D|\bm{w})$.
+    \begin{enumerate}
+        \item This corresponds to choosing the value of $\bm{w}$ for which the probability of the observed data set is maximized.
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    
+        \item One common criterion for determining the parameters in a probability distribution using an observed data set is to find the parameter values that maximize the likelihood function. 
+        This might seem like a strange criterion because, from our foregoing discussion of probability theory, it would seem more natural to maximize the probability of the parameters given the data, not the probability of the data given the parameters.
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    
+        \item The negative log of the likelihood function is called an \textbf{error function}.
+        Because the negative logarithm is a monotonically decreasing function, maximizing the likelihood is equivalent to minimizing the error.
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \end{enumerate}
+
 \end{enumerate}
 
 
@@ -276,12 +291,74 @@
     \item These are not events that can be repeated numerous times in order to define a notion of probability.
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 
-    
+    \item Bayes' theorem is used to convert a prior probability into a posterior probability by incorporating the evidence provided by the observed data.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item We capture our assumptions about $\bm{w}$, before observing the data, in the form of a prior probability distribution $P(\bm{w})$.
+    The effect of the observed data $D = \dCurlyBrac{t_1, \cdots , t_N }$ is expressed through the conditional probability $P(D|\bm{w})$.
+    Bayes’ theorem, which takes the form
+    $
+        P(\bm{w}|D) = \dfrac{P(\bm{w})P(D|\bm{w})}{P(D)}
+    $
+    then allows us to evaluate the uncertainty in $\bm{w}$ after we have observed $D$ in the form of the posterior probability $P(\bm{w}|D)$.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \begin{enumerate}
+        \item The quantity $P(D|\bm{w})$ on the right-hand side of Bayes' theorem is evaluated for the observed data set $D$ and can be viewed as a function of the parameter vector $\bm{w}$, in which case it is called the \textbf{likelihood function}.
+        It expresses how probable the observed data set is for different settings of the parameter vector $\bm{w}$.
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+        \item The denominator ($P(D)$) is the normalization constant, which ensures that the posterior distribution on the left-hand side is a valid probability density and integrates to one.
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+        \\
+        .\hfill
+        $
+            P(D) = \dint P(D|\bm{w})P(\bm{w})\ d\bm{w}
+        $
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+        \item Likelihood is not a probability distribution over $\bm{w}$, and its integral with respect to $\bm{w}$ does not (necessarily) equal one.
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+        \item We can state Bayes’ theorem in words:
+        $
+            posterior \propto likelihood \times prior
+        $
+        where all of these quantities are viewed as functions of $\bm{w}$.
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \end{enumerate}
+
+    \item One common criticism of the Bayesian approach is that the prior distribution is often selected on the basis of mathematical convenience rather than as a reflection of any prior beliefs.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item Reducing the dependence on the prior is one motivation for so-called noninformative priors.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 \end{enumerate}
 
 
 
 
+
+
+
+
+\section{Frequentist AND/VS Bayesian}
+
+\begin{enumerate}
+    \item In both the Bayesian and frequentist paradigms, the likelihood function $P(D|\bm{w})$ plays a central role.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item In a frequentist setting, $\bm{w}$ is considered to be a fixed parameter, whose value is determined by some form of ‘estimator’, and error bars on this estimate are obtained by considering the distribution of possible data sets $D$.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item From the Bayesian viewpoint there is only a single data set $D$ (namely the one that is actually observed), and the uncertainty in the parameters is expressed through a probability distribution over $\bm{w}$.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item However, bias to prior lead to difficulties when comparing different models, and indeed Bayesian methods based on poor choices of prior can give poor results with high confidence.
+    Frequentist evaluation methods offer some protection from such problems, and techniques such as cross-validation remain useful in areas such as model comparison.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+
+\end{enumerate}
 
 
 
@@ -314,14 +391,14 @@
     \item
     $
         \mathbb{E}_x[f(x, y)]
-        = \dint f(x,y) p(x) dx
+        = \dint f(x,y) P(x) dx
     $
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 
     \item
     $
         \mathbb{E}_x[f(x, y)|y]
-        = \dint f(x,y) p(x|y) dx
+        = \dint f(x,y) P(x|y) dx
     $
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 
@@ -361,6 +438,35 @@
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 \end{enumerate}
 \end{multicols}
+
+
+
+
+
+
+\section{Bootstrap}
+
+
+\begin{enumerate}
+    \item Suppose our original data set consists of N data points $\bm{X} = \dCurlyBrac{x_1, \cdots , x_N }$.
+    We can create a new data set $\bm{X}_B$ by drawing $N$ points at random from $\bm{X}$, with replacement, so that some points in $\bm{X}$ may be replicated in $\bm{X}_B$, whereas other points in X may be absent from $\bm{X}_B$.
+    This process can be repeated $L$ times to generate $L$ data sets each of size $N$ and each obtained by sampling from the original data set $\bm{X}$.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item The statistical accuracy of parameter estimates can then be evaluated by looking at the variability of predictions between the different bootstrap data sets.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item One \textbf{advantage} of the Bayesian viewpoint is that the inclusion of prior knowledge arises naturally.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item For instance, that a fair-looking coin is tossed three times and lands heads each time.
+    A classical maximum likelihood estimate of the probability of landing heads would give 1, implying that all future tosses will land heads!
+    By contrast, a Bayesian approach with any reasonable prior will lead to a much less extreme conclusion.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+
+\end{enumerate}
+
 
 
 

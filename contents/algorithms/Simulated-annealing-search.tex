@@ -15,9 +15,9 @@
 
 \begin{algorithm}[H]
     \caption{
-        The simulated annealing algorithm, a version of stochastic hill climbing where some downhill moves are allowed. 
-        Downhill moves are accepted readily early in the annealing schedule and then less often as time goes on. 
-        The $schedule$ input determines the value of the temperature $T$ as a function of time. 
+        The simulated annealing algorithm, a version of stochastic hill climbing where some downhill moves are allowed.
+        Downhill moves are accepted readily early in the annealing schedule and then less often as time goes on.
+        The $schedule$ input determines the value of the temperature $T$ as a function of time.
         \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     }
 
@@ -28,14 +28,14 @@
         $current \gets$ \textsc{Make-Node}($problem$.\textsc{Initial-State})\\
         \For{\normalfont $t = 1$ \textbf{to} $\infty$}{
             $T \gets schedule(t)$\\
-            
+
             \lIf{$T = 0$}{\Return $current$}
-            
+
             $next \gets$ a randomly selected successor of $current$ \\
-            
+
             $\Delta E \gets$ $next$.\textsc{Value} - $current$.\textsc{Value}
-            
-            \lIf{$\Delta E > 0$}{ 
+
+            \lIf{$\Delta E > 0$}{
                 $current \gets next$
             }
             \lElse{
@@ -48,18 +48,18 @@
 
 
 \begin{enumerate}
-    \item The innermost loop of the simulated-annealing algorithm is quite similar to hill climbing. 
-    Instead of picking the \textbf{best} move, however, it picks a \textbf{random} move. 
-    If the move improves the situation, it is always accepted. 
+    \item The innermost loop of the simulated-annealing algorithm is quite similar to hill climbing.
+    Instead of picking the \textbf{best} move, however, it picks a \textbf{random} move.
+    If the move improves the situation, it is always accepted.
     Otherwise, the algorithm accepts the move with some probability less than 1.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item The probability decreases exponentially with the “badness” of the move—the amount $\Delta E$ by which the evaluation is worsened.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item The probability also decreases as the “temperature” $T$ goes down: “bad” moves are more likely to be allowed at the start when $T$ is high, and they become more unlikely as T decreases. 
+    \item The probability also decreases as the “temperature” $T$ goes down: “bad” moves are more likely to be allowed at the start when $T$ is high, and they become more unlikely as T decreases.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-    
+
     \item If the $schedule$ lowers $T$ slowly enough, the algorithm will find a global optimum with probability approaching $1$.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 \end{enumerate}

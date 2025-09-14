@@ -18,13 +18,13 @@
     \item \textbf{Goal formulation}, based on the current situation and the agent’s performance measure, is the first step in problem solving.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item We consider a goal to be a set of world states—exactly those states in which the goal is satisfied. 
+    \item We consider a goal to be a set of world states—exactly those states in which the goal is satisfied.
     The agent’s task is to find out how to act, now and in the future, so that it reaches a goal state.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
 \subsection*{Simple “formulate, search, execute” design}
 
-    \item \textbf{Problem formulation} is the process of deciding what actions and states to consider, given a goal. 
+    \item \textbf{Problem formulation} is the process of deciding what actions and states to consider, given a goal.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item An agent with several immediate options of unknown value can decide what to do by first examining future actions that eventually lead to states of known value.
@@ -63,7 +63,7 @@
     \SetKwFunction{FUNCTION}{\textsc{Simple-Problem-Solving-Agent}}
     \SetKwProg{Fn}{function}{ returns \normalfont an action}{end}
     \Fn{\FUNCTION{ percept }}{
-        \textbf{persistent}:\\ 
+        \textbf{persistent}:\\
             \hspace{1cm} $seq$, an action sequence, initially empty \\
             \hspace{1cm} $state$, some description of the current world state \\
             \hspace{1cm} $goal$, a goal, initially null \\
@@ -83,7 +83,7 @@
 
         $action$ $\gets$ \textsc{First}( $seq$ )\\
         $seq$ $\gets$ \textsc{Rest}( $seq$ )
-        
+
         \Return $action$
     }
 \end{algorithm}
@@ -96,14 +96,14 @@
     \item The \textbf{initial state} that the agent starts in.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item A description of the possible \textbf{actions} available to the agent. Given a particular state $s$, \textsc{Actions}($s$) returns the set of actions that can be executed in $s$. We say that each of these actions is \textit{applicable} in $s$. 
+    \item A description of the possible \textbf{actions} available to the agent. Given a particular state $s$, \textsc{Actions}($s$) returns the set of actions that can be executed in $s$. We say that each of these actions is \textit{applicable} in $s$.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item A description of what each action does; the formal name for this is the \textbf{transition model}, specified by a function \textsc{Result}($s,\ a$) that returns the state that results from  doing action $a$ in state $s$. 
+    \item A description of what each action does; the formal name for this is the \textbf{transition model}, specified by a function \textsc{Result}($s,\ a$) that returns the state that results from  doing action $a$ in state $s$.
     We also use the term \textbf{successor} to refer to any state reachable from a given state by a single action.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item The \textbf{goal test}, which determines whether a given state is a goal state. 
+    \item The \textbf{goal test}, which determines whether a given state is a goal state.
     Sometimes there is an \textit{explicit} set of possible goal states, and the test simply checks whether the given state is one of them.
     Sometimes the goal is specified by an \textit{abstract property} rather than an explicitly enumerated set of states.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
@@ -130,9 +130,9 @@
     \item The \textbf{step cost} of taking action $a$ in state $s$ to reach state $s^\prime$ is denoted by $c(s,\ a,\ s^\prime)$.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item A \textbf{solution} to a problem is an \textit{action sequence} that leads from the initial state to a goal state. 
+    \item A \textbf{solution} to a problem is an \textit{action sequence} that leads from the initial state to a goal state.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
-    
+
     \item Solution quality is measured by the path cost function, and an \textbf{optimal solution} has the lowest path cost among all solutions.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -146,15 +146,15 @@
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item \textbf{meta-level state space}: Each \textbfit{state} in a meta-level state space captures the internal (computational) state of a program that is searching in an \textbf{object-level state space}.
-    Each \textbfit{action} in the meta-level state space is a computation step that alters the internal state. 
+    Each \textbfit{action} in the meta-level state space is a computation step that alters the internal state.
     A sequence of larger and larger search trees, can be seen as depicting a path in the meta-level state space where each state on the path is an object-level search tree
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
     \\
-    \textbf{Example}: the internal state of the A$^\ast$ algorithm consists of the current search tree. 
+    \textbf{Example}: the internal state of the A$^\ast$ algorithm consists of the current search tree.
     each computation step in A$^\ast$ expands a leaf node and adds its successors to the tree
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item \textbf{meta-level learning algorithm} can learn from experiences (missteps in harder problems) to avoid exploring unpromising sub-trees. 
+    \item \textbf{meta-level learning algorithm} can learn from experiences (missteps in harder problems) to avoid exploring unpromising sub-trees.
     The goal of learning is to \textit{minimize} the \textbf{total cost} of problem solving, trading off computational expense and path cost.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -212,7 +212,7 @@ class Problem:
             a in state s to reach state s' is denoted by c(s, a, s').
         """
         raise NotImplementedError()
-    
+
     def heuristic(self, state: State):
         """
             Returns estimated cost from state to goal.
@@ -264,7 +264,7 @@ $m$ & $\in \mbbR$ & maximum length of any path in the state space \\
 
 \textbf{Note}:
 \begin{enumerate}
-    \item the typical measure is the \textbf{size} of the \textbf{state space graph}: $|V| + |E|$ 
+    \item the typical measure is the \textbf{size} of the \textbf{state space graph}: $|V| + |E|$
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item Time is often measured in terms of the number of nodes generated during the search, and space in terms of the maximum number of nodes stored in memory.

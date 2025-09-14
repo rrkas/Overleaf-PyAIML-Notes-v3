@@ -14,9 +14,9 @@
     \centering
     \begin{tabular}{| l | l  l |}
         \hline
-        
+
         coefficients & $a_{ij}$    & $\in \mbbR$ \\ \hline
-        
+
         constants & $b_{i}$     & $\in \mbbR$ \\ \hline
 
         unknowns & $x_{i}$     & $\in \mbbR$ \\ \hline
@@ -70,18 +70,18 @@
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    
-    
+
+
 \end{enumerate}
 
 
 \vspace{0.5cm}
 \textbf{Note}:
 \begin{enumerate}
-    \item In general, for a real-valued system of linear equations we obtain either no, exactly one, or infinitely many solutions. 
+    \item In general, for a real-valued system of linear equations we obtain either no, exactly one, or infinitely many solutions.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Geometric Interpretation of Systems of Linear Equations}: 
+    \item \textbf{Geometric Interpretation of Systems of Linear Equations}:
     In a system of linear equations with two variables $x_1$, $x_2$, each linear equation defines a line on the $x_1x_2$-plane. Since a solution to a system of linear equations must satisfy all equations simultaneously, the solution set is the intersection of these lines. This intersection set can be a line (if the linear equations describe the same line), a point, or empty (when the lines are parallel).
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
@@ -91,7 +91,7 @@
     \item the product $Ax$ is a (linear) combination of the columns of $A$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item \textbf{Augmented Matrix} ( $\dSquareBrac{\bm{A}|\bm{b}}$ ): 
+    \item \textbf{Augmented Matrix} ( $\dSquareBrac{\bm{A}|\bm{b}}$ ):
     \\[0.2cm]
     $
         \left[
@@ -112,7 +112,7 @@
     \item The solution of an inhomogeneous system of linear equations $\bm{Ax} = \bm{b}, \bm{b} \neq \bm{0}$ is not a subspace of $\mbbR^n$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    
+
 \end{enumerate}
 
 
@@ -193,7 +193,7 @@
         \item Multiplication of an equation (row) with a constant $\lambda \in \mbbR \backslash \dCurlyBrac{0}$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item Addition of two equations (rows) 
+        \item Addition of two equations (rows)
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
@@ -209,7 +209,7 @@
 \subsection{Row-Echelon Form (REF)}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[REF: pivot]
         The leading coefficient of a row (first nonzero number from the left) is called the pivot and is always strictly to the right of the pivot of the row above it.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -230,12 +230,12 @@
     \item The variables corresponding to the pivots in the row-echelon form are called basic variables and the other variables are free variables.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item we express the right-hand side of the equation system using the pivot columns, such that $\bm{b} = \dsum^P_{i=1} \lambda_i\ \bm{p}_i$, where $\bm{p}_i$ , $i = 1, \cdots , P$, are the pivot columns. 
+    \item we express the right-hand side of the equation system using the pivot columns, such that $\bm{b} = \dsum^P_{i=1} \lambda_i\ \bm{p}_i$, where $\bm{p}_i$ , $i = 1, \cdots , P$, are the pivot columns.
     \\
     The $\lambda_i$ are determined easiest if we start with the rightmost pivot column and work our way to the left.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    
+
 \end{enumerate}
 
 
@@ -247,10 +247,10 @@
     \begin{enumerate}
         \item It is in row-echelon form.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
         \item Every pivot is $1$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
         \item The pivot is the only non-zero entry in its column.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
@@ -268,16 +268,16 @@
     \centering
     \begin{tabular}{|l|l|l|}
         \hline
-        \textbf{Term} & 
-            \textbf{Scope} & 
+        \textbf{Term} &
+            \textbf{Scope} &
             \textbf{Context} \\ \hline \hline
-        
-        \textbf{Unique Solution} & 
-            One and only one solution & 
+
+        \textbf{Unique Solution} &
+            One and only one solution &
             Systems of equations \\ \hline
 
-        \textbf{Particular Solution} & 
-            One of possibly many solutions & 
+        \textbf{Particular Solution} &
+            One of possibly many solutions &
             Differential equations, infinite solution systems \\ \hline
 
     \end{tabular}
@@ -290,10 +290,10 @@
     \item this is not the only solution of this system of linear equations.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item To capture all the other solutions, we need to be creative in generating $0$ in a non-trivial way using the columns of the matrix: Adding $0$ to our special solution \textbf{does not} change the special solution. 
+    \item To capture all the other solutions, we need to be creative in generating $0$ in a non-trivial way using the columns of the matrix: Adding $0$ to our special solution \textbf{does not} change the special solution.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    
+
 \end{enumerate}
 
 
@@ -305,7 +305,7 @@ Let $\bm{A}$ is in reduced row-echelon form without any rows that just contain z
 .\hfill
 $
     \bm{A}
-    = 
+    =
     \begin{bmatrix}
         0 & \cdots & 0 & \mathbf{1} & * & \cdots & * & 0 & * & \cdots & * & 0 & * & \cdots & * \\
         \vdots & & \vdots & 0 & 0 & \cdots & 0 & \mathbf{1} & * & \cdots & * & \vdots & \vdots & & \vdots\\
@@ -335,7 +335,7 @@ $
     \item The columns $j_1, \cdots , j_k$ with the pivots (marked in \textbf{bold}) are the standard unit vectors $e_1, \cdots , e_k \in \mbbR^k$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item We extend this matrix to an $n \times n$-matrix $\tilde{\bm{A}}$ by adding $n - k$ rows of the form 
+    \item We extend this matrix to an $n \times n$-matrix $\tilde{\bm{A}}$ by adding $n - k$ rows of the form
     $
         \begin{bmatrix}
             0 & \cdots & 0 & -1 & 0 & \cdots & 0
@@ -362,16 +362,16 @@ $
     \centering
     \begin{tabular}{|l|l|l|}
         \hline
-        \textbf{Term} & 
-            \textbf{What it tells you} & 
+        \textbf{Term} &
+            \textbf{What it tells you} &
             \textbf{Context} \\ \hline
 
-        \textbf{Infinite Solutions} & 
-            The quantity of solutions & 
+        \textbf{Infinite Solutions} &
+            The quantity of solutions &
             Systems of equations \\ \hline
 
-        \textbf{General Solution} & 
-            A formula for all solutions & 
+        \textbf{General Solution} &
+            A formula for all solutions &
             Differential equations, algebra \\ \hline
 
     \end{tabular}
@@ -393,7 +393,7 @@ $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
-    
+
 \end{enumerate}
 
 
@@ -408,11 +408,11 @@ $
 
 \begin{enumerate}
     \item Projections allow us to look at situations where we have a linear system $\bm{Ax} = \bm{b}$ without a solution.
-    This means that b does not lie in the span of $\bm{A}$, i.e., the vector $\bm{b}$ does not lie in the subspace spanned by the columns of $\bm{A}$. 
+    This means that b does not lie in the span of $\bm{A}$, i.e., the vector $\bm{b}$ does not lie in the subspace spanned by the columns of $\bm{A}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item The idea is to find the vector in the subspace spanned by the columns of $\bm{A}$ that is closest to $\bm{b}$, i.e., we compute the orthogonal projection of $\bm{b}$ onto the subspace spanned by the columns of $\bm{A}$.
-    This problem arises often in practice, and the solution is called the \textbf{least-squares solution} (assuming the dot product as the inner product) of an overdetermined system. 
+    This problem arises often in practice, and the solution is called the \textbf{least-squares solution} (assuming the dot product as the inner product) of an overdetermined system.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
@@ -431,7 +431,7 @@ $
 \begin{enumerate}
     \item Let $\bm{x}_\ast$ be a solution of $\bm{Ax} = \bm{b}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
     \item The key idea of these iterative methods is to set up an iteration of the form
     $
         \bm{x}^{(k+1)} = C\bm{x}^{(k)} + d

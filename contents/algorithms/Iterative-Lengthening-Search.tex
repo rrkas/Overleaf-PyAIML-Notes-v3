@@ -23,7 +23,7 @@ def iterative_lengthening_search(problem: Problem):
 
     while True:
         result, new_cost_limit = uniform_cost_search_with_cost_limit(
-            problem, 
+            problem,
             cost_limit,
         )
 
@@ -41,7 +41,7 @@ def uniform_cost_search_with_cost_limit(problem: Problem, cost_limit: int):
 
     if problem.goal_test(node.state):
         return solution(node), cost_limit
-    
+
     frontier = [(node.path_cost, node)]
     explored = set()
     heapq.heapify(frontier)
@@ -62,7 +62,7 @@ def uniform_cost_search_with_cost_limit(problem: Problem, cost_limit: int):
         for action in problem.actions(node.state):
             child = child_node(problem, node, action)
 
-            if (not any(child.state == n.state for n in explored) and 
+            if (not any(child.state == n.state for n in explored) and
                 not any(n.state == child.state for _, n in frontier)):
                 heapq.heappush(frontier, (child.path_cost, child))
 

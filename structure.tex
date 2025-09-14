@@ -1,86 +1,86 @@
 \usepackage{fontawesome5}
 
 
-\RequirePackage[hyphens]{url} 
+\RequirePackage[hyphens]{url}
 % This package allows proper handling of URLs in the document, ensuring they are properly hyphenated if they span multiple lines.
 
 \usepackage{amssymb} % for symbols like checkmark
 
-\usepackage[top=2cm,bottom=2cm,left=2.2cm,right=2.2cm,headsep=10pt,a4paper]{geometry} 
+\usepackage[top=2cm,bottom=2cm,left=2.2cm,right=2.2cm,headsep=10pt,a4paper]{geometry}
 % Configures the page layout with specified margins and paper size (A4), including top, bottom, left, and right margins, and the header separation.
 
-\usepackage[dvipsnames,table]{xcolor} 
+\usepackage[dvipsnames,table]{xcolor}
 % Provides color support in the document, allowing named colors and coloring of tables and other elements.
 
-\usepackage{mathptmx} 
+\usepackage{mathptmx}
 % Changes the default text font to Adobe Times Roman and the math font to the Symbol, Chancery, and Computer Modern fonts for mathematical symbols.
 
-\usepackage{mathrsfs} 
+\usepackage{mathrsfs}
 % Loads the mathrsfs package to provide a script-like math font (commonly used for calligraphic letters in mathematics).
 
-\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n} 
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 % Redefines the \mathcal font to make it less curvy and more suited for mathematical characters.
 
-\usepackage[utf8]{inputenc} 
+\usepackage[utf8]{inputenc}
 % Specifies the input encoding of the document as UTF-8, enabling support for special characters and accented letters.
 
-\usepackage[T1]{fontenc} 
+\usepackage[T1]{fontenc}
 % Ensures the use of an 8-bit font encoding that provides access to 256 glyphs, improving the document's character handling, especially for European languages.
 
-\usepackage{amsmath} 
+\usepackage{amsmath}
 % Provides advanced mathematical features, including various environments and tools for handling mathematical equations and symbols.
 
-\everymath{\displaystyle}   
+\everymath{\displaystyle}
 % Ensures that inline math expressions are displayed in "display style," which is usually used for equations to make them larger and more readable.
 
-\everydisplay{\displaystyle} 
+\everydisplay{\displaystyle}
 % Ensures that display math (e.g., equations shown on their own line) uses the "display style" for larger symbols and better readability.
 
-\setcounter{MaxMatrixCols}{20} 
+\setcounter{MaxMatrixCols}{20}
 % Increases the maximum number of columns allowed in a matrix to 20 (the default is 10), useful for large matrices in math environments.
 
-\usepackage{mathtools} 
+\usepackage{mathtools}
 % Extends the functionality of the amsmath package, adding additional tools and enhancements for working with mathematical expressions.
 
-\usepackage{float} 
+\usepackage{float}
 % Allows better control over the placement of figures and tables, particularly with the "H" option that forces figures to appear exactly where they are in the code.
 
-\usepackage{longtable} 
+\usepackage{longtable}
 % Provides support for tables that span multiple pages, useful for large tables that need to be split across different pages.
 
 \usepackage{tabularx}
 
 
-\usepackage{multicol,multirow} 
+\usepackage{multicol,multirow}
 % The multicol package allows creating multi-column text layouts, and multirow enables the merging of rows in tables.
 
-\usepackage{graphicx} 
+\usepackage{graphicx}
 % Required for including graphics (images) in your document, allowing for resizing, rotation, and positioning.
 
-\usepackage{enumitem} 
+\usepackage{enumitem}
 % Enhances the customization of lists (enumerated and itemized), providing control over label format, spacing, and more.
 \setlist{itemsep=0.1cm, topsep=0.1cm}
 
 
-\usepackage[none]{hyphenat} 
+\usepackage[none]{hyphenat}
 % Disables hyphenation in the document, preventing words from being broken at the end of lines.
 
-\usepackage{bbm} 
+\usepackage{bbm}
 % Provides blackboard bold math symbols (e.g., \mathbb{N} for natural numbers) used in mathematics.
 
-\usepackage{bm} 
+\usepackage{bm}
 % Provides support for bolding mathematical symbols and expressions (e.g., \bm{a} for bold vector a).
 
-\usepackage{nameref} 
+\usepackage{nameref}
 % Allows for referencing sections, equations, figures, and tables by their names instead of numbers.
 
-\usepackage{datetime} 
+\usepackage{datetime}
 % Provides tools for working with dates and times in LaTeX, such as displaying the current date in different formats.
 
-\usepackage{cancel} 
+\usepackage{cancel}
 % Adds the ability to "cancel" or strike out parts of mathematical expressions (e.g., crossing out terms).
 
-\usepackage{scrextend} 
+\usepackage{scrextend}
 % Provides additional functionality for document layout and formatting, such as custom margins and page styles.
 
 % Import the pifont package to use special symbols like checkmarks and crosses
@@ -111,7 +111,7 @@
 % - `backend=biber`: Specifies the backend for processing the bibliography, using `biber` as the citation manager.
 
 
-\addbibresource{bibliography.bib} 
+\addbibresource{bibliography.bib}
 % Specifies the `.bib` file (bibliography file) containing the references to be used in the document. Here, it's named `bibliography.bib`.
 
 \DeclareSortingTemplate{sort-tmpl}{
@@ -128,14 +128,14 @@
 
 % This custom sorting scheme defines how references should be sorted in the bibliography. It sorts first by title, then by year, and finally by author.
 
-\ExecuteBibliographyOptions{sorting=sort-tmpl} 
+\ExecuteBibliographyOptions{sorting=sort-tmpl}
 % Applies the sorting scheme defined earlier, sorting the bibliography entries based on the `title` field.
 
 % remove full stop at end of bib entry
 \renewcommand{\finentrypunct}{}
 
 
-\DeclareBibliographyDriver{book}{% 
+\DeclareBibliographyDriver{book}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \iffieldundef{type}{}{%
@@ -159,10 +159,10 @@
     \\ \textsc{url}: \url{\thefield{url}}
   }%
   \usebibmacro{finentry}%
-} 
+}
 
 
-\DeclareBibliographyDriver{online}{% 
+\DeclareBibliographyDriver{online}{%
     \usebibmacro{bibindex}%
     \usebibmacro{begentry}%
     \iffieldundef{type}{}{%
@@ -173,7 +173,7 @@
         \\ \textsc{url}: \url{\thefield{url}}
     }%
     \usebibmacro{finentry}%
-} 
+}
 
 
 
@@ -181,44 +181,44 @@
 
 
 
-\usepackage{array} 
+\usepackage{array}
 % Provides additional tools for defining and customizing tables. It allows for more control over column formatting, alignment, and other table features.
 
-\usepackage{pdflscape} 
+\usepackage{pdflscape}
 % This package allows you to rotate entire pages to landscape orientation. It is useful when you have wide tables or figures that don't fit in portrait mode.
 
-\usepackage{ragged2e} 
+\usepackage{ragged2e}
 % Provides more flexible options for text alignment, such as ragged-right (`\RaggedRight`) and ragged-left (`\RaggedLeft`), allowing you to control the alignment of text more precisely.
 
-\usepackage{imakeidx} 
+\usepackage{imakeidx}
 % Simplifies the creation of an index in your document. The `\makeindex` command is used to generate an index, with options for customization.
 
-\makeindex 
+\makeindex
 % This command enables the creation of an index, which can then be populated with terms throughout the document using `\index{}`.
 
 \usepackage{hhline}
 
-\usepackage{adjustbox} 
+\usepackage{adjustbox}
 % Provides a versatile way to adjust and position content (like images or tables), including scaling, rotating, or framing, without affecting the content's layout.
 
-\usepackage{tikz} 
+\usepackage{tikz}
 % A powerful package for creating high-quality graphics, including diagrams, plots, and illustrations. The `\usetikzlibrary{arrows.meta, positioning}` enables the use of specific TikZ libraries for arrows and positioning of nodes.
 
-\usetikzlibrary{arrows.meta, positioning, decorations.pathreplacing} 
+\usetikzlibrary{arrows.meta, positioning, decorations.pathreplacing}
 % Loads specific TikZ libraries:
 % - `arrows.meta`: Provides advanced arrow styles for creating flowcharts and diagrams.
 % - `positioning`: Helps with positioning nodes relative to each other, allowing for more flexible layout in diagrams.
 
-\usepackage{caption} 
+\usepackage{caption}
 % Customizes captions for figures, tables, and other floating objects. The `\captionsetup` command allows you to adjust settings like label font style, label name, and separator (e.g., colon after the "Fig." label).
 
-\captionsetup[figure]{labelfont=bf, name=Fig., labelsep=colon} 
+\captionsetup[figure]{labelfont=bf, name=Fig., labelsep=colon}
 % Customizes the caption format for figures. It sets the label font to bold (`labelfont=bf`), changes the name to "Fig." instead of "Figure" (`name=Fig.`), and sets the separator between the label and caption to a colon (`labelsep=colon`).
 
-\usepackage{changepage} 
+\usepackage{changepage}
 % Allows for dynamic changes to page margins. For example, it can be used to change the width of the text block for specific parts of the document, useful for formatting long quotes or wide tables.
 
-% \usepackage{lastpage} 
+% \usepackage{lastpage}
 % Provides a reference to the last page in the document. It can be used in headers or footers, for example, to display "Page X of Y" by referencing the last page.
 
 
@@ -252,22 +252,22 @@
 \renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}} % Section text font settings
 
 % Set the page style to fancy for applying custom headers and footers
-\fancypagestyle{mainmatter}{    
+\fancypagestyle{mainmatter}{
     % Clear all header and footer fields
     \fancyhf{}
-    
+
     % Set the width of the header line to match the text width
     \setlength{\headwidth}{\textwidth} % Width of the header line
 
 
     \fancyhead[LO]{\leftmark}
     \fancyhead[RE]{\leftmark}
-    
-    
+
+
     \fancyfoot[L]{{\bookname}} % Left side: Book title in blue
-    \fancyfoot[C]{Page \sffamily\normalsize\thepage\ of \protect\pageref*{MMLastPage}} 
+    \fancyfoot[C]{Page \sffamily\normalsize\thepage\ of \protect\pageref*{MMLastPage}}
     \fancyfoot[R]{By \textbf{\authorname}} % Right side: Author name
-    
+
     % Customize the header and footer rule thickness
     \renewcommand{\headrulewidth}{0.5pt} % Width of the rule under the header
     \addtolength{\headheight}{2.5pt} % Increase the spacing around the header slightly
@@ -276,13 +276,13 @@
 
 
 \fancypagestyle{extra}{
-    \fancyhf{} 
+    \fancyhf{}
     \setlength{\headwidth}{\textwidth} % Width of the header line
-    
+
     \fancyfoot[L]{{\bookname}} % Left side: Book title in blue
     \fancyfoot[C]{\sffamily\normalsize\thepage}
     \fancyfoot[R]{By \textbf{\authorname}} % Right side: Author name
-    
+
     \renewcommand{\headrulewidth}{0pt} % Width of the rule under the header
     % \addtolength{\headheight}{2.5pt} % Increase the spacing around the header slightly
     \renewcommand{\footrulewidth}{0.5pt} % Removes the rule in the footer
@@ -301,12 +301,12 @@
 
 
 % Ensure URLs in hyperlinks are broken correctly at hyphens if needed
-\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref} 
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 % Load the hyperref package with additional URL support
 
 
 % Load the breakurl package for handling URL breaking in PDFs
-\usepackage{breakurl} 
+\usepackage{breakurl}
 % Useful when compiling with DVI to PDF converters (e.g., dvipdfm)
 
 
@@ -323,7 +323,7 @@
     colorlinks=true, % Enable colored links instead of boxed links
     breaklinks=true, % Allow links to break across lines (useful for long URLs)
     bookmarks=true, % Enable PDF bookmarks for easy navigation
-    bookmarksopen=true, % Automatically expand bookmarks in the PDF viewer    
+    bookmarksopen=true, % Automatically expand bookmarks in the PDF viewer
     % Metadata for the PDF document
     pdftitle={\booknameSimple}, % Set the title of the PDF
     pdfauthor={\authornameSimple} % Set the author name in the PDF metadata
@@ -331,7 +331,7 @@
 
 
 % Define a custom command to create a single clickable reference with both number and name
-\newcommand*{\fullref}[1]{\hyperref[{#1}]{(\protect\ref*{#1}) \protect\nameref*{#1}}} 
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{(\protect\ref*{#1}) \protect\nameref*{#1}}}
 % Example: \fullref{sec:example} → (1.1) Section Name
 % \ref* provides the section number without a hyperlink
 % \nameref* provides the section title without a hyperlink
@@ -377,7 +377,7 @@
        \@makeschapterhead{#1}% Otherwise, create the chapter title normally
        \@afterheading % Adjust spacing after the chapter heading
      \fi}
-    
+
 % Define how the chapter title is displayed for unnumbered chapters
 \def\@makeschapterhead#1{%
   \vspace*{5\p@}% Add 20pt space above the chapter title
@@ -396,11 +396,11 @@
 \def\section{\@ifstar\unnumberedsection\numberedsection}
 
 % Handle numbered sections: Check for optional arguments using \@ifnextchar
-\def\numberedsection{\@ifnextchar[%] 
+\def\numberedsection{\@ifnextchar[%]
   \numberedsectionwithtwoarguments\numberedsectionwithoneargument}
 
 % Handle unnumbered sections: Similar to numbered sections but without numbering
-\def\unnumberedsection{\@ifnextchar[%] 
+\def\unnumberedsection{\@ifnextchar[%]
   \unnumberedsectionwithtwoarguments\unnumberedsectionwithoneargument}
 
 % Define one-argument version of numbered section by passing the same argument twice
@@ -466,13 +466,13 @@
 % If no star (*) → Call \numberedsubsection
 
 % Handle numbered subsections, checking for optional arguments using \@ifnextchar
-\def\numberedsubsection{\@ifnextchar[%] 
+\def\numberedsubsection{\@ifnextchar[%]
   \numberedsubsectionwithtwoarguments\numberedsubsectionwithoneargument}
 % If optional argument ([...]) is present → Call \numberedsubsectionwithtwoarguments
 % If no optional argument → Call \numberedsubsectionwithoneargument
 
 % Handle unnumbered subsections similarly
-\def\unnumberedsubsection{\@ifnextchar[%] 
+\def\unnumberedsubsection{\@ifnextchar[%]
   \unnumberedsubsectionwithtwoarguments\unnumberedsubsectionwithoneargument}
 
 % Define single-argument version of numbered subsection
@@ -532,11 +532,11 @@
 \def\subsubsection{\@ifstar\unnumberedsubsubsection\numberedsubsubsection}
 
 % Handle numbered subsubsections
-\def\numberedsubsubsection{\@ifnextchar[%] 
+\def\numberedsubsubsection{\@ifnextchar[%]
   \numberedsubsubsectionwithtwoarguments\numberedsubsubsectionwithoneargument}
 
 % Handle unnumbered subsubsections
-\def\unnumberedsubsubsection{\@ifnextchar[%] 
+\def\unnumberedsubsubsection{\@ifnextchar[%]
   \unnumberedsubsubsectionwithtwoarguments\unnumberedsubsubsectionwithoneargument}
 
 % Define single-argument version for numbered subsubsections
@@ -601,7 +601,7 @@
 
 
 
-\usepackage[ruled,vlined,linesnumbered,resetcount,algochapter]{algorithm2e} 
+\usepackage[ruled,vlined,linesnumbered,resetcount,algochapter]{algorithm2e}
 % This package provides a way to write algorithms in LaTeX. The options here configure the appearance of algorithms:
 % - `ruled`: Adds horizontal lines at the top and bottom of the algorithm.
 % - `vlined`: Adds vertical lines to separate the code blocks.
@@ -609,13 +609,13 @@
 % - `resetcount`: Resets the line numbering within each new algorithm.
 % - `algochapter`: Allows for algorithm numbering to be tied to chapter numbers.
 
-\SetKwComment{Comment}{/* }{ */} 
+\SetKwComment{Comment}{/* }{ */}
 % This sets the style for comments within the algorithm. The comment text will be enclosed between `/*` and `*/`, and it will be formatted accordingly.
 
 
 
 
-\usepackage{listings} 
+\usepackage{listings}
 % Provides tools for formatting and including source code in the document, with customizable options for syntax highlighting.
 
 
@@ -688,7 +688,7 @@
 \newcommand{\dbigcup}{\displaystyle\bigcup}
 \newcommand{\tbigcup}{\textstyle\bigcup}
 
-\newcommand{\dParenBrac}[1]{\left(#1\right)}    % () 
+\newcommand{\dParenBrac}[1]{\left(#1\right)}    % ()
 \newcommand{\dSquareBrac}[1]{\left[#1\right]}   % []
 \newcommand{\dCurlyBrac}[1]{\left\{#1\right\}}  % {}
 \DeclarePairedDelimiter{\dAngleBrac}{\langle}{\rangle}  % <>
@@ -844,7 +844,7 @@
     \begin{center}
         {
             \fontsize{45}{50}
-            \selectfont 
+            \selectfont
             \textsc{\thepartitioncounter}
         } \\[0.5cm] % Display "Part I, Part II..."
         {
@@ -854,14 +854,14 @@
             \par
         }
     \end{center}
-    
+
     \vfill % Add vertical space to balance the design
     \cleardoublepage % Ensure the next chapter starts on an odd-numbered page
 
     % Add the partition to the table of contents without making it clickable
     \addtocontents{toc}{
         \protect\contentsline{partition}{
-            \fontsize{19}{19}\selectfont 
+            \fontsize{19}{19}\selectfont
             \textsc{
                 \makebox[0.1cm][r]{\thepartitioncounter}
                 \hspace{0.25cm}

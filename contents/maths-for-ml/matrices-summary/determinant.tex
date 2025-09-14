@@ -38,7 +38,7 @@
 
 .\hfill
 $
-    \det(\bm{A}) 
+    \det(\bm{A})
     = \dabs{\bm{A}}
     = \begin{vmatrix}
         a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -50,7 +50,7 @@ $
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Determinant]
         A determinant is a mathematical object in the analysis and solution of systems of linear equations.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -65,30 +65,30 @@ $
     \item For $n=1$, $\det(\bm{A}) = \det(a_{11}) = a_{11}$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item For $n=2$, 
+    \item For $n=2$,
     $
-        \det(\bm{A}) 
+        \det(\bm{A})
         = \begin{vmatrix}
             a_{11} & a_{12} \\
             a_{21} & a_{22}
-        \end{vmatrix} 
+        \end{vmatrix}
         = a_{11} a_{22} - a_{12} a_{21}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item  
+    \item
     \begin{definition}[Determinant: Sarrus’ Rule]
-        For $n=3$, 
+        For $n=3$,
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\[0.3cm]
         $
-            \det(\bm{A}) 
+            \det(\bm{A})
             = \begin{vmatrix}
                 a_{11} & a_{12} & a_{13} \\
                 a_{21} & a_{22} & a_{23} \\
                 a_{31} & a_{32} & a_{33} \\
-            \end{vmatrix} 
-            = a_{11} a_{22} a_{33}  + a_{21} a_{32} a_{13}  + a_{31} a_{12} a_{23}  - a_{31} a_{22} a_{13}  - a_{11} a_{32} a_{23}  - a_{21} a_{12} a_{33} 
+            \end{vmatrix}
+            = a_{11} a_{22} a_{33}  + a_{21} a_{32} a_{13}  + a_{31} a_{12} a_{23}  - a_{31} a_{22} a_{13}  - a_{11} a_{32} a_{23}  - a_{21} a_{12} a_{33}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
@@ -102,13 +102,13 @@ $
     \item The sign of the determinant indicates the orientation of the spanning vectors.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{theorem}[Determinant: Laplace Expansion]
     Consider a matrix $\bm{A} \in \mbbR^{n\times n}$. Then, for all $j = 1, \cdots , n$:
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
     \begin{enumerate}
-        \item Expansion along column $j$: 
+        \item Expansion along column $j$:
         $
             \det(\bm{A}) = \dsum^n _{k=1} (-1)^{k+j}\  a_{kj}\ \det(\bm{A}_{k,j} )
         $
@@ -182,23 +182,23 @@ For $\bm{A} \in \mbbR^{n\times n}$ the determinant exhibits the following proper
     \item If $\bm{A}$ is regular (invertible), then $\det(\bm{A} ^{-1} ) = \dfrac{1} {\det(\bm{A})}$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Similar matrices possess the same determinant. 
-    Therefore, for a linear mapping $\Phi : V \to V$ all transformation matrices $\bm{A}_\Phi$ of $\Phi$ have the same determinant. 
+    \item Similar matrices possess the same determinant.
+    Therefore, for a linear mapping $\Phi : V \to V$ all transformation matrices $\bm{A}_\Phi$ of $\Phi$ have the same determinant.
     Thus, the determinant is invariant to the choice of basis of a linear mapping.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item Adding a multiple of a column/row to another one does not change $\det(\bm{A})$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Multiplication of a column/row with $\lambda \in \mbbR$ scales $\det(\bm{A})$ by $\lambda$. 
+    \item Multiplication of a column/row with $\lambda \in \mbbR$ scales $\det(\bm{A})$ by $\lambda$.
     In particular, $\det(\lambda \bm{A}) = \lambda^ n \ \det(\bm{A})$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item Swapping two rows/columns changes the sign of $\det(\bm{A})$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item[] \textbf{Note}: Because of the last three properties, we can use Gaussian elimination to compute $\det(\bm{A})$ by bringing $\bm{A}$ into row-echelon form. 
-    We can stop Gaussian elimination when we have $\bm{A}$ in a triangular form where the elements below the diagonal are all $0$. 
+    \item[] \textbf{Note}: Because of the last three properties, we can use Gaussian elimination to compute $\det(\bm{A})$ by bringing $\bm{A}$ into row-echelon form.
+    We can stop Gaussian elimination when we have $\bm{A}$ in a triangular form where the elements below the diagonal are all $0$.
     (the determinant of a triangular matrix is the product of the diagonal elements)
 \end{enumerate}
 

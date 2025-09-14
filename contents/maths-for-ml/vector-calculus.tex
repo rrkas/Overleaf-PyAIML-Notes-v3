@@ -3,23 +3,23 @@
 \section{Function ($f(x)$)}
 
 \begin{enumerate}
-    \item A function $f$ is a quantity that relates two quantities to each other. 
+    \item A function $f$ is a quantity that relates two quantities to each other.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item These quantities are typically inputs $\bm{x} \in \mbbR^D$ and targets (function values) $f (\bm{x})$, which we assume are real-valued if not stated otherwise. 
+    \item These quantities are typically inputs $\bm{x} \in \mbbR^D$ and targets (function values) $f (\bm{x})$, which we assume are real-valued if not stated otherwise.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
     \item $\mbbR^D$ is the domain of $f$ , and the function values $f (\bm{x})$ are the image/codomain of $f$ .
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item We often write 
+    \item We often write
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \begin{enumerate}
-        \item $f: \mbbR^D \to \mbbR$ 
+        \item $f: \mbbR^D \to \mbbR$
         (specifies that $f$ is a mapping from $\mbbR^D$ to $\mbbR$ )
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        
-        \item $\bm{x} \mapsto f(\bm{x})$ 
+
+        \item $\bm{x} \mapsto f(\bm{x})$
         (specifies the explicit assignment of an input $\bm{x}$ to a function value $f(\bm{x})$)
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
@@ -41,27 +41,27 @@
 \subsection{Differentiation of Uni-variate Functions}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Univariate function ($f : \mbbR \to \mbbR$)]
         Univariate function: $y = f(x),\ x, y \in \mbbR$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item 
+    \item
     \begin{definition}[Difference Quotient]
         The difference quotient
         $
-            \dfrac{\delta y}{\delta x} 
+            \dfrac{\delta y}{\delta x}
             := \dfrac{f(x + \delta x) - f(x)}{\delta x}
         $
         computes the slope of the secant line through two points on the graph of $f$ .
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item The derivative of $f$ points in the direction of steepest ascent of $f$. 
+    \item The derivative of $f$ points in the direction of steepest ascent of $f$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{definition}[Power Series]
         $
             f(x) = \dsum_{k=0}^{\infty} a_k (x-c)^k
@@ -78,13 +78,13 @@
 \subsection{Differentiation of multi-variate Functions}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[multi-variate Functions ($f : \mbbR^n \to \mbbR$)]
         The general case where the function $f$ depends on one or more variables $\bm{x} \in \mbbR^n$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item 
+    \item
     \begin{definition}[Partial Derivative ($\dfrac{\partial f}{\partial x_i}$)]
         For a function $f : \mbbR^n \to \mbbR$, $\bm{x} \mapsto f (\bm{x})$, $\bm{x} \in \mbbR^n$ of $n$ variables $x_1, \cdots , x_n$ we define the partial derivatives as
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -93,18 +93,18 @@
         ${
             \displaystyle
             \begin{matrix}
-                \dfrac{\partial f}{\partial x_1} 
-                & 
-                = 
-                & 
+                \dfrac{\partial f}{\partial x_1}
+                &
+                =
+                &
                 \lim_{h\to 0} \dfrac{f (x_1 + h, x_2, \cdots , x_n) - f (\bm{x})}{h}
                 \\
                 & \vdots &
                 \\
-                \dfrac{\partial f}{\partial x_n} 
-                & 
-                = 
-                & 
+                \dfrac{\partial f}{\partial x_n}
+                &
+                =
+                &
                 \lim_{h\to 0} \dfrac{f (x_1 , x_2, \cdots , x_n+ h) - f (\bm{x})}{h}
             \end{matrix}
         }$
@@ -118,13 +118,13 @@
     \item The generalization of the derivative to functions of several variables is the \textbf{gradient}.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item We find the gradient of the function $f$ with respect to $\bm{x}$ by varying one variable at a time and keeping the others constant. 
+    \item We find the gradient of the function $f$ with respect to $\bm{x}$ by varying one variable at a time and keeping the others constant.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
     \item The gradient is then the \textbf{collection} of these partial derivatives.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{definition}[Gradient ($\nabla_x f \in \mbbR^{1 \times n}$)]
         For a function $f : \mbbR^n \to \mbbR$, $\bm{x} \mapsto f (\bm{x})$, $\bm{x} \in \mbbR^n$ of $n$ variables $x_1, \cdots , x_n$:
         \\
@@ -170,7 +170,7 @@
 \section{Gradients of Vector-Valued Functions ($J = \nabla_x f$)}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[vector-valued functions/ vector fields ($\bm{f} : \mbbR^n \to \mbbR^m$)]
         vector-valued functions (vector fields) are defined as $\bm{f} : \mbbR^n \to \mbbR^m$, where $n \geq 1$ and $m > 1$.
         For a function $\bm{f} : \mbbR^n \to \mbbR^m$ and a vector $\bm{x} = [x_1, \cdots , x_n]^\top \in \mbbR^n$, the corresponding vector of function values is given as
@@ -186,10 +186,10 @@
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item Writing the vector-valued function in this way allows us to view a vector-valued function $\bm{f} : \mbbR^n \to \mbbR^m$ as a vector of functions $[f_1, \cdots , f_m]^\top$, $f_i : \mbbR^n \to \mbbR$ that map onto $\mbbR$. 
+    \item Writing the vector-valued function in this way allows us to view a vector-valued function $\bm{f} : \mbbR^n \to \mbbR^m$ as a vector of functions $[f_1, \cdots , f_m]^\top$, $f_i : \mbbR^n \to \mbbR$ that map onto $\mbbR$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     .\hfill
     ${
         \displaystyle
@@ -208,15 +208,15 @@
     }$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{definition}[Jacobian ($\bm{J} = \nabla_{\bm{x}}\bm{f} = \dfrac{d \bm{f}(\bm{x})}{d \bm{x}}$)]
-        The collection of all first-order partial derivatives of a vector-valued function $\bm{f} : \mbbR^n \to \mbbR^m$ is called the Jacobian. 
+        The collection of all first-order partial derivatives of a vector-valued function $\bm{f} : \mbbR^n \to \mbbR^m$ is called the Jacobian.
         The Jacobian $\bm{J}$ is an $m \times n$ matrix, which we define and arrange as follows:
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
         .\hfill
         $
-            \bm{J} 
+            \bm{J}
             = \nabla_{\bm{x}}\bm{f}
             = \dfrac{d \bm{f}(\bm{x})}{d \bm{x}}
             = \begin{bmatrix}
@@ -251,7 +251,7 @@
         \item As a special case, a function $f : \mbbR^n \to \mbbR^1$, which maps a vector $\bm{x} \in \mbbR^n$ onto a scalar (e.g., $f (x) = \dsum^n _{i=1} x_i$), possesses a Jacobian that is a row vector (matrix of dimension $1 \times n$)
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item Jacobian is used in the change-of-variable method for probability distributions. 
+        \item Jacobian is used in the change-of-variable method for probability distributions.
         The amount of scaling due to the transformation of a variable is provided by the determinant.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -288,9 +288,9 @@ $
 \\[0.2cm]
 .\hfill
 $
-    \dfrac{\partial^n f}{\partial x^n} = 
+    \dfrac{\partial^n f}{\partial x^n} =
     \dfrac{\partial}{\partial x} \dParenBrac{
-        \overset{n \text{ times}}{\cdots} 
+        \overset{n \text{ times}}{\cdots}
         \dParenBrac{\dfrac{\partial}{\partial x} \dParenBrac{\dfrac{\partial f}{\partial x}}}
         \cdots
     }
@@ -298,20 +298,20 @@ $
 \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 \begin{enumerate}
-    \item 
-    \begin{definition}[Hessian ($\bm{H} = \nabla^2_{x,y}f(x,y)$)]    
+    \item
+    \begin{definition}[Hessian ($\bm{H} = \nabla^2_{x,y}f(x,y)$)]
         The Hessian is the collection of all second-order partial derivatives.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item If $f (x, y)$ is a twice (continuously) differentiable function, then 
+    \item If $f (x, y)$ is a twice (continuously) differentiable function, then
     $
         \dfrac{\partial^2 f}{\partial y \partial x}
         = \dfrac{\partial^2 f}{\partial x \partial y}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     $
         \bm{H}
         = \nabla^2_{x,y}f(x,y)
@@ -322,11 +322,11 @@ $
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item Generally, for $\bm{x} \in \mbbR^n$ and $f : \mbbR^n \to \mbbR$, the Hessian is an $n \times n$ matrix. 
+    \item Generally, for $\bm{x} \in \mbbR^n$ and $f : \mbbR^n \to \mbbR$, the Hessian is an $n \times n$ matrix.
     The Hessian measures the curvature of the function locally around $(x, y)$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item (Hessian of a Vector Field) If $\bm{f} : \mbbR^n \to \mbbR^m$ is a vector field, the Hessian is an $(m \times n \times n)$-tensor. 
+    \item (Hessian of a Vector Field) If $\bm{f} : \mbbR^n \to \mbbR^m$ is a vector field, the Hessian is an $(m \times n \times n)$-tensor.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
@@ -357,11 +357,11 @@ $
         keepaspectratio,
     ]{images/Vector-Calculus/Gradients-of-Matrices-approach1.png}
     \caption*{
-        \textbf{Approach 1}: 
-        We compute the partial derivative 
-        $\dfrac{\partial \bm{A}}{\partial x_1}$ , 
-        $\dfrac{\partial \bm{A}}{\partial x_2}$ , 
-        $\dfrac{\partial \bm{A}}{\partial x_3}$ , each of which is a $4 \times 2$ matrix, 
+        \textbf{Approach 1}:
+        We compute the partial derivative
+        $\dfrac{\partial \bm{A}}{\partial x_1}$ ,
+        $\dfrac{\partial \bm{A}}{\partial x_2}$ ,
+        $\dfrac{\partial \bm{A}}{\partial x_3}$ , each of which is a $4 \times 2$ matrix,
         and collate them in a $4 \times 2 \times 3$ tensor.
         \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     }
@@ -377,8 +377,8 @@ $
         keepaspectratio,
     ]{images/Vector-Calculus/Gradients-of-Matrices-approach2.png}
     \caption*{
-        \textbf{Approach 2}: We re-shape (flatten) $\bm{A} \in \mbbR^{4\times 2}$ into a vector $\tilde{\bm{A}} \in \mbbR^8$. 
-        Then, we compute the gradient $\dfrac{d\tilde{\bm{A}}}{d\bm{x}} \in \mbbR^{8\times 3}$. 
+        \textbf{Approach 2}: We re-shape (flatten) $\bm{A} \in \mbbR^{4\times 2}$ into a vector $\tilde{\bm{A}} \in \mbbR^8$.
+        Then, we compute the gradient $\dfrac{d\tilde{\bm{A}}}{d\bm{x}} \in \mbbR^{8\times 3}$.
         We obtain the gradient tensor by re-shaping this gradient as illustrated above.
         \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     }
@@ -389,13 +389,13 @@ $
 
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Tensor]
         Tensor is a multidimensional array
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item 
+    \item
     \begin{definition}[Flattening (matrix $\to$ vector)]
         Matrices can be transformed into vectors by stacking the columns of the matrix
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
@@ -417,7 +417,7 @@ $
 \section{Differentiation Rules}
 
 \begin{enumerate}[series=vcalrules]
-    \item \textbf{Product rule}: 
+    \item \textbf{Product rule}:
     \begin{enumerate}
         \item $
             (f(x)g(x))^\prime
@@ -429,7 +429,7 @@ $
 
         \item $
             \dfrac{\partial}{\partial \bm{x}}(f(\bm{x})g(\bm{x}))
-            = g(\bm{x})\dfrac{\partial}{\partial \bm{x}}f(\bm{x}) 
+            = g(\bm{x})\dfrac{\partial}{\partial \bm{x}}f(\bm{x})
                 + f(\bm{x})\dfrac{\partial}{\partial \bm{x}}g(\bm{x})
         $ \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
@@ -452,13 +452,13 @@ $
 
         \item $
             \dfrac{\partial}{\partial \bm{x}}(f(\bm{x}) + g(\bm{x}))
-            = \dfrac{\partial}{\partial \bm{x}}f(\bm{x}) 
+            = \dfrac{\partial}{\partial \bm{x}}f(\bm{x})
                 + \dfrac{\partial}{\partial \bm{x}}g(\bm{x})
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
-    \item \textbf{Chain Rule}: 
+    \item \textbf{Chain Rule}:
     \begin{enumerate}
         \item $
             (g(f(x)))^\prime
@@ -496,41 +496,41 @@ $
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     $
         \dfrac{\partial \bm{f}(\bm{A})^{-1}}{\partial \bm{A}}
         = -\bm{f}(\bm{A})^{-1}\ \dfrac{\partial \bm{f}(\bm{A})}{\partial \bm{A}} \ \bm{f}(\bm{A})^{-1}
-    $ 
+    $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     $
         \dfrac{\partial\ \bm{x}^\top \bm{A}^{-1}\bm{y}}{\partial \bm{A}}
         = -(\bm{A}^{-1})^\top \bm{xy}^\top (\bm{A}^{-1})^\top
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     $
         \dfrac{\partial\ \bm{x}^\top \bm{A}\bm{y}}{\partial \bm{A}}
-        = \bm{xy}^\top 
+        = \bm{xy}^\top
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     $
         \dfrac{\partial\ \bm{x}^\top \bm{A}\bm{x}}{\partial \bm{x}}
-        = \bm{x}^\top(\bm{A} + \bm{A}^\top) 
+        = \bm{x}^\top(\bm{A} + \bm{A}^\top)
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     $
         \dfrac{\partial\ \bm{x}^\top \bm{y}}{\partial\ \bm{x}} = \bm{y}^\top
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     $
         \dfrac{\partial\ \bm{y}^\top \bm{x}}{\partial\ \bm{x}} = \bm{y}^\top
     $
@@ -546,7 +546,7 @@ $
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     $
         \dfrac{\partial\ (\bm{x} - \bm{As})^\top \bm{W} (\bm{x} - \bm{As})}{\partial\bm{s}}
         = -2(\bm{x} - \bm{As})^\top \bm{WA}
@@ -560,8 +560,8 @@ $
 \vspace{0.5cm}
 \textbf{Examples}
 \begin{enumerate}
-    \item Consider a function $f : \mbbR^2 \to \mbbR$ of two variables $x_1, x_2$. 
-    Furthermore, $x_1(t)$ and $x_2(t)$ are themselves functions of $t$. 
+    \item Consider a function $f : \mbbR^2 \to \mbbR$ of two variables $x_1, x_2$.
+    Furthermore, $x_1(t)$ and $x_2(t)$ are themselves functions of $t$.
     \\
     $
         \nabla_t f(x_1, x_2)
@@ -595,12 +595,12 @@ $
             \textcolor{green}{\dfrac{\partial x_2(s,t)}{\partial s}} & \textcolor{green}{\dfrac{\partial x_2(s,t)}{\partial t}}
         \end{bmatrix}
         \\
-        &= 
+        &=
         \begin{bmatrix}
             \dfrac{\partial f(x_1, x_2)}{\textcolor{blue}{\partial x_1(s,t)}}
             \textcolor{blue}{\dfrac{\partial x_1(s,t)}{\partial s}} +
             \dfrac{\partial f(x_1, x_2)}{\textcolor{green}{\partial x_2(s,t)}}
-            \textcolor{green}{\dfrac{\partial x_2(s,t)}{\partial s}} \\ 
+            \textcolor{green}{\dfrac{\partial x_2(s,t)}{\partial s}} \\
             \dfrac{\partial f(x_1, x_2)}{\textcolor{blue}{\partial x_1(s,t)}}
             \textcolor{blue}{\dfrac{\partial x_1(s,t)}{\partial t}} +
             \dfrac{\partial f(x_1, x_2)}{\textcolor{green}{\partial x_2(s,t)}}
@@ -609,7 +609,7 @@ $
         \end{aligned}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
 \end{enumerate}
 
 
@@ -668,7 +668,7 @@ $
 \end{table}
 
 \begin{enumerate}
-    \item An area where the chain rule is used to an extreme is deep learning, where the function value $\bm{y}$ is computed as a many-level function composition 
+    \item An area where the chain rule is used to an extreme is deep learning, where the function value $\bm{y}$ is computed as a many-level function composition
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     .\hfill
@@ -701,31 +701,31 @@ $
     \begin{enumerate}[resume*=grad-dnn]
         \item $L(\bm{\theta}) = \dnorm{\bm{y} - \bm{f}_K(\bm{\theta},\ \bm{x})}^2$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        
-        \item 
+
+        \item
         $
             \dfrac{\partial L}{\partial \bm{\theta}_{K-1}}
             = \dfrac{\partial L}{\partial \bm{f}_K} \textcolor{blue}{\dfrac{\partial \bm{f}_K}{\partial \bm{\theta}_{K-1}}}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item 
+        \item
         $
             \dfrac{\partial L}{\partial \bm{\theta}_{K-2}}
-            = \dfrac{\partial L}{\partial \bm{f}_K} 
+            = \dfrac{\partial L}{\partial \bm{f}_K}
             \textcolor{orange}{\dfrac{\partial \bm{f}_K}{\partial \bm{\theta}_{K-1}}}
             \textcolor{blue}{\dfrac{\partial \bm{f}_{K-1}}{\partial \bm{\theta}_{K-2}}}
         $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-        \item 
+        \item
         $
             \dfrac{\partial L}{\partial \bm{\theta}_{K-2}}
-            = \dfrac{\partial L}{\partial \bm{f}_K} 
+            = \dfrac{\partial L}{\partial \bm{f}_K}
             \textcolor{orange}{
-                \dfrac{\partial \bm{f}_K}{\partial \bm{\theta}_{K-1}} 
+                \dfrac{\partial \bm{f}_K}{\partial \bm{\theta}_{K-1}}
                 \cdots
-                \dfrac{\partial \bm{f}_{i+2}}{\partial \bm{\theta}_{i+1}} 
+                \dfrac{\partial \bm{f}_{i+2}}{\partial \bm{\theta}_{i+1}}
             }
             \textcolor{blue}{\dfrac{\partial \bm{f}_{i+1}}{\partial \bm{\theta}_{i}}}
         $
@@ -743,10 +743,10 @@ $
     \begin{enumerate}
         \item $i$: layer ($i = 1,\cdots,K$)
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        
+
         \item $\bm{x}_{i-1}$: output of layer $i - 1$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        
+
         \item $\sigma_i$: activation function of layer $i$
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -773,14 +773,14 @@ $
 \section{Computational Graph}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Computational Graph]
-        Computational graphs are a type of graph that can be used to represent mathematical expressions. 
+        Computational graphs are a type of graph that can be used to represent mathematical expressions.
         This is similar to descriptive language in the case of deep learning models, providing a functional description of the required computation.
         \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
     \end{definition}
 
-    \item In general, the computational graph is a \textbf{directed graph} that is used for expressing and evaluating mathematical expressions. 
+    \item In general, the computational graph is a \textbf{directed graph} that is used for expressing and evaluating mathematical expressions.
     \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
 
     \item These can be used for two different types of calculations:
@@ -788,23 +788,23 @@ $
     \begin{enumerate}
         \item Forward computation
         \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
-        
+
         \item Backward computation
         \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
     \end{enumerate}
 
     \item Structure of a computational graph:
     \begin{enumerate}
-        \item A variable is represented by a \textbf{node} in a graph. 
+        \item A variable is represented by a \textbf{node} in a graph.
         It could be a scalar, vector, matrix, tensor, or even another type of variable.
         \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
-    
-        \item A function argument and data dependency are both represented by an \textbf{edge}. 
+
+        \item A function argument and data dependency are both represented by an \textbf{edge}.
         These are similar to node pointers.
         \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
-    
-        \item A simple function of one or more variables is called an operation. 
-        There is a set of operations that are permitted. 
+
+        \item A simple function of one or more variables is called an operation.
+        There is a set of operations that are permitted.
         Functions that are more complex than these operations in this set can be represented by combining multiple operations.
         \hfill \cite{geeksforgeeks/deep-learning/computational-graphs-in-deep-learning}
     \end{enumerate}
@@ -844,12 +844,12 @@ $
 
 \begin{enumerate}
     \item As the forward computation is performed, the graph is implicitly defined.
-    
-    \item This graph has the advantage of being more adaptable. 
-    The library is less intrusive and enables interleaved graph generation and evaluation. 
-    The forward computation is implemented in your preferred programming language, complete with all of its features and algorithms. 
-    Debugging dynamic graphs is simple because it permits line-by-line execution of the code and access to all variables, finding bugs in your code is considerably easier. 
-    
+
+    \item This graph has the advantage of being more adaptable.
+    The library is less intrusive and enables interleaved graph generation and evaluation.
+    The forward computation is implemented in your preferred programming language, complete with all of its features and algorithms.
+    Debugging dynamic graphs is simple because it permits line-by-line execution of the code and access to all variables, finding bugs in your code is considerably easier.
+
     \item The disadvantage of employing this graph is that there is limited time for graph optimization, and the effort may be wasted if the graph does not change.
 \end{enumerate}
 
@@ -868,7 +868,7 @@ $
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item 
+    \item
     \begin{definition}[Automatic differentiation]
         Automatic differentiation is different from symbolic differentiation and numerical approximations of the gradient, e.g., by using finite differences.
         We can think of automatic differentiation as a set of techniques to numerically (in contrast to symbolically) evaluate the exact (up to machine precision) gradient of a function by working with intermediate variables and applying the chain rule.
@@ -876,9 +876,9 @@ $
     \end{definition}
 
 
-    \item Automatic differentiation applies a series of elementary arithmetic operations, e.g., addition and multiplication and elementary functions, e.g., sin, cos, exp, log. 
+    \item Automatic differentiation applies a series of elementary arithmetic operations, e.g., addition and multiplication and elementary functions, e.g., sin, cos, exp, log.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-    
+
     \item By applying the chain rule to these operations, the gradient of quite complicated functions can be computed automatically.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -887,7 +887,7 @@ $
     \\
     $\dfrac{dy}{dx} = \dParenBrac{\dfrac{dy}{db}\ \dfrac{db}{da}}\ \dfrac{da}{dx}$ would be the reverse mode because gradients are propagated backward through the graph, i.e., reverse to the data flow.
     $\dfrac{dy}{dx} = \dfrac{dy}{db}\ \dParenBrac{\dfrac{db}{da}\ \dfrac{da}{dx}}$ would be the forward mode, where the gradients flow with the data from left to right through the graph.
-    
+
     \item In the context of neural networks, where the input dimensionality is often much higher than the dimensionality of the labels, the reverse mode is computationally significantly cheaper than the forward mode.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -895,17 +895,17 @@ $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
     \textbf{Forward propagation}:\hfill
-    $x_i = g_i(x_{Pa(x_i)})$ 
-    \hspace{1cm} 
+    $x_i = g_i(x_{Pa(x_i)})$
+    \hspace{1cm}
     $i = d+1, \cdots, D$
-    \hspace{1cm} 
+    \hspace{1cm}
     $f = x_D$
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
-    where 
-    $g_i(\cdot)$ are elementary functions 
+    where
+    $g_i(\cdot)$ are elementary functions
     $Pa(x_i)$ are indices (ex: $Pa(x_0) = \dCurlyBrac{1, 2}$) of parent nodes of the variable $x_i$ in the graph
-    and 
+    and
     $x_{Pa(x_i)}$ are the parent nodes (ex: $x_{Pa(x_0)} = \dCurlyBrac{x_1, x_2}$) of the variable $x_i$ in the graph.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\
@@ -920,9 +920,9 @@ $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
 
-    \item The automatic differentiation approach above works whenever we have a function that can be expressed as a computation graph, where the elementary functions are differentiable. 
-    In fact, the function may not even be a mathematical function but a computer program. 
-    However, not all computer programs can be automatically differentiated, e.g., if we cannot find differential elementary functions. 
+    \item The automatic differentiation approach above works whenever we have a function that can be expressed as a computation graph, where the elementary functions are differentiable.
+    In fact, the function may not even be a mathematical function but a computer program.
+    However, not all computer programs can be automatically differentiated, e.g., if we cannot find differential elementary functions.
     Programming structures, such as \verb|for| loops and \verb|if| statements, require more care as well.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
@@ -977,7 +977,7 @@ $
             = \dfrac{\partial f}{\partial b} \dfrac{\partial b}{\partial a}
             + \dfrac{\partial f}{\partial c} \dfrac{\partial c}{\partial a}
         $
-        \item[] 
+        \item[]
         $
             \dfrac{\partial f}{\partial b}
             = \dfrac{\partial f}{\partial c} \dfrac{\partial c}{\partial b}
@@ -1000,7 +1000,7 @@ $
 \section{Taylor Series \& Polynomial}
 
 \begin{enumerate}
-    \item 
+    \item
     \begin{definition}[Taylor Series ($T_{\infty}(x)$)]
         For a smooth function $f \in C^{\infty}$, $f : \mbbR \to \mbbR$, the Taylor series of $f$ at $x_0$ is defined as
         $
@@ -1013,22 +1013,22 @@ $
          \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
     \begin{enumerate}
-        \item 
-        \begin{definition}[Maclaurin series]        
-            For $x_0 = 0$, we obtain the \textbf{Maclaurin series} as a special instance of the Taylor series. 
+        \item
+        \begin{definition}[Maclaurin series]
+            For $x_0 = 0$, we obtain the \textbf{Maclaurin series} as a special instance of the Taylor series.
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{definition}
 
-        \item 
-        \begin{definition}[Analytic]        
+        \item
+        \begin{definition}[Analytic]
             If $f (x) = T_{\infty}(x)$, then $f$ is called \textbf{analytic}.
             \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{definition}
     \end{enumerate}
 
-    \item 
+    \item
     \begin{definition}[Multivariate Taylor Series]
-        We consider a function $f: \mbbR^D \to \mbbR, \bm{x} \mapsto f(\bm{x}), \bm{x} \in \mbbR^D$ that is smooth at $\bm{x}_0$. 
+        We consider a function $f: \mbbR^D \to \mbbR, \bm{x} \mapsto f(\bm{x}), \bm{x} \in \mbbR^D$ that is smooth at $\bm{x}_0$.
         When we define the difference vector $\bm{\delta} := \bm{x} - \bm{x}_0$, the multivariate Taylor series of $f$ at $(\bm{x}_0)$ is defined as
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \\
@@ -1045,7 +1045,7 @@ $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
 
-    \item 
+    \item
     \begin{definition}[Taylor Polynomial ( $T_n(x)$ )]
         The Taylor polynomial of degree $n$ of $f : \mbbR \to \mbbR$ at $x_0$ is defined as
         $
@@ -1061,16 +1061,16 @@ $
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
     \begin{enumerate}
-        \item In general, a Taylor polynomial of degree $n$ is an \textbf{approximation} of a function, which does not need to be a polynomial. 
-        The Taylor polynomial is similar to $f$ in a neighborhood around $x_0$. 
+        \item In general, a Taylor polynomial of degree $n$ is an \textbf{approximation} of a function, which does not need to be a polynomial.
+        The Taylor polynomial is similar to $f$ in a neighborhood around $x_0$.
         Higher-order Taylor polynomials approximate the function $f$ better and more globally.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
-        
-        \item A Taylor polynomial of degree $n$ is an \textbf{exact} representation of a polynomial $f$ of degree $k \leq n$ since all derivatives $f (i)$, $i > k$ vanish. 
+
+        \item A Taylor polynomial of degree $n$ is an \textbf{exact} representation of a polynomial $f$ of degree $k \leq n$ since all derivatives $f (i)$, $i > k$ vanish.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
-    \item 
+    \item
     \begin{definition}[Multivariate Taylor Polynomial ( $T_n(\bm{x})$ )]
         The Taylor polynomial of degree $n$ of $f : \mbbR^D \to \mbbR$ at $\bm{x}_0$ is defined as
         $

@@ -6,11 +6,11 @@
     \item simple recursive algorithm that attempts to mimic the operation of standard best-first search, but using only \textbf{linear space}
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item Its structure is similar to that of a recursive depth-first search, but rather than continuing indefinitely down the current path, it uses the $f\_limit$ variable to keep track of the $f$-value of the best \textbf{alternative} path available from any ancestor of the current node. 
+    \item Its structure is similar to that of a recursive depth-first search, but rather than continuing indefinitely down the current path, it uses the $f\_limit$ variable to keep track of the $f$-value of the best \textbf{alternative} path available from any ancestor of the current node.
     If the current node exceeds this limit, the recursion unwinds back to the alternative path.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item As the recursion unwinds, RBFS replaces the f-value of each node along the path with a \textbf{backed-up value} - the best f-value of its children. 
+    \item As the recursion unwinds, RBFS replaces the f-value of each node along the path with a \textbf{backed-up value} - the best f-value of its children.
     In this way, RBFS remembers the $f$-value of the best leaf in the forgotten sub-tree and can therefore decide whether it’s worth re-expanding the sub-tree at some later time.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
@@ -52,9 +52,9 @@
             \hspace{0.5cm} $\infty$, \\
         )
     }
-    
+
     \ \\
-    
+
     \SetKwFunction{FUNCTION}{\textsc{RBFS}}
     \SetKwProg{Fn}{function}{ returns \normalfont{a solution, or failure and a new f-cost limit}}{end}
     \Fn{\FUNCTION{problem}}{

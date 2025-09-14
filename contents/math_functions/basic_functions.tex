@@ -6,7 +6,7 @@
 \begin{table}[H]
     \begin{minipage}{0.35\linewidth}
         $
-            f(x) 
+            f(x)
             = \dabs{x}
             = \begin{dcases}
                 x   & \text{ if } x \geq 0 \\
@@ -24,7 +24,7 @@
 \end{table}
 
 \begin{lstlisting}[
-    language=Python, 
+    language=Python,
     caption=Absolute value function
 ]
 def get_absolute_value(val):
@@ -41,11 +41,11 @@ def get_absolute_value(val):
 \begin{customArrayStretch}{1.2}
 \begin{tabular}{r l l}
      1. & ${\displaystyle |a|\geq 0}$ & Non-negativity \\
-     
+
      2. & ${\displaystyle |a|=0\iff a=0}$ & Positive-definiteness \\
-     
+
      3. & ${\displaystyle |ab|=\left|a\right|\left|b\right|}$ & 	Multiplicativity \\
-     
+
      4. & ${\displaystyle |a+b|\leq |a|+|b|}$ & 	Subadditivity, specifically the triangle inequality \\
 \end{tabular}
 \end{customArrayStretch}
@@ -55,15 +55,15 @@ def get_absolute_value(val):
 \begin{customArrayStretch}{1.5}
 \begin{tabular}{r l p{13cm}}
      1. & ${\displaystyle {\bigl |}\left|a\right|{\bigr |}=|a|}$ & 	Idempotence (the absolute value of the absolute value is the absolute value) \\
-     
+
      2. & ${\displaystyle \left|-a\right|=|a|}$ & Evenness (reflection symmetry of the graph) \\
-     
+
      3. & ${\displaystyle |a-b|=0\iff a=b}$ & 	Identity of indiscernibles (equivalent to positive-definiteness) \\
-     
+
      4. & ${\displaystyle |a-b|\leq |a-c|+|c-b|}$ & 	Triangle inequality (equivalent to subadditivity) \\
-     
-     5. & ${\displaystyle \left|{\frac {a}{b}}\right|={\frac {|a|}{|b|}}\ }$ (if ${\displaystyle b\neq 0}$) & 	Preservation of division (equivalent to multiplicativity) \\
-     
+
+     5. & ${\displaystyle \left|{\dfrac {a}{b}}\right|={\dfrac {|a|}{|b|}}\ }$ (if ${\displaystyle b\neq 0}$) & 	Preservation of division (equivalent to multiplicativity) \\
+
      6. & ${\displaystyle |a-b|\geq {\bigl |}\left|a\right|-\left|b\right|{\bigr |}}$ & 	Reverse triangle inequality (equivalent to subadditivity) \\
 \end{tabular}
 \end{customArrayStretch}
@@ -81,7 +81,7 @@ def get_absolute_value(val):
 
 \begin{enumerate}
     \item $
-        {\displaystyle {\frac {d\left|x\right|}{dx}}={\frac {x}{|x|}}={\begin{cases}-1&x<0\\1&x>0\end{cases}}}
+        {\displaystyle {\dfrac {d\left|x\right|}{dx}}={\dfrac {x}{|x|}}={\begin{cases}-1&x<0\\1&x>0\end{cases}}}
     $
 
     \item $
@@ -99,6 +99,50 @@ def get_absolute_value(val):
 $
     {\displaystyle \dint \left|x\right|dx={\dfrac {x\left|x\right|}{2}}+C}
 $
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Exponential Function ($\exp\dCurlyBrac{x}$, $\exp(x)$)}
+
+$
+    \exp\dCurlyBrac{x} = \exp(x) = e^x
+$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

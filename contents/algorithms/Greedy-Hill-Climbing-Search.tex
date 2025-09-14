@@ -3,11 +3,11 @@
 
 
 \begin{enumerate}
-    \item It is simply a loop that continually moves in the direction of increasing value—that is, uphill. 
+    \item It is simply a loop that continually moves in the direction of increasing value—that is, uphill.
     It terminates when it reaches a “peak” where no neighbor has a higher value.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
-    \item The algorithm does not maintain a search tree, so the data structure for the current node need only record the state and the value of the objective function. 
+    \item The algorithm does not maintain a search tree, so the data structure for the current node need only record the state and the value of the objective function.
     \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
     \item Hill climbing does not look ahead beyond the immediate neighbors of the current state. This resembles trying to find the top of Mount Everest in a thick fog while suffering from amnesia.
@@ -18,7 +18,7 @@
 
     \item \textbf{Disadvantages}:
     \begin{enumerate}
-        \item  Hill-climbing algorithms that reach the vicinity of a \textbf{local maximum} will be drawn upward toward the peak but will then be stuck with nowhere else to go. 
+        \item  Hill-climbing algorithms that reach the vicinity of a \textbf{local maximum} will be drawn upward toward the peak but will then be stuck with nowhere else to go.
         \hfill \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}
 
         \item very difficult for greedy algorithms to navigate \textbf{ridges}.
@@ -33,8 +33,8 @@
 
 \begin{algorithm}[H]
     \caption{
-        The hill-climbing search algorithm (\textbf{steepest-ascent} version), which is the most basic local search technique. 
-        At each step the current node is replaced by the best neighbor; in this version, that means the neighbor with the highest \textsc{Value}, but if a heuristic cost estimate $h$ is used, we would find the neighbor with the lowest $h$. 
+        The hill-climbing search algorithm (\textbf{steepest-ascent} version), which is the most basic local search technique.
+        At each step the current node is replaced by the best neighbor; in this version, that means the neighbor with the highest \textsc{Value}, but if a heuristic cost estimate $h$ is used, we would find the neighbor with the lowest $h$.
         \cite{ai/book/Artificial-Intelligence-A-Modern-Approach/Russell-Norvig}}
 
     \SetKwFunction{FUNCTION}{\textsc{Hill-Climbing-Search}}
