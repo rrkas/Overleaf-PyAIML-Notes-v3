@@ -210,9 +210,8 @@ $\hat{\bm{y}}_i = \bm{y}(\bm{x_i})$ & (hypothesis) output of $i$-th input \\
 
 
 
-\subsection{Model Selection Techniques in Machine Learning}
 
-\subsubsection{Grid Search}
+\subsection{Grid Search}
 
 \begin{enumerate}
     \item One of the simplest and most commonly used model selection techniques
@@ -227,7 +226,7 @@ $\hat{\bm{y}}_i = \bm{y}(\bm{x_i})$ & (hypothesis) output of $i$-th input \\
 
 
 
-\subsubsection{Random Search}
+\subsection{Random Search}
 
 \begin{enumerate}
     \item Similar to grid search, random search doesn't check all possible combinations. Instead, it randomly chooses a subset of the hyperparameter combinations.
@@ -239,7 +238,7 @@ $\hat{\bm{y}}_i = \bm{y}(\bm{x_i})$ & (hypothesis) output of $i$-th input \\
 
 
 
-\subsubsection{Bayesian Optimization}
+\subsection{Bayesian Optimization}
 
 \begin{enumerate}
     \item Bayesian optimization is a smarter approach to model selection.
@@ -254,7 +253,7 @@ $\hat{\bm{y}}_i = \bm{y}(\bm{x_i})$ & (hypothesis) output of $i$-th input \\
 
 
 
-\subsubsection{Cross-Validation Based Selection}
+\subsection{Cross-Validation Based Selection}
 
 \begin{enumerate}
     \item This method involves using cross-validation to evaluate multiple models and selecting the one with the best average performance.
@@ -274,10 +273,106 @@ $\hat{\bm{y}}_i = \bm{y}(\bm{x_i})$ & (hypothesis) output of $i$-th input \\
 
 
 
+\subsubsection{Holdout Validation}
+
+\begin{enumerate}
+    \item In Holdout Validation we perform training on the 50\% of the given dataset and rest 50\% is used for the testing purpose.
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+
+    \item It's a simple and quick way to evaluate a model.
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+
+    \item The major drawback of this method is that we perform training on the 50\% of the dataset, it may possible that the remaining 50\% of the data contains some important information which we are leaving while training our model that can lead to higher bias.
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+\end{enumerate}
 
 
 
-\subsection{Bias-Variance Trade Off}
+\subsubsection{LOOCV (Leave One Out Cross Validation)}
+
+\begin{enumerate}
+    \item In this method we perform training on the whole dataset but leaves only one data-point of the available dataset and then iterates for each data-point.
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+
+    \item In LOOCV the model is trained on $n-1$ samples and tested on the one omitted sample repeating this process for each data point in the dataset.
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+
+    \item An advantage of using this method is that we make use of all data points and hence it is low bias.
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+
+    \item The major drawback of this method is that it leads to higher variation in the testing model as we are testing against one data point. If the data point is an outlier it can lead to higher variation.
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+
+    \item Another drawback is it takes a lot of execution time as it iterates over the number of data points we have.
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+\end{enumerate}
+
+
+
+
+
+\subsubsection{Stratified Cross-Validation}
+
+\begin{enumerate}
+    \item It is a technique used in machine learning to ensure that each fold of the cross-validation process maintains the same class distribution as the entire dataset. 
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+    
+    \item This is particularly important when dealing with \textbf{imbalanced datasets} where certain classes may be under represented. 
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+    
+    \item In this method:
+    \begin{enumerate}
+        \item The dataset is divided into k folds while maintaining the proportion of classes in each fold.
+        \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+        
+        \item During each iteration, one-fold is used for testing and the remaining folds are used for training.
+        \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+        
+        \item The process is repeated k times with each fold serving as the test set exactly once.
+        \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+    \end{enumerate}
+
+    \item Stratified Cross-Validation is essential when dealing with classification problems where maintaining the balance of class distribution is crucial for the model to generalize well to unseen data.
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+\end{enumerate}
+
+
+\subsubsection{K-Fold Cross Validation }
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=5cm,
+        keepaspectratio,
+    ]{images/machine-learning/k-fold-cross-val.png}
+\end{figure}
+
+\begin{enumerate}
+    \item In K-Fold Cross Validation we split the dataset into $k$ number of subsets known as folds then we perform training on the all the subsets but leave one ($k-1$) subset for the evaluation of the trained model. 
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+    
+    \item In this method, we iterate $k$ times with a different subset reserved for testing purpose each time.
+    \hfill \cite{geeksforgeeks/machine-learning/cross-validation-machine-learning}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Bias-Variance Trade Off}
 
 \begin{figure}[H]
     \centering
@@ -297,7 +392,7 @@ $\hat{\bm{y}}_i = \bm{y}(\bm{x_i})$ & (hypothesis) output of $i$-th input \\
     \item It recommended that an algorithm should always be low-biased to avoid the problem of underfitting.
     \hfill \cite{geeksforgeeks/machine-learning/ml-bias-variance-trade-off}
 
-    \item Being high in biasing gives a large error in training as well as testing data. 
+    \item Being high in biasing gives a large error in training as well as testing data.
     Such fitting is known as the Underfitting of Data.
     \hfill \cite{geeksforgeeks/machine-learning/ml-bias-variance-trade-off}
 \end{enumerate}
@@ -308,12 +403,12 @@ $\hat{\bm{y}}_i = \bm{y}(\bm{x_i})$ & (hypothesis) output of $i$-th input \\
 \subsubsection{Variance}
 
 \begin{enumerate}
-    \item The variability of model prediction for a given data point which tells us the spread of our data is called the variance of the model. 
+    \item The variability of model prediction for a given data point which tells us the spread of our data is called the variance of the model.
     \hfill \cite{geeksforgeeks/machine-learning/ml-bias-variance-trade-off}
-    
-    \item The model with high variance has a very complex fit to the training data and thus is not able to fit accurately on the data which it hasn’t seen before. As a result, such models perform very well on training data but have high error rates on test data. When a model is high on variance, it is then said to as Overfitting of Data. 
+
+    \item The model with high variance has a very complex fit to the training data and thus is not able to fit accurately on the data which it hasn’t seen before. As a result, such models perform very well on training data but have high error rates on test data. When a model is high on variance, it is then said to as Overfitting of Data.
     \hfill \cite{geeksforgeeks/machine-learning/ml-bias-variance-trade-off}
-    
+
     \item While training a data model variance should be kept low.
     \hfill \cite{geeksforgeeks/machine-learning/ml-bias-variance-trade-off}
 \end{enumerate}

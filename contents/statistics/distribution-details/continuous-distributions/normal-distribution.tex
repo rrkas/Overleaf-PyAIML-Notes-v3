@@ -71,7 +71,7 @@
     \hfill
     $\dabs{\bm{\Sigma}} = \det(\bm{\Sigma}) \in \mbbR$
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
-    
+
     \item it can be used to approximate other PDFs when the sample size or the size of the data is getting large.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -127,24 +127,24 @@
     \\
     .\hfill
     $
-        p(\bm{x}|\mu , \sigma^2) 
-        = \dprod^{N}_{n=1} \mathcal{N} (x_n|\mu , \sigma^2) 
+        p(\bm{x}|\mu , \sigma^2)
+        = \dprod^{N}_{n=1} \mathcal{N} (x_n|\mu , \sigma^2)
     $
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
-    
+
     \item Log likelihood function:
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
     \\
     .\hfill
     $
-        \ln (p (\bm{x}|\mu , \sigma ^2)) 
+        \ln (p (\bm{x}|\mu , \sigma ^2))
         = - \dfrac{1}{2\sigma ^2} \dsum^N_{n=1} (x_n - \mu )^2 - \dfrac{N }{2} \ln (\sigma ^2) - \dfrac{N }{2} \ln(2\pi)
     $
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 
     \item Maximizing $\ln (p (\bm{x}|\mu , \sigma ^2))$ with respect to $\mu$, we obtain the maximum likelihood solution given by
     $
-        \mu_{ML} 
+        \mu_{ML}
         = \dfrac{1}{N} \dsum_{n=1}^N x_n
     $
     which is the sample mean, i.e., the mean of the observed values $\dCurlyBrac{x_n}$.
@@ -157,7 +157,7 @@
     which is the sample variance measured with respect to the sample mean $\mu _{ML}$.
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 
-    \item 
+    \item
     $\mathbb{E}[\mu _{ML}] = \mu $
     \hfill
     $\mathbb{E}[\sigma ^2_{ML}] = \dParenBrac{\dfrac{N - 1}{N}} \sigma ^2$
