@@ -25,12 +25,12 @@
     \begin{enumerate}
         \item This definition is only correct if each opportunity for the event to occur is as likely to produce the event as any other opportunity.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
+
         \item Another limitation of this definition is that it is defined for finite populations only.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item \textbf{Definition 2} (more theoretical): Probability is the proportion of the occurrence of an event obtained from infinitely many repeated and identical trials or experiments under similar conditions. 
+    \item \textbf{Definition 2} (more theoretical): Probability is the proportion of the occurrence of an event obtained from infinitely many repeated and identical trials or experiments under similar conditions.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
         \item \textbf{Example}: if a die is thrown $n$ times and the event $A$ is the single dot facing up, then the probability $P (A)$ of the event $A$ can be \textbf{approximated} by the ratio of the number of throws $n_A$ with a single dot facing up and the total number of throws $n$, i.e., $P(A) \approx \dfrac{n_A}{n}$.
@@ -42,16 +42,48 @@
         \item $P(A) =\displaystyle \lim_{n\to \infty} \dfrac{n_A}{n} = p$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
-    
+
     \item we simply define the probability $P(A)$ of an event $A$ as an (unknown) value between zero and one, $0 \leq P (A) \leq 1$, where both boundaries are allowed, which could either be approximated by collecting appropriate and real data or by the limit of a proportion of repeated and identical trials.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     \begin{definition}[Observed probabilities]
         Observed probabilities are empirical probabilities — that is, probabilities calculated from the sample data.
     \end{definition}
     \begin{enumerate}
         \item These probabilities are \textbf{not theoretical}, but come directly from real-world observations.
+    \end{enumerate}
+
+    \item interpretations of probability:
+    \begin{enumerate}
+        \item \textbf{Frequentist Interpretation (Classical View)}
+        \begin{enumerate}
+            \item Probability is the \textbf{long-run frequency} of an event occurring, based on \textbf{repeated trials} under identical conditions.
+
+            \item \textbf{Key Features}:
+            \begin{enumerate}
+                \item Probability is objective and based on data.
+
+                \item An event's probability is defined by the limit of its relative frequency as the number of trials approaches infinity.
+
+                \item Parameters (like the mean or proportion) are fixed but unknown.
+
+                \item You don’t assign probabilities to hypotheses or parameters.
+            \end{enumerate}
+        \end{enumerate}
+
+        \item \textbf{Bayesian Interpretation}
+        \begin{enumerate}
+            \item Probability is a measure of belief or \textbf{degree of certainty} about an event or statement, \textbf{given current knowledge}.
+
+            \item \textbf{Key Features}:
+            \begin{enumerate}
+                \item Probability is subjective and depends on prior knowledge.
+                \item You can assign probabilities to hypotheses, events, and parameters.
+                \item Uses Bayes' Theorem to update beliefs based on new evidence.
+                \item A parameter can be treated as a random variable with its own probability distribution.
+            \end{enumerate}
+        \end{enumerate}
     \end{enumerate}
 \end{enumerate}
 
@@ -65,28 +97,28 @@
     This means that $P (A \cup A^c) = 1$, since we will see either $A$ or $A^c$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     \begin{definition}[joint event/ mutual event ($A \cap B$)]
-        The occurrence of two events $A$ and $B$ at the same time is denoted by $A \cap B$. 
-        This is often referred to as the joint or mutual event. 
+        The occurrence of two events $A$ and $B$ at the same time is denoted by $A \cap B$.
+        This is often referred to as the joint or mutual event.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{definition}
 
     \item The event that either $A$ or $B$ (or both) occurs is denoted by $A \cup B$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The probability of no event must be zero. 
-    Not having events is indicated by the empty set $\varnothing$ and the probability is $P(\varnothing) = 0$. 
+    \item The probability of no event must be zero.
+    Not having events is indicated by the empty set $\varnothing$ and the probability is $P(\varnothing) = 0$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    
-    \item 
+
+    \item
     \begin{definition}[mutually exclusive events ($P (A \cap B) = P (\varnothing) = 0$)]
         if two events $A$ and $B$ can never occur together (mutually exclusive events), then it follows that $A \cap B = \varnothing$ and $P (A \cap B) = P (\varnothing) = 0$.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{definition}
 
-    \item 
+    \item
     \begin{definition}[independent events ($A \perp B$) ($P (A \cap B) = P (A) \cdot P (B)$)]
         We call two events $A$ and $B$ independent if and only if the probability of the mutual event is equal to the product of the probabilities of each event $A$ and $B$ separately.
         Thus the independence of events A and B (denoted by $A \perp B$) is equivalent with $P (A \cap B) = P (A) \cdot P (B)$.
@@ -100,7 +132,7 @@
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item 
+    \item
     \begin{definition}[associated events/ associated variables]
         Two events or variables are considered associated when they are not independent.
     \end{definition}
@@ -110,7 +142,7 @@
 \section{Event Rules}
 
 \begin{enumerate}
-    \item If the events $A$ and $B$ are independent, then the events $A$ and $B^c$, the events $A^c$ and $B$, and the events $A^c$ and $B^c$ are also independent. 
+    \item If the events $A$ and $B$ are independent, then the events $A$ and $B^c$, the events $A^c$ and $B$, and the events $A^c$ and $B^c$ are also independent.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The probability of the occurrence of either event $A$ or $B$ or both is equal to the sum of the probabilities of these events separately minus the probability that both events occur at the same time, i.e., $P (A \cup B) = P (A) + P (B) - P (A \cap B)$.
@@ -119,10 +151,10 @@
     \item For mutually exclusive events $A$ and $B$, $P (A \cup B) = P (A) + P (B)$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     \begin{definition}[law of total probability ($P (A) = P (A \cap B) + P (A \cap B^c)$)]
-        The probability of an event $A$ is the sum of the probability of both events $A$ and $B$ and the probability of both events $A$ and $B^c$, thus $P (A) = P (A \cap B) + P (A \cap B^c)$. 
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}    
+        The probability of an event $A$ is the sum of the probability of both events $A$ and $B$ and the probability of both events $A$ and $B^c$, thus $P (A) = P (A \cap B) + P (A \cap B^c)$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{definition}
 \end{enumerate}
 
@@ -142,14 +174,14 @@
     \item $P(A|B) = \begin{cases}
         \dfrac{P(A\cap B)}{P(B)} & \text{if } P(B) > 0 \\
         0 & \text{if } P(B) = 0
-    \end{cases} 
+    \end{cases}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item if event $B$ could never occur (i.e., $P (B) = 0$), there is no reason to define the conditional probability
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item If we deal with two events $A$ and $B$, the relevant probabilities can be summarized in the a $2 \times 2$ contingency table. 
+    \item If we deal with two events $A$ and $B$, the relevant probabilities can be summarized in the a $2 \times 2$ contingency table.
     In column $A$ and row $B$, the probability of the occurrence of both events $A$ and $B$ at the same time is given by $P (A \cap B)$.
     Using the conditional relation, it can also be expressed by $P(A|B) P(B)$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -161,13 +193,13 @@
                   \hline
                   & $A$ & $A^c$ &  \\
                   \hline\hline
-                  
+
                   $B$ & $P (A \cap B) = P (A|B) P (B)$ & $P (A^c \cap B) = P (A^c|B) P (B)$ & $P (B)$ \\
                   \hline
-                  
+
                   $B^c$ & $P (A \cap B^c) = P (A|B^c) P (B^c)$ & $P (A^c \cap B^c) = P (A^c|B^c) P (B^c)$ & $P (B^c)$ \\
                   \hline
-                  
+
                   & $P (A)$ & $P (A^c)$ & $1$ \\
                   \hline
             \end{tabular}
@@ -176,10 +208,10 @@
         \end{table}
     \end{customArrayStretch}
 
-    \item 
+    \item
     \begin{theorem}[Bayes Theorem]
         \[
-            P(B|A) 
+            P(B|A)
             = \dfrac{P(A\cap B)}{P(A)} = \dfrac{P(A|B) P(B)}{P(A)}
             \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
         \]
@@ -192,13 +224,13 @@
         \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
     \end{enumerate}
 
-    \item \textbf{Marginal Probability}: Marginal Probability refers to the probability of a single event occurring, without consideration of any other events. 
+    \item \textbf{Marginal Probability}: Marginal Probability refers to the probability of a single event occurring, without consideration of any other events.
     It is derived from a joint probability distribution and represents the likelihood of an event happening in isolation.
     \hfill \cite{geeksforgeeks/engineering-mathematics/marginal-probability}
     \begin{enumerate}
-        \item 
+        \item
         $
-            P(X=x) = 
+            P(X=x) =
             \begin{cases}
                 \dsum_y P(X=x, Y=y) & \text{ discrete} \\[0.2cm]
                 \dint_{-\infty}^\infty f_{XY}(x,y)dy & \text{ continuous} \\
@@ -206,9 +238,9 @@
         $
         \hfill \cite{geeksforgeeks/engineering-mathematics/marginal-probability}
 
-        \item 
+        \item
         $
-            P(Y=y) = 
+            P(Y=y) =
             \begin{cases}
                 \dsum_x P(X=x, Y=y) & \text{ discrete} \\[0.2cm]
                 \dint_{-\infty}^\infty f_{XY}(x,y)dx & \text{ continuous} \\
@@ -217,18 +249,124 @@
         \hfill \cite{geeksforgeeks/engineering-mathematics/marginal-probability}
     \end{enumerate}
 
-    \item If we consider a change of variables $x = g(y)$, then a function $f (x)$ becomes $\tilde{f} (y) = f (g(y))$. 
-    Now consider a probability density $P_x(x)$ that corresponds to a density $P_y (y)$ with respect to the new variable $y$, where the suffices denote the fact that $P_x(x)$ and $P_y (y)$ are different densities. 
+    \item If we consider a change of variables $x = g(y)$, then a function $f (x)$ becomes $\tilde{f} (y) = f (g(y))$.
+    Now consider a probability density $P_x(x)$ that corresponds to a density $P_y (y)$ with respect to the new variable $y$, where the suffices denote the fact that $P_x(x)$ and $P_y (y)$ are different densities.
     Observations falling in the range $(x,\ x + \delta x)$ will, for small values of $\delta x$, be transformed into the range $(y,\ y + \delta y)$ where $P_x(x)\delta x \simeq P_y (y)\delta y$, and hence:
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
-    \\
+    \\[0.2cm]
+    .\hfill
     $
-        P_y(y) 
-        = P_x(x) \dabs{\dfrac{dx}{dy}} 
+        P_y(y)
+        = P_x(x) \dabs{\dfrac{dx}{dy}}
         = P_x(g(y)) \dabs{g^\prime(y)}
     $
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 \end{enumerate}
+
+
+
+
+
+
+
+
+\section{Bayesian probabilities}
+
+\begin{enumerate}
+    \item These are not events that can be repeated numerous times in order to define a notion of probability.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Expectations and covariances}
+
+\begin{multicols}{2}
+\begin{enumerate}[series=rvrules]
+    \item
+    $
+        \mathbb{E}[f] =
+        \begin{cases}
+            \dsum_x P(x)f(x) & \text{ discrete} \\[0.4cm]
+            \dint_{-\infty}^\infty P(x)f(x)dx & \text{ continuous} \\
+        \end{cases}
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item
+    $
+        \mathbb{E}[f] \simeq
+        \dfrac{1}{N} \dsum_{n=1}^N f(x_n)
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item
+    $
+        \mathbb{E}_x[f(x, y)]
+        = \dint f(x,y) p(x) dx
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item
+    $
+        \mathbb{E}_x[f(x, y)|y]
+        = \dint f(x,y) p(x|y) dx
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item
+    $
+        var[f] = \mathbb{E}[(f(x) - \mathbb{E}[f(x)])^2]
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item
+    $
+        var[f] = \mathbb{E}[f(x)^2] - \mathbb{E}[f(x)]^2
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item
+    $
+        \begin{aligned}
+            cov[x,\ y]
+                & = \mathbb{E}_{x,y} [(x - \mathbb{E}[x]) (y - \mathbb{E}[y])] \\
+                & = \mathbb{E}_{x,y} [xy] - \mathbb{E}[x]\mathbb{E}[y]
+        \end{aligned}
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item
+    $
+        \begin{aligned}
+            cov[\bm{x},\ \bm{y}]
+                & = \mathbb{E}_{\bm{x},\bm{y}} [(\bm{x} - \mathbb{E}[\bm{x}]) (\bm{y}^\top - \mathbb{E}[\bm{y}^\top])] \\
+                & = \mathbb{E}_{\bm{x},\bm{y}} [\bm{xy}^\top] - \mathbb{E}[\bm{x}]\mathbb{E}[\bm{y}^\top]
+        \end{aligned}
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item $ cov[x] \equiv cov[x,x] $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+\end{enumerate}
+\end{multicols}
+
+
+
+
+
+
 
 
 
@@ -255,9 +393,9 @@
         \hline
 
         $E$ & $P(D|E)$ & $P(D^c|E)$ & $P(E)$ \\ \hline
-        
+
         $E^c$ & $P(D|E^c)$ & $P(D^c|E^c)$ & $P(E^c)$ \\ \hline
-    
+
         TOTAL & $P(D)$ & $P(D^c)$ & $1$ \\ \hline
 
     \end{tabular}
@@ -273,7 +411,7 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \[
         ER = P(D|E) - P(D|E^c)
-        \hfill 
+        \hfill
         \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
     \]
 
@@ -285,20 +423,20 @@
 
     \item $
         \begin{aligned}
-            ER = 0 
-            & \Longleftrightarrow 
+            ER = 0
+            & \Longleftrightarrow
             P (D|E) = P (D|E^c) \\
-            & \Longleftrightarrow 
+            & \Longleftrightarrow
             P (E^c) P (D \cap E) = P (E) P (D \cap E^c) \\
-            & \Longleftrightarrow 
+            & \Longleftrightarrow
             [1 - P (E)] P (D \cap E) = P (E)[P(D) - P (D \cap E)] \\
-            & \Longleftrightarrow 
+            & \Longleftrightarrow
             P (D \cap E) = P (D) P (E)
         \end{aligned}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item it can be viewed as the excess number of cases ($D$) as a fraction of the population size. 
+    \item it can be viewed as the excess number of cases ($D$) as a fraction of the population size.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
         \item If the complete population (of size $N$) were to be exposed, the number of cases would be equal to $N \cdot P (D) = N \cdot P (D|E)$.
@@ -317,16 +455,16 @@
         \centering
         \begin{tabular}{|c|p{14cm}|}
             \hline
-    
-            $ER < 0$ & exposure ($E$) is protective for the outcome 
+
+            $ER < 0$ & exposure ($E$) is protective for the outcome
             \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
             \hline
-            
-            $ER = 0$ & the outcome ($D$) is independent of the exposure ($E$) 
+
+            $ER = 0$ & the outcome ($D$) is independent of the exposure ($E$)
             \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
             \hline
-            
-            $ER > 0$ & there is a greater risk of the outcome when exposed ($E$) than when unexposed ($E^c$) 
+
+            $ER > 0$ & there is a greater risk of the outcome when exposed ($E$) than when unexposed ($E^c$)
             \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
             \hline
         \end{tabular}
@@ -359,16 +497,16 @@
         \centering
         \begin{tabular}{|c|p{14cm}|}
             \hline
-    
+
             $RR < 1$ & unexposed group has a higher probability of the outcome
             \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
             \hline
-            
-            $RR = 1$ & outcome and exposure are independent 
+
+            $RR = 1$ & outcome and exposure are independent
             \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
             \hline
-            
-            $RR > 1$ & exposed group has a higher probability of the outcome ($D$) than the unexposed one 
+
+            $RR > 1$ & exposed group has a higher probability of the outcome ($D$) than the unexposed one
             \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
             \hline
         \end{tabular}
@@ -380,10 +518,10 @@
 \subsection{Odds Ratio ($OR = ({P (D^c|E^c)}/{P (D^c|E)}) \times RR$)}
 
 \begin{enumerate}
-    \item  
-    \begin{definition}[Odds]    
+    \item
+    \begin{definition}[Odds]
         The odds is a measure of how likely the outcome occurs with respect to not observing this outcome.
-        The odds comes from gambling, where profits of bets are expressed as $1$ to $x$. 
+        The odds comes from gambling, where profits of bets are expressed as $1$ to $x$.
         For instance, the odds of $1$ to $n$ means that it is $n$ times more likely to loose than to win.
         The odds can be defined mathematically by $O = \dfrac{p}{(1 - p)}$, with $p$ the probability of winning.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -392,13 +530,13 @@
     \item The odds ratio compares the odds for the exposed group with the odds for the unexposed group.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The odds of the exposed group is $O_E = \dfrac{P (D|E)}{1 - P (D|E)}$ and the odds for the unexposed group is $O_{E^c} = \dfrac{P (D|E^c)}{1 - P (D|E^c)}$. 
+    \item The odds of the exposed group is $O_E = \dfrac{P (D|E)}{1 - P (D|E)}$ and the odds for the unexposed group is $O_{E^c} = \dfrac{P (D|E^c)}{1 - P (D|E^c)}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The odds ratio is given by:
     \[
-        OR 
-        = \dfrac{O_E}{O_{E^c}} 
+        OR
+        = \dfrac{O_E}{O_{E^c}}
         = \dfrac{P (D|E)[1 - P (D|E^c)]}{P (D|E^c)[1 - P (D|E)] }
         = \dfrac{P (D^c|E^c)}{P (D^c|E)} \times RR
         \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
@@ -413,15 +551,15 @@
         \centering
         \begin{tabular}{|c|p{14cm}|}
             \hline
-    
+
             $OR < 1$ & unexposed group has a higher probability of the outcome
             \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
             \hline
-            
+
             $OR = 1$ & outcome is independent of the exposure
             \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
             \hline
-            
+
             $OR > 1$ & exposed group has a higher odds than the unexposed group, which implies that the exposed group has a higher probability of outcome $D$
             \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein} \\
             \hline
@@ -440,15 +578,15 @@
     \item odds ratio is always further away from 1 than the relative risk
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
-    .\hfill 
-    $1 < RR < OR$ 
-    \hfill \textbf{OR} \hfill 
+    .\hfill
+    $1 < RR < OR$
+    \hfill \textbf{OR} \hfill
     $OR < RR < 1$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Proof: 
+    \item Proof:
     \begin{enumerate}
-        \item  If $RR > 1$, we have that $P(D|E) > P(D|E^c)$, using its definition. 
+        \item  If $RR > 1$, we have that $P(D|E) > P(D|E^c)$, using its definition.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
         \item Since $P(D^c|E) = 1 - P(D|E)$ and $P(D^c|E^c) = 1 - P(D|E^c)$, we obtain that $P(D^c|E) < P(D^c|E^c)$.
@@ -465,13 +603,13 @@
     \item The odds ratio is often considered more complex than the relative risk, in particular because of the simplicity of interpretation of the relative risk.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The odds ratio is, however, more frequently used in practice than the relative risk. 
+    \item The odds ratio is, however, more frequently used in practice than the relative risk.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
         \item An important reason for this is that the odds ratio is symmetric in exposure $E$ and outcome $D$.
         If the roles of the exposure and outcome are interchanged the odds ratio does not change, but the relative risk does.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
+
     \end{enumerate}
 \end{enumerate}
 
@@ -581,7 +719,7 @@
         \hline
         Nephrolithotomy ($E$) & 234 & 36 & 270 \\ \hline
         Open Surgery($E^c$) & 81 & 6 & 87 \\ \hline
-        Total & 315 & 42 & 357 \\ 
+        Total & 315 & 42 & 357 \\
 
         \hline \hline
 
@@ -626,7 +764,7 @@
     \item $RR = (289/350)/(273/350) = 1.0586$.  This means that percutaneous nephrolithotomy increases the “risk” of successful removal of the kidney stones with respect to open surgery.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $RR_{\leq 2} = 0.9309$ and $RR_{>2} = 0.9417$. it seems that open surgery has a higher success of kidney stone removal than percutaneous nephrolithotomy for both small and large stones. 
+    \item $RR_{\leq 2} = 0.9309$ and $RR_{>2} = 0.9417$. it seems that open surgery has a higher success of kidney stone removal than percutaneous nephrolithotomy for both small and large stones.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item This is a contradiction.
