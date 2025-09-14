@@ -184,6 +184,50 @@
             \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
         \]
     \end{theorem}
+    \begin{enumerate}
+        \item \textbf{prior probability} ($P(A)$): probability available before we observe Event $B$
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+        \item \textbf{posterior probability} ($P(B|A)$): it is the probability obtained after we have observed $A$
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \end{enumerate}
+
+    \item \textbf{Marginal Probability}: Marginal Probability refers to the probability of a single event occurring, without consideration of any other events. 
+    It is derived from a joint probability distribution and represents the likelihood of an event happening in isolation.
+    \hfill \cite{geeksforgeeks/engineering-mathematics/marginal-probability}
+    \begin{enumerate}
+        \item 
+        $
+            P(X=x) = 
+            \begin{cases}
+                \dsum_y P(X=x, Y=y) & \text{ discrete} \\[0.2cm]
+                \dint_{-\infty}^\infty f_{XY}(x,y)dy & \text{ continuous} \\
+            \end{cases}
+        $
+        \hfill \cite{geeksforgeeks/engineering-mathematics/marginal-probability}
+
+        \item 
+        $
+            P(Y=y) = 
+            \begin{cases}
+                \dsum_x P(X=x, Y=y) & \text{ discrete} \\[0.2cm]
+                \dint_{-\infty}^\infty f_{XY}(x,y)dx & \text{ continuous} \\
+            \end{cases}
+        $
+        \hfill \cite{geeksforgeeks/engineering-mathematics/marginal-probability}
+    \end{enumerate}
+
+    \item If we consider a change of variables $x = g(y)$, then a function $f (x)$ becomes $\tilde{f} (y) = f (g(y))$. 
+    Now consider a probability density $P_x(x)$ that corresponds to a density $P_y (y)$ with respect to the new variable $y$, where the suffices denote the fact that $P_x(x)$ and $P_y (y)$ are different densities. 
+    Observations falling in the range $(x,\ x + \delta x)$ will, for small values of $\delta x$, be transformed into the range $(y,\ y + \delta y)$ where $P_x(x)\delta x \simeq P_y (y)\delta y$, and hence:
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \\
+    $
+        P_y(y) 
+        = P_x(x) \dabs{\dfrac{dx}{dy}} 
+        = P_x(g(y)) \dabs{g^\prime(y)}
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 \end{enumerate}
 
 
