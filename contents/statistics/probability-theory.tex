@@ -20,8 +20,8 @@
 
     \item
     \begin{definition}[event space ($\mathcal{A}$)]
-        The event space is the space of potential results of the experiment. 
-        A subset $A$ of the sample space $\Omega$ is in the event space $\mathcal{A}$ if at the end of the experiment we can observe whether a particular outcome $\omega \in \Omega$ is in $A$. 
+        The event space is the space of potential results of the experiment.
+        A subset $A$ of the sample space $\Omega$ is in the event space $\mathcal{A}$ if at the end of the experiment we can observe whether a particular outcome $\omega \in \Omega$ is in $A$.
         The event space $\mathcal{A}$ is obtained by considering the collection of subsets of $\Omega$, and for discrete probability distributions $\mathcal{A}$ is often the power set of $\Omega$.
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{definition}
@@ -52,8 +52,8 @@
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item \textbf{Definition 3}: With each event $A \in \mathcal{A}$, we associate a number $P (A)$ that measures the probability or degree of belief that the event will occur. 
-    $P (A)$ is called the probability of $A$. 
+    \item \textbf{Definition 3}: With each event $A \in \mathcal{A}$, we associate a number $P (A)$ that measures the probability or degree of belief that the event will occur.
+    $P (A)$ is called the probability of $A$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item we simply define the probability $P(A)$ of an event $A$ as an (unknown) value between zero and one, $0 \leq P (A) \leq 1$, where both boundaries are allowed, which could either be approximated by collecting appropriate and real data or by the limit of a proportion of repeated and identical trials.
@@ -275,15 +275,15 @@
     \begin{theorem}[Bayes Theorem]
         \[
             \underset{posterior}{\underbrace{P(B|A)}}
-            = \dfrac{P(A\cap B)}{P(A)} 
+            = \dfrac{P(A\cap B)}{P(A)}
             = \dfrac{
                 \overset{likelihood}{\overbrace{P(A|B)}}
                 \overset{prior}{\overbrace{P(B)}}
             }{
                 \underset{evidence}{\underbrace{P(A)}}
             }
+            \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein,mfml/book/mml/Deisenroth-Faisal-Ong}}
         \]
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein,mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{theorem}
     \begin{enumerate}
         \item \textbf{Posterior} ($P(B|A)$):
@@ -315,12 +315,12 @@
             \item The likelihood is sometimes also called the “\textbf{measurement model}”.
             \hfill\cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
-            \item Note that the likelihood is not a distribution in $B$, but only in $A$. 
+            \item Note that the likelihood is not a distribution in $B$, but only in $A$.
             We call $P(A | B)$ either the “likelihood of $B$ (given $A$)” or the “probability of $A$ given $B$” but never the "likelihood of $A$".
             \hfill\cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
 
-        \item \textbf{Prior} ($P(B)$): 
+        \item \textbf{Prior} ($P(B)$):
         \begin{enumerate}
             \item \textbf{Meaning}: The initial belief or probability of $B$ before seeing any evidence.
             \hfill \cite{common/online/chatgpt}
@@ -328,24 +328,43 @@
             \item \textbf{Why it's important}: It encodes your assumptions or background knowledge.
             \hfill \cite{common/online/chatgpt}
 
-            \item Encapsulates our subjective prior prior knowledge of the unobserved (latent) variable $B$ before observing any data. 
+            \item Encapsulates our subjective prior prior knowledge of the unobserved (latent) variable $B$ before observing any data.
             \hfill\cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
             \item We can choose any prior that makes sense to us, but it is critical to ensure that the prior has a nonzero pdf (or pmf) on all plausible $B$, even if they are very rare.
             \hfill\cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
-        
+
         \item \textbf{Evidence / Marginal Likelihood} ($P(A)$):
         \begin{enumerate}
+            \item
+            $
+                P(A)
+                = \dint P(A|B) P(B) dB
+                = \mathbb{E}_B[P(A|B)]
+            $
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
             \item \textbf{Meaning}: The total probability of observing the data $A$, considering all possible values of $B$.
             \hfill \cite{common/online/chatgpt}
 
             \item \textbf{Why it's important}: It acts as a normalizing constant so that the posterior sums (or integrates) to 1.
             \hfill \cite{common/online/chatgpt}
 
-            \item \textbf{Why it's not a prior}: Even though $A$ appears in $P(B|A)$, in the context of Bayes’ theorem, it’s the observed data, and not a belief about a variable. That’s why it’s called the evidence.
+            \item \textbf{Why it's not a prior}: Even though $A$ appears in $P(B|A)$, in the context of Bayes’ theorem, it’s the observed data, and not a belief about a variable.
+            That’s why it’s called the evidence.
             \hfill \cite{common/online/chatgpt}
+
+            \item the marginal likelihood is independent of $B$, and it ensures that the posterior $P(B | A)$ is normalized.
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+            \item The marginal likelihood can also be interpreted as the expected likelihood where we take the expectation with respect to the prior $P(B)$.
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
         \end{enumerate}
+
+        \item Bayes’ theorem allows us to invert the relationship between $B$ and $A$ given by the likelihood.
+        Bayes’ theorem is also called the “\textbf{probabilistic inverse}.”
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
     \item \textbf{maximum likelihood}: $\bm{w}$ is set to the value that maximizes the likelihood function $P(D|\bm{w})$.
@@ -361,7 +380,7 @@
         Because the negative logarithm is a monotonically decreasing function, maximizing the likelihood is equivalent to minimizing the error.
         \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
     \end{enumerate}
-    
+
     \item These are not events that can be repeated numerous times in order to define a notion of probability.
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 

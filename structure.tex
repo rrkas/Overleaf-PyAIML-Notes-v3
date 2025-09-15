@@ -427,9 +427,13 @@
       \noindent\hrulefill % Draw a horizontal line across the page
       }}\nobreak
   \vskip 1ex\nobreak % Add 2ex space below the line and prevent a page break
-  \addcontentsline{toc}{section}{%
-    \protect\numberline{\thesection}% Add section number to the Table of Contents (TOC)
-    #1}% Add section title to the TOC
+  % \addcontentsline{toc}{section}{%
+  %   \protect\numberline{\thesection}% Add section number to the Table of Contents (TOC)
+  %   #1}% Add section title to the TOC
+    \addcontentsline{toc}{section}{%
+      \protect\numberline{\thesection}%
+      \texorpdfstring{#1}{#1}%
+    }
 }
 
 % Unnumbered section with two arguments: Similar to numbered sections but without section number
@@ -703,7 +707,8 @@
 
 \newcommand{\tr}{\text{tr}}
 \newcommand{\mbbR}{\mathbb{R}}
-
+\newcommand{\mbbE}{\mathbb{E}}
+\newcommand{\tVar}{\text{Var}}
 
 
 

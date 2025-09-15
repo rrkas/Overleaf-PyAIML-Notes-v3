@@ -300,18 +300,18 @@
     \\ \hline
 
 \textbf{Expected Population Parameter} &
-    $\mathbb{E}(T)$ &
+    $\mathbb{E}[T]$ &
     \begin{minipage}{10.3cm}
         \vspace{0.15cm}
         \begin{enumerate}
             \item $
-                \mathbb{E}(T)
+                \mathbb{E}[T]
                 = \dsum_{k=1}^{K} \hat{\theta}_k \pi_k
             $
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
             \item $
-                \mathbb{E}(cT) = c\ \mathbb{E}(T)
+                \mathbb{E}[cT] = c\ \mathbb{E}[T]
                 \hspace{1cm} \forall\  c \in \mbbR
             $
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -415,7 +415,7 @@
 $
     bias
     = \dParenBrac{\dsum_{k=1}^{K} \hat{\theta}_k \pi_k} - \theta
-    = \mathbb{E}(T) - \theta
+    = \mathbb{E}[T] - \theta
 $
 \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -440,11 +440,11 @@ $
     \item A small bias of an estimator under a sampling plan does \textbf{not} guarantee that individual sample results $\hat{\theta}_k$ are actually close to the population parameter $\theta$; it just states that they are close on average, if we were to sample over and over again.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item If the bias is small, $\mathbb{E}(T)$ is close to the parameter value $\theta$.\\
-    If the bias is large, $\mathbb{E}(T)$ is \textbf{not} close to $\theta$
+    \item If the bias is small, $\mathbb{E}[T]$ is close to the parameter value $\theta$.\\
+    If the bias is large, $\mathbb{E}[T]$ is \textbf{not} close to $\theta$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item If the sampling plan is unbiased and thus $\mathbb{E}(T) = \theta$, the RMSE and the SE are identical.
+    \item If the sampling plan is unbiased and thus $\mathbb{E}[T] = \theta$, the RMSE and the SE are identical.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
 
@@ -499,7 +499,7 @@ $
 $
     RMSE
     = \sqrt{MSE}
-    = \sqrt{{SE}^2 + \dParenBrac{\mathbb{E}(T) - \theta}^2}
+    = \sqrt{{SE}^2 + \dParenBrac{\mathbb{E}[T] - \theta}^2}
 $
 \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -515,7 +515,7 @@ $
 $
     SE = \sqrt{
         \dsum_{k=1}^{K} \dParenBrac{
-            \hat{\theta}_k - \mathbb{E}(T)
+            \hat{\theta}_k - \mathbb{E}[T]
         }^2
         \pi_k
     }
@@ -524,13 +524,13 @@ $
 
 
 \begin{enumerate}
-    \item It represents the variability of the sampling plan with respect to the expected population parameter $\mathbb{E}(T)$ instead of using the true population parameter $\theta$.
+    \item It represents the variability of the sampling plan with respect to the expected population parameter $\mathbb{E}[T]$ instead of using the true population parameter $\theta$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Standard error of an estimator is used as a measure to represent our uncertainty regarding an estimate.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item If the SE is small, the variability of the $\hat{\theta}_k$’s around $\mathbb{E}(T)$ is small.
+    \item If the SE is small, the variability of the $\hat{\theta}_k$’s around $\mathbb{E}[T]$ is small.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $SE(cT ) = c\ SE(T) \hspace{2cm} \forall\  c \in \mbbR$

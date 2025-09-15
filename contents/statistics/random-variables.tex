@@ -271,8 +271,7 @@
 \begin{enumerate}
     \item If we consider a (not necessarily continuous or differentiable) function $\psi : \mbbR \to \mbbR$, then the expected value of the random variable $\psi (X)$ is defined by
     \colorbox{yellow}{$
-        \mathbb{E}\psi(X)
-        = \mathbb{E}(\psi(X))
+        \mbbE[\psi(X)]
         = \dint_{\mbbR} \psi(x)\ f(x)\ dx
     $}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -285,7 +284,7 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\[0.2cm]
     \colorbox{yellow}{$
-        \mathbb{E} (\psi(X)) \
+        \mbbE[\psi(X)] \
         = \dsum^{\infty}_{k=0}\ \psi(k)\ p _k \
         = \dsum^{\infty}_{k=0}\ \psi(k)\ P(X = k)
     $}
@@ -310,10 +309,10 @@
     \item \textbf{pth central moment} of random variable $X$ is obtained by choosing \colorbox{yellow}{$\psi(x) = (x - \mu)^p$}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item \textbf{skewness}: \colorbox{yellow}{$\gamma_1 = \dfrac{\mu_3}{\sigma^3}$}, where $\mu_3 = \mathbb{E}[(x-\mu)^3]$
+    \item \textbf{skewness}: \colorbox{yellow}{$\gamma_1 = \dfrac{\mu_3}{\sigma^3}$}, where $\mu_3 = \mbbE[(x-\mu)^3]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item \textbf{kurtosis}: \colorbox{yellow}{$\gamma_2 = \dfrac{\mu_4}{\sigma^4} - 3$}, where $\mu_4 = \mathbb{E}[(x-\mu)^4]$
+    \item \textbf{kurtosis}: \colorbox{yellow}{$\gamma_2 = \dfrac{\mu_4}{\sigma^4} - 3$}, where $\mu_4 = \mbbE[(x-\mu)^4]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
@@ -336,28 +335,28 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 
 \begin{multicols}{2}
 \begin{enumerate}[series=calcrulesrv]
-    \item $\mathbb{E} (c) = c$
+    \item $\mbbE[c] = c$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\mathbb{E} (cX) = c \mathbb{E} (X)$
+    \item $\mbbE[cX] = c \mbbE[X]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\text{Var}(X) \geq 0$
+    \item $\text{Var}[X] \geq 0$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\text{Var}(X + c) = \text{Var}(X)$
+    \item $\text{Var}[X + c] = \text{Var}[X]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\text{Var}(cX) = c^2\ \text{Var}(X)$
+    \item $\text{Var}[cX] = c^2\ \text{Var}[X]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\text{Var}(X) = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2$
+    \item $\text{Var}[X] = \mbbE[X^2] - (\mbbE[X])^2$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\mathbb{E} (X) = \mathbb{E} (Y )$ , when $X = Y$
+    \item $\mbbE[X] = \mbbE[Y]$ , when $X = Y$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\mathbb{E} (X + Y ) = \mathbb{E} (X) + \mathbb{E} (Y )$
+    \item $\mbbE[X + Y] = \mbbE[X] + \mbbE[Y]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 \end{multicols}
@@ -369,10 +368,10 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
     \item $\phi(X)$ and $\psi(Y)$ are also independent
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\mathbb{E}(X Y ) = \mathbb{E}(X)\ \mathbb{E}(Y )$
+    \item $\mbbE[X Y]  = \mbbE[X]\ \mbbE[Y]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\text{Var}(X \pm Y ) = \text{Var}(X) + \text{Var}(Y )$
+    \item $\tVar[X \pm Y] = \tVar[X] + \tVar[Y]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
 \end{enumerate}
@@ -392,13 +391,129 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 
     \item
     $
-        \text{Var}(X Y )
-        = \text{Var}(X) \text{Var}(Y)
-            + \text{Var}(X)(\mathbb{E}(Y))^2
-            + \text{Var}(Y)(\mathbb{E}(X))^2
+        \text{Var}[X Y]
+        = \text{Var}[X] \text{Var}[Y]
+            + \text{Var}[X](\mbbE[Y])^2
+            + \text{Var}[Y](\mbbE[X])^2
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+
+\section{Sample Statistics ($T_n$), Estimators \& Summary Statistics}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=5cm,
+        keepaspectratio,
+    ]{images/statistics/population-statistics-estimation.png}
+    \caption*{
+        we use the theory of random variables and distribution functions allows us to make more detailed statements about the population of interest
+        \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    }
+\end{figure}
+
+
+\begin{enumerate}
+    \item Sample statistics are numerical values calculated from a sample (a subset of a population) to describe some aspect of the sample.
+    \hfill \cite{common/online/chatgpt}
+
+    \item An \textbf{estimator} is a rule or formula (usually a function of sample data) used to estimate a population parameter.
+    \hfill \cite{common/online/chatgpt}
+
+    \item These are statistics that summarize or describe features of a dataset.
+    They can be from either a sample or an entire population.
+    \hfill \cite{common/online/chatgpt}
+
+    \item We are often interested in summarizing sets of random variables and comparing pairs of random variables.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item A \textbf{statistic of a random variable} is a deterministic function of that random variable.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The summary statistics of a distribution provide one useful view of how a random variable behaves, and provides numbers that summarize and characterize the distribution.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Going from the data to the PDF or PMF to the population is also called statistical inference, but now we are using (parametric) statistical models.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Population Characterstics}:
+    \begin{enumerate}
+        \item \textbf{standardized variable};
+        $
+            Z = \dfrac{X - \mu( f )}{\sigma ( f )}
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item \textbf{population mean}:
+        $
+            \mu  ( f )
+            = \mbbE[X]
+            = \dint _\mbbR x f (x)dx
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item \textbf{population variance}:
+        $
+            \sigma ^2 ( f )
+            = \mbbE [(X - \mu ( f ))^2]
+            = \dint _\mbbR (x - \mu ( f ))^2 f (x) dx
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item \textbf{population standard deviation}:
+        $
+            \sigma ( f )
+            = \sqrt{\sigma ^2 ( f ) }
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item \textbf{Third moment (skewness)}:
+        $
+            \gamma_1( f ) = \mbbE [(Z )^3]
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item \textbf{Fourth moment (excess kurtosis)}:
+        $
+            \gamma_2( f ) = \mbbE [(Z )^4]-3
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item \textbf{Quantiles}:
+        $
+            F (x _p ( f )) = \dint ^{x _p ( f )} _{-\infty} f (x) dx = p
+            \Rightarrow
+            x _p ( f ) = F^{-1} ( p)
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\
+        $F^{-1}$ is the inverse distribution function
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item [\textbf{Note}:] we are now using the notation $\mu ( f )$ to make explicit that the population mean $\mu$ will depend on our choice of $f$ .
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+\subsection{Distributions of Sample Statistic $T_n$}
+
+
+\begin{enumerate}
+    \item \textbf{CDF}: $F_{T_n} (x) = P (T_n \leq x)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
 
 
 
