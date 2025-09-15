@@ -1,5 +1,6 @@
 \chapter{Probability Theory}
 
+\section{Definitions}
 
 \begin{enumerate}
     \item \textbf{Descriptive statistics} summarizes and visualizes the observed data. It is usually not very difficult, but it forms an essential part of reporting(scientific)results.
@@ -11,12 +12,20 @@
     \item The \textbf{theory of probability} makes it possible to connect the two disciplines of descriptive and inferential statistics.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-\end{enumerate}
+    \item
+    \begin{definition}[sample space ($\Omega$)]
+        The sample space is the set of all possible outcomes of the experiment, usually denoted by $\Omega$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
+    \item
+    \begin{definition}[event space ($\mathcal{A}$)]
+        The event space is the space of potential results of the experiment. 
+        A subset $A$ of the sample space $\Omega$ is in the event space $\mathcal{A}$ if at the end of the experiment we can observe whether a particular outcome $\omega \in \Omega$ is in $A$. 
+        The event space $\mathcal{A}$ is obtained by considering the collection of subsets of $\Omega$, and for discrete probability distributions $\mathcal{A}$ is often the power set of $\Omega$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
 
-\section{Definitions}
-
-\begin{enumerate}
     \item An \textbf{event} is defined as something that happens or it is seen as a result of something.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -42,6 +51,10 @@
         \item $P(A) =\displaystyle \lim_{n\to \infty} \dfrac{n_A}{n} = p$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
+
+    \item \textbf{Definition 3}: With each event $A \in \mathcal{A}$, we associate a number $P (A)$ that measures the probability or degree of belief that the event will occur. 
+    $P (A)$ is called the probability of $A$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item we simply define the probability $P(A)$ of an event $A$ as an (unknown) value between zero and one, $0 \leq P (A) \leq 1$, where both boundaries are allowed, which could either be approximated by collecting appropriate and real data or by the limit of a proportion of repeated and identical trials.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -208,21 +221,6 @@
         \end{table}
     \end{customArrayStretch}
 
-    \item
-    \begin{theorem}[Bayes Theorem]
-        \[
-            P(B|A)
-            = \dfrac{P(A\cap B)}{P(A)} = \dfrac{P(A|B) P(B)}{P(A)}
-            \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
-        \]
-    \end{theorem}
-    \begin{enumerate}
-        \item \textbf{prior probability} ($P(A)$): probability available before we observe Event $B$
-        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
-
-        \item \textbf{posterior probability} ($P(B|A)$): it is the probability obtained after we have observed $A$
-        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
-    \end{enumerate}
 
     \item \textbf{Marginal Probability}: Marginal Probability refers to the probability of a single event occurring, without consideration of any other events.
     It is derived from a joint probability distribution and represents the likelihood of an event happening in isolation.
@@ -261,6 +259,94 @@
         = P_x(g(y)) \dabs{g^\prime(y)}
     $
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+\end{enumerate}
+
+
+
+
+
+
+
+
+\section{Bayesian probabilities}
+
+\begin{enumerate}
+    \item
+    \begin{theorem}[Bayes Theorem]
+        \[
+            \underset{posterior}{\underbrace{P(B|A)}}
+            = \dfrac{P(A\cap B)}{P(A)} 
+            = \dfrac{
+                \overset{likelihood}{\overbrace{P(A|B)}}
+                \overset{prior}{\overbrace{P(B)}}
+            }{
+                \underset{evidence}{\underbrace{P(A)}}
+            }
+        \]
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein,mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{theorem}
+    \begin{enumerate}
+        \item \textbf{Posterior} ($P(B|A)$):
+        \begin{enumerate}
+            \item \textbf{Meaning}: The probability of $B$ given that you have observed $A$.
+            \hfill \cite{common/online/chatgpt}
+
+            \item \textbf{Why it's important}: This is what you’re trying to compute or update — your updated belief about $B$ after seeing evidence $A$.
+            \hfill \cite{common/online/chatgpt}
+
+            \item It is the quantity of interest in Bayesian statistics because it expresses exactly what we are interested in, i.e., what we know about $B$ after having observed $A$.
+            \hfill\cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{enumerate}
+
+        \item \textbf{Likelihood} ($P(A|B)$):
+        \begin{enumerate}
+            \item \textbf{Meaning}: The probability of seeing evidence $A$ assuming $B$ is true.
+            \hfill \cite{common/online/chatgpt}
+
+            \item \textbf{Why it's important}: It reflects how compatible the data is with different hypotheses.
+            \hfill \cite{common/online/chatgpt}
+
+            \item \textbf{Note}: This is not a probability of $B$, but rather of the data $A$ under different conditions of $B$.
+            \hfill \cite{common/online/chatgpt}
+
+            \item describes how $B$ and $A$ are related, and in the likelihood case of discrete probability distributions, it is the probability of the data $A$ if we were to know the latent variable $B$.
+            \hfill\cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+            \item The likelihood is sometimes also called the “\textbf{measurement model}”.
+            \hfill\cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+            \item Note that the likelihood is not a distribution in $B$, but only in $A$. 
+            We call $P(A | B)$ either the “likelihood of $B$ (given $A$)” or the “probability of $A$ given $B$” but never the "likelihood of $A$".
+            \hfill\cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{enumerate}
+
+        \item \textbf{Prior} ($P(B)$): 
+        \begin{enumerate}
+            \item \textbf{Meaning}: The initial belief or probability of $B$ before seeing any evidence.
+            \hfill \cite{common/online/chatgpt}
+
+            \item \textbf{Why it's important}: It encodes your assumptions or background knowledge.
+            \hfill \cite{common/online/chatgpt}
+
+            \item Encapsulates our subjective prior prior knowledge of the unobserved (latent) variable $B$ before observing any data. 
+            \hfill\cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+            \item We can choose any prior that makes sense to us, but it is critical to ensure that the prior has a nonzero pdf (or pmf) on all plausible $B$, even if they are very rare.
+            \hfill\cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \end{enumerate}
+        
+        \item \textbf{Evidence / Marginal Likelihood} ($P(A)$):
+        \begin{enumerate}
+            \item \textbf{Meaning}: The total probability of observing the data $A$, considering all possible values of $B$.
+            \hfill \cite{common/online/chatgpt}
+
+            \item \textbf{Why it's important}: It acts as a normalizing constant so that the posterior sums (or integrates) to 1.
+            \hfill \cite{common/online/chatgpt}
+
+            \item \textbf{Why it's not a prior}: Even though $A$ appears in $P(B|A)$, in the context of Bayes’ theorem, it’s the observed data, and not a belief about a variable. That’s why it’s called the evidence.
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+    \end{enumerate}
 
     \item \textbf{maximum likelihood}: $\bm{w}$ is set to the value that maximizes the likelihood function $P(D|\bm{w})$.
     \begin{enumerate}
@@ -275,19 +361,7 @@
         Because the negative logarithm is a monotonically decreasing function, maximizing the likelihood is equivalent to minimizing the error.
         \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
     \end{enumerate}
-
-\end{enumerate}
-
-
-
-
-
-
-
-
-\section{Bayesian probabilities}
-
-\begin{enumerate}
+    
     \item These are not events that can be repeated numerous times in order to define a notion of probability.
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 
