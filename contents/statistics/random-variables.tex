@@ -508,21 +508,104 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 
 
 \begin{enumerate}
+    \item \textbf{PMF or PDF} 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item In many settings, the sample distribution function has a sample PMF or PDF $f _{T_n}$ , often referred to as the sample density function of $T_n$ .
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item  it is not always easy to determine the sample distribution or sample density function in general
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Only in special cases is it possible to determine closed-form functions.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
     \item \textbf{CDF}: $F_{T_n} (x) = P (T_n \leq x)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item This CDF is often referred to as the sample distribution function of statistic $T_n$ , as it describes how the sample statistics vary if we draw (new) samples from the population.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+    \end{enumerate}
+
+    \item We study the distributions of $T_n$, as these distribution functions effectively allow us to examine the quality of our estimators: the distribution function of the random variable $T_n$ provides a measure of how well an estimator approximates a population value. 
+    \begin{enumerate}
+        \item The expected value of an estimator $\mbbE[T_n]$ is a measure for the central tendency of a sample statistic
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The standard deviation of $T_n$ provides a measure for the variability of a sample statistic.
+        The standard deviation of a sample statistic $T_n$ is the standard error of that sample statistic; 
+        the standard error of a sample statistic of interest is commonly reported in scientific texts to quantify the uncertainty associated with the sample statistic.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsubsection{Distribution of the Sample Minimum}
+
+\begin{enumerate}
+    \item $F _{X_{(1)}}(x) = 1 - [1 - F(x)]^n$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $f _{X_{(1)}} (x) = n [1 - F(x)]^{n-1}\ f (x)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\subsubsection{Distribution of the Sample Maximum}
+
+\begin{enumerate}
+    \item  Let $T_n$ be the maximum of $X_1 , X_2, \cdots , X _n$ , the distribution function of $T_n$ is given by:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    $
+        \begin{aligned}
+            F _{X_{(n)}} (x) 
+            &= P (X_{(n)} \leq x) 
+            = P (\max \dCurlyBrac{X_1, X_2, \cdots, X _n } \leq x) \\
+            &= P (X_1 \leq x, X_2 \leq x, \cdots, X _n \leq x) 
+            = \dprod ^n _{i=1} P (X _i \leq x)
+            = \dprod ^n _{i=1} F(x) \\
+            &= [F (x)]^n
+        \end{aligned}
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+    $
+
+    \item $f _{X_{(n)}} (x) = n [F (x)]^{n-1}\ f (x)$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
 
+\subsubsection{Distribution of the Sample Average}
 
+\begin{enumerate}
+    \item The distribution function of the sample average $\bar{X} = \dfrac{1}{n} \dsum^n _{i=1} X _i$ is not so easy to determine in general.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item The $p$-th moment of a general sample statistic $T_n$ is given by 
+    $\mbbE[T ^p _n] = \dint _\mbbR t^ p f _{T_n} (t) dt$, 
+    if the sample density $f _{T_n}$ exists, using the definition of moments for any random variable.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item  It can, however, also be calculated in a different way, using the population density f and the fact that $X_1 , X_2, \cdots , X _n$ are i.i.d. $F$.
+    The $p$-th moment of $T_n$ is:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        \begin{aligned}
+            \mbbE (T ^p _n ) 
+            &= \dint _\mbbR t ^p f_ {T_n} (t) dt 
+            = \mbbE (T ^p _n (X_1, X_2, \cdots , X _n )) \\
+            &= \dint _{\mbbR^n} T ^p _n (x_1, x_2, \cdots , x _n )\ f (x_1) f (x_2) \cdots f (x _n ) \ dx_1dx_2 \cdots dx _n
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-
-
-
-
-
+    \item A special case is the first moment $\mu ( f_ {T_n} ) = \mbbE[T_n]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 

@@ -1,5 +1,33 @@
 \section{Bernoulli distribution ($X \sim B(p)$)}
 
+
+
+\subsection{Distribution of the Sample Statistic ($T_n$)}
+
+\subsubsection{Distribution of the Sample Average}
+
+\begin{enumerate}
+    \item Let $X_1 , X_2, \cdots , X _n$ are i.i.d. Bernoulli distributed, $X _i \sim \mathcal{B} ( p)$, the sum of the random variables is binomial $\text{Bin} (n, p)$ distributed.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This implies that the distribution function of the sample average $\bar{X}$ of Bernoulli distributed random variables in $x \in [0, 1]$ is given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        F _{\bar{X}} (x) 
+        = P ( \bar{X} \leq x) 
+        = P (X_1 + X_2 + \cdots + X _n \leq nx) 
+        = \dsum ^{\dfloor{nx}} _{k=0} \dbinom{n}{k} p ^k (1 - p)^{n-k}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+\end{enumerate}
+
+
+
+
 \subsection{Summary}
 
 \begin{enumerate}
