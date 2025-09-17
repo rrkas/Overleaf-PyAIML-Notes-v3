@@ -684,7 +684,7 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
         \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
     $
 
-    \item The sample variance $S^2$ is an unbiased estimator of the population variance $\sigma ^2( f )$. 
+    \item The sample variance $S^2$ is an unbiased estimator of the population variance $\sigma ^2( f )$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item estimate the standard error of the sample average: $\hat{SE}(\bar{X}) = \dfrac{S}{\sqrt{n}}$
@@ -695,41 +695,41 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
     \\[0.2cm]
     .\hfill
     $
-        \sigma  ^2 ( f _{S^2} ) 
+        \sigma  ^2 ( f _{S^2} )
         = \mbbE[(S^2 - \mu ( f _{S^2} ))^2 ]
         = \mbbE[(S^2 - \sigma  ^2 ( f ))^2]
         = \dParenBrac{\dfrac{1}{n} \gamma_2 ( f ) + \dfrac{2}{n - 1}} \sigma  ^4 ( f )
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The standard deviation 
+    \item The standard deviation
     \colorbox{yellow}{$\sigma ( f _{S^2} ) = \sigma ^2( f )\sqrt{\dfrac{(n - 1)\ \gamma_2( f ) + 2n}{n(n - 1)}}$}
-    is also referred to as the standard error of the sample variance $S^2$. 
+    is also referred to as the standard error of the sample variance $S^2$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item \textbf{standard error}: 
+    \item \textbf{standard error}:
     $\hat{SE}(S^2) = S^2\sqrt{\dfrac{(n - 1)\ b_2 + 2n}{n(n - 1)}}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
-\subsection{Central Limit Theorem}
+\subsection{Central Limit Theorem (CLT)}
 
 \begin{enumerate}
-    \item  If the sample size increases, the standard deviation vanishes ($\dfrac{\sigma (f)}{\sqrt{n}} \to 0$ if $n \to \infty$). 
-    This implies that the sample average converges to the population mean $\mu( f )$. 
+    \item  If the sample size increases, the standard deviation vanishes ($\dfrac{\sigma (f)}{\sqrt{n}} \to 0$ if $n \to \infty$).
+    This implies that the sample average converges to the population mean $\mu( f )$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
-    \begin{theorem}[Central Limit Theorem (Lindeberg-Levy)]
-        If we study the standardized sample average, i.e. 
+    \item
+    \begin{theorem}[Central Limit Theorem (CLT) (Lindeberg-Levy)]
+        If we study the standardized sample average, i.e.
         $
-            Z _n 
-            = \dfrac{\bar{X} - \mu ( f )}{\sigma  ( f )/\sqrt{n}} 
+            Z _n
+            = \dfrac{\bar{X} - \mu ( f )}{\sigma  ( f )/\sqrt{n}}
             = \dfrac{\sqrt{n}( \bar{X} - \mu ( f ))}{\sigma  ( f )}
         $
-        , the mean would be equal to zero ($\mbbE[Z _n] = 0$) and the variance would be equal to one ($\mbbE[Z ^2 _n] = 1$). 
-        This is true irrespective of the sample size $n$. 
+        , the mean would be equal to zero ($\mbbE[Z _n] = 0$) and the variance would be equal to one ($\mbbE[Z ^2 _n] = 1$).
+        This is true irrespective of the sample size $n$.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{theorem}
 
@@ -742,7 +742,7 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
     \item Note that it did not imply anything about the shape of the population density $f$ , just the existence of $\mu( f )$ and $\sigma^ 2( f )$ (and of course the assumption that $X_1 , X_2, \cdots , X _n$ are i.i.d. with density $f$ ).
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Any statistic of the form $S_n = \dfrac{1}{n} \dsum^n _{i=1} \psi(X _i )$ would also converge to a normal distribution function when the mean $\mu_\psi ( f ) = \mbbE[\psi(X _k])$ and variance $\sigma ^2 _\psi  ( f ) = \mbbE[(\psi (X _k ) - \mu_\psi  ( f ))^2]$ are finite. 
+    \item Any statistic of the form $S_n = \dfrac{1}{n} \dsum^n _{i=1} \psi(X _i )$ would also converge to a normal distribution function when the mean $\mu_\psi ( f ) = \mbbE[\psi(X _k])$ and variance $\sigma ^2 _\psi  ( f ) = \mbbE[(\psi (X _k ) - \mu_\psi  ( f ))^2]$ are finite.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Using the central limit theorem, $\psi (X_1), \psi (X_2), \cdots , \psi (X_ n )$ are i.i.d. and have a finite variance; thus, the statistic $\sqrt{n}(S_n - \mu_\psi  ( f ))$ converges to a normal distribution with mean zero and variance $\sigma^ 2 _\psi  ( f )$.
@@ -754,7 +754,7 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 \subsubsection{Central Limit Theorem Applied to Variances}
 
 \begin{enumerate}
-    \item The central limit theorem can also be applied to the sample variance $S^2$ , when the fourth central moment $\mbbE[(X _k - \mu( f ))^4]$ exists. 
+    \item The central limit theorem can also be applied to the sample variance $S^2$ , when the fourth central moment $\mbbE[(X _k - \mu( f ))^4]$ exists.
     The sample variance can be rewritten as
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
@@ -764,7 +764,7 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item We may apply the central limit theorem to $\dfrac{1}{ n} \dsum ^n _{i=1} (X_ i - \mu  ( f ))^2$ , where $\psi(x) = (x - \mu ( f ))^2$ . 
+    \item We may apply the central limit theorem to $\dfrac{1}{ n} \dsum ^n _{i=1} (X_ i - \mu  ( f ))^2$ , where $\psi(x) = (x - \mu ( f ))^2$ .
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
         \item \textbf{mean}: $\mu _\psi ( f ) = \mbbE[(X _i - \mu ( f ))^2] = \sigma ^2( f )$
@@ -773,17 +773,131 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
         \item \textbf{variance}:
         $
             \begin{aligned}
-                \sigma  ^2 _\psi ( f ) 
+                \sigma  ^2 _\psi ( f )
                 &= \mbbE[((X _i - \mu ( f ))^2 - \sigma ^ 2( f ))^2 ] \\
-                &= \mbbE[(X _i - \mu ( f ))^4] - \sigma ^ 4( f ) 
+                &= \mbbE[(X _i - \mu ( f ))^4] - \sigma ^ 4( f )
                 = (\gamma_2( f ) + 2)\ \sigma  ^4( f )
             \end{aligned}
         $
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item
+        $
+            \tVar\dSquareBrac{\dfrac{1}{n} \dsum^n _{i=1}(X _i - \mu ( f ))^2}
+            = \dfrac{(\gamma_2( f ) + 2)\ \sigma^ 4( f )}{n}
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \begin{enumerate}
+            \item
+            $
+                \dfrac{1}{\sqrt{n}} \dsum^n _{i=1} [(X _i - \mu ( f ))^2 - \sigma ^2( f )]
+                \overset{n \to \infty}{\longrightarrow}
+                \mathcal{N}\dParenBrac{0,  [\gamma_2( f ) + 2]\sigma ^4( f )}
+            $
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+            \item $\dfrac{1}{ n} \dsum^n _{i=1}(X _i - \mu ( f ))2$ is approximately normally distributed with $\mathcal{N} \dParenBrac{\sigma ^ 2( f ), \dfrac{[\gamma_2( f ) + 2]\ \sigma  ^4 ( f )}{N}}$,
+            which implies that $\dfrac{1}{n-1} \dsum^n _{i=1}(X_ i - \mu ( f ))^2$ is approximately normally distributed with
+            \\[0.2cm]
+            $\mathcal{N} \dParenBrac{\sigma ^ 2( f ), \dfrac{[\gamma_2( f ) + 2]\ \sigma ^ 4( f )}{n}}$.
+            \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \end{enumerate}
     \end{enumerate}
 
-    
+    \item The distribution of $\sqrt{n}( \bar{X} - \mu( f ))$ converges to the normal distribution $\mathcal{N} (0, \sigma ^2( f ))$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item
+        $
+            ( \bar{X} - \mu ( f ))^2
+            = \dfrac{[\sqrt{n}( \bar{X} - \mu ( f ))]^2}{n} \to 0
+        $
+        when $n$ converges to $\infty$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item $\sqrt{n}(S^2 - \sigma  ^2( f ))$ converges to a normal distribution  $\mathcal{N} (0, [\gamma_2( f ) + 2]\ \sigma ^ 4( f ))$, with $\sigma ^ 2( f )$ the population variance and $\gamma_2( f )$ the population excess kurtosis.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+
+
+
+
+
+
+\subsection{Asymptotic Confidence Intervals}
+
+\begin{enumerate}
+    \item The sample distribution function $F_{T_n}$ can help quantify how much the statistic is varying around the population characteristic it is trying to approach.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Based on the definition of quantiles and the sampling distribution function $F_{T_n}$ , the sample statistic will fall in the interval $(x _p ( f _{T_n} ),\ x_{1- p} ( f _{T_n} )]$ with probability $1 - 2 p$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item
+    $
+        \begin{aligned}
+            P(T_n \in (x_ p ( f _{T_n} ),\ x_{1- p} ( f _{T_n} )])
+            &= P(T_n \leq  x_{1- p} ( f _{T_n} )) - P(T_n \leq  x_ p ( f _{T_n} )) \\
+            &= F_{T_n} (x_{1- p} ( f _{T_n} )) - F_{T_n} (x _p ( f _{T_n} )) \\
+            &= 1 - p - p = 1 - 2 p
+        \end{aligned}
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+    $
+
+    \item If $\tau_n$ is \textbf{the standard error} of the sample statistic $T_n$, $z _p = x _p (\phi)$ is the quantile of the standard normal distribution, then the sample statistic $T_n$ falls in the interval $(\theta  + z _p \tau_ n ,\ \theta  + z_{1- p} \tau _n ] = (\theta  - z_{1- p} \tau _n , \theta  + z_{1- p} \tau_ n ]$ with probability approximately equal to $1 - 2 p$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item
+    $
+        \begin{aligned}
+            &P(T_n \in  (\theta  - z_{1- p} \tau_n ,\ \theta  + z_{1- p} \tau_n ]) \\
+            &= P((T_n - \theta )/\tau_n \in  (-z{1- p} ,\ z{1- p} ]) \\
+            &\approx \Phi(z_{1- p} ) - \Phi(-z_{1- p} ) \\
+            &= 1 - p - p
+            = 1 - 2 p
+        \end{aligned}
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+    $
+
+    \item We can rewrite the probability $P(T_n \in  (\theta  - z_{1- p} \tau _n ,\ \theta  + z_{1- p} \tau_ n ])$ into $P(\theta  \in  (T_n - z_{1- p} \tau _n ,\ T_n + z_{1- p} \tau _n ])$, which means that the population characteristic is contained within limits $T_n - z_{1- p} \tau _n$ and $T_n + z_{1- p} \tau _n$ with probability equal to $1 - 2 p$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The interval $(T_n - z_{1- p} \tau_n , T_n + z_{1- p} \tau_n ]$ is now called an \textbf{asymptotic confidence interval} for $\theta$ with confidence level $1 - 2 p$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item In practice we still need to estimate the standard error $\tau_n$ to be able to calculate the confidence interval, as $\tau_n$ would be a function of the density parameters and is unknown in the calculation of the interval $(T_n - z_{1- p} \tau_n , T_n + z_{1- p} \tau_n ]$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item It is then common to replace $\tau_n$ by its estimator $\hat{\tau}_n$ .
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item In some cases, we would also change the normal quantile $z_{1- p}$ by a quantile of the $t$-distribution if we could formulate a degrees of freedom for the estimator $\hat{\tau}_n$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsection{Methods of Estimation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
