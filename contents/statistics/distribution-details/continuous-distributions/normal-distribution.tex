@@ -364,46 +364,46 @@
     \hfill (using property 3)
     \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item If $x _p ( f _t )$ is the $p$-th quantile of the Student t-distribution with $n - 1$ degrees of freedom, the $1 - 2 p$ confidence interval for $\mu$ (with $p < 0.5$) is now 
+    \item If $x _p ( f _t )$ is the $p$-th quantile of the Student t-distribution with $n - 1$ degrees of freedom, the $1 - 2 p$ confidence interval for $\mu$ (with $p < 0.5$) is now
     $
         \left (
-            \bar{X} - x_{1- p} ( f _t ) \dfrac{S}{\sqrt{n}} , 
+            \bar{X} - x_{1- p} ( f _t ) \dfrac{S}{\sqrt{n}} ,
             \ \bar{X} + x_{1- p} ( f _t ) \dfrac{S}{\sqrt{n}}
         \right ]
     $
     \hfill\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Note that the only restriction on the sample size $n$, is that it should be larger than $2$, otherwise we cannot calculate a sample variance. 
+    \item Note that the only restriction on the sample size $n$, is that it should be larger than $2$, otherwise we cannot calculate a sample variance.
     \hfill\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item When the sample size is increasing, the quantile of the Student t-distribution with $n - 1$ degrees of freedom converges to the quantile of the standard normal distribution. 
+    \item When the sample size is increasing, the quantile of the Student t-distribution with $n - 1$ degrees of freedom converges to the quantile of the standard normal distribution.
     The quantiles of the t-distribution are already quite close to the same quantiles of the normal distribution when sample sizes are larger than $100$.
     \hfill\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The asymptotic $1 - 2 p$ confidence interval for the variance $\sigma^ 2$ is given by $(S^2 - z_{1- p} \hat{\tau}_n ,\ S^2 - z_{1- p} \hat{\tau}_n ]$, where  $\hat{\tau}_n = S^2\sqrt{\dfrac{b_2 + 2}{n}}$ and $b_2$ is the sample excess kurtosis. 
+    \item The asymptotic $1 - 2 p$ confidence interval for the variance $\sigma^ 2$ is given by $(S^2 - z_{1- p} \hat{\tau}_n ,\ S^2 - z_{1- p} \hat{\tau}_n ]$, where  $\hat{\tau}_n = S^2\sqrt{\dfrac{b_2 + 2}{n}}$ and $b_2$ is the sample excess kurtosis.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    
-    \item An alternative confidence interval for the variance $\sigma ^2$ can be created under the assumption that $X_1 , X_2, \cdots , X _n$ are i.i.d. normally distributed, $X_ i \sim \mathcal{N} (\mu, \sigma^ 2)$. 
-    Let $x _p ( f_{\chi^2} )$ be the $p$-th quantile of the chi-square distribution with $n - 1$ degrees of freedom. 
+
+    \item An alternative confidence interval for the variance $\sigma ^2$ can be created under the assumption that $X_1 , X_2, \cdots , X _n$ are i.i.d. normally distributed, $X_ i \sim \mathcal{N} (\mu, \sigma^ 2)$.
+    Let $x _p ( f_{\chi^2} )$ be the $p$-th quantile of the chi-square distribution with $n - 1$ degrees of freedom.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
         \item Then $P(V ^2 _{n-1} \leq x _p ( f_{\chi^2} )) = p$.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-        \item Then $P(\sigma ^ 2 \geq (n - 1)S^2/x _p ( f_{\chi ^2} )) = p$ 
+        \item Then $P(\sigma ^ 2 \geq (n - 1)S^2/x _p ( f_{\chi ^2} )) = p$
         \hfill Using $\dParenBrac{V ^2 _{n-1} = \dfrac{(n - 1)S^2}{\sigma  ^2} \sim \chi ^2 _{n-1}}$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-        \item 
+        \item
         $
-            P(V^ 2 _{n-1} > x_{1- p} ( f_{\chi^2} )) = p 
+            P(V^ 2 _{n-1} > x_{1- p} ( f_{\chi^2} )) = p
             \Longrightarrow
             P\dParenBrac{\sigma ^2 < \dfrac{(n - 1)S^2}{x_{1- p}( f_{\chi^2} )}} = p
         $
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
-        \item Thus a $1 - 2 p$ confidence interval for the variance $\sigma^ 2$ is now given by 
+
+        \item Thus a $1 - 2 p$ confidence interval for the variance $\sigma^ 2$ is now given by
         $\left[\dfrac{(n - 1)S^2}{x_{1- p} ( f_{\chi^2} )}, \dfrac{(n - 1)S^2}{x _p ( f_{\chi^2})}  \right)$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}

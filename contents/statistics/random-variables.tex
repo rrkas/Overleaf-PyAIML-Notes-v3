@@ -873,7 +873,7 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
     \begin{enumerate}
         \item It is then common to replace $\tau_n$ by its estimator $\hat{\tau}_n$ .
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
+
         \item In some cases, we would also change the normal quantile $z_{1- p}$ by a quantile of the $t$-distribution if we could formulate a degrees of freedom for the estimator $\hat{\tau}_n$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
@@ -883,23 +883,23 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 \subsection{Methods of Estimation: Method of Moments Estimation (MME)}
 
 \begin{enumerate}
-    \item Assume that the population density $f_{\bm{\theta} }$ depends on a set of parameters $\bm{\theta}  = (\theta _1, \theta _2, \cdots , \theta _m )^\top$ 
+    \item Assume that the population density $f_{\bm{\theta} }$ depends on a set of parameters $\bm{\theta}  = (\theta _1, \theta _2, \cdots , \theta _m )^\top$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Estimates of these parameters can then be obtained by computing $m$ or more central moments.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-    \item 
+
+    \item
     $
-        \mu_r ( f_{\bm{\theta}} ) 
+        \mu_r ( f_{\bm{\theta}} )
         = \mbbE [(X - \mu ( f_{\bm{\theta}} ))^r ]
-        = 
+        =
         \begin{cases}
             \dint _{\mbbR} (x - \mu ( f_{\bm{\theta}} ))^r\ f_{\bm{\theta}} (x)\ dx & \text{ continuous} \\
             \dsum _{k=0}^{\bm{\theta}} (k - \mu ( f_{\bm{\theta}} ))^r\ f_{\bm{\theta}} (k) & \text{ discrete} \\
         \end{cases}
     $
-    where 
+    where
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
         \item  $\mu( f_{\bm{\theta}} ) = \mbbE[X]$ the mean value
@@ -915,7 +915,7 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
     \item If we equate the sample moments $M_r$ to the centralized population moments $\mu_r$ , we create a system of equations that can possible be solved for $\bm{\theta}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item When executing the method of moments, we are looking for parameters $\bm{\theta } = (\theta _1, \theta _2, \cdots , \theta _m )^\top$ that satisfy the following equations $\bar{X} = \mu ( f_{\bm{\theta}}  )$ and $M_r = \mu_r ( f_{\bm{\theta}}  )$ for $r = 2, 3, \cdots , m$. 
+    \item When executing the method of moments, we are looking for parameters $\bm{\theta } = (\theta _1, \theta _2, \cdots , \theta _m )^\top$ that satisfy the following equations $\bar{X} = \mu ( f_{\bm{\theta}}  )$ and $M_r = \mu_r ( f_{\bm{\theta}}  )$ for $r = 2, 3, \cdots , m$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The solution $\tilde{\bm{\theta}} = ( \tilde{\theta}_1, \tilde{\theta}_2, \cdots , \tilde{\theta}_m )^\top$ is called the \textbf{method of moments estimator}.
@@ -937,11 +937,121 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 \subsection{Methods of Estimation: Maximum Likelihood Estimation (MLE)}
 
 \begin{enumerate}
-    \item 
+    \item If $X_1 , X_2, \cdots , X_n$ are i.i.d. with density $f_{\bm{\theta}}$ , the likelihood function is given by $L (\bm{\theta}|X_1, X_2, \cdots , X_n ) = \dprod^n _{i=1} f_{\bm{\theta}} (X_i )$ and the log likelihood function is given by
+    % \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    % \\
+    % .\hfill
+    $
+        \ell_{\bm{\theta}}
+        \equiv (\bm{\theta}|X_1, X_2, \cdots , X_n )
+        = \dsum ^n _{i=1} \log f_{\bm{\theta}} (X_i )
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The maximum likelihood estimator $\hat{\bm{\theta}} = ( \hat{\theta}_1, \hat{\theta}_2, \cdots , \hat{\theta}_n )^\top$ is the set of parameters that maximizes the log likelihood function.
+    It is considered a (vector of) random variable(s), since it is a (set of) function(s) of the random variables $X_1 , X_2, \cdots , X _n $.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $X_1 , X_2, \cdots , X _n $ can often be determined by solving the set of equations given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        \dfrac{\partial \ell_{\bm{\theta}}}{\partial\theta_k}
+        = \dsum^n _{i=1} \dParenBrac{
+            \dfrac{1}{f_{\bm{\theta}} (X _i )}
+            \dfrac{\partial f_{\bm{\theta}} (X_i )}{\partial\theta_k}
+        }
+        = 0
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    This set of equations is often referred to as the \textbf{likelihood equations}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The solution $\hat{\bm{\theta}}$ does not always result in a closed form expression, which means that we have to resort to numerical approaches if we want to determine the MLE on data.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This is often considered a drawback of the MLE.
+    It may estimate the parameters of the PDF or PMF unbiasedly, but they do not always estimate the population mean and variance unbiasedly.
+    This would be different from the moment estimators applied to the original scale of the observations.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
 
+\subsubsection{Standard Error of MLE}
+
+\begin{enumerate}
+    \item The standard errors of the maximum likelihood estimators are calculated based on the variance of the large sample distribution (or asymptotics) of the maximum likelihood estimators.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Under certain regularity conditions, it can be shown that $\sqrt{n}(\hat{\bm{\theta}} - \bm{\theta})$ converges to a normal distribution $\mathcal{N} (0, I ^{-1} (\bm{\theta}))$, with $\hat{\bm{\theta}}$ the MLE and $I (\bm{\theta})$ the so-called Fisher information.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\vspace{0.5cm}
+\textbf{(Informal) Illustrative proof}:
+\begin{enumerate}
+    \item we will assume that the density $f_{\theta}$ has only one parameter instead of multiple parameters $\theta_1 , \theta_2, \cdots , \theta_m $.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The first derivative of the log likelihood, which is also referred to as the score function $S(\theta)$, is given by
+    % \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    % \\
+    % .\hfill
+    $
+        S_n (\theta )
+        \equiv \dfrac{d\ell\theta }{d\theta}
+        = \dsum^n _{i=1} \dfrac{d} {d\theta}  \log f_\theta  (X_i )
+        = \dsum^n _{i=1} \dfrac{f^\prime_\theta  (X_i ) }{f_{\theta}  (X_i )}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The expectation of the score function is zero (under certain regularity conditions), since
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        \mbbE\dSquareBrac{\dfrac{f ^\prime _\theta  (X_i )}{f_\theta  (X_i )}}
+        = \dint _\mbbR f ^\prime _\theta  (x)dx
+        = \dfrac{d} {d\theta}  \dint _\mbbR f_\theta  (x)dx
+        = 0
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    This implies that $\mbbE[S_n (\theta)] = 0$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The variance of the score function is now given by $\mbbE[S^2 _n (\theta )] = n \dint _\mbbR\dfrac{( f ^\prime _\theta  (x))^2}{f_\theta  (x)}dx$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Fisher information}:
+    % \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    % \\
+    % .\hfill
+    $
+        I (\theta ) 
+        = \mbbE \dSquareBrac{\dParenBrac{\dfrac{d \log f_\theta  (X)}{d\theta }}^2 }
+        = \dint _\mbbR \dfrac{( f ^\prime _\theta  (x))^2}{ f_\theta  (x)} dx
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The score function is a sum of independent random variables, which means that if we standardize the score function appropriately, the central limit theorem tells us that the distribution function of the score function will converge to a normal distribution function.
+    $S_n (\theta)/\sqrt{n\ I (\theta)}$ converges to a standard normal random variable $Z \sim \mathcal{N} (0, 1)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The Fisher information is equal to the minus expectation of the derivative of the score function with respect to the parameter $\theta$, i.e. $n\ I (\theta) = -\mbbE[S^\prime_n (\theta)]$ with $S^\prime_n (\theta) = \dfrac{dS_n (\theta)}{d\theta}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $S^\prime_n (\theta)$ is also a sum of independent random variables; thus properly standardized it will converge to a standard normal random variable. 
+    This also implies that $\dfrac{S^\prime _n (\theta)}{n}$ will converge to the Fisher information $I (\theta)$ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item using a first-order Taylor expansion for the score function $S_n ( \hat{\theta})$ that is evaluated in the ML estimator $\hat{\theta}$, we obtain that $S_n ( \hat{\theta}) \approx S_n (\theta) + ( \hat{\theta} - \theta)\ S^\prime_n (\theta)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 

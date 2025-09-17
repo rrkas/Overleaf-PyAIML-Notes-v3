@@ -34,8 +34,8 @@
 
 \begin{enumerate}
     \item[] $
-        f_L(x) 
-        = f_{\mu, \sigma}(x) 
+        f_L(x)
+        = f_{\mu, \sigma}(x)
         = \dfrac{1}{x\sigma \sqrt{2\pi}} \exp\dCurlyBrac{
             -\dfrac{(\log(x) - \mu)^2}{2\sigma^2}
         }
@@ -62,91 +62,6 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
-
-
-
-\subsection{Lognormally Distributed Populations}
-
-\begin{enumerate}
-    \item If $X$ is lognormally $\mathcal{L N} (\mu, \sigma^2)$ distributed then $\log(X)$ is normal $\mathcal{N} (\mu, \sigma^2)$. 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item If $X_1 , X_2, \cdots , X _n$ are i.i.d. lognormally distributed, the sample average and sample variance of the transformed random variables $\log (X_1),\ \log (X_2) , \cdots , \log (X_ n )$, with log the natural logarithm, are given by
-    $
-        \bar{X}_{\log} = \dfrac{1}{n} \dsum^n _{i=1} \log (X _i )
-    $
-    and
-    $
-        S^2 _{\log} = \dfrac{1 }{n - 1} \dsum^n _{i=1} (\log (X _i ) - \bar{X}_{\log} )^2
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item These sample statistics are \textbf{unbiased estimates} of $\mu$ and $\sigma^ 2$ , respectively.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The distribution function of $\bar{X}_{\log}$ is normally distributed $\mathcal{N} \dParenBrac{\mu, \dfrac{\sigma ^ 2}{n}}$ and $\dfrac{(n - 1) S^2 _{\log}}{\sigma ^ 2}$ has a chi-square distribution function with $n - 1$ degrees of freedom.  
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item the geometric average $\exp ( \bar{X}_{\log} ) = \dprod ^n _{i=1} \sqrt[n]{{X}_ i}$ is lognormally distributed.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-
-
-
-
-\subsection{Method of Moments Estimation (MME)}
-
-\begin{enumerate}
-    \item consider the random variable $X$ that is lognormally distributed, i.e. $X \sim \mathcal{LN} (\mu ,\sigma ^{2})$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The PDF ($f_L$) contains only two parameters $\theta_1 = \mu$ and $\theta_2 = \sigma^ 2 $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item we only need to solve the two equations:
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}
-        \item $M_1 = \bar{X} = \mu  ( f_ L ) = \exp (\mu  + 0.5 \sigma  ^2)$
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-        \item $M_2 = \sigma  ^2 ( f _L ) = \exp (2\mu  + \sigma ^ 2)\ (\exp (\sigma  ^2) - 1)$
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \end{enumerate}
-
-    \item using $\dfrac{\sigma ^2 ( f_ L )}{\mu^2 ( f_ L )} = \exp (\sigma^ 2) - 1$, we obtain that $\sigma^ 2$ can be estimated by
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \\
-    .\hfill
-    $
-        \tilde{\sigma}^ 2 
-        = \log \dParenBrac{ 1 + \dfrac{M_2} {\bar{X}^2} }
-        = \log ( \bar{X}^2 + M_2 ) - 2 \log ( \bar{X} )
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Using the estimator $\tilde{\sigma} ^2$, we obtain the moment estimator for $\mu$, which is given by
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \\[0.2cm]
-    .\hfill
-    $
-        \mu 
-        = \log ( \bar{X}) - 0.5 [\log ( \bar{X}^2 + M_2 ) - 2 \log ( \bar{X} )]
-        = 2 \log ( \bar{X} ) - 0.5 \log ( \bar{X}^2 + M_2 ) 
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item \textbf{alternative approach}: consider the set of transformed random variables $\log (X_1), \log (X_2) , \cdots , \log (X _n )$.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}
-        \item These random variables are normally distributed with mean $\mu$ and variance $\sigma^ 2$. 
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-        \item The moment estimators in this setting are now $\tilde{\mu} = \bar{X}_{\log}$ and $\tilde{\sigma}^ 2 = \dfrac{n - 1}{n}S^2 _{\log}$, where $\bar{X}_{\log}$ and $S^2 _{\log} $.
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \end{enumerate}
-
-\end{enumerate}
 
 
 
@@ -241,6 +156,169 @@
     (RSD = standard deviation divided by the mean)
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+
+
+
+\subsection{Lognormally Distributed Populations}
+
+\begin{enumerate}
+    \item If $X$ is lognormally $\mathcal{L N} (\mu, \sigma^2)$ distributed then $\log(X)$ is normal $\mathcal{N} (\mu, \sigma^2)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If $X_1 , X_2, \cdots , X _n$ are i.i.d. lognormally distributed, the sample average and sample variance of the transformed random variables $\log (X_1),\ \log (X_2) , \cdots , \log (X_ n )$, with log the natural logarithm, are given by
+    $
+        \bar{X}_{\log} = \dfrac{1}{n} \dsum^n _{i=1} \log (X _i )
+    $
+    and
+    $
+        S^2 _{\log} = \dfrac{1 }{n - 1} \dsum^n _{i=1} (\log (X _i ) - \bar{X}_{\log} )^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item These sample statistics are \textbf{unbiased estimates} of $\mu$ and $\sigma^ 2$ , respectively.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The distribution function of $\bar{X}_{\log}$ is normally distributed $\mathcal{N} \dParenBrac{\mu, \dfrac{\sigma ^ 2}{n}}$ and $\dfrac{(n - 1) S^2 _{\log}}{\sigma ^ 2}$ has a chi-square distribution function with $n - 1$ degrees of freedom.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the geometric average $\exp ( \bar{X}_{\log} ) = \dprod ^n _{i=1} \sqrt[n]{{X}_ i}$ is lognormally distributed.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+\subsection{Method of Moments Estimation (MME)}
+
+\begin{enumerate}
+    \item consider the random variable $X$ that is lognormally distributed, i.e. $X \sim \mathcal{LN} (\mu ,\sigma ^{2})$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The PDF ($f_L$) contains only two parameters $\theta_1 = \mu$ and $\theta_2 = \sigma^ 2 $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we only need to solve the two equations:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item $M_1 = \bar{X} = \mu  ( f_ L ) = \exp (\mu  + 0.5 \sigma  ^2)$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $M_2 = \sigma  ^2 ( f _L ) = \exp (2\mu  + \sigma ^ 2)\ (\exp (\sigma  ^2) - 1)$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item using $\dfrac{\sigma ^2 ( f_ L )}{\mu^2 ( f_ L )} = \exp (\sigma^ 2) - 1$, we obtain that $\sigma^ 2$ can be estimated by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        \tilde{\sigma}^ 2
+        = \log \dParenBrac{ 1 + \dfrac{M_2} {\bar{X}^2} }
+        = \log ( \bar{X}^2 + M_2 ) - 2 \log ( \bar{X} )
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Using the estimator $\tilde{\sigma} ^2$, we obtain the moment estimator for $\mu$, which is given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        \mu
+        = \log ( \bar{X}) - 0.5 [\log ( \bar{X}^2 + M_2 ) - 2 \log ( \bar{X} )]
+        = 2 \log ( \bar{X} ) - 0.5 \log ( \bar{X}^2 + M_2 )
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{alternative approach}: consider the set of transformed random variables $\log (X_1), \log (X_2) , \cdots , \log (X _n )$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item These random variables are normally distributed with mean $\mu$ and variance $\sigma^ 2$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The moment estimators in this setting are now $\tilde{\mu} = \bar{X}_{\log}$ and $\tilde{\sigma}^ 2 = \dfrac{n - 1}{n}S^2 _{\log}$, where $\bar{X}_{\log}$ and $S^2 _{\log} $.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+\end{enumerate}
+
+
+
+
+
+\subsection{Maximum Likelihood Estimation (MLE)}
+
+\begin{enumerate}
+    \item the set of parameters that we want to estimate is given by $\theta_1 = \mu$ and $\theta_2 = \sigma^ 2 $.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The log likelihood in this setting is equal to
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        \dsum ^n _{i=1} \log f _L (X_i )
+        = \dsum ^n _{i=1} \dParenBrac{
+            - \dfrac{(\log (X_i ) - \mu)^2} {2\sigma^2}
+            - \log (\sqrt{2\pi})
+            - \log(X_i )
+            - \log (\sigma )
+        }
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The terms log $\sqrt{2\pi}$ and $\log(X_i )$ can essentially be ignored, since they will be the same whatever we choose for $\mu$ and $\sigma$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Taking the derivatives with respect to $\mu$ and $\sigma$ and equating them to zero we obtain the following equations
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        \dsum^n_{i=1} \dParenBrac{ \dfrac{\log(X_i ) - \mu }{\sigma^ 2} } = 0
+    $
+    \hfill
+    $
+        \dsum ^n _{i=1} \dParenBrac{ \dfrac{(\log (X_i) - \mu)^2 }{\sigma^3} - \dfrac{1}{ \sigma}} = 0
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Solving these equations leads to the solutions 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $\hat{\mu} = \bar{X}_{\log} = \dsum ^n _{i=1} \log(X_i ) $
+    \hfill
+    $
+        \hat{\sigma}^ 2 
+        = \dfrac{1}{n} \dsum^2 _{i=1}(\log(X_i ) - \bar{X}_{\log})^2 
+        = \dfrac{n - 1}{n}S^2_{ \log}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item These solutions are the MME of the logarithmically transformed random variables.
+    This implies that the MLE for $\sigma^  2$ is not unbiased, since the expected value of $\hat{\sigma}^2$ is equal to $\mbbE[\hat{\sigma}^2] = \mbbE\dSquareBrac{\dfrac{n - 1}{n} S^2 _{\log}} = \dfrac{n - 1}{n} \sigma^2$, although this bias vanishes when the sample size gets large.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Using the ML estimates for the density parameters to estimate the population parameters $\mu( f _L )$ or $\sigma^2( f_L )$ in the logarithm scale does not provide unbiased estimator for the mean of the population in the original scale, since the MLE estimate $\exp( \hat{\mu} + 0.5 \ \hat{\sigma}^2)$ is unequal to the expected value of the sample mean $\bar{X}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

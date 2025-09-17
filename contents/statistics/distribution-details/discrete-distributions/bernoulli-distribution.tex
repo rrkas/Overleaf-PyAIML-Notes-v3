@@ -138,3 +138,98 @@
 
 
 
+\subsection{Maximum Likelihood Estimation (MLE)}
+
+
+\begin{enumerate}
+    \item Let $X_1 , X_2, \cdots , X_ n$ having an i.i.d. Bernoulli $\mathcal{B} ( p)$ distribution.
+    We would like to estimate the parameter $p$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If we obtain a realization $x_1 , x_2, \cdots , x _n$ , we could ask how likely it is that we observe this set of results for given values of $p$.
+    This so-called \textbf{likelihood} of the data is given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        L ( p)
+        = p^ {x_1} (1 - p)^{1-x_1}\ p ^{x_2} (1 - p)^{1-x_2} \cdots p ^{x_n} (1 - p)^{1-x_n}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the term $p^ {x _i} (1 - p)^{1-x_i}$ is the probability that the random variable $X _i$ will attain the realization $x _i$ , i.e. $P (X _i = x _i ) = p^ {x _i} (1 - p)^{1-x_i}$ , with $x_ i \in \dCurlyBrac{0, 1}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The product $L ( p)$ represents the probability that $X_1 , X_2, \cdots , X _n$ will attain the realization $x_1 , x_2, \cdots , x _n$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item exploiting the i.i.d. assumption:
+    \begin{enumerate}
+        \item we assume identical distributions for each random variable $X _i$ (and we thus work with parameters $p$ as opposed to $p_i$)
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item the probability of the joint observations is given by the product over the probability of the individual observations; this is possible by virtue of the independence assumption
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item Since the likelihood is a function of the parameter $p$, we can search for a $p$ that would maximize the likelihood.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The maximum likelihood estimate $\hat{p}$ is the value that maximizes $L ( p)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item To obtain this maximum, it is more convenient to take the logarithm of the likelihood $\ell( p)$ given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+         \ell(p)
+         = \dsum ^n _{i=1} [x _i \log ( p) + (1 - x_ i ) \log (1 - p)]
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    The logarithm of a function achieves its maximum value at the same points as the function itself, but is \textbf{easier} to work with analytically as we can replace the multiplications by sums that are easier to differentiate.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the maximum of a function can be obtained by taking the derivative and then equating it to zero and solving the equation for the variable of interest
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        \begin{aligned}
+            &\dfrac{d \ell(p)}{dp}
+            = \ell^\prime ( p)
+            = \dsum ^n _{i=1} \dParenBrac{\dfrac{x _i}{p} - \dfrac{1 - x_ i} {1 - p}} = 0
+            \Leftrightarrow (1 - p) \dsum^n _{i=1} x_ i - np + p \dsum^n _{i=1} x_ i = 0 \\
+            &\Leftrightarrow np = \dsum^n _{i=1} x_ i
+            \Leftrightarrow p = \dfrac{1}{n} \dsum^n _{i=1} x_ i = \bar{x}
+        \end{aligned}
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+    $
+
+    \item The maximum likelihood estimate is now given by $\hat{p} = \bar{x}$.
+    Since any value $\bar{x} - \varepsilon,\ \varepsilon > 0$, for $p$ in the derivative gives a positive value the solution is a maximum.
+    The ML estimator is now $\hat{p} = \bar{X}$, which is the same as the MME, since the first moment of a Bernoulli random variable is $p$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
