@@ -1,4 +1,4 @@
-\section{Lognormal Distribution ($\text{Lognormal}(\mu ,\sigma ^{2})$)}
+\section{Lognormal Distribution ($\text{Lognormal}(\mu ,\sigma ^{2})$, $LN(\mu ,\sigma ^{2})$)}
 
 \begin{table}[H]
     \hfill
@@ -34,9 +34,12 @@
 
 \begin{enumerate}
     \item[] $
-        f_{\mu, \sigma}(x) = \dfrac{1}{x\sigma \sqrt{2\pi}} \exp\dCurlyBrac{
+        f_L(x) 
+        = f_{\mu, \sigma}(x) 
+        = \dfrac{1}{x\sigma \sqrt{2\pi}} \exp\dCurlyBrac{
             -\dfrac{(\log(x) - \mu)^2}{2\sigma^2}
         }
+        = \dfrac{1}{x\sigma} \phi\dParenBrac{\dfrac{\log(x) - \mu}{\sigma}}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -81,7 +84,7 @@
     \item These sample statistics are \textbf{unbiased estimates} of $\mu$ and $\sigma^ 2$ , respectively.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The distribution function of ¯Xlog is normally distributed $\mathcal{N} \dParenBrac{\mu, \dfrac{\sigma ^ 2}{n}}$ and $\dfrac{(n - 1) S^2 _{\log}}{\sigma ^ 2}$ has a chi-square distribution function with $n - 1$ degrees of freedom.  
+    \item The distribution function of $\bar{X}_{\log}$ is normally distributed $\mathcal{N} \dParenBrac{\mu, \dfrac{\sigma ^ 2}{n}}$ and $\dfrac{(n - 1) S^2 _{\log}}{\sigma ^ 2}$ has a chi-square distribution function with $n - 1$ degrees of freedom.  
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item the geometric average $\exp ( \bar{X}_{\log} ) = \dprod ^n _{i=1} \sqrt[n]{{X}_ i}$ is lognormally distributed.
@@ -91,6 +94,59 @@
 
 
 
+
+\subsection{Method of Moments Estimation (MME)}
+
+\begin{enumerate}
+    \item consider the random variable $X$ that is lognormally distributed, i.e. $X \sim \mathcal{LN} (\mu ,\sigma ^{2})$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The PDF ($f_L$) contains only two parameters $\theta_1 = \mu$ and $\theta_2 = \sigma^ 2 $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we only need to solve the two equations:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item $M_1 = \bar{X} = \mu  ( f_ L ) = \exp (\mu  + 0.5 \sigma  ^2)$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $M_2 = \sigma  ^2 ( f _L ) = \exp (2\mu  + \sigma ^ 2)\ (\exp (\sigma  ^2) - 1)$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item using $\dfrac{\sigma ^2 ( f_ L )}{\mu^2 ( f_ L )} = \exp (\sigma^ 2) - 1$, we obtain that $\sigma^ 2$ can be estimated by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        \tilde{\sigma}^ 2 
+        = \log \dParenBrac{ 1 + \dfrac{M_2} {\bar{X}^2} }
+        = \log ( \bar{X}^2 + M_2 ) - 2 \log ( \bar{X} )
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Using the estimator $\tilde{\sigma} ^2$, we obtain the moment estimator for $\mu$, which is given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        \mu 
+        = \log ( \bar{X}) - 0.5 [\log ( \bar{X}^2 + M_2 ) - 2 \log ( \bar{X} )]
+        = 2 \log ( \bar{X} ) - 0.5 \log ( \bar{X}^2 + M_2 ) 
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{alternative approach}: consider the set of transformed random variables $\log (X_1), \log (X_2) , \cdots , \log (X _n )$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item These random variables are normally distributed with mean $\mu$ and variance $\sigma^ 2$. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The moment estimators in this setting are now $\tilde{\mu} = \bar{X}_{\log}$ and $\tilde{\sigma}^ 2 = \dfrac{n - 1}{n}S^2 _{\log}$, where $\bar{X}_{\log}$ and $S^2 _{\log} $.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+\end{enumerate}
 
 
 

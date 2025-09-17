@@ -880,16 +880,65 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 \end{enumerate}
 
 
-\subsection{Methods of Estimation}
+\subsection{Methods of Estimation: Method of Moments Estimation (MME)}
+
+\begin{enumerate}
+    \item Assume that the population density $f_{\bm{\theta} }$ depends on a set of parameters $\bm{\theta}  = (\theta _1, \theta _2, \cdots , \theta _m )^\top$ 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Estimates of these parameters can then be obtained by computing $m$ or more central moments.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item 
+    $
+        \mu_r ( f_{\bm{\theta}} ) 
+        = \mbbE [(X - \mu ( f_{\bm{\theta}} ))^r ]
+        = 
+        \begin{cases}
+            \dint _{\mbbR} (x - \mu ( f_{\bm{\theta}} ))^r\ f_{\bm{\theta}} (x)\ dx & \text{ continuous} \\
+            \dsum _{k=0}^{\bm{\theta}} (k - \mu ( f_{\bm{\theta}} ))^r\ f_{\bm{\theta}} (k) & \text{ discrete} \\
+        \end{cases}
+    $
+    where 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item  $\mu( f_{\bm{\theta}} ) = \mbbE[X]$ the mean value
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $f_{\bm{\theta}} (k)$ represents the probability that $X$ is equal to $k$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item The moments can be estimated with the sample moments $M_r = \dfrac{1}{n} \dsum^n _{i=1} (X_ i - \bar{X} )^r$ with $M_1 = \bar{X}$ and $\bar{X}$ the sample average.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If we equate the sample moments $M_r$ to the centralized population moments $\mu_r$ , we create a system of equations that can possible be solved for $\bm{\theta}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item When executing the method of moments, we are looking for parameters $\bm{\theta } = (\theta _1, \theta _2, \cdots , \theta _m )^\top$ that satisfy the following equations $\bar{X} = \mu ( f_{\bm{\theta}}  )$ and $M_r = \mu_r ( f_{\bm{\theta}}  )$ for $r = 2, 3, \cdots , m$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The solution $\tilde{\bm{\theta}} = ( \tilde{\theta}_1, \tilde{\theta}_2, \cdots , \tilde{\theta}_m )^\top$ is called the \textbf{method of moments estimator}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Note that the second sample moment ($M_2$) is equal to $\dfrac{(n - 1)}{n}S^2$ and is thus not an unbiased estimator of $\mu_r ( f_{\bm{\theta}} )$, since we already now that $S^2$ is unbiased.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The moment estimators on transformed data are different from the moment estimators on the original data
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The non-uniqueness issue is considered a real disadvantage of the moment estimators.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 
 
+\subsection{Methods of Estimation: Maximum Likelihood Estimation (MLE)}
 
-
-
-
-
+\begin{enumerate}
+    \item 
+\end{enumerate}
 
 
 
