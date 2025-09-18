@@ -200,16 +200,29 @@
         \item marginal PMF of $Y$: $f _Y (y) = \dsum^\infty _{x=0} f _{X Y} (x, y)$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
+
+    \item When the random variables $X$ and $Y$ are \textbf{independent}, $f _{X Y} (x, y) = f_X (x) f_Y (y)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    \textbf{Proof}:
+    \\
+    $
+        \begin{aligned}
+            &f _{X Y} (x, y) 
+            = P(X = x, Y = y) \\
+            &= P(X \leq  x, Y \leq  y) - P(X \leq  x, Y \leq  y - 1) - P(X \leq  x - 1, Y \leq  y) + P(X \leq  x - 1, Y \leq  y - 1) \\
+            &= F_{X Y} (x, y) - F_{X Y} (x, y - 1) - F_{X Y} (x - 1, y) + F_{X Y} (x - 1, y - 1) \\
+            &= F_X (x)F_Y (y) - F_X (x - 1)F_Y (y) - F_X (x)F_Y (y - 1) + F_X (x - 1)F_Y (y - 1) \\
+            &= (F_X (x) - F_X (x - 1))(F_Y (y) - F_Y (y - 1)) \\
+            &= P(X = x) P(Y = y)
+            = f_X (x) f_Y (y)
+        \end{aligned}
+        \hfill \text{\cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}}
+    $
 \end{enumerate}
 
 
 
-
-\subsection{Multivariate Joint PMF}
-
-\begin{enumerate}
-    \item 
-\end{enumerate}
 
 
 
@@ -565,6 +578,28 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 \end{enumerate}
 
 
+\textbf{Joint PMF, PDF \& CDF}:
+
+If $X$ \& $Y$ are \textbf{independent}:
+
+\begin{multicols}{2}
+\begin{enumerate}[resume*=calcrulesrv]
+    \item $F _{X Y} (x, y) = F_X (x) F_Y (y)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item $f _{X Y} (x, y) = f_X (x) f_Y (y)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $f _{X|Y} (x|y) = f_X (x)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $f _{Y|X} (y|x) = f_Y (y)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+\end{multicols}
+
+
+
 \textbf{Conditional PMF}:
 
 \begin{enumerate}[resume*=calcrulesrv]
@@ -574,7 +609,7 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
         = \begin{cases}
             P(X = x|Y = y) 
             = \dfrac{P(X = x, Y = y)} {P(Y = y) }
-            = \dfrac{f _{X Y} (x, y)} {f_Y (y) } & (f _Y (y) > 0) \\
+            = \dfrac{f _{X Y} (x, y)} {f_Y (y) } & \text{ if } f _Y (y) > 0 \\
             0 & \text{ otherwise}
         \end{cases}
     $
