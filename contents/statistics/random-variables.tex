@@ -75,9 +75,152 @@
 
 
 
-\section{Probability Density Functions (PDF) ($f(x) \neq P(X = x)$)}
 
-\textbf{For Continuous Random Variable}
+
+
+\section{Joint Distribution Function ($F _{X Y}$, $F _{X_1 X_2 ... X _K} $)}
+
+\begin{enumerate}
+    \item The joint distribution function contains all the information on how the random variables are related to each other, i.e., how the random variables are dependent on each other.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If one variable increases and the other variable also increases (on average) or if one variable increases while the other variable decreases (on average) they are said to \textbf{co-relate}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item We say that random variables $X$ and $Y$ have a joint distribution function $F _{X Y}$ if the probability that $X$ is observed in the interval $(-\infty, x]$ and the probability that $Y$ is observed in the interval $(-\infty, y]$ is given by the function $F _{X Y}$ , i.e., $P (X \leq x, Y \leq y) = F _{X Y} (x, y)$.
+    The joint distribution function of two random variables is also called a \textbf{bivariate distribution function}. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the joint distribution function of $K$ random variables $X_1, X_2, \cdots , X_K$ , i.e, 
+    $F _{X_1 X_2 \cdots X _K} = P(X_1 \leq x_1, X_2 \leq x_2, \cdots , X_K \leq x_K )$
+    is called a \textbf{multivariate distribution function}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+\subsection{Independence of Random Variables}
+
+\begin{enumerate}
+    \item Two random variables $X$ and $Y$ are called independent when the bivariate distribution function is equal to the product of the marginal distribution functions.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item independence of $X$ and $Y$ holds when $F _{X Y} (x, y) = F_X (x)F_Y (y)$ for all $(x, y) \in \mbbR \times \mbbR$, with $F _X$ the CDF of $X$ and $F_Y$ the CDF of $Y$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The random variables $X_1 , X_2, \cdots , X_K$ are called \textbf{mutually independent} when the joint distribution function is the product of the marginal distribution functions, i.e., 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    $F _{X_1 X_2 \cdots X_K} (x_1, x_2, \cdots , x_K ) = F _{X_1} (x_1)F_{X_2} (x_2) \cdots F_{X_K} (x_K )$ for all $x_k \in \mbbR$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If in case we assume that all distribution functions are identical, i.e., $F_ {X_1} (x) = F _{X_2} (x) = \cdots = F _{X_K} (x) = F(x)$ for all $x$, then we have the concept of $X_1 , X_2, \cdots , X_K$ being i.i.d. with distribution function $F$ 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The random variables $X$ and $Y$ are called \textbf{dependent} when they are not independent.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we may have that $X$ and $Y$ , $X$ and $Z$ , and $Y$ and $Z$ are \textbf{(pairwise) independent}, but $X$ , $Y$ , and $Z$ are not mutually independent. 
+    Thus we may have $F _{X Y} (x, y) = F _X (x)F_Y (y)$, $F _{X Z} (x, z) = F_X (x)F_Z (z)$, and $F_{Y Z} (y, z) = F_Y (y)F_Z (z)$ for all $x$, $y$, and $z$, but we may not have $F _{X Y Z} (x, y, z) = F_X (x)F_Y (y)F_Z (z)$ for all $x$, $y$, and $z$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Pairwise independence is thus \textbf{weaker} than mutual independence. 
+    When we talk about independence among multiple random variables we mean mutual independence.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 2 types of dependencies/ independencies:
+    \begin{enumerate}
+        \item Variables of same unit, ($X_i, Y_i, \cdots$), where $i$ is unit.
+        Example: height \& weight of same person
+
+        \item Different Units of sample/ population.
+        Example: heights of siblings, hair color of a family, etc
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+\section{Probability Mass Function (PMF): Discrete}
+
+\subsection{Univariate PMF ($f(x_k) = p_k = P(X = x_k)$)}
+
+\begin{enumerate}
+    \item Discrete does not always mean that we observe values in $\mathbb{N}$.
+    For instance, grades on a data science test may take values in $\dCurlyBrac{1, 1.5, 2.0, 2.5, \cdots , 9.0, 9.5, 10}$.
+    Thus, it would be more rigorous to say that a discrete random variable $X$ takes its values in the set $\dCurlyBrac{x_0, x_1, x_2, \cdots , x _k , \cdots}$, with $x _k$ an element of the real line $(x _k \in \mbbR)$ and with an ordering of the values $x_0 < x_1 < x_2 < \cdots$ .
+    However, in many practical settings we can map this set to a subset of $\mathbb{N}$ or to the whole set $\mathbb{N}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item For discrete random variables we can define $p _k = P(X = k)$ as the probability of observing the outcome $k$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This is referred to as the probability mass function (PMF) if the probabilities $p _k$ satisfy two conditions.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item all probabilities $p _k$ should be nonnegative ( $p _k \geq 0, \forall\ k$)
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item probabilities need to add up to one, i.e., $\dsum^{\infty}_{k=0} p _k = 1$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+\subsection{Bivariate Joint PMF ($f _{X Y} (x, y) = P(X = x, Y = y)$)}
+
+\begin{enumerate}
+    \item If $X$ and $Y$ are both discrete random variables, than the joint probability mass function (PMF) is $f _{X Y} (x, y) = P(X = x, Y = y)$, $x, y\in \mathbb{N}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Some or many combinations of pairs $(x, y)$ may not occur, which implies that the probability for these values is zero, i.e., $f _{X Y} (x, y) = 0$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \dsum _{(x,y)\in \mathbb{N}\times \mathbb{N}} f _{X Y} (x, y) 
+        = \dsum^\infty _{x=0} \dsum^\infty _{y=0} f _{X Y} (x, y) 
+        = \dsum^\infty _{y=0} \dsum^\infty _{x=0} f _{X Y} (x, y) 
+        = 1
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Marginal PMFs:
+    \begin{enumerate}
+        \item marginal PMF of $X$: $f _X (y) = \dsum^\infty _{y=0} f _{X Y} (x, y)$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item marginal PMF of $Y$: $f _Y (y) = \dsum^\infty _{x=0} f _{X Y} (x, y)$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\subsection{Multivariate Joint PMF}
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+
+
+
+
+
+
+
+\section{Probability Density Functions (PDF): Continuous}
+
+\subsection{Univariate PDF ($f(x) \neq P(X = x)$)}
 
 \begin{enumerate}
     \item The density function may be viewed as a smooth version of the histogram if we standardize the frequencies on the vertical axis to proportions.
@@ -127,31 +270,13 @@
 
 
 
-
-\section{Probability Mass Function (PMF) ($f(x_k) = p_k = P(X = x_k)$)}
-
-\textbf{For Discrete Random Variable}
+\subsection{Bivariate Joint PDF}
 
 \begin{enumerate}
-    \item Discrete does not always mean that we observe values in $\mathbb{N}$.
-    For instance, grades on a data science test may take values in $\dCurlyBrac{1, 1.5, 2.0, 2.5, \cdots , 9.0, 9.5, 10}$.
-    Thus, it would be more rigorous to say that a discrete random variable $X$ takes its values in the set $\dCurlyBrac{x_0, x_1, x_2, \cdots , x _k , \cdots}$, with $x _k$ an element of the real line $(x _k \in \mbbR)$ and with an ordering of the values $x_0 < x_1 < x_2 < \cdots$ .
-    However, in many practical settings we can map this set to a subset of $\mathbb{N}$ or to the whole set $\mathbb{N}$.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item For discrete random variables we can define $p _k = P(X = k)$ as the probability of observing the outcome $k$.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item This is referred to as the probability mass function (PMF) if the probabilities $p _k$ satisfy two conditions.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}
-        \item all probabilities $p _k$ should be nonnegative ( $p _k \geq 0, \forall\ k$)
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-        \item probabilities need to add up to one, i.e., $\dsum^{\infty}_{k=0} p _k = 1$
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \end{enumerate}
+    \item 
 \end{enumerate}
+
+
 
 
 
@@ -187,6 +312,7 @@
 
 \subsection{CDF of PDF (Continuous)}
 
+\subsubsection{Univariate PDF ($F(X)$)}
 
 \begin{enumerate}
     \item There is a direct relation between distribution functions and densities.
@@ -251,7 +377,25 @@
 
 
 
+\subsubsection{Bivariate Joint PDF ($F _{X Y}$)}
+
+\begin{enumerate}
+    \item The joint CDF $F _{X Y}$ of the random variables $X$ and $Y$ is now provided in the same way as we did for single random variables
+    $
+        F _{X Y} (x, y) 
+        = P(X \leq x, Y \leq y) 
+        = \dint^x _{-\infty} \dint^y _{-\infty} f _{X Y} (k, l)\ dk\ dl
+    $
+    , for every $x, y \in \mathbb{N}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
 \subsection{CDF of PMF (Discrete)}
+
+\subsubsection{Univariate PMF ($F(x)$)}
 
 \begin{enumerate}
     \item The distribution function or cumulative density function (CDF) for a discrete random variable $X$ is now given by \colorbox{yellow}{$F(x) = P(X \leq x) = \dsum^{x}_ {k=0} f (k)$}.
@@ -260,6 +404,26 @@
     \item If the set is $\dCurlyBrac{x_0, x_1, x_2, \cdots , x _k , \cdots}$, with $x_0 < x_1 < x_2 < \cdots$ , then the CDF is defined as \colorbox{yellow}{$F(x) =\dsum^{m_x} _{k=0} f (x _k )$}, with $m _x$ the largest value for $k$ that satisfies $x_ k \leq x$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+\subsubsection{Bivariate Joint PMF ($F _{X Y}$)}
+
+\begin{enumerate}
+    \item The joint CDF $F _{X Y}$ of the random variables $X$ and $Y$ is now provided in the same way as we did for single random variables
+    $
+        F _{X Y} (x, y) 
+        = P(X \leq x, Y \leq y) 
+        = \dsum^x _{k=0} \dsum^y _{l=0} f _{X Y} (k, l)
+    $
+    , for every $x, y \in \mathbb{N}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
 
 
 
@@ -324,6 +488,7 @@
 \end{enumerate}
 
 
+
 \section{Calculation Rules for Random Variables}
 
 Let we have 2 random variables $X, \ Y$, either discrete or continuous, and a constant $c$.
@@ -361,7 +526,7 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 \end{enumerate}
 \end{multicols}
 
-\textbf{if $X$ and $Y$ are independent:}
+\textbf{if $X$ and $Y$ are independent}:
 
 \begin{multicols}{2}
 \begin{enumerate}[resume*=calcrulesrv]
@@ -398,6 +563,43 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+\textbf{Conditional PMF}:
+
+\begin{enumerate}[resume*=calcrulesrv]
+    \item 
+    $
+        f _{X|Y} (x|y) 
+        = \begin{cases}
+            P(X = x|Y = y) 
+            = \dfrac{P(X = x, Y = y)} {P(Y = y) }
+            = \dfrac{f _{X Y} (x, y)} {f_Y (y) } & (f _Y (y) > 0) \\
+            0 & \text{ otherwise}
+        \end{cases}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
