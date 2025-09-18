@@ -139,7 +139,34 @@
 
 
 
+\subsection{Standard Error of MLE}
 
+\begin{enumerate}
+    \item let $X_1 , X_2, \cdots , X_n$ be i.i.d. Poisson $\mathcal{P}(\lambda)$ distributed. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item population mean $\mu ( f ) = \lambda $ and the population variance $\sigma 2( f ) = \lambda $. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The maximum likelihood estimator for $\theta = \lambda$ , which is also the moment estimator, is given by the sample average $\hat{\lambda} = \bar{X}$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  the log likelihood is $\ell _\theta = \dsum^n _{i=1}[X_i \log(\lambda ) - \log(X_i !) - \lambda ]$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Equating the derivative with respect to $\lambda $ to zero results into $\dsum \dParenBrac{\dfrac{X_i}{\lambda} - 1} = 0$. 
+    Solving this for $\lambda $ gives $\hat{\lambda} = \bar{X}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item As the distribution of $\dfrac{\sqrt{n}( \bar{X} - \mu ( f ))}{\sigma ( f )}$ converges to a standard normal distribution, $\sqrt{n}( \bar{X} - \lambda )$ converges to $\mathcal{N} (0, \lambda )$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item he Fisher information for the Poisson distribution is given by $I (\lambda ) = \mbbE\dSquareBrac{\dParenBrac{\dfrac{X}{\lambda} - 1}2}=  \mbbE\dSquareBrac{\dParenBrac{\dfrac{X - \lambda}{\lambda}}^2} = \dfrac{1}{\lambda} $ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Thus, the asymptotic variance of the MLE is given by $I ^{-1}(\lambda ) = \lambda $ and the standard error of $\bar{X}$ is equal to $\sqrt{\dfrac{\lambda}{n}}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 

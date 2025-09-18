@@ -1050,6 +1050,35 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item using a first-order Taylor expansion for the score function $S_n ( \hat{\theta})$ that is evaluated in the ML estimator $\hat{\theta}$, we obtain that $S_n ( \hat{\theta}) \approx S_n (\theta) + ( \hat{\theta} - \theta)\ S^\prime_n (\theta)$.
+    But the score function in the MLE estimator is zero, i.e. $S_n ( \hat{\theta}) = 0$, since the MLE estimator $\hat{\theta}$ maximizes the likelihood. This means that
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        \sqrt{n}( \hat{\theta} - \theta) 
+        \approx - \dfrac{\sqrt{n}S_n (\theta)}{ S^\prime_n (\theta) }
+        = - \dfrac{1 }{\sqrt{I (\theta)}} \dfrac{S_n (\theta)}{\sqrt{n I (\theta)}} \dfrac{n I (\theta)}{S^\prime_n (\theta)}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Since $\dfrac{n I (\theta)}{S^\prime _n (\theta)}$ converges to $1$ and $\dfrac{S_n (\theta)}{\sqrt{n I (\theta)}}$ converges to $Z \sim \mathcal{N} (0, 1)$, we obtain that $\sqrt{n}( \hat{\theta} - \theta)$ converges to $\mathcal{N} \dParenBrac{0,\ \dfrac{1}{I (\theta)}}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we see that the asymptotic variance of the maximum likelihood estimator is $I ^{-1}(\theta)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This implies that the approximate standard error (or asymptotic standard error) of the maximum likelihood estimator is now $S E( \hat{\theta}) = \dfrac{1}{\sqrt{n I (\theta)}}$. 
+    Since we have an estimator $\hat{\theta}$ of the parameter $\theta$, the standard error is estimated with $\hat{SE}( \hat{\theta}) = \dfrac{1}{\sqrt{n I (\hat{\theta})}}$.
+    This asymptotic standard error ($S E( \hat{\theta})$) can be used in the calculation of confidence intervals on $\theta$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item When $T_n = \hat{\theta}$ is the MLE for $\theta$ having an estimated standard error $\hat{\tau}_n = \dfrac{1}{\sqrt{n I ( \hat{\theta})}}$, the $1 - 2 p$ asymptotic confidence interval is
+    $
+        \left( 
+        \dfrac{\hat{\theta} - z_{1-p}} {\sqrt{n I ( \hat{\theta})}}, 
+        \ \dfrac{\hat{\theta} + z_{1-p}} {\sqrt{n I ( \hat{\theta})} }
+        \right]
+    $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
