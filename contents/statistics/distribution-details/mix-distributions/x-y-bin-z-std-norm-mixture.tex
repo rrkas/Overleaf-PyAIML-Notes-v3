@@ -1,0 +1,91 @@
+\section{X, Y: Binary, Z: Std Norm Dist}
+
+\begin{enumerate}
+    \item $X$ and $Y$ as binary variables and $Z$ standard normally distributed
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Binary models of this kind are commonly used to analyze situations where outcomes are limited to two possibilities, such as success/failure or yes/no responses. 
+    These models can be extended to handle multiple binary variables, allowing for more complex scenarios. 
+    A latent variable (like $Z$) typically represents an underlying trait or factor—such as ability, risk level, or preference—that influences the observed binary outcomes.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, common/online/chatgpt}
+\end{enumerate}
+
+
+
+
+\subsection{Mixtures of Probability Distributions}
+
+\subsubsection{Conditionally independent}
+
+\begin{enumerate}
+    \item \textbf{Assumptions}:  $f_{X|Z} (1|z) = 1 - f_{X|Z} (0|z) = \phi(\alpha_X + \beta_X z)$ and $f _{Y |Z} (1|z) = 1 - f_{Y |Z} (0|z) = \phi(\alpha_Y + \beta_Y z)$, with $\alpha_X , \beta_X , \alpha_Y , \beta_Y$ unknown parameters and $\phi$ the standard normal CDF. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Then the marginal PMFs $f_X (x)$ and $f_Y (y)$ are given by
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item 
+        $
+            f_X (1) 
+            = 1 - f_X (0) 
+            = \phi\dParenBrac{\dfrac{\alpha_X}{\sqrt{1 + \beta^2_X}}}
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item 
+        $
+            f_Y (1) 
+            = 1 - f_Y (0) 
+            = \phi\dParenBrac{\dfrac{\alpha_Y}{\sqrt{1 + \beta^2_Y}}}
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+    \end{multicols}
+
+    \item joint PDF for $X$ and $Y$:
+    \begin{enumerate}
+        \item 
+        $
+            p_{00} 
+            = \dint ^{\infty} _{-\infty} (1 - \phi(\alpha_X + \beta_X z))\ (1 - \phi(\alpha_Y + \beta_Y z))\ \phi(z)\ dz
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item 
+        $
+            p_{01} 
+            = \dint ^{\infty} _{-\infty} (1 - \phi(\alpha_X + \beta_X z))\ \phi(\alpha_Y + \beta_Y z)\ \phi(z)\ dz
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item 
+        $
+            p_{10} 
+            = \dint ^{\infty} _{-\infty} \phi(\alpha_X + \beta_X z)\ (1 - \phi(\alpha_Y + \beta_Y z))\ \phi(z)\ dz
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item 
+        $
+            p_{11} 
+            = \dint ^{\infty} _{-\infty} \phi(\alpha_X + \beta_X z)\ \phi(\alpha_Y + \beta_Y z)\ \phi(z)\ dz
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item Parameters like $\alpha_X$ and $\alpha_Y$ often quantify the difficulty or threshold for each outcome, while parameters such as  $\beta_X$ and $\beta_Y$ reflect how sensitive or discriminative the outcome is to changes in the latent trait. 
+    Larger difficulty parameters indicate harder tasks or stricter thresholds, whereas higher discrimination parameters allow for better differentiation between entities with varying levels of the latent trait.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, common/online/chatgpt}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+

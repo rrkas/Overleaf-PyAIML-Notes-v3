@@ -67,8 +67,27 @@
     \item The PMF for a discrete random variable is the equivalent of the PDF for a continuous random variable.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item The probability $P(X \leq x)$ is also referred to as the \textbf{distribution function} obtained in $x$ and it is denoted by $F(x) = P(X \leq x)$.
+    Thus every random variable $X$ has a distribution function $F$ through $F(x) = P(X \leq x)$, but also every distribution function $F$ has a random variable $X$, namely the random variable $X$ that makes $P(X \leq x) = F(x)$.
+    Thus the two concepts are directly related to each other and we then typically say that $X$ is distributed according to $F$, i.e., \colorbox{yellow}{$X \sim F$}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Each distribution function $F$ typically satisfies three conditions:
+    \begin{enumerate}
+        \item When the value $x$ increases to infinity, the distribution function becomes equal to one, i.e., $\lim _{x\to \infty} F(x) = 1$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item When the value $x$ decreases to minus infinity the distribution function becomes equal to zero, i.e., $\lim _{x\to -\infty} F(x) = 0$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The distribution function is a non-decreasing function, i.e., $F(x_1) \leq F(x_2)$ when $x_1 \leq x_2$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+
     \item Data points that are drawn independently from the same distribution ($D$ OR $D(\cdots)$) are said to be \textbf{independent and identically distributed}, which is often abbreviated to i.i.d. (denoted by $x \sim D$ OR $x \sim D(\cdots)$)
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
 \end{enumerate}
 
 
@@ -88,10 +107,10 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item We say that random variables $X$ and $Y$ have a joint distribution function $F _{X Y}$ if the probability that $X$ is observed in the interval $(-\infty, x]$ and the probability that $Y$ is observed in the interval $(-\infty, y]$ is given by the function $F _{X Y}$ , i.e., $P (X \leq x, Y \leq y) = F _{X Y} (x, y)$.
-    The joint distribution function of two random variables is also called a \textbf{bivariate distribution function}. 
+    The joint distribution function of two random variables is also called a \textbf{bivariate distribution function}.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item the joint distribution function of $K$ random variables $X_1, X_2, \cdots , X_K$ , i.e, 
+    \item the joint distribution function of $K$ random variables $X_1, X_2, \cdots , X_K$ , i.e,
     $F _{X_1 X_2 \cdots X _K} = P(X_1 \leq x_1, X_2 \leq x_2, \cdots , X_K \leq x_K )$
     is called a \textbf{multivariate distribution function}.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -108,23 +127,23 @@
     \item independence of $X$ and $Y$ holds when $F _{X Y} (x, y) = F_X (x)F_Y (y)$ for all $(x, y) \in \mbbR \times \mbbR$, with $F _X$ the CDF of $X$ and $F_Y$ the CDF of $Y$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The random variables $X_1 , X_2, \cdots , X_K$ are called \textbf{mutually independent} when the joint distribution function is the product of the marginal distribution functions, i.e., 
+    \item The random variables $X_1 , X_2, \cdots , X_K$ are called \textbf{mutually independent} when the joint distribution function is the product of the marginal distribution functions, i.e.,
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
     $F _{X_1 X_2 \cdots X_K} (x_1, x_2, \cdots , x_K ) = F _{X_1} (x_1)F_{X_2} (x_2) \cdots F_{X_K} (x_K )$ for all $x_k \in \mbbR$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item If in case we assume that all distribution functions are identical, i.e., $F_ {X_1} (x) = F _{X_2} (x) = \cdots = F _{X_K} (x) = F(x)$ for all $x$, then we have the concept of $X_1 , X_2, \cdots , X_K$ being i.i.d. with distribution function $F$ 
+    \item If in case we assume that all distribution functions are identical, i.e., $F_ {X_1} (x) = F _{X_2} (x) = \cdots = F _{X_K} (x) = F(x)$ for all $x$, then we have the concept of $X_1 , X_2, \cdots , X_K$ being i.i.d. with distribution function $F$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The random variables $X$ and $Y$ are called \textbf{dependent} when they are not independent.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item we may have that $X$ and $Y$ , $X$ and $Z$ , and $Y$ and $Z$ are \textbf{(pairwise) independent}, but $X$ , $Y$ , and $Z$ are not mutually independent. 
+    \item we may have that $X$ and $Y$ , $X$ and $Z$ , and $Y$ and $Z$ are \textbf{(pairwise) independent}, but $X$ , $Y$ , and $Z$ are not mutually independent.
     Thus we may have $F _{X Y} (x, y) = F _X (x)F_Y (y)$, $F _{X Z} (x, z) = F_X (x)F_Z (z)$, and $F_{Y Z} (y, z) = F_Y (y)F_Z (z)$ for all $x$, $y$, and $z$, but we may not have $F _{X Y Z} (x, y, z) = F_X (x)F_Y (y)F_Z (z)$ for all $x$, $y$, and $z$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Pairwise independence is thus \textbf{weaker} than mutual independence. 
+    \item Pairwise independence is thus \textbf{weaker} than mutual independence.
     When we talk about independence among multiple random variables we mean mutual independence.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -147,7 +166,7 @@
 
 
 
-\section{Probability Mass Function (PMF): Discrete}
+\section{Discrete Functions}
 
 \subsection{Univariate PMF ($f(x_k) = p_k = P(X = x_k)$)}
 
@@ -173,6 +192,18 @@
 \end{enumerate}
 
 
+\subsection{CDF of Univariate PMF ($F(x)$)}
+
+\begin{enumerate}
+    \item The distribution function or cumulative density function (CDF) for a discrete random variable $X$ is now given by \colorbox{yellow}{$F(x) = P(X \leq x) = \dsum^{x}_ {k=0} f (k)$}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If the set is $\dCurlyBrac{x_0, x_1, x_2, \cdots , x _k , \cdots}$, with $x_0 < x_1 < x_2 < \cdots$ , then the CDF is defined as \colorbox{yellow}{$F(x) =\dsum^{m_x} _{k=0} f (x _k )$}, with $m _x$ the largest value for $k$ that satisfies $x_ k \leq x$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
 
 \subsection{Bivariate Joint PMF ($f _{X Y} (x, y) = P(X = x, Y = y)$)}
 
@@ -180,14 +211,14 @@
     \item If $X$ and $Y$ are both discrete random variables, than the joint probability mass function (PMF) is $f _{X Y} (x, y) = P(X = x, Y = y)$, $x, y\in \mathbb{N}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Some or many combinations of pairs $(x, y)$ may not occur, which implies that the probability for these values is zero, i.e., $f _{X Y} (x, y) = 0$. 
+    \item Some or many combinations of pairs $(x, y)$ may not occur, which implies that the probability for these values is zero, i.e., $f _{X Y} (x, y) = 0$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
-        \dsum _{(x,y)\in \mathbb{N}\times \mathbb{N}} f _{X Y} (x, y) 
-        = \dsum^\infty _{x=0} \dsum^\infty _{y=0} f _{X Y} (x, y) 
-        = \dsum^\infty _{y=0} \dsum^\infty _{x=0} f _{X Y} (x, y) 
+        \dsum _{(x,y)\in \mathbb{N}\times \mathbb{N}} f _{X Y} (x, y)
+        = \dsum^\infty _{x=0} \dsum^\infty _{y=0} f _{X Y} (x, y)
+        = \dsum^\infty _{y=0} \dsum^\infty _{x=0} f _{X Y} (x, y)
         = 1
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -208,7 +239,7 @@
     \\
     $
         \begin{aligned}
-            &f _{X Y} (x, y) 
+            &f _{X Y} (x, y)
             = P(X = x, Y = y) \\
             &= P(X \leq  x, Y \leq  y) - P(X \leq  x, Y \leq  y - 1) - P(X \leq  x - 1, Y \leq  y) + P(X \leq  x - 1, Y \leq  y - 1) \\
             &= F_{X Y} (x, y) - F_{X Y} (x, y - 1) - F_{X Y} (x - 1, y) + F_{X Y} (x - 1, y - 1) \\
@@ -222,6 +253,18 @@
 \end{enumerate}
 
 
+\subsection{CDF of Bivariate Joint PMF ($F _{X Y}$)}
+
+\begin{enumerate}
+    \item The joint CDF $F _{X Y}$ of the random variables $X$ and $Y$ is now provided in the same way as we did for single random variables
+    $
+        F _{X Y} (x, y)
+        = P(X \leq x, Y \leq y)
+        = \dsum^x _{k=0} \dsum^y _{l=0} f _{X Y} (k, l)
+    $
+    , for every $x, y \in \mathbb{N}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 
@@ -231,7 +274,7 @@
 
 
 
-\section{Probability Density Functions (PDF): Continuous}
+\section{Continuous Functions}
 
 \subsection{Univariate PDF ($f(x) \neq P(X = x)$)}
 
@@ -280,52 +323,7 @@
     \end{enumerate}
 \end{enumerate}
 
-
-
-
-\subsection{Bivariate Joint PDF}
-
-\begin{enumerate}
-    \item 
-\end{enumerate}
-
-
-
-
-
-
-
-
-
-\section{Cumulative Density Functions (CDF) ($F(x) = P(X \leq x)$)}
-
-\subsection{Intro}
-
-\begin{enumerate}
-    \item The probability $P(X \leq x)$ is also referred to as the \textbf{distribution function} obtained in $x$ and it is denoted by $F(x) = P(X \leq x)$.
-    Thus every random variable $X$ has a distribution function $F$ through $F(x) = P(X \leq x)$, but also every distribution function $F$ has a random variable $X$, namely the random variable $X$ that makes $P(X \leq x) = F(x)$.
-    Thus the two concepts are directly related to each other and we then typically say that $X$ is distributed according to $F$, i.e., \colorbox{yellow}{$X \sim F$}.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Each distribution function $F$ typically satisfies three conditions:
-    \begin{enumerate}
-        \item When the value $x$ increases to infinity, the distribution function becomes equal to one, i.e., $\lim _{x\to \infty} F(x) = 1$.
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-        \item When the value $x$ decreases to minus infinity the distribution function becomes equal to zero, i.e., $\lim _{x\to -\infty} F(x) = 0$.
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-        \item The distribution function is a non-decreasing function, i.e., $F(x_1) \leq F(x_2)$ when $x_1 \leq x_2$.
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \end{enumerate}
-
-
-\end{enumerate}
-
-
-\subsection{CDF of PDF (Continuous)}
-
-\subsubsection{Univariate PDF ($F(X)$)}
+\subsection{CDF of Univariate PDF ($F(X)$)}
 
 \begin{enumerate}
     \item There is a direct relation between distribution functions and densities.
@@ -377,8 +375,6 @@
 
 
 
-
-
     \item $P(X < x) = P(X \leq x)$ for continuous random variables
 
     \item $P(X > x) = 1 - P(X \leq x)$
@@ -390,49 +386,53 @@
 
 
 
-\subsubsection{Bivariate Joint PDF ($F _{X Y}$)}
+
+\subsection{Bivariate Joint PDF}
+
+\begin{enumerate}
+    \item $\exists x,y \text{ such that }  f_{XY}(x,y) > P(X = x, Y = y) = 0$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Marginal PDFs:
+    \begin{enumerate}
+        \item marginal PDF of $X$: $f _X (y) = \dint^\infty _{-\infty} f _{X Y} (x, y)\ dy$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item marginal PDF of $Y$: $f _Y (y) = \dint^\infty _{-\infty} f _{X Y} (x, y)\ dx$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+\end{enumerate}
+
+
+\subsection{CDF of Bivariate Joint PDF ($F _{X Y}$)}
 
 \begin{enumerate}
     \item The joint CDF $F _{X Y}$ of the random variables $X$ and $Y$ is now provided in the same way as we did for single random variables
     $
-        F _{X Y} (x, y) 
-        = P(X \leq x, Y \leq y) 
-        = \dint^x _{-\infty} \dint^y _{-\infty} f _{X Y} (k, l)\ dk\ dl
+        F _{X Y} (x, y)
+        = P(X \leq x, Y \leq y)
+        = \dint^x _{-\infty} \dint^y _{-\infty} f _{X Y} (u, v)\ du \ dv
     $
     , for every $x, y \in \mathbb{N}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
 
-
-
-
-\subsection{CDF of PMF (Discrete)}
-
-\subsubsection{Univariate PMF ($F(x)$)}
-
-\begin{enumerate}
-    \item The distribution function or cumulative density function (CDF) for a discrete random variable $X$ is now given by \colorbox{yellow}{$F(x) = P(X \leq x) = \dsum^{x}_ {k=0} f (k)$}.
+    \item if we consider any set $A \subset \mbbR \times \mbbR$ and define the probability that $(X, Y ) \in A$ by $P ((X, Y ) \in A) = \displaystyle \iint_A f _{X Y} (u, v)\ du\ dv$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item If the set is $\dCurlyBrac{x_0, x_1, x_2, \cdots , x _k , \cdots}$, with $x_0 < x_1 < x_2 < \cdots$ , then the CDF is defined as \colorbox{yellow}{$F(x) =\dsum^{m_x} _{k=0} f (x _k )$}, with $m _x$ the largest value for $k$ that satisfies $x_ k \leq x$.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \item Marginal CDFs:
+    \begin{enumerate}
+        \item marginal CDF of $X$: $F _X (y) = \dint^x _{-\infty} f _{X} (t)\ dt$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item marginal CDF of $Y$: $F _Y (y) = \dint^y _{-\infty} f _{Y} (t)\ dt$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item OR ${\displaystyle F_X (x) = \lim _{y\to\infty} F_{X Y} (x, y)}$ and ${\displaystyle F_Y (y) = \lim_{x\to\infty} F _{X Y} (x, y)}$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
 \end{enumerate}
-
-
-\subsubsection{Bivariate Joint PMF ($F _{X Y}$)}
-
-\begin{enumerate}
-    \item The joint CDF $F _{X Y}$ of the random variables $X$ and $Y$ is now provided in the same way as we did for single random variables
-    $
-        F _{X Y} (x, y) 
-        = P(X \leq x, Y \leq y) 
-        = \dsum^x _{k=0} \dsum^y _{l=0} f _{X Y} (k, l)
-    $
-    , for every $x, y \in \mathbb{N}$.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-
 
 
 
@@ -578,7 +578,62 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 \end{enumerate}
 
 
-\textbf{Joint PMF, PDF \& CDF}:
+\textbf{Conditional PMF}:
+
+\begin{enumerate}[resume*=calcrulesrv]
+    \item
+    $
+        f _{X|Y} (x|y)
+        = \begin{cases}
+            P(X = x|Y = y)
+            = \dfrac{P(X = x, Y = y)} {P(Y = y) }
+            = \dfrac{f _{X Y} (x, y)} {f_Y (y) } & \text{ if } f _Y (y) > 0 \\
+            0 & \text{ otherwise}
+        \end{cases}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item
+    $
+        f _{Y|X} (y|x)
+        = \begin{cases}
+            P(Y = y|X = x)
+            = \dfrac{P(X = x, Y = y)} {P(X = x) }
+            = \dfrac{f _{X Y} (x, y)} {f_X (x) } & \text{ if } f _X (x) > 0 \\
+            0 & \text{ otherwise}
+        \end{cases}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\textbf{Conditional PDF}:
+
+\begin{multicols}{2}
+\begin{enumerate}[resume*=calcrulesrv]
+    \item
+    $
+        f _{X|Y} (x|y)
+        = \begin{cases}
+            \dfrac{f _{X Y} (x, y)} {f_Y (y) } & \text{ if } f _Y (y) > 0 \\
+            0 & \text{ otherwise}
+        \end{cases}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item
+    $
+        f _{Y|X} (y|x)
+        = \begin{cases}
+            \dfrac{f _{X Y} (x, y)} {f_X (x) } & \text{ if } f _X (x) > 0 \\
+            0 & \text{ otherwise}
+        \end{cases}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+\end{multicols}
+
+\textbf{Conditonal \& Joint PMF, PDF \& CDF}:
 
 If $X$ \& $Y$ are \textbf{independent}:
 
@@ -586,7 +641,7 @@ If $X$ \& $Y$ are \textbf{independent}:
 \begin{enumerate}[resume*=calcrulesrv]
     \item $F _{X Y} (x, y) = F_X (x) F_Y (y)$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item $f _{X Y} (x, y) = f_X (x) f_Y (y)$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -600,21 +655,6 @@ If $X$ \& $Y$ are \textbf{independent}:
 
 
 
-\textbf{Conditional PMF}:
-
-\begin{enumerate}[resume*=calcrulesrv]
-    \item 
-    $
-        f _{X|Y} (x|y) 
-        = \begin{cases}
-            P(X = x|Y = y) 
-            = \dfrac{P(X = x, Y = y)} {P(Y = y) }
-            = \dfrac{f _{X Y} (x, y)} {f_Y (y) } & \text{ if } f _Y (y) > 0 \\
-            0 & \text{ otherwise}
-        \end{cases}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
 
 
 
@@ -1269,7 +1309,7 @@ If $X$ \& $Y$ are \textbf{independent}:
     % \\
     % .\hfill
     $
-        I (\theta ) 
+        I (\theta )
         = \mbbE \dSquareBrac{\dParenBrac{\dfrac{d \log f_\theta  (X)}{d\theta }}^2 }
         = \dint _\mbbR \dfrac{( f ^\prime _\theta  (x))^2}{ f_\theta  (x)} dx
     $
@@ -1282,7 +1322,7 @@ If $X$ \& $Y$ are \textbf{independent}:
     \item The Fisher information is equal to the minus expectation of the derivative of the score function with respect to the parameter $\theta$, i.e. $n\ I (\theta) = -\mbbE[S^\prime_n (\theta)]$ with $S^\prime_n (\theta) = \dfrac{dS_n (\theta)}{d\theta}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $S^\prime_n (\theta)$ is also a sum of independent random variables; thus properly standardized it will converge to a standard normal random variable. 
+    \item $S^\prime_n (\theta)$ is also a sum of independent random variables; thus properly standardized it will converge to a standard normal random variable.
     This also implies that $\dfrac{S^\prime _n (\theta)}{n}$ will converge to the Fisher information $I (\theta)$ .
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -1292,7 +1332,7 @@ If $X$ \& $Y$ are \textbf{independent}:
     \\[0.2cm]
     .\hfill
     $
-        \sqrt{n}( \hat{\theta} - \theta) 
+        \sqrt{n}( \hat{\theta} - \theta)
         \approx - \dfrac{\sqrt{n}S_n (\theta)}{ S^\prime_n (\theta) }
         = - \dfrac{1 }{\sqrt{I (\theta)}} \dfrac{S_n (\theta)}{\sqrt{n I (\theta)}} \dfrac{n I (\theta)}{S^\prime_n (\theta)}
     $
@@ -1304,15 +1344,15 @@ If $X$ \& $Y$ are \textbf{independent}:
     \item we see that the asymptotic variance of the maximum likelihood estimator is $I ^{-1}(\theta)$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item This implies that the approximate standard error (or asymptotic standard error) of the maximum likelihood estimator is now $S E( \hat{\theta}) = \dfrac{1}{\sqrt{n I (\theta)}}$. 
+    \item This implies that the approximate standard error (or asymptotic standard error) of the maximum likelihood estimator is now $S E( \hat{\theta}) = \dfrac{1}{\sqrt{n I (\theta)}}$.
     Since we have an estimator $\hat{\theta}$ of the parameter $\theta$, the standard error is estimated with $\hat{SE}( \hat{\theta}) = \dfrac{1}{\sqrt{n I (\hat{\theta})}}$.
-    This asymptotic standard error ($S E( \hat{\theta})$) can be used in the calculation of confidence intervals on $\theta$. 
+    This asymptotic standard error ($S E( \hat{\theta})$) can be used in the calculation of confidence intervals on $\theta$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item When $T_n = \hat{\theta}$ is the MLE for $\theta$ having an estimated standard error $\hat{\tau}_n = \dfrac{1}{\sqrt{n I ( \hat{\theta})}}$, the $1 - 2 p$ asymptotic confidence interval is
     $
-        \left( 
-        \dfrac{\hat{\theta} - z_{1-p}} {\sqrt{n I ( \hat{\theta})}}, 
+        \left(
+        \dfrac{\hat{\theta} - z_{1-p}} {\sqrt{n I ( \hat{\theta})}},
         \ \dfrac{\hat{\theta} + z_{1-p}} {\sqrt{n I ( \hat{\theta})} }
         \right]
     $
@@ -1330,9 +1370,88 @@ If $X$ \& $Y$ are \textbf{independent}:
 
 
 
+\section{Constructing Bivariate Distributions}
+
+\subsection{Sums of Random Variables}
+
+\begin{enumerate}
+    \item Let $U$, $V$, and $W$ be three independent random variables and define $X = W + U$ and $Y = W + V$. 
+    Since both $X$ and $Y$ share the same random variable $W$, the random variables $X$ and $Y$ must be \textbf{dependent}.
+    If we only observe the random variables $X$ and $Y$ in practice, the random variable $W$ is sometimes referred to as \textbf{latent variable}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The random variable $W$ represents a “true” value of something that is measured, and the other random variables $U$ and $V$ represent measurement errors. 
+    Thus in the bivariate case, the same unit is just measured twice.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\subsection{Farlie-Gumbel-Morgenstern (FGM) Family of Distributions}
+
+\begin{enumerate}
+    \item When $X$ and $Y$ are two random variables with marginal CDFs $F_X$ and $F_Y$ , respectively, we can create a bivariate CDF in the following way:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    .\hfill
+    $
+        F _{X Y} (x, y) = F_X (x)\ F_Y (y)\ (1 + \alpha(1 - F_X (x))\ (1 - F_Y (x)))
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item PDF:
+    $
+        f _{X Y} (x, y) = f_X (x)\ f_Y (y)\ (1 + \alpha(1 - 2F_X (x))\ (1 - 2F_Y (x)))
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The parameter $\alpha$ should be within $[-1, 1]$ and when it is equal to zero, the random variables $X$ and $Y$ are \textbf{independent}.
+    The parameter $\alpha$ may be seen as the dependency parameter and the larger the absolute value $\dabs{\alpha}$ the stronger the dependency. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This class of distribution functions is referred to as the one-parameter Farlie–Gumbel–Morgenstern (FGM) distribution function.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item It can be shown that the marginal distribution functions are given by $F_X$ and $F_Y$ , respectively. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The advantage of this class is that it may be used with many different choices for $F_X$ and $F_Y$ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 
+\subsection{Fréchet Family of Distributions}
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+
+
+\subsection{Mixtures of Probability Distributions}
+
+\subsubsection{Conditionally independent}
+
+\begin{enumerate}
+    \item Let $Z$ be a random variable and conditionally on this random variable we assume that $X$ and $Y$ are independent distributed. 
+    Thus the joint PDF of $X$ and $Y$ given $Z$ , which is denoted by $f _{X Y |Z} (x, y|z)$, is now given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        f_{X Y |Z} (x, y|z) 
+        = f _{X|Z} (x|z)\ f_{Y |Z} (y|z) 
+        = \dfrac{f_{X Z} (x, z)\ f_{Y Z} (y, z) } {f^2_Z (z)}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Then the joint PDF for $X$ and $Y$ is obtained by:
+    $
+        f _{X Y} (x, y) 
+        = \dint ^{\infty }_{-\infty} f_{X|Z} (x|z)\ f_{Y |Z} (y|z)\ f_Z (z)\ dz
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 

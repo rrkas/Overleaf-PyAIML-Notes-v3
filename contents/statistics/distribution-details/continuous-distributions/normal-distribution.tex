@@ -53,24 +53,6 @@
     \item $f_{\mu, \sigma}(x) = \dfrac{1}{\sigma}\phi\dParenBrac{\dfrac{x-\mu}{\sigma}}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item
-    $
-        \mathcal{N}(\bm{x}|\bm{\mu}, \bm{\Sigma})
-        = \dfrac{1}{(2\pi)^{D/2} \dabs{\bm{\Sigma}}^{1/2}} \,
-        \exp\dParenBrac{
-            -\dfrac{1}{2}
-            (\bm{x} - \bm{\mu})^\top \bm{\Sigma}^{-1} (\bm{x} - \bm{\mu})
-        }
-    $
-    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
-    \\[0.2cm]
-    .\hfill
-    $\bm{x}, \bm{\mu} \in \mbbR^D$
-    \hfill
-    $\bm{\Sigma} \in \mbbR^{D \times D}$
-    \hfill
-    $\dabs{\bm{\Sigma}} = \det(\bm{\Sigma}) \in \mbbR$
-    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 
     \item it can be used to approximate other PDFs when the sample size or the size of the data is getting large.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -479,12 +461,31 @@
 \end{enumerate}
 
 
+\subsection{Sums of Random Variables}
 
-
-
-
-
-
+\begin{enumerate}
+    \item Let $U$, $V$, and $W$ be three independent random variables and define $X = W + U$ and $Y = W + V$. 
+    When $U \sim \mathcal{N} (\mu_U , \sigma^2_U )$, $V \sim \mathcal{N} (\mu_V , \sigma^2_V )$, and $W \sim \mathcal{N} (\mu_W , \sigma^2_W )$, it can be shown that $X$ and $Y$ are bivariate normally distributed with
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $\mu _X = \mu _W + \mu _U$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $\mu _Y = \mu _W + \mu _V$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $\sigma ^2_X = \sigma ^2_W + \sigma ^2_U$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $\sigma ^2_Y = \sigma ^2_W + \sigma ^2_V$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $\rho = \dfrac{\sigma ^2_W }{\sqrt{(\sigma ^2_W + \sigma ^2_U )(\sigma ^2_W + \sigma ^2_V )}}$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+    \end{multicols}
+\end{enumerate}
 
 
 
