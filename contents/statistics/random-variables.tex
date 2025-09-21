@@ -441,217 +441,7 @@
 
 
 
-\section{Expected Values ($E(X)$)}
 
-\subsection{For PDF (Continuous)}
-
-\begin{enumerate}
-    \item If we consider a (not necessarily continuous or differentiable) function $\psi : \mbbR \to \mbbR$, then the expected value of the random variable $\psi (X)$ is defined by
-    \colorbox{yellow}{$
-        \mbbE[\psi(X)]
-        = \dint_{\mbbR} \psi(x)\ f(x)\ dx
-    $}
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-\subsection{For PMF (Discrete)}
-
-\begin{enumerate}
-    \item The expectation of a discrete random variable $\psi(X)$ is given by
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \\[0.2cm]
-    \colorbox{yellow}{$
-        \mbbE[\psi(X)] \
-        = \dsum^{\infty}_{k=0}\ \psi(k)\ p _k \
-        = \dsum^{\infty}_{k=0}\ \psi(k)\ P(X = k)
-    $}
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item If we would collect many realizations of the discrete random variable $X$, say $N$ realizations, we expect to see value $k$ with frequency $N \cdot p _k$ .
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-\subsection{Common for PDF \& PMF}
-
-\begin{enumerate}
-    \item \textbf{First moment}: mean $\mu$ is obtained by \colorbox{yellow}{$\psi(x)=x$}
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item \textbf{Second central moment}: The population variance $\sigma^ 2$ is obtained by \colorbox{yellow}{$\psi(x)=(x -\mu)^2$}
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item \textbf{pth moment} of random variable $X$ is obtained by \colorbox{yellow}{$\psi(x) = x^p$}
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item \textbf{pth central moment} of random variable $X$ is obtained by choosing \colorbox{yellow}{$\psi(x) = (x - \mu)^p$}
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item \textbf{skewness}: \colorbox{yellow}{$\gamma_1 = \dfrac{\mu_3}{\sigma^3}$}, where $\mu_3 = \mbbE[(x-\mu)^3]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item \textbf{kurtosis}: \colorbox{yellow}{$\gamma_2 = \dfrac{\mu_4}{\sigma^4} - 3$}, where $\mu_4 = \mbbE[(x-\mu)^4]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-\vspace{0.5cm}
-\textbf{Note}:
-\begin{enumerate}
-    \item the moments of a discrete random variable $X$ may \textbf{not} always exist: this depends on the choice of probabilities $p _k $.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-
-
-\section{Calculation Rules for Random Variables}
-
-Let we have 2 random variables $X, \ Y$, either discrete or continuous, and a constant $c$.
-\\
-$F _X$ and $F_Y$ the CDFs for $X$ and $Y$ , respectively. $P(X \leq x, Y \leq y)$ is the joint CDF
-of $X$ and $Y$ , denoted by $F _{X Y} (x, y)$
-\\
-Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
-
-\begin{multicols}{2}
-\begin{enumerate}[series=calcrulesrv]
-    \item $\mbbE[c] = c$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\mbbE[cX] = c \mbbE[X]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\text{Var}[X] \geq 0$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\text{Var}[X + c] = \text{Var}[X]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\text{Var}[cX] = c^2\ \text{Var}[X]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\text{Var}[X] = \mbbE[X^2] - (\mbbE[X])^2$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\mbbE[X] = \mbbE[Y]$ , when $X = Y$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\mbbE[X + Y] = \mbbE[X] + \mbbE[Y]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-\end{multicols}
-
-\textbf{if $X$ and $Y$ are independent}:
-
-\begin{multicols}{2}
-\begin{enumerate}[resume*=calcrulesrv]
-    \item $\phi(X)$ and $\psi(Y)$ are also independent
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\mbbE[X Y]  = \mbbE[X]\ \mbbE[Y]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\tVar[X \pm Y] = \tVar[X] + \tVar[Y]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-\end{enumerate}
-\end{multicols}
-
-
-\begin{enumerate}[resume*=calcrulesrv]
-    \item
-    $
-        P(X \leq x, Y \leq y)
-        = P(A \cap B)
-        = P(A) P(B)
-        = P(X \leq x) P(Y \leq y)
-        = F _X (x)\ F_Y (y)
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item
-    $
-        \text{Var}[X Y]
-        = \text{Var}[X] \text{Var}[Y]
-            + \text{Var}[X](\mbbE[Y])^2
-            + \text{Var}[Y](\mbbE[X])^2
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-
-\textbf{Conditional PMF}:
-
-\begin{enumerate}[resume*=calcrulesrv]
-    \item
-    $
-        f _{X|Y} (x|y)
-        = \begin{cases}
-            P(X = x|Y = y)
-            = \dfrac{P(X = x, Y = y)} {P(Y = y) }
-            = \dfrac{f _{X Y} (x, y)} {f_Y (y) } & \text{ if } f _Y (y) > 0 \\
-            0 & \text{ otherwise}
-        \end{cases}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item
-    $
-        f _{Y|X} (y|x)
-        = \begin{cases}
-            P(Y = y|X = x)
-            = \dfrac{P(X = x, Y = y)} {P(X = x) }
-            = \dfrac{f _{X Y} (x, y)} {f_X (x) } & \text{ if } f _X (x) > 0 \\
-            0 & \text{ otherwise}
-        \end{cases}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-
-\textbf{Conditional PDF}:
-
-\begin{multicols}{2}
-\begin{enumerate}[resume*=calcrulesrv]
-    \item
-    $
-        f _{X|Y} (x|y)
-        = \begin{cases}
-            \dfrac{f _{X Y} (x, y)} {f_Y (y) } & \text{ if } f _Y (y) > 0 \\
-            0 & \text{ otherwise}
-        \end{cases}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item
-    $
-        f _{Y|X} (y|x)
-        = \begin{cases}
-            \dfrac{f _{X Y} (x, y)} {f_X (x) } & \text{ if } f _X (x) > 0 \\
-            0 & \text{ otherwise}
-        \end{cases}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-\end{multicols}
-
-\textbf{Conditonal \& Joint PMF, PDF \& CDF}:
-
-If $X$ \& $Y$ are \textbf{independent}:
-
-\begin{multicols}{2}
-\begin{enumerate}[resume*=calcrulesrv]
-    \item $F _{X Y} (x, y) = F_X (x) F_Y (y)$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $f _{X Y} (x, y) = f_X (x) f_Y (y)$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $f _{X|Y} (x|y) = f_X (x)$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $f _{Y|X} (y|x) = f_Y (y)$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-\end{multicols}
 
 
 
@@ -1060,7 +850,7 @@ If $X$ \& $Y$ are \textbf{independent}:
 
         \item
         $
-            \tVar\dSquareBrac{\dfrac{1}{n} \dsum^n _{i=1}(X _i - \mu ( f ))^2}
+            \mbbV\dSquareBrac{\dfrac{1}{n} \dsum^n _{i=1}(X _i - \mu ( f ))^2}
             = \dfrac{(\gamma_2( f ) + 2)\ \sigma^ 4( f )}{n}
         $
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -1073,7 +863,7 @@ If $X$ \& $Y$ are \textbf{independent}:
             $
             \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-            \item $\dfrac{1}{ n} \dsum^n _{i=1}(X _i - \mu ( f ))2$ is approximately normally distributed with $\mathcal{N} \dParenBrac{\sigma ^ 2( f ), \dfrac{[\gamma_2( f ) + 2]\ \sigma  ^4 ( f )}{N}}$,
+            \item $\dfrac{1}{ n} \dsum^n _{i=1}(X _i - \mu ( f ))^2$ is approximately normally distributed with $\mathcal{N} \dParenBrac{\sigma ^ 2( f ), \dfrac{[\gamma_2( f ) + 2]\ \sigma  ^4 ( f )}{N}}$,
             which implies that $\dfrac{1}{n-1} \dsum^n _{i=1}(X_ i - \mu ( f ))^2$ is approximately normally distributed with
             \\[0.2cm]
             $\mathcal{N} \dParenBrac{\sigma ^ 2( f ), \dfrac{[\gamma_2( f ) + 2]\ \sigma ^ 4( f )}{n}}$.
@@ -1375,12 +1165,12 @@ If $X$ \& $Y$ are \textbf{independent}:
 \subsection{Sums of Random Variables}
 
 \begin{enumerate}
-    \item Let $U$, $V$, and $W$ be three independent random variables and define $X = W + U$ and $Y = W + V$. 
+    \item Let $U$, $V$, and $W$ be three independent random variables and define $X = W + U$ and $Y = W + V$.
     Since both $X$ and $Y$ share the same random variable $W$, the random variables $X$ and $Y$ must be \textbf{dependent}.
     If we only observe the random variables $X$ and $Y$ in practice, the random variable $W$ is sometimes referred to as \textbf{latent variable}.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The random variable $W$ represents a “true” value of something that is measured, and the other random variables $U$ and $V$ represent measurement errors. 
+    \item The random variable $W$ represents a “true” value of something that is measured, and the other random variables $U$ and $V$ represent measurement errors.
     Thus in the bivariate case, the same unit is just measured twice.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
@@ -1405,13 +1195,13 @@ If $X$ \& $Y$ are \textbf{independent}:
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The parameter $\alpha$ should be within $[-1, 1]$ and when it is equal to zero, the random variables $X$ and $Y$ are \textbf{independent}.
-    The parameter $\alpha$ may be seen as the dependency parameter and the larger the absolute value $\dabs{\alpha}$ the stronger the dependency. 
+    The parameter $\alpha$ may be seen as the dependency parameter and the larger the absolute value $\dabs{\alpha}$ the stronger the dependency.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item This class of distribution functions is referred to as the one-parameter Farlie–Gumbel–Morgenstern (FGM) distribution function.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item It can be shown that the marginal distribution functions are given by $F_X$ and $F_Y$ , respectively. 
+    \item It can be shown that the marginal distribution functions are given by $F_X$ and $F_Y$ , respectively.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The advantage of this class is that it may be used with many different choices for $F_X$ and $F_Y$ .
@@ -1423,7 +1213,28 @@ If $X$ \& $Y$ are \textbf{independent}:
 \subsection{Fréchet Family of Distributions}
 
 \begin{enumerate}
-    \item 
+    \item Maurice Fréchet demonstrated that any bivariate CDF $F _{X Y} (x, y)$ can be bounded from below and from above using the marginal CDFs $F_X (x)$ and $F_Y (y)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item
+    $
+        \max\dCurlyBrac{F_X (x) + F_Y (y) - 1, 0}
+        \leq
+        F _{X Y} (x, y)
+        \leq
+        \min\dCurlyBrac{F_X (x), F_Y (y)}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The boundary functions $F_{B L} (x, y) = \max\dCurlyBrac{F_X (x) + F_Y (y) - 1, 0}$ and $F_{ BU} (x, y) = \min\dCurlyBrac{F_X (x), F_Y (y)}$ are both CDFs themselves.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The two boundary CDFs can then be taken to form a one-parameter class of CDFs of the form $F_{LU} (x, y) = \lambda\ F_{B L} (x, y) + (1 - \lambda)\ F_{BU} (x, y),\ \lambda \in [0, 1]$.
+    The parameter $\lambda$ indicates the strength of the dependence, even though this class does not contain the independent setting.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item There is \textbf{no} $\lambda$ value that leads to $F_{LU} (x, y) = F_X (x)\ F_Y (y)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
@@ -1433,25 +1244,391 @@ If $X$ \& $Y$ are \textbf{independent}:
 \subsubsection{Conditionally independent}
 
 \begin{enumerate}
-    \item Let $Z$ be a random variable and conditionally on this random variable we assume that $X$ and $Y$ are independent distributed. 
+    \item Let $Z$ be a random variable and conditionally on this random variable we assume that $X$ and $Y$ are independent distributed.
     Thus the joint PDF of $X$ and $Y$ given $Z$ , which is denoted by $f _{X Y |Z} (x, y|z)$, is now given by
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
     .\hfill
     $
-        f_{X Y |Z} (x, y|z) 
-        = f _{X|Z} (x|z)\ f_{Y |Z} (y|z) 
+        f_{X Y |Z} (x, y|z)
+        = f _{X|Z} (x|z)\ f_{Y |Z} (y|z)
         = \dfrac{f_{X Z} (x, z)\ f_{Y Z} (y, z) } {f^2_Z (z)}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Then the joint PDF for $X$ and $Y$ is obtained by:
     $
-        f _{X Y} (x, y) 
+        f _{X Y} (x, y)
         = \dint ^{\infty }_{-\infty} f_{X|Z} (x|z)\ f_{Y |Z} (y|z)\ f_Z (z)\ dz
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Expected Values ($E(X)$)}
+
+\begin{enumerate}
+    \item \textbf{Covariance}: Covariance measures how two variables change together. If one variable increases when the other increases, the covariance is positive; if one decreases when the other increases, it's negative.
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item Units depend on the original variables.
+        \hfill \cite{common/online/chatgpt}
+
+        \item Hard to interpret the strength of the relationship due to unit dependence.
+        \hfill \cite{common/online/chatgpt}
+
+        \item Sensitive to scale.
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+
+    \item \textbf{Correlation}: Correlation standardizes covariance and measures both direction and strength of a linear relationship between two variables.
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item Always between $-1$ and $+1$.
+        \hfill \cite{common/online/chatgpt}
+
+        \begin{enumerate}
+            \item $+1$: perfect positive linear relationship
+            \hfill \cite{common/online/chatgpt}
+
+            \item $0$: no linear relationship
+            \hfill \cite{common/online/chatgpt}
+
+            \item $-1$: perfect negative linear relationship
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+
+        \item Unitless.
+        \hfill \cite{common/online/chatgpt}
+
+        \item Easier to interpret than covariance.
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+
+    \item \textbf{Causation}: Causation means that changes in one variable directly cause changes in another.
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item Implies a cause-and-effect relationship.
+        \hfill \cite{common/online/chatgpt}
+
+        \item Cannot be determined just by looking at data or statistical relationships.
+        \hfill \cite{common/online/chatgpt}
+
+        \item Requires controlled experiments or strong observational evidence (e.g., through randomized trials or causal inference techniques).
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\subsection{For PDF (Continuous)}
+
+\begin{enumerate}
+    \item If we consider a (not necessarily continuous or differentiable) function $\psi : \mbbR \to \mbbR$, then the expected value of the random variable $\psi (X)$ is defined by
+    \colorbox{yellow}{$
+        \mbbE[\psi(X)]
+        = \dint_{\mbbR} \psi(x)\ f(x)\ dx
+    $}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+\subsection{For PMF (Discrete)}
+
+\begin{enumerate}
+    \item The expectation of a discrete random variable $\psi(X)$ is given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    \colorbox{yellow}{$
+        \mbbE[\psi(X)] \
+        = \dsum^{\infty}_{k=0}\ \psi(k)\ p _k \
+        = \dsum^{\infty}_{k=0}\ \psi(k)\ P(X = k)
+    $}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If we would collect many realizations of the discrete random variable $X$, say $N$ realizations, we expect to see value $k$ with frequency $N \cdot p _k$ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+\subsection{Common for PDF \& PMF}
+
+\begin{enumerate}
+    \item \textbf{First moment}: mean $\mu$ is obtained by \colorbox{yellow}{$\psi(x)=x$}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Second central moment}: The population variance $\sigma^ 2$ is obtained by \colorbox{yellow}{$\psi(x)=(x -\mu)^2$}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{pth moment} of random variable $X$ is obtained by \colorbox{yellow}{$\psi(x) = x^p$}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{pth central moment} of random variable $X$ is obtained by choosing \colorbox{yellow}{$\psi(x) = (x - \mu)^p$}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{skewness}: \colorbox{yellow}{$\gamma_1 = \dfrac{\mu_3}{\sigma^3}$}, where $\mu_3 = \mbbE[(x-\mu)^3]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{kurtosis}: \colorbox{yellow}{$\gamma_2 = \dfrac{\mu_4}{\sigma^4} - 3$}, where $\mu_4 = \mbbE[(x-\mu)^4]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\vspace{0.5cm}
+\textbf{Note}:
+\begin{enumerate}
+    \item the moments of a discrete random variable $X$ may \textbf{not} always exist: this depends on the choice of probabilities $p _k $.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Calculation Rules for Random Variables}
+
+Let we have 2 random variables $X, \ Y$, either discrete or continuous, and a constant $c$.
+\\
+$F _X$ and $F_Y$ the CDFs for $X$ and $Y$ , respectively. $P(X \leq x, Y \leq y)$ is the joint CDF
+of $X$ and $Y$ , denoted by $F _{X Y} (x, y)$
+\\
+Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
+
+\subsection{General/ Joint PMF/ PDF/ CDF}
+
+\begin{multicols}{2}
+\begin{enumerate}[series=calcrulesrv]
+    \item $\mbbE[c] = c$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbE[cX] = c \mbbE[X]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbV[X] \geq 0$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbV[X + c] = \mbbV[X]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbV[cX] = c^2\ \mbbV[X]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbV[X] = \mbbE[X^2] - (\mbbE[X])^2$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbE[X] = \mbbE[Y]$ , when $X = Y$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbE[X + Y] = \mbbE[X] + \mbbE[Y]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbE[g(X, Y )] = \dsum^\infty_{x=0} \dsum^\infty_{y=0} g(x, y)\ f_{X Y} (x, y)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+\end{multicols}
+
+\subsubsection{if $X$ and $Y$ are independent}
+
+\begin{multicols}{2}
+\begin{enumerate}[resume*=calcrulesrv]
+    \item $\phi(X)$ and $\psi(Y)$ are also independent
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbE[X Y]  = \mbbE[X]\ \mbbE[Y]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbV[X \pm Y] = \mbbV[X] + \mbbV[Y]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\end{enumerate}
+\end{multicols}
+
+
+\begin{enumerate}[resume*=calcrulesrv]
+    \item
+    $
+        P(X \leq x, Y \leq y)
+        = P(A \cap B)
+        = P(A) P(B)
+        = P(X \leq x) P(Y \leq y)
+        = F _X (x)\ F_Y (y)
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item
+    $
+        \mbbV[X Y]
+        = \mbbV[X] \mbbV[Y] + \mbbV[X](\mbbE[Y])^2 + \mbbV[Y](\mbbE[X])^2
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\subsection{Conditonal PMF, PDF \& CDF}
+
+\begin{enumerate}[resume*=calcrulesrv]
+    \item
+    $
+        f _{X|Y} (x|y)
+        = \begin{cases}
+            P(X = x|Y = y)
+            = \dfrac{P(X = x, Y = y)} {P(Y = y) }
+            = \dfrac{f _{X Y} (x, y)} {f_Y (y) } & \text{ if } f _Y (y) > 0 \\
+            0 & \text{ otherwise}
+        \end{cases}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item
+    $
+        f _{Y|X} (y|x)
+        = \begin{cases}
+            P(Y = y|X = x)
+            = \dfrac{P(X = x, Y = y)} {P(X = x) }
+            = \dfrac{f _{X Y} (x, y)} {f_X (x) } & \text{ if } f _X (x) > 0 \\
+            0 & \text{ otherwise}
+        \end{cases}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item
+    $
+        \mbbV[Y |X = x]
+        = \mbbE[(Y - \mu_Y (x))^2|X = x]
+        = \dsum^\infty_{y=0} (y - \mu_Y (x))^2\ f_{Y |X} (y|x)
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            E[\mu_Y (X)] 
+            &= \dsum^\infty_{x=0} \mu_Y (x)\ f_X (x)
+            = \dsum^\infty_{x=0} \mbbE(Y |X = x)\ f_X (x)
+            = \dsum^\infty_{x=0} \dsum^\infty_{y=0} y\ f_{Y |X} (y|x)\ f_X (x) \\
+            &= \dsum^\infty_{x=0} \dsum^\infty_{y=0} y\ f_{X Y} (x, y)
+            = \dsum^\infty_{y=0} y\ f_Y (y) 
+            = \mu_Y
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            \mbbE[\sigma^2_Y (X)]
+            &= \dsum^\infty_{x=0} \sigma^2_Y (x) f_X (x)
+            = \dsum^\infty_{x=0} \dsum^\infty_{y=0} (y - \mu_Y (x))^2 f_{Y |X} (y|x) f_X (x) \\
+            &= \dsum^\infty_{x=0} \dsum^\infty_{y=0} [(y - \mu_Y )^2 + 2(y - \mu_Y )(\mu_Y - \mu_Y (x)) + (\mu_Y - \mu_Y (x))^2] f_{X Y} (x, y) \\
+            &= \dsum^\infty_{y=0} (y - \mu_Y )^2 f_Y (y) - \dsum^\infty_{x=0} (\mu_Y (x) - \mu_Y )^2 f_X (x)
+            = \sigma^2_Y - \mbbV[\mu_Y (X)]
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+\begin{multicols}{2}
+\begin{enumerate}[resume*=calcrulesrv]
+    \item $\mbbE(\phi(Y)|X = x) = \dsum^\infty _{y=0} \phi(y)\ f _{Y |X} (y|x)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item
+    $
+        f _{X|Y} (x|y)
+        = \begin{cases}
+            \dfrac{f _{X Y} (x, y)} {f_Y (y) } & \text{ if } f _Y (y) > 0 \\
+            0 & \text{ otherwise}
+        \end{cases}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item
+    $
+        f _{Y|X} (y|x)
+        = \begin{cases}
+            \dfrac{f _{X Y} (x, y)} {f_X (x) } & \text{ if } f _X (x) > 0 \\
+            0 & \text{ otherwise}
+        \end{cases}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbE(\phi(Y)|X = x) = \dint^\infty _{-\infty} \phi(y)\ f _{Y |X} (y|x)\ dy$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mu_Y (x) = \mbbE(Y |X = x)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    % \item $\mu_Y (X) = \mbbE(Y |X = X)$
+    % \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mu_Y = \mbbE[\mu_Y (X)]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbV[Y] = \mbbE[\mbbV[Y |X = X]] + \mbbV[\mbbE[Y |X = X]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+\end{multicols}
+
+
+\subsubsection{If $X$ \& $Y$ are independent}
+
+\begin{multicols}{2}
+\begin{enumerate}[resume*=calcrulesrv]
+    \item $F _{X Y} (x, y) = F_X (x) F_Y (y)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $f _{X Y} (x, y) = f_X (x) f_Y (y)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $f _{X|Y} (x|y) = f_X (x)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $f _{Y|X} (y|x) = f_Y (y)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+\end{multicols}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

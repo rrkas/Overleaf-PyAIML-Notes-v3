@@ -174,13 +174,13 @@
 \subsection{Sums of Random Variables}
 
 \begin{enumerate}
-    \item Let $U$, $V$, and $W$ be three independent random variables and define $X = W + U$ and $Y = W + V$. 
-    When $U \sim \mathcal{P}(\lambda _U )$, $V \sim \mathcal{P}(\lambda _V )$, and $W \sim \mathcal{P}(\lambda _W )$, it can be shown that $X$ is Poisson distributed with parameter $\lambda _W + \lambda _U$ and $Y$ is Poisson distributed with parameter $\lambda _W + \lambda _V$. 
+    \item Let $U$, $V$, and $W$ be three independent random variables and define $X = W + U$ and $Y = W + V$.
+    When $U \sim \mathcal{P}(\lambda _U )$, $V \sim \mathcal{P}(\lambda _V )$, and $W \sim \mathcal{P}(\lambda _W )$, it can be shown that $X$ is Poisson distributed with parameter $\lambda _W + \lambda _U$ and $Y$ is Poisson distributed with parameter $\lambda _W + \lambda _V$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item PDF: 
+    \item PDF:
     $
-        f _{X Y} (x, y) 
+        f _{X Y} (x, y)
         = \exp(-[\lambda _U + \lambda _V + \lambda _W ])\ \dfrac{\lambda ^x_U \lambda ^y_V} {x!\ y!}
         \ \dsum^{\min(x,y)} _{k=0} \dfrac{x!\ y! }{(x - k)!\ (y - k)!\ k!} \dParenBrac{\dfrac{\lambda _W }{\lambda _U \lambda _V} }^k
     $
