@@ -33,7 +33,20 @@
     $\dabs{\bm{\Sigma}} = \det(\bm{\Sigma}) \in \mbbR$
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 
-    \item Bivariate Normal PDF:
+    \item when $X$ and $Y$ are marginally normally distributed, there are different ways of creating dependencies between $X$ and $Y$ that are different from the bivariate PDF
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    Even if two random variables $X$ and $Y$ each individually follow a normal distribution (i.e., their marginals are normal), the way in which they are dependent or correlated can vary.
+    That is, their joint distribution doesn't have to be the bivariate normal distribution
+    \hfill \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+
+\subsection{Bivariate Normal Distributions}
+
+\begin{enumerate}[series=binvar-normal]
+    \item PDF:
     $
         f (x, y)
         = \dfrac{1}{ 2\pi\sigma_X \sigma_Y \sqrt{1 - \rho^2} }
@@ -59,14 +72,40 @@
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item when $X$ and $Y$ are marginally normally distributed, there are different ways of creating dependencies between $X$ and $Y$ that are different from the bivariate PDF
+    \item 
+    $
+        \begin{aligned}
+            \tCov[X, Y] 
+            & = \mbbE[(X - \mu _X )(Y - \mu _Y )]
+            = \sigma _X \sigma _Y \mbbE[Z_1 Z_2] \\
+            &= \sigma _X \sigma _Y \dint^\infty_{-\infty} \dint^\infty_{-\infty} z_1z_2 \dfrac{1}{2\pi (1-\rho^2)} \exp \dParenBrac{ - \dfrac{z^2_1-2\rho z_1 z_2+z^2_2} {2(1-\rho^2)} } dz_1\ dz_2\\
+            &= \sigma _X \sigma _Y \dint^\infty_{-\infty} z_2 \dfrac{1}{\sqrt{2\pi}}  \exp \dParenBrac{ - \dfrac{z^2_2} {2} } \dint^\infty_{-\infty} z_1 \dfrac{1}{\sqrt{2\pi (1-\rho^2)}} \exp \dParenBrac{ - \dfrac{(z_1-\rho z_2)^2 }{2(1-\rho^2)} } dz_1\ dz_2 \\
+            &= \sigma_X \sigma_Y \dint^\infty_{-\infty} \rho z^2_2 \dfrac{1}{\sqrt{2\pi}}  \exp \dParenBrac{ - \dfrac{z^2_2}{ 2} } dz_2 
+            = \rho \sigma_X \sigma_Y
+        \end{aligned}
+    $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \\
-    Even if two random variables $X$ and $Y$ each individually follow a normal distribution (i.e., their marginals are normal), the way in which they are dependent or correlated can vary.
-    That is, their joint distribution doesn't have to be the bivariate normal distribution
-    \hfill \cite{common/online/chatgpt}
+
+    \item The distribution function of any linear combination of $X$ and $Y$ , say $a X + bY$ , has a normal distribution function with mean $\mu = a\mu_X + b\mu_Y$ and variance $\sigma ^2 = a^2\sigma ^2_X + 2ab\rho \sigma _X \sigma _Y + b^2\sigma ^2_Y$ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
+
+\begin{multicols}{2}
+\begin{enumerate}[resume*=binvar-normal]
+    \item $\mbbE[X] = \mu_X$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item $\mbbE[Y] = \mu_Y$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item $\mbbV[X] = \sigma^2_X$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item $\mbbV[Y] = \sigma^2_Y$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+\end{multicols}
 
 
 

@@ -64,6 +64,28 @@
 
 
 
+\subsection{Bivariate Lognormal Distributions}
+
+\begin{enumerate}
+    \item  If we assume that $(X, Y)$ is bivariate normal, with parameters $\mu_X , \mu_Y , \sigma_X , \sigma_Y$ , and $\rho$, then $(\exp(X),\ \exp(Y ))$ has a bivariate lognormal distribution function.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            &\tCov(\exp(X),\ \exp(Y )) 
+            = \mbbE[\exp(X) \exp(Y )] - \mbbE[\exp(X)]\mbbE[\exp(Y )] \\
+            &= \mbbE[\exp(X + Y )] - \exp(\mu_X + 0.5\sigma^2_X ) \exp(\mu_Y + 0.5\sigma^2_Y ) \\
+            &= \exp(\mu_X + \mu_Y + 0.5(\sigma^2_X + 2\rho\sigma_X \sigma_Y + \sigma^2_Y )) - \exp(\mu_X + 0.5\sigma^2_X ) \exp(\mu_Y + 0.5\sigma^2_Y )\\
+            &= \exp(\mu_X + 0.5\sigma^2_X + \mu_Y + 0.5\sigma^2_Y )(\exp(\rho\sigma_X \sigma_Y ) - 1)
+            = \mbbE[\exp(X)]\mbbE[\exp(Y )](\exp(\rho\sigma_X \sigma_Y ) - 1)
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    This covariance is quite different from the covariance $\rho \sigma_X \sigma_Y = \tCov[X, Y] $ in the logarithmic scale.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 

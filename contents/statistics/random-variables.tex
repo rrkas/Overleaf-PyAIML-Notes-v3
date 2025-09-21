@@ -1415,17 +1415,42 @@
 
 \section{Calculation Rules for Random Variables}
 
-Let we have 2 random variables $X, \ Y$, either discrete or continuous, and a constant $c$.
-\\
-$F _X$ and $F_Y$ the CDFs for $X$ and $Y$ , respectively. $P(X \leq x, Y \leq y)$ is the joint CDF
-of $X$ and $Y$ , denoted by $F _{X Y} (x, y)$
-\\
-Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
+\begin{enumerate}
+    \item Let we have 2 random variables $X, \ Y$, either discrete or continuous, and a constant $c$.
+    
+    \item $F _X$ and $F_Y$ the CDFs for $X$ and $Y$ , respectively. $P(X \leq x, Y \leq y)$ is the joint CDF of $X$ and $Y$ , denoted by $F _{X Y} (x, y)$
+    
+    \item Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
+    
+    \item the covariance is affected by transformations
+\end{enumerate}
 
-\subsection{General/ Joint PMF/ PDF/ CDF}
+
+\subsection{Univariate/ Joint PMF/ PDF/ CDF}
+
+\begin{enumerate}[series=calcrulesrv]
+    \item $
+        \tCov(X, Y ) 
+        = \sigma_{X Y} 
+        = \mbbE[(X - \mbbE[X])(Y - \mbbE[Y])]
+        = \mbbE[X Y] - \mbbE[X]\mbbE[Y]
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbV[X + Y] = \mbbV[X] + 2\tCov[X, Y] + \mbbV[Y]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbV[X - Y] = \mbbV[X] - 2\tCov[X, Y] + \mbbV[Y]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
 
 \begin{multicols}{2}
-\begin{enumerate}[series=calcrulesrv]
+\begin{enumerate}[resume*=calcrulesrv]
+    \item $\mbbE[\mbbE[X]] = \mbbE[X]$
+    \hfill \cite{common/online/chatgpt}
+    
     \item $\mbbE[c] = c$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -1452,24 +1477,29 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
 
     \item $\mbbE[g(X, Y )] = \dsum^\infty_{x=0} \dsum^\infty_{y=0} g(x, y)\ f_{X Y} (x, y)$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\tCov[X, X] = \mbbV[X] = \sigma^2_X$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\tCov[X, Y] = \tCov[Y, X]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\tCov[aX, Y] = a\tCov[X, Y]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\tCov[X + c, Y] = \tCov[X, Y]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\tCov[X + Y, Z] = \tCov[X, Z] + \tCov[Y, Z]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 \end{multicols}
+
+
+
 
 \subsubsection{if $X$ and $Y$ are independent}
 
-\begin{multicols}{2}
-\begin{enumerate}[resume*=calcrulesrv]
-    \item $\phi(X)$ and $\psi(Y)$ are also independent
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\mbbE[X Y]  = \mbbE[X]\ \mbbE[Y]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\mbbV[X \pm Y] = \mbbV[X] + \mbbV[Y]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-\end{enumerate}
-\end{multicols}
 
 
 \begin{enumerate}[resume*=calcrulesrv]
@@ -1490,6 +1520,34 @@ Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+\begin{multicols}{2}
+\begin{enumerate}[resume*=calcrulesrv]
+    \item $\phi(X)$ and $\psi(Y)$ are also independent
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbE[X Y]  = \mbbE[X]\ \mbbE[Y]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbV[X \pm Y] = \mbbV[X] + \mbbV[Y]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\tCov[X, Y] = 0$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+\end{multicols}
+
+
+
+\begin{enumerate}[resume*=calcrulesrv]
+    \item Two random variables can have a covariance of $0$, and still be dependent. 
+    A simple example is to take $X$ as a standard normal random variable and $Y = X^2$ . 
+    It is clear that $X$ and $Y$ are dependent, since $Y$ is a function of $X$, and that $\tCov(X, Y ) = \mbbE[X Y] - \mbbE[X] \mbbE[Y] = \mbbE[X^3] = 0$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
 
 
 \subsection{Conditonal PMF, PDF \& CDF}
