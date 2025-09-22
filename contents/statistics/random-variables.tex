@@ -1173,6 +1173,32 @@
     \item The random variable $W$ represents a “true” value of something that is measured, and the other random variables $U$ and $V$ represent measurement errors.
     Thus in the bivariate case, the same unit is just measured twice.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\sigma^2_X = \sigma^2_W + \sigma^2_U$ and $\sigma^2_Y = \sigma^2_W + \sigma^2_V$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            &\tCov[X, Y] 
+            = \mbbE[(X - \mu_X )(Y - \mu_Y )]
+            = \mbbE[(W - \mu_W + U - \mu_U )(W - \mu_W + V - \mu_V )] \\
+            &= \mbbV[W] + \mbbE[(W - \mu_W )(V - \mu_V )] + \mbbE[(U - \mu_U )(W - \mu_W )] + \mbbE[(U - \mu_U )(V - \mu_V )] \\
+            &= \sigma^2_W
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Pearson’s correlation coefficient: 
+    $
+        \rho_P 
+        = \dfrac{\sigma^2_W }{\sqrt{(\sigma^2_W + \sigma^2_U )(\sigma^2_W + \sigma^2_V )}}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item This correlation coefficient is often referred to as the \textbf{intraclass correlation coefficient} (ICC).
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
 \end{enumerate}
 
 
@@ -1206,6 +1232,32 @@
 
     \item The advantage of this class is that it may be used with many different choices for $F_X$ and $F_Y$ .
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            \tCov[X, Y] 
+            &= \mbbE[X Y] - \mbbE[X] \mbbE[Y] \\
+            & = \dParenBrac{\dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_X (x)\ f_Y (y)\ (1 + \alpha(1 - 2F_X (x))\ (1 - 2F_Y (y)))\ dx\ dy} - \mu_X \mu_Y \\
+            &= \alpha\mbbE[X (1 - 2F_X (X ))]\mbbE[Y (1 - 2F_Y (Y ))]
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Pearson’s correlation coefficient:
+    $
+        \rho_P = \dfrac{\alpha\ \mbbE[X (1 - 2F_X (X))]\ \mbbE[Y (1 - 2F_Y (Y ))] }{\sigma_X \sigma_Y}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item Pearson’s correlation coefficient for the FGM family is bounded by $-\dfrac{1}{3} \leq \rho_P \leq \dfrac{1}{3}$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item This implies that the FGM family of CDFs may be useful for applications where the random variables are \textbf{weakly correlated}.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        
+    \end{enumerate}
 \end{enumerate}
 
 
@@ -1261,6 +1313,41 @@
         f _{X Y} (x, y)
         = \dint ^{\infty }_{-\infty} f_{X|Z} (x|z)\ f_{Y |Z} (y|z)\ f_Z (z)\ dz
     $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mu_{X Y} (z) = \mbbE[X Y |Z = z]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Because $X$ and $Y$ are independent conditionally on $Z = z$, we also obtain that $\mbbE[X Y |Z = z] = \mbbE[X|Z = z] \mbbE[Y |Z = z] = \mu_X (z)\ \mu_Y (z)$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            &\mbbE[\mu_{X Y }(Z )] 
+            = \dint^\infty_{-\infty} \mu_{X Y} (z)\ f_Z (z)\ dz
+            = \dint^\infty_{-\infty} \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y |Z} (x, y|z)\ f_Z (z)\ dx\ dy\ dz \\
+            &= \dint^\infty_{-\infty} \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y Z} (x, y, z)\ dx\ dy\ dz 
+            = \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y} (x, y)\ dx\ dy 
+            = \mbbE[X Y]
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            &\tCov[X, Y] 
+            = \mbbE[X Y] - \mbbE[X] \mbbE[Y]
+            = \mbbE[\mu_{X Y} (Z )] - \mu_X \mu_Y 
+            = \mbbE[\mu_X (Z )\mu_Y (Z )] - \mu_X \mu_Y\\
+            &= \mbbE[(\mu_X (Z ) - \mu_X )(\mu_Y (Z ) - \mu_Y )] 
+            = \tCov[\mu_X (Z ), \mu_Y (Z )]
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If we assume that $X$ and $Y$ are identically distributed (conditionally on $Z$), we would have that $\mu_X (z) = \mu_Y (z) = \mu(z)$, which would lead to $\tCov[X, Y] = \mbbV[\mu(Z)] $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
@@ -1680,13 +1767,68 @@
 
 
 
+\section{Measures of Association}
 
+\subsection{Pearson’s Correlation Coefficient ($CORR(X, Y) = \rho_P$)}
 
+\begin{enumerate}
+    \item Pearson’s correlation coefficient is a way of quantifying how two variables “co-relate”. 
+    If Pearson’s correlation is \textbf{positive}, the two variables $X$ and $Y$ move in the \textbf{same direction}. 
+    If $X$ is increasing then $Y$ should be increasing as well.
+    When Pearson’s correlation coefficient is \textbf{zero} the random variables are called \textbf{uncorrelated}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item standardized random variables: $Z_X = \dfrac{X - \mu_X }{\sigma_X}$ and $Z_Y = \dfrac{Y - \mu_Y }{\sigma_Y}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item 
+    $
+        \rho_P 
+        = CORR(X, Y ) 
+        = \tCov[Z_X , Z_Y] 
+        = \mbbE\dSquareBrac{\dParenBrac{\dfrac{X - \mu_X }{\sigma_X}} \dParenBrac{\dfrac{Y - \mu_Y}{ \sigma_Y}}} 
+        = \dfrac{\tCov[X, Y]}{\sqrt{\mbbV[X] \mbbV[Y] }}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item \textbf{Properties}:
+    \begin{enumerate}
+        \item $CORR(X, Y ) \in [-1, 1]$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item If $CORR(X, Y ) = 1$, then $Y = a X + b$, where $a > 0$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item If $CORR(X, Y ) = -1$, then $Y = a X + b$, where $a < 0$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $CORR(a X + b, cY + d) = CORR(X, Y )$ for $a, c > 0$ or $a, c < 0$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
 
+\begin{customArrayStretch}{1.5}
+\begin{longtable}{| r | l |}
 
+\hline \endfirsthead
+\hline \endhead
+
+\hline 
+\caption*{Rule of thumb} \\
+\endfoot
+
+\hline 
+\caption*{Rule of thumb} \\
+\endlastfoot
+
+$0.90 < \dabs{\rho_P} \leq 1.00$ & Very strong correlation \\ \hline
+$0.70 < \dabs{\rho_P} \leq 0.90$ & Strong correlation \\ \hline
+$0.50 < \dabs{\rho_P} \leq 0.70$ & Moderate correlation \\ \hline
+$0.30 < \dabs{\rho_P} \leq 0.50$ & Low correlation \\ \hline
+$0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
+
+\end{longtable}
+\end{customArrayStretch}
 
 
 

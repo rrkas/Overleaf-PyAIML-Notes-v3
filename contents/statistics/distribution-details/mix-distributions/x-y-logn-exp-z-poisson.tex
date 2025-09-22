@@ -1,0 +1,34 @@
+\section{X, Y: Exp/ Lognormal, Z: Poisson}
+
+\begin{enumerate}
+    \item $X$ and $Y$: Exponential/ Lognormal distribution and $Z$: Poisson Distribution
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+\subsection{Mixtures of Probability Distributions}
+
+\subsubsection{Conditionally independent}
+
+\begin{enumerate}
+    \item assume that the conditional distribution function of $X$ given $Z = z$ is Poisson with parameter $z\lambda_X$ , $X|Z = z \sim \mathcal{P}(z\lambda_X )$, and the conditional distribution function of $Y$ given $Z = z$ is Poisson with parameter $z\lambda_Y$ , $Y |Z = z \sim \mathcal{P}(z\lambda_Y )$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Conditional expectations: $\mu_X (z) = z\lambda_X$ and $\mu_Y (z) = z\lambda_Y$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mu_X = \mbbE[\mu_X (Z )] = \lambda_X \mbbE[Z] = \lambda_X \mu_Z$ and $\mu_Y = \lambda_Y \mu_Z$ 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \tCov(\mu_X (Z ), \mu_Y (Z )) 
+        = \mbbE[\mu_X (Z )\mu_Y (Z )] - \mu_X \mu_Y 
+        = \lambda_X \lambda_Y ( \mbbE[Z^2] - \mu^2_Z ) 
+        = \lambda_X \lambda_Y \sigma^2_Z 
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
