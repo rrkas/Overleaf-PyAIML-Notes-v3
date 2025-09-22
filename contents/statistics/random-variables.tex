@@ -1154,217 +1154,6 @@
 
 
 
-
-
-
-
-
-
-\section{Constructing Bivariate Distributions}
-
-\subsection{Sums of Random Variables}
-
-\begin{enumerate}
-    \item Let $U$, $V$, and $W$ be three independent random variables and define $X = W + U$ and $Y = W + V$.
-    Since both $X$ and $Y$ share the same random variable $W$, the random variables $X$ and $Y$ must be \textbf{dependent}.
-    If we only observe the random variables $X$ and $Y$ in practice, the random variable $W$ is sometimes referred to as \textbf{latent variable}.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The random variable $W$ represents a “true” value of something that is measured, and the other random variables $U$ and $V$ represent measurement errors.
-    Thus in the bivariate case, the same unit is just measured twice.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\sigma^2_X = \sigma^2_W + \sigma^2_U$ and $\sigma^2_Y = \sigma^2_W + \sigma^2_V$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item 
-    $
-        \begin{aligned}
-            &\tCov[X, Y] 
-            = \mbbE[(X - \mu_X )(Y - \mu_Y )]
-            = \mbbE[(W - \mu_W + U - \mu_U )(W - \mu_W + V - \mu_V )] \\
-            &= \mbbV[W] + \mbbE[(W - \mu_W )(V - \mu_V )] + \mbbE[(U - \mu_U )(W - \mu_W )] + \mbbE[(U - \mu_U )(V - \mu_V )] \\
-            &= \sigma^2_W
-        \end{aligned}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Pearson’s correlation coefficient: 
-    $
-        \rho_P 
-        = \dfrac{\sigma^2_W }{\sqrt{(\sigma^2_W + \sigma^2_U )(\sigma^2_W + \sigma^2_V )}}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}
-        \item This correlation coefficient is often referred to as the \textbf{intraclass correlation coefficient} (ICC).
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \end{enumerate}
-\end{enumerate}
-
-
-\subsection{Farlie-Gumbel-Morgenstern (FGM) Family of Distributions}
-
-\begin{enumerate}
-    \item When $X$ and $Y$ are two random variables with marginal CDFs $F_X$ and $F_Y$ , respectively, we can create a bivariate CDF in the following way:
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \\[0.3cm]
-    .\hfill
-    $
-        F _{X Y} (x, y) = F_X (x)\ F_Y (y)\ (1 + \alpha(1 - F_X (x))\ (1 - F_Y (x)))
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item PDF:
-    $
-        f _{X Y} (x, y) = f_X (x)\ f_Y (y)\ (1 + \alpha(1 - 2F_X (x))\ (1 - 2F_Y (x)))
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The parameter $\alpha$ should be within $[-1, 1]$ and when it is equal to zero, the random variables $X$ and $Y$ are \textbf{independent}.
-    The parameter $\alpha$ may be seen as the dependency parameter and the larger the absolute value $\dabs{\alpha}$ the stronger the dependency.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item This class of distribution functions is referred to as the one-parameter Farlie–Gumbel–Morgenstern (FGM) distribution function.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item It can be shown that the marginal distribution functions are given by $F_X$ and $F_Y$ , respectively.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The advantage of this class is that it may be used with many different choices for $F_X$ and $F_Y$ .
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item 
-    $
-        \begin{aligned}
-            \tCov[X, Y] 
-            &= \mbbE[X Y] - \mbbE[X] \mbbE[Y] \\
-            & = \dParenBrac{\dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_X (x)\ f_Y (y)\ (1 + \alpha(1 - 2F_X (x))\ (1 - 2F_Y (y)))\ dx\ dy} - \mu_X \mu_Y \\
-            &= \alpha\mbbE[X (1 - 2F_X (X ))]\mbbE[Y (1 - 2F_Y (Y ))]
-        \end{aligned}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Pearson’s correlation coefficient:
-    $
-        \rho_P = \dfrac{\alpha\ \mbbE[X (1 - 2F_X (X))]\ \mbbE[Y (1 - 2F_Y (Y ))] }{\sigma_X \sigma_Y}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \begin{enumerate}
-        \item Pearson’s correlation coefficient for the FGM family is bounded by $-\dfrac{1}{3} \leq \rho_P \leq \dfrac{1}{3}$
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-        \item This implies that the FGM family of CDFs may be useful for applications where the random variables are \textbf{weakly correlated}.
-        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-        
-    \end{enumerate}
-\end{enumerate}
-
-
-
-\subsection{Fréchet Family of Distributions}
-
-\begin{enumerate}
-    \item Maurice Fréchet demonstrated that any bivariate CDF $F _{X Y} (x, y)$ can be bounded from below and from above using the marginal CDFs $F_X (x)$ and $F_Y (y)$.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item
-    $
-        \max\dCurlyBrac{F_X (x) + F_Y (y) - 1, 0}
-        \leq
-        F _{X Y} (x, y)
-        \leq
-        \min\dCurlyBrac{F_X (x), F_Y (y)}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The boundary functions $F_{B L} (x, y) = \max\dCurlyBrac{F_X (x) + F_Y (y) - 1, 0}$ and $F_{ BU} (x, y) = \min\dCurlyBrac{F_X (x), F_Y (y)}$ are both CDFs themselves.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The two boundary CDFs can then be taken to form a one-parameter class of CDFs of the form $F_{LU} (x, y) = \lambda\ F_{B L} (x, y) + (1 - \lambda)\ F_{BU} (x, y),\ \lambda \in [0, 1]$.
-    The parameter $\lambda$ indicates the strength of the dependence, even though this class does not contain the independent setting.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item There is \textbf{no} $\lambda$ value that leads to $F_{LU} (x, y) = F_X (x)\ F_Y (y)$.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-
-
-\subsection{Mixtures of Probability Distributions}
-
-\subsubsection{Conditionally independent}
-
-\begin{enumerate}
-    \item Let $Z$ be a random variable and conditionally on this random variable we assume that $X$ and $Y$ are independent distributed.
-    Thus the joint PDF of $X$ and $Y$ given $Z$ , which is denoted by $f _{X Y |Z} (x, y|z)$, is now given by
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \\
-    .\hfill
-    $
-        f_{X Y |Z} (x, y|z)
-        = f _{X|Z} (x|z)\ f_{Y |Z} (y|z)
-        = \dfrac{f_{X Z} (x, z)\ f_{Y Z} (y, z) } {f^2_Z (z)}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Then the joint PDF for $X$ and $Y$ is obtained by:
-    $
-        f _{X Y} (x, y)
-        = \dint ^{\infty }_{-\infty} f_{X|Z} (x|z)\ f_{Y |Z} (y|z)\ f_Z (z)\ dz
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\mu_{X Y} (z) = \mbbE[X Y |Z = z]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item Because $X$ and $Y$ are independent conditionally on $Z = z$, we also obtain that $\mbbE[X Y |Z = z] = \mbbE[X|Z = z] \mbbE[Y |Z = z] = \mu_X (z)\ \mu_Y (z)$. 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item 
-    $
-        \begin{aligned}
-            &\mbbE[\mu_{X Y }(Z )] 
-            = \dint^\infty_{-\infty} \mu_{X Y} (z)\ f_Z (z)\ dz
-            = \dint^\infty_{-\infty} \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y |Z} (x, y|z)\ f_Z (z)\ dx\ dy\ dz \\
-            &= \dint^\infty_{-\infty} \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y Z} (x, y, z)\ dx\ dy\ dz 
-            = \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y} (x, y)\ dx\ dy 
-            = \mbbE[X Y]
-        \end{aligned}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item 
-    $
-        \begin{aligned}
-            &\tCov[X, Y] 
-            = \mbbE[X Y] - \mbbE[X] \mbbE[Y]
-            = \mbbE[\mu_{X Y} (Z )] - \mu_X \mu_Y 
-            = \mbbE[\mu_X (Z )\mu_Y (Z )] - \mu_X \mu_Y\\
-            &= \mbbE[(\mu_X (Z ) - \mu_X )(\mu_Y (Z ) - \mu_Y )] 
-            = \tCov[\mu_X (Z ), \mu_Y (Z )]
-        \end{aligned}
-    $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item If we assume that $X$ and $Y$ are identically distributed (conditionally on $Z$), we would have that $\mu_X (z) = \mu_Y (z) = \mu(z)$, which would lead to $\tCov[X, Y] = \mbbV[\mu(Z)] $
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Expected Values ($E(X)$)}
 
 \begin{enumerate}
@@ -1484,11 +1273,6 @@
     \item the moments of a discrete random variable $X$ may \textbf{not} always exist: this depends on the choice of probabilities $p _k $.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
-
-
-
-
-
 
 
 
@@ -1702,7 +1486,6 @@
 
 
 
-
 \begin{multicols}{2}
 \begin{enumerate}[resume*=calcrulesrv]
     \item $\mbbE(\phi(Y)|X = x) = \dsum^\infty _{y=0} \phi(y)\ f _{Y |X} (y|x)$
@@ -1763,6 +1546,287 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 \end{multicols}
+
+
+
+
+
+
+
+
+
+
+
+\section{Constructing Bivariate Distributions}
+
+\subsection{Sums of Random Variables}
+
+\begin{enumerate}
+    \item Let $U$, $V$, and $W$ be three independent random variables and define $X = W + U$ and $Y = W + V$.
+    Since both $X$ and $Y$ share the same random variable $W$, the random variables $X$ and $Y$ must be \textbf{dependent}.
+    If we only observe the random variables $X$ and $Y$ in practice, the random variable $W$ is sometimes referred to as \textbf{latent variable}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The random variable $W$ represents a “true” value of something that is measured, and the other random variables $U$ and $V$ represent measurement errors.
+    Thus in the bivariate case, the same unit is just measured twice.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\sigma^2_X = \sigma^2_W + \sigma^2_U$ and $\sigma^2_Y = \sigma^2_W + \sigma^2_V$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            &\tCov[X, Y] 
+            = \mbbE[(X - \mu_X )(Y - \mu_Y )]
+            = \mbbE[(W - \mu_W + U - \mu_U )(W - \mu_W + V - \mu_V )] \\
+            &= \mbbV[W] + \mbbE[(W - \mu_W )(V - \mu_V )] + \mbbE[(U - \mu_U )(W - \mu_W )] + \mbbE[(U - \mu_U )(V - \mu_V )] \\
+            &= \sigma^2_W
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Pearson’s correlation coefficient: 
+    $
+        \rho_P 
+        = \dfrac{\sigma^2_W }{\sqrt{(\sigma^2_W + \sigma^2_U )(\sigma^2_W + \sigma^2_V )}}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item This correlation coefficient is often referred to as the \textbf{intraclass correlation coefficient} (ICC).
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsection{Farlie-Gumbel-Morgenstern (FGM) Family of Distributions}
+
+\begin{enumerate}
+    \item When $X$ and $Y$ are two random variables with marginal CDFs $F_X$ and $F_Y$ , respectively, we can create a bivariate CDF in the following way:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    .\hfill
+    $
+        F _{X Y} (x, y) = F_X (x)\ F_Y (y)\ (1 + \alpha(1 - F_X (x))\ (1 - F_Y (x)))
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item PDF:
+    $
+        f _{X Y} (x, y) = f_X (x)\ f_Y (y)\ (1 + \alpha(1 - 2F_X (x))\ (1 - 2F_Y (x)))
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The parameter $\alpha$ should be within $[-1, 1]$ and when it is equal to zero, the random variables $X$ and $Y$ are \textbf{independent}.
+    The parameter $\alpha$ may be seen as the dependency parameter and the larger the absolute value $\dabs{\alpha}$ the stronger the dependency.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This class of distribution functions is referred to as the one-parameter Farlie–Gumbel–Morgenstern (FGM) distribution function.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item It can be shown that the marginal distribution functions are given by $F_X$ and $F_Y$ , respectively.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The advantage of this class is that it may be used with many different choices for $F_X$ and $F_Y$ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            \tCov[X, Y] 
+            &= \mbbE[X Y] - \mbbE[X] \mbbE[Y] \\
+            & = \dParenBrac{\dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_X (x)\ f_Y (y)\ (1 + \alpha(1 - 2F_X (x))\ (1 - 2F_Y (y)))\ dx\ dy} - \mu_X \mu_Y \\
+            &= \alpha\mbbE[X (1 - 2F_X (X ))]\mbbE[Y (1 - 2F_Y (Y ))]
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Pearson’s correlation coefficient:
+    $
+        \rho_P = \dfrac{\alpha\ \mbbE[X (1 - 2F_X (X))]\ \mbbE[Y (1 - 2F_Y (Y ))] }{\sigma_X \sigma_Y}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item Pearson’s correlation coefficient for the FGM family is bounded by $-\dfrac{1}{3} \leq \rho_P \leq \dfrac{1}{3}$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item This implies that the FGM family of CDFs may be useful for applications where the random variables are \textbf{weakly correlated}.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item Kendall’s tau: $\tau_K = \dfrac{2\alpha}{9}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Spearman’s rho correlation: $\rho_S = \dfrac{\alpha}{3}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+\subsection{Fréchet Family of Distributions}
+
+\begin{enumerate}
+    \item Maurice Fréchet demonstrated that any bivariate CDF $F _{X Y} (x, y)$ can be bounded from below and from above using the marginal CDFs $F_X (x)$ and $F_Y (y)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item
+    $
+        \max\dCurlyBrac{F_X (x) + F_Y (y) - 1, 0}
+        \leq
+        F _{X Y} (x, y)
+        \leq
+        \min\dCurlyBrac{F_X (x), F_Y (y)}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The boundary functions $F_{B L} (x, y) = \max\dCurlyBrac{F_X (x) + F_Y (y) - 1, 0}$ and $F_{ BU} (x, y) = \min\dCurlyBrac{F_X (x), F_Y (y)}$ are both CDFs themselves.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The two boundary CDFs can then be taken to form a one-parameter class of CDFs of the form $F_{LU} (x, y) = \lambda\ F_{B L} (x, y) + (1 - \lambda)\ F_{BU} (x, y),\ \lambda \in [0, 1]$.
+    The parameter $\lambda$ indicates the strength of the dependence, even though this class does not contain the independent setting.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item There is \textbf{no} $\lambda$ value that leads to $F_{LU} (x, y) = F_X (x)\ F_Y (y)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Kendall’s tau: $\tau_K = \dfrac{2\lambda - 1}{3}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Spearman’s rho correlation: $\rho_S = \dfrac{2\lambda -1}{3}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+\subsection{Mixtures of Probability Distributions}
+
+\subsubsection{Conditionally independent}
+
+\begin{enumerate}
+    \item Let $Z$ be a random variable and conditionally on this random variable we assume that $X$ and $Y$ are independent distributed.
+    Thus the joint PDF of $X$ and $Y$ given $Z$ , which is denoted by $f _{X Y |Z} (x, y|z)$, is now given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        f_{X Y |Z} (x, y|z)
+        = f _{X|Z} (x|z)\ f_{Y |Z} (y|z)
+        = \dfrac{f_{X Z} (x, z)\ f_{Y Z} (y, z) } {f^2_Z (z)}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Then the joint PDF for $X$ and $Y$ is obtained by:
+    $
+        f _{X Y} (x, y)
+        = \dint ^{\infty }_{-\infty} f_{X|Z} (x|z)\ f_{Y |Z} (y|z)\ f_Z (z)\ dz
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mu_{X Y} (z) = \mbbE[X Y |Z = z]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Because $X$ and $Y$ are independent conditionally on $Z = z$, we also obtain that $\mbbE[X Y |Z = z] = \mbbE[X|Z = z] \mbbE[Y |Z = z] = \mu_X (z)\ \mu_Y (z)$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            &\mbbE[\mu_{X Y }(Z )] 
+            = \dint^\infty_{-\infty} \mu_{X Y} (z)\ f_Z (z)\ dz
+            = \dint^\infty_{-\infty} \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y |Z} (x, y|z)\ f_Z (z)\ dx\ dy\ dz \\
+            &= \dint^\infty_{-\infty} \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y Z} (x, y, z)\ dx\ dy\ dz 
+            = \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y} (x, y)\ dx\ dy 
+            = \mbbE[X Y]
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            &\tCov[X, Y] 
+            = \mbbE[X Y] - \mbbE[X] \mbbE[Y]
+            = \mbbE[\mu_{X Y} (Z )] - \mu_X \mu_Y 
+            = \mbbE[\mu_X (Z )\mu_Y (Z )] - \mu_X \mu_Y\\
+            &= \mbbE[(\mu_X (Z ) - \mu_X )(\mu_Y (Z ) - \mu_Y )] 
+            = \tCov[\mu_X (Z ), \mu_Y (Z )]
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If we assume that $X$ and $Y$ are identically distributed (conditionally on $Z$), we would have that $\mu_X (z) = \mu_Y (z) = \mu(z)$, which would lead to $\tCov[X, Y] = \mbbV[\mu(Z)] $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item marginal CDFs for $X$ and $Y$:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $ f_X (x) = \dint_{-\infty}^\infty f_{X|Z} (x|z)\ f_Z (z)\ dz $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $ f_Y (y) = \dint_{-\infty}^\infty f_{Y |Z} (y|z)\ f_Z (z)\ dz $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+    \end{multicols}
+
+    \item variances of $X$ and $Y$:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $\mbbV[X] = \mbbE[\mbbV[X|Z = Z]] + \mbbV(\mu_X (Z ))$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $\mbbV[Y] = \mbbE[\mbbV[Y |Z = Z]] + \mbbV(\mu_Y (Z ))$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+    \end{multicols}
+
+    \item Pearson’s correlation coefficient:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        \rho_P
+        = \dfrac{\tCov[\mu_X (Z ), \mu_Y (Z )]}{
+            \sqrt{
+                (\mbbE[\mbbV[X |Z = Z]] + \mbbV[\mu_X (Z )])
+                (\mbbE[\mbbV[Y |Z = Z]] + \mbbV[\mu_Y (Z )])
+            }
+        }
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1829,6 +1893,140 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
 
 \end{longtable}
 \end{customArrayStretch}
+
+
+
+
+
+
+\subsection{Kendall’s Tau Correlation (concordance) ($\tau_K$)}
+
+
+\begin{enumerate}
+    \item It is a measure of \textbf{concordance}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    \begin{definition}[Concordant \& Discordant]
+        A concordance measure is similar to correlation. 
+        To understand this alternative approach to dependency between $X$ and $Y$, we consider two independent draws from $F _{X Y}$, say $(X_1, Y_1)$ and $(X_2, Y_2)$. 
+        Independence means here that $X_1$ and $X_2$ are independent and $Y_1$ and $Y_2$ are independent. 
+        The two pairs of random variables $(X_1, Y_1)$ and $(X_2, Y_2)$ are called concordant when $(X_2 - X_1)(Y_2 - Y_1) > 0$ and discordant when $(X_2 - X_1)(Y_2 - Y_1) < 0$. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{definition}
+    \begin{enumerate}
+        \item If a pair is concordant or discordant, it means that the change in the two random variables $D_X = X_2 - X_1$ (from $X_1$ to $X_2$ ) and $D_Y = Y_2 - Y_1$ (from $Y_1$ to $Y_2$ ) are dependent. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item Concordance refers to a “positive” dependency, which means that the direction of change in $X$ is the same as the direction of change in $Y$ . 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item Discordance means a “negative” dependence, where the direction of change in $X$ is opposite to the direction of change in $Y$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item Kendall’s tau measures the strength between the dependency of $D_X$ and $D_Y$ 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            \tau_K 
+            & = P((X_2 - X_1)(Y_2 - Y_1) > 0) - P((X_2 - X_1)(Y_2 - Y_1) < 0) \\
+            &= 2 P((X_2 - X_1)(Y_2 - Y_1) > 0) - 1 \\
+            &= 4 P(X_1 < X_2, Y_1 < Y_2) - 1
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\tau_K$ varies between $-1$ and $1$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the minimum $-1$ is attained when $F_{X Y}$ is equal to the Fréchet lower bound, i.e.,
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $F _{X Y} (x, y) = \max\dCurlyBrac{F_X (x) + F_Y (y) - 1, 0}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The value $1$ is attained when $F_{X Y}$ is equal to the Fréchet upper bound, i.e., 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $F_{X Y} (x, y) = \min\dCurlyBrac{F_X (x), F_Y (y)}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item When X and Y are \textbf{independent}, Kendall’s tau is equal to \textbf{zero}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Pearson’s correlation coefficient of $D_X$ and $D_Y$ is given by $CORR(D_X , D_Y ) = CORR(X, Y )$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    % \item 
+\end{enumerate}
+
+
+
+\subsection{Spearman’s Rho Correlation ($\rho_S$)}
+
+\begin{enumerate}
+    \item Spearman’s rho quantifies concordance of change in one dimension from the first to the second observation and change in the second dimension from the first to the third observation. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item To define Spearman’s rho in terms of the joint CDF, we need to use three i.i.d. pairs $(X_1, Y_1)$, $(X_2, Y_2)$, and $(X_3, Y_3)$ of random variables having joint distribution function $F _{X Y} $, but we do not need to use all six random variables. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \rho_S = 2 [P((X_1 - X_2)(Y_3 - Y_1) > 0) - P((X_1 - X_2)(Y_3 - Y_1) < 0)]
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item It ranges from $-1$ to $1$.
+    When $X$ and $Y$ are independent, Spearman’s rho correlation coefficient becomes equal to zero. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $-1 \leq 3\tau_K - 2\rho_S \leq 1$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+\end{enumerate}
+
+
+
+
+
+\subsection{Cohen’s Kappa Statistic ($\kappa_C$)}
+
+
+\begin{enumerate}
+    \item It is a measure of \textbf{agreement}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item It measures how much two observers or raters agree on the evaluation of the same set of $n$ items or units into $K$ exhaustive and mutually exclusive classes
+    Since there is also a chance of accidentally classifying units in the same category by the raters, he created a measure that quantifies how well the raters agree on classification that is corrected for accidental or chance agreement. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This chance agreement has strong similarities with grade corrections in multiple choice exams.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The bivariate random variables $X$ and $Y$, which represents two readings on the same unit, both take their values in $\dCurlyBrac{1, 2, 3, \cdots , K }$. 
+    The joint PDF is fully defined by the set of PDF parameters $p_{11}, p_{12}, \cdots , p_{1K}$, $p_{21}, p_{22}, \cdots , p_{2K}$, $\cdots , p_{K 1}, p_{K 2}, \cdots , p_{K K}$ given by $P(X = x, Y = y) = p_{x y} \geq 0$, and $\dsum^K_{x=0} \dsum^K_{y=0} p_{x y} = 1$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The probability $p_{x y}$ represents the probability that a unit is classified by the first rater in class $x$ and by the second rater in class $y$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the probability $p_{kk}$ indicates the probability that both raters classify a unit in the same class $k$. 
+    This implies that when $p_{x y} = 0$ for every $x \neq y$, there will be no difference in classification between the two raters.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+\end{enumerate}
+
+
+
+
 
 
 
