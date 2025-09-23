@@ -1459,7 +1459,7 @@
     \item 
     $
         \begin{aligned}
-            E[\mu_Y (X)] 
+           \mbbE[\mu_Y (X)] 
             &= \dsum^\infty_{x=0} \mu_Y (x)\ f_X (x)
             = \dsum^\infty_{x=0} \mbbE(Y |X = x)\ f_X (x)
             = \dsum^\infty_{x=0} \dsum^\infty_{y=0} y\ f_{Y |X} (y|x)\ f_X (x) \\
@@ -1596,6 +1596,9 @@
         \item This correlation coefficient is often referred to as the \textbf{intraclass correlation coefficient} (ICC).
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
+
+    \item Together with the sample variances $S^2_X$ and $S^2_Y $, which are estimators for $\sigma^2_X = \sigma^2_W + \sigma^2_U$ and $\sigma^2_Y = \sigma^2_W + \sigma^2_V $, respectively, we may obtain an estimator for the variance $\sigma^2_W$ of $W$ , using $r_P S_X S_Y$ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
@@ -1896,6 +1899,88 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
 
 
 
+\subsubsection{Pearson’s Correlation Coefficient estimator ($r_P$)}
+
+\begin{enumerate}
+    \item assume that we have observed the pairs of observations $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n , Y_n )$ on $n$ units, being i.i.d. $(X_i , Y_i ) \sim F_{X Y}$ 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Since the pairs are identically distributed, the covariance $\tCov[X_i , Y_i]$ is equal to $\tCov[X, Y]$ for all units $i$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{independence between pairs of variables}: $\mbbE[(X_i - \mu_X )(Y_j - \mu_Y )] = \mbbE[X_j - \mu_X] \mbbE[Y_i - \mu_Y] = 0$, when $i \neq j$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Sample Covariance}: 
+    $
+        S_{X Y} = \dfrac{1 }{n - 1} \dsum^n_{i=1} (X_i - \bar{X})(Y_i - \bar{Y} )
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            &\mbbE[S_{X Y}] 
+            = \dfrac{1}{n - 1} \dsum_{i=1}^n \mbbE[(X_i - \bar{X} )(Y_i - \bar{Y} )]
+            = \dfrac{1}{n - 1} \dsum_{i=1}^n\mbbE[(X_i - \mu_X + \mu_X - \bar{X})(Y_i - \mu_Y + \mu_Y - \bar{Y} )]  \\
+            &= \dfrac{1}{n - 1} \dsum_{i=1}^n\mbbE[(X_i - \mu_X )(Y_i - \mu_Y ) - (X_i - \mu_X )( \bar{Y} - \mu_Y ) - ( \bar{X} - \mu_X )(Y_i - \mu_Y ) + ( \bar{X} - \mu_X )( \bar{Y} - \mu_Y )] \\
+            &= \dfrac{n}{n - 1} \tCov[X, Y] - 2 \dfrac{1}{n(n - 1)} \dsum_{i=1}^n\mbbE[(X_i - \mu_X )(Y_i - \mu_Y )] + \dfrac{1}{n(n - 1)} \dsum_{i=1}^n \mbbE[(X_i - \mu_X )(Y_i - \mu_Y )] \\
+            &= \tCov[X, Y]
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The sample version of Pearson’s correlation, $r_P$ , also called the \textbf{product-moment correlation coefficient} or \textbf{sample correlation coefficient}, can now be computed by substituting the sample covariance and the sample variances $S^2_X$ and $S^2_Y$ in the definition of $\rho_P$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        r_P = \dfrac{S_{X Y} }{S_X S_Y}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The product-moment correlation $r_P$ is typically not unbiased, which means that $\mbbE[r_P] \neq \rho_P$ . 
+    The reason is that both the numerator and the denominator are random variables and the expectation of a ratio is not equal to the ratio of the expectations.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The expectation of the numerator in $r_P$ is unbiased for the numerator in the definition of Pearson’s correlation $\rho_P$. (as $\mbbE[S_{X Y}] = \tCov[X, Y]$)
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            &r_P 
+            = \dfrac{S_{X Y} }{S_X S_Y}
+            = \dfrac{\dsum^n_{i=1} (X_i - \bar{X} )(Y_i - \bar{Y} )}{(n - 1)S X SY}
+            = \dfrac{\dsum^n_{i=1} X_i Y_i - n \bar{X} \bar{Y}}{(n - 1)S X SY} \\[0.3cm]
+            &= \dfrac{\dsum^n_{i=1} (X_i - \bar{X})(Y_i - \bar{Y} )}{\sqrt{\dsum^n_{i=1} (X_i - \bar{X} )^2 \dsum^n_{i=1} (Y_i - \bar{Y} )^2}}
+            = \dfrac{n \dsum^n_{i=1} X_i Y_i - \dsum^n_{i=1} X_i \dsum^n_{i=1} Y_i}{\sqrt{n \dsum^n_{i=1} X^2_i - \dParenBrac{\dsum^n_{i=1} X_i}^2} \sqrt{n \dsum^n_{i=1} Y^2_i - \dParenBrac{\dsum^n_{i=1} Y_i}^2}}
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The asymptotic distribution of $r_P$ is normal when the pairs $(X_i , Y_i )$ are i.i.d. $F_{ X Y}$ with finite fourth central moments. 
+    More specifically, $\sqrt{n}(r_P - \rho_P ) \sim \mathcal{N}\dParenBrac{0, \dfrac{n(1 - \rho^2_P )^2}{n - 3}} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If the observed data is \textbf{not normal} and the \textbf{sample size is relatively large}, the asymptotic confidence interval may be applied directly on the product-moment estimator, i.e.,
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    .\hfill
+    $
+        \left(
+            r_P - \dfrac{z_{1-\alpha/2}(1 - r^2_P )}{\sqrt{n-3}},
+            \ r_P + \dfrac{z_{1-\alpha/2}(1 - r^2_P )}{\sqrt{n-3}}
+        \right]
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item As an alternative to this large sample approach, \textbf{Fisher z-transformation} is also frequently applied when the underlying data is \textbf{not normally} distributed.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
 
 
 
@@ -1967,6 +2052,70 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
 
 
 
+
+\subsubsection{Kendall’s Tau Correlation estimator ($r_K$)}
+
+\begin{enumerate}
+    \item 
+    $
+        \begin{aligned}
+            r_K
+            &= \dfrac{1}{n(n - 1)} \dsum^n _{i=1} \dsum^n _{j=1} \tSgn(X_j - X_i )\tSgn(Y_j - Y_i )\\
+            &= \dfrac{2}{n(n - 1)} \dsum^{n-1}_{i=1} \dsum^n  _{j=i+1} \tSgn(X_j - X_i )\tSgn(Y_j - Y_i )
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  $r_K$ depends only on the signs of $X_j - X_i$ and $Y_j - Y_i$ , which implies that the estimator is independent of monotone transformations (increasing or decreasing functions) of the data.
+    If we apply the estimator on $(\psi_1(X_1), \psi_2(Y_1))$, $(\psi_1(X_2), \psi_2(Y_2))$, $\cdots$ , $(\psi_1(X_n ), \psi_2(Y_n ))$, when both $\psi_1$ and $\psi_2$ are increasing or both decreasing functions, we obtain the exact same estimator.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The distribution function of this estimator is approximately normal when sample size converges to infinity. 
+    Studying its moments is difficult, but the exact variance of $r_K$ has been determined at $\dfrac{2(2n + 5)}{3n(n - 1)}$, when the pairs are uncorrelated (i.e., $\tau_K = 0$). 
+    The variance of $r_K$ is bounded from above with $\mbbV[r_K] \leq \dfrac{2(1 - \tau^2_K )}{n}$ 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  $100\%(1 - \alpha)$ \textbf{confidence interval} is provided based on the \textbf{Fisher z-transformation}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item The variance of $r_K$ in the transformed Fisher z scale has been determined at $\dfrac{0.437}{n - 4}$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The $100\%(1 - \alpha)$ confidence interval is then determined by
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\[0.3cm]
+        .\hfill
+        $
+            \left(
+                z_{r_K} - z_{1-\alpha/2} \sqrt{\dfrac{0.437}{n - 4}},
+                \ z_{r_K} + z_{1-\alpha/2} \sqrt{\dfrac{0.437}{n - 4}}
+            \right]
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\[0.3cm]
+        with $z_{r_K} = 0.5[\log(1 + r_K ) - \log(1 - r_K )]$ and $z_p$ the $p$-th quantile of the standard normal distribution.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item  In the original scale, the confidence interval becomes:
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\[0.3cm]
+        .\hfill
+        $
+            \left(
+                \dfrac{\exp(2[z_{r_K} - z_{1-\alpha/2} \sqrt{0.437/(n - 4)}]) - 1}{\exp(2[z_{r_K} - z_{1-\alpha/2} \sqrt{0.437/(n - 4)}]) + 1},
+                \ \dfrac{\exp(2[z_{r_K} + z_{1-\alpha/2} \sqrt{0.437/(n - 4)}]) - 1}{\exp(2[z_{r_K} + z_{1-\alpha/2} \sqrt{0.437/(n - 4)}]) + 1}
+            \right]
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
 \subsection{Spearman’s Rho Correlation ($\rho_S$)}
 
 \begin{enumerate}
@@ -2021,10 +2170,51 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     This implies that when $p_{x y} = 0$ for every $x \neq y$, there will be no difference in classification between the two raters.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    
+    \item when the ratings are \textbf{independent}, i.e., $P(X = x, Y = y) = f_X (x)\ f_Y (y)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $p_O = \dsum^K_{k=1} p_{kk}$: It represents the probability that both raters classify units in the same classes. 
+    When it is equal to $1$, there is perfect agreement. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $p_E = \dsum^K_{k=1} f_X (k)\ f_Y (k)$: probability of correctly classifying units in the same classes
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\kappa_C = \dfrac{p_O - p_E}{1 - p_E}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item kappa statistic can become smaller than zero which means \textbf{discordance}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item For ordinal random variables there exists a weighted version of Cohen’s kappa. 
+    When $X$ and $Y$ are further apart, i.e., $\dabs{X - Y} > 1$, this seems to be a more serious misclassification then when $X$ and $Y$ just differ one class, i.e., $\dabs{X - Y} = 1$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
+
+\begin{customArrayStretch}{1.5}
+\begin{longtable}{| r | l |}
+
+\hline \endfirsthead
+\hline \endhead
+
+\hline 
+\caption*{Rule of thumb} \\
+\endfoot
+
+\hline 
+\caption*{Rule of thumb} \\
+\endlastfoot
+
+$0.80 < \kappa_C \leq 1.00$ & High agreement \\ \hline
+$0.60 < \kappa_C \leq 0.80$ & Substantial agreement \\ \hline
+$0.40 < \kappa_C \leq 0.60$ & Moderate agreement \\ \hline
+$0.20 < \kappa_C \leq 0.40$ & Fair agreement \\ \hline
+$0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
+
+\end{longtable}
+\end{customArrayStretch}
 
 
 

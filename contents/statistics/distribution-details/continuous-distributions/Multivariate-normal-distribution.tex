@@ -97,6 +97,48 @@
 
     \item Spearman’s rho correlation: $\rho_S = \dfrac{6}{\pi}\arcsin\dParenBrac{\dfrac{\rho}{2}}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item if $\rho_P = 0$ and the pairs $(X_i , Y_i )$ are i.i.d. bivariate normally distributed, the distribution function of \textbf{Pearson’s Correlation Coefficient estimator} $r_P$ is related to the $t$-distribution.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item  CDF of $\dfrac{r_P \sqrt{n - 2}}{\sqrt{1 - r_P}}$ has the CDF of a t-distribution with $n - 2$ degrees of freedom.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \end{enumerate}
+
+    \item  For any value of $\rho_P$, but still assuming that the pairs $(X_i , Y_i )$ are bivariate normally distributed, $z_{r_P} = 0.5[\log(1 + r_P ) - \log(1 - r_P )]$ is approximately normally distributed with mean $0.5[\log(1 + \rho_P ) - \log(1 - \rho_P )]$ and variance $\dfrac{1}{n - 3}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    Transformation of $r_P \mapsto z_{r_P}$ is called \textbf{Fisher z-transformation}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, common/online/chatgpt}
+
+    \item Under the assumption of normality, it is common to use the Fisher z-transformation and calculate the $100\%(1 - \alpha)$ confidence interval by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    .\hfill
+    $
+        \left(
+            \dfrac{1}{2}\ \log\dParenBrac{\dfrac{1 + r_P}{ 1 - r_P}} - \dfrac{z_{1-\alpha/2}}{\sqrt{n - 3}} ,
+            \ \dfrac{1}{2}\ \log\dParenBrac{\dfrac{1 + r_P}{ 1 - r_P}} + \dfrac{z_{1-\alpha/2}}{\sqrt{n - 3}}
+        \right ]
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    with $z_{1 - p}$ the $p$-th upper quantile of the standard normal distribution function.
+    
+    
+    \item These limits can then be transformed back to the original scale using the inverse transformation $\dfrac{\exp({2x}) - 1}{\exp({2x}) + 1}$ of the Fisher $z$-transformation.
+    Confidence interval in the original scale is
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    .\hfill
+    $
+        \left(
+            \dfrac{\exp{2[z_{r_P} - z_{1-\alpha/2}/\sqrt{n-3}]} - 1}{\exp{2[z_{r_P} - z_{1-\alpha/2}/\sqrt{n-3}]} + 1},
+            \ \dfrac{\exp{2[z_{r_P} + z_{1-\alpha/2}/\sqrt{n-3}]} - 1}{\exp{2[z_{r_P} + z_{1-\alpha/2}/\sqrt{n-3}]} + 1}
+        \right]
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 

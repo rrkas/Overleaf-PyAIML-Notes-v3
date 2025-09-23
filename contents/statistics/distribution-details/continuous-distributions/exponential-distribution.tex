@@ -53,7 +53,7 @@
 
 
 
-\subsection{Farlie–Gumbel–Morgenstern Family}
+\subsection{Farlie–Gumbel–Morgenstern (FGM) Family}
 
 \begin{enumerate}
     \item assume that $F_X$ and $F_Y$ are exponential CDFs with parameters $\lambda_X$ and $\lambda_Y$ , respectively
@@ -65,7 +65,12 @@
     \item $\tCov[X, Y] = -\dfrac{\alpha}{4\lambda_X \lambda_Y} $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Pearson’s correlation coefficient: $\rho_P = -\dfrac{\alpha}{4}$ 
+    \item \textbf{Pearson’s correlation coefficient}: $\rho_P = -\dfrac{\alpha}{4}$ 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Pearson’s correlation coefficient estimator} ($r_P$): 
+    The dependency parameter $\alpha$ can be estimated by $r_P \bar{X} \bar{Y}$ . 
+    Indeed, $r_P$ estimates $\alpha\lambda^{-1}_X \lambda^{-1}_Y$ and the sample averages $\bar{X}$ and $\bar{Y}$ estimate the parameters $\lambda^{-1}_X$ and $\lambda^{-1}_Y$ , respectively.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 

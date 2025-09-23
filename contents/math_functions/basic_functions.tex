@@ -1,7 +1,7 @@
 \chapter{Basic Functions}\label{Basic Functions}
 
 
-\section{Absolute Value function/ Modulus Function ( $\dabs{x}$ ) \cite{wiki/Absolute-value}}\label{Basic Functions/Absolute Value function or Modulus Function}
+\section{Absolute Value function/ Modulus Function ( $\dabs{x}$ )}\label{Basic Functions/Absolute Value function or Modulus Function}
 
 \begin{table}[H]
     \begin{minipage}{0.35\linewidth}
@@ -36,7 +36,7 @@ def get_absolute_value(val):
 
 \subsection*{Properties}
 
-\subsubsection*{Fundamental properties \cite{wiki/Absolute-value}} \label{Basic Functions/Absolute Value function or Modulus Function/Fundamental properties}
+\subsubsection*{Fundamental properties} \label{Basic Functions/Absolute Value function or Modulus Function/Fundamental properties}
 
 \begin{customArrayStretch}{1.2}
 \begin{tabular}{r l l}
@@ -72,9 +72,10 @@ def get_absolute_value(val):
 
 \begin{enumerate}
     \item ${\displaystyle |a|\leq b\iff -b\leq a\leq b}$
+    \hfill \cite{wiki/Absolute-value}
 
     \item ${\displaystyle |a|\geq b\iff b\leq a\leq -b\ }$
-
+    \hfill \cite{wiki/Absolute-value}
 \end{enumerate}
 
 \subsection*{Derivative} \label{Basic Functions/Absolute Value function or Modulus Function/Derivative}
@@ -83,14 +84,17 @@ def get_absolute_value(val):
     \item $
         {\displaystyle {\dfrac {d\left|x\right|}{dx}}={\dfrac {x}{|x|}}={\begin{cases}-1&x<0\\1&x>0\end{cases}}}
     $
+    \hfill \cite{wiki/Absolute-value}
 
     \item $
         {\displaystyle {d \over dx}f(|x|)={x \over |x|}(f'(|x|))}
     $ \hfill (discontinuous at $x=0$)
+    \hfill \cite{wiki/Absolute-value}
 
     \item $
         {\displaystyle {d \over dx}|f(x)|={f(x) \over |f(x)|}f'(x)}
     $ \hfill (discontinuous at $f(x)=0$)
+    \hfill \cite{wiki/Absolute-value}
 \end{enumerate}
 
 
@@ -99,7 +103,7 @@ def get_absolute_value(val):
 $
     {\displaystyle \dint \left|x\right|dx={\dfrac {x\left|x\right|}{2}}+C}
 $
-
+\hfill \cite{wiki/Absolute-value}
 
 
 
@@ -122,9 +126,17 @@ $
 
 
 
+\section{Sign Function ($\tSgn(x)$)}
 
-
-
+$
+    \tSgn(x)
+    = \begin{cases}
+        1 & \text{ if } x>0 \\
+        0 & \text{ if } x=0 \\
+        -1 & \text{ if } x<0
+    \end{cases}
+$
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
 
 
