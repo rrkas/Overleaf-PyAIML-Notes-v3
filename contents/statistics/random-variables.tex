@@ -1644,7 +1644,7 @@
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Pearson’s correlation coefficient:
+    \item \textbf{Pearson’s correlation coefficient}:
     $
         \rho_P = \dfrac{\alpha\ \mbbE[X (1 - 2F_X (X))]\ \mbbE[Y (1 - 2F_Y (Y ))] }{\sigma_X \sigma_Y}
     $
@@ -1657,10 +1657,17 @@
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item Kendall’s tau: $\tau_K = \dfrac{2\alpha}{9}$
+    \item \textbf{Kendall’s tau}: $\tau_K = \dfrac{2\alpha}{9}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Spearman’s rho correlation: $\rho_S = \dfrac{\alpha}{3}$
+    \item \textbf{Spearman’s rho correlation}: $\rho_S = \dfrac{\alpha}{3}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Kendall’s tau estimator} ($r_K$):
+    $\alpha$ can be estimated by $\hat{\alpha} = \dfrac{9r_K}{2}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    It should be noted that when these estimates are outside the range of the dependency parameters (i.e., $\hat{\alpha} \notin [-1, 1]$), the data may not support these families of distributions.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
@@ -1692,10 +1699,17 @@
     \item There is \textbf{no} $\lambda$ value that leads to $F_{LU} (x, y) = F_X (x)\ F_Y (y)$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Kendall’s tau: $\tau_K = \dfrac{2\lambda - 1}{3}$
+    \item \textbf{Kendall’s tau}: $\tau_K = \dfrac{2\lambda - 1}{3}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Spearman’s rho correlation: $\rho_S = \dfrac{2\lambda -1}{3}$
+    \item \textbf{Spearman’s rho correlation}: $\rho_S = \dfrac{2\lambda -1}{3}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Kendall’s tau estimator} ($r_K$):
+    $\lambda$ can be estimated by $\hat{\lambda} = \dfrac{3r_K + 1}{2}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    It should be noted that when these estimates are outside the range of the dependency parameters (i.e., $\hat{\lambda} \notin [0, 1]$), the data may not support these families of distributions.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
@@ -2144,6 +2158,76 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
 
 
 
+\subsubsection{Spearman’s Rho Correlation estimator ($r_S$)}
+
+\begin{enumerate}
+    \item The estimator for Spearman’s rho $\rho_S$ is defined by the product-moment correlation coefficient on the ranks of the pairs of observations. 
+    It is referred to as \textbf{Spearman’s rank correlation}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If we assume that we observe the pairs of random variables $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$, we can define the ranks for the $x$ and $y$ coordinates separately.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The rank $R^X_k$ of $X_k$ is the position of $X_k$ in the ordered values $X_{(1)}$, $X_{(2)}$ , $\cdots$ , $X_{(n)}$ from small to large. 
+    If we additionally define the rank $R^Y_k$ for $Y_k$ among the random variables $Y_{(1)}$, $Y_{(2)}$ , $\cdots$ , $Y_{(n)}$, we have translated the pair $(X_k ,\ Y_k )$ to a pair of ranks $(R^X_k ,\ R^Y_k )$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    \textbf{Note}: if the same value occurs multiple times they all receive the same rank.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    \textbf{Example}: if we have observed five observations $x_1 = 5$, $x_2 = 1$, $x_3 = 7$, $x_4 = 2$, and $x_5 = 4$, then the observed ranks will be equal to $r^X_1 = 4$, $r^X_2 = 1$, $r^X_3 = 5$, $r^X_4 = 2$, and $r^X_5 = 3$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        r_S 
+        = \dfrac{\dsum^n_{i=1} (R^X_i - \bar{R}^X )(R^Y_i - \bar{R}^Y )}{
+            \sqrt{\dsum^n_{i=1} (R^X_i - \bar{R}^X )^2\ \dsum^n_{i=1} (R^Y_i - \bar{R}^Y )^2}
+        }
+        = 1 - 6 \dsum^n_{i=1} \dfrac{(R^Y_i - R^X_i)^2}{n^3 - n}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    with $\bar{R}^X$ and $\bar{R}^Y$ the average ranks for the $X$ and $Y$ variables, i.e., $\bar{R}^X = \dfrac{1}{n} \dsum^n_{k=1} R^X_k$ and $\bar{R}^Y = \dfrac{1}{n} \dsum^n_{k=1}  R^Y_k$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item As the total number of ranks in a sample of n observations is equal to $\dfrac{n(n + 1)}{2}$, the average ranks $\bar{R}^X$ and $\bar{R}^Y$ are equal to $\bar{R}^X = \bar{R}^Y = \dfrac{n + 1}{2}$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Since Spearman’s rank correlation depends on the ranks of the variables $x$ and $y$, the estimator is independent of monotonic transformations (increasing or decreasing functions) of the data. 
+    Spearman rho’s estimator $r_S$ on $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$ is exactly the same as Spearman rho’s estimator $r_S$ on the transformed pairs $(\psi_1(X_1), \psi_2(Y_1))$, $(\psi_1(X_2), \psi_2(Y_2))$, $\cdots$ , $(\psi_1(X_n ), \psi_2(Y_n ))$, when $\psi_1$ and $\psi_2$ are both increasing or both decreasing functions.`
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $
+        \begin{aligned}
+            &P(R^X_n = n) 
+            = P(X_n = \max\dCurlyBrac{X_1, X2, \cdots , X_n })
+            = P(X_n \geq X_1, X_n \geq X_2, \cdots , X_n \geq X_{n-1}) \\
+            &= \dint_{-\infty}^\infty P(X_n \geq X_1, X_n \geq X_2, \cdots , X_n \geq X_{n-1}|X_n = x)\ f_{X_n} (x)\ dx  \\
+            &= \dint_{-\infty}^\infty P(X_1 \leq x, X_2 \leq x, \cdots , X_{n-1} \leq x|X_n = x)\ f_{X_n} (x)\ dx
+            = \dint_{-\infty}^\infty F^{n-1}_X (x)\ f_{X_n} (x)\ dx
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    with $f_{X_n} = f_X$ , since $X_1 , X_2, \cdots , X_n$ are i.i.d. with CDF $F_X $.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection{Cohen’s Kappa Statistic ($\kappa_C$)}
 
@@ -2160,7 +2244,7 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The bivariate random variables $X$ and $Y$, which represents two readings on the same unit, both take their values in $\dCurlyBrac{1, 2, 3, \cdots , K }$. 
-    The joint PDF is fully defined by the set of PDF parameters $p_{11}, p_{12}, \cdots , p_{1K}$, $p_{21}, p_{22}, \cdots , p_{2K}$, $\cdots , p_{K 1}, p_{K 2}, \cdots , p_{K K}$ given by $P(X = x, Y = y) = p_{x y} \geq 0$, and $\dsum^K_{x=0} \dsum^K_{y=0} p_{x y} = 1$.
+    The joint PDF is fully defined by the set of PDF parameters $p_{11}$, $p_{12}$, $\cdots$ , $p_{1K}$, $p_{21}$, $p_{22}$, $\cdots$ , $p_{2K}$, $\cdots$ , $p_{K 1}$, $p_{K 2}$, $\cdots$ , $p_{K K}$ given by $P(X = x, Y = y) = p_{x y} \geq 0$, and $\dsum^K_{x=0} \dsum^K_{y=0} p_{x y} = 1$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The probability $p_{x y}$ represents the probability that a unit is classified by the first rater in class $x$ and by the second rater in class $y$. 

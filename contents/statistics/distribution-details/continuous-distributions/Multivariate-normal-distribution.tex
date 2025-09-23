@@ -139,6 +139,31 @@
         \right]
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Although we may not prefer the use of Spearman’s correlation coefficient over Pearson’s product-moment estimator under the assumption of normally and independently distributed pairs $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$, the mean and variance of $r_S$ have been established under this setting. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item Thus the parameter $\rho$ of the bivariate normal distribution can now be estimated by $\hat{\rho} = 2 \sin(\pi r_S /6)$. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+        \item \textbf{Mean}:
+        $
+            \rho_S 
+            = \mbbE[r_S] 
+            = \dfrac{6}{(n + 1)\pi} (\arcsin(\rho) + (n - 2) \arcsin(\rho/2)) 
+            \approx \dfrac{6}{\pi} \arcsin(\rho/2)
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item \textbf{Variance}:
+        $
+            \mbbV[r_S] 
+            \approx \dfrac{1}{ n} (1 - 1.1563465\rho^2 + 0.304743\rho^4 + 0.155286\rho^6)
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    
 \end{enumerate}
 
 
