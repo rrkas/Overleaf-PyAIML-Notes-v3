@@ -1666,8 +1666,12 @@
     \item \textbf{Kendall’s tau estimator} ($r_K$):
     $\alpha$ can be estimated by $\hat{\alpha} = \dfrac{9r_K}{2}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \\[0.3cm]
-    It should be noted that when these estimates are outside the range of the dependency parameters (i.e., $\hat{\alpha} \notin [-1, 1]$), the data may not support these families of distributions.
+
+    \item \textbf{Spearman’s rho estimator} ($r_S$):
+    $\alpha$ can be estimated by $\hat{\alpha} = 3r_K$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item[] It should be noted that when these estimates are outside the range of the dependency parameters (i.e., $\hat{\alpha} \notin [-1, 1]$), the data may not support these families of distributions.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
@@ -1708,8 +1712,12 @@
     \item \textbf{Kendall’s tau estimator} ($r_K$):
     $\lambda$ can be estimated by $\hat{\lambda} = \dfrac{3r_K + 1}{2}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    \\[0.3cm]
-    It should be noted that when these estimates are outside the range of the dependency parameters (i.e., $\hat{\lambda} \notin [0, 1]$), the data may not support these families of distributions.
+
+    \item \textbf{Spearman’s rho estimator} ($r_S$):
+    $\lambda$ can be estimated by $\hat{\lambda} = \dfrac{3r_S + 1}{2}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item[] It should be noted that when these estimates are outside the range of the dependency parameters (i.e., $\hat{\lambda} \notin [0, 1]$), the data may not support these families of distributions.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
@@ -2213,6 +2221,27 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     \\[0.3cm]
     with $f_{X_n} = f_X$ , since $X_1 , X_2, \cdots , X_n$ are i.i.d. with CDF $F_X $.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The Fisher z-transformation of $r_S$ uses normal confidence intervals with a variance $S^2_{r_S}$ of $r_S$ in this transformed scale. 
+    Different suggestions for this variance have been proposed: $S^2_{r_S} = 1.06/(n - 3)$, $S^2_{r_S} = (1 + r^2_S /2)/(n - 3)$, and $S^2_{r_S} = (n - 2)^{-1} + \dabs{z_{r_S}}/[6n + 4\sqrt{n}]$, with $z_{r_S}$ the Fisher z-transformation of $r_S$ , i.e., $z_{r_S} = 0.5[\log(1 + r_S ) - \log(1 - r_S )]$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item \textbf{$100\%(1 - \alpha)$ confidence interval}:
+        $ (z_{r_S} - z_{1-\alpha/2} S_{r_S} ,\ z_{r_S} + z_{1-\alpha/2} S_{r_S}] $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Taking the inverse Fisher z-transformation on these limits, a $100\%(1 - \alpha)$ confidence interval for $\rho_S$ is constructed. This gives confidence limits:
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\
+        .\hfill
+        $
+            \left(
+                \dfrac{\exp(2[z_{r_S} - z_{1-\alpha/2} S_{r_S} ]) - 1}{\exp(2[z_{r_S} - z_{1-\alpha/2} S_{r_S} ]) + 1},
+                \ \dfrac{\exp(2[z_{r_S} + z_{1-\alpha/2} S_{r_S} ]) - 1}{\exp(2[z_{r_S} + z_{1-\alpha/2} S_{r_S} ]) + 1}
+            \right]
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
 \end{enumerate}
 
 
@@ -2244,6 +2273,7 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The bivariate random variables $X$ and $Y$, which represents two readings on the same unit, both take their values in $\dCurlyBrac{1, 2, 3, \cdots , K }$. 
+    The data can be summarized in a $K \times K$ contingency table.
     The joint PDF is fully defined by the set of PDF parameters $p_{11}$, $p_{12}$, $\cdots$ , $p_{1K}$, $p_{21}$, $p_{22}$, $\cdots$ , $p_{2K}$, $\cdots$ , $p_{K 1}$, $p_{K 2}$, $\cdots$ , $p_{K K}$ given by $P(X = x, Y = y) = p_{x y} \geq 0$, and $\dsum^K_{x=0} \dsum^K_{y=0} p_{x y} = 1$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -2305,6 +2335,107 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
 
 
 
+\subsubsection{Cohen’s Kappa Statistic estimator (hat $\kappa_C$)}
+
+\begin{enumerate}
+    \item In cell $X = x$ and $Y = y$ of the contigency table, the number of pairs, say $N_{x y}$ , from $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$ with the combination $(x, y)$ is reported. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        N x y = \dsum^n_{i=1} 1_{\dCurlyBrac{x}}(X_i )\ 1_{\dCurlyBrac{y}}(Y_i )
+    $
+    \hfill
+    where 
+    $
+        1_A(x) = 
+        \begin{cases}
+            1 & \text{ if } x \in A \\
+            0 & \text{ otherwise}
+        \end{cases}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  the sum of all numbers in the contingency table should add up to $n$: $\dsum^K_{x=1} \dsum^K_{y=1} N_{x y} = n$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $N_{x\cdot} = \dsum^K_{y=1} N_{x y}$ 
+    \hfill
+    $N_{\cdot y} = \dsum^K_{x=1} N_{x y}$
+    \hfill
+    $\hat{p}_O = \dfrac{1}{ n} \dsum^K_{k=1} N_{kk} $
+    \hfill
+    $\hat{p}_E = \dfrac{1}{ n^2} \dsum^K_{k=1} N_{k\cdot}N_{\cdot k} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The distribution function of $N_{x y}$ is \textbf{binomial} with parameters $n$ and $p_{x y} = P(X = x, Y = y)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The multivariate PMF for $N_{11}$, $N_{12}$, $\cdots$ , $N_{1K}$ , $N_{21}$, $N_{22}$, $\cdots$ , $N_{2K}$ , $\cdots$ , $N_{K 1}$, $N_{K 2}$, $\cdots$ , $N_{K K}$ has a \textbf{multinomial distribution} function given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        P(N_{11} = n_{11}, N_{12} = n_{12}, \cdots , N_{K K} = n_{K K} ) 
+        = n! \dprod^K_{x=1} \dprod^K_{y=1} \dParenBrac{\dfrac{p^{n_{x y}}_{x y}}{n_{x y} !}}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Cohen’s Kappa statistic is now estimated by $ \hat{\kappa}_C = \dfrac{\hat{p}_O - \hat{p}_E}{1 - \hat{p}_E} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbV[\hat{κ}_C] \approx \dfrac{p_O (1 - p_O )}{n(1 - p_E )^2}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Comparison: Pearson’s Rho ($\rho_P$), Spearman’s Rho ($\rho_S$) or Kendall’s Tau Correlation ($\tau_K$)}
+
+\begin{enumerate}
+    \item The \textbf{product-moment correlation} ($r_P$) provides a measure that is particularly suitable for \textbf{linear} associations between variables. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item when the data are bivariate normally distributed, or when transformations can be applied that would make the data approximately bivariate normal, it is suggested to apply the product-moment estimator on the (transformed) data. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Pearson’s product-moment estimator is sensitive to outliers.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item for non-normal bivariate data (that is difficult to transform into normally dsitributed data) it is probably best not to use Pearson’s product-moment estimator.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item When to choose between Spearman’s rank or Kendall’s tau estimator:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item Kendall’s tau estimator has a clear interpretation. 
+        It measures the difference between concordant and discordant pairs. 
+        The interpretation of Spearman is more difficult, although it is often presented as a robust version of Pearson’s product-moment estimator.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Kendall’s tau estimator is computationally more intensive, since it requires the comparisons of pairs with all other pairs, which is not needed with Spearman’s rank. 
+        Thus on really large data, Kendall’s tau may lead to numerical issues. However, for large datasets Kendall’s tau estimator is more efficient than Spearman’s rank correlation
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item when the data contain ties (i.e., values among the x variable and/or values among the y variable are equal), Spearman’s rank cor- relation has a smaller standard error than Kendall’s tau estimator
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
 
 
 
