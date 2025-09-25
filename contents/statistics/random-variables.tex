@@ -2210,7 +2210,7 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     $
         \begin{aligned}
             &P(R^X_n = n) 
-            = P(X_n = \max\dCurlyBrac{X_1, X2, \cdots , X_n })
+            = P(X_n = \max\dCurlyBrac{X_1, X_2, \cdots , X_n })
             = P(X_n \geq X_1, X_n \geq X_2, \cdots , X_n \geq X_{n-1}) \\
             &= \dint_{-\infty}^\infty P(X_n \geq X_1, X_n \geq X_2, \cdots , X_n \geq X_{n-1}|X_n = x)\ f_{X_n} (x)\ dx  \\
             &= \dint_{-\infty}^\infty P(X_1 \leq x, X_2 \leq x, \cdots , X_{n-1} \leq x|X_n = x)\ f_{X_n} (x)\ dx
@@ -2343,7 +2343,7 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \\
     .\hfill
     $
-        N x y = \dsum^n_{i=1} 1_{\dCurlyBrac{x}}(X_i )\ 1_{\dCurlyBrac{y}}(Y_i )
+        N_{x y} = \dsum^n_{i=1} 1_{\dCurlyBrac{x}}(X_i )\ 1_{\dCurlyBrac{y}}(Y_i )
     $
     \hfill
     where 
@@ -2385,10 +2385,167 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \item Cohen’s Kappa statistic is now estimated by $ \hat{\kappa}_C = \dfrac{\hat{p}_O - \hat{p}_E}{1 - \hat{p}_E} $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\mbbV[\hat{κ}_C] \approx \dfrac{p_O (1 - p_O )}{n(1 - p_E )^2}$
+    \item $\mbbV[\hat{\kappa}_C] \approx \dfrac{p_O (1 - p_O )}{n(1 - p_E )^2}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  asymptotic $100\%(1 - \alpha)$ confidence interval:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        \left(
+            \hat{\kappa}_C - z_{1-\alpha/2} \dfrac{\sqrt{\hat{p}_O (1 - \hat{p}_O )}}{(1 - \hat{p}_E )\sqrt{n} },
+            \ \hat{\kappa}_C + z_{1-\alpha/2} \dfrac{\sqrt{\hat{p}_O (1 - \hat{p}_O )}}{(1 - \hat{p}_E )\sqrt{n} }
+        \right]
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    with $z_p$ the $p$-th quantile of the standard normal distribution function.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\subsection{Risk Difference, Relative Risk, and Odds Ratio}
+
+\begin{enumerate}
+    \item We assume that the bivariate binary data $(X_i , Y_i ) \in \dCurlyBrac{0, 1} \times \dCurlyBrac{0, 1}$ can be captured by the summary statistics
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $ N_{x y} = \dsum^n_{i=1} 1_{\dCurlyBrac{x}}(X_i )1_{\dCurlyBrac{y}}(Y_i ) $
+    \hfill 
+    $ (x , y ) \in \dCurlyBrac{0, 1} \times \dCurlyBrac{0, 1} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If we assume that $Y$ represents some kind of outcome and $X$ represents some kind of exposure, with $X = 0$ the reference group, the estimators of the risk difference ($\hat{R D}$), relative risk ($\hat{R R}$), and odds ratio ($\hat{O R}$) are defined by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item 
+        $ 
+            \hat{R D} 
+            = \dfrac{N_{11}}{N_{11} + N_{10}} - \dfrac{N_{01}}{N_{01} + N_{00}} 
+            = \dfrac{N_{11} N_{00} - N_{10} N_{01}}{(N_{11} + N_{10})(N_{01} + N_{00}) }
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $\hat{R R} = {N_{11}(N_{01} + N_{00})} {N_{01}(N_{11} + N_{10})}$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $\hat{O R} = \dfrac{N_{11} N_{00}}{N_{10} N_{01}}$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item 
+    $\hat{p}_0 = \dfrac{N_{01}}{N_{0\cdot}}$
+    \hfill
+    $\hat{p}_1 = \dfrac{N_{11}}{N_{1\cdot}}$
+    \hfill
+    $N_{x\cdot} = N_{x1} + N_{ x0}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item 
+    $
+        L_x
+        = \dfrac{
+            2N_{x\cdot } \hat{p}_x + z^2_{1-\alpha/2} 
+            - z_{1-\alpha/2} \sqrt{4N_{x\cdot } \hat{p}_x (1 - \hat{p}_x ) + z^2_{1-\alpha/2}}
+        }{
+            2(N_{x\cdot } + z^2_{1-\alpha/2}) 
+        }
+    $
+    \\[0.4cm]
+    $
+        U_x
+        = \dfrac{
+            2N_{x\cdot } \hat{p}_x + z^2_{1-\alpha/2} 
+            + z_{1-\alpha/2} \sqrt{4N_{x\cdot } \hat{p}_x (1 - \hat{p}_x ) + z^2_{1-\alpha/2}}
+        }{
+            2(N_{x\cdot } + z^2_{1-\alpha/2}) 
+        }
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    for $x \in \dCurlyBrac{0, 1}$ and $z_p$ the $p$-th quantile of the standard normal distribution function.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{Risk Difference}
+
+    \item The $100\%(1 - \alpha)$ confidence interval on the risk difference is then given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        \left(
+            \hat{R D} - \sqrt{(\hat{p}_1 - L_1)^2 + (U_0 - \hat{p}_0)^2},
+            \ \hat{R D} + \sqrt{(U_1 - \hat{p}_1)^2 + (\hat{p}_0 - L_0)^2}
+        \right]
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{Relative Risk}
+
+    \item For the relative risk, the confidence interval is calculated in the \textbf{logarithmic scale}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The estimated standard error of the logarithmic transformed relative risk is given by 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        \hat{SE}_{RR} = \sqrt{
+            \dfrac{1 - \hat{p}_0}{N_{0\cdot } \hat{p}_0}
+            + \dfrac{1 - \hat{p}_1}{N_{1\cdot } \hat{p}_1}
+        }
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the asymptotic $100\%(1 - \alpha)$ confidence interval on the logarithmic transformation of the relative risk is given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        (L_{R R} , U_{R R} ]
+        = \left(
+            \log( \hat{R R}) - z_{1-\alpha/2} \hat{S E}_{R R},
+            \ \log( \hat{R R}) - z_{1-\alpha/2} \hat{S E}_{R R}
+        \right]
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The $100\%(1 - \alpha)$ confidence interval on the relative risk is then calculated by transforming these confidence limits back to the original scale using $(\exp(L_{R R} ), \exp(U_{R R })]$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{Odds Ratio}
+
+    \item The confidence interval on the odds ratio is also calculated in the logarithmic scale using the standard error
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $ \hat{S E}_{O R} = \sqrt{N^{-1}_{00} + N^{-1}_{01} + N^{-1}_{10} + N^{-1}_{11} } $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $100\%(1 - \alpha)$ confidence interval on the odds ratio in the logarithmic scale is given by
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        (L_{O R} , U_{O R} ] =
+        \left(
+            \log( \hat{OR}) - z_{1-\alpha/2} \hat{SE}_{OR} , 
+            \ \log( \hat{OR}) + z_{1-\alpha/2} \hat{SE}_{OR}
+        \right]
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  the $100\%(1 - \alpha)$ confidence interval on the odds ratio is then calculated by transforming these confidence limits back to the original scale using $(\exp(L_{O R} ), \exp (U_{O R} )]$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
@@ -2405,7 +2562,9 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
 
 
 
-\subsection{Comparison: Pearson’s Rho ($\rho_P$), Spearman’s Rho ($\rho_S$) or Kendall’s Tau Correlation ($\tau_K$)}
+
+
+\subsection{Comparison: Pearson’s Rho ($\rho_P$), Spearman’s Rho ($\rho_S$), Kendall’s Tau Correlation ($\tau_K$), Cohen’s kappa ($\kappa_C$)}
 
 \begin{enumerate}
     \item The \textbf{product-moment correlation} ($r_P$) provides a measure that is particularly suitable for \textbf{linear} associations between variables. 
@@ -2435,7 +2594,246 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
         \item when the data contain ties (i.e., values among the x variable and/or values among the y variable are equal), Spearman’s rank cor- relation has a smaller standard error than Kendall’s tau estimator
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
+
+    \item The simplicity of Cohen’s kappa statistic has made it very popular in all kinds of sciences to quantify agreement. 
+    However, Cohen’s kappa statistic should not be used when particular outcomes of $X$ and $Y$ are rare.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Cohen’s kappa works best when each outcome has approximately the same probability of occurrence, or is at least not strongly imbalanced.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+
+
+
+
+
+\subsection{Nominal Association Statistics}
+
+\begin{enumerate}
+    \item useful for quantifying the dependency between two nominal random variables $X$ and $Y$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item They measure the departure from dependency and they are all functions of Pearson’s chi-square statistic.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Although they can be applied to nominal variables, they have also been used for ordinal and binary random variables $X$ and $Y $. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we assume that $X$ can take its value in $\dCurlyBrac{1, 2, \cdots  , K }$ and $Y$ can take its value in $\dCurlyBrac{1, 2, \cdots  , M}$ and we assume that $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots  $, $(X_n , Y_n )$ are i.i.d. with CDF $F_{X Y} $.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $N_{x y} = \dsum^n_{i=1} 1_{\dCurlyBrac{x}}(X_i )1_{\dCurlyBrac{y}}(Y_i )$
+    \hfill
+    $(x, y) \in \dCurlyBrac{1, 2, \cdots , K } \times \dCurlyBrac{1, 2, \cdots , M}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    The numbers $N_{x y}$ represent the frequencies of the cells in a $K × M$ contingency table, with $K$ rows and $M$ columns. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $N_{x\cdot}$: number of pairs $(X_i , Y_i )$ for which the $X$ variable is equal to $x$, irrespective of the value of $Y$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    .\hfill
+    $N_{x\cdot} = \dsum^M _{y=1} N_{x y}$
+    \hfill
+    $N_{\cdot y} = \dsum^K _{x=1} N_{x y}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If $X$ and $Y$ are \textbf{independent}, the joint PMF is the product of the two marginal PMFs: $P(X = x, Y = y) = P(X = x)\ P(Y = y)$ for all $(x, y) \in \dCurlyBrac{1, 2, \cdots , K } \times \dCurlyBrac{1, 2, \cdots , M}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{Cohen’s kappa statistic}
+
+    \item with Cohen’s kappa statistic, the joint PMF $P(X = x, Y = y)$ can be estimated by $N_{x y} /n$ and that the marginal PMFs $P(X = x)$ and $P(Y = y)$ can be estimated by $N_{x\cdot }/n$ and $N_{\cdot y} /n$, respectively.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{Pearson’s chi-square statistic ($\chi_P^2$)}
+
+    \item Pearson’s chi-square statistic quantifies the difference between the observed numbers $N_{x y}$ and their expected numbers $N_{x\cdot } N_{\cdot y} /n$ based on independence.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  A part of Pearson’s chi-square statistic is $[N_{x y} - N_{x\cdot} N_{\cdot y} /n]^2$ . The square is used  to make all differences positive.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Pearson normalized the squared differences with the expected numbers. 
+    The reason is that a small squared difference between $N_{x y}$ and $N_{x\cdot} N_{\cdot y} /n$ when $N_{x\cdot} N_{\cdot y} /n$ is small is not the same as a small squared difference between $N_{x y}$ and $N_{x\cdot} N_{\cdot y} /n$ when $N_{x\cdot} N_{\cdot y} /n$ is large. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Pearson’s chi-square statistic:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        \chi^2_P 
+        = \dsum^K_{x=1} \dsum^M_ {y=1} \dfrac{[N_{x y} - N_{x\cdot} N_{\cdot y} /n]^2}{N_{x\cdot} N_{\cdot y} /n} 
+        = \dfrac{1}{n} \dsum^K_{x=1} \dsum^M_ {y=1} \dfrac{[n N_{x y} - N_{x\cdot} N_{\cdot y} ]^2} {N_{x\cdot} N_{\cdot y}}
+        \geq 0
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\chi^2_P$ is equal to zero only when the observed frequencies in the cells of the contingency table are equal to the expected frequencies. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Thus the larger the value for Pearson’s chi-square statistic, the stronger the association between the two random variables $X$ and $Y $. 
+    Since it calculates the differences between observed frequencies and frequencies under the assumption of independence, Pearson’s chi-square represents a measure of departure from independence.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The CDF of Pearson’s chi-square statistic can be approximated with a chi-square distribution with $(K - 1)(M - 1)$ degrees of freedom when $X$ and $Y$ are independent.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item a disadvantage of Pearson’s chi-square statistic is that it cannot be viewed as a correlation coefficient, like Kendall’s tau and Spearman’s rho, since it is not limited by the value $1$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  In the case of two categories $K = M = 2$, the numerator $[n N_{x y} - N_{x\cdot } N_{\cdot y} ]^2 = [N_{11} N_{22} - N_{12} N_{21}]^2$ for each combination of $(x, y) \in \dCurlyBrac{1, 2} \times \dCurlyBrac{1, 2}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Pearson’s product-moment estimator can be written in terms of the con- tingency table frequencies $N_{x y }$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item for binary $X$ and $Y $, Pearson’s chi-square statistic becomes:
+    $
+        \chi^2_P = n \dfrac{[N_{11} N_{22} - N_{12} N_{21}]^2}{N_{1\cdot } N_{2\cdot } N_{\cdot 1} N_{\cdot 2}}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item For binary random variables $X$ and $Y$:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    .\hfill
+    $\dsum^n_{i=1} (X_i - \bar{X})(Y_i - \bar{Y} ) = [N_{11} N_{22} - N_{12} N_{21}]/n$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    .\hfill
+    $ \dsum^n_{i=1} (X_i - \bar{X})^2 = N_{2\cdot } N_{1\cdot }/n $
+    \hfill
+    $ \dsum^n_{i=1} (Y_i - \bar{Y} )^2 = N_{\cdot 2} N_{\cdot 1}/n $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\rho_P = \dfrac{[N_{11} N_{22} - N_{12} N_{21}]}{\sqrt{N_{1\cdot } N_{2\cdot } N_{\cdot 1} N_{\cdot 2}}}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item normalization of Pearson’s chi-square statistic with $n$ was not ideal. 
+    maximum value of Pearson’s chi-square statistic could become maximally equal to $n \min\dCurlyBrac{K - 1, M - 1}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+\subsubsection{Pearson’s squared phi-coefficient ($\phi^2$)}
+
+    \item $\phi^2 = \dfrac{\chi_P^2}{n}$ with the sample size $n$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item for binary $X$ and $Y $:
+    $
+        \phi = \dfrac{\dabs{N_{11} N_{22} - N_{12} N_{21}}}{\sqrt{N_{1\cdot } N_{2\cdot } N_{\cdot 1} N_{\cdot 2}}}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+\subsubsection{Cramér’s V ($V$)}
+
+    \item $V = \sqrt{\dfrac{\chi^2_P}{n \min\dCurlyBrac{K - 1, M - 1}}}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Cramér’s V is equal to Pearson’s $\phi$ coefficient when either the $X$ or the $Y$ variable has just two levels. 
+    Cramér’s V is the more general measure of nominal association, since it is properly normalized for all contingency tables and it reduces to Pearson’s $\phi$ for $2 \times 2$ contingency tables.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Ordinal Association Statistics}
+
+
+\begin{enumerate}
+    \item Let $X$ and $Y$ be ordinal random variable, $X$ and $Y$ can take their value in $\dCurlyBrac{1, 2, \cdots , K }$ and $\dCurlyBrac{1, 2, \cdots , M}$, respectively.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{Goodman and Kruskal’s gamma ($\gamma$)}
+
+    \item 
+    $
+        \gamma
+        = \dfrac{
+            P((X_2 - X_1)(Y_2 - Y_1) > 0) - P((X_2 - X_1)(Y_2 - Y_1) < 0)
+        }{
+            P((X_2 - X_1)(Y_2 - Y_1) > 0) + P((X_2 - X_1)(Y_2 - Y_1) < 0)
+        }
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    $ N_C = \dsum^n_{i=1} \dsum^n_{j=1} 1_{(0,\infty)} ((X_j - X_i )(Y_j - Y_i )) $
+    \hfill
+    $ N_D = \dsum^n_{i=1} \dsum^n_{j=1} 1_{(-\infty, 0)} ((X_j - X_i )(Y_j - Y_i )) $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    $N_C$ and $N_D$ represent the number of concordant and discordant pairs. 
+    The sample size $n$ is typically larger than the sum of concordant and discordant pairs, i.e., $n > N_C + N_D$ , due to the many ties in data of the $K \times M$ contingency table.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\gamma$ can be estimated by $G = \dfrac{N_C - N_D}{N_C + N_D}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item if there are no ties at all, Goodman and Kruskal’s gamma reduces to Kendall’s tau.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Let distribution function of the estimator $G$ and $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$ are i.i.d. with distribution function $F_{X Y }$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The distribution function of $\sqrt{n}(G - \gamma)$ is asymptotically normal with zero mean and a variance that is smaller than but close to:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    .\hfill
+    $
+        \dfrac{
+            2(1 - \gamma^2)
+        }{
+            P((X_2 - X_1)(Y_2 - Y_1) > 0) + P((X_2 - X_1)(Y_2 - Y_1) < 0)
+        }
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    This variance can be estimated with $\dfrac{2(1 - G^2)}{N_D + N_C}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item a $100\%(1 - \alpha)$ confidence interval on $\gamma$ using the theory of asymptotic confidence intervals:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    .\hfill
+    $
+        \left(
+            G - z_{1-\alpha/2} \sqrt{\dfrac{2(1 - G^2)}{N_D + N_C}},
+            \ G + z_{1-\alpha/2} \sqrt{\dfrac{2(1 - G^2)}{N_D + N_C}}
+        \right]
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    with $z_p$ the $p$-th quantile of the standard normal distribution function.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
