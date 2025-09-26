@@ -1894,6 +1894,9 @@
         \item $CORR(a X + b, cY + d) = CORR(X, Y )$ for $a, c > 0$ or $a, c < 0$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
+
+    \item $1 - \rho_P$ is not a distance measure, but $\sqrt{1 - \rho_P}$ is a distance measure.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 \begin{customArrayStretch}{1.5}
@@ -2830,9 +2833,186 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
 
 
 
+\subsection{Binary Association Statistics}
+
+\begin{enumerate}
+    \item Lets assume that we observed $n$ binary attributes on two objects, leading to the $n$ pairs $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$. 
+    In this type of application, the pairs may not be independent and/or identically distributed with just one CDF $F_{X Y }$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $N_{x y} = \dsum^n_{i=1} 1_{\dCurlyBrac{x}}(X_i )\ 1_{\dCurlyBrac{y}}(Y_i )$
+    \hfill
+    $(x, y) \in \dCurlyBrac{0, 1} \times \dCurlyBrac{0, 1}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $N_{11}$ is the number of attributes that both objects share and $N_{00}$ is the number of attributes that both objects lack. 
+    $N_{01}$ and $N_{10}$ represent the numbers of objects that are present in one object but absent in the other object.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{Gower and Legendre ($S_\theta$, $T_\theta$)}
+
+    \item 
+    $ S_\theta = \dfrac{N_{00} + N_{11}}{N_{00} + N_{11} + \theta[N_{01} + N_{10}]} $
+    \hfill
+    $ T_\theta = \dfrac{N_{11}}{N_{11} + \theta[N_{01} + N_{10}]} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    with $\theta > 0$ a constant.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The similarity measure $S_\theta$ focuses on the similarity of both the absence as well as the presence of attributes, since it uses both $N_{00}$ and $N_{11}$ , while the similarity measure $T_\theta$ focuses only on the presence of attributes. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item when we wish to emphasize the similarity on attributes that are present, the set of $T_\theta$ is more appropriate than $S_\theta$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item both similarity measures are bounded from below with the value zero and from above with the value 1 ($S_\theta, T_\theta \in [0, 1]$). 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The closer the similarity measures get to one the more similar the two objects would be on the presence and absence of attributes. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    % \item The measures $1 - S_\theta$ and $1 - T_\theta$ are referred to as dissimilarity measures.
+    % \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the dissimilarity measures $1 - S_\theta$ and $1 - T_\theta$ are distance measures when $\theta \geq 1$ and $\sqrt{1 - S_\theta}$ and $\sqrt{1 - T_\theta}$ are distance measures when $\theta \geq \dfrac{1}{3}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    a distance measure $d$ is defined by four characteristics: 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $d(a, b) \geq 0$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $d(a, a) = 0$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $d(a, b) = d(b, a)$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $d(a, b) + d(b, c) \geq d(a, c)$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+    \end{multicols}
+    with $a, b$, and $c$ representing arbitrary objects on which the distance is applied.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Sokal \& Sneath (2)}: $ S_{0.5} = \dfrac{2[N_{00} + N_{11}]}{2[N_{00} + N_{11}] + N_{01} + N_{10}} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Sokal \& Michener}: $ S_1 = \dfrac{N_{00} + N_{11}}{N_{00} + N_{11} + N_{01} + N_{10}} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Roger \& Tanimoto}: $ S_2  = \dfrac{N_{00} + N_{11}}{N_{00} + N_{11} + 2[N_{01} + N_{10}]} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Czekanowski}: $ T_{0.5} = \dfrac{2N_{11}}{2N_{11} + N_{01} + N_{10}} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Jaccard}: $  T_1 = \dfrac{N_{11}}{N_{11} + N_{01} + N_{10}} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Sokal \& Sneath (1)}: $ T_2 = \dfrac{N_{11}}{N_{11} + 2[N_{01} + N_{10}]} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Sokal \& Sneath (3)}: $ S_{SS} = \dfrac{N_{00} + N_{11}}{N_{01} + N_{10}} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item \textbf{Kulcynski}: $ T_K = \dfrac{N_{11}}{N_{01} + N_{10}} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{Pearson’s squared phi-coefficient ($\phi^2$)}
+
+    \item It is clear that $\phi$ is an alternative measure with values in $[0, 1]$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item As it is not of the form $\sqrt{1 - S_\theta}$ or $\sqrt{1 - T_\theta}$, it is unknown if $1 - \phi$ or $\sqrt{1 - \phi}$ is a distance measure, like the proposed similarity measures for values of $\theta$ being large enough.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{$L$ family of similarity indices}
+
+    \item $\mathcal{L}$ family of similarity indices: $ S = \lambda + \mu(N_{00} + N_{11}) $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    where the parameters $\lambda$ and $\mu$ can only be functions of the row and column totals, i.e., functions of $N_{0\cdot }$, $N_{1\cdot }$, $N_{\cdot 0}$ , and $N_{\cdot 1}$ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Sokal \& Michener}: 
+    \hfill
+    $ \lambda = 0 $ 
+    \hfill 
+    $ \mu = \dfrac{1}{n} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Czekanowski}: 
+    \hfill
+    $ \lambda = 1 - \dfrac{1}{N_{1\cdot} + N_{\cdot 1}} $ 
+    \hfill 
+    $ \mu = \dfrac{1}{N_{1\cdot} + N_{\cdot 1}} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Kappa}: 
+    \hfill
+    $ \lambda = - \dfrac{N_{1\cdot} N_{\cdot 1} + N_{0\cdot} N_{\cdot 0}}{N_{1\cdot} N_{\cdot 0} + N_{\cdot 1} N_{0\cdot}} $
+    \hfill 
+    $ \mu = \dfrac{1}{N_{1\cdot} N_{\cdot 0} + N_{\cdot 1} N_{0\cdot}} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item corrected index of $\mathcal{L}$ is of the form
+    $ C S = \dfrac{S - \mbbE[S]}{1 - \mbbE[S]} $ 
+    where $ S = \lambda + \mu(N_{00} + N_{11}) $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
 
+\subsubsection{Yule’s Q statistic ($Q$)}
 
+    \item It was termed the coefficient of association, which made sense at the time, as it is one of the oldest measures of association. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $ Q = \dfrac{N_{00} N_{11} - N_{01} N_{10}}{N_{00} N_{11} + N_{01} N_{10}} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The measure ranges from $-1$ to $+1$ and when $Q$ is zero there is no association, similar to Pearson’s, Spearman’s, and Kendall’s correlation coefficients.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Neither is $1 - Q$ or $\sqrt{1 - Q}$ a distance measure, which makes it also different from Pearson’s product-moment estimator on binary data.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Yule’s $Q$ can be rewritten as $ Q = \dfrac{\hat{OR} - 1}{\hat{OR} + 1} $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.3cm]
+    Yule’s Q is a monotone function of the odds ratio
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  Yule’s Q statistic is robust against the number of features that are present in one object, a characteristic that does not hold for the similarity measures.
+    \textbf{Example}: if we randomly eliminate attributes from one object, say remove half of all the attributes from object 1, then both $N_{11}$ and $N_{10}$ would reduce by a factor 2, but Yule’s Q would not reduce.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $100\%(1 - \alpha)$ \textbf{confidence interval}:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item 
+        $ 
+            Q = \dfrac{\hat{OR} - 1}{\hat{OR} + 1} 
+            \Longrightarrow 
+            \hat{OR} = - \dfrac{Q+1}{Q-1}
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Then Use:
+        $
+            (L_{O R} , U_{O R} ] =
+            \left(
+                \log( \hat{OR}) - z_{1-\alpha/2} \hat{SE}_{OR} , 
+                \ \log( \hat{OR}) + z_{1-\alpha/2} \hat{SE}_{OR}
+            \right]
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item 
+\end{enumerate}
 
 
 
