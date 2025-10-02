@@ -263,8 +263,25 @@
 \end{enumerate}
 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=5.5cm,
+        keepaspectratio,
+    ]{images/statistics/one-sided_two-sided_t-test.png}
+\end{figure}
 
-\subsection{The One-Sided $z$-Test for a Single Mean}
+The difference between one-sided and two-sided tests. 
+In both cases $H_0$ is not rejected if the observed test statistic $t_n$ falls outside of the rejection region $\alpha$. 
+However, for a one-sided test (top) the rejection region is located on one tail of the distribution (the blue area denoted $\alpha$).
+Hence, only if $t_n > z_{1-\alpha}$ (in this case), and sufficiently large to fall within the rejection region, is $H_0$ rejected. 
+For a two-sided test the rejection region is split over the two tails of the distribution: hence $H_0$ can be rejected if $t_n$ is either sufficiently small or sufficiently large. 
+Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one-sided test—a one-sided test might reject $H_0 $, whereas the same $t_n$ might not lead to a rejection in the two-sided case, because the critical value for the two-sided test is larger than for the one-sided test
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+\subsection{The One-Sided $z$-Test for a Single Mean ($H_0:\mu(f) \leq \mu_0$)}
 
 \begin{enumerate}
     \item hypothesis on the population mean: $H_0 : \mu( f ) \leq \mu_0$ versus $H_a : \mu( f ) > \mu_0 $.
@@ -324,24 +341,99 @@
     However, we know that this probability of having bad luck is less than or equal to $\alpha$ and therefore we accept making this potential type 1 error.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item we cannot use the criterion ¯$Y > μ_0 + \dfrac{z_{1−α} σ( f )}{\sqrt{n}}$ directly, as it depends on the population standard deviation $σ( f )$, which is generally not known.
-    We could estimate $σ( f )$ using sample standard deviation $S = \sqrt{\dfrac{1}{n−1} \dsum^n_{i=1} (Y_i − ¯Y )^2}$
+    \item we cannot use the criterion ¯$Y > \mu_0 + \dfrac{z_{1-\alpha} \sigma( f )}{\sqrt{n}}$ directly, as it depends on the population standard deviation $\sigma( f )$, which is generally not known.
+    We could estimate $\sigma( f )$ using sample standard deviation $S = \sqrt{\dfrac{1}{n-1} \dsum^n_{i=1} (Y_i - \bar{Y} )^2}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item If the sample size is large enough, the probability $P\dParenBrac{¯Y > μ_0 + \dfrac{z_{1−α} S}{\sqrt{n}}}$ would still be close to $α$. 
-    When the sample size is large enough, we may reject the null hypothesis in practice when $¯Y > μ0 + \dfrac{z_{1−α} S}{\sqrt{n}}$ or in other words when the \textbf{asymptotic test statistic} $T_n = \dfrac{¯Y − μ_0}{S/√n}$ is larger than $z_{1−α}$.
+    \item If the sample size is large enough, the probability $P\dParenBrac{\bar{Y} > \mu_0 + \dfrac{z_{1-\alpha} S}{\sqrt{n}}}$ would still be close to $\alpha$. 
+    When the sample size is large enough, we may reject the null hypothesis in practice when $\bar{Y} > \mu_0 + \dfrac{z_{1-\alpha} S}{\sqrt{n}}$ or in other words when the \textbf{asymptotic test statistic} $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}}$ is larger than $z_{1-\alpha}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item For large sample sizes n, the null hypothesis $H_0 : \mu( f ) \leq \mu_0$ is tested with test statistic $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}}$ and the null hypothesis is rejected with significance level $\alpha$ when the test statistic is larger than the critical value $z_{1-\alpha}$. 
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The null hypothesis is not rejected when $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}} \leq z_{1-\alpha}$, since there would not be enough evidence to reject the null hypothesis with significance level $\alpha$ (i.e., the observed result is not unlikely enough under $H_0 $). 
+    This does not mean that the null hypothesis is true. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the asymptotic approach for testing $H_0 : \mu( f ) \leq \mu_0$ will work for most population densities $f_X$ whenever the sample size is large enough.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\subsubsection{p-value}
+
+    \item The p-value is the probability that the observed test statistic $t_n$ and more extreme observations would occur under the null hypothesis.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item It measures how surprising the observed data is if the null hypothesis $H_0$ were true.
+        \hfill \cite{common/online/chatgpt}
+
+        \item A small p-value means the observed test statistic is very unlikely under $H_0 $, giving evidence against $H_0$
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+
+    \item Calculating p-value:
+    \begin{enumerate}
+        \item test statistic: $T_n = \dfrac{\bar{Y} - \mu_0}{S / \sqrt{n}}$
+        \hfill \cite{common/online/chatgpt}
+
+        \item observed test statistic: $t_n = \dfrac{\bar{Y} - \mu_0}{S / \sqrt{n}}$
+        \hfill \cite{common/online/chatgpt}
+
+        \item Convert test statistic to a probability under $H_0$
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item If $H_0$ is true, then Tn approximately follows a standard normal distribution (for large $n$).
+            \hfill \cite{common/online/chatgpt}
+
+            \item The p-value is the tail probability of seeing $t_{obs}$ or something more extreme.
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+
+        \item Depending on the test type:
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item Right-tailed test ($H_0:\mu\leq\mu_0$): $p=P(Z\geq t_{obs})=1-\Phi(t_{obs})$
+            \hfill \cite{common/online/chatgpt}
+            
+            \item Left-tailed test ($H_0:\mu\geq\mu_0$): $p=P(Z\leq t_{obs})=\Phi(t_{obs})$
+            \hfill \cite{common/online/chatgpt}
+            
+            \item Two-tailed test ($H_0:\mu= \mu_0$): $p = 2 \cdot \min(\Phi(t_{obs}), 1 - \Phi(t_{obs}))$
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+        Here $\Phi$ is the cumulative distribution function (CDF) of the standard normal.
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+
 \end{enumerate}
 
 
 
 
+\subsection{The Two-Sided z-Test for a Single Mean ($H_0:\mu(f)=\mu_0$)}
 
+\begin{enumerate}
+    \item The null hypothesis is formulated as $H_0 : \mu( f ) = \mu_0$ and the alternative hypothesis is $H_a : \mu( f )  = \mu_0 $. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item We would reject the null hypothesis when either $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}}$ is large positive or large negative. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item If we still keep our significance level at $\alpha$, we will reject the null hypothesis $H_0 : \mu( f )  = \mu_0$ when $\dfrac{\bar{Y} - \mu0}{S/\sqrt{n}} > z_{1-\alpha/2} $, with $z_{1-\alpha/2}$ the $1 - \alpha/2$ quantile of the standard normal distribution (when using a normal approximation), or when $\dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}} < -z_{1-\alpha/2} $. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item we would reject when $\dfrac{\dabs{\bar{Y} - \mu_0}}{S/\sqrt{n}} > z_{1-\alpha/2} $, with $\dabs{x}$ the absolute value of $x$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we reject this hypothesis when the test statistic is sufficiently small or sufficiently large. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item To control type 1 error, we therefore split up our rejection region in two: this is why we work with $z_{1-\alpha/2}$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  two-sided tests, while used very often in practice, are less useful when sample sizes are very large: with a very large $n$, the standard error of a test statistic will become small, and we eventually will reject the null hypothesis in most cases.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 
