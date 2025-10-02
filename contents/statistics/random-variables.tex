@@ -1288,11 +1288,11 @@
 
 \begin{enumerate}
     \item Let we have 2 random variables $X, \ Y$, either discrete or continuous, and a constant $c$.
-    
+
     \item $F _X$ and $F_Y$ the CDFs for $X$ and $Y$ , respectively. $P(X \leq x, Y \leq y)$ is the joint CDF of $X$ and $Y$ , denoted by $F _{X Y} (x, y)$
-    
+
     \item Let events $A = \dCurlyBrac{X \leq x}$ and $B = \dCurlyBrac{Y \leq y}$
-    
+
     \item the covariance is affected by transformations
 \end{enumerate}
 
@@ -1301,8 +1301,8 @@
 
 \begin{enumerate}[series=calcrulesrv]
     \item $
-        \tCov(X, Y ) 
-        = \sigma_{X Y} 
+        \tCov(X, Y )
+        = \sigma_{X Y}
         = \mbbE[(X - \mbbE[X])(Y - \mbbE[Y])]
         = \mbbE[X Y] - \mbbE[X]\mbbE[Y]
     $
@@ -1321,7 +1321,7 @@
 \begin{enumerate}[resume*=calcrulesrv]
     \item $\mbbE[\mbbE[X]] = \mbbE[X]$
     \hfill \cite{common/online/chatgpt}
-    
+
     \item $\mbbE[c] = c$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -1412,8 +1412,8 @@
 
 
 \begin{enumerate}[resume*=calcrulesrv]
-    \item Two random variables can have a covariance of $0$, and still be dependent. 
-    A simple example is to take $X$ as a standard normal random variable and $Y = X^2$ . 
+    \item Two random variables can have a covariance of $0$, and still be dependent.
+    A simple example is to take $X$ as a standard normal random variable and $Y = X^2$ .
     It is clear that $X$ and $Y$ are dependent, since $Y$ is a function of $X$, and that $\tCov(X, Y ) = \mbbE[X Y] - \mbbE[X] \mbbE[Y] = \mbbE[X^3] = 0$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
@@ -1456,21 +1456,21 @@
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \begin{aligned}
-           \mbbE[\mu_Y (X)] 
+           \mbbE[\mu_Y (X)]
             &= \dsum^\infty_{x=0} \mu_Y (x)\ f_X (x)
             = \dsum^\infty_{x=0} \mbbE(Y |X = x)\ f_X (x)
             = \dsum^\infty_{x=0} \dsum^\infty_{y=0} y\ f_{Y |X} (y|x)\ f_X (x) \\
             &= \dsum^\infty_{x=0} \dsum^\infty_{y=0} y\ f_{X Y} (x, y)
-            = \dsum^\infty_{y=0} y\ f_Y (y) 
+            = \dsum^\infty_{y=0} y\ f_Y (y)
             = \mu_Y
         \end{aligned}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \begin{aligned}
             \mbbE[\sigma^2_Y (X)]
@@ -1574,10 +1574,10 @@
     \item $\sigma^2_X = \sigma^2_W + \sigma^2_U$ and $\sigma^2_Y = \sigma^2_W + \sigma^2_V$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \begin{aligned}
-            &\tCov[X, Y] 
+            &\tCov[X, Y]
             = \mbbE[(X - \mu_X )(Y - \mu_Y )]
             = \mbbE[(W - \mu_W + U - \mu_U )(W - \mu_W + V - \mu_V )] \\
             &= \mbbV[W] + \mbbE[(W - \mu_W )(V - \mu_V )] + \mbbE[(U - \mu_U )(W - \mu_W )] + \mbbE[(U - \mu_U )(V - \mu_V )] \\
@@ -1586,9 +1586,9 @@
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Pearson’s correlation coefficient: 
+    \item Pearson’s correlation coefficient:
     $
-        \rho_P 
+        \rho_P
         = \dfrac{\sigma^2_W }{\sqrt{(\sigma^2_W + \sigma^2_U )(\sigma^2_W + \sigma^2_V )}}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -1633,10 +1633,10 @@
     \item The advantage of this class is that it may be used with many different choices for $F_X$ and $F_Y$ .
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \begin{aligned}
-            \tCov[X, Y] 
+            \tCov[X, Y]
             &= \mbbE[X Y] - \mbbE[X] \mbbE[Y] \\
             & = \dParenBrac{\dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_X (x)\ f_Y (y)\ (1 + \alpha(1 - 2F_X (x))\ (1 - 2F_Y (y)))\ dx\ dy} - \mu_X \mu_Y \\
             &= \alpha\mbbE[X (1 - 2F_X (X ))]\mbbE[Y (1 - 2F_Y (Y ))]
@@ -1670,7 +1670,7 @@
     \item \textbf{Spearman’s rho estimator} ($r_S$):
     $\alpha$ can be estimated by $\hat{\alpha} = 3r_K$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item[] It should be noted that when these estimates are outside the range of the dependency parameters (i.e., $\hat{\alpha} \notin [-1, 1]$), the data may not support these families of distributions.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
@@ -1716,7 +1716,7 @@
     \item \textbf{Spearman’s rho estimator} ($r_S$):
     $\lambda$ can be estimated by $\hat{\lambda} = \dfrac{3r_S + 1}{2}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item[] It should be noted that when these estimates are outside the range of the dependency parameters (i.e., $\hat{\lambda} \notin [0, 1]$), the data may not support these families of distributions.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
@@ -1750,30 +1750,30 @@
     \item $\mu_{X Y} (z) = \mbbE[X Y |Z = z]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Because $X$ and $Y$ are independent conditionally on $Z = z$, we also obtain that $\mbbE[X Y |Z = z] = \mbbE[X|Z = z] \mbbE[Y |Z = z] = \mu_X (z)\ \mu_Y (z)$. 
+    \item Because $X$ and $Y$ are independent conditionally on $Z = z$, we also obtain that $\mbbE[X Y |Z = z] = \mbbE[X|Z = z] \mbbE[Y |Z = z] = \mu_X (z)\ \mu_Y (z)$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \begin{aligned}
-            &\mbbE[\mu_{X Y }(Z )] 
+            &\mbbE[\mu_{X Y }(Z )]
             = \dint^\infty_{-\infty} \mu_{X Y} (z)\ f_Z (z)\ dz
             = \dint^\infty_{-\infty} \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y |Z} (x, y|z)\ f_Z (z)\ dx\ dy\ dz \\
-            &= \dint^\infty_{-\infty} \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y Z} (x, y, z)\ dx\ dy\ dz 
-            = \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y} (x, y)\ dx\ dy 
+            &= \dint^\infty_{-\infty} \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y Z} (x, y, z)\ dx\ dy\ dz
+            = \dint^\infty_{-\infty} \dint^\infty_{-\infty} x\ y\ f_{X Y} (x, y)\ dx\ dy
             = \mbbE[X Y]
         \end{aligned}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \begin{aligned}
-            &\tCov[X, Y] 
+            &\tCov[X, Y]
             = \mbbE[X Y] - \mbbE[X] \mbbE[Y]
-            = \mbbE[\mu_{X Y} (Z )] - \mu_X \mu_Y 
+            = \mbbE[\mu_{X Y} (Z )] - \mu_X \mu_Y
             = \mbbE[\mu_X (Z )\mu_Y (Z )] - \mu_X \mu_Y\\
-            &= \mbbE[(\mu_X (Z ) - \mu_X )(\mu_Y (Z ) - \mu_Y )] 
+            &= \mbbE[(\mu_X (Z ) - \mu_X )(\mu_Y (Z ) - \mu_Y )]
             = \tCov[\mu_X (Z ), \mu_Y (Z )]
         \end{aligned}
     $
@@ -1800,7 +1800,7 @@
     \begin{enumerate}
         \item $\mbbV[X] = \mbbE[\mbbV[X|Z = Z]] + \mbbV(\mu_X (Z ))$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
+
         \item $\mbbV[Y] = \mbbE[\mbbV[Y |Z = Z]] + \mbbV(\mu_Y (Z ))$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
@@ -1861,8 +1861,8 @@
 \subsection{Pearson’s Correlation Coefficient ($CORR(X, Y) = \rho_P$)}
 
 \begin{enumerate}
-    \item Pearson’s correlation coefficient is a way of quantifying how two variables “co-relate”. 
-    If Pearson’s correlation is \textbf{positive}, the two variables $X$ and $Y$ move in the \textbf{same direction}. 
+    \item Pearson’s correlation coefficient is a way of quantifying how two variables “co-relate”.
+    If Pearson’s correlation is \textbf{positive}, the two variables $X$ and $Y$ move in the \textbf{same direction}.
     If $X$ is increasing then $Y$ should be increasing as well.
     When Pearson’s correlation coefficient is \textbf{zero} the random variables are called \textbf{uncorrelated}.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -1870,12 +1870,12 @@
     \item standardized random variables: $Z_X = \dfrac{X - \mu_X }{\sigma_X}$ and $Z_Y = \dfrac{Y - \mu_Y }{\sigma_Y}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
-        \rho_P 
-        = CORR(X, Y ) 
-        = \tCov[Z_X , Z_Y] 
-        = \mbbE\dSquareBrac{\dParenBrac{\dfrac{X - \mu_X }{\sigma_X}} \dParenBrac{\dfrac{Y - \mu_Y}{ \sigma_Y}}} 
+        \rho_P
+        = CORR(X, Y )
+        = \tCov[Z_X , Z_Y]
+        = \mbbE\dSquareBrac{\dParenBrac{\dfrac{X - \mu_X }{\sigma_X}} \dParenBrac{\dfrac{Y - \mu_Y}{ \sigma_Y}}}
         = \dfrac{\tCov[X, Y]}{\sqrt{\mbbV[X] \mbbV[Y] }}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -1884,13 +1884,13 @@
     \begin{enumerate}
         \item $CORR(X, Y ) \in [-1, 1]$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
+
         \item If $CORR(X, Y ) = 1$, then $Y = a X + b$, where $a > 0$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
+
         \item If $CORR(X, Y ) = -1$, then $Y = a X + b$, where $a < 0$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
+
         \item $CORR(a X + b, cY + d) = CORR(X, Y )$ for $a, c > 0$ or $a, c < 0$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
@@ -1905,11 +1905,11 @@
 \hline \endfirsthead
 \hline \endhead
 
-\hline 
+\hline
 \caption*{Rule of thumb} \\
 \endfoot
 
-\hline 
+\hline
 \caption*{Rule of thumb} \\
 \endlastfoot
 
@@ -1927,7 +1927,7 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
 \subsubsection{Pearson’s Correlation Coefficient estimator ($r_P$)}
 
 \begin{enumerate}
-    \item assume that we have observed the pairs of observations $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n , Y_n )$ on $n$ units, being i.i.d. $(X_i , Y_i ) \sim F_{X Y}$ 
+    \item assume that we have observed the pairs of observations $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n , Y_n )$ on $n$ units, being i.i.d. $(X_i , Y_i ) \sim F_{X Y}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Since the pairs are identically distributed, the covariance $\tCov[X_i , Y_i]$ is equal to $\tCov[X, Y]$ for all units $i$.
@@ -1936,16 +1936,16 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     \item \textbf{independence between pairs of variables}: $\mbbE[(X_i - \mu_X )(Y_j - \mu_Y )] = \mbbE[X_j - \mu_X] \mbbE[Y_i - \mu_Y] = 0$, when $i \neq j$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item \textbf{Sample Covariance}: 
+    \item \textbf{Sample Covariance}:
     $
         S_{X Y} = \dfrac{1 }{n - 1} \dsum^n_{i=1} (X_i - \bar{X})(Y_i - \bar{Y} )
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \begin{aligned}
-            &\mbbE[S_{X Y}] 
+            &\mbbE[S_{X Y}]
             = \dfrac{1}{n - 1} \dsum_{i=1}^n \mbbE[(X_i - \bar{X} )(Y_i - \bar{Y} )]
             = \dfrac{1}{n - 1} \dsum_{i=1}^n\mbbE[(X_i - \mu_X + \mu_X - \bar{X})(Y_i - \mu_Y + \mu_Y - \bar{Y} )]  \\
             &= \dfrac{1}{n - 1} \dsum_{i=1}^n\mbbE[(X_i - \mu_X )(Y_i - \mu_Y ) - (X_i - \mu_X )( \bar{Y} - \mu_Y ) - ( \bar{X} - \mu_X )(Y_i - \mu_Y ) + ( \bar{X} - \mu_X )( \bar{Y} - \mu_Y )] \\
@@ -1964,17 +1964,17 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The product-moment correlation $r_P$ is typically not unbiased, which means that $\mbbE[r_P] \neq \rho_P$ . 
+    \item The product-moment correlation $r_P$ is typically not unbiased, which means that $\mbbE[r_P] \neq \rho_P$ .
     The reason is that both the numerator and the denominator are random variables and the expectation of a ratio is not equal to the ratio of the expectations.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The expectation of the numerator in $r_P$ is unbiased for the numerator in the definition of Pearson’s correlation $\rho_P$. (as $\mbbE[S_{X Y}] = \tCov[X, Y]$)
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \begin{aligned}
-            &r_P 
+            &r_P
             = \dfrac{S_{X Y} }{S_X S_Y}
             = \dfrac{\dsum^n_{i=1} (X_i - \bar{X} )(Y_i - \bar{Y} )}{(n - 1)S X SY}
             = \dfrac{\dsum^n_{i=1} X_i Y_i - n \bar{X} \bar{Y}}{(n - 1)S X SY} \\[0.3cm]
@@ -1984,7 +1984,7 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The asymptotic distribution of $r_P$ is normal when the pairs $(X_i , Y_i )$ are i.i.d. $F_{ X Y}$ with finite fourth central moments. 
+    \item The asymptotic distribution of $r_P$ is normal when the pairs $(X_i , Y_i )$ are i.i.d. $F_{ X Y}$ with finite fourth central moments.
     More specifically, $\sqrt{n}(r_P - \rho_P ) \sim \mathcal{N}\dParenBrac{0, \dfrac{n(1 - \rho^2_P )^2}{n - 3}} $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -2016,32 +2016,32 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     \item It is a measure of \textbf{concordance}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     \begin{definition}[Concordant \& Discordant]
-        A concordance measure is similar to correlation. 
-        To understand this alternative approach to dependency between $X$ and $Y$, we consider two independent draws from $F _{X Y}$, say $(X_1, Y_1)$ and $(X_2, Y_2)$. 
-        Independence means here that $X_1$ and $X_2$ are independent and $Y_1$ and $Y_2$ are independent. 
-        The two pairs of random variables $(X_1, Y_1)$ and $(X_2, Y_2)$ are called concordant when $(X_2 - X_1)(Y_2 - Y_1) > 0$ and discordant when $(X_2 - X_1)(Y_2 - Y_1) < 0$. 
+        A concordance measure is similar to correlation.
+        To understand this alternative approach to dependency between $X$ and $Y$, we consider two independent draws from $F _{X Y}$, say $(X_1, Y_1)$ and $(X_2, Y_2)$.
+        Independence means here that $X_1$ and $X_2$ are independent and $Y_1$ and $Y_2$ are independent.
+        The two pairs of random variables $(X_1, Y_1)$ and $(X_2, Y_2)$ are called concordant when $(X_2 - X_1)(Y_2 - Y_1) > 0$ and discordant when $(X_2 - X_1)(Y_2 - Y_1) < 0$.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{definition}
     \begin{enumerate}
-        \item If a pair is concordant or discordant, it means that the change in the two random variables $D_X = X_2 - X_1$ (from $X_1$ to $X_2$ ) and $D_Y = Y_2 - Y_1$ (from $Y_1$ to $Y_2$ ) are dependent. 
+        \item If a pair is concordant or discordant, it means that the change in the two random variables $D_X = X_2 - X_1$ (from $X_1$ to $X_2$ ) and $D_Y = Y_2 - Y_1$ (from $Y_1$ to $Y_2$ ) are dependent.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
-        \item Concordance refers to a “positive” dependency, which means that the direction of change in $X$ is the same as the direction of change in $Y$ . 
+
+        \item Concordance refers to a “positive” dependency, which means that the direction of change in $X$ is the same as the direction of change in $Y$ .
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
+
         \item Discordance means a “negative” dependence, where the direction of change in $X$ is opposite to the direction of change in $Y$.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item Kendall’s tau measures the strength between the dependency of $D_X$ and $D_Y$ 
+    \item Kendall’s tau measures the strength between the dependency of $D_X$ and $D_Y$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \begin{aligned}
-            \tau_K 
+            \tau_K
             & = P((X_2 - X_1)(Y_2 - Y_1) > 0) - P((X_2 - X_1)(Y_2 - Y_1) < 0) \\
             &= 2 P((X_2 - X_1)(Y_2 - Y_1) > 0) - 1 \\
             &= 4 P(X_1 < X_2, Y_1 < Y_2) - 1
@@ -2059,7 +2059,7 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     $F _{X Y} (x, y) = \max\dCurlyBrac{F_X (x) + F_Y (y) - 1, 0}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The value $1$ is attained when $F_{X Y}$ is equal to the Fréchet upper bound, i.e., 
+    \item The value $1$ is attained when $F_{X Y}$ is equal to the Fréchet upper bound, i.e.,
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
     .\hfill
@@ -2072,7 +2072,7 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     \item Pearson’s correlation coefficient of $D_X$ and $D_Y$ is given by $CORR(D_X , D_Y ) = CORR(X, Y )$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    % \item 
+    % \item
 \end{enumerate}
 
 
@@ -2081,7 +2081,7 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
 \subsubsection{Kendall’s Tau Correlation estimator ($r_K$)}
 
 \begin{enumerate}
-    \item 
+    \item
     $
         \begin{aligned}
             r_K
@@ -2095,9 +2095,9 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     If we apply the estimator on $(\psi_1(X_1), \psi_2(Y_1))$, $(\psi_1(X_2), \psi_2(Y_2))$, $\cdots$ , $(\psi_1(X_n ), \psi_2(Y_n ))$, when both $\psi_1$ and $\psi_2$ are increasing or both decreasing functions, we obtain the exact same estimator.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The distribution function of this estimator is approximately normal when sample size converges to infinity. 
-    Studying its moments is difficult, but the exact variance of $r_K$ has been determined at $\dfrac{2(2n + 5)}{3n(n - 1)}$, when the pairs are uncorrelated (i.e., $\tau_K = 0$). 
-    The variance of $r_K$ is bounded from above with $\mbbV[r_K] \leq \dfrac{2(1 - \tau^2_K )}{n}$ 
+    \item The distribution function of this estimator is approximately normal when sample size converges to infinity.
+    Studying its moments is difficult, but the exact variance of $r_K$ has been determined at $\dfrac{2(2n + 5)}{3n(n - 1)}$, when the pairs are uncorrelated (i.e., $\tau_K = 0$).
+    The variance of $r_K$ is bounded from above with $\mbbV[r_K] \leq \dfrac{2(1 - \tau^2_K )}{n}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item  $100\%(1 - \alpha)$ \textbf{confidence interval} is provided based on the \textbf{Fisher z-transformation}.
@@ -2144,26 +2144,26 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
 \subsection{Spearman’s Rho Correlation ($\rho_S$)}
 
 \begin{enumerate}
-    \item Spearman’s rho quantifies concordance of change in one dimension from the first to the second observation and change in the second dimension from the first to the third observation. 
+    \item Spearman’s rho quantifies concordance of change in one dimension from the first to the second observation and change in the second dimension from the first to the third observation.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item To define Spearman’s rho in terms of the joint CDF, we need to use three i.i.d. pairs $(X_1, Y_1)$, $(X_2, Y_2)$, and $(X_3, Y_3)$ of random variables having joint distribution function $F _{X Y} $, but we do not need to use all six random variables. 
+    \item To define Spearman’s rho in terms of the joint CDF, we need to use three i.i.d. pairs $(X_1, Y_1)$, $(X_2, Y_2)$, and $(X_3, Y_3)$ of random variables having joint distribution function $F _{X Y} $, but we do not need to use all six random variables.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \rho_S = 2 [P((X_1 - X_2)(Y_3 - Y_1) > 0) - P((X_1 - X_2)(Y_3 - Y_1) < 0)]
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item It ranges from $-1$ to $1$.
-    When $X$ and $Y$ are independent, Spearman’s rho correlation coefficient becomes equal to zero. 
+    When $X$ and $Y$ are independent, Spearman’s rho correlation coefficient becomes equal to zero.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $-1 \leq 3\tau_K - 2\rho_S \leq 1$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    
+
 \end{enumerate}
 
 
@@ -2172,14 +2172,14 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
 \subsubsection{Spearman’s Rho Correlation estimator ($r_S$)}
 
 \begin{enumerate}
-    \item The estimator for Spearman’s rho $\rho_S$ is defined by the product-moment correlation coefficient on the ranks of the pairs of observations. 
+    \item The estimator for Spearman’s rho $\rho_S$ is defined by the product-moment correlation coefficient on the ranks of the pairs of observations.
     It is referred to as \textbf{Spearman’s rank correlation}.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item If we assume that we observe the pairs of random variables $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$, we can define the ranks for the $x$ and $y$ coordinates separately.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The rank $R^X_k$ of $X_k$ is the position of $X_k$ in the ordered values $X_{(1)}$, $X_{(2)}$ , $\cdots$ , $X_{(n)}$ from small to large. 
+    \item The rank $R^X_k$ of $X_k$ is the position of $X_k$ in the ordered values $X_{(1)}$, $X_{(2)}$ , $\cdots$ , $X_{(n)}$ from small to large.
     If we additionally define the rank $R^Y_k$ for $Y_k$ among the random variables $Y_{(1)}$, $Y_{(2)}$ , $\cdots$ , $Y_{(n)}$, we have translated the pair $(X_k ,\ Y_k )$ to a pair of ranks $(R^X_k ,\ R^Y_k )$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
@@ -2189,9 +2189,9 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     \textbf{Example}: if we have observed five observations $x_1 = 5$, $x_2 = 1$, $x_3 = 7$, $x_4 = 2$, and $x_5 = 4$, then the observed ranks will be equal to $r^X_1 = 4$, $r^X_2 = 1$, $r^X_3 = 5$, $r^X_4 = 2$, and $r^X_5 = 3$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
-        r_S 
+        r_S
         = \dfrac{\dsum^n_{i=1} (R^X_i - \bar{R}^X )(R^Y_i - \bar{R}^Y )}{
             \sqrt{\dsum^n_{i=1} (R^X_i - \bar{R}^X )^2\ \dsum^n_{i=1} (R^Y_i - \bar{R}^Y )^2}
         }
@@ -2199,20 +2199,20 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\[0.3cm]
-    with $\bar{R}^X$ and $\bar{R}^Y$ the average ranks for the $X$ and $Y$ variables, i.e., $\bar{R}^X = \dfrac{1}{n} \dsum^n_{k=1} R^X_k$ and $\bar{R}^Y = \dfrac{1}{n} \dsum^n_{k=1}  R^Y_k$. 
+    with $\bar{R}^X$ and $\bar{R}^Y$ the average ranks for the $X$ and $Y$ variables, i.e., $\bar{R}^X = \dfrac{1}{n} \dsum^n_{k=1} R^X_k$ and $\bar{R}^Y = \dfrac{1}{n} \dsum^n_{k=1}  R^Y_k$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item As the total number of ranks in a sample of n observations is equal to $\dfrac{n(n + 1)}{2}$, the average ranks $\bar{R}^X$ and $\bar{R}^Y$ are equal to $\bar{R}^X = \bar{R}^Y = \dfrac{n + 1}{2}$. 
+    \item As the total number of ranks in a sample of n observations is equal to $\dfrac{n(n + 1)}{2}$, the average ranks $\bar{R}^X$ and $\bar{R}^Y$ are equal to $\bar{R}^X = \bar{R}^Y = \dfrac{n + 1}{2}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Since Spearman’s rank correlation depends on the ranks of the variables $x$ and $y$, the estimator is independent of monotonic transformations (increasing or decreasing functions) of the data. 
+    \item Since Spearman’s rank correlation depends on the ranks of the variables $x$ and $y$, the estimator is independent of monotonic transformations (increasing or decreasing functions) of the data.
     Spearman rho’s estimator $r_S$ on $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$ is exactly the same as Spearman rho’s estimator $r_S$ on the transformed pairs $(\psi_1(X_1), \psi_2(Y_1))$, $(\psi_1(X_2), \psi_2(Y_2))$, $\cdots$ , $(\psi_1(X_n ), \psi_2(Y_n ))$, when $\psi_1$ and $\psi_2$ are both increasing or both decreasing functions.`
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \begin{aligned}
-            &P(R^X_n = n) 
+            &P(R^X_n = n)
             = P(X_n = \max\dCurlyBrac{X_1, X_2, \cdots , X_n })
             = P(X_n \geq X_1, X_n \geq X_2, \cdots , X_n \geq X_{n-1}) \\
             &= \dint_{-\infty}^\infty P(X_n \geq X_1, X_n \geq X_2, \cdots , X_n \geq X_{n-1}|X_n = x)\ f_{X_n} (x)\ dx  \\
@@ -2225,8 +2225,8 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     with $f_{X_n} = f_X$ , since $X_1 , X_2, \cdots , X_n$ are i.i.d. with CDF $F_X $.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The Fisher z-transformation of $r_S$ uses normal confidence intervals with a variance $S^2_{r_S}$ of $r_S$ in this transformed scale. 
-    Different suggestions for this variance have been proposed: $S^2_{r_S} = 1.06/(n - 3)$, $S^2_{r_S} = (1 + r^2_S /2)/(n - 3)$, and $S^2_{r_S} = (n - 2)^{-1} + \dabs{z_{r_S}}/[6n + 4\sqrt{n}]$, with $z_{r_S}$ the Fisher z-transformation of $r_S$ , i.e., $z_{r_S} = 0.5[\log(1 + r_S ) - \log(1 - r_S )]$. 
+    \item The Fisher z-transformation of $r_S$ uses normal confidence intervals with a variance $S^2_{r_S}$ of $r_S$ in this transformed scale.
+    Different suggestions for this variance have been proposed: $S^2_{r_S} = 1.06/(n - 3)$, $S^2_{r_S} = (1 + r^2_S /2)/(n - 3)$, and $S^2_{r_S} = (n - 2)^{-1} + \dabs{z_{r_S}}/[6n + 4\sqrt{n}]$, with $z_{r_S}$ the Fisher z-transformation of $r_S$ , i.e., $z_{r_S} = 0.5[\log(1 + r_S ) - \log(1 - r_S )]$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
         \item \textbf{$100\%(1 - \alpha)$ confidence interval}:
@@ -2269,29 +2269,29 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item It measures how much two observers or raters agree on the evaluation of the same set of $n$ items or units into $K$ exhaustive and mutually exclusive classes
-    Since there is also a chance of accidentally classifying units in the same category by the raters, he created a measure that quantifies how well the raters agree on classification that is corrected for accidental or chance agreement. 
+    Since there is also a chance of accidentally classifying units in the same category by the raters, he created a measure that quantifies how well the raters agree on classification that is corrected for accidental or chance agreement.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item This chance agreement has strong similarities with grade corrections in multiple choice exams.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The bivariate random variables $X$ and $Y$, which represents two readings on the same unit, both take their values in $\dCurlyBrac{1, 2, 3, \cdots , K }$. 
+    \item The bivariate random variables $X$ and $Y$, which represents two readings on the same unit, both take their values in $\dCurlyBrac{1, 2, 3, \cdots , K }$.
     The data can be summarized in a $K \times K$ contingency table.
     The joint PDF is fully defined by the set of PDF parameters $p_{11}$, $p_{12}$, $\cdots$ , $p_{1K}$, $p_{21}$, $p_{22}$, $\cdots$ , $p_{2K}$, $\cdots$ , $p_{K 1}$, $p_{K 2}$, $\cdots$ , $p_{K K}$ given by $P(X = x, Y = y) = p_{x y} \geq 0$, and $\dsum^K_{x=0} \dsum^K_{y=0} p_{x y} = 1$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The probability $p_{x y}$ represents the probability that a unit is classified by the first rater in class $x$ and by the second rater in class $y$. 
+    \item The probability $p_{x y}$ represents the probability that a unit is classified by the first rater in class $x$ and by the second rater in class $y$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item the probability $p_{kk}$ indicates the probability that both raters classify a unit in the same class $k$. 
+    \item the probability $p_{kk}$ indicates the probability that both raters classify a unit in the same class $k$.
     This implies that when $p_{x y} = 0$ for every $x \neq y$, there will be no difference in classification between the two raters.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item when the ratings are \textbf{independent}, i.e., $P(X = x, Y = y) = f_X (x)\ f_Y (y)$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $p_O = \dsum^K_{k=1} p_{kk}$: It represents the probability that both raters classify units in the same classes. 
-    When it is equal to $1$, there is perfect agreement. 
+    \item $p_O = \dsum^K_{k=1} p_{kk}$: It represents the probability that both raters classify units in the same classes.
+    When it is equal to $1$, there is perfect agreement.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $p_E = \dsum^K_{k=1} f_X (k)\ f_Y (k)$: probability of correctly classifying units in the same classes
@@ -2303,7 +2303,7 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
     \item kappa statistic can become smaller than zero which means \textbf{discordance}
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item For ordinal random variables there exists a weighted version of Cohen’s kappa. 
+    \item For ordinal random variables there exists a weighted version of Cohen’s kappa.
     When $X$ and $Y$ are further apart, i.e., $\dabs{X - Y} > 1$, this seems to be a more serious misclassification then when $X$ and $Y$ just differ one class, i.e., $\dabs{X - Y} = 1$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
@@ -2316,11 +2316,11 @@ $0 \leq \dabs{\rho_P} \leq 0.30$ & Negligible correlation \\ \hline
 \hline \endfirsthead
 \hline \endhead
 
-\hline 
+\hline
 \caption*{Rule of thumb} \\
 \endfoot
 
-\hline 
+\hline
 \caption*{Rule of thumb} \\
 \endlastfoot
 
@@ -2341,7 +2341,7 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
 \subsubsection{Cohen’s Kappa Statistic estimator (hat $\kappa_C$)}
 
 \begin{enumerate}
-    \item In cell $X = x$ and $Y = y$ of the contigency table, the number of pairs, say $N_{x y}$ , from $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$ with the combination $(x, y)$ is reported. 
+    \item In cell $X = x$ and $Y = y$ of the contigency table, the number of pairs, say $N_{x y}$ , from $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$ with the combination $(x, y)$ is reported.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
     .\hfill
@@ -2349,9 +2349,9 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
         N_{x y} = \dsum^n_{i=1} 1_{\dCurlyBrac{x}}(X_i )\ 1_{\dCurlyBrac{y}}(Y_i )
     $
     \hfill
-    where 
+    where
     $
-        1_A(x) = 
+        1_A(x) =
         \begin{cases}
             1 & \text{ if } x \in A \\
             0 & \text{ otherwise}
@@ -2362,8 +2362,8 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \item  the sum of all numbers in the contingency table should add up to $n$: $\dsum^K_{x=1} \dsum^K_{y=1} N_{x y} = n$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
-    $N_{x\cdot} = \dsum^K_{y=1} N_{x y}$ 
+    \item
+    $N_{x\cdot} = \dsum^K_{y=1} N_{x y}$
     \hfill
     $N_{\cdot y} = \dsum^K_{x=1} N_{x y}$
     \hfill
@@ -2380,7 +2380,7 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \\
     .\hfill
     $
-        P(N_{11} = n_{11}, N_{12} = n_{12}, \cdots , N_{K K} = n_{K K} ) 
+        P(N_{11} = n_{11}, N_{12} = n_{12}, \cdots , N_{K K} = n_{K K} )
         = n! \dprod^K_{x=1} \dprod^K_{y=1} \dParenBrac{\dfrac{p^{n_{x y}}_{x y}}{n_{x y} !}}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -2423,17 +2423,17 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \\
     .\hfill
     $ N_{x y} = \dsum^n_{i=1} 1_{\dCurlyBrac{x}}(X_i )1_{\dCurlyBrac{y}}(Y_i ) $
-    \hfill 
+    \hfill
     $ (x , y ) \in \dCurlyBrac{0, 1} \times \dCurlyBrac{0, 1} $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item If we assume that $Y$ represents some kind of outcome and $X$ represents some kind of exposure, with $X = 0$ the reference group, the estimators of the risk difference ($\hat{R D}$), relative risk ($\hat{R R}$), and odds ratio ($\hat{O R}$) are defined by
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
-        \item 
-        $ 
-            \hat{R D} 
-            = \dfrac{N_{11}}{N_{11} + N_{10}} - \dfrac{N_{01}}{N_{01} + N_{00}} 
+        \item
+        $
+            \hat{R D}
+            = \dfrac{N_{11}}{N_{11} + N_{10}} - \dfrac{N_{01}}{N_{01} + N_{00}}
             = \dfrac{N_{11} N_{00} - N_{10} N_{01}}{(N_{11} + N_{10})(N_{01} + N_{00}) }
         $
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -2445,7 +2445,7 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item 
+    \item
     $\hat{p}_0 = \dfrac{N_{01}}{N_{0\cdot}}$
     \hfill
     $\hat{p}_1 = \dfrac{N_{11}}{N_{1\cdot}}$
@@ -2453,24 +2453,24 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     $N_{x\cdot} = N_{x1} + N_{ x0}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         L_x
         = \dfrac{
-            2N_{x\cdot } \hat{p}_x + z^2_{1-\alpha/2} 
+            2N_{x\cdot } \hat{p}_x + z^2_{1-\alpha/2}
             - z_{1-\alpha/2} \sqrt{4N_{x\cdot } \hat{p}_x (1 - \hat{p}_x ) + z^2_{1-\alpha/2}}
         }{
-            2(N_{x\cdot } + z^2_{1-\alpha/2}) 
+            2(N_{x\cdot } + z^2_{1-\alpha/2})
         }
     $
     \\[0.4cm]
     $
         U_x
         = \dfrac{
-            2N_{x\cdot } \hat{p}_x + z^2_{1-\alpha/2} 
+            2N_{x\cdot } \hat{p}_x + z^2_{1-\alpha/2}
             + z_{1-\alpha/2} \sqrt{4N_{x\cdot } \hat{p}_x (1 - \hat{p}_x ) + z^2_{1-\alpha/2}}
         }{
-            2(N_{x\cdot } + z^2_{1-\alpha/2}) 
+            2(N_{x\cdot } + z^2_{1-\alpha/2})
         }
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -2497,7 +2497,7 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \item For the relative risk, the confidence interval is calculated in the \textbf{logarithmic scale}.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The estimated standard error of the logarithmic transformed relative risk is given by 
+    \item The estimated standard error of the logarithmic transformed relative risk is given by
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\
     .\hfill
@@ -2541,7 +2541,7 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     $
         (L_{O R} , U_{O R} ] =
         \left(
-            \log( \hat{OR}) - z_{1-\alpha/2} \hat{SE}_{OR} , 
+            \log( \hat{OR}) - z_{1-\alpha/2} \hat{SE}_{OR} ,
             \ \log( \hat{OR}) + z_{1-\alpha/2} \hat{SE}_{OR}
         \right]
     $
@@ -2570,10 +2570,10 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
 \subsection{Comparison: Pearson’s Rho ($\rho_P$), Spearman’s Rho ($\rho_S$), Kendall’s Tau Correlation ($\tau_K$), Cohen’s kappa ($\kappa_C$)}
 
 \begin{enumerate}
-    \item The \textbf{product-moment correlation} ($r_P$) provides a measure that is particularly suitable for \textbf{linear} associations between variables. 
+    \item The \textbf{product-moment correlation} ($r_P$) provides a measure that is particularly suitable for \textbf{linear} associations between variables.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item when the data are bivariate normally distributed, or when transformations can be applied that would make the data approximately bivariate normal, it is suggested to apply the product-moment estimator on the (transformed) data. 
+    \item when the data are bivariate normally distributed, or when transformations can be applied that would make the data approximately bivariate normal, it is suggested to apply the product-moment estimator on the (transformed) data.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Pearson’s product-moment estimator is sensitive to outliers.
@@ -2585,12 +2585,12 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \item When to choose between Spearman’s rank or Kendall’s tau estimator:
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
-        \item Kendall’s tau estimator has a clear interpretation. 
-        It measures the difference between concordant and discordant pairs. 
+        \item Kendall’s tau estimator has a clear interpretation.
+        It measures the difference between concordant and discordant pairs.
         The interpretation of Spearman is more difficult, although it is often presented as a robust version of Pearson’s product-moment estimator.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-        \item Kendall’s tau estimator is computationally more intensive, since it requires the comparisons of pairs with all other pairs, which is not needed with Spearman’s rank. 
+        \item Kendall’s tau estimator is computationally more intensive, since it requires the comparisons of pairs with all other pairs, which is not needed with Spearman’s rank.
         Thus on really large data, Kendall’s tau may lead to numerical issues. However, for large datasets Kendall’s tau estimator is more efficient than Spearman’s rank correlation
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -2598,7 +2598,7 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item The simplicity of Cohen’s kappa statistic has made it very popular in all kinds of sciences to quantify agreement. 
+    \item The simplicity of Cohen’s kappa statistic has made it very popular in all kinds of sciences to quantify agreement.
     However, Cohen’s kappa statistic should not be used when particular outcomes of $X$ and $Y$ are rare.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -2621,19 +2621,19 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \item They measure the departure from dependency and they are all functions of Pearson’s chi-square statistic.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Although they can be applied to nominal variables, they have also been used for ordinal and binary random variables $X$ and $Y $. 
+    \item Although they can be applied to nominal variables, they have also been used for ordinal and binary random variables $X$ and $Y $.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item we assume that $X$ can take its value in $\dCurlyBrac{1, 2, \cdots  , K }$ and $Y$ can take its value in $\dCurlyBrac{1, 2, \cdots  , M}$ and we assume that $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots  $, $(X_n , Y_n )$ are i.i.d. with CDF $F_{X Y} $.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $N_{x y} = \dsum^n_{i=1} 1_{\dCurlyBrac{x}}(X_i )1_{\dCurlyBrac{y}}(Y_i )$
     \hfill
     $(x, y) \in \dCurlyBrac{1, 2, \cdots , K } \times \dCurlyBrac{1, 2, \cdots , M}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\[0.3cm]
-    The numbers $N_{x y}$ represent the frequencies of the cells in a $K × M$ contingency table, with $K$ rows and $M$ columns. 
+    The numbers $N_{x y}$ represent the frequencies of the cells in a $K × M$ contingency table, with $K$ rows and $M$ columns.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $N_{x\cdot}$: number of pairs $(X_i , Y_i )$ for which the $X$ variable is equal to $x$, irrespective of the value of $Y$
@@ -2661,8 +2661,8 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \item  A part of Pearson’s chi-square statistic is $[N_{x y} - N_{x\cdot} N_{\cdot y} /n]^2$ . The square is used  to make all differences positive.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Pearson normalized the squared differences with the expected numbers. 
-    The reason is that a small squared difference between $N_{x y}$ and $N_{x\cdot} N_{\cdot y} /n$ when $N_{x\cdot} N_{\cdot y} /n$ is small is not the same as a small squared difference between $N_{x y}$ and $N_{x\cdot} N_{\cdot y} /n$ when $N_{x\cdot} N_{\cdot y} /n$ is large. 
+    \item Pearson normalized the squared differences with the expected numbers.
+    The reason is that a small squared difference between $N_{x y}$ and $N_{x\cdot} N_{\cdot y} /n$ when $N_{x\cdot} N_{\cdot y} /n$ is small is not the same as a small squared difference between $N_{x y}$ and $N_{x\cdot} N_{\cdot y} /n$ when $N_{x\cdot} N_{\cdot y} /n$ is large.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Pearson’s chi-square statistic:
@@ -2670,30 +2670,30 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \\
     .\hfill
     $
-        \chi^2_P 
-        = \dsum^K_{x=1} \dsum^M_ {y=1} \dfrac{[N_{x y} - N_{x\cdot} N_{\cdot y} /n]^2}{N_{x\cdot} N_{\cdot y} /n} 
+        \chi^2_P
+        = \dsum^K_{x=1} \dsum^M_ {y=1} \dfrac{[N_{x y} - N_{x\cdot} N_{\cdot y} /n]^2}{N_{x\cdot} N_{\cdot y} /n}
         = \dfrac{1}{n} \dsum^K_{x=1} \dsum^M_ {y=1} \dfrac{[n N_{x y} - N_{x\cdot} N_{\cdot y} ]^2} {N_{x\cdot} N_{\cdot y}}
         \geq 0
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\chi^2_P$ is equal to zero only when the observed frequencies in the cells of the contingency table are equal to the expected frequencies. 
+    \item $\chi^2_P$ is equal to zero only when the observed frequencies in the cells of the contingency table are equal to the expected frequencies.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Thus the larger the value for Pearson’s chi-square statistic, the stronger the association between the two random variables $X$ and $Y $. 
+    \item Thus the larger the value for Pearson’s chi-square statistic, the stronger the association between the two random variables $X$ and $Y $.
     Since it calculates the differences between observed frequencies and frequencies under the assumption of independence, Pearson’s chi-square represents a measure of departure from independence.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The CDF of Pearson’s chi-square statistic can be approximated with a chi-square distribution with $(K - 1)(M - 1)$ degrees of freedom when $X$ and $Y$ are independent.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item a disadvantage of Pearson’s chi-square statistic is that it cannot be viewed as a correlation coefficient, like Kendall’s tau and Spearman’s rho, since it is not limited by the value $1$. 
+    \item a disadvantage of Pearson’s chi-square statistic is that it cannot be viewed as a correlation coefficient, like Kendall’s tau and Spearman’s rho, since it is not limited by the value $1$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item  In the case of two categories $K = M = 2$, the numerator $[n N_{x y} - N_{x\cdot } N_{\cdot y} ]^2 = [N_{11} N_{22} - N_{12} N_{21}]^2$ for each combination of $(x, y) \in \dCurlyBrac{1, 2} \times \dCurlyBrac{1, 2}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Pearson’s product-moment estimator can be written in terms of the con- tingency table frequencies $N_{x y }$. 
+    \item Pearson’s product-moment estimator can be written in terms of the con- tingency table frequencies $N_{x y }$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item for binary $X$ and $Y $, Pearson’s chi-square statistic becomes:
@@ -2718,7 +2718,7 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \item $\rho_P = \dfrac{[N_{11} N_{22} - N_{12} N_{21}]}{\sqrt{N_{1\cdot } N_{2\cdot } N_{\cdot 1} N_{\cdot 2}}}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item normalization of Pearson’s chi-square statistic with $n$ was not ideal. 
+    \item normalization of Pearson’s chi-square statistic with $n$ was not ideal.
     maximum value of Pearson’s chi-square statistic could become maximally equal to $n \min\dCurlyBrac{K - 1, M - 1}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -2740,7 +2740,7 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \item $V = \sqrt{\dfrac{\chi^2_P}{n \min\dCurlyBrac{K - 1, M - 1}}}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Cramér’s V is equal to Pearson’s $\phi$ coefficient when either the $X$ or the $Y$ variable has just two levels. 
+    \item Cramér’s V is equal to Pearson’s $\phi$ coefficient when either the $X$ or the $Y$ variable has just two levels.
     Cramér’s V is the more general measure of nominal association, since it is properly normalized for all contingency tables and it reduces to Pearson’s $\phi$ for $2 \times 2$ contingency tables.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
@@ -2764,7 +2764,7 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
 
 \subsubsection{Goodman and Kruskal’s gamma ($\gamma$)}
 
-    \item 
+    \item
     $
         \gamma
         = \dfrac{
@@ -2775,13 +2775,13 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $ N_C = \dsum^n_{i=1} \dsum^n_{j=1} 1_{(0,\infty)} ((X_j - X_i )(Y_j - Y_i )) $
     \hfill
     $ N_D = \dsum^n_{i=1} \dsum^n_{j=1} 1_{(-\infty, 0)} ((X_j - X_i )(Y_j - Y_i )) $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\[0.3cm]
-    $N_C$ and $N_D$ represent the number of concordant and discordant pairs. 
+    $N_C$ and $N_D$ represent the number of concordant and discordant pairs.
     The sample size $n$ is typically larger than the sum of concordant and discordant pairs, i.e., $n > N_C + N_D$ , due to the many ties in data of the $K \times M$ contingency table.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -2836,8 +2836,8 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
 \subsection{Binary Association Statistics}
 
 \begin{enumerate}
-    \item Lets assume that we observed $n$ binary attributes on two objects, leading to the $n$ pairs $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$. 
-    In this type of application, the pairs may not be independent and/or identically distributed with just one CDF $F_{X Y }$. 
+    \item Lets assume that we observed $n$ binary attributes on two objects, leading to the $n$ pairs $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$.
+    In this type of application, the pairs may not be independent and/or identically distributed with just one CDF $F_{X Y }$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $N_{x y} = \dsum^n_{i=1} 1_{\dCurlyBrac{x}}(X_i )\ 1_{\dCurlyBrac{y}}(Y_i )$
@@ -2845,13 +2845,13 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     $(x, y) \in \dCurlyBrac{0, 1} \times \dCurlyBrac{0, 1}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $N_{11}$ is the number of attributes that both objects share and $N_{00}$ is the number of attributes that both objects lack. 
+    \item $N_{11}$ is the number of attributes that both objects share and $N_{00}$ is the number of attributes that both objects lack.
     $N_{01}$ and $N_{10}$ represent the numbers of objects that are present in one object but absent in the other object.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
 \subsubsection{Gower and Legendre ($S_\theta$, $T_\theta$)}
 
-    \item 
+    \item
     $ S_\theta = \dfrac{N_{00} + N_{11}}{N_{00} + N_{11} + \theta[N_{01} + N_{10}]} $
     \hfill
     $ T_\theta = \dfrac{N_{11}}{N_{11} + \theta[N_{01} + N_{10}]} $
@@ -2860,37 +2860,37 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     with $\theta > 0$ a constant.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The similarity measure $S_\theta$ focuses on the similarity of both the absence as well as the presence of attributes, since it uses both $N_{00}$ and $N_{11}$ , while the similarity measure $T_\theta$ focuses only on the presence of attributes. 
+    \item The similarity measure $S_\theta$ focuses on the similarity of both the absence as well as the presence of attributes, since it uses both $N_{00}$ and $N_{11}$ , while the similarity measure $T_\theta$ focuses only on the presence of attributes.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item when we wish to emphasize the similarity on attributes that are present, the set of $T_\theta$ is more appropriate than $S_\theta$. 
+    \item when we wish to emphasize the similarity on attributes that are present, the set of $T_\theta$ is more appropriate than $S_\theta$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item both similarity measures are bounded from below with the value zero and from above with the value 1 ($S_\theta, T_\theta \in [0, 1]$). 
+    \item both similarity measures are bounded from below with the value zero and from above with the value 1 ($S_\theta, T_\theta \in [0, 1]$).
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The closer the similarity measures get to one the more similar the two objects would be on the presence and absence of attributes. 
+    \item The closer the similarity measures get to one the more similar the two objects would be on the presence and absence of attributes.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     % \item The measures $1 - S_\theta$ and $1 - T_\theta$ are referred to as dissimilarity measures.
     % \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item the dissimilarity measures $1 - S_\theta$ and $1 - T_\theta$ are distance measures when $\theta \geq 1$ and $\sqrt{1 - S_\theta}$ and $\sqrt{1 - T_\theta}$ are distance measures when $\theta \geq \dfrac{1}{3}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\[0.3cm]
-    a distance measure $d$ is defined by four characteristics: 
+    a distance measure $d$ is defined by four characteristics:
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{multicols}{2}
     \begin{enumerate}
         \item $d(a, b) \geq 0$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
+
         \item $d(a, a) = 0$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
+
         \item $d(a, b) = d(b, a)$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        
+
         \item $d(a, b) + d(b, c) \geq d(a, c)$
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
@@ -2918,15 +2918,15 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
 
     \item \textbf{Sokal \& Sneath (3)}: $ S_{SS} = \dfrac{N_{00} + N_{11}}{N_{01} + N_{10}} $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item \textbf{Kulcynski}: $ T_K = \dfrac{N_{11}}{N_{01} + N_{10}} $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
 \subsubsection{Pearson’s squared phi-coefficient ($\phi^2$)}
 
-    \item It is clear that $\phi$ is an alternative measure with values in $[0, 1]$. 
+    \item It is clear that $\phi$ is an alternative measure with values in $[0, 1]$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item As it is not of the form $\sqrt{1 - S_\theta}$ or $\sqrt{1 - T_\theta}$, it is unknown if $1 - \phi$ or $\sqrt{1 - \phi}$ is a distance measure, like the proposed similarity measures for values of $\theta$ being large enough.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -2938,36 +2938,36 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     where the parameters $\lambda$ and $\mu$ can only be functions of the row and column totals, i.e., functions of $N_{0\cdot }$, $N_{1\cdot }$, $N_{\cdot 0}$ , and $N_{\cdot 1}$ .
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item \textbf{Sokal \& Michener}: 
+    \item \textbf{Sokal \& Michener}:
     \hfill
-    $ \lambda = 0 $ 
-    \hfill 
+    $ \lambda = 0 $
+    \hfill
     $ \mu = \dfrac{1}{n} $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item \textbf{Czekanowski}: 
+    \item \textbf{Czekanowski}:
     \hfill
-    $ \lambda = 1 - \dfrac{1}{N_{1\cdot} + N_{\cdot 1}} $ 
-    \hfill 
+    $ \lambda = 1 - \dfrac{1}{N_{1\cdot} + N_{\cdot 1}} $
+    \hfill
     $ \mu = \dfrac{1}{N_{1\cdot} + N_{\cdot 1}} $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item \textbf{Kappa}: 
+    \item \textbf{Kappa}:
     \hfill
     $ \lambda = - \dfrac{N_{1\cdot} N_{\cdot 1} + N_{0\cdot} N_{\cdot 0}}{N_{1\cdot} N_{\cdot 0} + N_{\cdot 1} N_{0\cdot}} $
-    \hfill 
+    \hfill
     $ \mu = \dfrac{1}{N_{1\cdot} N_{\cdot 0} + N_{\cdot 1} N_{0\cdot}} $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item corrected index of $\mathcal{L}$ is of the form
-    $ C S = \dfrac{S - \mbbE[S]}{1 - \mbbE[S]} $ 
+    $ C S = \dfrac{S - \mbbE[S]}{1 - \mbbE[S]} $
     where $ S = \lambda + \mu(N_{00} + N_{11}) $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
 
 \subsubsection{Yule’s Q statistic ($Q$)}
 
-    \item It was termed the coefficient of association, which made sense at the time, as it is one of the oldest measures of association. 
+    \item It was termed the coefficient of association, which made sense at the time, as it is one of the oldest measures of association.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $ Q = \dfrac{N_{00} N_{11} - N_{01} N_{10}}{N_{00} N_{11} + N_{01} N_{10}} $
@@ -2992,10 +2992,10 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
     \item $100\%(1 - \alpha)$ \textbf{confidence interval}:
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
-        \item 
-        $ 
-            Q = \dfrac{\hat{OR} - 1}{\hat{OR} + 1} 
-            \Longrightarrow 
+        \item
+        $
+            Q = \dfrac{\hat{OR} - 1}{\hat{OR} + 1}
+            \Longrightarrow
             \hat{OR} = - \dfrac{Q+1}{Q-1}
         $
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -3004,14 +3004,13 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
         $
             (L_{O R} , U_{O R} ] =
             \left(
-                \log( \hat{OR}) - z_{1-\alpha/2} \hat{SE}_{OR} , 
+                \log( \hat{OR}) - z_{1-\alpha/2} \hat{SE}_{OR} ,
                 \ \log( \hat{OR}) + z_{1-\alpha/2} \hat{SE}_{OR}
             \right]
         $
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item 
 \end{enumerate}
 
 

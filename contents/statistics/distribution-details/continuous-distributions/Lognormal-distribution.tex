@@ -70,10 +70,10 @@
     \item  If we assume that $(X, Y)$ is bivariate normal, with parameters $\mu_X , \mu_Y , \sigma_X , \sigma_Y$ , and $\rho$, then $(\exp(X),\ \exp(Y ))$ has a bivariate lognormal distribution function.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
         \begin{aligned}
-            &\tCov(\exp(X),\ \exp(Y )) 
+            &\tCov(\exp(X),\ \exp(Y ))
             = \mbbE[\exp(X) \exp(Y )] - \mbbE[\exp(X)]\mbbE[\exp(Y )] \\
             &= \mbbE[\exp(X + Y )] - \exp(\mu_X + 0.5\sigma^2_X ) \exp(\mu_Y + 0.5\sigma^2_Y ) \\
             &= \exp(\mu_X + \mu_Y + 0.5(\sigma^2_X + 2\rho\sigma_X \sigma_Y + \sigma^2_Y )) - \exp(\mu_X + 0.5\sigma^2_X ) \exp(\mu_Y + 0.5\sigma^2_Y )\\
@@ -86,22 +86,22 @@
     This covariance is quite different from the covariance $\rho \sigma_X \sigma_Y = \tCov[X, Y] $ in the logarithmic scale.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Pearson’s Correlation Coefficient: 
-    $ 
-        \rho_P 
+    \item Pearson’s Correlation Coefficient:
+    $
+        \rho_P
         = \dfrac{\exp(\rho\sigma_X \sigma_Y ) - 1 }{\sqrt{(\exp(\sigma^2_X ) - 1)\ (\exp(\sigma^2_Y ) - 1)}}
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item When the variances of $X$ and $Y$ are the same, say $\sigma^2_X = \sigma^2_Y = \sigma^2$ , Pearson’s correlation coefficient reduces to $\rho_P = \dfrac{exp(\rho\sigma^2) - 1}{exp(\sigma^2) - 1}$. 
+    \item When the variances of $X$ and $Y$ are the same, say $\sigma^2_X = \sigma^2_Y = \sigma^2$ , Pearson’s correlation coefficient reduces to $\rho_P = \dfrac{exp(\rho\sigma^2) - 1}{exp(\sigma^2) - 1}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item This correlation is a decreasing function in $\sigma^2$. 
-    When $\sigma^2$ is close to zero the correlation is $\rho$ and when $\sigma^2$ becomes very large the correlations converges to zero. 
+    \item This correlation is a decreasing function in $\sigma^2$.
+    When $\sigma^2$ is close to zero the correlation is $\rho$ and when $\sigma^2$ becomes very large the correlations converges to zero.
     On the other hand, the correlation is relatively constant for the variance $\sigma^2 \leq 1$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    
+
 \end{enumerate}
 
 

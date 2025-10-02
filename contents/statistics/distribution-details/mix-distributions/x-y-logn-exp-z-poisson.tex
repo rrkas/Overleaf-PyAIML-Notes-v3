@@ -17,19 +17,19 @@
     \item Conditional expectations: $\mu_X (z) = z\lambda_X$ and $\mu_Y (z) = z\lambda_Y$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\mu_X = \mbbE[\mu_X (Z )] = \lambda_X \mbbE[Z] = \lambda_X \mu_Z$ and $\mu_Y = \lambda_Y \mu_Z$ 
+    \item $\mu_X = \mbbE[\mu_X (Z )] = \lambda_X \mbbE[Z] = \lambda_X \mu_Z$ and $\mu_Y = \lambda_Y \mu_Z$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item
     $
-        \tCov[\mu_X (Z ), \mu_Y (Z )] 
-        = \mbbE[\mu_X (Z )\mu_Y (Z )] - \mu_X \mu_Y 
-        = \lambda_X \lambda_Y ( \mbbE[Z^2] - \mu^2_Z ) 
-        = \lambda_X \lambda_Y \sigma^2_Z 
+        \tCov[\mu_X (Z ), \mu_Y (Z )]
+        = \mbbE[\mu_X (Z )\mu_Y (Z )] - \mu_X \mu_Y
+        = \lambda_X \lambda_Y ( \mbbE[Z^2] - \mu^2_Z )
+        = \lambda_X \lambda_Y \sigma^2_Z
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The conditional variance of $X$ given $Z$ is given by $\mbbV[X|Z = z] = z\lambda_X$ , which is the conditional mean of the Poisson distribution. Thus $\mbbE[\mbbV[X|Z = Z]] = \mu_Z \lambda_X$ . 
+    \item The conditional variance of $X$ given $Z$ is given by $\mbbV[X|Z = z] = z\lambda_X$ , which is the conditional mean of the Poisson distribution. Thus $\mbbE[\mbbV[X|Z = Z]] = \mu_Z \lambda_X$ .
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $\mbbV[\mu_X (Z )] = \mbbV[Z \lambda_X] = \lambda^2_X \mbbV[Z] = \lambda^2_X \sigma^2_Z$
@@ -37,8 +37,8 @@
 
     \item $\mbbE[\mbbV[X|Z =Z]] + \mbbV[\mu_X (Z)] = \mu_Z \lambda_X + \sigma^2_Z \lambda^2_X$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-    \item $\mbbE[\mbbV[Y|Z =Z]] + \mbbV[\mu_Y (Z)] = \mu_Z \lambda_Y + \sigma^2_Z \lambda^2_Y$ 
+
+    \item $\mbbE[\mbbV[Y|Z =Z]] + \mbbV[\mu_Y (Z)] = \mu_Z \lambda_Y + \sigma^2_Z \lambda^2_Y$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item Pearson’s correlation coefficient:

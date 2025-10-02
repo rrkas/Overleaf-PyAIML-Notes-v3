@@ -72,15 +72,15 @@
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    \item 
+    \item
     $
         \begin{aligned}
-            \tCov[X, Y] 
+            \tCov[X, Y]
             & = \mbbE[(X - \mu _X )(Y - \mu _Y )]
             = \sigma _X \sigma _Y \mbbE[Z_1 Z_2] \\
             &= \sigma _X \sigma _Y \dint^\infty_{-\infty} \dint^\infty_{-\infty} z_1z_2 \dfrac{1}{2\pi (1-\rho^2)} \exp \dParenBrac{ - \dfrac{z^2_1-2\rho z_1 z_2+z^2_2} {2(1-\rho^2)} } dz_1\ dz_2\\
             &= \sigma _X \sigma _Y \dint^\infty_{-\infty} z_2 \dfrac{1}{\sqrt{2\pi}}  \exp \dParenBrac{ - \dfrac{z^2_2} {2} } \dint^\infty_{-\infty} z_1 \dfrac{1}{\sqrt{2\pi (1-\rho^2)}} \exp \dParenBrac{ - \dfrac{(z_1-\rho z_2)^2 }{2(1-\rho^2)} } dz_1\ dz_2 \\
-            &= \sigma_X \sigma_Y \dint^\infty_{-\infty} \rho z^2_2 \dfrac{1}{\sqrt{2\pi}}  \exp \dParenBrac{ - \dfrac{z^2_2}{ 2} } dz_2 
+            &= \sigma_X \sigma_Y \dint^\infty_{-\infty} \rho z^2_2 \dfrac{1}{\sqrt{2\pi}}  \exp \dParenBrac{ - \dfrac{z^2_2}{ 2} } dz_2
             = \rho \sigma_X \sigma_Y
         \end{aligned}
     $
@@ -125,8 +125,8 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\[0.3cm]
     with $z_{1 - p}$ the $p$-th upper quantile of the standard normal distribution function.
-    
-    
+
+
     \item These limits can then be transformed back to the original scale using the inverse transformation $\dfrac{\exp({2x}) - 1}{\exp({2x}) + 1}$ of the Fisher $z$-transformation.
     Confidence interval in the original scale is
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -140,30 +140,30 @@
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item Although we may not prefer the use of Spearman’s correlation coefficient over Pearson’s product-moment estimator under the assumption of normally and independently distributed pairs $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$, the mean and variance of $r_S$ have been established under this setting. 
+    \item Although we may not prefer the use of Spearman’s correlation coefficient over Pearson’s product-moment estimator under the assumption of normally and independently distributed pairs $(X_1, Y_1)$, $(X_2, Y_2)$, $\cdots$ , $(X_n , Y_n )$, the mean and variance of $r_S$ have been established under this setting.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \begin{enumerate}
-        \item Thus the parameter $\rho$ of the bivariate normal distribution can now be estimated by $\hat{\rho} = 2 \sin(\pi r_S /6)$. 
+        \item Thus the parameter $\rho$ of the bivariate normal distribution can now be estimated by $\hat{\rho} = 2 \sin(\pi r_S /6)$.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
         \item \textbf{Mean}:
         $
-            \rho_S 
-            = \mbbE[r_S] 
-            = \dfrac{6}{(n + 1)\pi} (\arcsin(\rho) + (n - 2) \arcsin(\rho/2)) 
+            \rho_S
+            = \mbbE[r_S]
+            = \dfrac{6}{(n + 1)\pi} (\arcsin(\rho) + (n - 2) \arcsin(\rho/2))
             \approx \dfrac{6}{\pi} \arcsin(\rho/2)
         $
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
         \item \textbf{Variance}:
         $
-            \mbbV[r_S] 
+            \mbbV[r_S]
             \approx \dfrac{1}{ n} (1 - 1.1563465\rho^2 + 0.304743\rho^4 + 0.155286\rho^6)
         $
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
-    
+
 \end{enumerate}
 
 
@@ -171,13 +171,13 @@
 \begin{enumerate}[resume*=binvar-normal]
     \item $\mbbE[X] = \mu_X$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item $\mbbE[Y] = \mu_Y$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item $\mbbV[X] = \sigma^2_X$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
+
     \item $\mbbV[Y] = \sigma^2_Y$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
