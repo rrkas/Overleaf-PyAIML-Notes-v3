@@ -150,7 +150,7 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item  Thus the \textbf{goal} of hypothesis testing is to \textbf{reject the null hypothesis} on the basis of sufficient and well-collected data.
-    We will decide that either H0 is rejected (thus $H_a$ must be true) or is not rejected (thus there is no or not enough evidence to demonstrate that $H_0$ is false).
+    We will decide that either $H_0$ is rejected (thus $H_a$ must be true) or is not rejected (thus there is no or not enough evidence to demonstrate that $H_0$ is false).
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
 
@@ -260,6 +260,15 @@
             \hfill \cite{ctl.unm.edu/assets/docs/resources/hypothesis-testing-sheet.pdf}
         \end{enumerate}
     \end{enumerate}
+
+    \item The z-test heavily depends on asymptotic theory and therefore requires \textbf{large sample sizes}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the t-test can be used for small sample sizes but under the strict assumption of having collected data from a \textbf{normal distribution}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Alternative approaches for the z-test and t-test have been developed that require fewer or no assumptions. These tests are referred to as \textbf{non-parametric tests}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
@@ -272,13 +281,28 @@
     ]{images/statistics/one-sided_two-sided_t-test.png}
 \end{figure}
 
-The difference between one-sided and two-sided tests. 
-In both cases $H_0$ is not rejected if the observed test statistic $t_n$ falls outside of the rejection region $\alpha$. 
+The difference between one-sided and two-sided tests.
+In both cases $H_0$ is not rejected if the observed test statistic $t_n$ falls outside of the rejection region $\alpha$.
 However, for a one-sided test (top) the rejection region is located on one tail of the distribution (the blue area denoted $\alpha$).
-Hence, only if $t_n > z_{1-\alpha}$ (in this case), and sufficiently large to fall within the rejection region, is $H_0$ rejected. 
-For a two-sided test the rejection region is split over the two tails of the distribution: hence $H_0$ can be rejected if $t_n$ is either sufficiently small or sufficiently large. 
+Hence, only if $t_n > z_{1-\alpha}$ (in this case), and sufficiently large to fall within the rejection region, is $H_0$ rejected.
+For a two-sided test the rejection region is split over the two tails of the distribution: hence $H_0$ can be rejected if $t_n$ is either sufficiently small or sufficiently large.
 Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one-sided test—a one-sided test might reject $H_0 $, whereas the same $t_n$ might not lead to a rejection in the two-sided case, because the critical value for the two-sided test is larger than for the one-sided test
 \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \subsection{The One-Sided $z$-Test for a Single Mean ($H_0:\mu(f) \leq \mu_0$)}
@@ -312,7 +336,7 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
     Only when the sample average $\bar{Y}$ is substantially larger—thus when there is sufficient evidence—than $\bar{Y}$ would we start to indicate that the null hypothesis $H_0 : \mu( f ) \leq \mu_0$ is unlikely to be true (although a type 1 error could be made here).
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item we want to find a criterion for the average $\bar{Y}$ such that the average can only be larger than this criterion with a probability that is at most equal to $\alpha$ when the null hypothesis is true. 
+    \item we want to find a criterion for the average $\bar{Y}$ such that the average can only be larger than this criterion with a probability that is at most equal to $\alpha$ when the null hypothesis is true.
     If we assume that this criterion is equal to $\mu_0 + \delta$, with $\delta > 0$, then the probability that $\bar{Y}$ is larger than $\mu_0 + \delta$ is given by
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \\[0.3cm]
@@ -333,8 +357,8 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
     \item if we deliberately set $\mu( f ) = \mu_0$ to maximize the type 1 error, the probability $P ( \bar{Y} > \mu_0 + \delta)$ is given by $1 - \Phi(\delta\sqrt{n}/\sigma)$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item When we choose $\delta$ equal to $\delta = \dfrac{z_{1-\alpha} \sigma( f )}{\sqrt{n}}$, the probability becomes $P ( \bar{Y} > \mu_0 + \delta) \approx \alpha$. 
-    When $\bar{Y} > \mu_0 + \dfrac{z_{1 - \alpha} \sigma( f )}{\sqrt{n}}$ the probability of rejecting the null hypothesis is at most $\alpha$—and hence we have defined sufficient evidence by the criterion $\mu0 + \dfrac{z_{1 - \alpha} \sigma( f )}{\sqrt{n}}$ for the null hypothesis $H_0 : \mu( f ) \leq \mu_0$ using the statistic $\bar{Y} $. 
+    \item When we choose $\delta$ equal to $\delta = \dfrac{z_{1-\alpha} \sigma( f )}{\sqrt{n}}$, the probability becomes $P ( \bar{Y} > \mu_0 + \delta) \approx \alpha$.
+    When $\bar{Y} > \mu_0 + \dfrac{z_{1 - \alpha} \sigma( f )}{\sqrt{n}}$ the probability of rejecting the null hypothesis is at most $\alpha$—and hence we have defined sufficient evidence by the criterion $\mu0 + \dfrac{z_{1 - \alpha} \sigma( f )}{\sqrt{n}}$ for the null hypothesis $H_0 : \mu( f ) \leq \mu_0$ using the statistic $\bar{Y} $.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item The null hypothesis could still be true, but that it is just bad luck to have observed such an unlikely large average under the null hypothesis.
@@ -345,21 +369,21 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
     We could estimate $\sigma( f )$ using sample standard deviation $S = \sqrt{\dfrac{1}{n-1} \dsum^n_{i=1} (Y_i - \bar{Y} )^2}$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item If the sample size is large enough, the probability $P\dParenBrac{\bar{Y} > \mu_0 + \dfrac{z_{1-\alpha} S}{\sqrt{n}}}$ would still be close to $\alpha$. 
+    \item If the sample size is large enough, the probability $P\dParenBrac{\bar{Y} > \mu_0 + \dfrac{z_{1-\alpha} S}{\sqrt{n}}}$ would still be close to $\alpha$.
     When the sample size is large enough, we may reject the null hypothesis in practice when $\bar{Y} > \mu_0 + \dfrac{z_{1-\alpha} S}{\sqrt{n}}$ or in other words when the \textbf{asymptotic test statistic} $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}}$ is larger than $z_{1-\alpha}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item For large sample sizes n, the null hypothesis $H_0 : \mu( f ) \leq \mu_0$ is tested with test statistic $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}}$ and the null hypothesis is rejected with significance level $\alpha$ when the test statistic is larger than the critical value $z_{1-\alpha}$. 
+    \item For large sample sizes n, the null hypothesis $H_0 : \mu( f ) \leq \mu_0$ is tested with test statistic $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}}$ and the null hypothesis is rejected with significance level $\alpha$ when the test statistic is larger than the critical value $z_{1-\alpha}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item The null hypothesis is not rejected when $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}} \leq z_{1-\alpha}$, since there would not be enough evidence to reject the null hypothesis with significance level $\alpha$ (i.e., the observed result is not unlikely enough under $H_0 $). 
-    This does not mean that the null hypothesis is true. 
+    \item The null hypothesis is not rejected when $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}} \leq z_{1-\alpha}$, since there would not be enough evidence to reject the null hypothesis with significance level $\alpha$ (i.e., the observed result is not unlikely enough under $H_0 $).
+    This does not mean that the null hypothesis is true.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item the asymptotic approach for testing $H_0 : \mu( f ) \leq \mu_0$ will work for most population densities $f_X$ whenever the sample size is large enough.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-\subsubsection{p-value}
+% \subsubsection{p-value}
 
     \item The p-value is the probability that the observed test statistic $t_n$ and more extreme observations would occur under the null hypothesis.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -394,10 +418,10 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
         \begin{enumerate}
             \item Right-tailed test ($H_0:\mu\leq\mu_0$): $p=P(Z\geq t_{obs})=1-\Phi(t_{obs})$
             \hfill \cite{common/online/chatgpt}
-            
+
             \item Left-tailed test ($H_0:\mu\geq\mu_0$): $p=P(Z\leq t_{obs})=\Phi(t_{obs})$
             \hfill \cite{common/online/chatgpt}
-            
+
             \item Two-tailed test ($H_0:\mu= \mu_0$): $p = 2 \cdot \min(\Phi(t_{obs}), 1 - \Phi(t_{obs}))$
             \hfill \cite{common/online/chatgpt}
         \end{enumerate}
@@ -413,35 +437,108 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
 \subsection{The Two-Sided z-Test for a Single Mean ($H_0:\mu(f)=\mu_0$)}
 
 \begin{enumerate}
-    \item The null hypothesis is formulated as $H_0 : \mu( f ) = \mu_0$ and the alternative hypothesis is $H_a : \mu( f )  = \mu_0 $. 
+    \item The null hypothesis is formulated as $H_0 : \mu( f ) = \mu_0$ and the alternative hypothesis is $H_a : \mu( f )  = \mu_0 $.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item We would reject the null hypothesis when either $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}}$ is large positive or large negative. 
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-    \item If we still keep our significance level at $\alpha$, we will reject the null hypothesis $H_0 : \mu( f )  = \mu_0$ when $\dfrac{\bar{Y} - \mu0}{S/\sqrt{n}} > z_{1-\alpha/2} $, with $z_{1-\alpha/2}$ the $1 - \alpha/2$ quantile of the standard normal distribution (when using a normal approximation), or when $\dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}} < -z_{1-\alpha/2} $. 
+    \item We would reject the null hypothesis when either $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}}$ is large positive or large negative.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item we would reject when $\dfrac{\dabs{\bar{Y} - \mu_0}}{S/\sqrt{n}} > z_{1-\alpha/2} $, with $\dabs{x}$ the absolute value of $x$. 
+    \item If we still keep our significance level at $\alpha$, we will reject the null hypothesis $H_0 : \mu( f )  = \mu_0$ when $\dfrac{\bar{Y} - \mu0}{S/\sqrt{n}} > z_{1-\alpha/2} $, with $z_{1-\alpha/2}$ the $1 - \alpha/2$ quantile of the standard normal distribution (when using a normal approximation), or when $\dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}} < -z_{1-\alpha/2} $.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item we reject this hypothesis when the test statistic is sufficiently small or sufficiently large. 
+    \item we would reject when $\dfrac{\dabs{\bar{Y} - \mu_0}}{S/\sqrt{n}} > z_{1-\alpha/2} $, with $\dabs{x}$ the absolute value of $x$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    
-    \item To control type 1 error, we therefore split up our rejection region in two: this is why we work with $z_{1-\alpha/2}$. 
+
+    \item we reject this hypothesis when the test statistic is sufficiently small or sufficiently large.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item To control type 1 error, we therefore split up our rejection region in two: this is why we work with $z_{1-\alpha/2}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item  two-sided tests, while used very often in practice, are less useful when sample sizes are very large: with a very large $n$, the standard error of a test statistic will become small, and we eventually will reject the null hypothesis in most cases.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item confidence interval contains the statistic we just discussed for hypothesis testing. 
+    In the case that $\mu_0$ is not contained in the confidence interval, either $\dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}} > z_{1-\alpha/2}$ or $\dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}} < -z_{1-\alpha/2}$ would have occurred.
+    Thus the null hypothesis $H_0 : \mu( f ) = \mu_0$ would be rejected if $\mu_0$ is not contained in $\dSquareBrac{\bar{Y} - \dfrac{z_{1-\alpha/2} S}{\sqrt{n}}, \bar{Y} + \dfrac{z_{1-\alpha/2} S}{\sqrt{n}}}$. Thus confidence intervals relate directly to two-sided hypothesis tests.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If the null hypothesis is included in the confidence interval, we do not have sufficient evidence to reject it.
+    If the confidence interval lies fully outside of the null hypothesis, there is sufficient evidence to reject the null hypothesis. 
+    Theoretically (and asymptotically) using confidence intervals for testing will lead to the same type 1 error probabilities.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The bootstrap approach is an analytical approach to obtain confidence intervals for certain statistics may be an alternative to generate confidence intervals (instead of using asymptotic theory).
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
 
+\subsection{Non-Parametric Test: Mann–Whitney U Test for Two Independent Samples ($H_0 : P(Y_1 > Y_2) = P(Y_1 < Y_2)$)}
 
+\begin{enumerate}
+    \item  It tests the null hypothesis $H_0 : P(Y_1 > Y_2) = P(Y_1 < Y_2)$, with $Y_1$ a random draw from the first population and $Y_2$ a random draw from the second population.
+    The null hypothesis is equivalent to $H_0 : P(Y_1 > Y_2) = 0.5$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item  If the null hypothesis is false, it is more likely to observe larger values in one of the populations with respect to the other population. 
+    Thus one population is \textbf{stochastically greater} than the other population.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item If we now assume that the distribution function $F_2$ for the second population is given by $F_2(y) = F_1(y + \delta)$, with $F_1$ the distribution function of the first population and $\delta$ a (shift) parameter, the null hypothesis $H_0 : P(Y_1 > Y_2) = P(Y_1 < Y_2)$ implies that the medians of the two populations must be equal (i.e., $\delta = 0$). 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item Only in this somewhat restrictive formulation of population distributions, the Mann–Whitney U test investigates whether the two populations have equal medians.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item Mann–Whitney U test statistic: 
+    \colorbox{yellow}{$
+        U = 
+        \dsum^{n_1} _{i=1} 
+        \dsum^{n_2} _{j=1} 
+        [1_{(Y_{2, j} <Y_{1,i} )} + 0.5 \cdot 1_{(Y_{1,i} =Y_{2, j} )}]
+    $}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    with $1_A$ the indicator function equal to $1$ if $A$ is true and zero otherwise.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  It represents the number of pairs $(Y_{1,i} , Y_{2, j} )$ of observations from the two populations for which the first population provides a larger value than the second population. 
+    If there are ties (i.e., $Y_{1,i} = Y_{2, j}$ ), we cannot determine which population provides the larger value; thus this pair only contributes half to the total number of observations for which the first population is larger than the second population.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  If the variable $Y _h$ is continuous, we should not observe any ties if we use enough decimal places in the recording of the values.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The Mann–Whitney U test only makes use of the \textbf{ordering} of the observations. 
+    The total number of \textbf{pairs} for which the comparison between the two populations is made is equal to $n_1n_2 $. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Each observation of the first sample is compared to each observation in the second sample. 
+    Thus the statistic $\dfrac{U}{n_1n_2}$ is an estimator of the probability $P(Y_1 > Y_2)$. 
+    When $\dfrac{U}{n_1n_2}$ is away from $0.5$ or in other words, when U is away from $0.5n_1n_2$ , the null hypothesis $H_0 : P(Y_1 > Y_2) = 0.5$ is rejected and one population is considered stochastically greater than the other population.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item To determine whether the $U$ statistic is away from $0.5n_1n_2 $, we will make use of \textbf{asymptotic theory}, as we did with the $z$-test for means. 
+    If the sample sizes $n_1$ and $n_2$ are large enough, the Mann–Whitney U statistic is approximately normally distributed with mean $\mu_U$ and variance $\sigma^2_U$ . 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item Under the null hypothesis $H_0 : P(Y_1 > Y_2) = 0.5$, mean $\mu_U = 0.5n_1n_2$ .
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The variance is then equal to $\sigma^2 _U = \dfrac{n_1n_2(n_1 + n_2 + 1)}{12}$, but only when there are \textbf{no ties}.
+        If there are ties, a correction to this variance is required to make the variance smaller. 
+        The ties reduce the variability in $U $.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item To test the null hypothesis $H_0 : P(Y_1 > Y_2) = 0.5$ we calculate the standardized value $Z = \dfrac{U - 0.5n_1n_2}{\sqrt{n_1n_2(n_1 + n_2 + 1)/12}}$ and compare this with the quantiles $z_{\alpha/2}$ and $z_{1-\alpha/2}$ of the standard normal distribution. 
+        If $\dabs{Z} > z_{1-\alpha/2}$ we reject the null hypothesis.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
 
 
 

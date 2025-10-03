@@ -489,16 +489,158 @@
 
 
 
+\subsection{The t-Test for a Single Sample ($H_0 : \mu( f ) \leq \mu_0$)}
+
+\begin{enumerate}
+    \item Lets assume random variables $Y_1 , Y_2, \cdots , Y_n$ are i.i.d. normally $\mathcal{N} (\mu_0, \sigma^2)$ distributed, and test statistic $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}}$ has a t-distribution with $n - 1$ degrees of freedom.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item instead of using the $1 - \alpha$ quantile $z_{1-\alpha}$ of the normal distribution, we may better use the $1 - \alpha$ quantile $x_{1-\alpha}( f_t )$ of the t-distribution for one-sided testing. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we would obtain that $P\dParenBrac{\dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}} > x_{1-\alpha}( f_t )} = \alpha$ for any sample size $n$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The test statistic $T_n = \dfrac{\bar{Y} - \mu_0}{S/\sqrt{n}}$ is called the \textbf{one-sample t-test} and we would reject the one-sided null hypothesis $H_0 : \mu( f ) \leq \mu_0$ in favor of $H_a : \mu( f ) > \mu_0$ when the observed value $t_n > x_{1-\alpha}( f_t )$ and do not reject the null hypothesis when $t_n \leq x_{1-\alpha}( f_t )$.
+    The probability for $H_0 : \mu( f ) \leq \mu_0$ against $H_a : \mu( f ) > \mu_0$ is equal to $p = 1 - F_t (t_ n )$, with $F_t$ the t-distribution function with $n - 1$ degrees of freedom and $t_n$ is calculated from the data. 
+    If this p-value is below $\alpha$, we believe that it is unlikely to obtain the result $t _n$ or larger results under the null hypothesis $H_0 : \mu( f ) \leq \mu_0 $. 
+    The p-value would be exactly equal to $\alpha$ if $t _n$ equals the critical value $x_{1-\alpha}( f_ t )$. 
+    Indeed, $\alpha = 1 - F_t (x_{1-\alpha}( f_ t )) = P(T_n > x_{1-\alpha}( f_ t ))$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we would reject the one-sided null hypothesis $H_0 : \mu( f ) \geq \mu_0$ in favor of $H_0 : \mu( f ) < \mu_0$ when $t_ n < -x_{1-\alpha}( f_ t )$ and do not reject the null hypothesis when $t_ n \geq -x_{1-\alpha}( f_ t )$.
+    For the null hypothesis $H_0 : \mu( f ) \geq \mu_0$ against $H_a : \mu( f ) < \mu_0$ the p-value is calculated as $p = F_t (t _n )$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we would reject the two-sided null hypothesis $H_0 : \mu( f ) = \mu_0$ in favor of $H_a : \mu( f ) \neq \mu_0$ when $\dabs{t _n} > x_{1-\alpha/2}( f_ t )$ and do not reject the null hypothesis when $\dabs{t_ n} \leq x_{1-\alpha/2}( f_ t )$.
+    For the null hypothesis $H_0 : \mu( f ) = \mu_0$ against $H_a : \mu( f ) \neq \mu_0 $, the p-value is calculated as $p = 2[1 - F_t (\dabs{t_ n})]$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item There is no other test statistic with the same type 1 error $\alpha$ that would reject the null hypothesis quicker than the t-test when the alternative hypothesis is true, i.e., it has the highest power compared to any other test statistic.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
+\subsection{The t-Test for Two Independent Samples ($H_0:\mu_1=\mu_2$)}
+
+\begin{enumerate}
+    \item Goal: to compare the means of two independent samples with each other.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Lets assume we have one sample from population $h = 1$ with sample size $n_1$ and one sample from population $h = 2$ with sample size $n_2 $. 
+    The random variables are denoted by $Y _{h,1} , Y _{h,2}, \cdots , Y _{h,n _h}$ for population $h$. 
+    
+    \item Let $Y _{h,1} , Y _{h,2}, \cdots , Y _{h,n _h}$ i.i.d. $\mathcal{N} (\mu_h , \sigma^2_ h )$ and we are interested in a testing hypothesis regarding the difference $\mu_1 - \mu_2$ (i.e., the difference in population means), a natural estimator for this difference is $\bar{Y}_1 - \bar{Y}_2$ , and the standard error of this estimator is $\sqrt{\dfrac{\sigma^2 _1 }{n_1} + \dfrac{\sigma^2_ 2 }{n_2} }$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This standard error can be estimated by substituting the sample variance $S^2 _h$ for $\sigma^2 _h$ , $h = 1, 2$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If the standard deviations of the two populations are equal ($\sigma = \sigma_1 = \sigma_2$), the standard error $\sqrt{\dfrac{\sigma^2 _1 }{n_1} + \dfrac{\sigma^2_ 2 }{n_2} }$ becomes equal to $\sigma\sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}$ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item  In the case of equal variances, both sample variances $S^2 _1$ and $S^2 _2$ provide information on the variance $\sigma^2$ .
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+        \item The variance $\sigma^2$ can now be estimated by the \textbf{pooled sample} variance $S^2 _p$ given by
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\[0.2cm]
+        .\hfill
+        $
+            S^2_p = \dfrac{(n_1 - 1)S^2_1 + (n_2 - 1)S^2 _2}{n_1 + n_2 - 2}
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $S^2_p$ is a weighted average of the sample variances where the weights are based on the degrees of freedom.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+        \item The random variable $\dfrac{\bar{Y}_1 - \bar{Y}_2}{S _p \sqrt{1/n_1 + 1/n_2}}$ has a t-distribution function with $n_1 + n_2 - 2$ degrees of freedom. It can be used to test a one-sided or two-sided null-hypothesis on the mean difference $\mu_1 - \mu_2 $.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item When the two variances are unequal, the statistic $\dfrac{\bar{Y}_1 - \bar{Y}_2}{ \sqrt{S^2_1/n_1 + S^2_2/n_2}}$ does not follow a t-distribution and the distribution function of the statistic is not free from the ratio $\dfrac{\sigma_1}{\sigma_2}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item This does not mean that we should always use asymptotic theory for normally distributed data, since the t-distribution still provides a better approximation when the degrees of freedom are estimated from the data. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item This approximation is often referred to as the \textbf{Satterthwaite or Welch approximation}.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item Null hypothesis (no difference in means): $H_0:\mu_1=\mu_2$ OR $H_0:\mu_1-\mu_2=0$
+    \hfill \cite{common/online/chatgpt}
+
+    \item Alternative hypotheses (depending on test type):
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item Two-sided test (most common): $H_a:\mu_1\neq\mu_2$
+        \hfill \cite{common/online/chatgpt}
+
+        \item One-sided tests (if direction is specified): $H_a:\mu_1 > \mu_2$ OR $H_a:\mu_1 < \mu_2$
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+
+    \item How to check if we have sufficient evidence:
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item t-test statistic: $t = \dfrac{\bar{Y}_1 - \bar{Y}_2}{SE(\bar{Y}_1 - \bar{Y}_2)}$
+        \hfill \cite{common/online/chatgpt}
+        \\
+        where $SE(\bar{Y}_1 - \bar{Y}_2)$ depends on whether we assume equal variances (pooled $S_p^2$) or unequal variances (Welch’s test).
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+
+    \item Decision rule: 
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item We test against a significance level (usually $\alpha=0.05$)
+        \hfill \cite{common/online/chatgpt}
+
+        \item Compute the p-value from the t-distribution (with appropriate degrees of freedom).
+        \hfill \cite{common/online/chatgpt}
+
+        \item If p-value $\leq \alpha$: Reject $H_0$ → Evidence suggests a difference in means.
+        \hfill \cite{common/online/chatgpt}
+
+        \item If p-value $> \alpha$: Fail to reject $H_0$ → Not enough evidence to conclude a difference.
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+\end{enumerate}
 
 
+\subsection{The t-Test for Two Dependent Samples ($H_0 : \mu_D = \mu_1 - \mu_2 \leq 0$)}
 
+\begin{enumerate}
+    \item Used to compare the means of two dependent samples: e.g., the means of two related groups.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item This occurs frequently when we want to compare a property that we measure regarding people (e.g., their happiness) at one point in time with that same property at a later point in time.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item  In this case, contrary to the independent sample case discussed above, the \textbf{data are paired}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item The null hypothesis is still formulated on the difference in means $\mu_1 - \mu_2$ for the two samples, like we did for the two independent samples, but now we must take into account that the data may be dependent.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item We can consider hypothesis testing regarding the difference in means by calculating difference scores. 
+    Thus, we can consider the difference scores $D_1 = Y_{1,1} - Y_{2,1}$, $D_2 = Y_{1,2} - Y_{2,2}$, $\cdots$, $D _n = Y_{1,n} - Y_{2,n} $. 
+    By considering the difference score we have brought the two samples back to one sample of difference scores and addressed the dependency between the two samples.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item the test static $T_n = \dfrac{\bar{D}}{\hat{S E}(\bar{D})}$, where $\bar{D}$ is the average of the difference scores and $\hat{S E}(\bar{D}) = \dfrac{s_ D}{\sqrt{n}}$ with $s _D$ the sample standard deviation of the difference scores.
+    The test statistic Tn follows a t-distribution with $n - 1$ degrees of freedom (when the difference scores are normally distributed).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This test statistic can be used to test the null hypotheses 
+    $H_0 : \mu_D = \mu_1 - \mu_2 \leq 0$, 
+    $H_0 : \mu_D = \mu_1 - \mu_2 \geq 0$ OR
+    $H_0 : \mu_D = \mu_1 - \mu_2 = 0$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+\end{enumerate}
 
 
 
