@@ -639,9 +639,115 @@
     $H_0 : \mu_D = \mu_1 - \mu_2 = 0$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
 \end{enumerate}
 
 
 
+\subsection{The F-Test for Equal Variances ($H_0 : \sigma_1 = \sigma_2 $)}
+
+
+\begin{enumerate}
+    \item Under the two-sided null hypothesis $H_0 : \sigma_1 = \sigma_2$ , the ratio $\dfrac{S^2_1}{S^2_2}$ has an F-distribution with $n_1 - 1$ and $n_2 - 1$ degrees of freedom and the ratio $\dfrac{S^2_1}{S^2_2}$ has an F-distribution function with $n_2 - 1$ and $n_1 - 1$ degrees of freedom.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  If $\dfrac{S^2_1}{S^2_2}$ or $\dfrac{S^2_ 2}{S^2_ 1}$ is large, then the null hypothesis $H_0 : \sigma_1 = \sigma_2$ is rejected.
+    We may choose just one of the two ratios, since there is symmetry. If one ratio is large, the other ratio must be small, or the other way around.
+    Thus if we choose one of the ratios, the null hypothesis is rejected when this ratio is large or when this ratio is small.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The critical value can be determined by using the function \verb|qf|$(1 - \alpha/2,d_1 ,d_2 )$ for large ratios or \verb|qf|$(\alpha/2,d_1 ,d_2 )$ for small ratios, with $d_1$ the degrees of freedom for the sample variance in the numerator and $d_2$ the degrees of freedom of the sample variance in the denominator.
+    Where \verb|qf|$(p, df_1, df_2)$ gives the quantile of the F-distribution. it tells you the critical value such that $P(F\leq\texttt{qf}(p,df_1,df_2))=p$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The choice of degrees of freedom depends on which ratio $\dfrac{S^2_1}{S^2_2}$ or $\dfrac{S^2_ 2}{S^2_ 1}$ is selected, but one of them is equal to $n_1 - 1$ and the other to $n_2 - 1$. 
+    Note that we must use $\alpha/2$ since we are using the two-sided test. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  an observed F value larger than 3 or 4 (or smaller than 1/3 or 1/4) typically indicates that the variances between the two populations are likely to be unequal (even if the data in the two samples are not from a normal distribution). 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+\subsection{Tests for Normality}
+
+\begin{enumerate}
+    \item Many statistical techniques “require” that the data come from a normal distribution (e.g., the t-test). 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item When the (sample) data deviate greatly from the normal distribution the properties of test statistics that rely on normality assumptions will not hold. 
+    This means that their p-values will need to be interpreted with more caution. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Under normality ties cannot occur. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Assume that we have selected a sample of data $Y_1 , Y_2, \cdots , Y_n$ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\subsubsection{Graphical approach (g-g Plot)}
+
+\begin{enumerate}
+    \item A common visualization method for this purpose is the quantile-quantile or q-q plot. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item In this case, the ordered observations $Y_{(1)}, Y_{(2)} , \cdots , Y_{(n)}$ are plotted against the quantiles of the normal distribution.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The quantile $q _k$ that belongs to $Y_{(k)}$ is given by $q_k = \Phi^{-1}\dParenBrac{\dfrac{k - 0.375}{n + 0.125}}$, with $\Phi$ the standard normal distribution function. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This is close to the quantile $\Phi^{-1}\dParenBrac{\dfrac{ k}{n}}$, but the constants 0.375 and 0.125 are used to make the graphical approach somewhat less biased.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  If the data $Y_1 , Y_2, \cdots , Y_n$ come from a normal distribution, the graph $(q_k , Y_{(k)} )$ would form approximately a \textbf{straight line}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The intercept of this line is an estimate of the population mean and the slope of the line is then an estimate of the population standard deviation.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+\subsubsection{Shapiro–Wilk test}
+
+\begin{enumerate}
+    \item  The test statistic is of the form $W = \dsum^n_{k=1} \dfrac{a _{n,k} Y_{(k)}}{S\sqrt{n - 1}}$, with a $n,k$ constants that depend on the sample size and on the normal quantiles and $S$ the sample standard deviation.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  Large values of W indicate that it is unlikely that the data was collected from a normal distribution, but intuition on this value is missing. 
+    Instead we may use the p-value that is calculated with the statistic. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Disadvantage}:  It is sensitive to \textbf{ties}.
+    When there are many ties, the Shapiro–Wilk test may show that the data is not normal. 
+    If these ties are caused by rounding issues and the sampled data actually come from a normal distribution, the Shapiro–Wilk test may incorrectly reject normality. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Hypotheses}:
+    \begin{enumerate}
+        \item Null hypothesis ($H_0$): The sample is drawn from a normally distributed population.
+
+        \item Alternative hypothesis ($H_a$): The sample is not drawn from a normal distribution.
+    \end{enumerate}
+
+    \item \textbf{Decision Rule}:
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item The Shapiro–Wilk test produces:
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item A test statistic W
+            \hfill \cite{common/online/chatgpt}
+
+            \item A p-value
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+
+        \item $p\leq \alpha (e.g., 0.05)$: Reject $H_0$ → Data not normal (significant deviation from normality)
+        \hfill \cite{common/online/chatgpt}
+
+        \item $p>\alpha$: Fail to reject $H_0$ → No evidence against normality (data likely normal)
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+\end{enumerate}
 

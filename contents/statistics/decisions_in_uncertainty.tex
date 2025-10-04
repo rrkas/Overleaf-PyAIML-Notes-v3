@@ -269,6 +269,11 @@
 
     \item Alternative approaches for the z-test and t-test have been developed that require fewer or no assumptions. These tests are referred to as \textbf{non-parametric tests}.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The term \textbf{heteroskedasticity} refers to differences in variation or variability. 
+    In hypothesis testing this is often translated to a hypothesis on the variances or standard deviations from two different populations, as we described for the two samples t-test.
+    Under the assumption of normality the most efficient test statistic (F-test) is based on a ratio of the two sample variances, but under non-normal data an alternative approach (Levene’s test) has been suggested. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
@@ -534,13 +539,213 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
         \item To test the null hypothesis $H_0 : P(Y_1 > Y_2) = 0.5$ we calculate the standardized value $Z = \dfrac{U - 0.5n_1n_2}{\sqrt{n_1n_2(n_1 + n_2 + 1)/12}}$ and compare this with the quantiles $z_{\alpha/2}$ and $z_{1-\alpha/2}$ of the standard normal distribution. 
         If $\dabs{Z} > z_{1-\alpha/2}$ we reject the null hypothesis.
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+    
+\end{enumerate}
 
-        \item 
+
+
+\subsection{The Sign Test for Two Related Samples ($H_0 : P(Y_1 > Y_2) = 0.5$)}
+
+\begin{enumerate}
+    \item For two related datasets we observe the pairs of data $(Y_{1,i} , Y_{2,i} )$ for the units $i = 1, 2, \cdots , n$. 
+    A relevant question for paired data is whether one component is stochastically greater than the other component: $H_0 : P(Y_1 > Y_2) = 0.5$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The sign test is mathematically given by \colorbox{yellow}{$S = \dsum^n _{i=1} 1_{(Y_{2,i} <Y_{1,i} )}$}, with $1_A$ the indicator variable that is equal to one if $A$ is true and zero otherwise. 
+    It represents the number of units for which the first observation is larger than the second observation.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Under the null hypothesis (and when there are no ties $Y_{1,i} = Y_{2,i} $) the statistic follows a binomial distribution with proportion $p = 0.5$ and $n$ trials (i.e., comparisons between $Y_1$ and $Y_2$ ). 
+    Thus the binomial distribution function can be used to determine when S becomes too large or too small. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The sign test needs a small adjustment when \textbf{ties} $(Y_{1,i} = Y_{2,i} )$ are present in the data. 
+    In the case of ties we cannot judge which component of the pair is larger than the other component. 
+    This means that these \textbf{pairs cannot be used}. 
+    These pairs should be \textbf{excluded} from the calculations.  
+    The test statistic remains unchanged, but the number of trials $n$ should be reduced by the number of ties.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The \textbf{disadvantage} of the sign test is that it does not consider the size of the distances between the two components.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+\subsection{Wilcoxon’s Signed Rank Test for Two Related Samples ($H_0 : m _D = 0$)}
+
+\begin{enumerate}
+    \item The \textbf{advantage} of the sign test is that we did not have to assume anything about the distribution function of the pairs $(Y_{1,i} , Y_{2,i} )$. 
+    Under the null hypothesis we could determine the distribution function of our test statistic. 
+    Therefore, we could determine when the test statistic would result in unlikely results if the null hypothesis is true.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The Wilcoxon signed rank test takes into account these differences for the two groups of pairs with $Y_{1,i} > Y_{2,i}$ and $Y_{1,i} < Y_{2,i} $.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item steps:
+    \begin{enumerate}
+        \item Calculate for each pair the difference $D_i = Y_{1,i} - Y_{2,i}$ .
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Create for each pair an indicator $1_{(Y_{1,i} >Y_{2,i} )}$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Calculate for each pair the rank $R_ i$ of the absolute differences $\dabs{D_i}$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item Calculate the sum of ranks for the positive differences: $W^+ = \dsum^n _{i=1} 1_{(Y_{1,i} >Y_{2,i} )}$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item If the distribution function of the positive differences $D_i$ is equivalent to the distribution function of the negative differences Di , we would expect that the \textbf{average} rank for the positive differences is equal to the \textbf{average} rank of the negative differences.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item This translates to a null hypothesis on the median of the difference: $H_0 : m_ D = 0$, with $m_ D$ the median of the distribution of all differences $D_i $. 
+    If the average rank for the positive differences is really different from the average rank of the negative differences, the median of all differences can no longer be zero.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we use \textbf{asymptotic theory}. 
+    If the sample sizes are large enough and the null hypothesis is true, the sum of the ranks for the positive differences $W^+$ is approximately normal with mean $\mu_W$ and variance $\sigma^2_W $. 
+    The mean and variance are determined by $\mu_W = \dfrac{n(n + 1)}{4}$ and the variance is $\sigma^2 _W = \dfrac{n(n + 1)(2n + 1)}{24}$, respectively. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the mean is just half of the sum of all ranks, as the sum of all ranks is equal to $\dfrac{n(n + 1)}{2}$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we can standardize the Wilcoxon signed rank test to $Z = \dfrac{W^+ - \mu_W }{\sigma_W}$ and compare this standardized statistic with the quantiles of the standard normal distribution to reject the null hypothesis $H_0 : m_ D = 0$ or not.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+\subsection{Levene’s Test for Equal Variation ($H_0: \sigma_1^2 = \sigma_2^2 = ... = \sigma_k^2$)}
+
+
+\begin{enumerate}
+    \item For non-normal data the variability or variation around the mean or median is not fully described by the standard deviation alone, as is the case for normal data.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Here the distance of each observation from its group mean or median is calculated first. 
+    Thus for sample $h$ we calculate distances $Z_{ h,i} =\dabs{Y_{ h,i} - m_ h}$, with $i = 1, 2, \cdots , n_ h $. 
+    The value $m_ h$ represents some kind of location of the sample $h$, like the average or median.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item If the distribution functions $F_1$ and $F_2$ for the two populations ($h = 1, 2$) are the same, except for a difference in the population mean or median, the distances $Z_{1,i}$ and $Z_{2,i}$ may be viewed as two samples from one and the same population of distances, i.e., the distances $Z_{1,i}$ and $Z_{2,i}$ would be drawn from the same distribution of distances. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item To investigate if these samples of distances come from one distribution, we may study a difference in means. 
+    If the samples on distances $Z_{1,i}$ and $Z_{2,i}$ suggest that they have different means, they do not come from the same distribution of distances and there must exist differences between the two distribution functions $F_1$ and $F_2$ that are not induced by a shift in mean or median alone. 
+    This would imply that a difference in variation in the two populations $h = 1$ and $h = 2$ is warranted, since differences in the means between the two samples of distances $Z_{1,i}$ and $Z_{2,i}$ indicate that one set of distances are on average larger than the other set of distances.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Levene’s test statistic just uses the t-test with equal variances on the two independent samples of distances $Z_{1,i}$ and $Z_{2,i}$ to determine if the means of the population of distances that they may represent are different.
+    A \textbf{two-sided} t-test is used, since there is no preference in knowing which variable $X$ or $Y$ has a higher or lower variability.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Brown \& Forsythe demonstrated that the use of the median for $m _h$ gives a somewhat more robust statistic for many different distribution functions $F_1$ and $F_2$ than Levene’s choice of means.
+    Brown \& Forsythe version of Levene’s test is often recommended over Levene’s test.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item What Levene’s test does
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item It tests whether two (or more) populations have equal variances.
+        \hfill \cite{common/online/chatgpt}
+
+        \item It works by transforming the data into absolute deviations from the mean (or median, in the Brown–Forsythe version), and then running an ANOVA or t-test on those deviations.
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+
+    \item \textbf{Null hypothesis} $H_0: \sigma_1^2 = \sigma_2^2 = \cdots = \sigma_k^2$
+    (All group/population variances are equal.)
+    \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{Alternative hypothesis}: At least one variance is different.
+    \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{Decision Rule}
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item Compute the Levene (or Brown–Forsythe) test statistic.
+        \hfill \cite{common/online/chatgpt}
+
+        \item Compare its p-value with $\alpha$ (usually $0.05$).
+        \hfill \cite{common/online/chatgpt}
+
+        \item If $p\leq\alpha$: Reject $H_0$ → conclude that the variances are not equal.
+        \hfill \cite{common/online/chatgpt}
+
+        \item If $p>\alpha$: Fail to reject $H_0$ → no evidence against equal variances.
+        \hfill \cite{common/online/chatgpt}
     \end{enumerate}
 \end{enumerate}
 
 
+
+
+
+\subsection{The $\chi^2$ Test for Categorical Variables ($H_0 : P(X = x, Y = y) = P(X = x) P(Y = y)$)}
+
+\begin{enumerate}
+    \item the null hypothesis is formulated as $H_0 : P(X = x, Y = y) = P(X = x) P(Y = y)$ against the alternative hypothesis of $H_a : P(X = x, Y = y) \neq P(X = x) P(Y = y)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The collected data are typically presented by a contingency table and Pearson’s chi-square statistic is a proper statistic for testing the independence between X and Y . 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item The statistic was designed to compare the observed cell counts for the contingency table with the expected cell counts for the contingency table under independence.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Using K for the number of rows in the contingency table, M for the number of columns, Pearson’s chi-square statistic is given by:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    .\hfill
+    $
+        \chi^2_P = \dsum^K_{x=1} \dsum^M_{y=1} \dfrac{(N_{x y} - (N_{x\cdot } N_{\cdot y} /N ))^2}{N_{x\cdot } N_{\cdot y} /N}
+    $
+    \hfill (Yate’s “continuity” correction)
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    with $N_{x y}$ the observed count in cell $(x, y)$ of the contingency table, $N_{x\cdot }$ the row total for $X = x$, $N_{\cdot y}$ the column total for $Y = y$, and N the total count in the contingency table. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The product $\dfrac{N_{x\cdot } N_{\cdot y}}{N}$ is the expected count for cell $(x, y)$ under independence.
+    Under the null hypothesis of independence, Pearson’s chi-square statistic follows the $\chi^2$ -distribution with $(K - 1)(M - 1)$ degrees of freedom.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the p-value for testing the null hypothesis is found by calculating $P(\chi^2 > x^2_P )$, the probability that a chi-square distributed random variable $\chi^2$ exceeds the observed value $x^2_P$ for $\chi^2_P$ .
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    % \item 
+    % \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+\subsection{Tests for Outliers}
+
+\begin{enumerate}
+    \item An outlier is an observation that seems to deviate from the other observations such that it arouses suspicion that some unintended mechanism has interfered with the random sampling. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item This means that the observation is not drawn from the same population distribution as the other observations.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Outliers are a nuisance for many calculations since they may highly affect the estimator or test statistic, and therefore influence the conclusions strongly. 
+    To limit their effect, one may be inclined to remove the outliers and continue with the remaining observations. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Outliers should only be removed when a reason or cause has been established; in all other situations the outlier should not be removed.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 

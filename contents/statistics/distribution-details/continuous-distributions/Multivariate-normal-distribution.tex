@@ -249,6 +249,113 @@
 
 
 
+\subsection{Correlation Tests for Numerical Variables ($H_0 : \rho_P = 0 $)}
+
+\begin{enumerate}
+    \item To test the dependency between two normally distributed variables $X$ and $Y $, Pearson’s correlation coefficient can be applied.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The null hypothesis of independence is then formulated as $H_0 : \rho_P = 0$ against the alternative hypothesis $H_a : \rho_P \neq 0$, with $\rho_P$ the correlation coefficient of the bivariate normal distribution function (which equals Pearson’s definition of correlation coefficient).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Under normality, independence is the same as being uncorrelated, but this may not be true when $X$ and $Y$ do not follow a normal distribution.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The test statistic for the null hypothesis $H_0 : \rho_P = 0$ is \colorbox{yellow}{$T _P = \dfrac{r _P \sqrt{n - 2}}{\sqrt{1 - r^2_P}}$} with $r_ P = \dfrac{S _{X Y}}{S_ X S_Y}$ Pearson’s product moment estimator.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Under the assumption of normality and under the null hypothesis $H_0 : \rho_P = 0$ the test statistic $T _P$ has a t-distribution with $n - 2$ degrees of freedom. 
+    Thus when the observed value $t _P$ is larger than the upper $\alpha/2$-quantile of the t-distribution with $n - 2$ degrees of freedom or smaller than the lower $\alpha/2$-quantile of the t-distribution with $n - 2$ degrees of freedom, the null hypothesis $H0 : \rho_P = 0$ is rejected. 
+    If the observed value $t _P$ does not deviate enough from zero we cannot reject the null hypothesis (but this means that there is no evidence that the null hypothesis is correct).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we also use Fisher’s z-transformation on Pearson’s product moment estimator. 
+    this alternative confidence interval could also have been used to test $H_0 : \rho_P = 0$ and is often recommended above $T _P $. 
+    The reason is that the Fisher z-transformed Pearson’s product moment estimator would more quickly reject the null hypothesis than $T _P$ when the alternative hypothesis is true. 
+    Thus the Fisher z-transformed Pearson’s product moment estimator has a slightly higher power than the test statistic $T _P $, while they both have the same type 1 error.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    \textbf{Explanation}:
+    \hfill\cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item Original confidence interval (from TP):
+        \hfill\cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item test statistic: $T _P = \dfrac{r _P \sqrt{n - 2}}{\sqrt{1 - r^2_P}}$
+            \hfill\cite{common/online/chatgpt}
+
+            \item This uses the t-distribution to form the CI for $\rho$.
+            \hfill\cite{common/online/chatgpt}
+
+            \item Problem: The sampling distribution of $r_P$ is not symmetric (especially for small $n$ or when $\rho$ is large in magnitude).
+            \hfill\cite{common/online/chatgpt}
+
+            \item So the resulting CI can be distorted.
+            \hfill\cite{common/online/chatgpt}
+        \end{enumerate}
+
+        \item Alternative confidence interval (Fisher’s z-transformation)
+        \hfill\cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item Fisher proposed transforming $r_P$ with: $z=\tanh^{-1}(r_P)=\dfrac{1}{2}\ln\dParenBrac{\dfrac{1-r_P}{1+r_P}}$
+            \hfill\cite{common/online/chatgpt}
+
+            \item Under $H_0$, this is approximately normal: $z\sim\mathcal{N}\dParenBrac{\tanh^{-1}(\rho),\dfrac{1}{n-3}}$
+            \hfill\cite{common/online/chatgpt}
+
+            \item Confidence interval for $\rho$ is then built by transforming back: $\rho\in\tanh(z\pm z_{\alpha/2}\sqrt{\dfrac{1}{n-3}}$
+            \hfill\cite{common/online/chatgpt}
+
+            \item This CI is more symmetric and accurate than the one based directly on $T_P$.
+            \hfill\cite{common/online/chatgpt}
+        \end{enumerate}
+
+        \item Why is the Fisher z-based CI better than $T_P$?
+        \hfill\cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item Both methods have the same Type I error rate (they’re valid tests).
+            \hfill\cite{common/online/chatgpt}
+
+            \item But Fisher’s z-transformation makes the distribution closer to normal → so:
+            \hfill\cite{common/online/chatgpt}
+            \begin{enumerate}
+                \item More power (rejects false $H_0$ more often).
+                \hfill\cite{common/online/chatgpt}
+
+                \item CI has better coverage properties (closer to the nominal $95\%$).
+                \hfill\cite{common/online/chatgpt}
+
+                \item Especially useful for small-to-moderate $n$ and correlations far from 0.
+                \hfill\cite{common/online/chatgpt}
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+
+    \item As an alternative approach we could also have used another correlation estimator, like Kendall’s tau or Spearman’s rho estimators. 
+    Then the null hypothesis changes (of course) to $H_0 : \tau_K = 0$ and $H_0 : \rho_S = 0$ for Kendall’s tau and Spearman’s rho, respectively.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item If such a null hypothesis were true, the two variables $X$ and $Y$ may still be \textbf{dependent}. 
+        It merely says that the two variables $X$ and $Y$ are \textbf{uncorrelated}.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The 95\% confidence intervals based on the Fisher z-transformation can then be used to test the corresponding null hypothesis.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item These alternative correlation coefficients are typically used when $X$ and/or $Y$ are continuous but not normally distributed.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item If the null hypothesis is rejected, i.e., the value zero is not contained in the $95\%$ confidence interval, the variables X and Y are considered dependent.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item If one or both variables X and Y are discrete, care should be taken in using any of the described methods. 
+        In this case, there will most likely be ties, i.e., there exists pairs of data for which the pairs cannot be ordered, either by the first dimension or by the second dimension (or both).
+        For such variables X and Y , the distribution function of the test statistics just described does not has the same distribution function that was used for the test statistic on continuous variables X and Y .
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
 
 
 
