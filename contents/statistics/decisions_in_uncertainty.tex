@@ -821,6 +821,7 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
 
 \subsection{Equivalence Testing ($H_0 : \dabs{\mu( f ) - \mu_0} > \Delta$)}
 
+
 \begin{enumerate}
     \item  Equivalence testing would first formulate a margin $\Delta$ that would be used to form a range of values around the value $\mu_0$ that we would see as equivalent settings. 
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -831,6 +832,97 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
 
     \item  If the null hypothesis is rejected, we have demonstrated with sufficient confidence $(1 - \alpha)$ that the true population mean $\mu( f )$ is equivalent to the value $\mu_0$ . 
     The level $\Delta$ is called the \textbf{equivalence margin}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Using confidence intervals, a test for equivalence is reasonably simple. 
+    We just need to calculate a $1 - 2\alpha$ confidence interval on $\mu( f ) - \mu_0$ and then compare it to the interval $[-\Delta, \Delta]$. 
+    If the confidence interval falls fully in the interval $[-\Delta, \Delta]$, the null hypothesis $H_0 : \dabs{\mu( f ) - \mu_0} > \Delta$ is rejected at significance level $\alpha$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item To test at significance level $\alpha$, we need to calculate a $1 - 2\alpha$ confidence interval. 
+    The reason is that the equivalence test is actually the application of two one-sided tests: one test for showing that $\mu( f ) < \mu_0 + \Delta$ and another test for showing that $\mu( f ) > \mu_0 - \Delta$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Each test is done at significance level $\alpha$. 
+    This is similar to having the $1 - 2\alpha$ confidence interval on $\mu( f ) - \mu_0$ fall inside $[-\Delta, \Delta]$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The one-sided equivalence tests are referred to as \textbf{non-inferiority tests}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item In the case of equivalence testing, where the equivalence margin is given by $\Delta > 0$, we can formulate the following hypotheses:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ l l l }
+    Non-inferiority & $H_0 : \mu_1 - \mu_2 \leq -\Delta$ & $H_a : \mu_1 - \mu_2 > -\Delta$ \\
+    Non-inferiority & $H_0 : \mu_1 - \mu_2 \geq \Delta$ & $H_a : \mu_1 - \mu_2 < \Delta$ \\
+    Equivalence & $H_0 : \dabs{\mu_1 - \mu_2} \geq \Delta$ & $H_a : \dabs{\mu_1 - \mu_2} < \Delta$ \\
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=5cm,
+        keepaspectratio,
+    ]{images/statistics/Equivalence-Testing.png}
+    \caption*{
+        Comparison between equivalence testing and traditional hypothesis testing.
+        The vertical dotted lines represents the interval $[-\Delta, \Delta]$ and the vertical solid line represents the difference $\mu( f ) - \mu_0 = 0$. 
+        The horizontal x-axis represents the difference $\mu( f ) - \mu_0$ and each dot in the figure represents an estimate of this difference. 
+        The horizontal lines through the dots represent the $1 - 2\alpha$ confidence intervals.
+        \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    }
+\end{figure}
+
+    \item Equivalence testing $H_0 : \dabs{\mu( f ) - \mu_0} > \Delta$ against $H_a : \dabs{\mu( f ) - \mu_0} \leq \Delta$ is really different in concept from traditional hypothesis testing $H_0 : \mu( f ) = \mu_0$ against $H_a : \mu( f ) \neq \mu_0 $.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item The $1 - 2\alpha$ confidence interval fall completely within $[-\Delta, \Delta]$, which means that the null hypothesis $H_0 : |\mu( f ) - \mu_0| > \Delta$ is being rejected. 
+        It is not completely clear whether $H_0 : \mu( f ) = \mu_0$ is being rejected, since this can only be established if the $1 - \alpha$ confidence interval has been applied. 
+        If we assume that this $1 - \alpha$ interval would fit within $[-\Delta, 0]$, the null hypothesis $H_0 : \mu( f ) = \mu_0$ would also be rejected. 
+        This is a setting that we described earlier for large datasets, where the traditional hypothesis can be rejected for irrelevant differences.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The null hypothesis $H_0 : |\mu( f ) - \mu_0| > \Delta$ for equivalence is being rejected, indicating that the population mean $\mu( f )$ is equivalent to $\mu_0 $. 
+        The traditional hypothesis $H_0 : \mu( f ) = \mu_0$ is not being rejected, which implies that there is not enough evidence to believe that the population mean $\mu( f )$ is different from $\mu_0 $. 
+        This means that both conclusions seem to coincide, although this does not imply that $\mu( f ) = \mu_0 $.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The traditional null hypothesis is being rejected (assuming that the $95\%$ confidence interval would not contain zero) and equivalence cannot be claimed. 
+        Thus both approaches seem to have similar conclusions: $\mu( f )$ is different and not equivalent to $\mu_0 $.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item This is the same as in the previous setting, although the results lie on the other side of the vertical line $\mu( f ) = \mu_0 $.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The fact that one side of the confidence interval is contained in the interval $[-\Delta, \Delta]$ does not change the conclusions.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Here we cannot demonstrate equivalence, but we cannot reject the traditional null hypothesis either. 
+        Thus on the one hand there is not enough evidence to reject $\mu( f ) = \mu_0 $, but there is not enough evidence either to reject that $\dabs{\mu( f ) - \mu_0} > \Delta$.
+        This seems contradictory, but it is probably an issue of a lack of information, since the $90\%$ confidence interval is too wide.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item The non-inferiority hypotheses look somewhat similar to the one-sided hypotheses, but they are not.
+    In the traditional hypothesis testing format we would investigate the null hypothesis $H_0 : \mu_{N ew} \leq \mu_{Old}$ against $H_a : \mu_{N ew} > \mu_{Old}$ , assuming that a higher mean is a better clinical outcome.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The collected data (typically through a randomized controlled clinical trial) would then have to demonstrate that the null hypothesis is rejected. 
+    Thus the new treatment must demonstrate \textbf{superiority}. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Often new treatments are not (much) better in their clinical outcome, but they bring a secondary benefit. 
+    For instance, the new treatment is much less invasive. 
+    Superiority is then difficult to demonstrate. 
+    Instead, we would like to show that the new treatment is not inferior to the old treatment. 
+    Thus, the data must demonstrate that the new treatment is not too much worse than the old treatment: $H_a : \mu_{N ew} > \mu_{Old} - \Delta$, with $\Delta > 0$ the \textbf{non-inferiority margin}. 
+    Thus, the null hypothesis becomes $H_0 : \mu_{N ew} \leq \mu_{Old} - \Delta$. 
+    If this null hypothesis cannot be rejected, the new treatment is assumed inferior to the old treatment, since non-inferiority could not be proven.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
