@@ -343,13 +343,31 @@
 
     \item Using the ML estimates for the density parameters to estimate the population parameters $\mu( f _L )$ or $\sigma^2( f_L )$ in the logarithm scale does not provide unbiased estimator for the mean of the population in the original scale, since the MLE estimate $\exp( \hat{\mu} + 0.5 \ \hat{\sigma}^2)$ is unequal to the expected value of the sample mean $\bar{X}$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-
 \end{enumerate}
 
 
 
+\subsection{Tukey’s Method for Outliers (Using IQR)}
 
+\begin{enumerate}
+    \item For the lognormal distribution function $\Phi\dParenBrac{\dfrac{\ln(x) - \mu}{\sigma}}$ though, the lower and upper criteria now become 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    $\exp(\mu - 0.67449\cdot\sigma) - 1.5(\exp(\mu + 0.67449\cdot\sigma) - \exp(\mu - 0.67449\cdot\sigma))$ and 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    $\exp(\mu + 0.67449\cdot\sigma) + 1.5(\exp(\mu + 0.67449\cdot\sigma) - \exp(\mu - 0.67449\cdot\sigma))$, respectively. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item Calculating the proportion of population units outside Tukey’s criteria depends only on $\sigma$, not on $\mu$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item For the lognormal distribution function the proportion outside Tukey’s criteria can be as high as $10\%$.
+    This would typically occur at the upper tail and not on the lower tail, since the proportion below the lower tail criterion would become equal to zero. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    % \item 
+\end{enumerate}
 
 
 

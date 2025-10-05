@@ -70,7 +70,8 @@
 
         \item $95.45\%$ of all the population values fall within the interval $[\mu - 2\sigma, \mu + 2\sigma]$ or
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-        \\
+        \\[0.2cm]
+        .\hfill
         $
             \dint_{\mu - 2\sigma}^{\mu + 2\sigma}
             \phi\dParenBrac{\dfrac{x-\mu}{\sigma}} dx
@@ -750,4 +751,94 @@
         \hfill \cite{common/online/chatgpt}
     \end{enumerate}
 \end{enumerate}
+
+
+\subsection{Grubbs Test for Outliers/ extreme studentized deviate test/ maximum normed residual test}
+
+\begin{enumerate}
+    \item The Grubbs test is sometimes called the \textbf{extreme studentized deviate test} or the \textbf{maximum normed residual test}. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  The null hypothesis is that no observation is an outlier, while the alternative hypothesis is that there is one observation that is an outlier.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the Grubbs test is only searching for \textbf{one outlier} observation.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  The calculation of the Grubbs test is quite easy, since it is equal to $G = \max \dCurlyBrac{\dabs{Z_1}, \dabs{Z_2}, \cdots , \dabs{Z_n}}$, with $Z _i = \dfrac{Y_i - \bar{Y} }{S}$ the standardized observations (with $\bar{Y}$ the average and $S$ the standard deviation).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The probability that $G$ is larger than some critical value $c_{\alpha}$ is equal to
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $ P (G > c_{\alpha}) \approx 1 - \dprod^n {i=1} P (\dabs{Z _i} \leq c_{\alpha}) $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The larger the sample size ($n$), the better the approximation.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Critical Value: $ c_\alpha = \dfrac{n-1}{\sqrt{n}} \sqrt{\dfrac{t^2_{\alpha/(2n), n-2}}{n-2+t^2_{\alpha/(2n), n-2}}}$
+    \hfill \cite{common/online/chatgpt}
+    \\
+    where $t^2_{\alpha/(2n), n-2}$ is the critical value of the t-distribution with $n-2$ degrees of freedom at the $\alpha/(2n)$ level.
+    \hfill \cite{common/online/chatgpt}
+
+    \item  For $\alpha = 0.05$ the critical value becomes approximately equal to $c_\alpha = 4$ and for $\alpha = 0.01$ the critical value becomes approximately $c_\alpha = 4.5$. 
+    It is not uncommon to qualify an observation as an outlier when the absolute standardized value is larger than $4$. 
+    Some software packages would even signal absolute standardized values larger than $3$ as potential outliers.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Interpretation}:
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item If $G>c_\alpha$: Reject $H_0$ (no outliers) → The data point corresponding to $G$ is an outlier.
+        \hfill \cite{common/online/chatgpt}
+
+        \item If $G\leq c_\alpha$: Fail to reject $H_0$ → No significant outlier.
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+
+    % \item 
+\end{enumerate}
+
+
+
+
+
+
+\subsection{Tukey’s Method for Outliers (Using IQR)}
+
+\begin{enumerate}
+    \item For the normal distribution function $\Phi\dParenBrac{\dfrac{x - \mu}{\sigma}}$, with $\Phi$ the standard normal distribution function, these criteria become $\mu + \Phi^{-1}(0.25)\sigma - 1.5(\Phi^{-1}(0.75) - \Phi^{-1}(0.25))\sigma = \mu - 2.69796\cdot\sigma$ and $\mu + 2.69796\cdot\sigma$ for the lower and upper tail, respectively. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Thus the percentage of units from the population that fall outside these criteria is approximately only $0.70\%$, which does not depend on the parameters $\mu$ and $\sigma$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item Thus under the assumption of normality, an outlier observation has $0.70\%$ probability to occur in the sample.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

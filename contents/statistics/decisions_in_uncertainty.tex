@@ -274,6 +274,22 @@
     In hypothesis testing this is often translated to a hypothesis on the variances or standard deviations from two different populations, as we described for the two samples t-test.
     Under the assumption of normality the most efficient test statistic (F-test) is based on a ratio of the two sample variances, but under non-normal data an alternative approach (Levene’s test) has been suggested. 
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The common practice of testing the (two-sided) null hypothesis has a few \textbf{drawbacks}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item For (extremely) large samples we will almost always reject the null hypothesis. 
+        This might not be desirable, as rejecting the null hypothesis in such cases does not actually imply that the (e.g.,) difference in means of interest is indeed large. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item Not rejecting the null hypothesis $H_0 : \mu( f ) = \mu_0$ is no proof that the null hypothesis is true.
+        It is very easy not to reject the null hypothesis: you just need to collect as little information as possible. 
+        If we would collect only a few observations the confidence interval would be very wide and the value $\mu_0$ is likely to fall inside this wide confidence interval, but this does not guarantee that $\mu( f ) = \mu_0$ or even close to it.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+    One way of dealing with these two issues on hypothesis testing is to reduce the significance level $\alpha$ to a much lower value than the commonly used $\alpha = 0.05$. 
+    We may use $\alpha = 0.001$ or even $\alpha = 0.0001$ to make the hypothesis statements more confident than just $95\%$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
@@ -743,9 +759,81 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
     \item Outliers should only be removed when a reason or cause has been established; in all other situations the outlier should not be removed.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item Outlier detection is not an easy task. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item it is difficult to distinguish whether the outlier observation is truly caused by some kind of unintended mechanism or whether is belongs to a population distribution that is just different than what we anticipated. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item statistical methods that were developed for checking only one outlier observation are diminished in their detection capacity if multiple outliers are present. 
+        This is called the \textbf{masking effect} and relates to the type 2 error rate in hypothesis testing, since a real outlier is not being detected. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item outlier detection requires certain assumptions on the underlying population distribution. 
+        Without such assumptions we can never make confident statements like we try to do with hypothesis testing. 
+        If we are not willing to make such assumption, we all have to agree to the same definition that an observation is called an outlier whenever the observation satisfies some kind of predefined criterion.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item The Grubbs test was developed for normally distributed data and it can be formulated in terms of hypothesis testing.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Tukey’s method has been implemented in many software packages for visualization of the data with a box plot. 
+    John Tukey simply provided a definition for outliers, in the sense that an observation is called an outlier when the observation is further away from the median value than a predefined distance. 
+    In the box plot they are typically indicated by dots or stars.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Fixing the criteria for an outlier observation does not always imply that the occurrence of such observations in the sample will be unlikely. 
+    For normal distribution functions, Tukey’s criteria for outlier observations is unlikely if no outliers are present, but using Tukey’s criteria for other distribution functions should be implemented with care
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+
+\subsubsection{Tukey’s Method for Outliers (Using IQR)}
+
+\begin{enumerate}
+    \item Tukey suggested that an observation is an outlier whenever the observation $Y_k$ is $1.5$ times the interquartile range below the first quartile or $1.5$ times the interquartile range above the third quartile. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item An observation is called a lower-tail outlier when $Y_k < Q_1 - 1.5\cdot\text{IQR}$ and it is called an upper-tail outlier when $Y_k > Q_3 + 1.5\cdot \text{IQR}$, with $\text{IQR} = Q_3 - Q_1$ the interquartile range. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+    \item The first observation that may satisfy the lower tail criterion would be the minimum, while for the upper tail it is the maximum value.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Tukey’s method is often referred to as a method that \textbf{does not depend on any assumptions} of the population distribution, since it is only based on quartiles. 
+    However, the shape of the population distribution does determine how likely an observation will satisfy the criterion and thus will be declared an outlier
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item . If we consider the full population, we may substitute the expected or true values for $Q_1$ and $Q_3$ in the criteria and determine the proportion of the population that would satisfy the lower and upper criteria. 
+    The lower criterion in the population is given by $F^{-1}(0.25) - 1.5(F^{-1}(0.75) - F^{-1}(0.25))$ and the upper criterion is given by $F^{-1}(0.75) + 1.5(F^{-1}(0.75) - F^{-1}(0.25))$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    % \item 
+    % \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
+
+
+
+
+
+\subsection{Equivalence Testing ($H_0 : \dabs{\mu( f ) - \mu_0} > \Delta$)}
+
+\begin{enumerate}
+    \item  Equivalence testing would first formulate a margin $\Delta$ that would be used to form a range of values around the value $\mu_0$ that we would see as equivalent settings. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  The null hypothesis is then formulated as $H_0 : \dabs{\mu( f ) - \mu_0} > \Delta$ against the alternative hypothesis $H_a : \dabs{\mu( f ) - \mu_0} \leq \Delta$. 
+    The null hypothesis specifies non-equivalence: the difference between $\mu( f )$ and $\mu_0$ is larger than $\Delta$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  If the null hypothesis is rejected, we have demonstrated with sufficient confidence $(1 - \alpha)$ that the true population mean $\mu( f )$ is equivalent to the value $\mu_0$ . 
+    The level $\Delta$ is called the \textbf{equivalence margin}.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
+
 
 
 
