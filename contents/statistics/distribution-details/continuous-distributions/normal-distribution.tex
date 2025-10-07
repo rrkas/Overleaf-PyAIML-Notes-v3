@@ -823,13 +823,44 @@
 
 
 
+\subsection{Estimating the Parameters using Bayesian Methods}
 
+\begin{enumerate}
+    \item Let $X_1, \cdots, X _n$ are i.i.d. $\mathcal{N} (\mu, \sigma^2)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    % \item 
+\end{enumerate}
 
+\subsubsection{Bayesian Analysis for Normal Populations Based on Single Observation}
 
+\begin{enumerate}
+    \item Let $X_1 \sim \mathcal{N} (\mu, \sigma^2)$, we only observe a single realization $x$, and we assume $\sigma^2$ known; hence, we only derive the posterior distribution for $\mu$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item \textbf{sampling model}: 
+    \colorbox{yellow}{$
+        l(\theta) 
+        = p(x|\mu)
+        = \dfrac{1}{\sqrt{2\pi\sigma^2}} e ^{-\tfrac{(x-\mu)^2}{ 2\sigma^2 }}
+    $}
+    which is simply the Normal PDF.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item Since $\mu \in (-\infty, \infty)$ a natural choice for a prior has support on the full real number line.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item \textbf{prior} for $\mu$: 
+    \colorbox{yellow}{$
+        f (\mu) 
+        = \dfrac{1 }{\sqrt{2\pi\sigma^2 _0}} e ^{-\tfrac{(\mu-\mu_0 )2} {2\sigma^2 _0} }
+    $}
+    where we use $\mu_0$ and $\sigma^2 _0$ to denote the parameters of this prior distribution (not to be confused with $\mu$ and $\sigma^2$ as they occur in the likelihood).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 

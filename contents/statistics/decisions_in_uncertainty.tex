@@ -930,9 +930,26 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
 
 
 
+\subsection{Bayes’ Law for Competing Hypotheses}
 
+\begin{enumerate}
+    \item Suppose we are trying to learn about the value of a parameter of interest $\theta $, and suppose we have a number of specific hypotheses regarding its value, e.g., “Hypothesis A: $\theta  < 0$” (although we could effectively make any statement we want regarding the parameter values of interest). 
+    Let $\theta _i$ refer to the first hypothesis regarding $\theta$  (i.e., Hypothesis A). 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item If we have k such hypotheses regarding $\theta$  (thus we have $\theta _1, \cdots , \theta _k$ ) we can now compute the probability of each of these hypothesis after observing some data by applying Bayes’ rule:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        P(\theta _i |D) 
+        = \dfrac{P(D|\theta _i ) P(\theta _i )}{\dsum^k _{j=1} P(D|\theta _j ) P(\theta _j ) }
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    % \item 
+    % \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 

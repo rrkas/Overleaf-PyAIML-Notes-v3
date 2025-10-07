@@ -268,7 +268,7 @@
 
 
 
-\section{Bayesian probabilities}
+\section{Bayesian Probabilities/ Bayesian Statistics}
 
 \begin{enumerate}
     \item
@@ -367,6 +367,24 @@
         \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 
+    \item  In Bayesian statistics the prominence of Bayes’ rule is much greater than it is in Frequentist statistics. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item In Bayesian statistics probabilities are not solely regarded as long-run frequencies, but rather, they are regarded as a tool to quantify the “degree of belief” one holds in relation to a specific event. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    
+        \item In this framework, probabilities can be regarded as an extension to boolean logic (in which statements/events are true or false, 0 or 1), to deal with events that have some probability.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item  Bayes rule is subsequently used to update the degree of belief regarding an event in the face of new evidence: i.e., it is used to update $P(A)$ in the formula above to include the evidence provided by $P(B)$, the result of which is expressed as $P(A|B)$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item This approach takes on a very powerful meaning when we replace $P(A)$ by $P(\bm{\theta})$ (i.e., the distribution of the parameters) and $P(B)$ by $P(D)$ where $D$ relates to the data we observe in (e.g.,) a scientific study. 
+        
+        \item In this interpretation, Bayes’ rule provides us with a means of updating our belief regarding a population parameter ($P(\bm{\theta})$) when we observe sample data ($P(D)$). 
+    \end{enumerate}
+
+
     \item \textbf{maximum likelihood}: $\bm{w}$ is set to the value that maximizes the likelihood function $P(D|\bm{w})$.
     \begin{enumerate}
         \item This corresponds to choosing the value of $\bm{w}$ for which the probability of the observed data set is maximized.
@@ -429,12 +447,98 @@
 
 
 
+\subsection{Bayes’ Law for Statistical Models}
+
+\begin{enumerate}
+    \item we are interested in estimating (or otherwise making decisions about) the value of some population parameter $\theta$ by computing $\hat{\theta}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item One fairly general method of computing $\hat{\theta}$ was choosing the value of $\theta$ that \textbf{maximized the likelihood} $\ell(\theta)$ where, when considering a dataset of $n$ i.i.d. observations, we had
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        \ell(\theta) 
+        = \ell(\theta|X_1, X_2, X_3, \cdots , X_n )
+        = P(X_1|\theta) P(X_2|\theta) \cdots P(X_n |\theta)
+        = P(D|\theta)
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Bayes theorem in a way provides an alternative to for example Maximum Likelihood Estimation by—opposed to picking the value of $\theta$ that maximizes $P(D|\theta)$—allowing one to quantify the probability of a large number of possible values of $\theta_i$ after observing the data:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        P(\theta_i |D) 
+        =\dfrac{Pr(D|\theta_i ) Pr(\theta_i )}{\dsum^k_{i=1} P(D|\theta_i ) P(\theta_i )}
+        =\dfrac{\ell(\theta_i |X_1, X_2, X_3, \cdots , X_n ) P(\theta_i )}{\dsum^k_{i=1} \ell(\theta_i |X_1, X_2, X_3, \cdots , X_n ) P(\theta_i )}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item It isn’t a large stretch to specify the prior probability $P(\theta_i )$ off each hypothesis $i$ using a Probability Mass Function (PMF). 
+    This highlights that Bayes’ Theorem can be used not just for events, but for random variables. 
+    The general form of Bayes’ Theorem that is most often encountered in Bayesian statistics generalizes the ideas presented above to random variables as these are described by their distribution functions (i.e., their PMFs or PDFs):
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        f (\theta|D) = \dfrac{\ell(\theta)\ f (\theta)}{\dint \ell(\theta)\ f (\theta)\ d\theta}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\
+    This expression above effectively describes that our posterior beliefs regarding the parameter of interest — i.e., our belief after observing the data — can be quantified using a (potentially continuous) PDF $f (\theta|D)$ which itself is obtained by multiplying the likelihood $\ell(\theta) = P(D|\theta)$ by our prior belief regarding the parameters $f (\theta)$ and dividing by the so-called marginal likelihood $\dint \ell(\theta)\ f (\theta)\ d\theta$. 
+    The latter simply acts as a Normalizing constant to make sure that $f (\theta|D)$ is a valid PDF.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item when $\mathcal{F}$ is a class of sampling distribution functions, and $\mathcal{P}$ is a class of prior distribution functions, then the class $\mathcal{P}$ is called \textbf{conjugate} for $\mathcal{F}$ if $P(\theta|x) \in \mathcal{P}$ for all $P(\cdot|\theta) \in \mathcal{F}$ and $P(\cdot) \in \mathcal{P}$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item This definition is cumbersome, since if we choose $\mathcal{P}$ as the class of all distribution functions, then $\mathcal{P}$ is always conjugate. 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item However, in practice we are most interested in \textbf{natural conjugate prior} families, which arise by taking $\mathcal{P}$ to be the set of all densities having the same functional form as the sampling distribution (i.e., the likelihood).
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsection{The Fundamentals of Bayesian Data Analysis}
+
+\begin{enumerate}
+    \item $f (\theta|D) = \dfrac{\ell(\theta)\ f (\theta)}{\dint \ell(\theta)\ f (\theta)\ d\theta}$ 
+    is the main work-horse of Bayesian data analysis. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Contrary to \textbf{Frequentist MLE estimation} where a single point $\hat{\theta}$ is often the end-point of the analysis (i.e., her or his best guess regarding the true population value), 
+    to a \textbf{Bayesian}, $f (\theta|D)$ effectively quantifies all that can be learned based on the observed data: it quantifies, using a PDF, our belief regarding the population value after seeing the data.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  Generally, the \textbf{steps} involved in conducting a Bayesian analysis are thus:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item Create a \textbf{sampling model}, i.e., specify the likelihood of the observed data as a function of the parameters $\theta$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Specify a \textbf{prior distribution} over the parameters $f (\theta)$. 
+        Note that we will often encounter sampling models that involve multiple parameters and hence $\theta$ itself is a vector and $f (\theta)$ is a multivariate distribution (PMF or PDF).
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item Compute $f (\theta|D)$, i.e., compute the \textbf{posterior distribution} of $\theta$ after seeing the data $D$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+    To a Bayesian, that’s pretty much it; we have now updated our belief regarding the population parameters of interest based on the data. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item In practice, however, $f (\theta|D)$ is not always the final point of the analysis: often some summary of $f (\theta|D)$ is communicated (akin to the selection of the MLE estimate $\hat{\theta}$ that we have seen for frequentists analysis) such as it’s expected value $\mbbE[\theta|D] = \dint \theta\ f (\theta|D)\ d\theta$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 
 
 
-\section{Frequentist AND/VS Bayesian}
+\subsection{Frequentist AND/VS Bayesian}
 
 \begin{enumerate}
     \item In both the Bayesian and frequentist paradigms, the likelihood function $P(D|\bm{w})$ plays a central role.
@@ -449,8 +553,6 @@
     \item However, bias to prior lead to difficulties when comparing different models, and indeed Bayesian methods based on poor choices of prior can give poor results with high confidence.
     Frequentist evaluation methods offer some protection from such problems, and techniques such as cross-validation remain useful in areas such as model comparison.
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
-
-
 \end{enumerate}
 
 

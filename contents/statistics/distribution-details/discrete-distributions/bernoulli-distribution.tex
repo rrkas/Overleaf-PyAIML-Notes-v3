@@ -217,8 +217,79 @@
 
 
 
+\subsection{Estimating the Parameter using Bayesian Methods}
 
+\begin{enumerate}
+    \item Let $\theta$ denote the probability of heads when throwing a (possibly unfair) coin, and let us treat the observations $X_1, \cdots , X_n$ from the coin as i.i.d. $\mathcal{B}(\theta)$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item Using $x$ to denote the vector of all $x_i$ realizations, we have:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        \ell(\theta) 
+        = P(x|\theta)
+        = \dprod^n_{ i=1} \theta^{x _i} (1 - \theta)^{1-x_i}
+        = \theta^{[\tsum^n _{i=1} x_i]} (1 - \theta)^{[n-\tsum^n_{i=1} x_i ]}
+        = \theta^{n \bar{x} _n} (1 - \theta)^{[n(1- \bar{x}_ n )]}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Let prior be the support (i.e., $f (\theta) > 0$) for all plausible values of $\theta$.
+    As in our case $\theta$ is a Bernoulli $p$ for which $0 \leq p \leq 1$ we should choose $f (\theta)$ such that it has support on $[0, 1]$. 
+    It seems reasonable, in the absence of any other information, to choose a prior distribution that gives equal likelihood to all plausible values of $\theta$: the uniform distribution function on $[0, 1]$ thus seems a reasonable choice. 
+    The uniform on $[0, 1]$ is however a special case of a much more flexible distribution function called the \textbf{beta distribution} function.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The $\text{Beta}(\alpha, \beta)$ distribution function is a continuous distribution function with PDF: ($\alpha > 0$ and $\beta > 0$)
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        f (\theta) = \dfrac{\Gamma (\alpha + \beta) }{\Gamma (\alpha)\ \Gamma (\beta)}\ \theta^{\alpha-1}(1 - \theta)^{\beta-1}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.1cm]
+    for $0 < \theta < 1$ and zero otherwise.
+    Gamma function $\Gamma (x) =\dint ^\infty _0 s^ {x-1}\ e^{-s}\ ds$.
+    When we choose $\alpha = 1$ and $\beta = 1$ the resulting beta distribution function is actually a \textbf{uniform distribution} function on $[0, 1]$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  The $\text{Beta}(1,1)$ is considered a relatively \textbf{uninformative prior} for the Bernoulli $p$.
+    The density with its peak at $0.5$ is given by $\alpha = \beta = 5$; as long as both parameters of the beta are equal and larger than $1$ the maximum of the density will be $0.5$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{posterior}:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $
+        \begin{aligned}
+            f (\theta|x) 
+            &\propto p(x|\theta) f (\theta) \\
+            &= \theta^{(\tsum^n _{i=1} x_i)} (1 - \theta)^{(n-\tsum^n _{i=1} x _i)} \dfrac{\Gamma (\alpha + \beta) }{\Gamma (\alpha)\Gamma (\beta)} \theta ^{\alpha-1}(1 - \theta)^{\beta-1} \\
+            &\propto \theta^{(\alpha+\tsum^n _{i=1} x _i )-1}(1 - \theta)^{ (\beta+n-\tsum^n_{ i=1} x_ i )-1}
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  the posterior $f (\theta|D)$ is proportional to the density of a $\text{Beta}(\alpha^\prime, \beta^\prime)$ distribution, with
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item $\alpha^\prime = \alpha + \dsum^n _{i=1} x_ i$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $\beta^\prime = \beta + n - \dsum^n _{i=1} x_ i$ 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item the Normalizing constant will be the Normalizing constant of the beta.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item the beta prior can be regarded as adding additional observations where $\alpha$ specifies the a-priori number of successes, and $\beta$ specifies the a-priori number of failures.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{enumerate}
 
 
 
