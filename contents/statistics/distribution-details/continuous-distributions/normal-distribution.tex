@@ -110,7 +110,7 @@
     \\
     .\hfill
     $
-        p(\bm{x}|\mu , \sigma^2)
+        P(\bm{x}|\mu , \sigma^2)
         = \dprod^{N}_{n=1} \mathcal{N} (x_n|\mu , \sigma^2)
     $
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
@@ -840,8 +840,8 @@
 
     \item \textbf{sampling model}: 
     \colorbox{yellow}{$
-        l(\theta) 
-        = p(x|\mu)
+        \ell(\theta) 
+        = P(x|\mu)
         = \dfrac{1}{\sqrt{2\pi\sigma^2}} e ^{-\tfrac{(x-\mu)^2}{ 2\sigma^2 }}
     $}
     which is simply the Normal PDF.
@@ -858,16 +858,215 @@
     where we use $\mu_0$ and $\sigma^2 _0$ to denote the parameters of this prior distribution (not to be confused with $\mu$ and $\sigma^2$ as they occur in the likelihood).
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item 
+    \item \textbf{posterior}:
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    % .\hfill
+    $
+        \begin{aligned}
+            f (\mu|x) 
+            &\propto P(x|\mu) f (\mu) \\
+            &= \dfrac{1 }{\sqrt{2\pi\sigma^2} } \exp\dParenBrac{- \dfrac{(x - \mu)^2}{2\sigma^2}} 
+                \times \dfrac{1 }{\sqrt{2\pi\sigma^2 _0}} \exp \dParenBrac{- \dfrac{(\mu - \mu_0)^2} {2\sigma^2_ 0} } \\
+            &= \dfrac{1 }{2\pi \sqrt{\sigma^2\sigma^2_ 0}} 
+                \exp \dParenBrac{- \dfrac{(x - \mu)^2 }{2\sigma^2} - \dfrac{(\mu - \mu_0)^2 }{2\sigma^2_ 0} } \\
+            &=c \times \exp \dParenBrac{-\dfrac{ \mu^2\sigma^2 - 2\mu\mu_0\sigma^2 + \mu^2 _0\sigma^2 
+                + \sigma^2_ 0 x^2 - 2\mu\sigma^2_ 0 x + \mu^2\sigma^2 _0}{2\sigma^2_0 \sigma^2}} \\
+            &= c \times \exp \dParenBrac{-\dfrac{\mu^2(\sigma^2 + \sigma^2 _0 ) - 2\mu(\mu_0\sigma^2 
+                + \sigma^2_ 0 x) + (\mu^2_ 0\sigma^2 + \sigma^2_ 0 x^2)}{2\sigma^2_0 \sigma^2}} \\
+            &= c \times \exp \dParenBrac{-\dfrac{\mu^2(\sigma^2 + \sigma^2 _0 ) - 2\mu(\mu_0\sigma^2 
+                + \sigma^2_ 0 x)}{2\sigma^2_0 \sigma^2}} 
+                \times \exp \dParenBrac{-\dfrac{(\mu^2_ 0\sigma^2 + \sigma^2_ 0 x^2)}{2\sigma^2_0 \sigma^2}} \\
+            &= c \times \exp 
+                \dParenBrac{
+                    -\dfrac{
+                        \mu^2 - 2\mu\tfrac{\mu_0\sigma^2 + \sigma^2_ 0 x}{\sigma^2 + \sigma^2 _0} - \dParenBrac{\tfrac{ \mu_0 \sigma^2 +\sigma^2_0 x}{\sigma^2 +\sigma^2_0}}^2 + \dParenBrac{\tfrac{ \mu_0 \sigma^2 +\sigma^2_0 x}{\sigma^2 +\sigma^2_0}}^2
+                    }
+                    {\tfrac{2\sigma^2_0 \sigma^2}{\sigma^2 + \sigma^2 _0}}
+                }
+                \times \exp \dParenBrac{-\dfrac{(\mu^2_ 0\sigma^2 + \sigma^2_ 0 x^2)}{2\sigma^2_0 \sigma^2}} \\
+            &\propto \exp\dParenBrac{-\dfrac{\dParenBrac{\mu - \tfrac{\mu_0 \sigma^2 +x\sigma^2_0}
+                {\sigma^2 +\sigma^2_0}}^2}{2\tfrac{\sigma^2 \sigma^2_0}{\sigma^2 +\sigma^2_0}}}
+        \end{aligned}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    where $c$ is a the Normalizing constant.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Let:
+    \begin{enumerate}
+        \item $
+            \sigma^2_1 
+            = \dfrac{\sigma^2\sigma^2_0}{ \sigma^2 + \sigma^2_0} 
+            = \dfrac{1}{ \sigma^{-2} + \sigma^{-2}_0}
+        $
+        % \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        % \\[0.2cm]
+        $
+            \Rightarrow \sigma^{-2}_1 = \sigma^{-2} + \sigma^{-2}_0
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $
+            \mu_1 
+            = \dfrac{\mu_0\sigma^2 + x\sigma^2 _0 }{\sigma^2 + \sigma^2_0}
+            = \dfrac{\mu_0\sigma^{-2} + x\sigma^{-2}_0}{\sigma^{-2} + \sigma^{-2}_0}
+            = \sigma^2 _1 (\mu_0\sigma^{-2}_0 + x\sigma^{-2})
+        $
+        % \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        % \\[0.2cm]
+        $
+            \Rightarrow \mu_1\sigma^{-2}_1 = \mu_0\sigma^{-2}_0 + x\sigma^{-2}
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item $f (\mu|x) \propto e ^{\tfrac{(\mu-\mu_1)^2} {2\sigma^2_1}}$
+    , Normalizing constant : $\dfrac{1}{\sqrt{2\pi\sigma^2_1}}$
+    , $\Rightarrow f (\mu|x) = \dfrac{1}{\sqrt{2\pi\sigma^2_1}} e ^{\tfrac{(\mu-\mu_1)^2} {2\sigma^2_1}}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  if $\sigma^2$ is assumed known, and we use a Normal prior for $\mu$, we find that the posterior for $\mu$ is itself a Normal: $\mu|X_1 = x \sim \mathcal{N} (\mu_1, \sigma^2_1 )$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item posterior mean $\mu_1$ is effectively a weighted average of the prior mean $\mu$ and the observation $x$.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
+\subsubsection{Bayesian Analysis for Normal Populations Based on Multiple Observations}
+
+\begin{enumerate}
+    \item Let realizations $x_1, \cdots , x_n$, iid  $X_i \sim \mathcal{N} (\mu, \sigma^2)$; we assume $\sigma^2$ is known
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{sampling model}: 
+    $
+        \ell(\theta) 
+        = P(x_1, \cdots , x_ n |\mu)
+        = \dprod^n_{i=1} \dfrac{1 }{\sqrt{2\pi\sigma^2}} \exp\dParenBrac{-\dfrac{(xi -\mu)^2 }{2\sigma2}} 
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{prior} for $\mu$: 
+    \colorbox{yellow}{$
+        f (\mu) 
+        = \dfrac{1 }{\sqrt{2\pi\sigma^2 _0}} e ^{-\tfrac{(\mu-\mu_0 )2} {2\sigma^2 _0} }
+    $}
+    where we use $\mu_0$ and $\sigma^2 _0$ to denote the parameters of this prior distribution (not to be confused with $\mu$ and $\sigma^2$ as they occur in the likelihood).
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item \textbf{Posterior}: 
+    $
+        f (\mu|x_1, \cdots , x_n ) 
+        = \dfrac{1 }{\sqrt{2\pi\sigma^2 _1}} \exp \dParenBrac{\dfrac{(\mu-\mu_1 )^2 }{2\sigma^2_ 1} }
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item $\sigma^2 _1 = \dParenBrac{\dfrac{1 }{\sigma^2_ 0} + \dfrac{1 }{\sigma^2/n} }^2$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item $\mu_1 = \sigma^2 _1 \dParenBrac{\dfrac{\mu_0 }{\sigma^2_ 0} + \dfrac{\bar{x}} {\sigma^2/n}}$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\[0.2cm]
+        Posterior mean $\mu_1$ is a weighted average of the prior mean $\mu_0$ and the mean of the observations $\bar{x} = \dfrac{1}{n} \dsum^n _{i=1} x_ i$.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+        \item The variance of the posterior is affected by the number of observations; the term $\dfrac{\sigma^2}{n}$ clearly shrinks as the number of observations increases leading to a decrease in the variance of the posterior. 
+        If $n \to \infty$, then $\mu_1$ will converge to the sample mean, and $\sigma^2 _1$ will converge to zero.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
 
 
 
+\subsubsection{Bayesian Analysis for Normal Populations with Unknown Mean and Variance}
 
+\begin{enumerate}
+    \item \textbf{sampling model}: 
+    $
+        \ell(\theta) 
+        = P(x_1, \cdots , x_ n |\mu, \sigma^2)
+        = \dprod^n _{i=1} \dfrac{1 }{\sqrt{2\pi\sigma^2}} \exp \dParenBrac{-\dfrac{(x_i -\mu)^2} {2\sigma^2}}
+    $
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item \textbf{prior}: multivariate PDF $f (\mu, \sigma^2)$ with the correct support ($\sigma^2 \in (0, \infty]$).
+    Often used (conjugate) prior is the Normal-inverse-$\chi^2$ distribution
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item Why a multivariate PDF $f(\mu,\sigma^2)$?
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item Because now both parameters are unknown — the mean $\mu$ and the variance $\sigma^2$
+            \hfill \cite{common/online/chatgpt}
+
+            \item So, instead of having a prior for just one parameter (like $P(\mu)$ when $\sigma^2$ was known), we now need a joint prior distribution that captures our beliefs about both parameters together: $f(\mu,\sigma^2)=P(\mu,\sigma^2)$
+            \hfill \cite{common/online/chatgpt}
+
+            \item This is a multivariate probability density function because it describes the probability density over two variables ($\mu$ and $\sigma^2$).
+            \hfill \cite{common/online/chatgpt}
+
+            \item $P(\mu,\sigma^2)=P(\mu|\sigma^2)\ P(\sigma^2)$
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+
+        \item What is a (conjugate) prior?
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item A prior is your belief about the parameter(s) before seeing data.
+            \hfill \cite{common/online/chatgpt}
+
+            \item A conjugate prior is a special kind of prior such that the posterior distribution (after seeing data) is of the same functional form as the prior.
+            \hfill \cite{common/online/chatgpt}
+
+            \item \textbf{Example}: If the likelihood is Normal, and you choose a Normal prior, then the posterior is also Normal — that’s a conjugate prior relationship.
+            \hfill \cite{common/online/chatgpt}
+
+            \item \textbf{Here}: The likelihood for data is Normal, and if you choose the Normal-inverse-$\chi^2$ prior, then after applying Bayes’ theorem, the posterior also remains a Normal-inverse-$\chi^2$ distribution (same family).
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+
+        \item If it’s Normal, why "Normal–inverse–$\chi^2$" distribution?
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item The conditional prior for $\mu$ given $\sigma^2$ is Normal: $\mu|\sigma^2 \sim \mathcal{N}(\mu_0,\sigma^2/\kappa_0)$
+            \hfill \cite{common/online/chatgpt}
+
+            \item The marginal prior for $\sigma^2$ is inverse–$\chi^2$ (or equivalently inverse–Gamma): $\sigma^2 \sim Inv-\chi^2(\nu_0,\sigma_0^2)$
+            \hfill \cite{common/online/chatgpt}
+
+            \item Combining these two gives the joint prior: $f(\mu,\sigma^2)=\mathcal{N}(\mu|\mu_0,\sigma^2/\kappa_0)\times Inv-\chi^2(\sigma^2|\nu_0,\sigma_0^2)$
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+
+        \item PDF:
+        $
+            \begin{aligned}
+                f (\mu, \sigma) 
+                &= \mathcal{N I} \chi^2(\mu_0, \kappa_0, \nu_0, \sigma^2_0 ) 
+                    = P(\mu, \sigma^2) = P(\mu|\sigma^2) P(\sigma^2) \\
+                &= \mathcal{N} (\mu_0, \sigma^2/\kappa_0) \times \chi^{-2}(\nu_0, \sigma^2_0 ) \\
+                &= \dfrac{1}{Z (\mu_0, \kappa_0, \nu_0, \sigma^2_0 ) } (\sigma^2)^{-(\nu_0 /2+1)/2} 
+                    \exp \dParenBrac{-\dfrac{1}{2\sigma^2}  [\nu_0\sigma^2_0 + \kappa_0(\mu_0 - \mu)^2]}
+            \end{aligned}
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\[0.2cm]
+        where 
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\[0.2cm]
+        .\hfill
+        $
+            Z (\mu_0, \kappa_0, \nu_0, \sigma^2_0 )
+            = \dfrac{\sqrt{2\pi}}{\sqrt{\kappa_0}} \ \Gamma\dParenBrac{\dfrac{\nu_0}{2}} \dParenBrac{\dfrac{2}{\nu_0 \sigma^2_0}}^{\nu_0/2}
+        $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    
+\end{enumerate}
 
 
 
