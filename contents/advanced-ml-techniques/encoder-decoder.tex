@@ -1,29 +1,56 @@
 \chapter{Encoder-Decoder Architecture}
 
-AKA Sequence-to-Sequence (seq2seq)
+\begin{customArrayStretch}{1.5}
+\begin{longtable}{p{2.5cm} p{3cm} p{2.7cm} p{2.7cm} p{2.7cm} l}
 
-\begin{enumerate}
-    \item An \textbf{encoder} neural network reads and encodes an input sequence into a \textbf{fixed-length vector}.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
+\hhline{=:=:=:=:=:=}
+\textbf{Domain} & \textbf{Task} & \textbf{Example} & \textbf{Encoder} & \textbf{Decoder} & \textbf{seq2seq?} \\ 
+\hhline{=:=:=:=:=:=} \endfirsthead
 
-    \item A \textbf{decoder} then outputs from the encoded vector.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-\end{enumerate}
+% \hline
+% \textbf{Domain} & \textbf{Task} & \textbf{Example} & \textbf{Encoder} & \textbf{Decoder} \\ 
+% \hline \endhead
 
+% \hline \endfoot
 
-\section{Disadvantages}
-\begin{enumerate}
-    \item A potential issue with this encoder–decoder approach is that a neural network needs to be able to compress all the necessary information of a source sentence into a fixed-length vector.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
+\hhline{=:=:=:=:=:=} 
+\caption{Encoder–Decoder Usage by category \cite{common/online/chatgpt}} \\
+\endlastfoot
 
-    \item This may make it difficult for the neural network to cope with long sequences, especially those that are longer than the sequences in the training corpus.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \item  performance of a basic encoder–decoder deteriorates rapidly as the length of an input sequence increases.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-\end{enumerate}
+\textbf{Computer Vision} & Autoencoders & VAE, Denoising AE & CNN & CNN/Deconv &  \\ 
+\cline{2-6}
 
+    & Image Segmentation & U-Net & CNN & CNN (upsampling) &  \\ 
+\cline{2-6}
 
+    & Image Generation & Diffusion models, VAEs, GANs & CNN / Transformer & CNN / Transformer &  \\ 
+\hline
+
+\textbf{Representation Learning} & Learn embeddings for downstream tasks & SimCLR, BYOL & CNN & Projection MLP &  \\
+\hline
+
+\textbf{Speech} & Speech → Text (ASR) & Whisper & CNN/Transformer & Transformer & \textbf{YES} \\ 
+\hline
+
+\textbf{Music} & Melody → Accompaniment & Music Transformer & Transformer & Transformer & \textbf{YES} \\ 
+\hline
+
+\textbf{Text (NLP)} & Autoencoding masked tokens & BERT & Transformer encoder & Transformer decoder (only for MLM head) & \\
+\hline
+
+\textbf{Multimodal Models} & Image → Caption & CLIP, Flamingo, BLIP & Vision encoder & Text decoder & Partly \\
+\hline
+
+\textbf{Generative Biology} & Protein sequence → structure & AlphaFold & Transformer encoder & Structure generator \\
+\hline
+
+\textbf{Anomaly Detection} & Reconstruct normal pattern & Autoencoder & MLP/CNN & MLP/CNN \\
+\hline
+
+\end{longtable}
+\end{customArrayStretch}
 
 
 

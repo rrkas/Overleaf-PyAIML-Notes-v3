@@ -1,152 +1,103 @@
 \chapter{Attention Mechanism (2014)}
 
 \begin{center}
-    \textbf{Source}: \cite{adv-ml-tech/paper/arxiv.org/1409.0473},
-    \textbf{General Context Extracted Using}: \cite{common/online/chatgpt}
+    \textbf{Source}: \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate},
+    \textbf{Domain-Agnostic made using}: \cite{common/online/chatgpt}
 \end{center}
 
 
-\begin{enumerate}
-    \item allows the model to dynamically and softly focus on different parts of the input when generating each part of the output, without needing to explicitly isolate those parts in advance.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473, common/online/chatgpt}
 
-    \item This approach leads to improved results and produces attention patterns that align with human intuition about which input elements are most relevant at each step.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473, common/online/chatgpt}
-
-    \item an extension to the sequence model that learns to align relevant parts of the input while generating the output.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473, common/online/chatgpt}
-
-    \item At each step of output generation, the model softly identifies positions in the input sequence that contain the most relevant information.
-    It then uses this focused context, along with all previously generated outputs, to predict the next output element.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473, common/online/chatgpt}
-
-    \item it avoids compressing the entire input into a single fixed-length vector. Instead, it encodes the input sequence into a sequence of vectors and adaptively selects a subset of these vectors during output generation.
-    This removes the burden of forcing all input information—regardless of length—into one compact representation, enabling the model to handle longer inputs more effectively.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473, common/online/chatgpt}
-
-
-\end{enumerate}
-
-
-\section{Architecture}
-
+\section{Intro: Encoder-decoder \& Seq2seq}
 
 \begin{enumerate}
-    \item input: $x = (x_1, \cdots, x_{T_x})$
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-\end{enumerate}
+    \item \textbf{Neural sequence modeling} is a framework in which a single neural network is trained end-to-end to map an input sequence to an output sequence. 
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 
-\subsection{Encoder: a Bi-directional RNN}
+    \item \textbf{Traditional models} often rely on \textbf{manually designed} intermediate representations or \textbf{fixed-length embeddings} that attempt to compress all input information into one vector. 
+    This can create a bottleneck, since a single fixed-size representation may not capture all the necessary details of complex inputs. 
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 
-\begin{enumerate}
-    \item hidden states/ \textbf{annotations}: $(h_1, \cdots, h_{T_x})$
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
+    \item To overcome this limitation, we can allow the model to \textbf{dynamically focus on specific parts} of the input that are most relevant to generating each part of the output. 
+    Instead of relying on a single static encoding, the model learns to compute \textbf{soft alignments}—that is, differentiable attention weights—over the input elements for each output step. 
+    This enables the system to retrieve context \textbf{adaptively} and improve performance across diverse tasks.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
+
+    \item Empirical results show that models with such attention mechanisms often outperform fixed-representation architectures, and the learned alignments correspond intuitively to which input regions influence particular outputs.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
+
+    \item Many modern neural models for sequence or structured data processing follow an encoder–decoder architecture.
+    The encoder processes the input data (e.g., a sequence, image, or signal) and compresses it into a single fixed-length representation. The decoder then uses this representation to generate or predict an output sequence.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
     \begin{enumerate}
-        \item  Each annotation $h_i$ contains information about the whole input sequence with a strong focus on the parts surrounding the $i$-th word of the input sequence.
-        \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
+        \item This encoder–decoder system is trained jointly so that the generated outputs are as accurate as possible given the inputs. 
+        \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
+        
+        \item A potential \textbf{limitation} of this setup is that it requires the entire input to be compressed into a single fixed-size vector. 
+        This compression can lead to \textbf{information loss}, particularly for \textbf{long or complex inputs}. 
+        As a result, performance tends to degrade when the input size or complexity increases, because the fixed-length representation cannot retain all relevant details.
+        \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
     \end{enumerate}
 
+    \item To address the limitations of fixed-length representations, we extend the encoder–decoder framework by allowing the model to \textbf{jointly learn to focus and predict}.
+    At each output step, the model dynamically determines which parts of the input are most relevant for generating the current output element.
+    Instead of compressing the entire input into a single vector, the model performs a soft search over all input positions to identify where important information is concentrated.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 
-    \item Forward RNN ($\overset{\rightarrow}{f}$) reads the input sequence as it is ordered (from $x_1$ to $x_{T_x}$ ) and calculates a sequence of forward hidden states ( $\overset{\rightarrow}{h}_1, \cdots , \overset{\rightarrow}{h}_{T_x}$ ).
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
+    \item Using these relevance scores (attention weights), the model computes a \textbf{context vector} as a weighted combination of the input representations.
+    This context vector summarizes the most pertinent information for the current prediction and is used—along with information from previous outputs—to generate the next element in the output sequence.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 
-    \item backward RNN ($\overset{\leftarrow}{f}$) reads the sequence in the reverse order (from $x_{T_x}$ to $x_1$), resulting in a sequence of backward hidden states ( $\overset{\leftarrow}{h}_1, \cdots , \overset{\leftarrow}{h}_{T_x}$ ).
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
+    \item The key advantage of this mechanism is that it \textbf{eliminates the fixed-size bottleneck} of traditional encoder–decoder models.
+    By representing the input as a sequence (or set) of feature vectors and selecting among them adaptively, the model can handle inputs of arbitrary length and complexity without being forced to compress all information into one vector.
+    This flexibility allows it to retain richer details and cope more effectively with long or information-dense inputs.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 
-    \item  annotation for each word $x_j$ by concatenating the forward hidden state $\overset{\rightarrow}{h} _j$ and the backward one $\overset{\leftarrow}{h} _j$
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-    \\
-    .\hfill
-    $
-        h_j = \dSquareBrac{
-            \overset{\rightarrow}{h} _j^\top ; \
-            \overset{\leftarrow}{h} _j^\top
-        }
-    $
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-    \\
-    In this way, the annotation $h_j$ contains the summaries of both the preceding words and the following words.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-
-    \item Due to the tendency of RNNs to better represent recent inputs, the annotation $h_j$ will be focused on the words around $x_j$.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
+    \item Empirical studies show that models trained to learn attention jointly with prediction achieve \textbf{significant performance improvements} compared to basic encoder–decoder models.
+    Moreover, the learned attention weights often provide meaningful insight into how the model associates different parts of the input with particular outputs—demonstrating that the learned “alignments” reflect human-interpretable relevance patterns.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 \end{enumerate}
 
-\subsection{Decoder}
+
+
+
+\section{Probabilistic Approach}
 
 \begin{enumerate}
-    \item emulates searching through source sequence during decoding
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
+    \item From a probabilistic perspective, many learning tasks can be viewed as finding an output sequence $y$ that maximizes the \textbf{conditional probability} $P(y|x)$, where $x$ represents the input data.
+    In practice, we train a parameterized model to approximate this conditional distribution using paired input–output data. 
+    Once the conditional model is learned, predictions can be generated by selecting the output sequence that maximizes $P(y|x)$.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 
-    \item decoder hidden state: $s_i = f(s_{i-1}, y_{i-1}, c_i)$
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
+    \item Recent advances have introduced \textbf{neural network–based approaches} to directly model this conditional distribution. 
+    These approaches typically follow an \textbf{encoder–decoder design}: the encoder transforms the input $x$ into a learned internal representation, and the decoder generates the output $y$ conditioned on this representation.
+    Recurrent neural networks (RNNs) or other sequential architectures (such as transformers or temporal CNNs) can be employed to handle variable-length inputs and outputs, encoding an input of arbitrary length into a fixed-length vector and then decoding it into a corresponding output sequence.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 
-    \item conditional probability: $P(y_i | y_1, \cdots , y_{i-1}, x) = g(y_{i-1}, s_i, c_i)$
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-
-
-    \item context vector: $c_i$ depends on annotations:
-    $
-        c_i
-        = \dsum_{j=1}^{T_x} \alpha_{ij} h_j
-    $
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-    \begin{enumerate}
-        \item aka expected annotation
-        \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-
-        \item $\alpha_{ij}$:  probability that the target word $y_i$ is aligned to, or translated from, a source word $x_j$
-        \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-
-        \item $i$-th context vector $c_i$ is the expected annotation over all the annotations with probabilities $\alpha_{ij}$
-        \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-    \end{enumerate}
-
-
-
-    \item weight $\alpha_{ij}$ of each annotation $h_j$:
-    $
-        \alpha_{ij}
-        = \dfrac{exp(e_{ij})}{\tsum_{k=1}^T exp(e_{ik})}
-    $
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-
-    \item alignment model/ energy: $e_{ij} = a(s_{i-1}, h_j)$\\
-    scores how well the inputs around position $j$ and the output at position $i$ match.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-
-    \item  We parametrize the alignment model a as a feedforward neural network which is jointly trained with all the other components of the proposed system.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-
-    \item the alignment is not considered to be a latent variable.
-    Instead, the alignment model directly computes a soft alignment, which allows the gradient of the cost function to be backpropagated through.
-    This gradient can be used to train the alignment model as well as the whole translation model jointly.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-
-    \item The probability $\alpha_{ij}$, or its associated energy $e_{ij}$, reflects the importance of the annotation $h_j$ with respect to the previous hidden state $s_{i-1}$ in deciding the next state $s_i$ and generating $y_i$.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-
-    \item This implements a mechanism of attention in the decoder.
-    The decoder decides parts of the source sentence to pay attention to.
-    By letting the decoder have an attention mechanism, we relieve the encoder from the burden of having to encode all information in the source sentence into a fixed-length vector.
-    \hfill \cite{adv-ml-tech/paper/arxiv.org/1409.0473}
-
-
+    \item Although relatively new when first introduced, these neural encoder–decoder models demonstrated strong empirical performance on structured prediction tasks.
+    For instance, recurrent architectures with memory mechanisms such as LSTMs were shown to achieve or surpass previous state-of-the-art results by capturing long-range dependencies between elements of the input and output.
+    Further improvements were obtained by integrating neural sequence models with existing systems or by re-ranking candidate outputs using learned probabilistic scores.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 \end{enumerate}
 
 
+\subsection{Encoder}
 
+\begin{enumerate}
+    \item the encoder processes the input — represented as a sequence of vectors: $\bm{x}=(x_1,\cdots,x_{T_x})$ — and transforms it into an internal representation $c$.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 
+    \item A common implementation uses a recurrent neural network (RNN), where each hidden state $h_t$ is updated based on the current input and the previous hidden state: 
+    \colorbox{yellow}{$h_t=f(x_t,h_{t-1})$}
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 
+    \item The sequence of hidden states $\dCurlyBrac{h_1,\cdots,h_{T_x}}$ captures information about the entire input sequence.
+    The final representation (or context vector) $c$ is then computed as a function of these hidden states: \colorbox{yellow}{$c=q(\dCurlyBrac{h_1,\cdots,h_{T_x}})$} 
+    where $f$ and $q$ are nonlinear functions, such as RNN or LSTM units and pooling operations (e.g., taking the last hidden state or an aggregation of all).
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 
-
-
-
-
-
-
-
-
+    \item In practice, $f$ defines how information is updated at each step (e.g., through gated mechanisms like LSTMs or GRUs), and $q$ defines how the entire sequence is summarized into a single vector representation.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
+\end{enumerate}
 
 
 

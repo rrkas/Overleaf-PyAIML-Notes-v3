@@ -1063,9 +1063,39 @@
             = \dfrac{\sqrt{2\pi}}{\sqrt{\kappa_0}} \ \Gamma\dParenBrac{\dfrac{\nu_0}{2}} \dParenBrac{\dfrac{2}{\nu_0 \sigma^2_0}}^{\nu_0/2}
         $
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        \\[0.2cm]
+        The above shows that our prior for $\sigma^2$ is a scaled inverse-$\chi^2$ distribution and the prior for $\mu$ conditional on $\sigma$ is a Normal distribution; both of these are known and well-understood univariate distribution functions.
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     \end{enumerate}
 
+    \item \textbf{posterior}:
+    $f (\mu, \sigma^2|x_1, \cdots , x_n ) = \mathcal{N I} \chi^2(\mu_n , \kappa_n , \nu_n , \sigma^2_n )$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{enumerate}
+        \item $\mu_n = \dfrac{\kappa_0\mu_0 + n\bar{x}}{\kappa_n}$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $\kappa_n = \kappa_0 + n$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $\nu_n = \nu_0 + n$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+        
+        \item $\sigma^2 _n = \dfrac{1 }{\nu_ n} \dParenBrac{\nu_0\sigma^2_0 + \dsum^n_{i=1} (x_ i - \bar{x})^2 + \dfrac{n\kappa_0}{\kappa_0 + n} (\mu_0 - \bar{x})^2}$
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+
+    \item \textbf{marginal posterior PDF}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $f (\sigma^2|x_1, \cdots , x_n ) = \chi^{-2}\dParenBrac{\nu_n , \sigma^2_n} $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
     
+        \item $f (\mu|x_1, \cdots , x_n ) = t\dParenBrac{\mu_n , \dfrac{\sigma^2_n}{\kappa_n}} $
+        \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+    \end{multicols}
 \end{enumerate}
 
 
