@@ -145,11 +145,43 @@
     \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
 
     \item $o_t = W_{\overrightarrow{h} o} \overrightarrow{h}_ t + W_{\overleftarrow{h} o}\overleftarrow{h}_ t + b_o $
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The transcription network is similar to a Connectionist Temporal Classification RNN, which also uses a null output to define a distribution over input-output alignments.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
 \end{enumerate}
 
 
 
+\subsection{Output Distribution}
 
+\begin{enumerate}
+    \item Given the transcription vector $f_t$, where $1 leq t leq T $, the prediction vector $g_u$, where $0 leq u leq U $, and label $k \in \bar{Y}$, define the \textbf{output density function}:
+    \colorbox{yellow}{$h(k, t, u) = \exp (f ^k _t + g^k _u ) $}
+    where superscript $k$ denotes the $k$-th element of the vectors. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The density can be normalised to yield the conditional output distribution:
+    \colorbox{yellow}{$P(k \in \bar{Y}|t, u) = \dfrac{h(k, t, u)}{\tsum_{k^\prime \in \bar{Y}} h(k^\prime, t, u)}$}
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item simply: 
+    \hfill
+    $ y(t, u) \equiv P(y_{u+1}|t, u) $
+    \hfill
+    $ \varnothing(t, u) \equiv P(\varnothing|t, u) $
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item $P(k|t, u)$ is used to determine the transition probabilities in the lattice.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The set of possible paths from the start node to the terminal node corresponds to the complete set of alignments between $\bm{x}$ and $\bm{y}$, i.e. to the set $\bar{Y}^\ast \cap B^{-1}(\bm{y})$. 
+    Therefore all possible input-output alignments are assigned a probability, the sum of which is the total probability $P(\bm{y}|\bm{x})$ of the output sequence given the input sequence.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item Since a similar lattice could be drawn for any finite $y \in Y^\ast$, $P(k|t, u)$ defines a distribution over all possible output sequences, given a single input sequence.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+\end{enumerate}
 
 
 
@@ -190,6 +222,21 @@
 
     \item 
 \end{enumerate}
+
+
+
+
+
+
+
+
+\section{Forward-Backward Algorithm}
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+
 
 
 
