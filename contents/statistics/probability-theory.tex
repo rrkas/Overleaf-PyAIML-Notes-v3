@@ -538,8 +538,56 @@
 \subsection{Bayesian Decision-Making in Uncertainty}
 
 \begin{enumerate}
-    \item 
+    \item A Bayesian analysis will, after choosing a prior, allow you to compute (or at least sample from) the posterior $f (\theta|D)$. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item we would like to make probabilistic statements regarding populations values, or we would like to test specific hypotheses and make decisions.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
+
+
+\subsubsection{Providing Point Estimates of Parameters}
+
+\begin{enumerate}
+    \item After obtaining either an analytical expression for $f (\theta|D)$, or, as is more often the case in Bayesian analysis in practice, a way to obtain samples from this posterior PDF, we might want to provide a so-called point estimate of the population value in question.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item A point estimate is simply a single-number summary of the results obtained regarding a single parameter. 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item  The Frequentist analogy in this case would be providing (e.g.) a maximum likelihood estimate of a population value.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item In the Bayesian case providing point-estimates is conceptually very simple: we have already seen various ways of summarizing distributions using (e.g.) the expected value, the median, or the mode.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item When an analytical expression for $f (\theta|D)$ is available these can often readily be computed.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The expected value is 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $\mbbE[\theta] = \dint_{\mbbR} \theta\ f(\theta)\ d\theta$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    whereas the median is the value of $m$ for which 
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    .\hfill
+    $\mbbE[\theta] = \dint^m_{\infty} f(\theta)\ d\theta = \dfrac{1}{2}$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \\[0.2cm]
+    and the mode is the (potentially local) maximum of the distribution function, i.e., where $f^\prime(\theta) = 0$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item the mode is, in the literature on Bayesian analysis, often referred to as the \textbf{Maximum A Posteriori} (or \textbf{MAP}) estimate.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    
+\end{enumerate}
+
+
 
 
 

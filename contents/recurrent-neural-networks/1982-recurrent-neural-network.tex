@@ -1,0 +1,46 @@
+\chapter{Recurrent Neural Networks (RNN) (1982)}
+
+\begin{enumerate}
+    \item Recurrent neural networks (RNNs) are a promising architecture for general-purpose sequence transduction.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The combination of a high-dimensional multivariate internal state and nonlinear state-to-state dynamics offers more expressive power than conventional sequential algorithms such as hidden Markov models.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item In particular, RNNs are better at storing and accessing information over long periods of time.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item RNNs are usually restricted to problems where the alignment between the input and output sequence is known in advance.
+    For example, RNNs may be used to classify every frame in a speech signal, or every amino acid in a protein chain. 
+    If the network outputs are probabilistic this leads to a distribution over output sequences of the same length as the input sequence. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+\end{enumerate}
+
+\section{Disadvantages}
+
+\begin{enumerate}
+    \item Recurrent models typically factor computation along the symbol positions of the input and output sequences. 
+    Aligning the positions to steps in computation time, they generate a sequence of hidden states $h_t$, as a function of the previous hidden state $h_{t-1}$ and the input for position $t$. 
+    This inherently sequential nature precludes parallelization within training examples, which becomes critical at longer sequence lengths, as memory constraints limit batching across examples.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item  RNNs traditionally require a pre-defined alignment between the input and output sequences to perform transduction. 
+    This is a severe limitation since finding the alignment is the most difficult aspect of many sequence transduction problems. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

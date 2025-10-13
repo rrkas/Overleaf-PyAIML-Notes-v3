@@ -1,0 +1,214 @@
+\chapter{Transducer (2012)}
+
+\begin{tcolorbox}
+\fullcite{arxiv/1211.3711/Sequence-Transduction-RNN}
+\end{tcolorbox}
+
+
+
+\begin{enumerate}
+    \item Many machine learning tasks can be expressed as the transformation—or transduction—of input sequences into output sequences. 
+    Example: speech recognition, machine translation, protein secondary structure prediction and text-to-speech, etc
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item One of the key challenges in sequence transduction is learning to represent both the input and output sequences in a way that is \textbf{invariant to sequential distortions} such as shrinking, stretching and translating.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item For a general-purpose sequence transducer, where the output length is \textbf{unknown} in advance, we would prefer a distribution over sequences of \textbf{all} lengths.
+    Furthermore, since we do not know how the inputs and outputs should be aligned, this distribution would ideally cover all possible alignments.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The transducer extends CTC by defining a distribution over output sequences of all lengths, and by jointly modelling both input-output and output-output dependencies.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item As a discriminative sequential model the transducer has similarities with ‘chain-graph’ conditional random fields (CRFs).
+    However the transducer’s construction from RNNs, with their ability to extract features from raw data and their potentially unbounded range of dependency, is in marked contrast with the pairwise output potentials and hand-crafted input features typically used for CRFs.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item Transducer is closer in spirit is the \textbf{Graph Transformer Network} paradigm, in which differentiable modules (often neural networks) can be globally trained to perform consecutive graph transformations such as detection, segmentation and recognition.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+\end{enumerate}
+
+
+
+
+\section{RNN Transducer}
+
+\begin{enumerate}
+    \item Let $\bm{x} = (x_1, x_2, \cdots , x_T )$ be a length $T$ input sequence of arbitrary length belonging to the set $X ^\ast$ of all sequences over some input space $X $.
+    Let $\bm{y} = (y_1, y_2, \cdots , y_U )$ be a length $U$ output sequence belonging to the set $Y^\ast$ of all sequences over some output space $Y$. 
+    We assume that the output space is discrete; however the method can be readily extended to continuous output spaces, provided a tractable, differentiable model can be found for $Y$.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item Both the inputs vectors $x_t$ and the output vectors $y_u$ are represented by fixed-length real-valued vectors; 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item Let the extended output space $\bar{Y} = Y \cup \varnothing$, where $\varnothing$ denotes the \textbf{null output}. 
+    The intuitive meaning of $\varnothing$ is ‘output nothing’; the sequence $(y_1, \varnothing, \varnothing, y_2, \varnothing, y_3) \in \bar{Y}^\ast$ is therefore equivalent to $(y_1, y_2, y_3) \in Y^\ast$.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item We refer to the elements $a \in \bar{Y}^\ast$ as alignments, since the location of the null symbols determines an alignment between the input and output sequences. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item Given $x$, the RNN transducer defines a conditional distribution $P(a \in \bar{Y}^\ast|x)$.
+    This distribution is then collapsed onto the following distribution over ${Y}^\ast$:
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \\[0.2cm]
+    .\hfill
+    $
+        P(y\in Y^\ast|x) = \dsum_{a \in B^{-1}(y)} P(a|x)
+    $
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \\[0.2cm]
+    where $B : \bar{Y}^\ast \mapsto Y^\ast$ is a function that removes the null symbols from the alignments in $\bar{Y}^\ast$.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item Two recurrent neural networks are used to determine $P(a \in \bar{Y}^\ast|x)$.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \begin{enumerate}
+        \item \textbf{transcription network} $F$: scans the input sequence $x$ and outputs the sequence $\bm{f} = (f_1, \cdots , f_T )$ of transcription vectors.
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+        \item The other network, referred to as the prediction network $G$, scans the output sequence $y$ and outputs the prediction vector sequence $\bm{g} = (g_0, g_1, \cdots , g_U )$.
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \end{enumerate}
+
+    \item  For a task with $K$ output labels, the output layer of the transcription network is size $K + 1$, just like the prediction network, and hence the transcription vectors $f_t$ are also size $K + 1$.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+\end{enumerate}
+
+
+\subsection{Prediction Network ($G$)}
+
+\begin{enumerate}
+    \item The prediction network $G$ is a recurrent neural network consisting of an input layer, an output layer and a single hidden layer.
+    The length $U + 1$ input sequence $\hat{\bm{y}} = (\varnothing, y_1, \cdots , y_U )$ to $G$ output sequence $\bm{y}$ with $\varnothing$ prepended. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    
+    \item The inputs are encoded as one-hot vectors; that is, if $Y$ consists of $K$ labels and $y_u = k$, then $\hat{\bm{y}}_u$ is a length $K$ vector whose elements are all zero except the $k$-th, which is one. 
+    $\varnothing$ is encoded as a length $K$ vector of zeros.
+    The input layer is therefore size $K$. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The output layer is size $K + 1$ (one unit for each element of $\bar{Y}$) and hence the prediction vectors $g_u$ are also size $K + 1$.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item Given $\hat{\bm{y}}$, $G$ computes the hidden vector sequence $(h_0, \cdots , h_U )$ and the prediction sequence $(g_0, \cdots , g_U )$ by iterating the following equations from $u = 0$ to $U $:
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $h_u = H (W_{ih} \hat{\bm{y}}_u + W_{hh}h_{u-1} + b_h)$
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+        \item $g_u = W_{ho}h_u + b_o $
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \end{enumerate}
+    \end{multicols}
+    where $W_{ih}$ is the input-hidden weight matrix, 
+    $W_{hh}$ is the hidden-hidden weight matrix, 
+    $W_{ho}$ is the hidden-output weight matrix, 
+    $b_h$ and $b_o$ are bias terms, 
+    and $H$ is the hidden layer function. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item In traditional RNNs $H$ is an elementwise application of the $\tanh$ or logistic sigmoid $\sigma(x) = \dfrac{1}{1 + \exp(-x)}$ functions.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The prediction network attempts to model each element of $\bm{y}$ given the previous ones; it is therefore similar to a standard next-step-prediction RNN, only with the added option of making ‘null’ predictions.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+\end{enumerate}
+
+
+\subsection{Transcription Network ($F$)}
+
+
+\begin{enumerate}
+    \item The transcription network $F$ is a bidirectional RNN that scans the input sequence $\bm{x}$ forwards and backwards with two separate hidden layers, both of which feed forward to a single output layer. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item Bidirectional RNNs are preferred because each output vector depends on the whole input sequence (rather than on the previous inputs only, as is the case with normal RNNs).
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item Given a length $T$ input sequence $(x_1 \cdots x_T )$, a bidirectional RNN computes the forward hidden sequence $(\overrightarrow{h_1}, \cdots , \overrightarrow{h_T} )$, the backward hidden sequence $(\overleftarrow{h_1}, \cdots , \overleftarrow{h_T} )$, and the transcription sequence $(f_1, \cdots , f_T )$ by first iterating the backward layer from $t = T$ to $1$:
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \\[0.2cm]
+    .\hfill
+    $\overleftarrow{h}_ t = H\dParenBrac{W_{i\overleftarrow{h}} i_t + W_{\overleftarrow{h} \overleftarrow{h}} \overleftarrow{h} _{t+1} + b_{\overleftarrow{h}}}$
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    
+    
+    \item iterating the forward and output layers from $t = 1$ to $T $:
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \\[0.2cm]
+    .\hfill
+    $\overrightarrow{h}_ t = H\dParenBrac{W_{i\overrightarrow{h}} i_t + W_{\overrightarrow{h} \overrightarrow{h}} \overrightarrow{h} _{t+1} + b_{\overrightarrow{h}}}$
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item $o_t = W_{\overrightarrow{h} o} \overrightarrow{h}_ t + W_{\overleftarrow{h} o}\overleftarrow{h}_ t + b_o $
+\end{enumerate}
+
+
+
+
+
+
+
+\section{LSTM Transducer}
+
+\subsection{Prediction Network ($G$)}
+
+\begin{enumerate}
+    \item we have found that the Long Short-Term Memory (LSTM) architecture is better at finding and exploiting long range contextual information.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item hidden layer function $H$ is implemented by the following composite function:
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $\alpha _n = \sigma  (W_{i\alpha }i_n + W_{h\alpha }h_{n-1} + W_{s\alpha }s_{n-1})$
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+        \item $\beta _n = \sigma  (W_{i\beta } i_n + W_{h\beta } h_{n-1} + W_{s\beta } s_{n-1})$
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+        \item $s_n = \beta _ns_{n-1} + \alpha _n \tanh (W_{is}i_n + W_{hs}) $
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+        \item $\gamma _n = \sigma  (W_{i\gamma } i_n + W_{h\gamma } h_{n-1} + W_{s\gamma } s_n)$
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+        \item $h_n = \gamma _n \tanh(s_n) $
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \end{enumerate}
+    \end{multicols}
+    where $\alpha, \beta, \gamma$ and $s$ are respectively the \textbf{input gate, forget gate, output gate} and \textbf{state vectors}, all of which are the same size as the hidden vector $h$. 
+    \item $W_{h\alpha}$ is the hidden-input gate matrix, $W{i\gamma}$ is the input-output gate matrix etc.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The weight matrices from the state to gate vectors are diagonal, so element $m$ in each gate vector only receives input from element $m$ of the state vector. 
+    The bias terms (which are added to $\alpha, \beta, s$ and $\gamma$) have been omitted for clarity.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
