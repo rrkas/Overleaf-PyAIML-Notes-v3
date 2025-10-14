@@ -862,6 +862,8 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
 \end{tabular}
 \end{table}
 
+\begin{table}[H]
+\begin{minipage}{0.25\linewidth}
 \begin{figure}[H]
     \centering
     \includegraphics[
@@ -869,14 +871,17 @@ Finally, note that if $t_n > z_{1-\alpha}$—if this is the direction of the one
         height=5cm,
         keepaspectratio,
     ]{images/statistics/Equivalence-Testing.png}
-    \caption*{
-        Comparison between equivalence testing and traditional hypothesis testing.
-        The vertical dotted lines represents the interval $[-\Delta, \Delta]$ and the vertical solid line represents the difference $\mu( f ) - \mu_0 = 0$. 
-        The horizontal x-axis represents the difference $\mu( f ) - \mu_0$ and each dot in the figure represents an estimate of this difference. 
-        The horizontal lines through the dots represent the $1 - 2\alpha$ confidence intervals.
-        \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-    }
 \end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.7\linewidth}
+Comparison between equivalence testing and traditional hypothesis testing.
+The vertical dotted lines represents the interval $[-\Delta, \Delta]$ and the vertical solid line represents the difference $\mu( f ) - \mu_0 = 0$. 
+The horizontal x-axis represents the difference $\mu( f ) - \mu_0$ and each dot in the figure represents an estimate of this difference. 
+The horizontal lines through the dots represent the $1 - 2\alpha$ confidence intervals.
+\hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+\end{minipage}
+\end{table}
 
     \item Equivalence testing $H_0 : \dabs{\mu( f ) - \mu_0} > \Delta$ against $H_a : \dabs{\mu( f ) - \mu_0} \leq \Delta$ is really different in concept from traditional hypothesis testing $H_0 : \mu( f ) = \mu_0$ against $H_a : \mu( f ) \neq \mu_0 $.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}

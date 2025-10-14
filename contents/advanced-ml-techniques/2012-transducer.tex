@@ -69,7 +69,7 @@
         \item \textbf{transcription network} $F$: scans the input sequence $x$ and outputs the sequence $\bm{f} = (f_1, \cdots , f_T )$ of transcription vectors.
         \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
 
-        \item The other network, referred to as the prediction network $G$, scans the output sequence $y$ and outputs the prediction vector sequence $\bm{g} = (g_0, g_1, \cdots , g_U )$.
+        \item The other network, referred to as the prediction network $G$, scans the output sequence $\bm{y}$ and outputs the prediction vector sequence $\bm{g} = (g_0, g_1, \cdots , g_U )$.
         \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
     \end{enumerate}
 
@@ -155,6 +155,43 @@
 
 \subsection{Output Distribution}
 
+\begin{table}[H]
+\begin{minipage}{0.3\linewidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=6cm,
+        keepaspectratio,
+    ]{images/advanced-ml/arxiv-1211.3711v1.fig-1-output-lattice.png}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\linewidth}
+\begin{enumerate}
+    \item Output probability lattice defined by $P(k|t, u)$. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    
+    \item The \textbf{node} at $(t, u)$ represents the probability of having output the first $u$ elements of the output sequence by point $t$ in the transcription sequence. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    
+    \item The \textbf{horizontal arrow} leaving node $(t, u)$ represents the probability $\varnothing(t, u)$ of outputting nothing at $(t, u)$; 
+    the \textbf{vertical arrow} represents the probability $y(t, u)$ of outputting the element $u + 1$ of $\bm{y}$. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    
+    \item The \textbf{black nodes} at the bottom represent the null state before any outputs have been emitted. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    
+    \item The \textbf{paths} starting at the bottom left and reaching the terminal node in the top right (one of which is shown in red) correspond to the possible alignments between the input and output sequences. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    
+    \item Each alignment starts with probability 1, and its final probability is the product of the transition probabilities of the arrows they pass through (shown for the red path).
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+\end{enumerate}
+\end{minipage}
+\end{table}
+
+
 \begin{enumerate}
     \item Given the transcription vector $f_t$, where $1 leq t leq T $, the prediction vector $g_u$, where $0 leq u leq U $, and label $k \in \bar{Y}$, define the \textbf{output density function}:
     \colorbox{yellow}{$h(k, t, u) = \exp (f ^k _t + g^k _u ) $}
@@ -179,7 +216,7 @@
     Therefore all possible input-output alignments are assigned a probability, the sum of which is the total probability $P(\bm{y}|\bm{x})$ of the output sequence given the input sequence.
     \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
 
-    \item Since a similar lattice could be drawn for any finite $y \in Y^\ast$, $P(k|t, u)$ defines a distribution over all possible output sequences, given a single input sequence.
+    \item Since a similar lattice could be drawn for any finite $\bm{y} \in Y^\ast$, $P(k|t, u)$ defines a distribution over all possible output sequences, given a single input sequence.
     \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
 \end{enumerate}
 
@@ -233,20 +270,165 @@
 \section{Forward-Backward Algorithm}
 
 \begin{enumerate}
-    \item 
+    \item Define the forward variable $\alpha(t, u)$ as the probability of outputting $\bm{y}_{[1:u]}$ during $\bm{f}_{[1:t]}$.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The forward variables for all $1 \leq t \leq T$ and $0 \leq u \leq U$ can be calculated recursively using:
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \\[0.2cm]
+    .\hfill
+    $\alpha(t, u) = \alpha(t - 1, u)\varnothing(t - 1, u) + \alpha(t, u - 1)y(t, u - 1)$
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \\[0.2cm]
+    with initial condition $\alpha(1, 0) = 1$.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The total output sequence probability is equal to the forward variable at the terminal node:
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \\[0.2cm]
+    .\hfill
+    $P(\bm{y}|x) = \alpha(T, U )\varnothing(T, U )$
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item Define the backward variable $\beta(t, u)$ as the probability of outputting $\bm{y}_{[u+1:U ]}$ during $\bm{f}_{[t:T ]}$.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item $\beta(t, u) = \beta(t + 1, u)\varnothing(t, u) + \beta(t, u + 1)y(t, u)$
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \\[0.2cm]
+    with initial condition $\beta(T, U ) = \varnothing(T, U )$. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item From the definition of the forward and backward variables it follows that their product $\alpha(t, u)\beta(t, u)$ at any point $(t, u)$ in the output lattice is equal to the probability of emitting the complete output sequence if $y_u$ is \textbf{emitted during transcription} step $t$. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+\end{enumerate}
+
+
+\section{Training}
+
+\begin{enumerate}
+    \item Given an input sequence $\bm{x}$ and a target sequence $\bm{y}^\ast$, the natural way to train the model is to minimise the log-loss $L = - \ln (P(\bm{y}^\ast|\bm{x}))$ of the target sequence.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item $\forall n : 1 \leq n \leq U + T,\ P(\bm{y}^\ast|\bm{x}) = \dsum_{(t,u):t+u=n} \alpha(t, u)\beta(t, u) $
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item $
+        \dfrac{\partial L}{\partial P(k|t, u)}
+        = \dfrac{\alpha(t, u)}{P(\bm{y}^\ast|\bm{x})}
+        = \begin{cases}
+            \beta(t, u + 1) & \text{ if } k = y_{u+1} \\
+            \beta(t + 1, u) & \text{ if } k = \varnothing \\
+            0 & otherwise
+        \end{cases}
+    $
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item 
+        $
+            \dfrac{\partial L}{\partial f ^k_t} = 
+            \dsum_{u=0}^U \dsum_{k^\prime \in \bar{Y}}
+            \dfrac{\partial L}{\partial  Pr(k^\prime |t, u)} \dfrac{\partial  Pr(k^\prime |t, u)}{\partial f ^k_t}
+        $
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+        \item 
+        $
+            \dfrac{\partial L}{\partial g ^k_u} = 
+            \dsum_{t=1}^T \dsum_{k^\prime \in \bar{Y}}
+            \dfrac{\partial L}{\partial  Pr(k^\prime |t, u)} \dfrac{\partial  Pr(k^\prime |t, u)}{\partial g ^k_u}
+        $
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \end{enumerate}
+    \end{multicols}
+    where, 
+    $
+        \dfrac{\partial  Pr(k^\prime |t, u)}{\partial f ^k_t}
+        = \dfrac{\partial  Pr(k^\prime |t, u)}{\partial g ^k_u}
+        = P(k^\prime|t, u) [\delta_{kk^\prime} - P(k|t, u)]
+    $
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item A separate softmax could be calculated for every $P(k|t, u)$ required by the forward-backward algorithm. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \begin{enumerate}
+        \item this is computationally expensive due to the high cost of the exponential function.
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+        \item we can instead pre-compute all the $\exp (f (t, x))$ and $\exp(g(y_{[1:u]}))$ terms and use their products to determine $P(k|t, u)$. 
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+        \item This reduces the number of exponential evaluations from $\mathcal{O}(T U )$ to $\mathcal{O}(T + U )$ for each length $T$ transcription sequence and length $U$ target sequence used for training.
+        \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+    \end{enumerate}
 \end{enumerate}
 
 
 
+\section{Testing/ Inference}
 
+\begin{enumerate}
+    \item When the transducer is evaluated on test data, we seek the mode of the output sequence distribution induced by the input sequence.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
 
+    \item Unfortunately, finding the mode is much harder than determining the probability of a single sequence. 
+    The complication is that the prediction function $g(y_{[1:u]})$ (and hence the output distribution $P(k|t, u))$ may depend on all previous outputs emitted by the model.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
 
+    \item The method employed is a fixed-width beam search through the tree of output sequences. 
+    The advantage of beam search is that it scales to arbitrarily long sequences, and allows computational cost to be traded off against search accuracy.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
 
+    \item Let $P(\bm{y})$ be the approximate probability of emitting some output sequence $\bm{y}$ found by the search so far.
+    Let $P(k|\bm{y}, t)$ be the probability of extending $\bm{y}$ by $k \in \bar{Y}$ during transcription step $t$.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
 
+    \item Let $\text{pref} (\bm{y})$ be the set of proper prefixes of $\bm{y}$ (including the null sequence $\varnothing$), and for some $\hat{\bm{y}} \in \text{pref} (\bm{y})$, let $P(\bm{y}| \hat{\bm{y}}, t) = \dprod^{\dabs{\bm{y}}} _{u=\dabs{\hat{\bm{y}}}+1} P(y_u|\bm{y}_{[0:u-1]}, t)$. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
 
+\begin{algorithm}[H]
+    \caption{Output Sequence Beam Search \cite{arxiv/1211.3711/Sequence-Transduction-RNN}} 
 
+    \textbf{Initalise}: $B = \dCurlyBrac{\varnothing}; P(\varnothing) = 1$ \\
+    \For{$t \gets 1$ \KwTo $T$}{
+        $A = B$ \\
+        $B = \dCurlyBrac{}$ \\
+        \For{$\bm{y}$ \textbf{in} $A$}{
+            $P(\bm{y}) += \dsum_ {\hat{\bm{y}}\ \in\ \text{pref} (\bm{y})\ \cap\ A} P(\hat{\bm{y}}) \ P(\bm{y}| \hat{\bm{y}}, t)$
+        }
+        \While{$B$ contains less than $W$ elements more probable than the most probable in $A $}{
+            $\bm{y}^\ast$ = most probable in $A$ \\
+            Remove $\bm{y}^\ast$ from $A$ \\
+            $P(\bm{y}^\ast) = P(\bm{y}^\ast)\ P(\varnothing|y, t)$ \\
+            Add $\bm{y}^\ast$ to $B$ \\
+            \For{$k \in Y $}{
+                $P(\bm{y}^\ast + k) = P(\bm{y}^\ast)\ P(k|\bm{y}^\ast, t)$ \\
+                Add $\bm{y}^\ast + k$ to $A$
+            }
+        }
+        Remove all but the $W$ most probable from $B$ \\
+    }
+    \Return $\bm{y}$ with highest $\dfrac{\log P(\bm{y})}{\dabs{\bm{y}}}$ in $B$
+\end{algorithm}
 
+    \item Pseudocode for a width $W$ beam search for the output sequence with highest length-normalised probability given some length $T$ transcription sequence.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
 
+    \item The algorithm can be trivially extended to an $N$ best search ($N \leq W $) by returning a sorted list of the $N$ best elements in $B$ instead of the single best element.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The length normalisation in the final line appears to be important for good performance, as otherwise shorter output sequences are excessively favoured over longer ones.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The prediction network outputs are \textbf{independent} of previous hidden vectors given the current one, we can iteratively compute the prediction vectors for each output sequence $\bm{y} + k$ considered during the beam search by storing the hidden vectors for all $\bm{y}$, and running $h_u = H (W_{ih} \hat{\bm{y}}_u + W_{hh}h_{u-1} + b_h)$ for one step with $k$ as input. 
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+
+    \item The prediction vectors can then be combined with the transcription vectors to compute the probabilities. 
+    This procedure greatly accelerates the beam search, at the cost of increased memory use. 
+    Note that for LSTM networks both the hidden vectors $h$ and the state vectors $s$ should be stored.
+    \hfill \cite{arxiv/1211.3711/Sequence-Transduction-RNN}
+\end{enumerate}
 
 
 
