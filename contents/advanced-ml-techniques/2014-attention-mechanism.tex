@@ -89,7 +89,7 @@
         keepaspectratio,
     ]{images/advanced-ml/arxiv-1409.0473v7.fig-1.model.png}
     \caption*{
-        The graphical illustration of the proposed model trying to generate the $t$-th target word $y_t$ given a source sentence $(x_1, x_2, \cdots , x_T )$.
+        The graphical illustration of the proposed model trying to generate the $t$-th target token $y_t$ given a source sentence $(x_1, x_2, \cdots , x_T )$.
         \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
     }
 \end{figure}
@@ -123,10 +123,10 @@
 \subsubsection*{Decoder}
 
 \begin{enumerate}
-    \item The decoder is often trained to predict the next word/token $y_{t^\prime}$ given the context vector $c$ and all the previously predicted words $\dCurlyBrac{y_1, \cdots , y_{t^\prime-1}}$.
+    \item The decoder is often trained to predict the next token/token $y_{t^\prime}$ given the context vector $c$ and all the previously predicted tokens $\dCurlyBrac{y_1, \cdots , y_{t^\prime-1}}$.
     \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
 
-    \item In other words, the decoder defines a probability over the translation $\bm{y}$ by decomposing the joint probability into the ordered conditionals:
+    \item In other tokens, the decoder defines a probability over the translation $\bm{y}$ by decomposing the joint probability into the ordered conditionals:
     \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
     \\[0.2cm]
     .\hfill
@@ -162,7 +162,29 @@
 
 \section{Learning (RNN Encoder-Decoder)}
 
-\subsection{Decoder}
+\subsection*{Encoder: Bidirectional RNN For Annotating Sequences}
+
+\begin{enumerate}
+    \item The usual RNN reads an input sequence $\bm{x}$ in order starting from the first symbol $x_1$ to the last one $x_{T_x }$. 
+    However, we would like the annotation of each token to summarize not only the preceding tokens, but also the following tokens.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item A BiRNN consists of forward and backward RNN’s. 
+    The \textbf{forward RNN} $\overrightarrow{f}$ reads the input sequence as it is ordered (from $x_1$ to $x_{T_x}$ ) and calculates a sequence of forward hidden states $(\overrightarrow{h} _1, \cdots , \overrightarrow{h}_ {T_x} )$.
+    The \textbf{backward RNN} $\overleftarrow{f}$ reads the sequence in the reverse order (from $x_{T_x}$ to $x_1$), resulting in a sequence of backward hidden states $(\overleftarrow{h} _1, \cdots , \overleftarrow{h} _{T_x} )$.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item We obtain an annotation for each word xj by concatenating the forward hidden state $\overrightarrow{h}_ j$ and the backward one $\overleftarrow{h} _j $, i.e., $h_j = \dSquareBrac{\overrightarrow{h^\top}_ j ;\ \overleftarrow{h^\top}_ j}^\top$. 
+    In this way, the annotation $h_j$ contains the summaries of both the preceding words and the following words. 
+    Due to the tendency of RNNs to better represent recent inputs, the annotation $h_j$ will be focused on the words around $x_j $. 
+    This sequence of annotations is used by the decoder and the alignment model later to compute the context vector $c_i$.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+\end{enumerate}
+
+
+
+
+\subsection*{Decoder}
 
 \begin{enumerate}
     \item we define each conditional probability as:
@@ -173,11 +195,11 @@
     $s_i = f (s_{i-1}, y_{i-1}, c_i)$.
     \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
 
-    \item unlike the existing encoder–decoder approach ($p(\bm{y}) = \dprod_{t=1}^T P(y_t | \dCurlyBrac{y_1, \cdots , y_{t-1}} , c)$), here the probability is conditioned on a distinct context vector $c_i$ for each target word $y_i$.
+    \item unlike the existing encoder–decoder approach ($p(\bm{y}) = \dprod_{t=1}^T P(y_t | \dCurlyBrac{y_1, \cdots , y_{t-1}} , c)$), here the probability is conditioned on a distinct context vector $c_i$ for each target token $y_i$.
     \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
 
     \item The context vector $c_i$ depends on a sequence of annotations $(h_1, \cdots , h_{T_x} )$ to which an encoder maps the input sentence. 
-    Each annotation $h_i$ contains information about the whole input sequence with a strong focus on the parts surrounding the $i$-th word of the input sequence. 
+    Each annotation $h_i$ contains information about the whole input sequence with a strong focus on the parts surrounding the $i$-th token of the input sequence. 
     \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
 
     \item The context vector $c_i$ is, then, computed as a weighted sum of these annotations $h_i$:
@@ -196,6 +218,26 @@
     \\[0.2cm]
     where \colorbox{yellow}{$e_{ij} = a(s_{i-1}, h_j )$} is an alignment model which scores how well the inputs around position $j$ and the output at position $i$ match. 
     The score is based on the RNN hidden state $s_{i-1}$ (just before emitting $y_i$, $ P(y_i|y_1, \cdots , y_{i-1}, x) = g(y_{i-1}, s_i, c_i) $) and the $j$-th annotation $h_j$ of the input sentence.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item We parametrize the alignment model a as a feedforward neural network which is jointly trained with all the other components.
+    The alignment is not considered to be a latent variable
+    Instead, the alignment model directly computes a \textbf{soft alignment}, which allows the gradient of the cost function to be backpropagated through.
+    This gradient can be used to train the alignment model as well as the whole translation model jointly.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item We can understand the approach of taking a weighted sum of all the annotations as computing an \textbf{expected annotation}, where the expectation is over possible alignments. 
+    Let $\alpha_{ij}$ be a probability that the target token $y_i$ is aligned to, or translated from, a source token $x_j $. 
+    Then, the $i$-th context vector $c_i$ is the expected annotation over all the annotations with probabilities $\alpha_{ij} $.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item The probability $\alpha_{ij} $, or its associated energy $e_{ij }$, reflects the importance of the annotation $h_j$ with respect to the previous hidden state $s_{i-1}$ in deciding the next state si and generating $y_i$. 
+    Intuitively, this implements a mechanism of attention in the decoder.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+    
+    \item The decoder decides parts of the source sentence to pay attention to. 
+    By letting the decoder have an attention mechanism, we relieve the encoder from the burden of having to encode all information in the source sentence into a fixed-length vector. 
+    With this new approach the information can be spread throughout the sequence of annotations, which can be selectively retrieved by the decoder accordingly.
     \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
 \end{enumerate}
 
