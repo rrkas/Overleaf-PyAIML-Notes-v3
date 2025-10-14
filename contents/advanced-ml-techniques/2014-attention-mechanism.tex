@@ -78,7 +78,24 @@
 \end{enumerate}
 
 
-\subsection{Encoder}
+\subsection{RNN Encoder-Decoder}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=5cm,
+        keepaspectratio,
+    ]{images/advanced-ml/arxiv-1409.0473v7.fig-1.model.png}
+    \caption*{
+        The graphical illustration of the proposed model trying to generate the $t$-th target word $y_t$ given a source sentence $(x_1, x_2, \cdots , x_T )$.
+        \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
+    }
+\end{figure}
+
+
+\subsubsection*{Encoder}
 
 \begin{enumerate}
     \item the encoder processes the input — represented as a sequence of vectors: $\bm{x}=(x_1,\cdots,x_{T_x})$ — and transforms it into an internal representation $c$.
@@ -90,12 +107,105 @@
 
     \item The sequence of hidden states $\dCurlyBrac{h_1,\cdots,h_{T_x}}$ captures information about the entire input sequence.
     The final representation (or context vector) $c$ is then computed as a function of these hidden states: \colorbox{yellow}{$c=q(\dCurlyBrac{h_1,\cdots,h_{T_x}})$} 
-    where $f$ and $q$ are nonlinear functions, such as RNN or LSTM units and pooling operations (e.g., taking the last hidden state or an aggregation of all).
+    where $h_t \in \mbbR^n$ is a hidden state at time $t$, and $c$ is a vector generated from the sequence of the hidden states. 
+    $f$ and $q$ are some nonlinear functions.
     \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
+    \begin{enumerate}
+        \item LSTM can be used as $f$ and $q (\dCurlyBrac{h_1, \cdots , h_T }) = h_T$
+        \hfill [Sutskever et al. (2014)] \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+    \end{enumerate}
 
-    \item In practice, $f$ defines how information is updated at each step (e.g., through gated mechanisms like LSTMs or GRUs), and $q$ defines how the entire sequence is summarized into a single vector representation.
-    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate, common/online/chatgpt}
 \end{enumerate}
+
+
+
+
+\subsubsection*{Decoder}
+
+\begin{enumerate}
+    \item The decoder is often trained to predict the next word/token $y_{t^\prime}$ given the context vector $c$ and all the previously predicted words $\dCurlyBrac{y_1, \cdots , y_{t^\prime-1}}$.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item In other words, the decoder defines a probability over the translation $\bm{y}$ by decomposing the joint probability into the ordered conditionals:
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+    \\[0.2cm]
+    .\hfill
+    $
+        p(\bm{y}) = \dprod_{t=1}^T P(y_t | \dCurlyBrac{y_1, \cdots , y_{t-1}} , c)
+    $
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+    \\[0.2cm]
+    where $\bm{y} = (y_1, \cdots , y_{T_y})$.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item With an RNN, each conditional probability is modeled as:
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+    \\[0.2cm]
+    .\hfill
+    $ P(y_t | \dCurlyBrac{y_1, \cdots , y_{t-1}} , c) = g(y_{t-1}, s_t, c) $
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+    \\[0.2cm]
+    where $g$ is a nonlinear, potentially multi-layered, function that outputs the probability of $y_t$, and $s_t$ is the hidden state of the RNN.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item Other architectures such as a hybrid of an RNN and a de-convolutional neural network can be used.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\section{Learning (RNN Encoder-Decoder)}
+
+\subsection{Decoder}
+
+\begin{enumerate}
+    \item we define each conditional probability as:
+    $ P(y_i|y_1, \cdots , y_{i-1}, x) = g(y_{i-1}, s_i, c_i) $
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+    \\[0.2cm]
+    where $s_i$ is an RNN hidden state for time $i$, computed by 
+    $s_i = f (s_{i-1}, y_{i-1}, c_i)$.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item unlike the existing encoder–decoder approach ($p(\bm{y}) = \dprod_{t=1}^T P(y_t | \dCurlyBrac{y_1, \cdots , y_{t-1}} , c)$), here the probability is conditioned on a distinct context vector $c_i$ for each target word $y_i$.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item The context vector $c_i$ depends on a sequence of annotations $(h_1, \cdots , h_{T_x} )$ to which an encoder maps the input sentence. 
+    Each annotation $h_i$ contains information about the whole input sequence with a strong focus on the parts surrounding the $i$-th word of the input sequence. 
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item The context vector $c_i$ is, then, computed as a weighted sum of these annotations $h_i$:
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+    \\[0.2cm]
+    .\hfill
+    $ ci = \dsum_{j=1}^{T_x} \alpha_{ij} h_j  $
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item The weight $\alpha_{ij}$ of each annotation $h_j$ is computed by:
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+    \\[0.2cm]
+    .\hfill
+    $ \alpha_{ij}  =\dfrac{\exp (e_{ij} )}{\tsum_{k=1}^{T_x} \exp (e_{ik}) } $
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+    \\[0.2cm]
+    where \colorbox{yellow}{$e_{ij} = a(s_{i-1}, h_j )$} is an alignment model which scores how well the inputs around position $j$ and the output at position $i$ match. 
+    The score is based on the RNN hidden state $s_{i-1}$ (just before emitting $y_i$, $ P(y_i|y_1, \cdots , y_{i-1}, x) = g(y_{i-1}, s_i, c_i) $) and the $j$-th annotation $h_j$ of the input sentence.
+    \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+\end{enumerate}
+
+
+
+
+
+
+
+
 
 
 
