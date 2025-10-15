@@ -239,6 +239,12 @@
     By letting the decoder have an attention mechanism, we relieve the encoder from the burden of having to encode all information in the source sentence into a fixed-length vector. 
     With this new approach the information can be spread throughout the sequence of annotations, which can be selectively retrieved by the decoder accordingly.
     \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
+
+    \item An attention function can be described as \textbf{mapping a query} and a set of key-value pairs to an output, where the query, keys, values, and output are all vectors.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item The output is computed as a \textbf{weighted sum} of the values, where the weight assigned to each value is computed by a compatibility function of the query with the corresponding key.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
 \end{enumerate}
 
 
@@ -330,6 +336,149 @@
     \item \textbf{Repeat}: Steps 2 to 8 are repeated for each step of the model which allows the attention mechanism to focus on different parts of the input sequence or data.
     \hfill \cite{geeksforgeeks/artificial-intelligence/ml-attention-mechanism/}
 \end{enumerate}
+
+
+
+
+
+
+
+
+\section{Self-Attention}
+
+\begin{enumerate}
+    \item Self-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. 
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representation.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item the self-attention mechanism allows every position to attend directly to every other position in a single step.
+    \hfill \cite{common/online/chatgpt}
+
+    \item That means any two tokens can interact in one operation, independent of how far apart they are in the sequence.
+    \hfill \cite{common/online/chatgpt}
+
+    \item the number of operations needed to connect two arbitrary positions is constant ($\mathcal{O}(1)$), not dependent on distance.
+    \hfill \cite{common/online/chatgpt}
+
+    \item Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequence-aligned RNNs or convolution. 
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+\end{enumerate}
+
+
+
+
+
+\section{Scaled Dot-Product Attention ($\text{Attention}(Q, K, V )$)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=7cm,
+        keepaspectratio,
+    ]{images/advanced-ml/Attention--Scaled-Dot-Product-Attention.png}
+    \caption{Scaled Dot-Product Attention \cite{arxiv/1706.03762/Attention-Is-All-You-Need}}
+\end{figure}
+
+
+\begin{enumerate}
+    \item The input consists of queries and keys of dimension $d_k$, and values of dimension $d_v$. 
+    We compute the dot products of the query with all keys, divide each by $\sqrt{d_k}$, and apply a \textbf{softmax function} to obtain the weights on the values.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item We compute the attention function on a set of queries simultaneously, packed together into a matrix $Q$. 
+    The keys and values are also packed together into matrices $K$ and $V $. 
+    We compute the matrix of outputs as:
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+    \\[0.2cm]
+    .\hfill
+    $
+        \text{Attention}(Q, K, V ) 
+        = \text{softmax}\dParenBrac{\dfrac{QK^\top}{\sqrt{d_k}}}V
+    $
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item The two most commonly used attention functions are additive attention, and dot-product (multiplicative) attention.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+    \begin{enumerate}
+        \item Dot-product attention is identical, except for the scaling factor $\dfrac{1}{\sqrt{d_k}}$.
+        \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+        \item Additive attention computes the compatibility function using a feed-forward network with a single hidden layer.
+        \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+    \end{enumerate}
+    While the two are similar in theoretical complexity, dot-product attention is much faster and more space-efficient in practice, since it can be implemented using highly optimized matrix multiplication code.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item While for small values of $d_k$ the two mechanisms perform similarly, additive attention outperforms dot product attention without scaling for larger values of $d_k$ .
+    We suspect that for large values of $d_k$, the dot products grow large in magnitude, pushing the softmax function into regions where it has extremely small gradients. 
+    (To illustrate why the dot products get large, assume that the components of $q$ and $k$ are independent random variables with mean $0$ and variance $1$. 
+    Then their dot product, $q \cdot k = \dsum^{d_k} _{i=1} q_ik_i$, has mean 0 and variance dk .)
+    To counteract this effect, we scale the dot products by $\dfrac{1}{\sqrt{d_k}}$.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\section{Multi-Head Attention ($\text{MultiHead}(Q, K, V )$)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\linewidth,
+        height=7cm,
+        keepaspectratio,
+    ]{images/advanced-ml/Attention--Multihead-Attention.png}
+    \caption{Multi-Head Attention \cite{arxiv/1706.03762/Attention-Is-All-You-Need}}
+\end{figure}
+
+
+\begin{enumerate}
+    \item Instead of performing a single attention function with $d_{\text{model}}$-dimensional keys, values and queries, we found it beneficial to \textbf{linearly project} the queries, keys and values $h$ times with different, learned linear projections to $d_k$, $d_k$ and $d_v$ dimensions, respectively.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item On each of these projected versions of queries, keys and values we then perform the attention function \textbf{in parallel}, yielding $d_v $-dimensional output values. 
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+    
+    \item These are concatenated and once again projected, resulting in the final values.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions. 
+    With a single attention head, averaging inhibits this.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item $ \text{MultiHead}(Q, K, V ) = \text{Concat}(\text{head}_1, \cdots, \text{head}_h)W^O $
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+    \\[0.2cm]
+    where $\text{head}_i = \text{Attention}(QW^Q_i , KW^K_i , V W^V_i )$, projections are parameter matrices $W^Q_i \in \mbbR^{d_{\text{model}}\times d_k} $, $W^K_i \in \mbbR^{d_{\text{model}}\times d_k} $, $W^V_ i \in \mbbR^{d_{\text{model}}\times d_v}$ and $W^ O \in \mbbR{hd_v \times d_{\text{model}}} $.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

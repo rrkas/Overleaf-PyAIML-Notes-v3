@@ -59,7 +59,7 @@
     \item The Transformer follows this overall architecture using stacked self-attention and point-wise, fully connected layers for both the encoder and decode.
     \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
 
-    \item 
+    % \item 
 \end{enumerate}
 
 
@@ -69,45 +69,62 @@
 
 \begin{enumerate}
     \item The encoder is composed of a stack of $N$ identical layers.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
 
     \item Each layer has two sub-layers. 
-    The first is a multi-head self-attention mechanism, and 
+    The first is a \textbf{multi-head self-attention} mechanism, and 
     the second is a simple, position-wise fully connected feed-forward network.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item We employ a residual connection around each of the two sub-layers, followed by layer normalization.
+    That is, the output of each sub-layer is $\text{LayerNorm}(x + \text{Sublayer}(x))$, where $\text{Sublayer}(x)$ is the function implemented by the sub-layer itself. 
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item To facilitate these residual connections, all sub-layers in the model, as well as the embedding layers, produce outputs of dimension $d_{\text{model}}$.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
 \end{enumerate}
 
 
-
-
-
-
-
-
-
-
-
-\section{Self-Attention}
+\subsubsection*{Decoder}
 
 \begin{enumerate}
-    \item Self-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. 
+    \item The decoder is composed of a stack of $N$ identical layers.
     \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
 
-    \item Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representation.
+    \item In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs \textbf{multi-head attention} over the output of the encoder stack.
     \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
 
-    \item the self-attention mechanism allows every position to attend directly to every other position in a single step.
-    \hfill \cite{common/online/chatgpt}
+    \item we employ residual connections around each of the sub-layers, followed by layer normalization. 
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
 
-    \item That means any two tokens can interact in one operation, independent of how far apart they are in the sequence.
-    \hfill \cite{common/online/chatgpt}
-
-    \item the number of operations needed to connect two arbitrary positions is constant ($\mathcal{O}(1)$), not dependent on distance.
-    \hfill \cite{common/online/chatgpt}
-
-    \item Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequence-aligned RNNs or convolution. 
+    \item We modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions.
+    This masking, combined with fact that the output embeddings are offset by one position, ensures that the predictions for position $i$ can depend only on the known outputs at positions less than $i$.
     \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
 \end{enumerate}
 
 
+
+
+\section{Applications of Attention in Transformer}
+
+The Transformer uses multi-head attention in three different ways:
+
+\begin{enumerate}
+    \item In "encoder-decoder attention" layers, the queries come from the previous decoder layer, and the memory keys and values come from the output of the encoder. 
+    This allows every position in the decoder to attend over all positions in the input sequence. 
+    This mimics the typical encoder-decoder attention mechanisms in sequence-to-sequence models.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item The encoder contains \textbf{self-attention layers}. 
+    In a self-attention layer all of the keys, values and queries come from the same place, in this case, the output of the previous layer in the encoder. 
+    Each position in the encoder can attend to all positions in the previous layer of the encoder.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item Self-attention layers in the decoder allow each position in the decoder to attend to all positions in the decoder up to and including that position. 
+    We need to prevent leftward information flow in the decoder to preserve the auto-regressive property. 
+    We implement this inside of scaled dot-product attention by masking out (setting to $-\infty$) all values in the input of the softmax which correspond to illegal connections.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+\end{enumerate}
 
 
 
