@@ -128,6 +128,81 @@ The Transformer uses multi-head attention in three different ways:
 
 
 
+\section{Position-wise Feed-Forward Networks}
+
+\begin{enumerate}
+    \item each of the layers in our encoder and decoder contains a fully connected feed-forward network, which is applied to each position separately and identically. 
+    This consists of two linear transformations with a \textbf{ReLU activation} in between.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item \colorbox{yellow}{$ \text{FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2 $}
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item While the linear transformations are the same across different positions, they use different parameters from layer to layer. 
+    Another way of describing this is as two convolutions with kernel size $1$.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+\end{enumerate}
+
+
+
+
+\section{Embeddings and Softmax}
+
+\begin{enumerate}
+    \item We use learned embeddings to convert the input tokens and output tokens to vectors of dimension $d_{\text{model}}$. 
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+    
+    \item We also use the usual learned \textbf{linear transformation} and softmax function to convert the decoder output to predicted next-token probabilities. 
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item In our model, we share the same weight matrix between the two embedding layers and the pre-softmax linear transformation. 
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+    
+    \item In the embedding layers, we multiply those weights by $\sqrt{d_{\text{model}}}$.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+\end{enumerate}
+
+
+
+
+
+\section{Positional Encoding}
+
+
+\begin{enumerate}
+    \item Since the model contains no recurrence and no convolution, in order for the model to make use of the \textbf{order of the sequence}, we must inject some information about the relative or absolute position of the tokens in the sequence.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item we add "positional encodings" to the input embeddings at the bottoms of the encoder and decoder stacks.
+    The positional encodings have the same dimension dmodel as the embeddings, so that the two can be summed. 
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item 
+    There are many choices of positional encodings, learned and fixed.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item sine and cosine functions of different frequencies:
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+    \begin{enumerate}
+        \item $ P E(pos,2i) = \sin(pos/10000^{2i/d_{\text{model}}}) $
+        \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+        \item $ P E(pos,2i+1) = \cos(pos/10000^{2i/d_{\text{model}}}) $
+        \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+    \end{enumerate}
+    where $pos$ is the position and $i$ is the dimension.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item each dimension of the positional encoding corresponds to a sinusoid. 
+    The wavelengths form a geometric progression from $2\pi$ to $10000 \cdot 2\pi$.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+
+    \item We chose this function because we hypothesized it would allow the model to easily learn to attend by relative positions, since for any fixed offset $k$, $P E_{pos+k}$ can be represented as a linear function of $P E_{pos}$.
+    We chose the sinusoidal version because it may allow the model to extrapolate to sequence lengths longer than the ones encountered during training.
+    \hfill \cite{arxiv/1706.03762/Attention-Is-All-You-Need}
+\end{enumerate}
+
+
 
 
 

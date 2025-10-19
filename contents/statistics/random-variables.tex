@@ -1300,8 +1300,9 @@
 \subsection{Univariate/ Joint PMF/ PDF/ CDF}
 
 \begin{enumerate}[series=calcrulesrv]
-    \item $
-        \tCov(X, Y )
+    \item 
+    $
+        \tCov[X, Y]
         = \sigma_{X Y}
         = \mbbE[(X - \mbbE[X])(Y - \mbbE[Y])]
         = \mbbE[X Y] - \mbbE[X]\mbbE[Y]
@@ -1313,6 +1314,10 @@
 
     \item $\mbbV[X - Y] = \mbbV[X] - 2\tCov[X, Y] + \mbbV[Y]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The expected value of a function $g : \mbbR \to \mbbR$ of a univariate continuous random variable $X \sim P(x)$ is given by 
+    \colorbox{yellow}{$\mbbE_X [g(x)] = \dsint_ X g(x)\ p(x)\ dx$}
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
 
