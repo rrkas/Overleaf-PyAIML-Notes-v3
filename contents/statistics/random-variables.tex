@@ -88,6 +88,8 @@
     \item Data points that are drawn independently from the same distribution ($D$ OR $D(\cdots)$) are said to be \textbf{independent and identically distributed}, which is often abbreviated to i.i.d. (denoted by $x \sim D$ OR $x \sim D(\cdots)$)
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
 
+    \item We consider multivariate random variables $X$ as a finite vector of univariate random variables $\begin{bmatrix}X_1 & \cdots & X_D\end{bmatrix}^\top$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
 
@@ -1300,6 +1302,181 @@
 \subsection{Univariate/ Joint PMF/ PDF/ CDF}
 
 \begin{enumerate}[series=calcrulesrv]
+    \item The expected value of a function $g : \mbbR \to \mbbR$ of a univariate continuous random variable $X \sim P(x)$ is given by 
+    \colorbox{yellow}{$\mbbE_X [g(x)] = \dint_ {\mathcal{X}} g(x)\ p(x)\ dx$}
+    where $\mathcal{X}$ is the set of possible outcomes (the target space) of the random variable $X$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    The expected value of a function of a random variable is sometimes referred to as the \textbf{law of the unconscious statistician}. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    It defines the meaning of the notation $\mbbE_X$ as the operator indicating that we should take the integral with respect to the probability density (for continuous distributions) or the sum over all states (for discrete distributions).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    When the random variable associated with the expectation or covariance is clear by its arguments, the subscript is often suppressed (for example, $\mbbE_X [x]$ is often written as $\mbbE[x]$).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item For multivariate random variables, we define the expected value element wise
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        \mbbE_X [g(\bm{x})] = \begin{bmatrix}
+            \mbbE_{X_1} [g(x_1)] \\ \vdots \\ \mbbE_{X_D} [g(x_D )]
+        \end{bmatrix}
+        \in \mbbR^D
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    where the subscript $\mbbE_{X_d}$ indicates that we are taking the expected value with respect to the $d$-th element of the vector $\bm{x}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The mean of a random variable $X$ with states $\bm{x} \in \mbbR^D$ is an average and is defined as
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        \mbbE_X [\bm{x}] =
+        \begin{bmatrix}
+            \mbbE_{X_1} [x_1] \\
+            \vdots \\
+            \mbbE_{X_D} [x_D ]
+        \end{bmatrix}
+        \in \mbbR^D 
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    where
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        \mbbE_{X_d} [x_d] :=
+        \begin{cases}
+            \dint_{\mathcal{X}} x_d\ p(x_d)\ dx_d & \text{ if $X$ is a continuous random variable} \\[0.2cm]
+            \dsum_{x_i \in \mathcal{X}} x_i\ p(x_d = x_i) & \text{ if $X$ is a discrete random variable}
+        \end{cases}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    for $d = 1, \cdots , D$, where the subscript $d$ indicates the corresponding dimension of $\bm{x}$. 
+    The integral and sum are over the states $\mathcal{X}$ of the target space of the random variable $X$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The expected value is a linear operator. 
+    For example, given a real-valued function $f (x) = ag(x) + bh(x)$ where $a, b \in \mbbR$ and $\bm{x} \in \mbbR^D $, we obtain 
+    \colorbox{yellow}{$ \mbbE_X [f (x)] = a\mbbE_X [g(x)] + b\mbbE_X [h(x)] $}
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The covariance between two univariate random variables $X, Y \in \mbbR$ is given by the expected product of their deviations from their respective means, i.e.,
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    \colorbox{yellow}{$
+        \tCov_{X,Y} [x, y] 
+        := \mbbE_{X,Y} [(x - \mbbE_X [x])(y - \mbbE_Y [y])]
+        = \mbbE[xy] - \mbbE[x]\mbbE[y]
+    $}
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    The covariance of multivariate random variables $\tCov[x, y]$ is sometimes referred to as \textbf{cross-covariance}, with covariance referring to $\tCov[x, x]$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The covariance of a variable with itself $\tCov[x, x]$ is called the variance and is denoted by $\mbbV_X [x]$. 
+    The square root of the variance is called the \textbf{standard deviation} and is often denoted by $\sigma(x)$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If we consider two multivariate random variables $X$ and $Y$ with states $\bm{x} \in \mbbR^D$ and $\bm{y} \in \mbbR^E$ respectively, the covariance between $X$ and $Y$ is defined as
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    \colorbox{yellow}{$
+        \tCov[\bm{x}, \bm{y}] 
+        = \mbbE[\bm{xy}^\top ] - \mbbE[\bm{x}]\mbbE[\bm{y}]^\top  
+        = \tCov[\bm{y}, \bm{x}]^\top  
+        \in \mbbR^{D\times E}
+    $}
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The variance of a random variable $X$ with states $\bm{x} \in \mbbR^D$ and a mean vector $\bm{\mu} \in \mbbR^D$ is defined as
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    $
+        \begin{aligned}
+            \mbbV_X [\bm{x}] 
+            &= \tCov_X [\bm{x}, \bm{x}] 
+            = \mbbE_X [(\bm{x} - \bm{\mu})(\bm{x} - \bm{\mu})^\top ] \\
+            &= \mbbE_X [\bm{xx}^\top ] - \mbbE_X [\bm{x}]\mbbE_X [\bm{x}]^\top  \\
+            &= \begin{bmatrix}
+                \tCov[x_1, x_1] & \tCov[x_1, x_2] & \cdots & \tCov[x_1, x_D ] \\
+                \tCov[x_2, x_1] & \tCov[x_2, x_2] & \cdots & \tCov[x_2, x_D ] \\
+                \vdots & \vdots & \ddots & \vdots \\ 
+                \tCov[x_D, x_1] & \tCov[x_D, x_2] & \cdots & \tCov[x_D, x_D ] \\
+            \end{bmatrix}
+        \end{aligned}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item The $D \times D$ matrix is called the \textbf{covariance matrix} of the multivariate random variable $X$. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item The covariance matrix is symmetric and positive semidefinite. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item On its diagonal, the covariance matrix contains the variances of the \textbf{marginals}
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\[0.2cm]
+        .\hfill
+        $
+            P(x_i) = \dint P(x_1, \cdots , x_D )\ dx_{\backslash i}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\[0.2cm]
+        where “$\backslash i$” denotes “all variables but i”. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item The off-diagonal entries are the \textbf{cross-covariance} terms $\tCov[x_i, x_j ]$ for $i, j = 1, \cdots , D, i \neq j$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item Consider a random variable $X$ with mean $\bm{\mu}$ and covariance matrix $\bm{\Sigma}$ and a (deterministic) affine transformation $\bm{y} = \bm{Ax} + \bm{b}$ of $\bm{x}$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item 
+        $ 
+            \mbbE_Y [\bm{y}] 
+            = \mbbE_X [\bm{Ax} + \bm{b}] 
+            = \bm{A}\mbbE_X [\bm{x}] + \bm{b} 
+            = \bm{A\mu} + \bm{b} 
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item 
+        $
+            \mbbV_Y [\bm{y}] 
+            = \mbbV_X [\bm{Ax} + \bm{b}] 
+            = \mbbV_X [\bm{Ax}] 
+            = \bm{A}\mbbV_X [\bm{x}]\bm{A}^\top 
+            = \bm{A\Sigma A}^\top
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item 
+        $
+            \begin{aligned}
+                \tCov[\bm{x}, \bm{y}] 
+                &= \mbbE[\bm{x}(\bm{Ax} + \bm{b})^\top ] - \mbbE[\bm{x}] \mbbE[\bm{Ax} + \bm{b}]^\top  
+                = \mbbE[\bm{x}]\bm{b}^\top  + \mbbE[\bm{xx}^\top ]\bm{A}^\top  - \bm{\mu b}^\top  - \bm{\mu \mu }^\top \bm{A}^\top  \\
+                &= \bm{\mu b}^\top  - \bm{\mu b}^\top  + \mbbE[\bm{xx}^\top ] - \bm{\mu \mu }^\top \bm{A}^\top 
+                = \bm{\Sigma A}^\top 
+            \end{aligned}
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\[0.2cm]
+        where $\bm{\Sigma} = \mbbE[\bm{xx}^\top ] - \bm{\mu\mu}^\top $ is the covariance of $X$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
     \item 
     $
         \tCov[X, Y]
@@ -1308,16 +1485,6 @@
         = \mbbE[X Y] - \mbbE[X]\mbbE[Y]
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\mbbV[X + Y] = \mbbV[X] + 2\tCov[X, Y] + \mbbV[Y]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item $\mbbV[X - Y] = \mbbV[X] - 2\tCov[X, Y] + \mbbV[Y]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-
-    \item The expected value of a function $g : \mbbR \to \mbbR$ of a univariate continuous random variable $X \sim P(x)$ is given by 
-    \colorbox{yellow}{$\mbbE_X [g(x)] = \dsint_ X g(x)\ p(x)\ dx$}
-    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 
 
@@ -1333,6 +1500,19 @@
     \item $\mbbE[cX] = c \mbbE[X]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item $\mbbE[X] = \mbbE[Y]$ , when $X = Y$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbE[X \pm Y] = \mbbE[X] \pm \mbbE[Y]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item $\mbbE[g(X, Y )] = \dsum^\infty_{x=0} \dsum^\infty_{y=0} g(x, y)\ f_{X Y} (x, y)$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    
     \item $\mbbV[X] \geq 0$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -1342,17 +1522,18 @@
     \item $\mbbV[cX] = c^2\ \mbbV[X]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item $\mbbV_X [x] := \mbbE_X [(x - \mu)^2]$    
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
     \item $\mbbV[X] = \mbbE[X^2] - (\mbbE[X])^2$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item $\mbbE[X] = \mbbE[Y]$ , when $X = Y$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \item $\mbbV[X \pm Y] = \mbbV[X] \pm 2\tCov[X, Y] + \mbbV[Y]$
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, mfml/book/mml/Deisenroth-Faisal-Ong}
 
-    \item $\mbbE[X + Y] = \mbbE[X] + \mbbE[Y]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\mbbE[g(X, Y )] = \dsum^\infty_{x=0} \dsum^\infty_{y=0} g(x, y)\ f_{X Y} (x, y)$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
     \item $\tCov[X, X] = \mbbV[X] = \sigma^2_X$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
@@ -1863,6 +2044,7 @@
 
 \section{Measures of Association}
 
+
 \subsection{Pearson’s Correlation Coefficient ($CORR(X, Y) = \rho_P$)}
 
 \begin{enumerate}
@@ -1902,6 +2084,12 @@
 
     \item $1 - \rho_P$ is not a distance measure, but $\sqrt{1 - \rho_P}$ is a distance measure.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item The correlation matrix is the covariance matrix of standardized random variables, $\dfrac{x}{\sigma(x)}$. 
+    In other words, each random variable is divided by its standard deviation (the square root of the variance) in the correlation matrix.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    
 \end{enumerate}
 
 \begin{customArrayStretch}{1.5}
