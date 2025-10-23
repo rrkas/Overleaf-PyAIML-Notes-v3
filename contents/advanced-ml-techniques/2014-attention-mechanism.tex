@@ -131,7 +131,7 @@
     \\[0.2cm]
     .\hfill
     $
-        p(\bm{y}) = \dprod_{t=1}^T P(y_t | \dCurlyBrac{y_1, \cdots , y_{t-1}} , c)
+        P(\bm{y}) = \dprod_{t=1}^T P(y_t | \dCurlyBrac{y_1, \cdots , y_{t-1}} , c)
     $
     \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
     \\[0.2cm]
@@ -195,7 +195,7 @@
     $s_i = f (s_{i-1}, y_{i-1}, c_i)$.
     \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
 
-    \item unlike the existing encoder–decoder approach ($p(\bm{y}) = \dprod_{t=1}^T P(y_t | \dCurlyBrac{y_1, \cdots , y_{t-1}} , c)$), here the probability is conditioned on a distinct context vector $c_i$ for each target token $y_i$.
+    \item unlike the existing encoder–decoder approach ($P(\bm{y}) = \dprod_{t=1}^T P(y_t | \dCurlyBrac{y_1, \cdots , y_{t-1}} , c)$), here the probability is conditioned on a distinct context vector $c_i$ for each target token $y_i$.
     \hfill \cite{arxiv/1409.0473/NMT-Jointly-Learning-Align-Translate}
 
     \item The context vector $c_i$ depends on a sequence of annotations $(h_1, \cdots , h_{T_x} )$ to which an encoder maps the input sentence. 

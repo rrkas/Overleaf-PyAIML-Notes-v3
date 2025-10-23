@@ -210,12 +210,42 @@ def norm_general(_arr: np.ndarray):
 
 
 
-\subsection{Inner Product Space}
+\subsubsection{Inner Product Space}
 
 \begin{enumerate}
     \item Let $V$ be a vector space and $\Omega  : V \times  V \to  \mbbR$ be a bilinear mapping that takes two vectors and maps them onto a real number.
     Then the pair $(V, \dAngleBrac{\cdot, \cdot})$ is called an \textbf{inner product space} or \textbf{(real) vector space with inner product}.
 \end{enumerate}
+
+
+
+\subsubsection{Inner Products of Random Variables}
+
+\begin{enumerate}
+    \item If we have two uncorrelated random variables $X, Y$ , then $ \mbbV[x + y] = \mbbV[x] + \mbbV[y]  $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Random variables can be considered vectors in a vector space, and we can define inner products to obtain geometric properties of random variables.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If we define \colorbox{yellow}{$ \dAngleBrac{X, Y} := \tCov[x, y] $} for zero mean random variables $X$ and $Y $, we obtain an inner product.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The length of a random variable is \colorbox{yellow}{$ \dnorm{X} = \sqrt{\tCov[x, x]} =  \sqrt{\mbbV[x]} = \sigma[x] $} i.e., its standard deviation. 
+    The “longer” the random variable, the more uncertain it is; and a random variable with length $0$ is deterministic.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The angle $\theta$ between two random variables $X, Y$: 
+    \colorbox{yellow}{$
+        \cos \theta = \dfrac{\dAngleBrac{X, Y}}{\dnorm{X}\ \dnorm{Y}} = \dfrac{\tCov[x, y]}{\sqrt{\mbbV[x]\ \mbbV[y]}}
+    $}
+    which is the correlation between the two random variables
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
 
 
 

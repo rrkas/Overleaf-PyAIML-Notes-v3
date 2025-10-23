@@ -17,7 +17,7 @@
     \item
     $
         \mathcal{N}(\bm{x}|\bm{\mu}, \bm{\Sigma})
-        = \dfrac{1}{(2\pi)^{D/2} \dabs{\bm{\Sigma}}^{1/2}} \,
+        = (2\pi)^{-D/2} \dabs{\bm{\Sigma}}^{-1/2} \,
         \exp\dParenBrac{
             -\dfrac{1}{2}
             (\bm{x} - \bm{\mu})^\top \bm{\Sigma}^{-1} (\bm{x} - \bm{\mu})
@@ -182,6 +182,69 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 \end{multicols}
+
+
+
+
+\subsection{Marginals and Conditionals}
+
+\begin{enumerate}
+    \item Let $X$ and $Y$ be two multivariate random variables, that may have different dimensions.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Gaussian distribution in terms of the concatenated states $[\bm{x}^\top, \bm{y}^\top]$:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        P(x, y)
+        = \mathcal{N}\dParenBrac{
+            \begin{bmatrix}
+                \bm{\mu}_x \\ \bm{\mu}_y
+            \end{bmatrix},
+            \begin{bmatrix}
+                \bm{\Sigma}_{xx} & \bm{\Sigma}_{xy} \\ 
+                \bm{\Sigma}_{yx} & \bm{\Sigma}_{yy} \\ 
+            \end{bmatrix},
+        }
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    where $\bm{\Sigma}_{xx} = \tCov[\bm{x}, \bm{x}]$ and $\bm{\Sigma}_{yy} = \tCov[\bm{y}, \bm{y}]$ are the marginal covariance matrices of $\bm{x}$ and $\bm{y}$, respectively, and $\Sigma_{xy} = \tCov[\bm{x}, \bm{y}]$ is the cross-covariance matrix between $\bm{x}$ and $\bm{y}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The conditional distribution $P(\bm{x} | \bm{y})$ is Gaussian:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $ P(\bm{x} | \bm{y}) = N (\bm{\mu}_{x | y} , \bm{\Sigma}_{x | y}) $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $ \bm{\mu}_{x | y} = \bm{\mu}_x + \bm{\Sigma}_{xy} \bm{\Sigma}^{-1} _{yy} (\bm{y} - \bm{\mu}_y )  $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $ \bm{\Sigma}_{x | y} = \bm{\Sigma}_{xx} - \bm{\Sigma}_{xy} \bm{\Sigma}^{-1}_{yy} \bm{\Sigma}_{yx} $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+    \end{multicols}
+    where $\bm{y}$-value is an observation and no longer random.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The marginal distribution $P(\bm{x})$ of a joint Gaussian distribution $P(\bm{x}, \bm{y})$ is itself Gaussian and computed by applying the sum rule and given by:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        P(\bm{x}) 
+        = \dint P(\bm{x}, \bm{y})\ d\bm{y} 
+        = \mathcal{N} (\bm{x} | \bm{\mu}_x, \bm{\Sigma}_{xx})
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
 
 
 

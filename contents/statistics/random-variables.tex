@@ -1576,6 +1576,11 @@
         = \mbbV[X] \mbbV[Y] + \mbbV[X](\mbbE[Y])^2 + \mbbV[Y](\mbbE[X])^2
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Two random variables can have a covariance of $0$, and still be dependent.
+    A simple example is to take $X$ as a standard normal random variable and $Y = X^2$ .
+    It is clear that $X$ and $Y$ are dependent, since $Y$ is a function of $X$, and that $\tCov(X, Y ) = \mbbE[X Y] - \mbbE[X] \mbbE[Y] = \mbbE[X^3] = 0$.
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 \end{enumerate}
 
 
@@ -1588,21 +1593,14 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $\mbbV[X \pm Y] = \mbbV[X] + \mbbV[Y]$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item $\tCov[X, Y] = 0$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 \end{multicols}
 
 
-
-\begin{enumerate}[resume*=calcrulesrv]
-    \item Two random variables can have a covariance of $0$, and still be dependent.
-    A simple example is to take $X$ as a standard normal random variable and $Y = X^2$ .
-    It is clear that $X$ and $Y$ are dependent, since $Y$ is a function of $X$, and that $\tCov(X, Y ) = \mbbE[X Y] - \mbbE[X] \mbbE[Y] = \mbbE[X^3] = 0$.
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
-\end{enumerate}
 
 
 
@@ -1726,10 +1724,10 @@
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
     \item $f _{X|Y} (x|y) = f_X (x)$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, mfml/book/mml/Deisenroth-Faisal-Ong}
 
     \item $f _{Y|X} (y|x) = f_Y (y)$
-    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein, mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 \end{multicols}
 
