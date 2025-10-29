@@ -32,6 +32,22 @@
 \begin{enumerate}
     \item The beta distribution is considered a \textbf{conjugate prior distribution}.
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item Intuitively, $\alpha$ moves probability mass toward $1$, whereas $\beta$ moves probability mass toward $0$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item For $\alpha = 1 = \beta$, we obtain the \textbf{uniform distribution} $\mathcal{U}[0, 1]$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item For $\alpha, \beta < 1$, we get a \textbf{bimodal distribution} with spikes at $0$ and $1$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item For $\alpha, \beta > 1$, the distribution is \textbf{unimodal}.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item For $\alpha, \beta > 1$ and $\alpha = \beta$, the distribution is \textbf{unimodal}, symmetric, and centered in the interval $[0, 1]$, i.e., the mode/mean is at $\dfrac{1}{2}$ .
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
 \end{enumerate}
 
 

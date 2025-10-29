@@ -90,6 +90,20 @@
 
     \item We consider multivariate random variables $X$ as a finite vector of univariate random variables $\begin{bmatrix}X_1 & \cdots & X_D\end{bmatrix}^\top$. 
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item the desiderata (meaning: something that is needed or wanted) for manipulating probability distributions in the machine learning context:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item There is some “closure property” when applying the rules of probability, e.g., Bayes’ theorem. 
+        By closure, we mean that applying a particular operation returns an object of the same type.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item  As we collect more data, we do not need more parameters to describe the distribution.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    % \item  Since we are interested in learning from data, we want parameter estimation to behave nicely.
+    % \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
 \end{enumerate}
 
 
@@ -1707,8 +1721,11 @@
     \item $\mu_Y = \mbbE[\mu_Y (X)]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
-    \item $\mbbV[Y] = \mbbE[\mbbV[Y |X = X]] + \mbbV[\mbbE[Y |X = X]$
+    \item $\mbbV[Y] = \mbbE[ \mbbV[Y |X = X] ] + \mbbV[ \mbbE[Y |X = X] ]$
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+
+    \item $\mbbV_X[x] = \mbbE_Y[ \mbbV_X[x|y] ] + \mbbV_Y[ \mbbE_X[x|y] ]$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 \end{enumerate}
 \end{multicols}
 

@@ -86,6 +86,33 @@
     $
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
+    \item Consider a Gaussian distributed random variable $X \sim \mathcal{N}(\bm{\mu }, \bm{\Sigma})$. 
+    For a given matrix $\bm{A}$ of appropriate shape, let $Y$ be a random variable such that $\bm{y} = \bm{Ax}$ is a transformed version of $\bm{x}$. 
+    We can compute the mean of $\bm{y}$ by exploiting that the expectation is a linear operator as follows:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        \mbbE[\bm{y}] = \mbbE[\bm{Ax}] = \bm{A}\mbbE[\bm{x}] = \bm{A\mu }
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    the variance of $\bm{y}$: $ \mbbV[\bm{y}] = \mbbV[\bm{Ax}] = \bm{A}\mbbV[\bm{x}]\bm{A}^\top = \bm{A\Sigma A}^\top $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    the random variable $\bm{y}$ is distributed according to $ P(\bm{y}) = \mathcal{N} (\bm{y} | \bm{A\mu}, \bm{A\Sigma A}^\top) $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    $\bm{x}$ is a linear transformation of $\bm{y}$, and we obtain:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        P(\bm{x}) = \mathcal{N} (\bm{x} | (\bm{A}^\top\bm{A})^{-1}\bm{A}^\top \bm{y}, \ (\bm{A}^\top\bm{A})^{-1}\bm{A}^\top \bm{\Sigma A}(\bm{A}^\top\bm{A})^{-1})
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    
+
     \item The distribution function of any linear combination of $X$ and $Y$ , say $a X + bY$ , has a normal distribution function with mean $\mu = a\mu_X + b\mu_Y$ and variance $\sigma ^2 = a^2\sigma ^2_X + 2ab\rho \sigma _X \sigma _Y + b^2\sigma ^2_Y$ .
     \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
 
@@ -249,6 +276,47 @@
 
 
 
+\subsection{Product of Gaussian Densities}
+
+\begin{enumerate}
+    \item The product of two Gaussians $\mathcal{N}(\bm{x} | \bm{a}, \bm{A})$ $\mathcal{N} (\bm{x} | \bm{b}, \bm{B})$ is a Gaussian distribution scaled by a $c \in \mbbR$, given by $c\ \mathcal{N}( \bm{x} | \bm{c}, \bm{C})$ with:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item $ \bm{C} = (\bm{A}^{-1} + \bm{B}^{-1})^{-1} $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $ \bm{c} = \bm{C}(\bm{A}^{-1}\bm{a} + \bm{B}^{-1}\bm{b})  $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $ c = (2\pi)^{- D/2} \dabs{\bm{A} + \bm{B}}^{- 1/2}\  \exp  \dParenBrac{- \dfrac{1 }{2} (\bm{a} - \bm{b})^\top(\bm{A} + \bm{B})^{-1}(\bm{a} - \bm{b})} $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item The scaling constant $c$ itself can be written in the form of a Gaussian density either in $\bm{a}$ or in $\bm{b}$ with an “inflated” covariance matrix $\bm{A} + \bm{B}$, i.e., $c = \mathcal{N} (\bm{a} | \bm{b}, \bm{A} + \bm{B}) = \mathcal{N} (\bm{b} | \bm{a}, \bm{A} + \bm{B})$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Farlie-Gumbel-Morgenstern (FGM) Family of Distributions}
 
 \begin{enumerate}
@@ -271,6 +339,42 @@
 
 
 \subsection{Mixtures of Probability Distributions}
+
+
+\begin{enumerate}
+    \item Consider a mixture of two univariate Gaussian densities
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $ P(x) = \alpha\ P_1(x) + (1 - \alpha)\ P_2(x) $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    where the scalar $0 < \alpha < 1$ is the mixture weight, and $P_1(x)$ and $P_2(x)$ are univariate Gaussian densities with different parameters, i.e., $(\mu_1, \sigma^2_1 ) \neq (\mu_2, \sigma^2_ 2 )$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item the mean of the mixture density $P(x)$ is given by the weighted sum of the means of each random variable:
+    \colorbox{yellow}{$
+        \mbbE[x] = \alpha \mu _1 + (1 - \alpha )\mu _2
+    $}
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The variance of the mixture density $P(x)$ is given by:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        \mbbV[x] 
+        = [\alpha \sigma ^2_ 1 + (1 - \alpha )\sigma ^2_2] +
+        ([\alpha \mu ^2 _1 + (1 - \alpha )\mu ^2 _2]  - [\alpha \mu _1 + (1 - \alpha )\mu _2]^2)
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    This is also called "\textbf{law of total variance}".
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    % \item 
+\end{enumerate}
+
 
 \subsubsection{Conditionally independent}
 
@@ -415,6 +519,44 @@
         In this case, there will most likely be ties, i.e., there exists pairs of data for which the pairs cannot be ordered, either by the first dimension or by the second dimension (or both).
         For such variables X and Y , the distribution function of the test statistics just described does not has the same distribution function that was used for the test statistic on continuous variables X and Y .
         \hfill \cite{statistics/book/Statistics-for-Data-Scientists/Maurits-Kaptein}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+\subsection{Sampling from Multivariate Gaussian Distributions}
+
+\begin{enumerate}
+    \item the \textbf{random sampling} consists of three stages:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item we need a source of pseudo-random numbers that provide a uniform sample in the interval $[0,1]$
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item we use a non-linear transformation such as the Box-Muller transform to obtain a sample from a univariate Gaussian
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item we collate a vector of these samples to obtain a sample from a multivariate standard normal $\mathcal{N} (\bm{0}, \bm{I})$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item For a general multivariate Gaussian, that is, where the mean is non zero and the covariance is not the identity matrix, we use the properties of linear transformations of a Gaussian random variable. 
+    Assume we are interested in generating samples $\bm{x}_i$, $i = 1, \cdots , n$, from a multivariate Gaussian distribution with mean $\bm{\mu}$ and covariance matrix $\bm{\Sigma}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item To obtain samples from a multivariate normal $\mathcal{N} (\bm{\mu} , \bm{\Sigma} )$, we can use the properties of a linear transformation of a Gaussian random variable:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item If $\bm{x} \sim \mathcal{N} (\bm{0}, \bm{I})$, then $\bm{y} = \bm{Ax} + \bm{\mu} $, where $\bm{AA}^\top  = \bm{\Sigma} $ is Gaussian distributed with mean $\bm{\mu} $ and covariance matrix $\bm{\Sigma} $. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        
+        \item One convenient choice of $\bm{A}$ is to use the Cholesky decomposition of the covariance matrix $\bm{\Sigma}  = \bm{AA}^\top $. 
+        The Cholesky decomposition has the benefit that $\bm{A}$ is triangular, leading to efficient computation.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 \end{enumerate}
 

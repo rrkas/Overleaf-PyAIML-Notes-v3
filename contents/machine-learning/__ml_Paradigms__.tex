@@ -1,5 +1,6 @@
 \chapter{ \emojistar Machine Learning Paradigms \cite{common/online/chatgpt}}
 
+\begin{multicols}{2}
 \begin{enumerate}
     \item Supervised Learning
     \begin{enumerate}
@@ -88,6 +89,210 @@
       \item Data is presented in increasing difficulty
     \end{enumerate}
 \end{enumerate}
+\end{multicols}
 
+
+
+\clearpage
+
+
+\subsection*{Supervised Learning}
+
+Learn from labeled data (input → known output)
+
+\begin{table}[H]
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Classic ML}
+\begin{enumerate}
+    \item Linear Regression
+    \item Logistic Regression
+    \item SVM
+    \item Decision Trees / Random Forest
+    \item k-NN
+    \item Naïve Bayes
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Deep Learning}
+\begin{enumerate}
+    \item Feedforward Neural Networks (MLP)
+    \item Convolutional Neural Networks (CNNs)
+    \item Recurrent Neural Networks (RNNs)
+    \item LSTMs / GRUs
+    \item Transformers (for vision, text, etc.)
+\end{enumerate}
+\end{minipage}
+\end{table}
+
+
+
+
+
+
+
+\subsection*{Unsupervised Learning}
+
+Find structure/ patterns in unlabeled data
+
+\begin{table}[H]
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Classic ML}
+\begin{enumerate}
+    \item k-Means
+    \item DBSCAN
+    \item Hierarchical Clustering
+    \item PCA, ICA
+    \item GMM, KDE
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Deep Learning}
+\begin{enumerate}
+    \item Autoencoders
+    \item Variational Autoencoders (VAE)
+    \item Generative Adversarial Networks (GANs)
+    \item Self-Organizing Maps (SOMs, sometimes hybrid)
+    \item Deep Embedding Clustering
+\end{enumerate}
+\end{minipage}
+\end{table}
+
+
+
+
+
+\subsection*{Semi-Supervised Learning}
+
+Mix of labeled and unlabeled data
+
+\begin{table}[H]
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Classic ML}
+\begin{enumerate}
+    \item Label Propagation
+    \item Self-Training
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Deep Learning}
+\begin{enumerate}
+    \item Pseudo-Labeling with CNNs / Transformers
+    \item Consistency Regularization
+    \item FixMatch
+\end{enumerate}
+\end{minipage}
+\end{table}
+
+
+
+\subsection*{Self-Supervised Learning}
+
+Labels generated from the data itself (no manual labels)
+
+% \subsubsection*{Classic ML}
+
+% \begin{enumerate}
+%     \item 
+% \end{enumerate}
+
+
+\subsubsection*{Deep Learning}
+
+\begin{enumerate}
+    \item Contrastive Learning (SimCLR, MoCo)
+    
+    \item Masked Modeling (BERT, MAE)
+
+    \item Autoencoding pretraining
+\end{enumerate}
+
+
+
+
+
+\subsection*{Reinforcement Learning}
+
+Learn via trial and error with rewards
+
+\begin{table}[H]
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Classic ML}
+\begin{enumerate}
+    \item Q-Learning
+    \item SARSA
+    \item Policy Iteration / Value Iteration
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Deep Learning}
+\begin{enumerate}
+    \item Deep Q-Networks (DQN)
+    \item Actor–Critic, A3C, PPO, DDPG
+    \item AlphaGo-style systems (Deep + MCTS)
+\end{enumerate}
+\end{minipage}
+\end{table}
+
+
+
+\subsection*{Online / Incremental Learning}
+
+\begin{table}[H]
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Classic ML}
+\begin{enumerate}
+    \item Online Perceptron
+    \item SGD updates
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Deep Learning}
+\begin{enumerate}
+    \item Continual Learning
+    \item Elastic Weight Consolidation (EWC)
+\end{enumerate}
+\end{minipage}
+\end{table}
+
+
+\subsection*{Ensemble Learning}
+
+\begin{table}[H]
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Classic ML}
+\begin{enumerate}
+    \item Bagging
+    \item Boosting
+    \item Stacking
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Deep Learning}
+\begin{enumerate}
+    \item Model Ensembling
+    \item Snapshot Ensembles
+\end{enumerate}
+\end{minipage}
+\end{table}
+
+
+
+\subsection*{Evolutionary / Bio-Inspired Learning}
+
+\begin{table}[H]
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Classic ML}
+\begin{enumerate}
+    \item Genetic Algorithms, PSO, ACO
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+\subsubsection*{Deep Learning}
+\begin{enumerate}
+    \item Neuroevolution (e.g., evolving network architectures — NEAT, Genetic CNNs)
+\end{enumerate}
+\end{minipage}
+\end{table}
 
 
