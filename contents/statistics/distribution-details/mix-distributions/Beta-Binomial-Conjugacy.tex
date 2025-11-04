@@ -1,0 +1,52 @@
+\section{Beta-Binomial Conjugacy}
+
+\begin{enumerate}
+    \item Consider a Binomial random variable $x \sim \text{Bin}(N, \mu )$ where
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        p(x | N, \mu ) =
+        \dbinom{N}{x} \mu ^x(1 - \mu )^{N -x}
+    $
+    \hfill 
+    $ x = 0, 1, \cdots , N $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    is the probability of finding $x$ times the outcome “heads” in $N$ coin flips, where $\mu $ is the probability of a “head”.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item We place a Beta prior on the parameter $\mu $, that is, $\mu  \sim \text{Beta}(\alpha, \beta)$, where
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        P(\mu  | \alpha, \beta) =
+        \dfrac{\Gamma (\alpha + \beta)}{\Gamma (\alpha)\Gamma (\beta)} 
+        \mu ^{\alpha-1}(1 - \mu )^{\beta-1}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item If we now observe some outcome $x = h$, that is, we see $h$ heads in $N$ coin flips, we compute the posterior distribution on $\mu $ as
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        \begin{aligned}
+            P(\mu  | x = h, N, \alpha, \beta) 
+                & \propto P(x | N, \mu )P(\mu  | \alpha, \beta) \\
+                & \propto \mu ^h(1 - \mu )^{N -h}\mu ^{\alpha-1}(1 - \mu )^{\beta-1} \\
+                & = \mu ^{h+\alpha-1}(1 - \mu )^{(N -h)+\beta-1} \\
+                & \propto \text{Beta}(h + \alpha, N - h + \beta)
+        \end{aligned}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    i.e., the posterior distribution is a Beta distribution as the prior, i.e., the Beta prior is conjugate for the parameter $\mu$ in the Binomial likelihood function.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+

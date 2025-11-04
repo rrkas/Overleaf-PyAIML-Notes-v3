@@ -1,0 +1,38 @@
+\section{Beta-Bernoulli Conjugacy}
+
+\begin{enumerate}
+    \item Let $x \in  \dCurlyBrac{0, 1}$ be distributed according to the Bernoulli distribution with parameter $\theta  \in  [0, 1]$, that is, $P(x = 1 | \theta ) = \theta $.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item This can also be expressed as $P(x | \theta ) = \theta ^x(1 - \theta )^{1-x}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Let $\theta $ be distributed according to a Beta distribution with parameters $\alpha , \beta $, that is, $P(\theta  | \alpha , \beta ) \propto \theta ^{\alpha -1}(1 - \theta )^{\beta -1}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Multiplying the Beta and the Bernoulli distributions, we get
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        \begin{aligned}
+            p(\theta  | x, \alpha , \beta ) 
+                & = P(x | \theta )P(\theta  | \alpha , \beta ) \\
+                & \propto \theta ^x(1 - \theta )^{1-x}\theta ^{\alpha -1}(1 - \theta )^{\beta -1}  \\
+                & = \theta ^{\alpha +x-1}(1 - \theta )^{\beta +(1-x)-1} \\
+                & \propto P(\theta  | \alpha  + x, \beta  + (1 - x))
+        \end{aligned}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+

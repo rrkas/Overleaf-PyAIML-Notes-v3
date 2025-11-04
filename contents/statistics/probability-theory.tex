@@ -333,6 +333,16 @@
 
             \item We can choose any prior that makes sense to us, but it is critical to ensure that the prior has a nonzero pdf (or pmf) on all plausible $B$, even if they are very rare.
             \hfill\cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+            \item The specification of the prior can be tricky for two reasons: 
+            \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+            \begin{enumerate}
+                \item the prior should encapsulate our knowledge about the problem before we see any data. This is often difficult to describe. 
+                \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+                
+                \item it is often not possible to compute the posterior distribution analytically. 
+                \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+            \end{enumerate}
         \end{enumerate}
 
         \item \textbf{Evidence / Marginal Likelihood} ($P(A)$):
@@ -443,6 +453,41 @@
 
     \item Reducing the dependence on the prior is one motivation for so-called noninformative priors.
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item 
+    \begin{definition}[Conjugate Prior]
+        A prior is \textbf{conjugate} for the likelihood function if the posterior is of the same form/type as the prior.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{definition}
+    \begin{enumerate}
+        \item Conjugacy is particularly convenient because we can algebraically calculate our posterior distribution by updating the parameters of the prior distribution.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item When considering the geometry of probability distributions, conjugate priors retain the same distance structure as the likelihood.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{ l l l }
+            \textbf{Likelihood} & \textbf{Conjugate prior} & \textbf{Posterior} \\ \hline
+        
+            Bernoulli & Beta & Beta \\
+
+            Binomial & Beta & Beta \\
+
+            Gaussian & Gaussian/inverse Gamma & Gaussian/inverse Gamma \\
+            
+            Gaussian & Gaussian/inverse Wishart & Gaussian/inverse Wishart \\
+            
+            Multinomial & Dirichlet & Dirichlet \\
+        \end{tabular}
+        \caption*{ 
+            Examples of conjugate priors for common likelihood functions. 
+            \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        }
+    \end{table}
+    
 \end{enumerate}
 
 

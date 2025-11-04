@@ -1,4 +1,4 @@
-\chapter{Random Variables}
+\chapter{Random Variables \& Distributions}
 
 \section{Intro}
 
@@ -103,6 +103,21 @@
 
     % \item  Since we are interested in learning from data, we want parameter estimation to behave nicely.
     % \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item There are three possible levels of \textbf{abstraction} we can have when considering distributions (of discrete or continuous random variables).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item At level one (the most concrete end of the spectrum), we have a particular \textbf{named distribution with fixed parameters}, for example a univariate Gaussian $\mathcal{N} (0, 1)$ with zero mean and unit variance.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item In machine learning, we often use the second level of abstraction, that is, we fix the \textbf{parametric form} (the univariate Gaussian) and \textbf{infer the parameters from data}. 
+        For example, we assume a univariate Gaussian $\mathcal{N} (\mu, \sigma^2)$ with unknown mean $\mu$ and unknown variance $\sigma^2$, and use a maximum likelihood fit to determine the best parameters $(\mu, \sigma^2)$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item A third level of abstraction is to consider \textbf{families of distributions}. 
+        The univariate Gaussian is an example of a member of the exponential family. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \end{enumerate}
 \end{enumerate}
 
@@ -469,6 +484,49 @@
 
 
 
+\section{Sufficient Statistics}
+
+\begin{enumerate}
+    \item statistic of a random variable is a deterministic function of that random variable
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item the idea that there are statistics that will contain all available information that can be inferred from data corresponding to the distribution under consideration.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item sufficient statistics carry all the information needed to make inference about the population, that is, they are the statistics that are sufficient to represent the distribution.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    As we observe more data, do we need more parameters $\theta$ to describe the distribution? 
+    It turns out that the answer is yes in general.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item For a set of distributions parametrized by $\theta $, let $X$ be a random variable with distribution $P(x | \theta 0)$ given an unknown $\theta _0$. 
+    A vector $\phi(x)$ of statistics is called sufficient statistics for $\theta _0$ if they contain all possible information about $\theta _0$.
+    To be more formal about “contain all possible information”, this means that the probability of $x$ given $\theta $ can be factored into a part that does not depend on $\theta $, and a part that depends on $\theta $ only via $\phi(x)$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item 
+    \begin{theorem}[Fisher-Neyman (sufficient statistics)]
+        Let $X$ have probability density function $P(x | \theta )$. 
+        Then the statistics $\phi(x)$ are sufficient for $\theta $ if and only if $P(x | \theta )$ can be written in the form:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\[0.2cm]
+        .\hfill
+        $ P(x | \theta ) = h(x)g_\theta  (\phi(x)) $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\[0.2cm]
+        where $h(x)$ is a distribution independent of $\theta $ and $g_\theta $ captures all the dependence on $\theta $ via sufficient statistics $\phi(x)$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{theorem}
+    \begin{enumerate}
+        \item If $P(x | \theta )$ does not depend on $\theta $, then $\phi (x)$ is trivially a sufficient statistic for any function $\phi $. 
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The more interesting case is that $P(x | \theta )$ is dependent only on $\phi (x)$ and not $x$ itself. 
+        In this case, $\phi (x)$ is a sufficient statistic for $\theta $.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+\end{enumerate}
 
 
 
@@ -1317,7 +1375,7 @@
 
 \begin{enumerate}[series=calcrulesrv]
     \item The expected value of a function $g : \mbbR \to \mbbR$ of a univariate continuous random variable $X \sim P(x)$ is given by 
-    \colorbox{yellow}{$\mbbE_X [g(x)] = \dint_ {\mathcal{X}} g(x)\ p(x)\ dx$}
+    \colorbox{yellow}{$\mbbE_X [g(x)] = \dint_ {\mathcal{X}} g(x)\ P(x)\ dx$}
     where $\mathcal{X}$ is the set of possible outcomes (the target space) of the random variable $X$.
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
     \\[0.2cm]
@@ -1367,8 +1425,8 @@
     $
         \mbbE_{X_d} [x_d] :=
         \begin{cases}
-            \dint_{\mathcal{X}} x_d\ p(x_d)\ dx_d & \text{ if $X$ is a continuous random variable} \\[0.2cm]
-            \dsum_{x_i \in \mathcal{X}} x_i\ p(x_d = x_i) & \text{ if $X$ is a discrete random variable}
+            \dint_{\mathcal{X}} x_d\ P(x_d)\ dx_d & \text{ if $X$ is a continuous random variable} \\[0.2cm]
+            \dsum_{x_i \in \mathcal{X}} x_i\ P(x_d = x_i) & \text{ if $X$ is a discrete random variable}
         \end{cases}
     $
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
