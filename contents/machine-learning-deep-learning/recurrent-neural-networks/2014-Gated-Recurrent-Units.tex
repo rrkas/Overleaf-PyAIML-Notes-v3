@@ -143,15 +143,35 @@ class ManualGRU(nn.Module):
     \item \textbf{Handles Vanishing Gradient}: GRUs help mitigate this issue by using gates that regulate the flow of gradients during training ensuring that important information is preserved and that gradients do not shrink excessively over time. 
     By using these gates, GRUs maintain a balance between remembering important past information and learning new, relevant data.
     \hfill \cite{geeksforgeeks/machine-learning/gated-recurrent-unit-networks}
+
+    \item \textbf{Fewer parameters} $\to$ faster training than LSTM.
+    \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{Performs comparably} to LSTM on many tasks.
+    \hfill \cite{common/online/chatgpt}
+
+    \item Easier to implement and \textbf{less prone to overfitting}.
+    \hfill \cite{common/online/chatgpt}
 \end{enumerate}
 
 
+\section{Disadvantages}
+
+\begin{enumerate}
+    \item May perform \textbf{slightly worse} on very long sequences.
+    \hfill \cite{common/online/chatgpt}
+
+    \item No explicit cell state $\to$ \textbf{sometimes less interpretable}.
+    \hfill \cite{common/online/chatgpt}
+\end{enumerate}
 
 
+\section{What fixes it}
 
-
-
-
+\begin{enumerate}
+    \item For tasks needing very long dependencies or finer control, use LSTM.
+    \hfill \cite{common/online/chatgpt}
+\end{enumerate}
 
 
 

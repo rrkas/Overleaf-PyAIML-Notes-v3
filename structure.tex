@@ -99,16 +99,20 @@
 
 
 
-\usepackage[style=numeric,sortcites=true,autopunct=true,autolang=hyphen,hyperref=true,abbreviate=false,backref=false,backend=biber]{biblatex}
+\usepackage[
+    style=numeric,          % Uses a numeric citation style (e.g., [1], [2], etc.).
+    sortcites=true,         % Sorts the citations in the order they are referenced.
+    autopunct=true,         % Automatically adds punctuation marks after citations where necessary.
+    autolang=hyphen,        % Ensures correct hyphenation rules based on the language setting.
+    hyperref=true,          % Enables hyperlinks in the bibliography and citation links.
+    abbreviate=false,       % Avoids abbreviation of publisher names.
+    backref=false,          % Disables back references, where the bibliography shows which pages a citation appears on.
+    backend=biber,          % Specifies the backend for processing the bibliography, using `biber` as the citation manager.
+    % refsection=chapter,     % split citations by chapter
+    % defernumbers=true,      % important: keep global numbering consistent
+]{biblatex}
 % The `biblatex` package is used for creating and formatting bibliographies. The options here configure how the bibliography is displayed:
-% - `style=numeric`: Uses a numeric citation style (e.g., [1], [2], etc.).
-% - `sortcites=true`: Sorts the citations in the order they are referenced.
-% - `autopunct=true`: Automatically adds punctuation marks after citations where necessary.
-% - `autolang=hyphen`: Ensures correct hyphenation rules based on the language setting.
-% - `hyperref=true`: Enables hyperlinks in the bibliography and citation links.
-% - `abbreviate=false`: Avoids abbreviation of publisher names.
-% - `backref=false`: Disables back references, where the bibliography shows which pages a citation appears on.
-% - `backend=biber`: Specifies the backend for processing the bibliography, using `biber` as the citation manager.
+
 
 
 \addbibresource{bibliography.bib}
@@ -332,7 +336,7 @@
 
 % Define a custom command to create a single clickable reference with both number and name
 \newcommand*{\fullref}[1]{\hyperref[{#1}]{(\protect\ref*{#1}) \protect\nameref*{#1}}}
-% Example: \fullref{sec:example} → (1.1) Section Name
+% Example: \fullref{sec:example} $\to$ (1.1) Section Name
 % \ref* provides the section number without a hyperlink
 % \nameref* provides the section title without a hyperlink
 % \hyperref combines them into one clickable link
@@ -466,14 +470,14 @@
 
 % Define \subsection command to handle starred and unstarred subsections
 \def\subsection{\@ifstar\unnumberedsubsection\numberedsubsection}
-% If the \subsection command has a star (*) → Call \unnumberedsubsection
-% If no star (*) → Call \numberedsubsection
+% If the \subsection command has a star (*) $\to$ Call \unnumberedsubsection
+% If no star (*) $\to$ Call \numberedsubsection
 
 % Handle numbered subsections, checking for optional arguments using \@ifnextchar
 \def\numberedsubsection{\@ifnextchar[%]
   \numberedsubsectionwithtwoarguments\numberedsubsectionwithoneargument}
-% If optional argument ([...]) is present → Call \numberedsubsectionwithtwoarguments
-% If no optional argument → Call \numberedsubsectionwithoneargument
+% If optional argument ([...]) is present $\to$ Call \numberedsubsectionwithtwoarguments
+% If no optional argument $\to$ Call \numberedsubsectionwithoneargument
 
 % Handle unnumbered subsections similarly
 \def\unnumberedsubsection{\@ifnextchar[%]

@@ -324,6 +324,18 @@ class VanillaRNN(nn.Module):
 \end{enumerate}
 
 
+\section{Advantages}
+
+\begin{enumerate}
+    \item \textbf{Simple} and \textbf{computationally cheap}.
+    \hfill \cite{common/online/chatgpt}
+
+    \item Works well for \textbf{short sequences} or \textbf{simple dependencies}.
+    \hfill \cite{common/online/chatgpt}
+
+    \item Forms the \textbf{foundation} for all later architectures (LSTM, GRU).
+    \hfill \cite{common/online/chatgpt}
+\end{enumerate}
 
 \section{Disadvantages}
 
@@ -339,11 +351,27 @@ class VanillaRNN(nn.Module):
 
     \item traditional RNNs face challenges such as the \textbf{vanishing gradient} problem where gradients become too small during backpropagation making training difficult.
     \hfill \cite{geeksforgeeks/deep-learning/bidirectional-recurrent-neural-network}
+
+    \item \textbf{Vanishing/ exploding gradients}: during backpropagation through time (BPTT), gradients become too small or large $\to$ training unstable.
+    \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{Poor long-term memory}: can’t remember information from many steps ago.
+    \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{One-directional}: can only use \textbf{past context}, not future context.
+    \hfill \cite{common/online/chatgpt}
 \end{enumerate}
 
 
+\section{What fixes it}
 
+\begin{enumerate}
+    \item LSTM and GRU add \textbf{gating mechanisms} to handle long-term dependencies.
+    \hfill \cite{common/online/chatgpt}
 
+    \item BiRNN adds reverse processing to capture \textbf{future context}.
+    \hfill \cite{common/online/chatgpt}
+\end{enumerate}
 
 
 

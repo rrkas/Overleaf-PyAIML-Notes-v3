@@ -238,6 +238,46 @@ class ManualLSTM(nn.Module):
 
 
 
+\section{Advantages}
+
+\begin{enumerate}
+    \item \textbf{Solves vanishing gradient} problem using constant error flow through the cell state.
+    \hfill \cite{common/online/chatgpt}
+
+    \item Can capture \textbf{long-range dependencies}.
+    \hfill \cite{common/online/chatgpt}
+
+    \item Very effective for \textbf{time series} and \textbf{language modeling}.
+    \hfill \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+
+
+\section{Disadvantages}
+
+\begin{enumerate}
+    \item \textbf{Complex} (more parameters $\to$ slower training).
+    \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{Overkill} for simple tasks.
+    \hfill \cite{common/online/chatgpt}
+
+    \item \textbf{Harder to tune} and requires more memory.
+    \hfill \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+
+
+\section{What fixes it}
+
+\begin{enumerate}
+    \item GRU simplifies LSTM while maintaining similar performance.
+\end{enumerate}
+
+
+
 
 
 

@@ -121,7 +121,7 @@ class BidirectionalVanillaRNN(nn.Module):
 
 \begin{enumerate}
     \item \textbf{Enhanced Context Understanding}: Considers both past and future data for improved predictions.
-    \hfill \cite{geeksforgeeks/deep-learning/bidirectional-recurrent-neural-network}
+    \hfill \cite{geeksforgeeks/deep-learning/bidirectional-recurrent-neural-network, common/online/chatgpt}
 
     \item \textbf{Improved Accuracy}: Particularly effective for NLP and speech processing tasks.
     \hfill \cite{geeksforgeeks/deep-learning/bidirectional-recurrent-neural-network}
@@ -131,11 +131,14 @@ class BidirectionalVanillaRNN(nn.Module):
     
     \item \textbf{Increased Robustness}: Forward and backward processing help filter out noise and irrelevant information, improving robustness.
     \hfill \cite{geeksforgeeks/deep-learning/bidirectional-recurrent-neural-network}
+
+    \item Very effective for NLP tasks like POS tagging, NER, and speech recognition.
+    \hfill \cite{common/online/chatgpt}
 \end{enumerate}
 
 
 
-\section{Challenges/ Disadvantages}
+\section{Disadvantages}
 
 \begin{enumerate}
     \item \textbf{High Computational Cost}: Requires twice the processing time compared to unidirectional RNNs.
@@ -149,7 +152,24 @@ class BidirectionalVanillaRNN(nn.Module):
     
     \item \textbf{Less Interpretability}: The bidirectional nature of BRNNs makes it more difficult to interpret predictions compared to standard RNNs.
     \hfill \cite{geeksforgeeks/deep-learning/bidirectional-recurrent-neural-network}
+
+    \item Still suffers from \textbf{vanishing gradients} if it’s a Vanilla BiRNN.
+    \hfill \cite{common/online/chatgpt}
 \end{enumerate}
+
+
+
+
+\section{What fixes it}
+
+\begin{enumerate}
+    \item Use BiLSTM or BiGRU $\to$ combine bidirectional context with gating mechanisms.
+    \hfill \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+
+
 
 
 
