@@ -153,139 +153,6 @@
 
 
 
-\subsection{Summary}
-
-\begin{enumerate}
-
-    \item
-    \textbf{Notation}:
-    $
-        {\displaystyle {\mathcal {N}}(\mu ,\sigma ^{2})}
-    $
-    \hfill \cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Parameters}:
-    \begin{enumerate}
-        \item ${\displaystyle \mu \in \mathbb {R} }$ = mean (location)
-        \hfill \cite{wiki/Normal_distribution}
-
-        \item ${\displaystyle \sigma ^{2}\in \mathbb {R} _{>0}}$ = variance (squared scale)
-        \hfill \cite{wiki/Normal_distribution}
-    \end{enumerate}
-
-    \item
-    \textbf{Support/ Rand Var}:
-    $x \in \mbbR$
-    \hfill \cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{PDF}:
-    $ {\displaystyle {\dfrac {1}{\sqrt {2\pi \sigma ^{2}}}}e^{-{\dfrac {(x-\mu )^{2}}{2\sigma ^{2}}}}} $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{CDF}:
-    $ {\displaystyle \Phi \left({\dfrac {x-\mu }{\sigma }}\right)={\dfrac {1}{2}}\left[1+\operatorname {erf} \left({\dfrac {x-\mu }{\sigma {\sqrt {2}}}}\right)\right]} $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Quantile}:
-    $ {\displaystyle \mu +\sigma {\sqrt {2}}\operatorname {erf} ^{-1}(2p-1)} $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Mean}:
-    $ {\displaystyle \mu } $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Median}:
-    $ {\displaystyle \mu } $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Mode}:
-    $ {\displaystyle \mu } $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Variance}:
-    $ {\displaystyle \sigma ^{2}} $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Precision}: $\beta = \dfrac{1}{\sigma^2}$
-    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
-
-    \item
-    \textbf{Median absolute deviation (MAD)}:
-    $ {\displaystyle \sigma {\sqrt {2}}\,\operatorname {erf} ^{-1}(1/2)} $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Average absolute deviation (AAD)}:
-    $ {\textstyle \sigma {\sqrt {2/\pi }}} $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Skewness}: $0$
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Excess kurtosis}: $0$
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Entropy}: $ {\textstyle {\dfrac {1}{2}}\log(2\pi e\sigma ^{2})} $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Moment-generating function (MGF)}: $ {\displaystyle \exp(\mu t+\sigma ^{2}t^{2}/2)} $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Characteristic function (CF)}: $ {\displaystyle \exp(i\mu t-\sigma ^{2}t^{2}/2)} $
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Fisher information}:
-    \begin{enumerate}
-        \item ${\displaystyle {\mathcal {I}}(\mu ,\sigma )={\begin{pmatrix}1/\sigma ^{2}&0\\0&2/\sigma ^{2}\end{pmatrix}}}$
-
-        \item ${\displaystyle {\mathcal {I}}(\mu ,\sigma ^{2})={\begin{pmatrix}1/\sigma ^{2}&0\\0&1/(2\sigma ^{4})\end{pmatrix}}}$
-    \end{enumerate}
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Kullback–Leibler divergence}:
-    ${\displaystyle D_{KL} = {1 \over 2}\left\{\left({\dfrac {\sigma _{0}}{\sigma _{1}}}\right)^{2}+{\dfrac {(\mu _{1}-\mu _{0})^{2}}{\sigma _{1}^{2}}}-1+\ln {\sigma _{1}^{2} \over \sigma _{0}^{2}}\right\}}$
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{Expected shortfall}:
-    ${\displaystyle \mu +\sigma {\dfrac {{\dfrac {1}{\sqrt {2\pi }}}e^{\dfrac {-\left(q_{p}\left({\dfrac {X-\mu }{\sigma }}\right)\right)^{2}}{2}}}{1-p}}}$
-    \hfill\cite{wiki/Normal_distribution}
-
-    \item
-    \textbf{second order moment}:
-    $
-        \mbbE[x^2]
-        = \dint_{-\infty}^\infty \mathcal{N}(x|\mu, \sigma^2) x^2 dx
-        = \mu^2 + \sigma^2
-    $
-    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
-
-\end{enumerate}
-
-
-
-
-
-
-
-
-
 \subsection{Normally Distributed Populations}
 
 \begin{enumerate}
@@ -1097,6 +964,181 @@
     \end{enumerate}
     \end{multicols}
 \end{enumerate}
+
+
+
+
+
+
+
+\subsection{Gaussian as Exponential Family}
+
+
+\begin{enumerate}
+    \item Consider the univariate Gaussian distribution $\mathcal{N} (\mu, \sigma 2)$. 
+    Let $\phi(x) = \begin{bmatrix} x \\ x^2 \end{bmatrix}$.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item $ P(x | \bm{\theta }) \propto \exp(\theta _1x + \theta _2x^2) $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Setting 
+    $
+        \theta = 
+        \begin{bmatrix} 
+            \dfrac{\mu}{\sigma ^2} & -\dfrac{1}{2\sigma ^2}
+        \end{bmatrix} ^ \top
+    $, 
+    $ 
+        P(x | \theta ) 
+        \propto \exp \dParenBrac{\dfrac{\mu x}{\sigma ^2} -\dfrac{x^2}{2\sigma ^2}}
+        \propto \exp \dParenBrac{\dfrac{1}{2\sigma ^2} (x - \mu)^2 }
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item the univariate Gaussian distribution is a member of the exponential family with sufficient statistic $\phi(x) = \begin{bmatrix} x \\ x^2 \end{bmatrix}$, and natural parameters given by 
+    $
+        \theta = 
+        \begin{bmatrix} 
+            \dfrac{\mu}{\sigma ^2} & -\dfrac{1}{2\sigma ^2}
+        \end{bmatrix} ^ \top
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    % \item 
+\end{enumerate}
+
+
+
+
+\subsection{Summary}
+
+\begin{enumerate}
+
+    \item
+    \textbf{Notation}:
+    $
+        {\displaystyle {\mathcal {N}}(\mu ,\sigma ^{2})}
+    $
+    \hfill \cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Parameters}:
+    \begin{enumerate}
+        \item ${\displaystyle \mu \in \mathbb {R} }$ = mean (location)
+        \hfill \cite{wiki/Normal_distribution}
+
+        \item ${\displaystyle \sigma ^{2}\in \mathbb {R} _{>0}}$ = variance (squared scale)
+        \hfill \cite{wiki/Normal_distribution}
+    \end{enumerate}
+
+    \item
+    \textbf{Support/ Rand Var}:
+    $x \in \mbbR$
+    \hfill \cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{PDF}:
+    $ {\displaystyle {\dfrac {1}{\sqrt {2\pi \sigma ^{2}}}}e^{-{\dfrac {(x-\mu )^{2}}{2\sigma ^{2}}}}} $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{CDF}:
+    $ {\displaystyle \Phi \left({\dfrac {x-\mu }{\sigma }}\right)={\dfrac {1}{2}}\left[1+\operatorname {erf} \left({\dfrac {x-\mu }{\sigma {\sqrt {2}}}}\right)\right]} $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Quantile}:
+    $ {\displaystyle \mu +\sigma {\sqrt {2}}\operatorname {erf} ^{-1}(2p-1)} $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Mean}:
+    $ {\displaystyle \mu } $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Median}:
+    $ {\displaystyle \mu } $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Mode}:
+    $ {\displaystyle \mu } $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Variance}:
+    $ {\displaystyle \sigma ^{2}} $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Precision}: $\beta = \dfrac{1}{\sigma^2}$
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item
+    \textbf{Median absolute deviation (MAD)}:
+    $ {\displaystyle \sigma {\sqrt {2}}\,\operatorname {erf} ^{-1}(1/2)} $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Average absolute deviation (AAD)}:
+    $ {\textstyle \sigma {\sqrt {2/\pi }}} $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Skewness}: $0$
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Excess kurtosis}: $0$
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Entropy}: $ {\textstyle {\dfrac {1}{2}}\log(2\pi e\sigma ^{2})} $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Moment-generating function (MGF)}: $ {\displaystyle \exp(\mu t+\sigma ^{2}t^{2}/2)} $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Characteristic function (CF)}: $ {\displaystyle \exp(i\mu t-\sigma ^{2}t^{2}/2)} $
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Fisher information}:
+    \begin{enumerate}
+        \item ${\displaystyle {\mathcal {I}}(\mu ,\sigma )={\begin{pmatrix}1/\sigma ^{2}&0\\0&2/\sigma ^{2}\end{pmatrix}}}$
+
+        \item ${\displaystyle {\mathcal {I}}(\mu ,\sigma ^{2})={\begin{pmatrix}1/\sigma ^{2}&0\\0&1/(2\sigma ^{4})\end{pmatrix}}}$
+    \end{enumerate}
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Kullback–Leibler divergence}:
+    ${\displaystyle D_{KL} = {1 \over 2}\left\{\left({\dfrac {\sigma _{0}}{\sigma _{1}}}\right)^{2}+{\dfrac {(\mu _{1}-\mu _{0})^{2}}{\sigma _{1}^{2}}}-1+\ln {\sigma _{1}^{2} \over \sigma _{0}^{2}}\right\}}$
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{Expected shortfall}:
+    ${\displaystyle \mu +\sigma {\dfrac {{\dfrac {1}{\sqrt {2\pi }}}e^{\dfrac {-\left(q_{p}\left({\dfrac {X-\mu }{\sigma }}\right)\right)^{2}}{2}}}{1-p}}}$
+    \hfill\cite{wiki/Normal_distribution}
+
+    \item
+    \textbf{second order moment}:
+    $
+        \mbbE[x^2]
+        = \dint_{-\infty}^\infty \mathcal{N}(x|\mu, \sigma^2) x^2 dx
+        = \mu^2 + \sigma^2
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+\end{enumerate}
+
+
+
+
 
 
 

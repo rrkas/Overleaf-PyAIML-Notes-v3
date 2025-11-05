@@ -28,115 +28,6 @@
 
 
 
-\subsection{Summary}
-
-\begin{enumerate}
-    \item \textbf{Notation}:
-    $
-        \mathcal{B}(p)
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Parameters}:
-    $  {\displaystyle 0\leq p\leq 1}$
-    \hspace{1cm}
-    $ {\displaystyle q=1-p} $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Support}:
-    $
-         {\displaystyle k\in \{0,1\}}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{PMF}:
-    $
-         {\displaystyle {\begin{cases}q=1-p&{\text{if }}k=0\\p&{\text{if }}k=1\end{cases}}}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{CDF}:
-    $
-         {\displaystyle {\begin{cases}0&{\text{if }}k<0\\1-p&{\text{if }}0\leq k<1\\1&{\text{if }}k\geq 1\end{cases}}}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Mean}:
-    $
-        p
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Median}:
-    $
-         {\displaystyle {\begin{cases}0&{\text{if }}p<1/2\\\left[0,1\right]&{\text{if }}p=1/2\\1&{\text{if }}p>1/2\end{cases}}}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Mode}:
-    $
-         {\displaystyle {\begin{cases}0&{\text{if }}p<1/2\\0,1&{\text{if }}p=1/2\\1&{\text{if }}p>1/2\end{cases}}}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Variance}:
-    $
-         {\displaystyle p(1-p)=pq}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Median absolute deviation (MAD)}:
-    $
-         {\displaystyle 2p(1-p)=2pq}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Skewness}:
-    $
-         {\displaystyle {\dfrac {q-p}{\sqrt {pq}}}}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Excess kurtosis}:
-    $
-         {\displaystyle {\dfrac {1-6pq}{pq}}}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Entropy}:
-    $
-         {\displaystyle -q\ln q-p\ln p}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Moment-generating function (MGF)}:
-    $
-         {\displaystyle q+pe^{t}}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Characteristic function (CF)}:
-    $
-         {\displaystyle q+pe^{it}}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Probability-generating function (PGF)}:
-    $
-         {\displaystyle q+pz}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-
-    \item \textbf{Fisher information}:
-    $
-         {\displaystyle {\dfrac {1}{pq}}}
-    $
-    \hfill \cite{wiki/Bernoulli_distribution}
-\end{enumerate}
-
-
-
-
 
 \subsection{Maximum Likelihood Estimation (MLE)}
 
@@ -300,6 +191,193 @@
 
 
 
+
+
+
+
+
+
+\subsection{Bernoulli as Exponential Family}
+
+\begin{enumerate}
+    \item Bernoulli distribution: 
+    $ P(x | \mu) = \mu^x(1 - \mu)^{1-x} $
+    \hfill
+    $ x \in \dCurlyBrac{0, 1} $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Now:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    $
+        \begin{aligned}
+            P(x | \mu ) 
+                &= \exp[\log (\mu ^x(1 - \mu )^{1-x})] 
+                = \exp [x \log \mu  + (1 - x) \log(1 - \mu )] \\
+                &= \exp [x \log \mu  - x \log(1 - \mu ) + \log(1 - \mu )]
+                = \exp \dSquareBrac{ x \log \dfrac{\mu } {1-\mu } + \log(1 - \mu )} 
+        \end{aligned}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    This can be identified as being in exponential family form by observing that:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $ h(x) = 1  $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $ \theta = \dfrac{\mu } {1-\mu } $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $ \phi(x) = x  $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item $ A(\theta ) = - \log(1 - \mu ) = \log(1 + \exp(\theta )) $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+    \end{multicols}
+
+    \item $ \mu = \dfrac{1}{1 + \exp(-\theta)} $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    The relationship between the original Bernoulli parameter $\mu$ and the natural parameter $\theta$ is known as the \textbf{sigmoid} or \textbf{logistic function}.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item The canonical conjugate prior has the form:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        \begin{aligned}
+            P(\mu | \alpha, \beta )
+            &= \dfrac{\mu}{1-\mu} 
+            \exp \dParenBrac{
+                \alpha \log \dfrac{\mu}{1-\mu} 
+                + (\beta  + \alpha) \log(1 - \mu) 
+                - A_c(\gamma )
+            } \\
+            &= \exp [(\alpha - 1) \log \mu  + (\beta  - 1) \log(1 - \mu ) - A_c(\alpha, \beta )] \\
+            &\propto \mu^{\alpha - 1}  (1 - \mu )^{\beta-1}
+        \end{aligned}
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    where we defined $\gamma  := \begin{bmatrix}\alpha \\ \beta  + \alpha\end{bmatrix}$ and $h_c(\mu ) := \dfrac{\mu }{1 - \mu }$. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item conjugate prior is Beta distribution
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+\end{enumerate}
+
+
+
+
+\subsection{Summary}
+
+\begin{enumerate}
+    \item \textbf{Notation}:
+    $
+        \mathcal{B}(p)
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Parameters}:
+    $  {\displaystyle 0\leq p\leq 1}$
+    \hspace{1cm}
+    $ {\displaystyle q=1-p} $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Support}:
+    $
+         {\displaystyle k\in \{0,1\}}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{PMF}:
+    $
+         {\displaystyle {\begin{cases}q=1-p&{\text{if }}k=0\\p&{\text{if }}k=1\end{cases}}}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{CDF}:
+    $
+         {\displaystyle {\begin{cases}0&{\text{if }}k<0\\1-p&{\text{if }}0\leq k<1\\1&{\text{if }}k\geq 1\end{cases}}}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Mean}:
+    $
+        p
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Median}:
+    $
+         {\displaystyle {\begin{cases}0&{\text{if }}p<1/2\\\left[0,1\right]&{\text{if }}p=1/2\\1&{\text{if }}p>1/2\end{cases}}}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Mode}:
+    $
+         {\displaystyle {\begin{cases}0&{\text{if }}p<1/2\\0,1&{\text{if }}p=1/2\\1&{\text{if }}p>1/2\end{cases}}}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Variance}:
+    $
+         {\displaystyle p(1-p)=pq}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Median absolute deviation (MAD)}:
+    $
+         {\displaystyle 2p(1-p)=2pq}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Skewness}:
+    $
+         {\displaystyle {\dfrac {q-p}{\sqrt {pq}}}}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Excess kurtosis}:
+    $
+         {\displaystyle {\dfrac {1-6pq}{pq}}}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Entropy}:
+    $
+         {\displaystyle -q\ln q-p\ln p}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Moment-generating function (MGF)}:
+    $
+         {\displaystyle q+pe^{t}}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Characteristic function (CF)}:
+    $
+         {\displaystyle q+pe^{it}}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Probability-generating function (PGF)}:
+    $
+         {\displaystyle q+pz}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+
+    \item \textbf{Fisher information}:
+    $
+         {\displaystyle {\dfrac {1}{pq}}}
+    $
+    \hfill \cite{wiki/Bernoulli_distribution}
+\end{enumerate}
 
 
 

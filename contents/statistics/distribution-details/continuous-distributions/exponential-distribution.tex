@@ -85,6 +85,81 @@
 \end{enumerate}
 
 
+
+
+
+
+\subsection{Exponential Family}
+
+\begin{enumerate}
+    \item An exponential family is a family of probability distributions, parameterized by $\bm{\theta} \in \mbbR^D$ , of the form
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    .\hfill
+    $P(\bm{x} | \bm{\theta}) = h(\bm{x})\ \exp (\dAngleBrac{\bm{\theta}, \phi(\bm{x})} - A(\bm{\theta}))$
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    where $\phi(\bm{x})$ is the vector of sufficient statistics.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\
+    By Default: $ \dAngleBrac{\bm{\theta}, \phi(\bm{x})} = \bm{\theta}^\top \phi(\bm{x}) $ (standard dot product)
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item The factor $h(\bm{x})$ can be absorbed into the dot product term by adding another entry ($\log h(\bm{x})$) to the vector of sufficient statistics $\phi(\bm{x})$, and constraining the corresponding parameter $\theta_0 = 1$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The term $A(\bm{\theta})$ is the \textbf{normalization constant} that ensures that the distribution sums up or integrates to one and is called the \textbf{log-partition function}.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The parameters $\theta$ are called the \textbf{natural parameters}.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item Note that the form of the exponential family is essentially a particular expression of $g_\theta (\phi(x))$ in the Fisher-Neyman theorem.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Exponential families provide a convenient way to find \textbf{conjugate pairs of distributions}. 
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item Consider the random variable $X$ is a member of the exponential family:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\[0.2cm]
+        .\hfill
+        $ P(\bm{x} | \bm{\theta }) = h(\bm{x}) \exp (\dAngleBrac{\bm{\theta }, \phi (\bm{x})} - A(\bm{\theta })) $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item Every member of the exponential family has a conjugate prior:
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\[0.2cm]
+        .\hfill
+        $ 
+            P(\bm{\theta } | \gamma ) 
+            = h_c(\bm{\theta }) \exp \dParenBrac{\dAngleBrac{
+                \begin{bmatrix} \gamma _1 \\ \gamma _2  \end{bmatrix} ,
+                \begin{bmatrix} \bm{\theta } \\ -A(\bm{\theta }) \end{bmatrix}
+            } - A_c(\gamma ) } 
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+        \\[0.2cm]
+        where $\gamma  = \begin{bmatrix} \gamma _1 \\ \gamma _2  \end{bmatrix}$ has dimension $\dim(\bm{\theta }) + 1$.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item The sufficient statistics of the conjugate prior are $ \begin{bmatrix} \bm{\theta } \\ -A(\bm{\theta }) \end{bmatrix} $.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+        \item By using the knowledge of the general form of conjugate priors for exponential families, we can derive functional forms of conjugate priors corresponding to particular distributions.
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+
+    \item 
+\end{enumerate}
+
+
+
+
+
+
+
 \subsection{Summary}
 
 \begin{enumerate}
