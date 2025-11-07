@@ -3299,11 +3299,45 @@ $0 < \kappa_C \leq 0.20$  & Poor agreement \\ \hline
 
     \item Moment generating functions (MGFs) can also be used to study transformations of random variables
     \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
+    \item Suppose that there is a \textbf{discrete random variable} $X$ with pmf $P (X = x)$, and an invertible function $U (x)$. 
+    Consider the \textbf{transformed random variable} $Y := U (X)$, with pmf $P (Y = y)$. 
+    Then
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    .\hfill
+    $
+        P (Y = y) 
+        = P (U (X) = y) 
+        = P (X = U^{-1}(y)) 
+    $
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \\[0.2cm]
+    where we can observe that $x = U ^{-1}(y)$.
+    Therefore, for discrete random variables, transformations directly change the individual events (with the probabilities appropriately transformed).
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+
 \end{enumerate}
 
+\subsection{Distribution Function Technique}
 
+\begin{enumerate}
+    \item The distribution function technique goes back to first principles, and uses the definition of a cdf $F_X (x) = P (X \leq x)$ and the fact that its differential is the pdf $f (x) $.
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
+    \item For a random variable $X$ and a function $U$ , we find the pdf of the random variable $Y := U (X)$ by:
+    \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \begin{enumerate}
+        \item Finding the cdf: $ F_Y (y) = P (Y \leq y) $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
 
+        \item Differentiating the cdf $F_Y (y)$ to get the pdf $f (y)$: 
+        $
+            f(y) = \dfrac{d\ F_Y (y)}{d\ y} 
+        $
+        \hfill \cite{mfml/book/mml/Deisenroth-Faisal-Ong}
+    \end{enumerate}
+\end{enumerate}
 
 
 

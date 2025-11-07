@@ -3,7 +3,7 @@
 \section{Polynomial Curve Fitting}
 
 \begin{customArrayStretch}{1.5}
-\begin{longtable}{l l l}
+\begin{longtable}{l p{9cm} l}
 
 \hline\endfirsthead
 \hline\endhead
@@ -16,9 +16,9 @@ $N$ & number of observations (in training set) & known \\ \hline
 
 $M$ & order of polynomial & hyper-param \\ \hline
 
-$\bm{x} \equiv (x_1, \cdots , x_N)^\top$ & set of observations & known \\ \hline
+$\bm{x} \equiv (x_1, \cdots , x_N)^\top$ & set of observations (inputs) & known \\ \hline
 
-$\bm{t} \equiv (t_1, \cdots , t_N)^\top$ & set of values for the observations & known \\ \hline
+$\bm{t} \equiv (t_1, \cdots , t_N)^\top$ & set of values for the observations (target) & known \\ \hline
 
 $\bm{w} \equiv (w_0, \cdots , w_M)^\top$ & weights (polynomial coefficients) & unknown (param) \\ \hline
 
@@ -76,9 +76,13 @@ $\hat{t}$ & predicted value & \\ \hline
     Because the error function is a quadratic function of the coefficients $\bm{w}$, its derivatives with respect to the coefficients will be linear in the elements of $\bm{w}$, and so the minimization of the error function has a unique solution, denoted by $\bm{w}^\ast$, which can be found in \textbf{closed form}.
     The resulting polynomial is given by the function $y(x, \bm{w}^\ast)$.
     \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item It seems reasonable to apply the \textbf{frequentist notion} of probability to the random values of the observed variables $t_n$. 
+    However, we would like to address and quantify the uncertainty that surrounds the appropriate choice for the model parameters $\bm{w}$. 
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    
 \end{enumerate}
-
-
 
 
 

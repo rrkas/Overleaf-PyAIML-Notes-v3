@@ -1,0 +1,124 @@
+\chapter{Data Preparation}
+
+\section{Handling Various Datatypes Columns}
+
+\begin{enumerate}
+    \item You should apply the \verb|StandardScaler| only on the continuous (numeric) columns — that is, your original int and float columns, not on the one-hot encoded categorical columns created by \verb|pd.get_dummies|.
+    \hfill \cite{common/online/chatgpt}
+
+\end{enumerate}
+
+
+
+
+
+\section{Scaling}
+
+\begin{enumerate}
+    \item Scaling happens before train-test split
+    \hfill \cite{common/online/chatgpt}
+
+    \item Fit on train only, transform both
+    \hfill \cite{common/online/chatgpt}
+\end{enumerate}
+
+
+\subsection{Scaler save/load for inference}
+
+\begin{enumerate}
+    \item You can store and load your StandardScaler using joblib (preferred for scikit-learn objects) or pickle.
+    \hfill \cite{common/online/chatgpt}
+
+\end{enumerate}
+
+
+\subsection{Scaling of target column/ y}
+
+\begin{enumerate}
+    \item Regression tasks (y is continuous float)
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item If y is in normal numeric units (like prices, weights, etc.) —
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item You don’t have to scale it.
+            \hfill \cite{common/online/chatgpt}
+            
+            \item  Most regression models (e.g., tree-based models like RandomForestRegressor, XGBoost, etc.) work fine on the original scale.
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+
+        \item If y has a large range (e.g., 1 to 1,000,000) —
+        Then scaling or normalizing can help for models sensitive to output scale, like:
+        \hfill \cite{common/online/chatgpt}
+        \begin{enumerate}
+            \item Linear regression
+            \hfill \cite{common/online/chatgpt}
+            
+            \item Neural networks
+            \hfill \cite{common/online/chatgpt}
+            
+            \item Support Vector Regression (SVR)
+            \hfill \cite{common/online/chatgpt}
+        \end{enumerate}
+    \end{enumerate}
+
+    \item Classification tasks (y is category/label)
+    \hfill \cite{common/online/chatgpt}
+    \begin{enumerate}
+        \item Do NOT scale — the target is categorical (e.g., class names or 0/1 labels).
+        \hfill \cite{common/online/chatgpt}
+        
+        \item You may encode it (e.g., LabelEncoder), but never scale it.
+        \hfill \cite{common/online/chatgpt}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\section{Curse of Dimensionality in Machine Learning}
+
+\begin{enumerate}
+    \item Curse of Dimensionality in Machine Learning arises when working with high-dimensional data, leading to increased computational complexity, overfitting, and spurious correlations. 
+    \hfill \cite{geeksforgeeks/machine-learning/curse-of-dimensionality-in-machine-learning}
+
+    \item Techniques like dimensionality reduction, feature selection, and careful model design are essential for mitigating its effects and improving algorithm performance. 
+    Navigating this challenge is crucial for unlocking the potential of high-dimensional datasets and ensuring robust machine-learning solutions.
+    \hfill \cite{geeksforgeeks/machine-learning/curse-of-dimensionality-in-machine-learning}
+
+    \item Curse of Dimensionality refers to the phenomenon where the efficiency and effectiveness of algorithms \textbf{deteriorate} as the dimensionality of the data increases exponentially. 
+    \hfill \cite{geeksforgeeks/machine-learning/curse-of-dimensionality-in-machine-learning}
+
+    \item In high-dimensional spaces, data points become sparse, making it challenging to discern meaningful patterns or relationships due to the vast amount of data required to adequately sample the space.
+    \hfill \cite{geeksforgeeks/machine-learning/curse-of-dimensionality-in-machine-learning}
+
+    \item Although the curse of dimensionality certainly raises important issues for pattern recognition applications, it does not prevent us from finding effective techniques applicable to high-dimensional spaces.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \begin{enumerate}
+        \item First, real data will often be confined to a region of the space having lower effective dimensionality, and in particular the directions over which important variations in the target variables occur may be so confined.
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+        \item Second, real data will typically exhibit some smoothness properties (at least locally) so that for the most part small changes in the input variables will produce small changes in the target variables, and so we can exploit local interpolation-like techniques to allow us to make predictions of the target variables for new values of the input variables.
+        \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsection{Dimensionality Reduction Techniques}
+
+\begin{enumerate}
+    \item \textbf{Feature Selection}: Identify and select the most relevant features from the original dataset while discarding irrelevant or redundant ones. 
+    This reduces the dimensionality of the data, simplifying the model and improving its efficiency.
+    \hfill \cite{geeksforgeeks/machine-learning/curse-of-dimensionality-in-machine-learning}
+    
+    \item \textbf{Feature Extraction}: Transform the original high-dimensional data into a lower-dimensional space by creating new features that capture the essential information. 
+    Techniques such as Principal Component Analysis (PCA) and t-distributed Stochastic Neighbor Embedding (t-SNE) are commonly used for feature extraction.
+    \hfill \cite{geeksforgeeks/machine-learning/curse-of-dimensionality-in-machine-learning}
+\end{enumerate}
+
+
+
+
+
+
