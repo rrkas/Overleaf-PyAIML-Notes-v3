@@ -1,0 +1,101 @@
+\chapter{Classification}
+
+
+
+
+
+
+
+\section{Minimizing the misclassification rate}
+
+\begin{enumerate}
+    \item We need a rule that assigns each value of $\bm{x}$ to one of the available classes. 
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    
+    \item Such a rule will divide the input space into regions $\mathcal{R}_k$ called \textbf{decision regions}, one for each class, such that all points in $\mathcal{R}_k$ are assigned to class $\mathcal{C}_k$. 
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    
+    \item The boundaries between decision regions are called \textbf{decision boundaries} or \textbf{decision surfaces}. 
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item each decision region need not be contiguous but could comprise some number of disjoint regions.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item In order to find the optimal decision rule, consider first of all the case of two classes.
+    A mistake occurs when an input vector belonging to class $\mathcal{C}_1$ is assigned to class $\mathcal{C}_2$ or vice versa.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \\[0.2cm]
+    .\hfill
+    $
+        % \begin{aligned}
+            P(\text{mistake}) 
+            = P(x \in \mathcal{R}_1, \mathcal{C}_2) + P(x \in \mathcal{R}_2, \mathcal{C}_1)
+            = \dint_{\mathcal{R}_1}\ P(x, \mathcal{C}_2)\ dx + \dint_{\mathcal{R}_2}\ P(x, \mathcal{C}_1)\ dx 
+        % \end{aligned}
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item We are free to choose the decision rule that assigns each point $\bm{x}$ to one of the two classes. 
+    Clearly to minimize $P(\text{mistake})$ we should arrange that each $\bm{x}$ is assigned to whichever class has the smaller value of the integrand.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item if $P(\bm{x}, \mathcal{C}_1) > P(\bm{x}, \mathcal{C}_2)$ for a given value of $\bm{x}$, then we should assign that $\bm{x}$ to class $\mathcal{C}_1$.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item From the product rule of probability we have $P(\bm{x}, \mathcal{C}_k) = P(\mathcal{C}_k|\bm{x})\ P(\bm{x})$. 
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item Because the factor $P(\bm{x})$ is common to both terms, we can restate this result as saying that the minimum probability of making a mistake is obtained if each value of $\bm{x}$ is assigned to the class for which the posterior probability $P(\mathcal{C}_k|\bm{x})$ is largest. 
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item For the more general case of $K$ classes, it is slightly easier to maximize the probability of being correct, which is given by:
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \\[0.2cm]
+    .\hfill
+    $
+        P(\text{correct})
+        = \dsum_{k=1}^K P(\bm{x} \in \mathcal{R}_k, \mathcal{C}_k)
+        = \dsum_{k=1}^K \dint_{\mathcal{R}_k} P(\bm{x}, \mathcal{C}_k) d\bm{x} 
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \\[0.2cm]
+    which is maximized when the regions $\mathcal{R}_k$ are chosen such that each $\bm{x}$ is assigned to the class for which $P(\bm{x}, \mathcal{C}_k)$ is largest.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+\end{enumerate}
+
+
+\section{Minimizing the expected loss}
+
+\begin{enumerate}
+    \item \textbf{loss function/ cost function}: a single, overall measure of loss incurred in taking any of the available decisions or actions. 
+    goal is to \textbf{minimize} the total loss incurred. 
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \\
+    some consider instead a \textbf{utility function}, whose aim is to \textbf{maximize}.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \\
+    However, the loss function depends on the true class, which is unknown.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item Suppose that, for a new value of $\bm{x}$, the true class is $\mathcal{C}_k$ and that we assign $\bm{x}$ to class $\mathcal{C}_j$ (where $j$ may or may not be equal to $k$).
+    In so doing, we incur some level of loss that we denote by $L_{kj }$, which we can view as the $k$, $j$ element of a \textbf{loss matrix}.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item The \textbf{optimal solution} is the one which minimizes the loss function.
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+
+    \item For a given input vector $\bm{x}$, our uncertainty in the true class is expressed through the joint probability distribution $P(\bm{x}, \mathcal{C}_k)$ and so we seek instead to minimize the average loss, where the average is computed with respect to this distribution, which is given by
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+    \\[0.2cm]
+    .\hfill
+    $
+        \mbbE[L]
+        = \dsum_{k} \dsum_{j} \dint_{\mathcal{R}_j} L_{kj}\ P(\bm{x}, \mathcal{C}_k)\ d\bm{x}
+    $
+    \hfill \cite{ml/book/Pattern-Recognition-And-Machine-Learning/Christopher-M-Bishop}
+\end{enumerate}
+
+
+
+
+
